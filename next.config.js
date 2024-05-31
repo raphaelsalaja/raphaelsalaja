@@ -15,7 +15,8 @@ const nextConfig = {
             'cloudflare-ipfs.com',
             'avatars.githubusercontent.com',
             'picsum.photos',
-            'pbs.twimg.com'
+            'pbs.twimg.com',
+            'images.beta.cosmos.so'
         ],
     }
 }

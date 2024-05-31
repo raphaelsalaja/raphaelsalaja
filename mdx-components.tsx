@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { ClipboardCopyIcon, CodeIcon } from '@radix-ui/react-icons'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
@@ -12,12 +12,13 @@ const ArenaGraphExample = dynamic(() => import('@/components/graph-example'), {
 	ssr: false,
 })
 
-const ButtonDelayedIcon = dynamic(
-	() => import('@/components/headless-motion/button-delayed-icon'),
-	{
-		ssr: false,
-	}
-)
+const DelayedButton = dynamic(() => import('@/components/headless-motion/button-delayed-icon'), {
+	ssr: false,
+})
+
+const ExpandableBlock = dynamic(() => import('@/components/headless-motion/expandable-block'), {
+	ssr: false,
+})
 
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -60,35 +61,32 @@ const components: MDXComponents = {
 
 	// HEADLESS MOTION
 	ComponentContainer: ({ children }) => (
-		<div className='my-6 flex flex-col justify-end gap-2'>
+		<div className='relative my-6 flex flex-col gap-2'>
 			<div
-				className='relative overflow-hidden border '
+				className='absolute flex w-full gap-2 p-2'
+				style={{
+					justifyContent: 'flex-end',
+				}}
+			>
+				<div className='border p-1'>
+					<ClipboardCopyIcon />
+				</div>
+				<div className='flex items-center border p-1'>
+					<CodeIcon />
+				</div>
+			</div>
+			<div
+				className='relative overflow-hidden border'
 				style={{
 					height: '24rem',
 				}}
 			>
-				{/* top right */}
-
-				<TooltipProvider>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<div className='absolute right-0 top-0 isolate p-2'>
-								<div className='border p-1'>
-									<ExternalLinkIcon />
-								</div>
-							</div>
-						</TooltipTrigger>
-						<TooltipContent>
-							<p>View Source Code</p>
-						</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
-
 				<div className='flex h-full items-center justify-center'>{children}</div>
 			</div>
 		</div>
 	),
-	ButtonDelayed: () => <ButtonDelayedIcon />,
+	DelayedButton: () => <DelayedButton />,
+	ExpandableBlock: () => <ExpandableBlock />,
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
