@@ -10,7 +10,7 @@ const Projects = ({ projects }: { projects: any[] }) => {
 				<Link
 					key={project.slug}
 					href={`projects/${project.slug}`}
-					className='-mx-4 flex items-center gap-2 text-nowrap rounded-lg px-4 py-3 transition-all hover:bg-gray-100/50'
+					className='-mx-4 flex items-center gap-2 whitespace-nowrap text-nowrap rounded-lg px-4 py-3 transition-all hover:bg-gray-100/50'
 				>
 					{project.metadata.title}
 					<Separator orientation='horizontal' className='shrink' />
