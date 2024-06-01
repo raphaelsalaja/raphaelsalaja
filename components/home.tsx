@@ -1,6 +1,5 @@
 'use client'
 
-import { Contact } from '@/components/contact'
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
 import { motion } from 'framer-motion'
@@ -51,9 +50,6 @@ function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
 			</motion.section>
 			<motion.section variants={section} className='flex flex-col gap-2'>
 				<HeadlessMotion projects={headless} />
-			</motion.section>
-			<motion.section variants={section} className='flex flex-col gap-2'>
-				<Contact />
 			</motion.section>
 		</motion.article>
 	)

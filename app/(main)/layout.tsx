@@ -2,6 +2,7 @@ import { Toaster } from '@/components/ui/sonner'
 import { og } from '@/config/site'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { VercelToolbar } from '@vercel/toolbar/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -49,7 +50,7 @@ export default function RootLayout({
 					<Analytics />
 					<SpeedInsights />
 					<Toaster />
-					{/* {shouldInjectToolbar && <VercelToolbar />} */}
+					{shouldInjectToolbar && <VercelToolbar />}
 				</body>
 			</html>
 		</ViewTransitions>

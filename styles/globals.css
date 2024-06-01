@@ -31,9 +31,9 @@
     --radius: 0.5rem;
   }
 
-  /* html {
-    overflow-y: scroll;
-  } */
+  html {
+    scrollbar-gutter: stable;
+  }
 
   ::selection {
     background-color: var(--blue-4) !important;
@@ -42,8 +42,8 @@
 
   h1 {
     font-size: 14px;
-    font-weight: 500;
     line-height: 24px;
+    font-weight: 400;
     color: var(--gray-12);
   }
 
@@ -52,6 +52,7 @@
   body {
     font-size: 14px;
     line-height: 24px;
+    font-weight: 300;
     color: var(--gray-11);
   }
 }
@@ -70,7 +71,6 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
 
 .inset-shadow-stroke {
   --tw-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .08), inset 0 0 0 1px rgba(0, 0, 0, .2), inset 0 0 0 2px hsla(0, 0%, 100%, .14);
