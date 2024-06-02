@@ -8,7 +8,7 @@ import {
 	Source,
 	Time,
 } from '@/components/metadata/metadata-instruments'
-import { Cross1Icon, PlusIcon } from '@radix-ui/react-icons'
+import { Cross1Icon, QuestionMarkIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -29,14 +29,14 @@ const MetadataDialog: React.FC = () => {
 			opacity: 1,
 			paddingBottom: '0px',
 			padding: show ? '4px' : '0',
+			transition: {
+				type: 'spring',
+				bounce: 0.1,
+				duration: 0.75,
+			},
 		},
 		exit: {
 			opacity: 0,
-		},
-		transition: {
-			type: 'spring',
-			bounce: 0.1,
-			duration: 0.7,
 		},
 	}
 
@@ -49,46 +49,48 @@ const MetadataDialog: React.FC = () => {
 			opacity: 1,
 			filter: 'blur(0px)',
 			borderRadius: show ? '12px' : '50%',
+			transition: {
+				ease: [0.32, 0.72, 0, 1],
+				duration: 0.75,
+			},
 		},
 		exit: {
 			opacity: 0,
 			filter: 'blur(12px)',
-		},
-		transition: {
-			type: 'spring',
-			bounce: 0.1,
-			duration: container.transition.duration,
+			transition: {
+				duration: 0.25,
+			},
 		},
 	}
 
 	let icon = {
 		initial: {
 			opacity: 0,
-			filter: 'blur(12px)',
+			filter: 'blur(4px)',
 		},
 		animate: {
 			opacity: 1,
 			filter: 'blur(0px)',
+			transition: {
+				ease: [0.32, 0.72, 0, 1],
+				duration: 1.5,
+			},
 		},
 		exit: {
 			opacity: 0,
-			filter: 'blur(12px)',
-		},
-		transition: {
-			type: 'spring',
-			bounce: 0.1,
-			duration: container.transition.duration,
+			filter: 'blur(4px)',
 		},
 	}
 
 	return (
 		<motion.div
 			layout
-			initial={container.initial}
-			animate={container.animate}
-			exit={container.exit}
-			transition={container.transition}
+			initial='initial'
+			animate='animate'
+			exit='exit'
+			variants={container}
 			style={{
+				right: '2rem',
 				bottom: '2rem',
 				position: 'fixed',
 				overflow: 'hidden',
@@ -109,10 +111,9 @@ const MetadataDialog: React.FC = () => {
 							layout
 							key='content'
 							variants={content}
-							initial={content.initial}
-							animate={content.animate}
-							exit={content.exit}
-							transition={content.transition}
+							initial='initial'
+							animate='animate'
+							exit='exit'
 							className='z-0 flex flex-col gap-2 border bg-white p-4 shadow-sm'
 						>
 							<div className='flex h-6 items-center justify-between gap-2'>
@@ -144,36 +145,46 @@ const MetadataDialog: React.FC = () => {
 							layout
 							key='caption'
 							variants={content}
-							initial={content.initial}
-							animate={content.animate}
-							exit={content.exit}
-							transition={content.transition}
-							className='z-0 flex flex-col items-center justify-center align-middle'
+							initial='initial'
+							animate='animate'
+							exit='exit'
+							className='z-0 flex flex-col items-center justify-center p-3 align-middle text-xs text-muted-foreground/50'
 						>
-							<div className='flex items-center justify-between p-3 align-middle text-xs text-muted-foreground/50'>
-								<div>
-									Powered by
-									<Link
-										href='https://vercel.com'
-										target='_blank'
-										rel='noopener noreferrer'
-										className='mx-1 font-medium text-muted-foreground/70'
-									>
-										▲ Vercel
-									</Link>
-									&
-									<Link
-										href='https://nextjs.org'
-										target='_blank'
-										rel='noopener noreferrer'
-										className='mx-1 font-medium text-muted-foreground/70'
-									>
-										Next.js
-									</Link>
-								</div>
+							<div>
+								Powered by
+								<Link
+									href='https://vercel.com'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='mx-1 font-medium text-muted-foreground/70'
+								>
+									▲ Vercel
+								</Link>
+								&
+								<Link
+									href='https://nextjs.org'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='mx-1 font-medium text-muted-foreground/70'
+								>
+									Next.js
+								</Link>
 							</div>
 
-							<motion.div layout layoutId='button' className='absolute' />
+							<motion.div
+								layout
+								key='button'
+								layoutId='button'
+								variants={icon}
+								initial='initial'
+								animate='animate'
+								exit='exit'
+								style={{
+									top: '0',
+									bottom: '0',
+									position: 'absolute',
+								}}
+							/>
 						</motion.div>
 					)}
 				</AnimatePresence>
@@ -185,14 +196,13 @@ const MetadataDialog: React.FC = () => {
 							layoutId='button'
 							key='button'
 							variants={icon}
-							initial={icon.initial}
-							animate={icon.animate}
-							exit={icon.exit}
-							transition={icon.transition}
+							initial='initial'
+							animate='animate'
+							exit='exit'
 							onClick={() => setShow(true)}
-							className={cn('z-10', 'p-2')}
+							className={cn('p-2')}
 						>
-							<PlusIcon />
+							<QuestionMarkIcon />
 						</motion.button>
 					)}
 				</AnimatePresence>

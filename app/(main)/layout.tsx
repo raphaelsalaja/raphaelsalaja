@@ -7,7 +7,6 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import { ViewTransitions } from 'next-view-transitions'
 
-import { MetadataDialog } from '@/components/metadata/metadata-dialog'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -50,8 +49,6 @@ export default function RootLayout({
 					<Analytics />
 					<SpeedInsights />
 					<Toaster />
-
-					<MetadataDialog />
 
 					{/* {shouldInjectToolbar && <VercelToolbar />} */}
 				</body>
