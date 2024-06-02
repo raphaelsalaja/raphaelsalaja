@@ -24,27 +24,44 @@ const MetadataDialog: React.FC = () => {
 	let container = {
 		initial: {
 			opacity: 0,
-			scale: 0,
 		},
 		animate: {
 			opacity: 1,
-			scale: 1,
-			borderRadius: show ? '16px' : '50%',
-			padding: show ? '4px' : '0',
 			paddingBottom: '0px',
+			padding: show ? '4px' : '0',
 		},
 		exit: {
 			opacity: 0,
-			scale: 0,
 		},
 		transition: {
 			type: 'spring',
 			bounce: 0.1,
-			duration: 0.75,
+			duration: 0.5,
 		},
 	}
 
 	let content = {
+		initial: {
+			opacity: 0,
+			filter: 'blur(12px)',
+		},
+		animate: {
+			opacity: 1,
+			filter: 'blur(0px)',
+			borderRadius: show ? '12px' : '50%',
+		},
+		exit: {
+			opacity: 0,
+			filter: 'blur(12px)',
+		},
+		transition: {
+			type: 'spring',
+			bounce: 0.1,
+			duration: container.transition.duration,
+		},
+	}
+
+	let icon = {
 		initial: {
 			opacity: 0,
 			filter: 'blur(12px)',
@@ -72,17 +89,20 @@ const MetadataDialog: React.FC = () => {
 			exit={container.exit}
 			transition={container.transition}
 			style={{
-				overflow: 'hidden',
+				bottom: '2rem',
 				position: 'fixed',
-				bottom: '1rem',
-				originY: 0,
+				overflow: 'hidden',
+				transformOrigin: 'bottom center',
+				borderRadius: '16px',
 			}}
-			className={cn('flex flex-col items-center justify-center bg-muted align-middle')}
+			className={cn(
+				'bg-muted',
+				'md:hidden',
+				'flex flex-col',
+				'items-center justify-center align-middle'
+			)}
 		>
-			<div
-				ref={ref}
-				className={cn('flex origin-bottom flex-col items-center justify-center')}
-			>
+			<div ref={ref} className={cn('flex flex-col')}>
 				<AnimatePresence mode='popLayout' initial={false}>
 					{show && (
 						<motion.div
@@ -93,30 +113,43 @@ const MetadataDialog: React.FC = () => {
 							animate={content.animate}
 							exit={content.exit}
 							transition={content.transition}
-							className='z-0 flex flex-col items-center justify-center align-middle'
+							className='z-0 flex flex-col gap-2 border bg-white p-4 shadow-sm'
 						>
-							<div className='flex flex-col gap-2 rounded-xl border bg-white p-4 shadow-sm'>
-								<div className='flex h-6 items-center justify-between gap-2'>
-									<h1 className='font-semibold'>Site Metadata</h1>
-									<Button
-										onClick={() => setShow(false)}
-										variant='outline'
-										className='h-6 w-6 rounded p-1 shadow-none hover:bg-gray-100'
-									>
-										<Cross1Icon />
-									</Button>
-								</div>
-
-								<div className='grid grid-cols-3 gap-x-8 gap-y-4 transition-all'>
-									<Deployment />
-									<Geolocation />
-									<Browser />
-									<Dimensions />
-									<Source />
-									<Time />
-								</div>
+							<div className='flex h-6 items-center justify-between gap-2'>
+								<h1 className='font-semibold'>Site Metadata</h1>
+								<Button
+									onClick={() => setShow(false)}
+									variant='outline'
+									className='h-6 w-6 rounded p-1 shadow-none hover:bg-gray-100'
+								>
+									<Cross1Icon />
+								</Button>
 							</div>
 
+							<div className='grid grid-cols-3 gap-x-8 gap-y-4 transition-all'>
+								<Deployment />
+								<Geolocation />
+								<Browser />
+								<Dimensions />
+								<Source />
+								<Time />
+							</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
+
+				<AnimatePresence mode='popLayout' initial={false}>
+					{show && (
+						<motion.div
+							layout
+							key='caption'
+							variants={content}
+							initial={content.initial}
+							animate={content.animate}
+							exit={content.exit}
+							transition={content.transition}
+							className='z-0 flex flex-col items-center justify-center align-middle'
+						>
 							<div className='flex items-center justify-between p-3 align-middle text-xs text-muted-foreground/50'>
 								<div>
 									Powered by
@@ -140,22 +173,22 @@ const MetadataDialog: React.FC = () => {
 								</div>
 							</div>
 
-							{/* button holder */}
 							<motion.div layout layoutId='button' className='absolute' />
 						</motion.div>
 					)}
 				</AnimatePresence>
-				<AnimatePresence mode='popLayout'>
+
+				<AnimatePresence mode='popLayout' initial={false}>
 					{!show && (
 						<motion.button
 							layout
 							layoutId='button'
 							key='button'
-							variants={content}
-							initial={content.initial}
-							animate={content.animate}
-							exit={content.exit}
-							transition={content.transition}
+							variants={icon}
+							initial={icon.initial}
+							animate={icon.animate}
+							exit={icon.exit}
+							transition={icon.transition}
 							onClick={() => setShow(true)}
 							className={cn('z-10', 'p-2')}
 						>

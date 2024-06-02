@@ -50,7 +50,9 @@ export default function RootLayout({
 					<Analytics />
 					<SpeedInsights />
 					<Toaster />
+
 					<MetadataDialog />
+
 					{/* {shouldInjectToolbar && <VercelToolbar />} */}
 				</body>
 			</html>
