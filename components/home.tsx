@@ -5,7 +5,6 @@ import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
 
 import { motion } from 'framer-motion'
-import { MetadataDialog } from './metadata/metadata-dialog'
 
 const article = {
 	show: {
@@ -39,21 +38,20 @@ const section = {
 function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
 	return (
 		<motion.article
-			className='flex flex-col gap-8'
+			className='relative flex flex-col gap-8'
 			variants={article}
 			initial='hidden'
 			animate='show'
 		>
-			<motion.section variants={section} className='flex flex-col gap-2'>
+			<motion.section variants={section} className='flex w-full flex-col gap-2'>
 				<Profile />
 			</motion.section>
-			<motion.section variants={section} className='flex flex-col gap-2'>
+			<motion.section variants={section} className='flex w-full flex-col gap-2'>
 				<Projects projects={projects} />
 			</motion.section>
-			<motion.section variants={section} className='flex flex-col gap-2'>
+			<motion.section variants={section} className='flex w-full flex-col gap-2'>
 				<HeadlessMotion projects={headless} />
 			</motion.section>
-			<MetadataDialog />
 		</motion.article>
 	)
 }

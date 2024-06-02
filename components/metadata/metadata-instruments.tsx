@@ -24,8 +24,8 @@ const Geolocation: React.FC = () => {
 				}
 				const data: Location = await response.json()
 
-				data.city = getCountryData(data.country as TCountryCode).capital || 'City'
-				data.country = getCountryData(data.country as TCountryCode).name || 'Country'
+				data.city = getCountryData(data.country as TCountryCode).capital || 'Dublin'
+				data.country = getCountryData(data.country as TCountryCode).name || 'Ireland'
 
 				setLocation(data)
 			} catch (error) {

@@ -7,6 +7,7 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import { ViewTransitions } from 'next-view-transitions'
 
+import MetadataDialogWrapper from '@/components/metadata/metatdata-wrapper'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -39,17 +40,18 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	const shouldInjectToolbar = process.env.NODE_ENV === 'development'
+
 	return (
 		<ViewTransitions>
 			<html lang='en' className={`${GeistSans.variable} ${GeistMono.variable}`}>
-				<body className='flex items-center justify-center text-justify'>
-					<div className='flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
+				<body className='relative flex items-center justify-center text-justify'>
+					<div className='relative flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>
 					<Analytics />
 					<SpeedInsights />
 					<Toaster />
-
+					<MetadataDialogWrapper />
 					{/* {shouldInjectToolbar && <VercelToolbar />} */}
 				</body>
 			</html>

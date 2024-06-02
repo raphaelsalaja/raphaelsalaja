@@ -15,20 +15,20 @@ import React, { useState } from 'react'
 import { Button } from '../ui/button'
 
 import { cn } from '@/lib/utils'
-import useMeasure from 'react-use-measure'
 
 const MetadataDialog: React.FC = () => {
-	let [ref, bounds] = useMeasure()
 	let [show, setShow] = useState(false)
 
 	let container = {
 		initial: {
 			opacity: 0,
+			scale: 0.8,
 		},
 		animate: {
 			opacity: 1,
 			paddingBottom: '0px',
 			padding: show ? '4px' : '0',
+			scale: 1,
 			transition: {
 				type: 'spring',
 				bounce: 0.1,
@@ -37,6 +37,7 @@ const MetadataDialog: React.FC = () => {
 		},
 		exit: {
 			opacity: 0,
+			scale: 0.8,
 		},
 	}
 
@@ -48,7 +49,7 @@ const MetadataDialog: React.FC = () => {
 		animate: {
 			opacity: 1,
 			filter: 'blur(0px)',
-			borderRadius: show ? '12px' : '50%',
+			borderRadius: '12px',
 			transition: {
 				ease: [0.32, 0.72, 0, 1],
 				duration: 0.75,
@@ -90,21 +91,14 @@ const MetadataDialog: React.FC = () => {
 			exit='exit'
 			variants={container}
 			style={{
-				right: '2rem',
+				overflow: 'hidden',
+				borderRadius: '16px',
+				backgroundColor: 'hsl(var(--muted))',
 				bottom: '2rem',
 				position: 'fixed',
-				overflow: 'hidden',
-				transformOrigin: 'bottom center',
-				borderRadius: '16px',
 			}}
-			className={cn(
-				'bg-muted',
-				'hidden md:relative',
-				'flex flex-col',
-				'items-center justify-center align-middle'
-			)}
 		>
-			<div ref={ref} className={cn('flex flex-col')}>
+			<div className={cn('flex flex-col items-center justify-center')}>
 				<AnimatePresence mode='popLayout' initial={false}>
 					{show && (
 						<motion.div
