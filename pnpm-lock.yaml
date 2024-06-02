@@ -116,6 +116,12 @@ importers:
       '@vercel/blob':
         specifier: ^0.23.3
         version: 0.23.3
+      '@vercel/edge':
+        specifier: ^1.1.1
+        version: 1.1.1
+      '@vercel/edge-config':
+        specifier: ^1.1.1
+        version: 1.1.1(@opentelemetry/api@1.8.0)(typescript@5.4.5)
       '@vercel/og':
         specifier: ^0.6.2
         version: 0.6.2
@@ -146,6 +152,9 @@ importers:
       contentlayer:
         specifier: ^0.3.4
         version: 0.3.4(esbuild@0.21.3)
+      countries-list:
+        specifier: ^3.1.0
+        version: 3.1.0
       d3:
         specifier: ^7.9.0
         version: 7.9.0
@@ -296,6 +305,12 @@ importers:
       use-sound:
         specifier: ^4.0.1
         version: 4.0.1(react@18.3.1)
+      usehooks-ts:
+        specifier: ^3.1.0
+        version: 3.1.0(react@18.3.1)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
       vercel:
         specifier: ^34.2.3
         version: 34.2.3(encoding@0.1.13)
@@ -3421,6 +3436,21 @@ packages:
   '@vercel/build-utils@8.2.0':
     resolution: {integrity: sha512-yDr/zp/SX45mIy6DO8IRD6hmEs6gIr33/ajT3y8efUt/crQvgNtaSkbx9ubbwkR4RV/qKL213v6kXxj+EpsnlQ==}
 
+  '@vercel/edge-config-fs@0.1.0':
+    resolution: {integrity: sha512-NRIBwfcS0bUoUbRWlNGetqjvLSwgYH/BqKqDN7vK1g32p7dN96k0712COgaz6VFizAm9b0g6IG6hR6+hc0KCPg==}
+
+  '@vercel/edge-config@1.1.1':
+    resolution: {integrity: sha512-tZM3bTFoEJNXs3hJbKHvpZton4BvWbxD1+0HJJrdDGLX3nCO9O778mMUBf6NmI33fB8iM8PLLQiKC6RpiBjiBg==}
+    engines: {node: '>=14.6'}
+    peerDependencies:
+      '@opentelemetry/api': ^1.7.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+
+  '@vercel/edge@1.1.1':
+    resolution: {integrity: sha512-NtKiIbn9Cq6HWGy+qRudz28mz5nxfOJWls5Pnckjw1yCfSX8rhXdvY/il3Sy3Zd5n/sKCM2h7VSCCpJF/oaDrQ==}
+
   '@vercel/error-utils@2.0.2':
     resolution: {integrity: sha512-Sj0LFafGpYr6pfCqrQ82X6ukRl5qpmVrHM/191kNYFqkkB9YkjlMAj6QcEsvCG259x4QZ7Tya++0AB85NDPbKQ==}
 
@@ -4412,6 +4442,9 @@ packages:
   cosmiconfig@5.2.1:
     resolution: {integrity: sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA==}
     engines: {node: '>=4'}
+
+  countries-list@3.1.0:
+    resolution: {integrity: sha512-HpTBLZba1VPTZSjUnUwR7SykxV7Z/7/+ZM5x5wi5tO99Qvom6bE2SC+AQ18016ujg3jSlYBbMITrHNnPAHSM9Q==}
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
@@ -9130,6 +9163,14 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
+  ts-essentials@9.4.1:
+    resolution: {integrity: sha512-oke0rI2EN9pzHsesdmrOrnqv1eQODmJpd/noJjwj2ZPC3Z4N2wbjrOEqnsEgmvlO2+4fBb0a794DCna2elEVIQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
@@ -9437,6 +9478,12 @@ packages:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  usehooks-ts@3.1.0:
+    resolution: {integrity: sha512-bBIa7yUyPhE1BCc0GmR96VU/15l/9gP1Ch5mYdLcFBaFGQsdmXkvjV0TtOqW1yUd6VjIwDunm+flSciCQXujiw==}
+    engines: {node: '>=16.15.0'}
+    peerDependencies:
+      react: ^16.8.0  || ^17 || ^18
 
   utf8@2.0.0:
     resolution: {integrity: sha512-jWXHr+bQ8RsWazLzVY3V7XACPTbBHYSg/VoDVok+DBQk5ULm0AuBCNb9tGmjq2H+znnkBFwjhzzCbn9G3xlYcA==}
@@ -14039,6 +14086,19 @@ snapshots:
 
   '@vercel/build-utils@8.2.0': {}
 
+  '@vercel/edge-config-fs@0.1.0': {}
+
+  '@vercel/edge-config@1.1.1(@opentelemetry/api@1.8.0)(typescript@5.4.5)':
+    dependencies:
+      '@vercel/edge-config-fs': 0.1.0
+      ts-essentials: 9.4.1(typescript@5.4.5)
+    optionalDependencies:
+      '@opentelemetry/api': 1.8.0
+    transitivePeerDependencies:
+      - typescript
+
+  '@vercel/edge@1.1.1': {}
+
   '@vercel/error-utils@2.0.2': {}
 
   '@vercel/fun@1.1.0(encoding@0.1.13)':
@@ -15206,6 +15266,8 @@ snapshots:
       is-directory: 0.3.1
       js-yaml: 3.14.1
       parse-json: 4.0.0
+
+  countries-list@3.1.0: {}
 
   create-require@1.1.1: {}
 
@@ -21023,6 +21085,10 @@ snapshots:
     dependencies:
       typescript: 5.4.5
 
+  ts-essentials@9.4.1(typescript@5.4.5):
+    optionalDependencies:
+      typescript: 5.4.5
+
   ts-interface-checker@0.1.13: {}
 
   ts-morph@12.0.0:
@@ -21386,6 +21452,11 @@ snapshots:
 
   use-sync-external-store@1.2.0(react@18.3.1):
     dependencies:
+      react: 18.3.1
+
+  usehooks-ts@3.1.0(react@18.3.1):
+    dependencies:
+      lodash.debounce: 4.0.8
       react: 18.3.1
 
   utf8@2.0.0: {}

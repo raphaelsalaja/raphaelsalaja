@@ -1,9 +1,10 @@
 'use client'
 
+import { HeadlessMotion } from '@/components/headless-motion'
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
+
 import { motion } from 'framer-motion'
-import { HeadlessMotion } from './headless-motion'
 
 const article = {
 	show: {
