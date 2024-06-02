@@ -36,7 +36,7 @@ const MetadataDialog: React.FC = () => {
 		transition: {
 			type: 'spring',
 			bounce: 0.1,
-			duration: 0.5,
+			duration: 0.7,
 		},
 	}
 
@@ -97,7 +97,7 @@ const MetadataDialog: React.FC = () => {
 			}}
 			className={cn(
 				'bg-muted',
-				'md:hidden',
+				'hidden md:relative',
 				'flex flex-col',
 				'items-center justify-center align-middle'
 			)}

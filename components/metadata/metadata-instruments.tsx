@@ -8,7 +8,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 const fixedWidthStyle = {
-	width: '120px', // You can adjust this width as needed
+	width: '144px',
 }
 
 const Geolocation: React.FC = () => {
