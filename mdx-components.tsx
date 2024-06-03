@@ -20,6 +20,10 @@ const ExpandableBlock = dynamic(() => import('@/components/headless-motion/expan
 	ssr: false,
 })
 
+const Metadata = dynamic(() => import('@/components/headless-motion/metadata-dialog'), {
+	ssr: false,
+})
+
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h1
@@ -87,6 +91,7 @@ const components: MDXComponents = {
 	),
 	DelayedButton: () => <DelayedButton />,
 	ExpandableBlock: () => <ExpandableBlock />,
+	Metadata: () => <Metadata />,
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,

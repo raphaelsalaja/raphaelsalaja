@@ -52,7 +52,6 @@ export default function RootLayout({
 					<SpeedInsights />
 					<Toaster />
 					<MetadataDialogWrapper />
-					{/* {shouldInjectToolbar && <VercelToolbar />} */}
 				</body>
 			</html>
 		</ViewTransitions>

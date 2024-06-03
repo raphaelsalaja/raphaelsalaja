@@ -64,7 +64,9 @@ export default function Blog({ params }: { params: any }) {
 					<h2>{post.metadata.date}</h2>
 				</div>
 			</div>
+
 			<MDX source={post.content} />
+
 			{post.metadata.live && <ViewProductionButton href={post.metadata.live} />}
 		</div>
 	)
