@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: any }) {
-	let post = getPosts({ folder: 'headless-motion' }).find((post) => post.slug === params.slug)
+	let post = getPosts({ folder: 'playground' }).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		return
@@ -30,7 +30,7 @@ export function generateMetadata({ params }: { params: any }) {
 			description,
 			type: 'website',
 			date,
-			url: `https://raphaelsalaja.com/headless-motion/${post.slug}`,
+			url: `https://raphaelsalaja.com/playground/${post.slug}`,
 			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
 		},
 		twitter: {
@@ -43,7 +43,7 @@ export function generateMetadata({ params }: { params: any }) {
 }
 
 export default function Blog({ params }: { params: any }) {
-	let post = getPosts({ folder: 'headless-motion' }).find((post) => post.slug === params.slug)
+	let post = getPosts({ folder: 'playground' }).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
@@ -55,7 +55,7 @@ export default function Blog({ params }: { params: any }) {
 				<div className='flex justify-between'>
 					<Link
 						href='/'
-						className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 md:absolute md:-translate-x-60'
+						className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 xl:absolute xl:-translate-x-60'
 					>
 						<ArrowLeftIcon />
 						<h2>Home</h2>

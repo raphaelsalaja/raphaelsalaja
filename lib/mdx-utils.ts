@@ -30,7 +30,7 @@ function readMDXFile(filePath: string) {
 }
 
 function getPosts({ folder }: { folder: string } = { folder: 'projects' }) {
-	const dir = path.join(process.cwd(), 'app', '(main)', folder, 'posts')
+	const dir = path.join(process.cwd(), 'app', '(core)', folder, 'posts')
 
 	const mdxFiles = getMDXFiles(dir)
 

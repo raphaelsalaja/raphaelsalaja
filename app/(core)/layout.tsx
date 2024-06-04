@@ -7,7 +7,6 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import { ViewTransitions } from 'next-view-transitions'
 
-import MetadataDialogWrapper from '@/components/metadata/metatdata-wrapper'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
 	},
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
@@ -51,7 +50,6 @@ export default function RootLayout({
 					<Analytics />
 					<SpeedInsights />
 					<Toaster />
-					<MetadataDialogWrapper />
 				</body>
 			</html>
 		</ViewTransitions>

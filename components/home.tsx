@@ -1,10 +1,10 @@
 'use client'
 
-import { HeadlessMotion } from '@/components/headless-motion'
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
 
 import { motion } from 'framer-motion'
+import { Playground } from './playground'
 
 const article = {
 	show: {
@@ -50,7 +50,7 @@ function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
 				<Projects projects={projects} />
 			</motion.section>
 			<motion.section variants={section} className='flex w-full flex-col gap-2'>
-				<HeadlessMotion projects={headless} />
+				<Playground projects={headless} />
 			</motion.section>
 		</motion.article>
 	)

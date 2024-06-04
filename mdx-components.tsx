@@ -1,6 +1,5 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
-import { ClipboardCopyIcon, CodeIcon } from '@radix-ui/react-icons'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
@@ -12,15 +11,19 @@ const ArenaGraphExample = dynamic(() => import('@/components/graph-example'), {
 	ssr: false,
 })
 
-const DelayedButton = dynamic(() => import('@/components/headless-motion/button-delayed-icon'), {
+const DelayedButton = dynamic(() => import('@/components/playground/button-delayed-icon'), {
 	ssr: false,
 })
 
-const ExpandableBlock = dynamic(() => import('@/components/headless-motion/expandable-block'), {
+const ExpandableBlock = dynamic(() => import('@/components/playground/expandable-block'), {
 	ssr: false,
 })
 
-const Metadata = dynamic(() => import('@/components/headless-motion/metadata-dialog'), {
+const Metadata = dynamic(() => import('@/components/playground/metadata-dialog'), {
+	ssr: false,
+})
+
+const SharedAnimation = dynamic(() => import('@/components/playground/shared-animation'), {
 	ssr: false,
 })
 
@@ -72,12 +75,12 @@ const components: MDXComponents = {
 					justifyContent: 'flex-end',
 				}}
 			>
-				<div className='border p-1'>
+				{/* <div className='border p-1'>
 					<ClipboardCopyIcon />
 				</div>
 				<div className='flex items-center border p-1'>
 					<CodeIcon />
-				</div>
+				</div> */}
 			</div>
 			<div
 				className='relative overflow-hidden border'
@@ -92,6 +95,7 @@ const components: MDXComponents = {
 	DelayedButton: () => <DelayedButton />,
 	ExpandableBlock: () => <ExpandableBlock />,
 	Metadata: () => <Metadata />,
+	SharedAnimation: () => <SharedAnimation />,
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,

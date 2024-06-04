@@ -1,29 +1,29 @@
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
+const config = {
+	pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
+	reactStrictMode: true,
+	swcMinify: true,
+	experimental: {
+		mdxRs: true,
+	},
+	images: {
+		domains: [
+			'i.scdn.co',
+			'avatar.vercel.sh',
+			'cloudflare-ipfs.com',
+			'avatars.githubusercontent.com',
+			'picsum.photos',
+			'pbs.twimg.com',
+			'images.beta.cosmos.so',
+		],
 
-
-
-const nextConfig = {
-    pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
-    reactStrictMode: true,
-    swcMinify: true,
-    experimental: {
-        mdxRs: true,
-    },
-    images: {
-        domains: [
-            'avatar.vercel.sh',
-            'cloudflare-ipfs.com',
-            'avatars.githubusercontent.com',
-            'picsum.photos',
-            'pbs.twimg.com',
-            'images.beta.cosmos.so'
-        ],
-    }
+	},
 }
 
 const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
 const withMDX = require('@next/mdx')()
 
-module.exports = withVercelToolbar(withMDX(nextConfig))
-
+module.exports = withVercelToolbar(withMDX(config))
 
