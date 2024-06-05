@@ -2,11 +2,8 @@
 
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
-
 import { motion } from 'framer-motion'
 import { Playground } from './playground'
-
-
 
 const article = {
 	hidden: {
@@ -36,7 +33,7 @@ function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
 			<motion.section className='flex w-full flex-col gap-2'>
 				<Profile />
 			</motion.section>
-			<motion.section  className='flex w-full flex-col gap-2'>
+			<motion.section className='flex w-full flex-col gap-2'>
 				<Projects projects={projects} />
 			</motion.section>
 			<motion.section className='flex w-full flex-col gap-2'>

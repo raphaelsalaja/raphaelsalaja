@@ -54,6 +54,8 @@
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.11",
     "@vercel/toolbar": "^0.1.15",
+    "@zoralabs/nft-hooks": "^1.2.1",
+    "@zoralabs/zdk": "^2.4.0",
     "aframe": "^1.6.0",
     "are.na": "^0.1.5",
     "axios": "^1.7.2",

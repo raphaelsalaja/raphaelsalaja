@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 	creator: og.creator,
 	openGraph: og.openGraph,
 	twitter: og.twitter,
-	icons: og.icons,
 	metadataBase: new URL(og.url),
 	manifest: `${og.url}/site.webmanifest`,
 	robots: {

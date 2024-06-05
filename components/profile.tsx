@@ -13,15 +13,32 @@ function Profile() {
 				multidisciplinary artist who transcends boundaries, creating without limitations.
 			</div>
 
-			<div className='flex flex-col gap-2'>
-				<span className='flex gap-4 underline'>
-					<Link href='mailto:raphaelsalaja@gmail.com'>Email ↗</Link>
-					<Link href='https://twitter.com/raphaelsalaja'>Twitter ↗</Link>
-					<Link href='https://github.com/rafunderscore'>Github ↗</Link>
-					<Link href='https://zora.co/@raphaelsalaja'>Zora ↗</Link>
-					<Link href='https://bento.me/raphaelsalaja'>Bento ↗</Link>
-				</span>
-			</div>
+			<Links
+				links={[
+					{ href: 'mailto:raphaelsalaja@gmail.com', title: 'Email' },
+					{ href: 'https://twitter.com/raphaelsalaja', title: 'Twitter' },
+					{ href: 'https://github.com/rafunderscore', title: 'Github' },
+					{ href: 'https://bento.me/raphaelsalaja', title: 'Works Gallery' },
+					{ href: 'https://read.cv/raphaelsalaja', title: 'CV' },
+					{ href: 'https://zora.co/@raphaelsalaja', title: 'Zora' },
+				]}
+			/>
+		</div>
+	)
+}
+
+function Links({ links }: { links: any[] }) {
+	return (
+		<div className='flex gap-4'>
+			{links.map(({ href, title }) => (
+				<Link
+					key={title}
+					href={href}
+					className='text-muted-foreground/50 underline underline-offset-1 transition-all hover:text-black'
+				>
+					{title} ↗
+				</Link>
+			))}
 		</div>
 	)
 }
