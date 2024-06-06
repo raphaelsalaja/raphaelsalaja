@@ -1,7 +1,6 @@
 import { Toaster } from '@/components/ui/sonner'
 import { og } from '@/config/site'
 import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -37,8 +36,6 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const shouldInjectToolbar = process.env.NODE_ENV === 'development'
-
 	return (
 		<ViewTransitions>
 			<html lang='en' className={`${GeistSans.variable} ${GeistMono.variable}`}>
@@ -46,9 +43,8 @@ export default async function RootLayout({
 					<div className='relative flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>
-					<Analytics />
-					<SpeedInsights />
 					<Toaster />
+					<Analytics />
 				</body>
 			</html>
 		</ViewTransitions>
