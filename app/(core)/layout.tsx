@@ -39,7 +39,7 @@ export default async function RootLayout({
 	return (
 		<ViewTransitions>
 			<html lang='en' className={`${GeistSans.variable} ${GeistMono.variable}`}>
-				<body className='relative flex items-center justify-center text-justify'>
+				<body className='relative flex items-center justify-center'>
 					<div className='relative flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>

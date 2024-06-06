@@ -1,83 +1,95 @@
-import querystring from 'querystring'
+const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID
+const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET
+const REFRESH_TOKEN = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN
 
-const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID as string
-const client_secret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET as string
-const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN as string
+const BASIC = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
 
-const RECENTLY_PLAYED_ENDPOINT = 'https://api.spotify.com/v1/me/player/recently-played'
+const NOW_PLAYING_ENDPOINT = 'https://api.spotify.com/v1/me/player/currently-playing'
+const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 
-export type SpotifyTrack = {
-	track: {
-		name: string
-		album: {
-			name: string
-			images: { url: string }[]
-		}
-		artists: { name: string }[]
-	}
-	played_at: string
-}
-
-export const getAccessToken = async (
-	client_id: string,
-	client_secret: string,
-	refresh_token: string
-) => {
-	const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
-
+async function getAccessToken() {
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: 'POST',
 		headers: {
-			Authorization: `Basic ${basic}`,
+			Authorization: `Basic ${BASIC}`,
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
-		body: querystring.stringify({
+		body: new URLSearchParams({
 			grant_type: 'refresh_token',
-			refresh_token,
+			refresh_token: REFRESH_TOKEN ?? '',
 		}),
 	})
 
-	return response.json()
+	const data = await response.json()
+
+	return data.access_token as string
 }
 
-export async function getRecentlyPlayed() {
-	const { access_token } = await getAccessToken(client_id, client_secret, refresh_token)
+async function getNowPlaying() {
+	const accessToken = await getAccessToken()
+
+	const response = await fetch(NOW_PLAYING_ENDPOINT, {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+		next: {
+			revalidate: 60,
+		},
+	})
+
+	if (response.status === 204) {
+		return getLastPlayed()
+	}
+
+	try {
+		const song = await response.json()
+
+		if (song.is_playing) {
+			return {
+				status: response.status,
+				data: song,
+			}
+		} else {
+			return getLastPlayed()
+		}
+	} catch {
+		return {
+			status: response.status,
+		}
+	}
+}
+
+async function getLastPlayed() {
+	const accessToken = await getAccessToken()
 
 	const response = await fetch(RECENTLY_PLAYED_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${accessToken}`,
+		},
+		next: {
+			revalidate: 60,
 		},
 	})
 
-	if (response.status > 400) {
-		throw new Error('Unable to Fetch Song')
-	} else if (response.status === 204) {
-		throw new Error('Currently Not Playing')
+	if (response.status === 204) {
+		return {
+			status: response.status,
+		}
 	}
 
-	const tracks = await response.json()
+	try {
+		const song = await response.json()
 
-	const track = tracks.items[0]
-
-	return {
-		track: {
-			name: track.track.name,
-			album: {
-				name: track.track.album.name,
-				images: track.track.album.images,
-			},
-			artists: track.track.artists.map((artist: { name: string }) => ({
-				name: artist.name,
-			})),
-		},
-		played_at: new Date(track.played_at).toLocaleString('en-US', {
-			month: 'short',
-			day: 'numeric',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true,
-			timeZoneName: 'short',
-		}),
+		return {
+			status: response.status,
+			data: song,
+		}
+	} catch {
+		return {
+			status: response.status,
+		}
 	}
 }
+
+export default getNowPlaying
