@@ -34,7 +34,7 @@ function Links({ links }: { links: any[] }) {
 				<Link
 					key={title}
 					href={href}
-					className='text-muted-foreground/50 underline underline-offset-1 transition-all hover:text-black'
+					className='underline underline-offset-1 transition-all hover:text-black'
 				>
 					{title} ↗
 				</Link>
