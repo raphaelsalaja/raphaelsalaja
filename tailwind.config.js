@@ -1,6 +1,9 @@
 // tailwind.config.js
 const { sky } = require('@radix-ui/colors')
 const { fontFamily } = require('tailwindcss/defaultTheme')
+const { createPlugin } = require("windy-radix-palette");
+const colors = createPlugin();
+
 
 /** @type {import('tailwindcss').Config} \*/
 module.exports = {
@@ -83,6 +86,7 @@ module.exports = {
 	},
 	plugins: [
 		require("tailwindcss-animate"),
+		colors.plugin
 	],
 }
 

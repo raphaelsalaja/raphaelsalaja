@@ -29,12 +29,17 @@ function readMDXFile(filePath: string) {
 	return parseFrontmatter(rawContent)
 }
 
+function parseDate(dateString: string) {
+	const [month, year] = dateString.split(' ')
+	return new Date(`${month} 1, ${year}`)
+}
+
 function getPosts({ folder }: { folder: string } = { folder: 'projects' }) {
 	const dir = path.join(process.cwd(), 'app', '(core)', folder, 'posts')
 
 	const mdxFiles = getMDXFiles(dir)
 
-	return mdxFiles.map((file) => {
+	const posts = mdxFiles.map((file) => {
 		const { metadata, content } = readMDXFile(path.join(dir, file))
 		const slug = path.basename(file, path.extname(file))
 
@@ -44,6 +49,14 @@ function getPosts({ folder }: { folder: string } = { folder: 'projects' }) {
 			content,
 		}
 	})
+
+	posts.sort((a, b) => {
+		const dateA = parseDate(a.metadata.date)
+		const dateB = parseDate(b.metadata.date)
+		return dateB.getTime() - dateA.getTime()
+	})
+
+	return posts
 }
 
 export { getPosts }

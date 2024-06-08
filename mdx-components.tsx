@@ -27,6 +27,10 @@ const SharedAnimation = dynamic(() => import('@/components/playground/shared-ani
 	ssr: false,
 })
 
+const FamilyWallet = dynamic(() => import('@/components/playground/family-wallet'), {
+	ssr: false,
+})
+
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h1
@@ -96,6 +100,7 @@ const components: MDXComponents = {
 	ExpandableBlock: () => <ExpandableBlock />,
 	Metadata: () => <Metadata />,
 	SharedAnimation: () => <SharedAnimation />,
+	FamilyWallet: () => <FamilyWallet />,
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
