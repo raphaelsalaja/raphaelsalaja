@@ -33,7 +33,6 @@ const Geolocation: React.FC = () => {
 				console.error('Error fetching geolocation data:', error)
 			}
 		}
-
 		fetchLocation()
 	}, [])
 
