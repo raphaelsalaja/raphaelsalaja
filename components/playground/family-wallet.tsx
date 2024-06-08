@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { CopyIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const FamilyWallet = () => {
 	const [isSelected, setIsSelected] = useState(false)
@@ -16,24 +16,21 @@ const FamilyWallet = () => {
 	const smallCardClasses = cn(commonClasses, 'h-32 w-48')
 	const largeCardClasses = cn(commonClasses, 'h-64 w-96')
 
-	const transitions = useMemo(
-		() => ({
-			container: {
-				type: 'spring',
-				bounce: 0.2,
-				duration: 0.4,
-			},
-			elements: {
-				duration: 0.2,
-			},
-		}),
-		[]
-	)
+	const transitions = {
+		container: {
+			type: 'spring',
+			bounce: 0.2,
+			duration: 0.4,
+		},
+		elements: {
+			duration: 0.2,
+		},
+	}
 
-	const handleClick = useCallback((event: { stopPropagation: () => void }) => {
+	const handleClick = (event: { stopPropagation: () => void }) => {
 		event.stopPropagation()
-		setIsSelected((prev) => !prev)
-	}, [])
+		setIsSelected(!isSelected)
+	}
 
 	useEffect(() => {
 		const startBlur = async (controls: any) => {
@@ -49,8 +46,13 @@ const FamilyWallet = () => {
 			})
 		}
 
-		startBlur(iconControls)
-		startBlur(textControls)
+		if (isSelected) {
+			startBlur(iconControls)
+			startBlur(textControls)
+		} else {
+			startBlur(iconControls)
+			startBlur(textControls)
+		}
 	}, [isSelected, iconControls, textControls])
 
 	return (
@@ -63,6 +65,7 @@ const FamilyWallet = () => {
 				borderRadius: '24px',
 				boxShadow:
 					'0px 0px 0px 2px rgba(255,255,255,0.2) inset, 0px 0px 0px 0.5px rgba(0,0,0,0.7)',
+				willChange: 'transform, opacity', // Added will-change
 			}}
 			transition={transitions.container}
 			className={isSelected ? largeCardClasses : smallCardClasses}
@@ -78,6 +81,7 @@ const FamilyWallet = () => {
 				animate={{
 					top: isSelected ? 16 : 12,
 					left: isSelected ? 16 : 12,
+					...iconControls,
 				}}
 				exit={{
 					top: 12,
@@ -86,6 +90,7 @@ const FamilyWallet = () => {
 				transition={transitions.elements}
 				className='absolute text-2xl'
 				onClick={(e) => e.stopPropagation()}
+				style={{ willChange: 'top, left' }} // Added will-change
 			>
 				🛍️
 			</motion.div>
@@ -95,19 +100,18 @@ const FamilyWallet = () => {
 				layoutId='bl'
 				initial={{
 					opacity: 0,
-					filter: 'blur(8px)',
 				}}
 				animate={{
 					opacity: 1,
-					filter: 'blur(0px)',
+					...textControls,
 				}}
 				exit={{
 					opacity: 0,
-					filter: 'blur(8px)',
 				}}
 				style={{
 					left: isSelected ? 16 : 12,
 					bottom: isSelected ? 16 : 12,
+					willChange: 'opacity, left, bottom', // Added will-change
 				}}
 				transition={transitions.elements}
 				className='absolute flex flex-col gap-0'
@@ -140,6 +144,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							top: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
+							willChange: 'opacity, filter, top, right', // Added will-change
 						}}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -170,6 +175,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							top: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
+							willChange: 'opacity, filter, top, right', // Added will-change
 						}}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -201,12 +207,41 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							bottom: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
+							willChange: 'opacity, filter, bottom, right', // Added will-change
 						}}
 						className='absolute flex flex-col gap-0 rounded-full bg-white/20 px-2'
 					>
 						<motion.span className='font-medium'>Customize</motion.span>
 					</motion.div>
-				) : null}
+				) : (
+					<motion.div
+						layout
+						key='empty'
+						layoutId='lr'
+						transition={transitions.elements}
+						initial={{
+							opacity: 0,
+							filter: 'blur(8px)',
+						}}
+						animate={{
+							opacity: 0,
+							filter: 'blur(0px)',
+						}}
+						exit={{
+							opacity: 0,
+							filter: 'blur(8px)',
+						}}
+						style={{
+							position: 'absolute',
+							bottom: isSelected ? 16 : 12,
+							right: isSelected ? 16 : 12,
+							willChange: 'opacity, filter, bottom, right', // Added will-change
+						}}
+						className='absolute flex flex-col gap-0 rounded-full bg-white/20 px-2'
+					>
+						<motion.span className='font-medium'>Customize</motion.span>
+					</motion.div>
+				)}
 			</AnimatePresence>
 		</motion.div>
 	)
