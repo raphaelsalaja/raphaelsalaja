@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.4",
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "@cutting/use-get-parent-size": "^2.1.15",
     "@dhaiwat10/react-link-preview": "^1.15.0",
     "@faker-js/faker": "^8.4.1",

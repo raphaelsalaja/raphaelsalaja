@@ -5,8 +5,9 @@ import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
 
 import dynamic from 'next/dynamic'
-import React from 'react'
+import { ImageProps } from 'next/image'
 
+import React from 'react'
 const ArenaGraphExample = dynamic(() => import('@/components/graph-example'), {
 	ssr: false,
 })
@@ -31,6 +32,10 @@ const FamilyWallet = dynamic(() => import('@/components/playground/family-wallet
 	ssr: false,
 })
 
+const Image = dynamic(() => import('@/components/image'), {
+	ssr: true,
+})
+
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h1
@@ -51,7 +56,6 @@ const components: MDXComponents = {
 			{...props}
 		/>
 	),
-
 	Link: ({ children, href, ...props }) => <Link href={href}>{children}</Link>,
 	Showcase: ({ children, caption }) => (
 		<div className='my-6 flex flex-col justify-end gap-2'>
@@ -66,11 +70,7 @@ const components: MDXComponents = {
 			{caption && <p className='text-center text-xs text-gray-500'>{caption}</p>}
 		</div>
 	),
-
-	// PROJECTS
 	ArenaGraph: () => <ArenaGraphExample />,
-
-	// HEADLESS MOTION
 	ComponentContainer: ({ children }) => (
 		<div className='relative my-6 flex flex-col gap-2'>
 			<div
@@ -96,6 +96,10 @@ const components: MDXComponents = {
 			</div>
 		</div>
 	),
+	Image: ({ caption, ...props }: ImageProps & { caption?: string }) => {
+		// eslint-disable-next-line jsx-a11y/alt-text
+		return <Image {...props} caption={caption} />
+	},
 	DelayedButton: () => <DelayedButton />,
 	ExpandableBlock: () => <ExpandableBlock />,
 	Metadata: () => <Metadata />,

@@ -1,3 +1,4 @@
+import { Separator } from '@/components/ui/separator'
 import { ViewProductionButton } from '@/components/view-production-button'
 import { getPosts } from '@/lib/mdx-utils'
 import { MDX } from '@/mdx-components'
@@ -43,11 +44,16 @@ export function generateMetadata({ params }: { params: any }) {
 }
 
 export default function Blog({ params }: { params: any }) {
-	let post = getPosts().find((post) => post.slug === params.slug)
+	let posts = getPosts({ folder: 'projects' })
+	let postIndex = posts.findIndex((post) => post.slug === params.slug)
+	let post = posts[postIndex]
 
 	if (!post) {
 		notFound()
 	}
+
+	let previousPost = posts[postIndex - 1] || null
+	let nextPost = posts[postIndex + 1] || null
 
 	return (
 		<div>
@@ -68,6 +74,33 @@ export default function Blog({ params }: { params: any }) {
 			<MDX source={post.content} />
 
 			{post.metadata.live && <ViewProductionButton href={post.metadata.live} />}
+
+			<Separator className='my-8' />
+
+			<div className='flex w-full items-end justify-between text-sm'>
+				{previousPost ? (
+					<Link
+						href={`/playground/${previousPost.slug}`}
+						className='flex flex-col items-start gap-1'
+					>
+						<div>Previous</div>
+						<div className='text-black'>{previousPost.metadata.title}</div>
+					</Link>
+				) : (
+					<div />
+				)}
+				{nextPost ? (
+					<Link
+						href={`/playground/${nextPost.slug}`}
+						className='flex flex-col items-end gap-1'
+					>
+						<div>Next</div>
+						<div className='text-black'>{nextPost.metadata.title}</div>
+					</Link>
+				) : (
+					<div />
+				)}
+			</div>
 		</div>
 	)
 }

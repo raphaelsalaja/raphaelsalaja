@@ -35,6 +35,12 @@
     scrollbar-gutter: stable;
   }
 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    /* make scrollbar transparent */
+  }
+
   ::selection {
     background-color: var(--blue-4) !important;
     color: var(--blue-8) !important;
