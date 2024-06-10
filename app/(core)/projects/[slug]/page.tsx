@@ -80,7 +80,7 @@ export default function Blog({ params }: { params: any }) {
 			<div className='flex w-full items-end justify-between text-sm'>
 				{previousPost ? (
 					<Link
-						href={`/playground/${previousPost.slug}`}
+						href={`/projects/${previousPost.slug}`}
 						className='flex flex-col items-start gap-1'
 					>
 						<div>Previous</div>
@@ -91,7 +91,7 @@ export default function Blog({ params }: { params: any }) {
 				)}
 				{nextPost ? (
 					<Link
-						href={`/playground/${nextPost.slug}`}
+						href={`/projects/${nextPost.slug}`}
 						className='flex flex-col items-end gap-1'
 					>
 						<div>Next</div>
