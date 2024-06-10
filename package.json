@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "find:unused": "next-unused"
+  },
+  "next-unused": {
+    "alias": {},
+    "include": [
+      "component"
+    ],
+    "exclude": [],
+    "entrypoints": [
+      "app"
+    ]
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.4",
@@ -89,6 +100,7 @@
     "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
+    "next-unused": "^0.0.6",
     "next-video": "^1.1.0",
     "next-view-transitions": "^0.1.1",
     "node-sass": "^9.0.0",

@@ -1,6 +1,4 @@
-import { Toaster } from '@/components/ui/sonner'
 import { og } from '@/config/site'
-import { Analytics } from '@vercel/analytics/react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -43,8 +41,6 @@ export default async function RootLayout({
 					<div className='relative flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>
-					<Toaster />
-					<Analytics />
 				</body>
 			</html>
 		</ViewTransitions>
