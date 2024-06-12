@@ -3,7 +3,6 @@ import { Separator } from '@/components/ui/separator'
 import releases from '@/data/press.json'
 import { getPosts } from '@/lib/mdx-utils'
 import { Link } from 'next-view-transitions'
-import React from 'react'
 
 interface Project {
 	slug: string

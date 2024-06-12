@@ -8,6 +8,7 @@ const config = {
 	experimental: {
 		mdxRs: true,
 	},
+	transpilePackages: ['three'],
 	images: {
 		domains: [
 			'i.scdn.co',
@@ -16,6 +17,8 @@ const config = {
 			'avatars.githubusercontent.com',
 			'picsum.photos',
 			'pbs.twimg.com',
+			"ipfs.io",
+			'api.zora.co',
 			'images.beta.cosmos.so',
 		],
 
