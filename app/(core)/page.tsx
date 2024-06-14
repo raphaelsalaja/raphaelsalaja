@@ -56,6 +56,12 @@ const Profile: React.FC = () => (
 		<div>
 			A multidisciplinary artist who transcends boundaries, creating without limitations.
 		</div>
+		<Link
+			href='/what-im-listening-to'
+			className='underline underline-offset-1 transition-all hover:text-black'
+		>
+			Take a peek at my listening habits...
+		</Link>
 		<Links
 			links={[
 				{ href: 'mailto:raphaelsalaja@gmail.com', title: 'Email' },

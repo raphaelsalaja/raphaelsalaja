@@ -1,14 +1,33 @@
 'use client'
 
+import { getNowPlaying, getSpotifyNodesAndLinks, getTopArtists, getTopTracks } from '@/lib/spotify'
 import { cn } from '@/lib/utils'
 import { CopyIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
+async function fetchSpotifyData() {
+	console.clear()
+
+	const nowPlaying = await getNowPlaying()
+	console.log('Now Playing:', nowPlaying)
+
+	const topTracks = await getTopTracks()
+	console.log('Top Tracks:', topTracks)
+
+	const topArtists = await getTopArtists()
+	console.log('Top Artists:', topArtists)
+
+	const x = getSpotifyNodesAndLinks(topArtists.data?.items)
+	console.log('Nodes and Links:', x)
+}
+
 const FamilyWallet = () => {
 	const [isSelected, setIsSelected] = useState(false)
 	const iconControls = useAnimation()
 	const textControls = useAnimation()
+
+	fetchSpotifyData()
 
 	const commonClasses = cn(
 		'relative shadow-lg cursor-pointer select-none bg-blue-9 text-white will-change-auto'
