@@ -16,12 +16,12 @@ export default function BasicExample() {
 		damping: 20,
 	}
 
-	const shared = cn('absolute h-32 w-32 rounded-lg')
+	const shared = cn('absolute h-20 w-20 md:h-32 md:w-32 rounded-lg')
 
 	return (
 		<>
-			<div className={cn(shared, 'left-16 bg-grass-9')} style={stroke} />
-			<div className={cn(shared, 'right-16 bg-tomato-9')} style={stroke} />
+			<div className={cn(shared, 'left-5 bg-grass-9 md:left-16')} style={stroke} />
+			<div className={cn(shared, 'right-5 bg-tomato-9 md:right-16')} style={stroke} />
 		</>
 	)
 }

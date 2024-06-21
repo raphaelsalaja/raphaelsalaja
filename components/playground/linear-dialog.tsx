@@ -11,7 +11,7 @@ export default function LinearDialog() {
 		<div>
 			<motion.div
 				layoutId='dialog'
-				className='relative isolate flex h-72 w-72 flex-col justify-end overflow-hidden bg-blue-9 p-4'
+				className='relative isolate flex h-32 w-32 flex-col justify-end overflow-hidden bg-blue-9 p-4 md:h-72 md:w-72'
 				style={{
 					borderRadius: '24px',
 					boxShadow:
@@ -43,7 +43,7 @@ export default function LinearDialog() {
 						<motion.div
 							onClick={() => setOpen(false)}
 							layoutId='dialog'
-							className='relative isolate flex h-[50%] w-[50%] flex-col justify-end overflow-hidden bg-blue-9 p-4'
+							className='relative isolate flex h-[50%] w-[80%] flex-col justify-end overflow-hidden bg-blue-9 p-4 md:w-[50%]'
 							style={{
 								borderRadius: '24px',
 								boxShadow:
@@ -55,8 +55,8 @@ export default function LinearDialog() {
 									Blue 9
 								</motion.div>
 								<motion.div layoutId='dialog.description'>#0090FF</motion.div>
-								<div className='my-4 h-px grid-flow-row-dense bg-white bg-opacity-10' />
-								<div>
+								<div className='my-4 hidden h-px grid-flow-row-dense bg-white bg-opacity-10 md:block'></div>
+								<div className='hidden md:block'>
 									In the realm of screens so bright,
 									<br />
 									Blue dialogs glow with light,
