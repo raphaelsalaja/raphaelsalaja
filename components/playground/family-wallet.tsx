@@ -84,7 +84,7 @@ const FamilyWallet = () => {
 				borderRadius: '24px',
 				boxShadow:
 					'0px 0px 0px 2px rgba(255,255,255,0.2) inset, 0px 0px 0px 0.5px rgba(0,0,0,0.7)',
-				willChange: 'transform, opacity', // Added will-change
+				willChange: 'transform, opacity',
 			}}
 			transition={transitions.container}
 			className={isSelected ? largeCardClasses : smallCardClasses}
@@ -109,7 +109,7 @@ const FamilyWallet = () => {
 				transition={transitions.elements}
 				className='absolute text-2xl'
 				onClick={(e) => e.stopPropagation()}
-				style={{ willChange: 'top, left' }} // Added will-change
+				style={{ willChange: 'top, left' }}
 			>
 				🛍️
 			</motion.div>
@@ -130,7 +130,7 @@ const FamilyWallet = () => {
 				style={{
 					left: isSelected ? 16 : 12,
 					bottom: isSelected ? 16 : 12,
-					willChange: 'opacity, left, bottom', // Added will-change
+					willChange: 'opacity, left, bottom',
 				}}
 				transition={transitions.elements}
 				className='absolute flex flex-col gap-0'
@@ -163,7 +163,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							top: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
-							willChange: 'opacity, filter, top, right', // Added will-change
+							willChange: 'opacity, filter, top, right',
 						}}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -194,7 +194,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							top: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
-							willChange: 'opacity, filter, top, right', // Added will-change
+							willChange: 'opacity, filter, top, right',
 						}}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -226,7 +226,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							bottom: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
-							willChange: 'opacity, filter, bottom, right', // Added will-change
+							willChange: 'opacity, filter, bottom, right',
 						}}
 						className='absolute flex flex-col gap-0 rounded-full bg-white/20 px-2'
 					>
@@ -254,7 +254,7 @@ const FamilyWallet = () => {
 							position: 'absolute',
 							bottom: isSelected ? 16 : 12,
 							right: isSelected ? 16 : 12,
-							willChange: 'opacity, filter, bottom, right', // Added will-change
+							willChange: 'opacity, filter, bottom, right',
 						}}
 						className='absolute flex flex-col gap-0 rounded-full bg-white/20 px-2'
 					>

@@ -1,0 +1,173 @@
+---
+title: 'Creating Dialogs'
+date: 'June 2024'
+summary: '...'
+---
+
+Have you ever watched a sleek website animation and wondered how it was made? I find joy in breaking
+down complex problems into simple, digestible pieces. When it comes to solving problems, I believe
+that the best solutions are often the simplest. However, getting there can be a challenge.
+
+Today, I hope to make things a little simpler for you when it comes to creating complex animations
+with Framer Motion. This short tutorial isn't meant to be a comprehensive guide to Framer Motion but
+more of a lighthouse guiding you through the fog of what can appear to be a complex library. In
+reality, it is quite simple.
+
+# Inspiration
+
+This month, Linear unveiled its new website, which is a complete departure from the previous
+version. It focuses on a more minimal design and a user-friendly experience. One of the key features
+of the new website is the use of a modal to display information about the company and its products.
+
+<Video
+	src='/linear-dialog.mp4'
+	alt='Linear&#39;s modal demo'
+	caption='Linear&#39;s modal demo via @anoffsinger on 𝕏'
+	href='https://x.com/ANoffsinger/status/1801405382793040133'
+/>
+
+Seeing this, you might think that this animation requires a lot of steps and a deep understanding of
+code to achieve. Thinking like that is a trap many developers fall into. The first step is to step
+back and think about the animation in a more abstract way.
+
+# Simplifying the Animation Process
+
+Most interactions can be broken down into a few simple steps. Usually, it's a three-step process of
+entering, exiting, and a state in between. This is the case with the Linear modal we see.
+
+Take the two squares in the example below. Imagine the square on the left is the starting point and
+the square on the right is the endpoint. What's in between is the animation.
+
+<ComponentContainer>
+	<BasicExample />
+</ComponentContainer>
+
+When building out animations like this, follow this pattern: have the starting point, the endpoint,
+and then the animation between becomes much easier to figure out. Now try clicking on the square
+below to see the animation in action.
+
+<ComponentContainer code={true}>
+	<BasicLayoutExample />
+</ComponentContainer>
+
+```tsx {25,37}
+'use client'
+
+import { cn } from '@/lib/utils'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState } from 'react'
+
+export default function BasicLayoutExample() {
+	const [active, setActive] = useState(false)
+
+	const stroke = {
+		boxShadow: '0px 0px 0px 2px rgba(255,255,255,0.2) inset, 0px 0px 0px 0.5px rgba(0,0,0,0.7)',
+	}
+
+	const transition = {
+		type: 'spring',
+		stiffness: 300,
+		damping: 20,
+	}
+
+	const shared = cn('absolute h-32 w-32 rounded-lg')
+
+	return (
+		<div>
+			<motion.button
+				layoutId='content'
+				onClick={() => {
+					setActive(true)
+				}}
+				transition={transition}
+				className={cn(shared, 'left-16 bg-grass-9')}
+				style={stroke}
+			/>
+
+			<AnimatePresence>
+				{active && (
+					<motion.button
+						layoutId='content'
+						onClick={() => {
+							setActive(false)
+						}}
+						transition={transition}
+						className={cn(shared, 'right-16 bg-tomato-9')}
+						style={stroke}
+					/>
+				)}
+			</AnimatePresence>
+		</div>
+	)
+}
+```
+
+# The Magic of Framer Motion
+
+You might be wondering about all the calculations and code that go into making this happen. Maybe
+you're thinking about the math behind it or mapping the coordinates of the elements. The truth is,
+you don't have to worry about any of that.
+
+Framer Motion provides a simple prop to its components called `layoutId`. This prop allows you to
+link two components together, and Framer Motion handles the rest. Imagine it like the way gravity
+handles you coming back down to earth after you jump.
+
+All you have to do is attach the `layoutId` of the same value to the two components you want to
+animate between, and Framer Motion does the rest. Knowing this, you can now build out animations
+like the Linear modal and even more complex ones with ease.
+
+<ComponentContainer>
+	<LinearDialog />
+</ComponentContainer>
+
+# Future Work
+
+I am currently in the process of componentizing the animations like this one and creating a library.
+I hope to release it soon so that you can use it in your projects. If you're interested in this,
+please let me know on Twitter with what you would like to see in the library. Here is a sneak peek
+of what to expect.
+
+```tsx
+<Dialog>
+	<DialogTrigger>{children}</DialogTrigger>
+	<DialogContent>
+		<DialogBackground />
+		<DialogHeader>
+			<DialogTitle>{children}</DialogTitle>
+			<DialogDescription>{children}</DialogDescription>
+		</DialogHeader>
+		<DialogFooter>
+			<DialogClose>{children}</DialogClose>
+		</DialogFooter>
+	</DialogContent>
+</Dialog>
+```
+
+# Wrapping Up
+
+I hope this tutorial has helped you understand how simple it can be to create complex animations
+with Framer Motion. Remember to break down the animation into simple steps and let Framer Motion do
+the rest. If you have any questions or need help with anything, feel free to reach out to me on
+Twitter.
+
+# Acknowledgements
+
+While creating this tutorial, twitter user Preet [(@wickedmishra)](https://x.com/wickedmishra)
+created a similar sandbox that I would also like to share with you. Check it out, and give them a
+follow.
+
+<Video
+	src='/preets-layout.mp4'
+	alt='Linear&#39;s modal demo'
+	caption='Linear&#39;s modal recreation via @wickedmishra on Twitter/𝕏'
+	href='https://codesandbox.io/s/sandbox/framer-motion-shared-layout-linear-9r88w5'
+/>
+
+I would also like to give thanks to Jace [(@JaceThings)](https://x.com/JaceThings) for helping me
+with proofreading drafts of this tutorial.
+
+# References
+
+1. [Framer Motion Documentation](https://www.framer.com/api/motion/)
+2. [Linear Homepage](https://linear.app/homepage)
+3. [Preet&#39;s Sandbox](https://codesandbox.io/s/sandbox/framer-motion-shared-layout-linear-9r88w5)

@@ -10,6 +10,7 @@ export type ArenaGraphState = 'idle' | 'loading' | 'connections'
 
 export default function ArenaGraph() {
 	const [state, setState] = useState<ArenaGraphState>('idle')
+
 	const [searchData, setSearchData] = useState<any>(null)
 
 	const handleDataReceived = (data: any) => {
@@ -59,7 +60,7 @@ export default function ArenaGraph() {
 								case 'idle':
 									return (
 										<div>
-											<div className=' flex aspect-square w-[300px] flex-col gap-2 border p-4 text-justify'>
+											<div className='flex aspect-square w-[300px] flex-col gap-2 border p-4 text-justify'>
 												<div className='flex flex-row gap-2'>
 													<div>Spatial</div>
 													<div>/</div>
@@ -67,7 +68,7 @@ export default function ArenaGraph() {
 													<div>/</div>
 													<div>adjective</div>
 												</div>
-												<div className='flex flex-col gap-2 '>
+												<div className='flex flex-col gap-2'>
 													<div>relating to or occupying space</div>
 													<div>
 														To begin, paste a link to an Are.na block or
