@@ -19,12 +19,12 @@ export default function LinearDialog() {
 				}}
 				onClick={() => setOpen(true)}
 			>
-				<motion.div className='relative flex flex-col gap-0 text-white'>
+				<div className='relative flex flex-col gap-0 text-white'>
 					<motion.div layoutId='dialog.heading' className='font-medium'>
 						Blue 9
 					</motion.div>
 					<motion.div layoutId='dialog.description'>#0090FF</motion.div>
-				</motion.div>
+				</div>
 			</motion.div>
 
 			<AnimatePresence>

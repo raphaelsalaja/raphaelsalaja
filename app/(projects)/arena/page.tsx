@@ -1,16 +1,22 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-
 import { Dropdown, Home, Loading, Search } from '@/components/graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
-export type ArenaGraphState = 'idle' | 'loading' | 'connections'
+export type States = 'idle' | 'loading' | 'connections'
 
-export default function ArenaGraph() {
-	const [state, setState] = useState<ArenaGraphState>('idle')
+const ForceGraph = dynamic(
+	() => import('@/app/(projects)/arena/components/graph').then((module) => module.ForceGraph),
+	{
+		loading: () => <Loading />,
+		ssr: true,
+	}
+)
 
+export default function Page() {
+	const [state, setState] = useState<States>('idle')
 	const [searchData, setSearchData] = useState<any>(null)
 
 	const handleDataReceived = (data: any) => {
@@ -18,13 +24,53 @@ export default function ArenaGraph() {
 		setState('connections')
 	}
 
-	const ArenaForceGraph = dynamic(
-		() => import('@/components/graph').then((module) => module.ArenaForceGraph),
-		{
-			loading: () => <Loading />,
-			ssr: true,
+	const renderContent = () => {
+		switch (state) {
+			case 'idle':
+				return (
+					<div>
+						<div className='flex aspect-square w-[300px] flex-col gap-2 border p-4 text-justify'>
+							<div className='flex flex-row gap-2'>
+								<div>Spatial</div>
+								<div>/</div>
+								<div>speɪʃl</div>
+								<div>/</div>
+								<div>adjective</div>
+							</div>
+							<div className='flex flex-col gap-2'>
+								<div>relating to or occupying space</div>
+								<div>
+									To begin, paste a link to an Are.na block or channel, or search
+									for anything above.
+								</div>
+								<div>
+									Note, this is a work in progress and may not work as expected.
+									Please report any issues you find or any suggestions you would
+									like to see added.
+								</div>
+							</div>
+						</div>
+						<div className='flex w-full flex-col items-center justify-center gap-2 p-2 text-xs text-muted-foreground'>
+							<div className='flex flex-row gap-2'>
+								<div>Are.na</div>
+								<div>/</div>
+								<div>Spatial</div>
+							</div>
+						</div>
+					</div>
+				)
+			case 'loading':
+				return <Loading />
+			case 'connections':
+				return (
+					<div className='h-full w-full'>
+						<ForceGraph data={searchData} />
+					</div>
+				)
+			default:
+				return null
 		}
-	)
+	}
 
 	return (
 		<AnimatePresence>
@@ -55,54 +101,7 @@ export default function ArenaGraph() {
 					</motion.div>
 
 					<div className='absolute inset-0 z-40 flex h-full w-full items-center justify-center'>
-						{(() => {
-							switch (state) {
-								case 'idle':
-									return (
-										<div>
-											<div className='flex aspect-square w-[300px] flex-col gap-2 border p-4 text-justify'>
-												<div className='flex flex-row gap-2'>
-													<div>Spatial</div>
-													<div>/</div>
-													<div>speɪʃl</div>
-													<div>/</div>
-													<div>adjective</div>
-												</div>
-												<div className='flex flex-col gap-2'>
-													<div>relating to or occupying space</div>
-													<div>
-														To begin, paste a link to an Are.na block or
-														channel, or search for anything above.
-													</div>
-													<div>
-														Note, this is a work in progress and may not
-														work as expected. Please report any issues
-														you find or any suggestions you would like
-														to see added.
-													</div>
-												</div>
-											</div>
-											<div className='flex w-full flex-col items-center justify-center gap-2 p-2 text-xs text-muted-foreground'>
-												<div className='flex flex-row gap-2'>
-													<div>Are.na</div>
-													<div>/</div>
-													<div>Spatial</div>
-												</div>
-											</div>
-										</div>
-									)
-								case 'loading':
-									return <Loading />
-								case 'connections':
-									return (
-										<div className='h-full w-full'>
-											<ArenaForceGraph data={searchData} />
-										</div>
-									)
-								default:
-									return null
-							}
-						})()}
+						{renderContent()}
 					</div>
 				</div>
 			</motion.div>

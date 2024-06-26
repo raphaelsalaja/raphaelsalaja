@@ -1,6 +1,6 @@
 'use client'
 
-import { ArenaForceGraph } from '@/components/graph'
+import { ForceGraph } from '@/app/(projects)/arena/components/graph'
 import { Loading } from '@/components/graph-instruments'
 import { getDataFromURL } from '@/lib/arena'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -41,7 +41,7 @@ export default function ArenaGraphExample() {
 						case 'loading':
 							return <Loading />
 						case 'connections':
-							return <ArenaForceGraph data={searchData} />
+							return <ForceGraph data={searchData} />
 					}
 				})()}
 			</motion.div>
