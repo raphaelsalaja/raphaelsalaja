@@ -20,10 +20,10 @@ version. It focuses on a more minimal design and a user-friendly experience. One
 of the new website is the use of a modal to display information about the company and its products.
 
 <Video
-	src='/linear-dialog.mp4'
-	alt='Linear&#39;s modal demo'
-	caption='Linear&#39;s modal demo via @anoffsinger on 𝕏'
-	href='https://x.com/ANoffsinger/status/1801405382793040133'
+  src='/linear-dialog.mp4'
+  alt='Linear&#39;s modal demo'
+  caption='Linear&#39;s modal demo via @anoffsinger on 𝕏'
+  href='https://x.com/ANoffsinger/status/1801405382793040133'
 />
 
 Seeing this, you might think that this animation requires a lot of steps and a deep understanding of
@@ -39,7 +39,7 @@ Take the two squares in the example below. Imagine the square on the left is the
 the square on the right is the endpoint. What's in between is the animation.
 
 <ComponentContainer>
-	<BasicExample />
+  <BasicExample />
 </ComponentContainer>
 
 When building out animations like this, follow this pattern: have the starting point, the endpoint,
@@ -47,7 +47,7 @@ and then the animation between becomes much easier to figure out. Now try clicki
 below to see the animation in action.
 
 <ComponentContainer code={true}>
-	<BasicLayoutExample />
+  <BasicLayoutExample />
 </ComponentContainer>
 
 ```tsx {25,37}
@@ -58,47 +58,47 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
 export default function BasicLayoutExample() {
-	const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false)
 
-	const stroke = {
-		boxShadow: '0px 0px 0px 2px rgba(255,255,255,0.2) inset, 0px 0px 0px 0.5px rgba(0,0,0,0.7)',
-	}
+  const stroke = {
+    boxShadow: '0px 0px 0px 2px rgba(255,255,255,0.2) inset, 0px 0px 0px 0.5px rgba(0,0,0,0.7)'
+  }
 
-	const transition = {
-		type: 'spring',
-		stiffness: 300,
-		damping: 20,
-	}
+  const transition = {
+    type: 'spring',
+    stiffness: 300,
+    damping: 20
+  }
 
-	const shared = cn('absolute h-32 w-32 rounded-lg')
+  const shared = cn('absolute h-32 w-32 rounded-lg')
 
-	return (
-		<div>
-			<motion.button
-				layoutId='content'
-				onClick={() => {
-					setActive(true)
-				}}
-				transition={transition}
-				className={cn(shared, 'left-16 bg-grass-9')}
-				style={stroke}
-			/>
+  return (
+    <div>
+      <motion.button
+        layoutId='content'
+        onClick={() => {
+          setActive(true)
+        }}
+        transition={transition}
+        className={cn(shared, 'left-16 bg-grass-9')}
+        style={stroke}
+      />
 
-			<AnimatePresence>
-				{active && (
-					<motion.button
-						layoutId='content'
-						onClick={() => {
-							setActive(false)
-						}}
-						transition={transition}
-						className={cn(shared, 'right-16 bg-tomato-9')}
-						style={stroke}
-					/>
-				)}
-			</AnimatePresence>
-		</div>
-	)
+      <AnimatePresence>
+        {active && (
+          <motion.button
+            layoutId='content'
+            onClick={() => {
+              setActive(false)
+            }}
+            transition={transition}
+            className={cn(shared, 'right-16 bg-tomato-9')}
+            style={stroke}
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  )
 }
 ```
 
@@ -117,7 +117,7 @@ animate between, and Framer Motion does the rest. Knowing this, you can now buil
 like the Linear modal and even more complex ones with ease.
 
 <ComponentContainer>
-	<LinearDialog />
+  <LinearDialog />
 </ComponentContainer>
 
 # Future Work
@@ -129,17 +129,17 @@ like to see in the library. Here is a sneak peek of what to expect.
 
 ```tsx
 <Dialog>
-	<DialogTrigger>{children}</DialogTrigger>
-	<DialogContent>
-		<DialogBackground />
-		<DialogHeader>
-			<DialogTitle>{children}</DialogTitle>
-			<DialogDescription>{children}</DialogDescription>
-		</DialogHeader>
-		<DialogFooter>
-			<DialogClose>{children}</DialogClose>
-		</DialogFooter>
-	</DialogContent>
+  <DialogTrigger>{children}</DialogTrigger>
+  <DialogContent>
+    <DialogBackground />
+    <DialogHeader>
+      <DialogTitle>{children}</DialogTitle>
+      <DialogDescription>{children}</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose>{children}</DialogClose>
+    </DialogFooter>
+  </DialogContent>
 </Dialog>
 ```
 
@@ -157,10 +157,10 @@ created a similar sandbox that I would also like to share with you. Check it out
 follow.
 
 <Video
-	src='/preets-layout.mp4'
-	alt='Linear&#39;s modal demo'
-	caption='Linear&#39;s modal recreation via @wickedmishra on Twitter/𝕏'
-	href='https://codesandbox.io/p/sandbox/framer-motion-shared-layout-linear-9r88w5'
+  src='/preets-layout.mp4'
+  alt='Linear&#39;s modal demo'
+  caption='Linear&#39;s modal recreation via @wickedmishra on Twitter/𝕏'
+  href='https://codesandbox.io/p/sandbox/framer-motion-shared-layout-linear-9r88w5'
 />
 
 I would also like to give thanks to Jace [(@JaceThings)](https://x.com/JaceThings) and Ester

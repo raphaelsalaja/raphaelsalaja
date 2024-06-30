@@ -7,41 +7,41 @@ import { ViewTransitions } from 'next-view-transitions'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-	title: og.title,
-	description: og.description,
-	keywords: og.keywords,
-	authors: og.authors,
-	creator: og.creator,
-	openGraph: og.openGraph,
-	twitter: og.twitter,
-	metadataBase: new URL(og.url),
-	manifest: `${og.url}/site.webmanifest`,
-	robots: {
-		index: true,
-		follow: true,
-		googleBot: {
-			index: true,
-			follow: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1,
-		},
-	},
+  title: og.title,
+  description: og.description,
+  keywords: og.keywords,
+  authors: og.authors,
+  creator: og.creator,
+  openGraph: og.openGraph,
+  twitter: og.twitter,
+  metadataBase: new URL(og.url),
+  manifest: `${og.url}/site.webmanifest`,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
+  }
 }
 
 export default function RootLayout({
-	children,
+  children
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode
 }>) {
-	const shouldInjectToolbar = process.env.NODE_ENV === 'development'
-	return (
-		<ViewTransitions>
-			<html lang='en' className={GeistSans.variable + ' ' + GeistMono.variable}>
-				<body>
-					<div>{children}</div>
-				</body>
-			</html>
-		</ViewTransitions>
-	)
+  const shouldInjectToolbar = process.env.NODE_ENV === 'development'
+  return (
+    <ViewTransitions>
+      <html lang='en' className={GeistSans.variable + ' ' + GeistMono.variable}>
+        <body>
+          <div>{children}</div>
+        </body>
+      </html>
+    </ViewTransitions>
+  )
 }

@@ -9,42 +9,40 @@ import { useEffect, useState } from 'react'
 export type ArenaGraphState = 'idle' | 'loading' | 'connections'
 
 export default function ArenaGraphExample() {
-	const [state, setState] = useState<ArenaGraphState>('loading')
-	const [searchData, setSearchData] = useState<any>(null)
+  const [state, setState] = useState<ArenaGraphState>('loading')
+  const [searchData, setSearchData] = useState<any>(null)
 
-	useEffect(() => {
-		async function fetchData() {
-			setSearchData(
-				await getDataFromURL('https://www.are.na/g-a-v-i-n/we-keep-it-to-a-minimum')
-			)
-		}
-		fetchData()
-	}, [])
+  useEffect(() => {
+    async function fetchData() {
+      setSearchData(await getDataFromURL('https://www.are.na/g-a-v-i-n/we-keep-it-to-a-minimum'))
+    }
+    fetchData()
+  }, [])
 
-	useEffect(() => {
-		if (searchData) {
-			setState('connections')
-		}
-	}, [searchData])
+  useEffect(() => {
+    if (searchData) {
+      setState('connections')
+    }
+  }, [searchData])
 
-	return (
-		<AnimatePresence>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-				transition={{ duration: 1 }}
-				className='h-full w-full'
-			>
-				{(() => {
-					switch (state) {
-						case 'loading':
-							return <Loading />
-						case 'connections':
-							return <ForceGraph data={searchData} />
-					}
-				})()}
-			</motion.div>
-		</AnimatePresence>
-	)
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        className='h-full w-full'
+      >
+        {(() => {
+          switch (state) {
+            case 'loading':
+              return <Loading />
+            case 'connections':
+              return <ForceGraph data={searchData} />
+          }
+        })()}
+      </motion.div>
+    </AnimatePresence>
+  )
 }
