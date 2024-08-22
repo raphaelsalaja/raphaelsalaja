@@ -61,7 +61,7 @@ const Profile: React.FC = () => (
       links={[
         { href: 'mailto:raphaelsalaja@gmail.com', title: 'Email' },
         { href: 'https://twitter.com/raphaelsalaja', title: 'Twitter' },
-        { href: 'https://github.com/rafunderscore', title: 'Github' },
+        { href: 'https://github.com/raphaelsalaja', title: 'Github' },
         { href: 'https://bento.me/raphaelsalaja', title: 'Works' },
         { href: 'https://read.cv/raphaelsalaja', title: 'CV' },
         { href: 'https://zora.co/@raphaelsalaja', title: 'Zora' }
