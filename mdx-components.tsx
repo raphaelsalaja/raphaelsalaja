@@ -1,5 +1,5 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
@@ -73,20 +73,20 @@ const components: MDXComponents = {
     </pre>
   ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className={cn('mb-2 mt-6', className)} {...props} style={{ margin: '1.5rem 0rem 0.5rem 0rem' }} />
+    <h1 className={clsx('mb-2 mt-6', className)} {...props} style={{ margin: '1.5rem 0rem 0.5rem 0rem' }} />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className={cn('mb-4', className)} {...props} />
+    <p className={clsx('mb-4', className)} {...props} />
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a className={cn('underline underline-offset-4', className)} {...props} />
+    <a className={clsx('underline underline-offset-4', className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn('list-decimal', className)} {...props} />
+    <ol className={clsx('list-decimal', className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li
-      className={cn('ml-2 mt-2', className)}
+      className={clsx('ml-2 mt-2', className)}
       {...props}
       style={{
         marginTop: '0.5rem',
@@ -118,7 +118,7 @@ const components: MDXComponents = {
         }}
       ></div>
       <div
-        className={cn('relative overflow-hidden', code ? 'border-x border-b-0 border-t' : 'border')}
+        className={clsx('relative overflow-hidden', code ? 'border-x border-b-0 border-t' : 'border')}
         style={{
           height: '24rem',
           border: '1px  solid #e5e7eb',
@@ -132,7 +132,7 @@ const components: MDXComponents = {
   ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
-      className={cn('relative rounded bg-muted font-mono text-xs', className)}
+      className={clsx('relative rounded bg-muted font-mono text-xs', className)}
       style={{
         padding: '0.1rem 0.3rem'
       }}

@@ -3,59 +3,85 @@ import { ImageResponse } from 'next/og'
 export const runtime = 'edge'
 
 type Parameters = {
-  width?: number
-  height?: number
   title?: string
 }
 
+/*
+ * To assist with generating dynamic Open Graph (OG) images, you can use the Vercel @vercel/og library to compute and generate social card images using Vercel Edge Functions.
+ * @see: https://vercel.com/docs/functions/og-image-generation
+ *
+ * You can use the following code sample to explore using parameters and different content types with next/og.
+ * @see: https://vercel.com/guides/dynamic-text-as-image
+ *
+ * For this example we are going to generate a simple social card image with a dynamic title.
+ */
 export async function GET(request: Request) {
   try {
-    // SEARCH PARAMS
+    /*
+     * Next we are going to extract the parameters from the request URL.
+     */
     const { searchParams } = new URL(request.url)
     const parameters: Parameters = Object.fromEntries(searchParams)
+    const { title } = parameters
     console.log(parameters)
 
-    // PARAMETERS
-
-    const hasTitle = searchParams.has('title')
-
-    // FONT
-    const geist = await fetch(new URL('/assets/fonts/geist/static/Geist-SemiBold.ttf', import.meta.url)).then((res) =>
-      res.arrayBuffer()
-    )
+    /*
+     * Finally we are fetching the font file from the public directory.
+     */
+    const inter = fetch(new URL('/public/assets/inter/regular.ttf', import.meta.url)).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
       (
-        <div tw='h-full w-full flex flex-col justify-start items-end bg-white p-20 relative'>
-          {hasTitle ? (
-            <div tw='flex flex-col items-end'>
-              <p tw='text-4xl tracking-tighter opacity-20 mb-0'>Raphael Salaja</p>
-              {parameters.title && parameters.title.length > 20 ? (
-                <p tw='text-4xl tracking-tighter mb-0'>{parameters.title.slice(0, 40)}...</p>
-              ) : (
-                <p tw='text-4xl tracking-tighter mb-0'>{parameters.title}</p>
-              )}
-            </div>
-          ) : (
-            <p tw='text-4xl tracking-tighter mr-4 mb-0'>Raphael Salaja</p>
-          )}
+        <div
+          style={{
+            /* layout */
+            display: 'flex',
+            width: '100%',
+            height: '100%',
+
+            /* box */
+            padding: '40px',
+
+            /* style */
+            fontSize: '24px',
+            letterSpacing: '-0.47px',
+            backgroundColor: 'black'
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              height: '24px',
+              gap: 12
+            }}
+          >
+            <div style={{ color: 'rgba(255, 255, 255, 0.92)' }}>next-sylph-portfolio</div>
+            {title && <div style={{ color: 'rgba(255, 255, 255, 0.39)' }}>/</div>}
+            {title ? (
+              <div style={{ color: 'rgba(255, 255, 255, 0.39)' }}>{title.toLowerCase()}</div>
+            ) : (
+              <svg width='16' viewBox='0 0 75 65' fill='white'>
+                <path d='M37.59.25l36.95 64H.64l36.95-64z' />
+              </svg>
+            )}
+          </div>
         </div>
       ),
       {
-        width: parameters.width || 1200,
-        height: parameters.height || 630,
+        width: 1200,
+        height: 600,
         fonts: [
           {
-            name: 'Geist',
-            data: geist,
-            style: 'normal'
+            name: 'Inter',
+            data: await inter,
+            weight: 400
           }
         ]
       }
     )
-  } catch (e: any) {
-    console.log(`${e.message}`)
-    return new Response(`Failed to generate the image`, {
+  } catch {
+    return new Response('Failed to generate the image', {
       status: 500
     })
   }

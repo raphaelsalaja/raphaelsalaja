@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { getDataFromSearch, getDataFromURL } from '@/lib/arena'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { motion } from 'framer-motion'
 
@@ -98,7 +98,7 @@ export function Search({ state, onDataReceived }: SearchProps) {
 
   return (
     <Input
-      className={cn(
+      className={clsx(
         'relative flex w-full justify-between rounded-none bg-background p-2 text-sm text-opacity-0 shadow-none md:w-40 lg:w-64'
       )}
       placeholder='Search Are.na...'

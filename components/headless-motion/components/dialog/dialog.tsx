@@ -3,7 +3,7 @@
 import * as React from 'react'
 import * as Types from './types'
 
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { AnimatePresence, LayoutGroup, MotionConfig, motion } from 'framer-motion'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -59,7 +59,10 @@ const Portal = React.memo(
     return (
       <AnimatePresence>
         {open && (
-          <motion.div ref={ref} className={cn('fixed inset-0 z-10 flex items-center justify-center', props.className)}>
+          <motion.div
+            ref={ref}
+            className={clsx('fixed inset-0 z-10 flex items-center justify-center', props.className)}
+          >
             {props.children}
           </motion.div>
         )}
@@ -75,7 +78,7 @@ const Background = React.memo(
     return (
       <motion.div
         ref={ref}
-        className={cn('fixed inset-0 bg-black bg-opacity-50 backdrop-blur', props.className)}
+        className={clsx('fixed inset-0 bg-black bg-opacity-50 backdrop-blur', props.className)}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -95,7 +98,7 @@ const Content = React.memo(
         ref={ref}
         onClick={() => setOpen(false)}
         layoutId={layoutId}
-        className={cn(props.className)}
+        className={clsx(props.className)}
         style={props.style}
       >
         {props.children}

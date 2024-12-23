@@ -1,7 +1,7 @@
 'use client'
 
 import { getNowPlaying, getSpotifyNodesAndLinks, getTopArtists, getTopTracks } from '@/lib/spotify'
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { CopyIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -29,9 +29,9 @@ const FamilyWallet = () => {
 
   fetchSpotifyData()
 
-  const commonClasses = cn('relative shadow-lg cursor-pointer select-none bg-blue-9 text-white will-change-auto')
-  const smallCardClasses = cn(commonClasses, 'h-32 w-48')
-  const largeCardClasses = cn(commonClasses, 'h-64 w-96')
+  const commonClasses = clsx('relative shadow-lg cursor-pointer select-none bg-blue-9 text-white will-change-auto')
+  const smallCardClasses = clsx(commonClasses, 'h-32 w-48')
+  const largeCardClasses = clsx(commonClasses, 'h-64 w-96')
 
   const transitions = {
     container: {

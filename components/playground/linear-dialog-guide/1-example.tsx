@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { useState } from 'react'
 
 export default function BasicExample() {
@@ -16,12 +16,12 @@ export default function BasicExample() {
     damping: 20
   }
 
-  const shared = cn('absolute h-20 w-20 md:h-32 md:w-32 rounded-lg')
+  const shared = clsx('absolute h-20 w-20 md:h-32 md:w-32 rounded-lg')
 
   return (
     <>
-      <div className={cn(shared, 'left-5 bg-grass-9 md:left-16')} style={stroke} />
-      <div className={cn(shared, 'right-5 bg-tomato-9 md:right-16')} style={stroke} />
+      <div className={clsx(shared, 'left-5 bg-grass-9 md:left-16')} style={stroke} />
+      <div className={clsx(shared, 'right-5 bg-tomato-9 md:right-16')} style={stroke} />
     </>
   )
 }

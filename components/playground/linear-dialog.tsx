@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -28,9 +28,9 @@ export default function LinearDialog() {
 
       <AnimatePresence>
         {open && (
-          <motion.div className={cn('fixed inset-0 z-10 flex items-center justify-center')}>
+          <motion.div className={clsx('fixed inset-0 z-10 flex items-center justify-center')}>
             <motion.div
-              className={cn('fixed inset-0 bg-black bg-opacity-50 backdrop-blur')}
+              className={clsx('fixed inset-0 bg-black bg-opacity-50 backdrop-blur')}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

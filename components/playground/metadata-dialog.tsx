@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 
-import { cn } from '@/lib/utils'
+import { clsx } from 'clsx'
 
 export default function Metadata() {
   let [show, setShow] = useState(false)
@@ -89,7 +89,7 @@ export default function Metadata() {
         backgroundColor: 'hsl(var(--muted))'
       }}
     >
-      <div className={cn('flex flex-col items-center justify-center')}>
+      <div className={clsx('flex flex-col items-center justify-center')}>
         <AnimatePresence mode='popLayout' initial={false}>
           {show && (
             <motion.div
@@ -183,7 +183,7 @@ export default function Metadata() {
               animate='animate'
               exit='exit'
               onClick={() => setShow(true)}
-              className={cn('p-2')}
+              className={clsx('p-2')}
             >
               <QuestionMarkIcon />
             </motion.button>

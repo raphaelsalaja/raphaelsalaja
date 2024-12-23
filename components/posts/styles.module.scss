@@ -1,0 +1,55 @@
+.posts {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+
+  .label {
+    display: flex;
+    width: 128px;
+    align-items: flex-start;
+    gap: 4px;
+
+    h1 {
+      text-transform: capitalize;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    flex: 1 0 0;
+
+    .post {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4px;
+      align-self: stretch;
+
+      h1 {
+        color: #000;
+        color: color(display-p3 0 0 0);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 21px */
+        letter-spacing: -0.09px;
+      }
+
+      p {
+        color: #b3b3b3;
+        color: color(display-p3 0.702 0.702 0.702);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 21px */
+        letter-spacing: -0.09px;
+      }
+    }
+  }
+}
