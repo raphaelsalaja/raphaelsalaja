@@ -1,11 +1,15 @@
-import { Breadcrumb } from '@/components/breadcrumb'
-
 import React from 'react'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  breadcrumb,
+  children
+}: Readonly<{
+  breadcrumb: React.ReactNode
+  children: React.ReactNode
+}>) {
   return (
     <React.Fragment>
-      <Breadcrumb />
+      {breadcrumb}
       {children}
     </React.Fragment>
   )

@@ -11,7 +11,6 @@ const plugins = []
 const next = {
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   reactStrictMode: true,
-  swcMinify: true,
   transpilePackages: ['three'],
   images: {
     remotePatterns: [

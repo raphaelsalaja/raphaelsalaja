@@ -1,6 +1,5 @@
 'use client'
 
-import Sample from '@/assets/images/the-life-of-pablo.png'
 import Image from 'next/image'
 
 import { AnimatePresence, motion } from 'framer-motion'
@@ -33,7 +32,7 @@ export default function SharedAnimation() {
             onClick={() => setShow(!show)}
           >
             <Image
-              src={Sample}
+              src=''
               alt={"The Life of Pablo's album cover"}
               width={200}
               height={200}

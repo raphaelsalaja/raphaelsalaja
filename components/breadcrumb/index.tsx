@@ -1,46 +1,57 @@
-'use client'
+import * as React from 'react'
+import { Slot } from '@radix-ui/react-slot'
 
-import { ChevronRightIcon } from '@radix-ui/react-icons'
-import { Link } from 'next-view-transitions'
-import { usePathname } from 'next/navigation'
-import React from 'react'
-import { clsx } from 'clsx'
+import styles from './styles.module.scss'
 
-export const Breadcrumb = () => {
-  const pathname = usePathname()
+const Breadcrumb = React.forwardRef<
+  HTMLElement,
+  React.ComponentPropsWithoutRef<'nav'> & {
+    separator?: React.ReactNode
+  }
+>(({ ...props }, ref) => <nav ref={ref} aria-label='breadcrumb' {...props} />)
+Breadcrumb.displayName = 'Breadcrumb'
 
-  const paths = pathname
-    .split('/')
-    .filter((path) => path !== '')
-    .map((path) => path.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()))
+const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWithoutRef<'ol'>>(
+  ({ className, ...props }, ref) => <ol ref={ref} className={styles['breadcrumb-list']} {...props} />
+)
+BreadcrumbList.displayName = 'BreadcrumbList'
 
-  return (
-    <div className={clsx('text-small mb-4 mt-0 flex w-full items-center gap-1 align-middle font-normal')}>
-      <Link className='text-muted' href='/'>
-        Home
-      </Link>
-      <ChevronRightIcon className='text-muted' />
-      {paths.map((path, index) => {
-        const href = `/${paths
-          .slice(0, index + 1)
-          .join('/')
-          .toLowerCase()}`
+const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<'li'>>(
+  ({ className, ...props }, ref) => <li ref={ref} className={styles['breadcrumb-item']} {...props} />
+)
+BreadcrumbItem.displayName = 'BreadcrumbItem'
 
-        const isLast = index === paths.length - 1
+const BreadcrumbLink = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<'a'> & {
+    asChild?: boolean
+  }
+>(({ asChild, className, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'a'
 
-        return (
-          <React.Fragment key={path}>
-            {isLast ? (
-              <span className='text-muted'>{path}</span>
-            ) : (
-              <Link className='text-muted' href={href}>
-                {path}
-              </Link>
-            )}
-            {index < paths.length - 1 && <ChevronRightIcon className='text-muted' />}
-          </React.Fragment>
-        )
-      })}
-    </div>
+  return <Comp ref={ref} className={styles['breadcrumb-link']} {...props} />
+})
+BreadcrumbLink.displayName = 'BreadcrumbLink'
+
+const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<'span'>>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      role='link'
+      aria-disabled='true'
+      aria-current='page'
+      className={styles['breadcrumb-page']}
+      {...props}
+    />
   )
-}
+)
+BreadcrumbPage.displayName = 'BreadcrumbPage'
+
+const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<'li'>) => (
+  <li role='presentation' aria-hidden='true' className={styles['breadcrumb-separator']} {...props}>
+    {children ?? '/'}
+  </li>
+)
+BreadcrumbSeparator.displayName = 'BreadcrumbSeparator'
+
+export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator }

@@ -2,7 +2,7 @@
 @import '@radix-ui/colors/orange-alpha.css';
 @import '@radix-ui/colors/purple-alpha.css';
 
-li {
+/* li {
   list-style-position: outside;
   padding-left: 1rem;
   position: relative;
@@ -10,7 +10,7 @@ li {
 
 li::marker {
   margin-right: 1rem;
-}
+} */
 
 /* rehype-pretty-code */
 

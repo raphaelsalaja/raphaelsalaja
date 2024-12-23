@@ -5,7 +5,6 @@ import { Cross1Icon, QuestionMarkIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { Button } from '../ui/button'
 
 import { clsx } from 'clsx'
 
@@ -105,13 +104,13 @@ const MetadataDialog: React.FC = () => {
             >
               <div className='flex h-6 items-center justify-between gap-2'>
                 <h1 className='font-semibold'>Site Metadata</h1>
-                <Button
+                {/* <Button
                   onClick={() => setShow(false)}
                   variant='outline'
                   className='h-6 w-6 rounded p-1 shadow-none hover:bg-gray-100'
                 >
                   <Cross1Icon />
-                </Button>
+                </Button> */}
               </div>
 
               <div className='grid grid-cols-3 gap-x-8 gap-y-4 transition-all'>

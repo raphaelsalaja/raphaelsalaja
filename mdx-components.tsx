@@ -1,65 +1,24 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { clsx } from 'clsx'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
-import { ImageProps } from 'next/image'
+import Image, { ImageProps } from 'next/image'
 
-import dynamic from 'next/dynamic'
-import React from 'react'
+import React, { type JSX } from 'react'
 
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 
 import '@/styles/mdx.css'
-
-const ArenaGraphExample = dynamic(() => import('@/components/graph-example'), {
-  ssr: false
-})
-
-const DelayedButton = dynamic(() => import('@/components/playground/button-delayed-icon'), {
-  ssr: false
-})
-
-const ExpandableBlock = dynamic(() => import('@/components/playground/expandable-block'), {
-  ssr: false
-})
-
-const Metadata = dynamic(() => import('@/components/playground/metadata-dialog'), {
-  ssr: false
-})
-
-const SharedAnimation = dynamic(() => import('@/components/playground/shared-animation'), {
-  ssr: false
-})
-
-const FamilyWallet = dynamic(() => import('@/components/playground/family-wallet'), {
-  ssr: false
-})
-
-const LinearDialog = dynamic(() => import('@/components/playground/linear-dialog'), {
-  ssr: false
-})
-
-const BasicExample = dynamic(() => import('@/components/playground/linear-dialog-guide/1-example'), {
-  ssr: false
-})
-
-const BasicLayoutExample = dynamic(() => import('@/components/playground/linear-dialog-guide/2-basic-layout-example'), {
-  ssr: false
-})
-
-const Image = dynamic(() => import('@/components/image'), {
-  ssr: true
-})
-
-const Video = dynamic(() => import('@/components/video'), {
-  ssr: true
-})
-
-const Container = dynamic(() => import('@/components/headless-motion/container-example'), {
-  ssr: false
-})
+import { Video, Container } from 'lucide-react'
+import DelayedButton from './components/playground/button-delayed-icon'
+import ExpandableBlock from './components/playground/expandable-block'
+import FamilyWallet from './components/playground/family-wallet'
+import LinearDialog from './components/playground/linear-dialog'
+import BasicExample from './components/playground/linear-dialog-guide/1-example'
+import BasicLayoutExample from './components/playground/linear-dialog-guide/2-basic-layout-example'
+import Metadata from './components/playground/metadata-dialog'
+import SharedAnimation from './components/playground/shared-animation'
 
 const components: MDXComponents = {
   pre: ({ children }) => (
@@ -108,7 +67,6 @@ const components: MDXComponents = {
       {caption && <p className='text-center text-xs text-gray-500'>{caption}</p>}
     </div>
   ),
-  ArenaGraph: () => <ArenaGraphExample />,
   ComponentContainer: ({ children, caption, code }) => (
     <div className={`relative my-6 flex flex-col gap-2 ${code ? 'mb-0' : ''}`}>
       <div
@@ -171,11 +129,7 @@ const components: MDXComponents = {
   FamilyWallet: () => <FamilyWallet />,
   BasicLayoutExample: () => <BasicLayoutExample />,
   LinearDialog: () => <LinearDialog />,
-  BasicExample: () => <BasicExample />,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
+  BasicExample: () => <BasicExample />
 }
 
 const options = {
