@@ -1,10 +1,10 @@
-import { og } from '@/config/site'
+import { og } from "@/config/site";
 
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
 
-import './main.css'
+import "./main.css";
 
 export const metadata: Metadata = {
   title: og.title,
@@ -22,30 +22,30 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1
-    }
-  }
-}
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['400', '500', '600'],
-  display: 'swap'
-})
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 export default async function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={inter.className}>
+    <html lang="en" className={inter.className}>
       <body>
         <main>{children}</main>
       </body>
     </html>
-  )
+  );
 }

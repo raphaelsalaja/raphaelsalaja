@@ -1,18 +1,18 @@
-import { useCallback } from 'react'
+import { useCallback } from "react";
 
-const useCombinedReferences = (...refs: any[]): ((node: any) => void) => {
+const useCombinedReferences = <T>(...refs: React.Ref<T>[]): ((node: T) => void) => {
   return useCallback(
     (node) => {
-      refs.forEach((ref) => {
-        if (typeof ref === 'function') {
-          ref(node)
+      for (const ref of refs) {
+        if (typeof ref === "function") {
+          ref(node);
         } else if (ref) {
-          ref.current = node
+          ref.current = node;
         }
-      })
+      }
     },
-    [refs]
-  )
-}
+    [refs],
+  );
+};
 
-export { useCombinedReferences }
+export { useCombinedReferences };

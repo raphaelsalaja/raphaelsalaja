@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from "framer-motion";
 
 const {
   div,
@@ -25,8 +25,8 @@ const {
   label,
   nav,
   header,
-  footer
-} = motion
+  footer,
+} = motion;
 
 export {
   AnimatePresence,
@@ -52,5 +52,5 @@ export {
   p,
   section,
   span,
-  ul
-}
+  ul,
+};

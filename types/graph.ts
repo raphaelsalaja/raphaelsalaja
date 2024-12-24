@@ -1,15 +1,15 @@
 export type Node = {
-  id: string
-  arena?: any
-  lastfm?: any
-}
+  id: string;
+  arena?: any;
+  lastfm?: any;
+};
 
 export type Link = {
-  source: string
-  target: string
-}
+  source: string;
+  target: string;
+};
 
 export type GraphData = {
-  nodes: Node[]
-  links: Link[]
-}
+  nodes: Node[];
+  links: Link[];
+};

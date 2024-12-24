@@ -1,3 +1,3 @@
 export const Routes = {
-  Posts: 'app/(posts)'
-}
+  Posts: "app/(posts)",
+};

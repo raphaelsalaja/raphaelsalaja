@@ -1,94 +1,94 @@
 export type OpenGraphMetadata = {
-  title: { default: string; template: string }
-  description: string
-  keywords: string[]
-  authors: { name: string; url: string }[]
-  creator: string
-  themeColor: { media: string; color: string }[]
+  title: { default: string; template: string };
+  description: string;
+  keywords: string[];
+  authors: { name: string; url: string }[];
+  creator: string;
+  themeColor: { media: string; color: string }[];
   openGraph: {
-    type: string
-    locale: string
-    url: string
-    title: string
-    description: string
-    siteName: string
-  }
+    type: string;
+    locale: string;
+    url: string;
+    title: string;
+    description: string;
+    siteName: string;
+  };
   twitter: {
-    card: string
-    title: string
-    description: string
-    images: string[]
-    creator: string
-  }
+    card: string;
+    title: string;
+    description: string;
+    images: string[];
+    creator: string;
+  };
   icons: {
-    icon: string
-    shortcut: string
-    apple: string
-  }
-  url: string
+    icon: string;
+    shortcut: string;
+    apple: string;
+  };
+  url: string;
   links: {
-    twitter: string
-    github: string
-  }
-}
+    twitter: string;
+    github: string;
+  };
+};
 
 export const og: OpenGraphMetadata = {
   title: {
-    default: 'Raphael Salaja',
-    template: '%s'
+    default: "Raphael Salaja",
+    template: "%s",
   },
   description:
-    'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
+    "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
   keywords: [
-    'Raphael Salaja',
-    'Genreless Creator',
-    'Creative Endeavors',
-    'Multidisciplinary Artist',
-    'Innovative Works',
-    'Open Source',
-    'Generative Art',
-    'GitHub',
-    'Patreon',
-    'Instagram',
-    'YouTube',
-    'Twitter'
+    "Raphael Salaja",
+    "Genreless Creator",
+    "Creative Endeavors",
+    "Multidisciplinary Artist",
+    "Innovative Works",
+    "Open Source",
+    "Generative Art",
+    "GitHub",
+    "Patreon",
+    "Instagram",
+    "YouTube",
+    "Twitter",
   ],
   authors: [
     {
-      name: 'shadcn',
-      url: 'https://shadcn.com'
-    }
+      name: "shadcn",
+      url: "https://shadcn.com",
+    },
   ],
-  creator: 'shadcn',
+  creator: "shadcn",
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' }
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://raphaelsalaja.com',
-    title: 'Raphael Salaja',
+    type: "website",
+    locale: "en_US",
+    url: "https://raphaelsalaja.com",
+    title: "Raphael Salaja",
     description:
-      'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
-    siteName: 'Raphael Salaja'
+      "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
+    siteName: "Raphael Salaja",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Raphael Salaja',
+    card: "summary_large_image",
+    title: "Raphael Salaja",
     description:
-      'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
-    images: ['https://raphaelsalaja.com/api/og'],
-    creator: '@raphaelsalaja'
+      "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
+    images: ["https://raphaelsalaja.com/api/og"],
+    creator: "@raphaelsalaja",
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png'
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
-  url: 'https://raphaelsalaja.com',
+  url: "https://raphaelsalaja.com",
   links: {
-    twitter: 'https://twitter.com/raphaelsalaja',
-    github: 'https://github.com/rafunderscore'
-  }
-}
+    twitter: "https://twitter.com/raphaelsalaja",
+    github: "https://github.com/rafunderscore",
+  },
+};

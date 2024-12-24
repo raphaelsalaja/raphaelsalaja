@@ -1,12 +1,12 @@
-import { site } from './sitemap'
+import { site } from "./sitemap";
 
 export default function robots() {
   return {
     rules: [
       {
-        userAgent: '*'
-      }
+        userAgent: "*",
+      },
     ],
-    sitemap: `${site}/sitemap.xml`
-  }
+    sitemap: `${site}/sitemap.xml`,
+  };
 }

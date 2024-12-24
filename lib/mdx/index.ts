@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+import type { Post } from "@/types/post";
 import matter from "gray-matter";
-import { Post } from "@/types/post";
 
 function readFile(filePath: string): Post | null {
   try {
@@ -33,5 +33,7 @@ function getFiles(dir: string): string[] {
 
 export function getPosts(directory: string): Post[] {
   const files = getFiles(path.join(process.cwd(), "app", "(posts)", directory, "posts"));
-  return files.map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file))).filter((post): post is Post => post !== null);
+  return files
+    .map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file)))
+    .filter((post): post is Post => post !== null);
 }

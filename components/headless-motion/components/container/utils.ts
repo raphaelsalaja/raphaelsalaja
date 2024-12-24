@@ -1,14 +1,14 @@
 const ignoreCircularReferences = () => {
-  const cache = new Set()
+  const cache = new Set();
   return (key: string, value: any) => {
-    if (typeof value === 'object' && value !== null) {
+    if (typeof value === "object" && value !== null) {
       if (cache.has(value)) {
-        return
+        return;
       }
-      cache.add(value)
+      cache.add(value);
     }
-    return value
-  }
-}
+    return value;
+  };
+};
 
-export { ignoreCircularReferences }
+export { ignoreCircularReferences };

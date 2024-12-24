@@ -1,107 +1,107 @@
-'use client'
+"use client";
 
-import { Browser, Dimensions, Geolocation, Time } from '@/components/metadata/metadata-instruments'
-import { Cross1Icon, QuestionMarkIcon } from '@radix-ui/react-icons'
-import { AnimatePresence, motion } from 'framer-motion'
-import Link from 'next/link'
-import { useState } from 'react'
+import { Browser, Dimensions, Geolocation, Time } from "@/components/metadata/metadata-instruments";
+import { QuestionMarkIcon } from "@radix-ui/react-icons";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
 
-import { clsx } from 'clsx'
+import { clsx } from "clsx";
 
 export default function Metadata() {
-  let [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  let container = {
+  const container = {
     initial: {
       opacity: 0,
-      scale: 0.8
+      scale: 0.8,
     },
     animate: {
       opacity: 1,
-      paddingBottom: '0px',
-      padding: show ? '4px' : '0',
+      paddingBottom: "0px",
+      padding: show ? "4px" : "0",
       scale: 1,
       transition: {
-        type: 'spring',
+        type: "spring",
         bounce: 0.1,
-        duration: 0.75
-      }
+        duration: 0.75,
+      },
     },
     exit: {
       opacity: 0,
-      scale: 0.8
-    }
-  }
+      scale: 0.8,
+    },
+  };
 
-  let content = {
+  const content = {
     initial: {
       opacity: 0,
-      filter: 'blur(12px)'
+      filter: "blur(12px)",
     },
     animate: {
       opacity: 1,
-      filter: 'blur(0px)',
-      borderRadius: '12px',
+      filter: "blur(0px)",
+      borderRadius: "12px",
       transition: {
         ease: [0.32, 0.72, 0, 1],
-        duration: 0.75
-      }
+        duration: 0.75,
+      },
     },
     exit: {
       opacity: 0,
-      filter: 'blur(12px)',
+      filter: "blur(12px)",
       transition: {
-        duration: 0.25
-      }
-    }
-  }
+        duration: 0.25,
+      },
+    },
+  };
 
-  let icon = {
+  const icon = {
     initial: {
       opacity: 0,
-      filter: 'blur(4px)'
+      filter: "blur(4px)",
     },
     animate: {
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: "blur(0px)",
       transition: {
         ease: [0.32, 0.72, 0, 1],
-        duration: 1.5
-      }
+        duration: 1.5,
+      },
     },
     exit: {
       opacity: 0,
-      filter: 'blur(4px)'
-    }
-  }
+      filter: "blur(4px)",
+    },
+  };
 
   return (
     <motion.div
       layout
-      initial='initial'
-      animate='animate'
-      exit='exit'
+      initial="initial"
+      animate="animate"
+      exit="exit"
       variants={container}
       style={{
-        overflow: 'hidden',
-        borderRadius: '16px',
-        backgroundColor: 'hsl(var(--muted))'
+        overflow: "hidden",
+        borderRadius: "16px",
+        backgroundColor: "hsl(var(--muted))",
       }}
     >
-      <div className={clsx('flex flex-col items-center justify-center')}>
-        <AnimatePresence mode='popLayout' initial={false}>
+      <div className={clsx("flex flex-col items-center justify-center")}>
+        <AnimatePresence mode="popLayout" initial={false}>
           {show && (
             <motion.div
               layout
-              key='content'
+              key="content"
               variants={content}
-              initial='initial'
-              animate='animate'
-              exit='exit'
-              className='z-0 flex flex-col gap-2 border bg-white p-4 shadow-sm'
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="z-0 flex flex-col gap-2 border bg-white p-4 shadow-sm"
             >
-              <div className='flex h-6 items-center justify-between gap-2'>
-                <h1 className='font-semibold'>Site Metadata</h1>
+              <div className="flex h-6 items-center justify-between gap-2">
+                <h1 className="font-semibold">Site Metadata</h1>
                 {/* <Button
                   onClick={() => setShow(false)}
                   variant='outline'
@@ -111,7 +111,7 @@ export default function Metadata() {
                 </Button> */}
               </div>
 
-              <div className='grid grid-cols-2 gap-x-8 gap-y-4 transition-all'>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-4 transition-all">
                 <Geolocation />
                 <Browser />
                 <Dimensions />
@@ -121,33 +121,33 @@ export default function Metadata() {
           )}
         </AnimatePresence>
 
-        <AnimatePresence mode='popLayout' initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           {show && (
             <motion.div
               layout
-              key='caption'
+              key="caption"
               variants={content}
-              initial='initial'
-              animate='animate'
-              exit='exit'
-              className='z-0 flex flex-col items-center justify-center p-3 align-middle text-xs text-muted-foreground/50'
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="z-0 flex flex-col items-center justify-center p-3 align-middle text-xs text-muted-foreground/50"
             >
               <div>
                 Powered by
                 <Link
-                  href='https://vercel.com'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='mx-1 font-medium text-muted-foreground/70'
+                  href="https://vercel.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-1 font-medium text-muted-foreground/70"
                 >
                   ▲ Vercel
                 </Link>
                 &
                 <Link
-                  href='https://nextjs.org'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='mx-1 font-medium text-muted-foreground/70'
+                  href="https://nextjs.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-1 font-medium text-muted-foreground/70"
                 >
                   Next.js
                 </Link>
@@ -155,34 +155,34 @@ export default function Metadata() {
 
               <motion.div
                 layout
-                key='button'
-                layoutId='button'
+                key="button"
+                layoutId="button"
                 variants={icon}
-                initial='initial'
-                animate='animate'
-                exit='exit'
+                initial="initial"
+                animate="animate"
+                exit="exit"
                 style={{
-                  top: '0',
-                  bottom: '0',
-                  position: 'absolute'
+                  top: "0",
+                  bottom: "0",
+                  position: "absolute",
                 }}
               />
             </motion.div>
           )}
         </AnimatePresence>
 
-        <AnimatePresence mode='popLayout' initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           {!show && (
             <motion.button
               layout
-              layoutId='button'
-              key='button'
+              layoutId="button"
+              key="button"
               variants={icon}
-              initial='initial'
-              animate='animate'
-              exit='exit'
+              initial="initial"
+              animate="animate"
+              exit="exit"
               onClick={() => setShow(true)}
-              className={clsx('p-2')}
+              className={clsx("p-2")}
             >
               <QuestionMarkIcon />
             </motion.button>
@@ -190,5 +190,5 @@ export default function Metadata() {
         </AnimatePresence>
       </div>
     </motion.div>
-  )
+  );
 }

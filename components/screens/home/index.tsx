@@ -1,6 +1,6 @@
-import { Posts } from '@/components/posts'
+import { Posts } from "@/components/posts";
 
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 export default function Home() {
   return (
@@ -10,8 +10,8 @@ export default function Home() {
         <span>—</span>
         <h1>Design Engineer</h1>
       </div>
-      <Posts category='projects' />
-      <Posts category='engineering' />
+      <Posts category="projects" />
+      <Posts category="engineering" />
     </div>
-  )
+  );
 }
