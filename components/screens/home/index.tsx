@@ -1,5 +1,6 @@
 import { Posts } from "@/components/posts";
 
+import { Scrapbook } from "@/components/scrapbook";
 import styles from "./styles.module.scss";
 
 export default function Home() {
@@ -10,6 +11,9 @@ export default function Home() {
         <span>—</span>
         <h1>Design Engineer</h1>
       </div>
+
+      <Scrapbook />
+
       <Posts category="projects" />
       <Posts category="engineering" />
     </div>

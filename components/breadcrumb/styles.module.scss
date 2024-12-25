@@ -12,11 +12,10 @@
   font-weight: 500;
   line-height: 150%; /* 18px */
   letter-spacing: 0.01px;
-
   transition: color 0.2s ease;
 
   &:hover {
-    color: #000000;
+    color: #000;
     color: color(display-p3 0 0 0);
   }
 }
@@ -32,6 +31,6 @@
 }
 
 .breadcrumb-page {
-  color: #000000;
+  color: #000;
   color: color(display-p3 0 0 0);
 }

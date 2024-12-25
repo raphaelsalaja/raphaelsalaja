@@ -16,7 +16,7 @@ export default function BasicExample() {
     damping: 20,
   };
 
-  const shared = clsx("absolute h-20 w-20 md:h-32 md:w-32 rounded-lg");
+  const shared = clsx("absolute h-20 w-20 rounded-lg md:h-32 md:w-32");
 
   return (
     <>

@@ -7,7 +7,7 @@ import * as Utils from "./utils";
 
 import useMeasure from "react-use-measure";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 const Root = React.forwardRef<HTMLDivElement, Types.Root>(({ ...props }, ref) => {
   return (

@@ -55,9 +55,8 @@ async function getNowPlaying() {
         status: response.status,
         data: song,
       };
-    } else {
-      return getLastPlayed();
     }
+    return getLastPlayed();
   } catch {
     return {
       status: response.status,

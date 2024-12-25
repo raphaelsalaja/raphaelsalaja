@@ -1,7 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 export default function BasicLayoutExample() {
@@ -17,7 +17,7 @@ export default function BasicLayoutExample() {
     damping: 20,
   };
 
-  const shared = clsx("absolute h-20 w-20 md:h-32 md:w-32 rounded-lg");
+  const shared = clsx("absolute h-20 w-20 rounded-lg md:h-32 md:w-32");
 
   return (
     <>

@@ -8,12 +8,12 @@ import Link from "next/link";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-      <h1 className={clsx("font-heading mt-2 scroll-m-20 text-4xl font-bold text-red-500", className)} {...props} />
+      <h1 className={clsx("mt-2 scroll-m-20 font-bold font-heading text-4xl text-red-500", className)} {...props} />
     ),
     h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h2
         className={clsx(
-          "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+          "mt-12 scroll-m-20 border-b pb-2 font-heading font-semibold text-2xl tracking-tight first:mt-0",
           className,
         )}
         {...props}
@@ -21,21 +21,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h3
-        className={clsx("font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight", className)}
+        className={clsx("mt-8 scroll-m-20 font-heading font-semibold text-xl tracking-tight", className)}
         {...props}
       />
     ),
     h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h4
-        className={clsx("font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight", className)}
+        className={clsx("mt-8 scroll-m-20 font-heading font-semibold text-lg tracking-tight", className)}
         {...props}
       />
     ),
     h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-      <h5 className={clsx("mt-8 scroll-m-20 text-lg font-semibold tracking-tight", className)} {...props} />
+      <h5 className={clsx("mt-8 scroll-m-20 font-semibold text-lg tracking-tight", className)} {...props} />
     ),
     h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-      <h6 className={clsx("mt-8 scroll-m-20 text-base font-semibold tracking-tight", className)} {...props} />
+      <h6 className={clsx("mt-8 scroll-m-20 font-semibold text-base tracking-tight", className)} {...props} />
     ),
     a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
       <a className={clsx("font-medium underline underline-offset-4", className)} {...props} />
@@ -88,7 +88,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
       <h3
-        className={clsx("font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight", className)}
+        className={clsx("mt-8 scroll-m-20 font-heading font-semibold text-xl tracking-tight", className)}
         {...props}
       />
     ),
@@ -107,7 +107,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TabsTrigger: ({ className, ...props }: React.ComponentProps<typeof TabsTrigger>) => (
       <TabsTrigger
         className={clsx(
-          "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+          "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
           className,
         )}
         {...props}
@@ -115,7 +115,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     TabsContent: ({ className, ...props }: React.ComponentProps<typeof TabsContent>) => (
       <TabsContent
-        className={clsx("relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold", className)}
+        className={clsx("relative [&_h3.font-heading]:font-semibold [&_h3.font-heading]:text-base", className)}
         {...props}
       />
     ),

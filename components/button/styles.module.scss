@@ -1,0 +1,42 @@
+.button {
+  /* layout */
+  display: inline-flex;
+  height: 36px;
+  padding: 0 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 8px;
+
+  /* font */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: -0.18px;
+
+  /* animation */
+  transition: all 0.2s ease;
+}
+
+.button {
+  &[data-shunpo-button-variant='primary'] {
+    color: #fff;
+    color: color(display-p3 1 1 1);
+    background: #000;
+    background: color(display-p3 0 0 0);
+
+    &:hover &:not([aria-disabled='true']) {
+      background: #333;
+      background: color(display-p3 0.2 0.2 0.2);
+    }
+  }
+}
+
+.button {
+  &[aria-disabled='true'] {
+    filter: opacity(0.2);
+    cursor: not-allowed;
+  }
+}

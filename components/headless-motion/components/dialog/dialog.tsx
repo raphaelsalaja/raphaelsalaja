@@ -4,7 +4,7 @@ import * as React from "react";
 import type * as Types from "./types";
 
 import { clsx } from "clsx";
-import { AnimatePresence, LayoutGroup, MotionConfig, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, MotionConfig, motion } from "motion/react";
 import { v4 as uuidv4 } from "uuid";
 
 const Context = React.createContext<Types.Context | undefined>(undefined);

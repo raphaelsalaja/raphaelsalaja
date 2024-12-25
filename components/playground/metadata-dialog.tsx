@@ -2,7 +2,7 @@
 
 import { Browser, Dimensions, Geolocation, Time } from "@/components/metadata/metadata-instruments";
 import { QuestionMarkIcon } from "@radix-ui/react-icons";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -130,7 +130,7 @@ export default function Metadata() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="z-0 flex flex-col items-center justify-center p-3 align-middle text-xs text-muted-foreground/50"
+              className="z-0 flex flex-col items-center justify-center p-3 align-middle text-muted-foreground/50 text-xs"
             >
               <div>
                 Powered by

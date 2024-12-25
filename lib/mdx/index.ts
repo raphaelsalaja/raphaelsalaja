@@ -1,5 +1,5 @@
 import fs from "fs";
-import path from "path";
+import path from "node:path";
 
 import type { Post } from "@/types/post";
 import matter from "gray-matter";

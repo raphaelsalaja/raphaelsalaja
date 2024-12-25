@@ -1,7 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 export default function LinearDialog() {
@@ -51,7 +51,7 @@ export default function LinearDialog() {
                   Blue 9
                 </motion.div>
                 <motion.div layoutId="dialog.description">#0090FF</motion.div>
-                <div className="my-4 hidden h-px grid-flow-row-dense bg-white bg-opacity-10 md:block"></div>
+                <div className="my-4 hidden h-px grid-flow-row-dense bg-white bg-opacity-10 md:block" />
                 <div className="hidden md:block">
                   In the realm of screens so bright,
                   <br />

@@ -1,0 +1,12 @@
+.scrapbook {
+  display: flex;
+  height: 384px;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid rgb(0 0 0 / 5%);
+  border: 1px solid color(display-p3 0 0 0 / 5%);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 2px 4px 0 color(display-p3 0 0 0 / 5%);
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { gray } from "@radix-ui/colors";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import React from "react";
 
 interface CustomVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
@@ -25,7 +25,7 @@ export default function CustomVideo({ caption, ...props }: CustomVideoProps) {
       }}
     >
       <div
-        className="bg-red overflow-hidden rounded border"
+        className="overflow-hidden rounded border bg-red"
         style={{
           position: "relative",
           width: "100%",
@@ -50,7 +50,7 @@ export default function CustomVideo({ caption, ...props }: CustomVideoProps) {
           {...remaining}
         />
       </div>
-      {caption && <p className="text-center text-xs text-gray-500">{caption}</p>}
+      {caption && <p className="text-center text-gray-500 text-xs">{caption}</p>}
     </motion.div>
   );
 }

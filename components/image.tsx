@@ -1,7 +1,7 @@
 "use client";
 
 import { gray } from "@radix-ui/colors";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image, { type ImageProps } from "next/image";
 import React from "react";
 
@@ -19,7 +19,7 @@ export default function CustomImage({ caption, ...props }: ImageProps & { captio
       }}
     >
       <div
-        className="bg-red overflow-hidden rounded border"
+        className="overflow-hidden rounded border bg-red"
         style={{
           position: "relative",
           width: "100%",
@@ -45,7 +45,7 @@ export default function CustomImage({ caption, ...props }: ImageProps & { captio
           {...remaining}
         />
       </div>
-      {caption && <p className="text-center text-xs text-gray-500">{caption}</p>}
+      {caption && <p className="text-center text-gray-500 text-xs">{caption}</p>}
     </motion.div>
   );
 }

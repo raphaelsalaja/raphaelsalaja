@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { getDataFromSearch, getDataFromURL } from "@/lib/arena";
 import { DownloadIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { clsx } from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function Home() {
   return (

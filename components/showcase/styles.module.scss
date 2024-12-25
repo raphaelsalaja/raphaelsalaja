@@ -1,0 +1,41 @@
+.showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 12px;
+  background: #fafafa;
+  background: color(display-p3 0.9804 0.9804 0.9804);
+  box-shadow:
+    0 0 0 1px #ededed,
+    0 2px 4px 0 rgb(0 0 0 / 5%);
+  box-shadow:
+    0 0 0 1px color(display-p3 0.9294 0.9294 0.9294),
+    0 2px 4px 0 color(display-p3 0 0 0 / 5%);
+
+  .component {
+    display: flex;
+    height: 384px;
+    justify-content: space-around;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 12px;
+    background: #fff;
+    background: color(display-p3 1 1 1);
+    box-shadow:
+      0 0 0 1px #ededed,
+      0 2px 4px 0 rgb(0 0 0 / 5%);
+    box-shadow:
+      0 0 0 1px color(display-p3 0.9294 0.9294 0.9294),
+      0 2px 4px 0 color(display-p3 0 0 0 / 5%);
+  }
+
+  .options {
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+  }
+}

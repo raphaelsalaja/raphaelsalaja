@@ -3,7 +3,7 @@
 import { getNowPlaying, getSpotifyNodesAndLinks, getTopArtists, getTopTracks } from "@/lib/spotify";
 import { CopyIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { clsx } from "clsx";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "motion/react";
 import { useEffect, useState } from "react";
 
 async function fetchSpotifyData() {
@@ -25,7 +25,7 @@ const FamilyWallet = () => {
 
   fetchSpotifyData();
 
-  const commonClasses = clsx("relative shadow-lg cursor-pointer select-none bg-blue-9 text-white will-change-auto");
+  const commonClasses = clsx("relative cursor-pointer select-none bg-blue-9 text-white shadow-lg will-change-auto");
   const smallCardClasses = clsx(commonClasses, "h-32 w-48");
   const largeCardClasses = clsx(commonClasses, "h-64 w-96");
 
@@ -130,7 +130,7 @@ const FamilyWallet = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <span className="font-medium">Shopping</span>
-        <span className="text-xs font-normal opacity-50">1.03 ETH</span>
+        <span className="font-normal text-xs opacity-50">1.03 ETH</span>
       </motion.div>
 
       <AnimatePresence initial={false}>

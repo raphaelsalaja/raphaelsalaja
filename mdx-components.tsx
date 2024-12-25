@@ -33,7 +33,7 @@ const components: MDXComponents = {
     </pre>
   ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className={clsx("mb-2 mt-6", className)} {...props} style={{ margin: "1.5rem 0rem 0.5rem 0rem" }} />
+    <h1 className={clsx("mt-6 mb-2", className)} {...props} style={{ margin: "1.5rem 0rem 0.5rem 0rem" }} />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className={clsx("mb-4", className)} {...props} />
@@ -46,7 +46,7 @@ const components: MDXComponents = {
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li
-      className={clsx("ml-2 mt-2", className)}
+      className={clsx("mt-2 ml-2", className)}
       {...props}
       style={{
         marginTop: "0.5rem",
@@ -65,7 +65,7 @@ const components: MDXComponents = {
       >
         <div className="h-full">{children}</div>
       </div>
-      {caption && <p className="text-center text-xs text-gray-500">{caption}</p>}
+      {caption && <p className="text-center text-gray-500 text-xs">{caption}</p>}
     </div>
   ),
   ComponentContainer: ({ children, caption, code }) => (
@@ -75,9 +75,9 @@ const components: MDXComponents = {
         style={{
           justifyContent: "flex-end",
         }}
-      ></div>
+      />
       <div
-        className={clsx("relative overflow-hidden", code ? "border-x border-b-0 border-t" : "border")}
+        className={clsx("relative overflow-hidden", code ? "border-x border-t border-b-0" : "border")}
         style={{
           height: "24rem",
           border: "1px  solid #e5e7eb",
@@ -86,7 +86,7 @@ const components: MDXComponents = {
       >
         <div className="flex h-full items-center justify-center">{children}</div>
       </div>
-      {caption && <p className="text-center text-xs text-gray-500">{caption}</p>}
+      {caption && <p className="text-center text-gray-500 text-xs">{caption}</p>}
     </div>
   ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (

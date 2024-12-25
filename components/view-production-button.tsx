@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
 import { useState } from "react";
 
@@ -51,7 +51,7 @@ const icon = {
 function ViewProductionButton({ href }: { href: string }) {
   const [show, setShow] = useState(false);
   return (
-    <div className="fixed bottom-5 left-0 right-0 flex justify-center">
+    <div className="fixed right-0 bottom-5 left-0 flex justify-center">
       <Link href={href}>
         <motion.div
           layout
@@ -62,7 +62,7 @@ function ViewProductionButton({ href }: { href: string }) {
           whileHover={{ scale: 1.05 }}
           className="border bg-white p-2"
         >
-          <div className="text-sm text-gray-500 hover:text-gray-700">
+          <div className="text-gray-500 text-sm hover:text-gray-700">
             <div className="flex items-center gap-2">
               <motion.h2 layout className="ml-1">
                 View Production

@@ -1,6 +1,5 @@
-@import url(./reset.css);
-
-@import url(./fonts.css);
+@import url(../styles/reset.css);
+@import url(../styles/fonts.css);
 
 body {
   display: flex;
@@ -16,4 +15,5 @@ main {
   flex-direction: column;
   align-items: flex-start;
   gap: 48px;
+  isolation: isolate;
 }
