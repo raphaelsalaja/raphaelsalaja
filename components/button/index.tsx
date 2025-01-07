@@ -11,12 +11,13 @@ export interface ButtonProps extends HTMLMotionProps<'button'> {
   asChild?: boolean
   asMotion?: boolean
   disabled?: boolean
+  focused?: boolean
   children?: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'accent' | undefined
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'destructive' | 'warning' | 'ghost'
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ asChild, children, variant = 'primary', disabled, className, asMotion, ...props }, ref) => {
+  ({ asChild, children, variant = 'primary', disabled = false, focused, className, asMotion, ...props }, ref) => {
     const Comp = asChild ? Slot : asMotion ? (motion.button as any) : 'button'
 
     return (
@@ -25,11 +26,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-shunpo-button
         data-shunpo-button-variant={variant}
         data-shunpo-button-disabled={disabled}
+        data-shunpo-button-focus-visible={focused}
         className={clsx(styles.button, className)}
         aria-disabled={disabled}
         {...props}
       >
-        {children && <span className={styles.children}>{children}</span>}
+        {children && (
+          <button type='button' className={styles.children}>
+            {children}
+          </button>
+        )}
       </Comp>
     )
   }

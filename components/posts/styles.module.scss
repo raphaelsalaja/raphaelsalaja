@@ -1,55 +1,124 @@
 .posts {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: 12px;
   align-self: stretch;
 
-  .label {
+  .heading {
     display: flex;
-    width: 128px;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 4px;
+    align-self: stretch;
 
-    h1 {
-      text-transform: capitalize;
+    .title {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      position: relative;
+    }
+
+    .view {
+      color: #b3b3b3;
+      color: color(display-p3 0.702 0.702 0.702);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 21px */
+      letter-spacing: -0.09px;
+    }
+
+    .title,
+    .view {
+      h1 {
+        text-transform: capitalize;
+      }
     }
   }
 
-  .content {
+  .grid {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: 24px;
-    flex: 1 0 0;
+    align-self: stretch;
 
-    .post {
+    .row {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: flex-start;
-      gap: 4px;
+      gap: 24px;
       align-self: stretch;
 
-      h1 {
-        color: #000;
-        color: color(display-p3 0 0 0);
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 21px */
-        letter-spacing: -0.09px;
-      }
+      .post {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        position: relative;
+        transition: all 0.4s ease;
 
-      p {
-        color: #b3b3b3;
-        color: color(display-p3 0.702 0.702 0.702);
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 21px */
-        letter-spacing: -0.09px;
+        .thumbnail {
+          display: flex;
+          width: 100%;
+          aspect-ratio: 16/9;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          flex: 1 0 0;
+          align-self: stretch;
+          border-radius: 8px;
+          border: 1px solid #ededed;
+          border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+          object-fit: cover;
+          background: #fafafa;
+          background: color(display-p3 0.9804 0.9804 0.9804);
+
+          span {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%;
+            letter-spacing: 0.01px;
+            color: #b3b3b3;
+            color: color(display-p3 0.702 0.702 0.702);
+          }
+        }
+
+        .details {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          align-self: stretch;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%;
+          letter-spacing: 0.01px;
+
+          h1 {
+            color: #000;
+            color: color(display-p3 0 0 0);
+            font: inherit;
+          }
+
+          p {
+            color: #b3b3b3;
+            color: color(display-p3 0.702 0.702 0.702);
+            font: inherit;
+          }
+        }
       }
     }
+  }
+
+  .grid:hover .row .post {
+    filter: opacity(0.2) grayscale(1);
+    transform: scale(0.98);
+  }
+
+  .grid .row .post:hover {
+    filter: opacity(1) grayscale(0);
+    transform: scale(1.02);
   }
 }

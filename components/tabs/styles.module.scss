@@ -1,0 +1,100 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .list {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .tab {
+    transition: all 0.2s ease;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &[data-selected] {
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      border-radius: 8px;
+      border: 1px solid #ededed;
+      border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+      background: #fff;
+      background: color(display-p3 1 1 1);
+      box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+      box-shadow: 0 1px 4px 0 color(display-p3 0 0 0 / 5%);
+      color: #000;
+      color: color(display-p3 0 0 0);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%;
+      letter-spacing: -0.09px;
+      pointer-events: none;
+    }
+
+    &:not([data-selected]) {
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      border-radius: 8px;
+      border: 1px solid #ededed;
+      border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+      box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+      box-shadow: 0 1px 4px 0 color(display-p3 0 0 0 / 5%);
+      color: #b3b3b3;
+      color: color(display-p3 0.702 0.702 0.702);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%;
+      letter-spacing: -0.09px;
+
+      &:hover[aria-disabled='false'] {
+        background: #fff;
+        background: color(display-p3 1 1 1);
+        color: #000;
+        color: color(display-p3 0 0 0);
+      }
+    }
+  }
+
+  .panel {
+    width: 100%;
+    transition: all 1s ease;
+  }
+}
+
+.label {
+  color: #b3b3b3;
+  color: color(display-p3 0.702 0.702 0.702);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 12px */
+  letter-spacing: 0.01px;
+}
