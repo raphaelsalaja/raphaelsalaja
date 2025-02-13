@@ -9,7 +9,6 @@ export default function Home() {
     <div className={styles.layout}>
       <div className={styles.heading}>
         <div className={styles.logo} />
-
         <div className={styles.socials}>
           <Button asChild variant='ghost'>
             <a href='https://x.com/raphaelsalaja' target='_blank' rel='noopener noreferrer'>
@@ -52,7 +51,7 @@ export default function Home() {
       </div>
 
       <Posts category='projects' />
-      {/* <Posts category='engineering' /> */}
+      <Posts category='engineering' />
 
       <div className={styles.footer}>
         <div className={styles.copyright}>

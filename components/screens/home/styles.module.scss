@@ -58,13 +58,13 @@
 .footer {
   position: relative;
   display: flex;
-  padding: 24px 0px;
+  padding: 24px 0;
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
-
   border-top: 1px solid #ededed;
   border-top: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+
   .copyright {
     display: flex;
     flex-direction: column;

@@ -381,6 +381,9 @@ importers:
       remark-toc:
         specifier: ^9.0.0
         version: 9.0.0
+      remeda:
+        specifier: ^2.19.0
+        version: 2.19.0
       sass:
         specifier: ^1.83.1
         version: 1.83.1
@@ -3238,6 +3241,31 @@ packages:
       expo-gl: '>=11.0'
       react: '>=18.0'
       react-dom: '>=18.0'
+      react-native: '>=0.64'
+      three: '>=0.133'
+    peerDependenciesMeta:
+      expo:
+        optional: true
+      expo-asset:
+        optional: true
+      expo-file-system:
+        optional: true
+      expo-gl:
+        optional: true
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+
+  '@react-three/fiber@8.17.12':
+    resolution: {integrity: sha512-rjV/ZtCr69y+aWEOsAhBQzsxYyvZHUanYfo9eMXNp/dxTj3ZrRvK44DkIdSLV1xcPidq8p2YeU2oWP2czY+ZVA==}
+    peerDependencies:
+      expo: '>=43.0'
+      expo-asset: '>=8.4'
+      expo-file-system: '>=11.0'
+      expo-gl: '>=11.0'
+      react: '>=18 <19'
+      react-dom: '>=18 <19'
       react-native: '>=0.64'
       three: '>=0.133'
     peerDependenciesMeta:
@@ -9661,6 +9689,9 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
+  remeda@2.19.0:
+    resolution: {integrity: sha512-B/2+zHNPXu0BAopJU8ZrqMjA0u56M/l6BUxDq8AcU+3LWlOYVuf98I6qpYrB5BeeEICunpmXPcQl2ReGXkiQyw==}
+
   rename-overwrite@6.0.0:
     resolution: {integrity: sha512-njyKyIyxYix8yklXAd5Jrp2otBFZdzD8069W/LaqhRpXqpdQpIb0ZEcheX25IdpX2LBpsGl3Qk+NRD/M7S27wg==}
     engines: {node: '>=18'}
@@ -10727,6 +10758,10 @@ packages:
   type-fest@3.13.1:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
+
+  type-fest@4.32.0:
+    resolution: {integrity: sha512-rfgpoi08xagF3JSdtJlCwMq9DGNDE0IMh3Mkpc1wUypg9vPi786AiqeBBKcqvIkq42azsBM85N490fyZjeUftw==}
+    engines: {node: '>=16'}
 
   type-is@1.3.2:
     resolution: {integrity: sha512-sdIhnvhWEyIP2DKjj1o9tL31m8vFxDfLPD56KXz2absqY5AF2QYkJC7Wrw2fkzsZA9mv+PCtgyB7EqYOgR+r3Q==}
@@ -14930,6 +14965,28 @@ snapshots:
       - use-sync-external-store
 
   '@react-three/fiber@8.17.10(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react-native@0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0))(react@19.0.0)(three@0.172.0)':
+    dependencies:
+      '@babel/runtime': 7.26.0
+      '@types/debounce': 1.2.4
+      '@types/react-reconciler': 0.26.7
+      '@types/webxr': 0.5.20
+      base64-js: 1.5.1
+      buffer: 6.0.3
+      debounce: 1.2.1
+      its-fine: 1.2.5(@types/react@19.0.2)(react@19.0.0)
+      react: 19.0.0
+      react-reconciler: 0.27.0(react@19.0.0)
+      scheduler: 0.21.0
+      suspend-react: 0.1.3(react@19.0.0)
+      three: 0.172.0
+      zustand: 3.7.2(react@19.0.0)
+    optionalDependencies:
+      react-dom: 19.0.0(react@19.0.0)
+      react-native: 0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0)
+    transitivePeerDependencies:
+      - '@types/react'
+
+  '@react-three/fiber@8.17.12(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react-native@0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0))(react@19.0.0)(three@0.172.0)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@types/debounce': 1.2.4
@@ -22718,7 +22775,7 @@ snapshots:
 
   react-three-fiber@6.0.13(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react-native@0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0))(react@19.0.0)(three@0.172.0):
     dependencies:
-      '@react-three/fiber': 8.17.10(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react-native@0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0))(react@19.0.0)(three@0.172.0)
+      '@react-three/fiber': 8.17.12(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react-native@0.74.1(@babel/core@7.26.0)(@babel/preset-env@7.24.5(@babel/core@7.26.0))(@types/react@19.0.2)(encoding@0.1.13)(react@19.0.0))(react@19.0.0)(three@0.172.0)
       react: 19.0.0
       three: 0.172.0
     optionalDependencies:
@@ -23083,6 +23140,10 @@ snapshots:
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
+
+  remeda@2.19.0:
+    dependencies:
+      type-fest: 4.32.0
 
   rename-overwrite@6.0.0:
     dependencies:
@@ -24366,6 +24427,8 @@ snapshots:
   type-fest@2.19.0: {}
 
   type-fest@3.13.1: {}
+
+  type-fest@4.32.0: {}
 
   type-is@1.3.2:
     dependencies:

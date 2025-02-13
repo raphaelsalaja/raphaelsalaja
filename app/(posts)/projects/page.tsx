@@ -7,5 +7,5 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  return <Posts category='projects' inline />
+  return <Posts category='projects' index />
 }

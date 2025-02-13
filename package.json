@@ -10,15 +10,12 @@
     "lint": "pnpm biome check --fix --unsafe . && npx stylelint \"**/*.scss\" --fix",
     "find:unused": "next-unused"
   },
+
   "next-unused": {
     "alias": {},
-    "include": [
-      "component"
-    ],
+    "include": ["component"],
     "exclude": [],
-    "entrypoints": [
-      "app"
-    ]
+    "entrypoints": ["app"]
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-alpha.4",
@@ -144,6 +141,7 @@
     "remark-slug": "^8.0.0",
     "remark-stringify": "^11.0.0",
     "remark-toc": "^9.0.0",
+    "remeda": "^2.19.0",
     "sass": "^1.83.1",
     "sharp": "^0.33.5",
     "shiki": "^1.26.1",

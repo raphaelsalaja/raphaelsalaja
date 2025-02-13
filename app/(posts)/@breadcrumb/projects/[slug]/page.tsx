@@ -15,7 +15,7 @@ interface PageProps {
 export default async function BreadcrumbSlot(props: PageProps) {
   const params = await props.params
 
-  const post = getPosts('proejcts').find((post: { slug: string }) => post.slug === params.slug)
+  const post = getPosts('projects').find((post: { slug: string }) => post.slug === params.slug)
 
   if (!post) {
     return null
