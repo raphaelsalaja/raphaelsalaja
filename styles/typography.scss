@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+
+$a: -0.0223;
+$b: 0.185;
+$c: -0.1745;
+
+@function strip-units($value) {
+  @return math.div($value, 1px);
+}
+@function dynamic-line-height($font-size, $line-height: 1.5) {
+  @return math.round($font-size * $line-height);
+}
+@function dynamic-letter-spacing($font-size) {
+  @return #{$a + $b * math.pow(math.$e, $c * strip-units($font-size))}em;
+}
+
+/// Inter Dynamic Metrics
+///
+/// https://d.rsms.me/inter-website/v3/dynmetrics/
+///
+/// @param {number} $font-size
+///   The optical font size.
+/// @param {number} $font-weight
+///   The font weight.
+/// @param {number} $line-height
+///  The line height.
+
+@mixin font($font-size, $font-weight, $line-height: 1.5) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: dynamic-letter-spacing($font-size);
+  line-height: dynamic-line-height($font-size, $line-height);
+}

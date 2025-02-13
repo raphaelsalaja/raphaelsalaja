@@ -1,5 +1,6 @@
 import { Posts } from '@/components/posts'
 
+import * as Menu from '@/components/menu'
 import styles from './styles.module.scss'
 import Button from '@/components/button'
 import Link from 'next/link'
@@ -10,29 +11,23 @@ export default function Home() {
       <div className={styles.heading}>
         <div className={styles.logo} />
         <div className={styles.socials}>
-          <Button asChild variant='ghost'>
-            <a href='https://x.com/raphaelsalaja' target='_blank' rel='noopener noreferrer'>
-              Twitter
-            </a>
-          </Button>
-          <span>―</span>
-          <Button asChild variant='ghost'>
-            <a href='https://github.com/raphaelsalaja' target='_blank' rel='noopener noreferrer'>
-              GitHub
-            </a>
-          </Button>
-          <span>—</span>
-          <Button asChild variant='ghost'>
-            <a href='https://zora.co/@raphaelsalaja' target='_blank' rel='noopener noreferrer'>
-              Zora
-            </a>
-          </Button>
-          <span>—</span>
-          <Button asChild variant='ghost'>
-            <a href='mailto:raphaelsalaja@gmail.com' target='_blank' rel='noopener noreferrer'>
-              Email
-            </a>
-          </Button>
+          <Menu.Root>
+            <Menu.Trigger className={styles.Button}>Connect</Menu.Trigger>
+            <Menu.Portal>
+              <Menu.Positioner className={styles.Positioner} sideOffset={8}>
+                <Menu.Popup className={styles.Popup}>
+                  <Menu.Item className={styles.Item}>Add to Library</Menu.Item>
+                  <Menu.Item className={styles.Item}>Add to Playlist</Menu.Item>
+                  <Menu.Separator className={styles.Separator} />
+                  <Menu.Item className={styles.Item}>Play Next</Menu.Item>
+                  <Menu.Item className={styles.Item}>Play Last</Menu.Item>
+                  <Menu.Separator className={styles.Separator} />
+                  <Menu.Item className={styles.Item}>Favorite</Menu.Item>
+                  <Menu.Item className={styles.Item}>Share</Menu.Item>
+                </Menu.Popup>
+              </Menu.Positioner>
+            </Menu.Portal>
+          </Menu.Root>
         </div>
       </div>
 
