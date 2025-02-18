@@ -1,0 +1,29 @@
+:root {
+  --shunpo-blue-100: hsla(194deg 100% 50% / 100%);
+  --shunpo-blue-90: hsla(194deg 100% 50% / 90%);
+  --shunpo-blue-80: hsla(194deg 100% 50% / 80%);
+  --shunpo-blue-70: hsla(194deg 100% 50% / 70%);
+  --shunpo-blue-60: hsla(194deg 100% 50% / 60%);
+  --shunpo-blue-50: hsla(194deg 100% 50% / 50%);
+  --shunpo-blue-40: hsla(194deg 100% 50% / 40%);
+  --shunpo-blue-30: hsla(194deg 100% 50% / 30%);
+  --shunpo-blue-20: hsla(194deg 100% 50% / 20%);
+  --shunpo-blue-10: hsla(194deg 100% 50% / 10%);
+  --shunpo-blue-05: hsla(194deg 100% 50% / 5%);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --shunpo-blue-100: color(display-p3 0.3412 0.7412 0.9765 / 100%);
+    --shunpo-blue-90: color(display-p3 0.3412 0.7412 0.9765 / 90%);
+    --shunpo-blue-80: color(display-p3 0.3412 0.7412 0.9765 / 80%);
+    --shunpo-blue-70: color(display-p3 0.3412 0.7412 0.9765 / 70%);
+    --shunpo-blue-60: color(display-p3 0.3412 0.7412 0.9765 / 60%);
+    --shunpo-blue-50: color(display-p3 0.3412 0.7412 0.9765 / 50%);
+    --shunpo-blue-40: color(display-p3 0.3412 0.7412 0.9765 / 40%);
+    --shunpo-blue-30: color(display-p3 0.3412 0.7412 0.9765 / 30%);
+    --shunpo-blue-20: color(display-p3 0.3412 0.7412 0.9765 / 20%);
+    --shunpo-blue-10: color(display-p3 0.3412 0.7412 0.9765 / 10%);
+    --shunpo-blue-05: color(display-p3 0.3412 0.7412 0.9765 / 5%);
+  }
+}

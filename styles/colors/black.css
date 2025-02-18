@@ -1,0 +1,29 @@
+:root {
+  --shunpo-black-100: hsla(0deg 0% 4% / 100%);
+  --shunpo-black-90: hsla(0deg 0% 4% / 90%);
+  --shunpo-black-80: hsla(0deg 0% 4% / 80%);
+  --shunpo-black-70: hsla(0deg 0% 4% / 70%);
+  --shunpo-black-60: hsla(0deg 0% 4% / 60%);
+  --shunpo-black-50: hsla(0deg 0% 4% / 50%);
+  --shunpo-black-40: hsla(0deg 0% 4% / 40%);
+  --shunpo-black-30: hsla(0deg 0% 4% / 30%);
+  --shunpo-black-20: hsla(0deg 0% 4% / 20%);
+  --shunpo-black-10: hsla(0deg 0% 4% / 10%);
+  --shunpo-black-05: hsla(0deg 0% 4% / 5%);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --shunpo-black-100: color(display-p3 0.04 0.04 0.04 / 100%);
+    --shunpo-black-90: color(display-p3 0.04 0.04 0.04 / 90%);
+    --shunpo-black-80: color(display-p3 0.04 0.04 0.04 / 80%);
+    --shunpo-black-70: color(display-p3 0.04 0.04 0.04 / 70%);
+    --shunpo-black-60: color(display-p3 0.04 0.04 0.04 / 60%);
+    --shunpo-black-50: color(display-p3 0.04 0.04 0.04 / 50%);
+    --shunpo-black-40: color(display-p3 0.04 0.04 0.04 / 40%);
+    --shunpo-black-30: color(display-p3 0.04 0.04 0.04 / 30%);
+    --shunpo-black-20: color(display-p3 0.04 0.04 0.04 / 20%);
+    --shunpo-black-10: color(display-p3 0.04 0.04 0.04 / 10%);
+    --shunpo-black-05: color(display-p3 0.04 0.04 0.04 / 5%);
+  }
+}
