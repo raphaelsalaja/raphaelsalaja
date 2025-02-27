@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/main.css"],"sourcesContent":["@import url(../styles/reset.css);\n@import url(../styles/fonts.css);\n\nbody {\n  display: flex;\n  padding: 96px 0px 24px 0px;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n}\n\nmain {\n  display: flex;\n  width: 640px;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 48px;\n  isolation: isolate;\n}\n"],"names":[],"mappings":"AAGA;;;;;;;;AAQA"}},
+    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

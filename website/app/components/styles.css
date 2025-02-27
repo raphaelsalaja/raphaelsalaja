@@ -1,0 +1,52 @@
+.context-menu-trigger {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* The outer container that holds the circular shape */
+.radial-menu-content {
+  /* By default, Radix positions the menu automatically 
+       (using popper.js under the hood). We'll just style it. */
+  background-color: transparent; /* So we see the radial circle only */
+  border: none;
+  outline: none;
+}
+
+/* Our radial "circle" that will hold the items. */
+.radial-menu-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #eee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+  /* Optional: center content if there's any text or icons 
+       in the center (like a radial menu "hub"). */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for individual context menu items. 
+     The dynamic transform is applied inline via React style. */
+.radial-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  /* Simple hover styles */
+  cursor: pointer;
+  user-select: none;
+}
+
+.radial-item:hover {
+  background-color: #f3f3f3;
+}

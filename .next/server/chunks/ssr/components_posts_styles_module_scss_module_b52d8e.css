@@ -1,0 +1,130 @@
+/* [project]/components/posts/styles.module.scss.module.css [app-client] (css) */
+.styles-module-scss-module__-hozJa__posts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__heading .styles-module-scss-module__-hozJa__title {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  position: relative;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__heading .styles-module-scss-module__-hozJa__view {
+  color: #b3b3b3;
+  color: color(display-p3 .702 .702 .702);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -.09px;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__heading .styles-module-scss-module__-hozJa__title h1, .styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__heading .styles-module-scss-module__-hozJa__view h1 {
+  text-transform: capitalize;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-self: stretch;
+  gap: 24px;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid[data-index="true"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid:has(.styles-module-scss-module__-hozJa__post:hover) .styles-module-scss-module__-hozJa__post:not([data-index="true"]) {
+  filter: opacity(.2) grayscale();
+  transform: scale(.99);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid:has(.styles-module-scss-module__-hozJa__post:hover) .styles-module-scss-module__-hozJa__post:not([data-index="false"]) {
+  filter: opacity(.2) grayscale();
+  transform: scale(.95);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid:has(.styles-module-scss-module__-hozJa__post:hover) .styles-module-scss-module__-hozJa__post:hover:not([data-index="true"]) {
+  filter: opacity() grayscale(0);
+  transform: scale(1.05);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid:has(.styles-module-scss-module__-hozJa__post:hover) .styles-module-scss-module__-hozJa__post:hover:not([data-index="false"]) {
+  filter: opacity() grayscale(0);
+  transform: scale(1.05);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  transition: all .4s;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post .styles-module-scss-module__-hozJa__thumbnail {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+  border: 1px solid color(display-p3 .9294 .9294 .9294);
+  object-fit: cover;
+  background: #fafafa;
+  background: color(display-p3 .9804 .9804 .9804);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post .styles-module-scss-module__-hozJa__thumbnail span {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: .01px;
+  color: #b3b3b3;
+  color: color(display-p3 .702 .702 .702);
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post .styles-module-scss-module__-hozJa__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: .01px;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post .styles-module-scss-module__-hozJa__details h1 {
+  color: #000;
+  color: color(display-p3 0 0 0);
+  font: inherit;
+}
+
+.styles-module-scss-module__-hozJa__posts .styles-module-scss-module__-hozJa__grid .styles-module-scss-module__-hozJa__post .styles-module-scss-module__-hozJa__details p {
+  color: #b3b3b3;
+  color: color(display-p3 .702 .702 .702);
+  font: inherit;
+}
+
+/*# sourceMappingURL=components_posts_styles_module_scss_module_b52d8e.css.map*/
