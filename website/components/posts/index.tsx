@@ -1,5 +1,5 @@
-import Button from "@rs/design/button";
 import { getPosts } from "@/lib/mdx";
+import Button from "@rs/design/button";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 

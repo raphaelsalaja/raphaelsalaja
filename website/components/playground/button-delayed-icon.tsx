@@ -1,7 +1,7 @@
 "use client";
 
-import Button from "@rs/design/button";
 import { Showcase } from "@/components/showcase";
+import Button from "@rs/design/button";
 import type { Transition } from "motion/react";
 import { useState } from "react";
 

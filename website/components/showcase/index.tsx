@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
 
+import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import * as Select from "@rs/design/select";
 import * as Tabs from "@rs/design/tabs";
-import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import type { Transition } from "motion/react";
 
 import { Input } from "@rs/design/input";

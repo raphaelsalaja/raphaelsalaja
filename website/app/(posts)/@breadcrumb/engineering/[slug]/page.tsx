@@ -1,3 +1,5 @@
+import { getPosts } from "@/lib/mdx";
+import type { Post } from "@/types/post";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -5,8 +7,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@rs/design/breadcrumb";
-import { getPosts } from "@/lib/mdx";
-import type { Post } from "@/types/post";
 
 interface PageProps {
   params: Promise<Post>;

@@ -9,13 +9,7 @@
   "exports": {
     "./*": "./src/*/index.tsx"
   },
-  "keywords": [
-    "react",
-    "modal",
-    "motion",
-    "dialog",
-    "overlay"
-  ],
+  "keywords": ["react", "modal", "motion", "dialog", "overlay"],
   "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
   "license": "MIT",
   "dependencies": {

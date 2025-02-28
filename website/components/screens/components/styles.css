@@ -8,17 +8,10 @@
 
   border-radius: 8px;
   border: 1px dashed var(--Overlays-Stroke-Transparent, rgba(10, 10, 10, 0.05));
-  border: 1px dashed
-    var(
-      --Overlays-Stroke-Transparent,
-      color(display-p3 0.0392 0.0392 0.0392 / 0.05)
-    );
+  border: 1px dashed var(--Overlays-Stroke-Transparent, color(display-p3 0.0392 0.0392 0.0392 / 0.05));
 
   color: var(--Text-Base-Quaternary, rgba(10, 10, 10, 0.2));
-  color: var(
-    --Text-Base-Quaternary,
-    color(display-p3 0.0392 0.0392 0.0392 / 0.2)
-  );
+  color: var(--Text-Base-Quaternary, color(display-p3 0.0392 0.0392 0.0392 / 0.2));
 
   font-size: 14px;
   font-style: normal;
@@ -47,10 +40,7 @@
 
 [data-radial-context-menu-text] {
   fill: var(--Text-Base-Quaternary, rgba(10, 10, 10, 0.2));
-  fill: var(
-    --Text-Base-Quaternary,
-    color(display-p3 0.0392 0.0392 0.0392 / 0.2)
-  );
+  fill: var(--Text-Base-Quaternary, color(display-p3 0.0392 0.0392 0.0392 / 0.2));
 
   font-size: 14px;
   font-style: normal;
