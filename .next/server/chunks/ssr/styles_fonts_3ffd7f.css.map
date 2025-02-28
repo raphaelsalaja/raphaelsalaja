@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/styles/fonts.css"],"sourcesContent":["h1 {\n  font-weight: 500;\n  font-style: normal;\n  line-height: 150%;\n  letter-spacing: -0.09px;\n  font-size: 14px;\n}\n\np {\n  font-weight: 400;\n  font-style: normal;\n  line-height: 150%;\n  letter-spacing: -0.09px;\n  font-size: 14px;\n}\n\nsup {\n  color: #000;\n  color: color(display-p3 0 0 0);\n  font-size: 10px;\n  font-style: normal;\n  font-weight: 600;\n  line-height: 150%; /* 21px */\n  letter-spacing: -0.09px;\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;AAQA;;;;;;;;AAQA"}},
-    {"offset": {"line": 26, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
