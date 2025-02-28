@@ -11,7 +11,9 @@ import type { ReactElement } from "react";
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export default async function BreadcrumbSlot(props: { params: Promise<{ all: string[] }> }) {
+export default async function BreadcrumbSlot(props: {
+  params: Promise<{ all: string[] }>;
+}) {
   const params = await props.params;
   const breadcrumbItems: ReactElement<any>[] = [];
   let breadcrumbPage: ReactElement<any> = <></>;
@@ -21,16 +23,20 @@ export default async function BreadcrumbSlot(props: { params: Promise<{ all: str
     if (i === params.all.length - 1) {
       breadcrumbPage = (
         <BreadcrumbItem>
-          <BreadcrumbPage className="capitalize">{capitalize(route)}</BreadcrumbPage>
+          <BreadcrumbPage className="capitalize">
+            {capitalize(route)}
+          </BreadcrumbPage>
         </BreadcrumbItem>
       );
     } else {
       breadcrumbItems.push(
         <React.Fragment key={href}>
           <BreadcrumbItem>
-            <BreadcrumbLink href={href}>{capitalize(route)}</BreadcrumbLink>
+            <BreadcrumbLink href={href}>
+              {capitalize(route.split("-").join(" "))}
+            </BreadcrumbLink>
           </BreadcrumbItem>
-        </React.Fragment>,
+        </React.Fragment>
       );
     }
   }

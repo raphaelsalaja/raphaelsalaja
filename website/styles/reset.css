@@ -28,43 +28,30 @@ select {
   font: inherit;
 }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+a {
+  font-size: 14px;
+  font-weight: normal;
   overflow-wrap: break-word;
-}
-
-p {
+  text-wrap: balance;
+  text-decoration: none;
+  color: inherit;
+  text-wrap: balance;
   text-wrap: pretty;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 ul,
+li,
 ol {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-li {
-  list-style: none;
 }
 
 button {
@@ -97,8 +84,4 @@ input[type="number"] {
 #root,
 #__next {
   isolation: isolate;
-}
-
-nextjs-portal {
-  display: none;
 }

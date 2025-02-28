@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
 
-import "./main.css";
+import "@/styles/main.css";
 
 export const metadata: Metadata = {
   title: og.title,
@@ -32,7 +32,6 @@ export const metadata: Metadata = {
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-
   display: "swap",
 });
 
