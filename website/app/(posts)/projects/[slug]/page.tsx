@@ -1,10 +1,10 @@
 import type { Post } from "@/types/post";
 
-import { Layout } from "@/components/screens/posts";
 import { getPosts } from "@/lib/mdx";
 import { OpenGraph } from "@/lib/og";
 
 import { notFound } from "next/navigation";
+import { MDX } from "@/components/mdx";
 
 const route = "projects";
 
@@ -26,17 +26,17 @@ export async function generateMetadata(props: PageProps) {
     (post: { slug: string }) => post.slug === params.slug
   );
   const title = post ? post.title : "";
-  const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
+  // const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
 
   return {
     ...OpenGraph,
     title,
     openGraph: {
       title,
-      images: [image],
+      // images: [image],
     },
     twitter: {
-      images: [image],
+      // images: [image],
     },
   };
 }
@@ -51,5 +51,5 @@ export default async function Page(props: PageProps) {
     notFound();
   }
 
-  return <Layout post={post} route={route} />;
+  return <MDX source={post.content} />;
 }

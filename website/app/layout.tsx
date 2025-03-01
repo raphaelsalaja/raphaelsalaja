@@ -36,14 +36,22 @@ const inter = Inter({
 });
 
 export default async function RootLayout({
+  breadcrumb,
+  footer,
   children,
 }: Readonly<{
+  footer: React.ReactNode;
+  breadcrumb: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <main>{children}</main>
+        <main>
+          {breadcrumb}
+          {children}
+          {footer}
+        </main>
       </body>
     </html>
   );

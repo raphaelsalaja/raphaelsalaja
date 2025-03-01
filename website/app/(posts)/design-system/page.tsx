@@ -1,5 +1,11 @@
+import type { Post } from "@/types/post";
+
 import { Posts } from "@/components/posts";
 
-export default function Page() {
+interface PageProps {
+  params: Promise<Post>;
+}
+
+export default async function Page(props: PageProps) {
   return <Posts category="design-system" index />;
 }

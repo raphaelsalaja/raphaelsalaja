@@ -42,17 +42,13 @@ entering, exiting, and a state in between. This is the case with the Linear moda
 Take the two squares in the example below. Imagine the square on the left is the starting point and
 the square on the right is the endpoint. What's in between is the animation.
 
-<ComponentContainer>
-  <BasicExample />
-</ComponentContainer>
+ 
 
 When building out animations like this, follow this pattern: have the starting point, the endpoint,
 and then the animation between becomes much easier to figure out. Now try clicking on the square
 below to see the animation in action.
 
-<ComponentContainer code={true}>
-  <BasicLayoutExample />
-</ComponentContainer>
+ 
 
 ```tsx {25,37}
 'use client'
@@ -120,9 +116,7 @@ All you have to do is attach the `layoutId` of the same value to the two compone
 animate between, and Framer Motion does the rest. Knowing this, you can now build out animations
 like the Linear modal and even more complex ones with ease.
 
-<ComponentContainer>
-  <LinearDialog />
-</ComponentContainer>
+ 
 
 # Future Work
 

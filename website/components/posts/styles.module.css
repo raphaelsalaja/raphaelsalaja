@@ -1,0 +1,111 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    gap: 8px;
+
+    .title {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      gap: 8px;
+
+      .name {
+        font-weight: 450;
+        white-space: nowrap;
+      }
+
+      .count {
+        font-weight: 400;
+        white-space: nowrap;
+        color: var(--text-secondary);
+      }
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: stretch;
+  gap: 24px;
+
+  &:has(.entry:hover) {
+    .entry {
+      filter: opacity(0.2) grayscale(1) blur(2px);
+      transform: scale(0.98);
+
+      &:hover {
+        filter: opacity(1) grayscale(0) blur(0px);
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .entry {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+
+    .thumbnail {
+      position: relative;
+      display: flex;
+      width: 100%;
+      aspect-ratio: 16/9;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: 8px;
+      border: 1px solid var(--stroke-transparent);
+      object-fit: cover;
+      background: var(--background-primary);
+
+      .title {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0.01px;
+        color: var(--text-tertiary);
+      }
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      align-self: stretch;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: 0.01px;
+
+      .title {
+        color: #000;
+        color: color(display-p3 0 0 0);
+        font: inherit;
+      }
+
+      .date {
+        color: #b3b3b3;
+        color: color(display-p3 0.702 0.702 0.702);
+        font: inherit;
+      }
+    }
+  }
+}

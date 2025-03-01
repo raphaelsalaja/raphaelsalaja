@@ -1,3 +1,5 @@
+import nextMDX from "@next/mdx";
+
 /** @type {NextConfigPlugins} */
 const plugins = [];
 
@@ -11,7 +13,16 @@ const next = {
           as: "*.js",
         },
       },
-      resolveExtensions: ["md", ".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
+      resolveExtensions: [
+        "md",
+        ".mdx",
+        ".tsx",
+        ".ts",
+        ".jsx",
+        ".js",
+        ".mjs",
+        ".json",
+      ],
       transpilePackages: ["three"],
     },
   },
@@ -19,4 +30,8 @@ const next = {
 
 const config = () => plugins.reduce((config, plugin) => plugin(config), next);
 
-export default config;
+const withMDX = nextMDX({
+  extension: /\.mdx?$/,
+});
+
+export default withMDX(config());

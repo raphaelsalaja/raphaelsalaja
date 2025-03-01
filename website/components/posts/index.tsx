@@ -1,106 +1,104 @@
 import { getPosts } from "@/lib/mdx";
 import Button from "@rs/design/button";
+import { Seperator } from "@rs/design/seperator";
 import Link from "next/link";
-import styles from "./styles.module.scss";
-
+import styles from "./styles.module.css";
 import type { Post } from "@/types/post";
+import Image from "next/image";
 
-const Item = ({
-  post,
-  category,
-  index,
-}: {
-  post: Post;
+interface PostsProps {
+  index?: boolean;
   category: string;
-  index: boolean;
-}) => {
-  return (
-    <a
-      href={`/${category}/${post.slug}`}
-      className={styles.post}
-      key={post.slug}
-      data-index={index ? "root" : false}
-    >
-      <Thumbnail post={post} />
-      <div className={styles.details}>
-        <h1>{post.title}</h1>
-        <p>
-          {new Date(post.time.created).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "numeric",
-          })}
-        </p>
-      </div>
-    </a>
-  );
-};
+  title?: string;
+}
 
-const Thumbnail = ({ post }: { post: Post }) => {
-  if (post.media) {
-    if (post.media.video) {
+export const Posts = async ({
+  category,
+  index = false,
+  title = category
+    .split("-")
+    .join(" ")
+    .replace(/\b\w/g, (l) => l.toUpperCase()),
+}: PostsProps) => {
+  const data = await getPosts(category);
+
+  const posts = data.sort((a, b) => {
+    return Number(new Date(b.time.created)) - Number(new Date(a.time.created));
+  });
+
+  const length = posts.length;
+
+  const Thumbnail = ({ post }: { post: Post }) => {
+    if (post.media?.video) {
       return (
         <video
           src={post.media.video}
-          className={styles.thumbnail}
           autoPlay
           muted
           loop
+          playsInline
+          className={styles.thumbnail}
         >
           <track kind="captions" />
         </video>
       );
     }
 
-    if (post.media.image) {
+    if (post.media?.image) {
       return (
-        <img
-          src={post.media.image}
-          className={styles.thumbnail}
-          alt={post.title}
-        />
+        <div className={styles.thumbnail} style={{ overflow: "hidden" }}>
+          <Image
+            src={post.media.image}
+            alt={post.title || "Post image"}
+            fill
+            unoptimized
+          />
+        </div>
       );
     }
-  }
 
-  return (
-    <div className={styles.thumbnail} data-title={post.title}>
-      <span>{post.title}</span>
-    </div>
-  );
-};
-
-interface PostsProps {
-  index?: boolean;
-  category: string;
-}
-
-export const Posts = async ({ category, index = false }: PostsProps) => {
-  const data = await getPosts(category);
-
-  const length = data.length;
-
-  const posts = data.sort((a, b) => {
-    return Number(new Date(b.time.created)) - Number(new Date(a.time.created));
-  });
+    return (
+      <div className={styles.thumbnail} data-title={post.title}>
+        <span className={styles.title}>{post.title}</span>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.posts}>
       {!index && (
         <div className={styles.heading}>
-          <span className={styles.title}>
-            <h1>{category.split("-").join(" ")}</h1>
-            <sup>{length > 0 && `${length}`}</sup>
-          </span>
-
-          <Button asChild variant="ghost">
-            <Link href={`/${category}`}>View All</Link>
+          <Button asChild variant="tertiary">
+            <Link href={`/${category}`} className={styles.title}>
+              <h1 className={styles.name}>{title}</h1>
+              <h2 className={styles.count}>{length}</h2>
+            </Link>
           </Button>
+          <Seperator />
         </div>
       )}
 
-      <div className={styles.grid} data-index={index}>
-        {posts.slice(0, index ? posts.length : 2).map((post) => {
-          return Item({ post, category, index });
+      <div className={styles.grid}>
+        {posts.slice(0, index ? posts.length : 3).map((post) => {
+          return (
+            <Link
+              href={`/${category}/${post.slug}`}
+              className={styles.entry}
+              key={post.slug}
+              data-index={index ? "root" : false}
+            >
+              <Thumbnail post={post} />
+              <div className={styles.details}>
+                <h1 className={styles.title}>{post.title}</h1>
+                <p className={styles.date}>
+                  {new Date(post.time.created).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "numeric",
+                  })}
+                </p>
+              </div>
+            </Link>
+          );
         })}
       </div>
     </div>

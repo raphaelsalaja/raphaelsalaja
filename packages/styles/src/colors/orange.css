@@ -1,0 +1,29 @@
+:root {
+  --green-100: hsla(141deg 100% 44% / 100%);
+  --green-90: hsla(141deg 100% 44% / 90%);
+  --green-80: hsla(141deg 100% 44% / 80%);
+  --green-70: hsla(141deg 100% 44% / 70%);
+  --green-60: hsla(141deg 100% 44% / 60%);
+  --green-50: hsla(141deg 100% 44% / 50%);
+  --green-40: hsla(141deg 100% 44% / 40%);
+  --green-30: hsla(141deg 100% 44% / 30%);
+  --green-20: hsla(141deg 100% 44% / 20%);
+  --green-10: hsla(141deg 100% 44% / 10%);
+  --green-05: hsla(141deg 100% 44% / 5%);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --green-100: color(display-p3 0.302 0.8549 0.4392 / 100%);
+    --green-90: color(display-p3 0.302 0.8549 0.4392 / 90%);
+    --green-80: color(display-p3 0.302 0.8549 0.4392 / 80%);
+    --green-70: color(display-p3 0.302 0.8549 0.4392 / 70%);
+    --green-60: color(display-p3 0.302 0.8549 0.4392 / 60%);
+    --green-50: color(display-p3 0.302 0.8549 0.4392 / 50%);
+    --green-40: color(display-p3 0.302 0.8549 0.4392 / 40%);
+    --green-30: color(display-p3 0.302 0.8549 0.4392 / 30%);
+    --green-20: color(display-p3 0.302 0.8549 0.4392 / 20%);
+    --green-10: color(display-p3 0.302 0.8549 0.4392 / 10%);
+    --green-05: color(display-p3 0.302 0.8549 0.4392 / 5%);
+  }
+}

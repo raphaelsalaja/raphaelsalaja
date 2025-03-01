@@ -1,21 +1,46 @@
-@import url(./reset.css);
-@import url("@rs/colors/black.css");
-@import url("@rs/colors/white.css");
-@import url("@rs/colors/blue.css");
+@import url("@rs/styles/reset.css");
+@import url("@rs/styles/colors/black.css");
+@import url("@rs/styles/colors/white.css");
+@import url("@rs/styles/colors/blue.css");
+
+:root {
+  --text-primary: var(--black-100);
+  --text-secondary: var(--black-50);
+  --text-tertiary: var(--black-40);
+  --text-quaternary: var(--black-20);
+  --text-destructive: var(--red-100);
+
+  --stroke-solid: hsl(0, 0%, 92%);
+  --stroke-solid: color(display-p3 0.92 0.92 0.92);
+  --stroke-transparent: var(--black-05);
+
+  --background-primary: hsla(0, 0%, 100%, 1);
+  --background-secondary: hsla(0, 0%, 98%, 1);
+  --background-tertiary: hsla(0, 0%, 96%, 1);
+  --background-quaternary: hsla(0, 0%, 94%, 1);
+}
+
+html {
+  color: var(--text-primary);
+
+  /* scrollbar */
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;
+  scrollbar-color: var(--stroke-solid) var(--background-primary);
+}
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 
   main {
     display: flex;
+    gap: 64px;
+    padding: 96px 0px 24px 0px;
     width: 640px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 48px;
     isolation: isolate;
-    padding: 96px 0px 24px 0px;
   }
 }

@@ -1,0 +1,13 @@
+[data-shunpo-seperator] {
+  background: var(--black-05);
+
+  &[data-orientation="vertical"] {
+    width: 1px;
+    height: 100%;
+  }
+
+  &[data-orientation="horizontal"] {
+    width: 100%;
+    height: 1px;
+  }
+}

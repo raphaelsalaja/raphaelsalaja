@@ -1,0 +1,46 @@
+.footer {
+  position: relative;
+  display: flex;
+  padding: 24px 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  border-top: 1px solid var(--stroke-transparent);
+
+  .copyright {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+
+    .legal {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+  }
+
+  .links {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+
+      h1 {
+        font-size: 14px;
+        font-weight: 450;
+      }
+
+      a {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}

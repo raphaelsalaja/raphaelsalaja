@@ -5,7 +5,10 @@ import { motion } from "motion/react";
 import Image, { type ImageProps } from "next/image";
 import React from "react";
 
-export default function CustomImage({ caption, ...props }: ImageProps & { caption?: string }) {
+export default function CustomImage({
+  caption,
+  ...props
+}: ImageProps & { caption?: string }) {
   const [isImageLoading, setImageLoading] = React.useState(true);
   const { alt, ...remaining } = props;
 
@@ -45,7 +48,9 @@ export default function CustomImage({ caption, ...props }: ImageProps & { captio
           {...remaining}
         />
       </div>
-      {caption && <p className="text-center text-gray-500 text-xs">{caption}</p>}
+      {caption && (
+        <p className="text-center text-gray-500 text-xs">{caption}</p>
+      )}
     </motion.div>
   );
 }
