@@ -1,10 +1,10 @@
 import { getPosts } from "@/lib/mdx";
+import type { Frontmatter } from "@/types/frontmatter";
 import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
-import Link from "next/link";
-import styles from "./styles.module.css";
-import type { Post } from "@/types/post";
 import Image from "next/image";
+import Link from "next/link";
+import styles from "./styles.module.scss";
 
 interface PostsProps {
   index?: boolean;
@@ -28,26 +28,52 @@ export const Posts = async ({
 
   const length = posts.length;
 
-  const Thumbnail = ({ post }: { post: Post }) => {
+  const Thumbnail = ({ post }: { post: Frontmatter }) => {
+    const colors = [
+      "blue",
+      "gray",
+      "green",
+      "orange",
+      "pink",
+      "red",
+      "violet",
+      "yellow",
+      "lime",
+    ];
+
+    const postName = post.title?.toLowerCase() ?? "";
+
+    const hash = Array.from(postName).reduce(
+      (acc, char) => acc + char.charCodeAt(0),
+      0
+    );
+
+    const color = colors[hash % colors.length];
+
+    const background = `var(--${color}-9)`;
+
     if (post.media?.video) {
       return (
-        <video
-          src={post.media.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={styles.thumbnail}
-        >
-          <track kind="captions" />
-        </video>
+        <div className={styles.thumbnail}>
+          <video
+            src={post.media.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={styles.media}
+          >
+            <track kind="captions" />
+          </video>
+        </div>
       );
     }
 
     if (post.media?.image) {
       return (
-        <div className={styles.thumbnail} style={{ overflow: "hidden" }}>
+        <div className={styles.thumbnail}>
           <Image
+            className={styles.media}
             src={post.media.image}
             alt={post.title || "Post image"}
             fill
@@ -58,17 +84,23 @@ export const Posts = async ({
     }
 
     return (
-      <div className={styles.thumbnail} data-title={post.title}>
-        <span className={styles.title}>{post.title}</span>
+      <div className={styles.thumbnail}>
+        <div className={styles.details}>
+          <span className={styles.title}>{post.title}</span>
+          <span className={styles.summary}>{post.summary}</span>
+        </div>
+        <div className={styles.bottom} style={{ background }} />
       </div>
     );
   };
+
+  const isHome = !index;
 
   return (
     <div className={styles.posts}>
       {!index && (
         <div className={styles.heading}>
-          <Button asChild variant="tertiary">
+          <Button asChild variant="ghost">
             <Link href={`/${category}`} className={styles.title}>
               <h1 className={styles.name}>{title}</h1>
               <h2 className={styles.count}>{length}</h2>
@@ -78,28 +110,32 @@ export const Posts = async ({
         </div>
       )}
 
-      <div className={styles.grid}>
-        {posts.slice(0, index ? posts.length : 3).map((post) => {
-          return (
-            <Link
-              href={`/${category}/${post.slug}`}
-              className={styles.entry}
-              key={post.slug}
-              data-index={index ? "root" : false}
-            >
-              <Thumbnail post={post} />
-              <div className={styles.details}>
-                <h1 className={styles.title}>{post.title}</h1>
-                <p className={styles.date}>
-                  {new Date(post.time.created).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "numeric",
-                  })}
-                </p>
-              </div>
-            </Link>
-          );
-        })}
+      <div
+        className={styles.grid}
+        style={{
+          gridTemplateColumns: index ? "repeat(3, 1fr)" : "repeat(3, 1fr)",
+        }}
+      >
+        {posts
+          .filter((post) => {
+            if (isHome) {
+              return post.media?.image || post.media?.video;
+            }
+            return true;
+          })
+          .slice(0, index ? posts.length : 3)
+          .map((post) => {
+            return (
+              <Link
+                href={post.external ?? `/${category}/${post.slug}`}
+                className={styles.entry}
+                key={post.slug}
+                data-index={index ? "root" : false}
+              >
+                <Thumbnail post={post} />
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

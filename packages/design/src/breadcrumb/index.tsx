@@ -1,58 +1,92 @@
 import { Slot } from "@radix-ui/react-slot";
-import * as React from "react";
 
 import "./styles.css";
 
-const Breadcrumb = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithoutRef<"nav"> & {
-    separator?: React.ReactNode;
-  }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
-Breadcrumb.displayName = "Breadcrumb";
+/**
+ * A navigation component that provides a semantic breadcrumb structure.
+ * Wraps an ordered list (`<ol>`) inside a `<nav>` element.
+ *
+ * Documentation: [Breadcrumbs](https://your-docs-link.com/breadcrumbs)
+ */
+interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {}
 
-const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWithoutRef<"ol">>(
-  ({ className, ...props }, ref) => <ol ref={ref} className="breadcrumb-list" {...props} />,
-);
-BreadcrumbList.displayName = "BreadcrumbList";
+const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
+  return (
+    <nav aria-label="breadcrumb" data-shunpo-breadcrumb {...props}>
+      <ol data-shunpo-breadcrumb-list {...props} />
+    </nav>
+  );
+};
 
-const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<"li">>(
-  ({ className, ...props }, ref) => <li ref={ref} className="breadcrumb-item" {...props} />,
-);
-BreadcrumbItem.displayName = "BreadcrumbItem";
+/**
+ * Represents an individual breadcrumb item within the `Breadcrumb`.
+ * Typically wraps a `BreadcrumbLink` or `BreadcrumbPage`.
+ *
+ * Documentation: [BreadcrumbItem](https://your-docs-link.com/breadcrumbs#item)
+ */
+const BreadcrumbItem: React.FC<React.ComponentPropsWithoutRef<"li">> = (
+  props
+) => {
+  return <li data-shunpo-breadcrumb-list-item {...props} />;
+};
 
-const BreadcrumbLink = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & {
-    asChild?: boolean;
-  }
->(({ asChild, className, ...props }, ref) => {
+/**
+ * A navigational link within a breadcrumb.
+ * Can be wrapped using `asChild` to inherit styles from another component.
+ *
+ * Documentation: [BreadcrumbLink](https://your-docs-link.com/breadcrumbs#link)
+ */
+const BreadcrumbLink: React.FC<
+  React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }
+> = ({ asChild, ...props }) => {
   const Comp = asChild ? Slot : "a";
 
-  return <Comp ref={ref} className="breadcrumb-link" {...props} />;
-});
-BreadcrumbLink.displayName = "BreadcrumbLink";
+  return <Comp data-shunpo-breadcrumb-list-item-link {...props} />;
+};
 
-const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<"span">>(
-  ({ className, ...props }, ref) => (
-    <span
-      ref={ref}
-      role="link"
-      aria-disabled="true"
-      aria-current="page"
-      tabIndex={0}
-      className="breadcrumb-page"
-      {...props}
-    />
-  ),
+/**
+ * Represents the current page in the breadcrumb structure.
+ * It is visually distinct and marked as `aria-current="page"`.
+ *
+ * Documentation: [BreadcrumbPage](https://your-docs-link.com/breadcrumbs#page)
+ */
+const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (
+  props
+) => (
+  <span
+    role="link"
+    tabIndex={0}
+    aria-disabled="true"
+    aria-current="page"
+    data-shunpo-breadcrumb-current-page
+    {...props}
+  />
 );
-BreadcrumbPage.displayName = "BreadcrumbPage";
 
-const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<"li">) => (
-  <li role="presentation" aria-hidden="true" className="breadcrumb-separator" {...props}>
+/**
+ * A visual separator between breadcrumb items.
+ * Defaults to a `/` if no custom separator is provided.
+ *
+ * Documentation: [BreadcrumbSeparator](https://your-docs-link.com/breadcrumbs#separator)
+ */
+const BreadcrumbSeparator: React.FC<React.ComponentProps<"li">> = ({
+  children,
+  ...props
+}) => (
+  <span
+    role="presentation"
+    aria-hidden="true"
+    data-shunpo-breadcrumb-list-item-separator
+    {...props}
+  >
     {children ?? "/"}
-  </li>
+  </span>
 );
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
-export { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator };
+export {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+};

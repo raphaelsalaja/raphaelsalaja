@@ -6,6 +6,13 @@
 
 * {
   margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  color: inherit;
+  text-wrap: pretty;
 }
 
 body {
@@ -26,24 +33,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a {
-  font-size: 14px;
-  font-weight: normal;
-  overflow-wrap: break-word;
-  text-wrap: balance;
-  text-decoration: none;
-  color: inherit;
-  text-wrap: balance;
-  text-wrap: pretty;
 }
 
 ul,

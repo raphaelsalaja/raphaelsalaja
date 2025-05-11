@@ -6,8 +6,7 @@
     "dev": "tsup --watch --silent"
   },
   "exports": {
-    "./colors/*.css": "./dist/colors/*.css",
-    "./reset.css": "./dist/reset/reset.css"
+    "./reset.css": "./dist/reset.css"
   },
   "devDependencies": {
     "tsup": "^8.3.5",

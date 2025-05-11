@@ -1,0 +1,73 @@
+:root,
+.light,
+.light-theme {
+  --violet-1: #fdfdff;
+  --violet-2: #f7f8ff;
+  --violet-3: #eff1ff;
+  --violet-4: #e3e8ff;
+  --violet-5: #d6dcff;
+  --violet-6: #c6ceff;
+  --violet-7: #b1baff;
+  --violet-8: #959ef8;
+  --violet-9: #5f5de7;
+  --violet-10: #5451d1;
+  --violet-11: #5350cf;
+  --violet-12: #272766;
+
+  --violet-a1: #0000ff02;
+  --violet-a2: #0020ff08;
+  --violet-a3: #0020ff10;
+  --violet-a4: #002eff1c;
+  --violet-a5: #0026ff29;
+  --violet-a6: #0024ff39;
+  --violet-a7: #001eff4e;
+  --violet-a8: #0116ef6a;
+  --violet-a9: #0300daa2;
+  --violet-a10: #0500bcae;
+  --violet-a11: #0500b9af;
+  --violet-a12: #00004ad8;
+
+  --violet-contrast: #fff;
+  --violet-surface: #f5f6ffcc;
+  --violet-indicator: #5f5de7;
+  --violet-track: #5f5de7;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root,
+    .light,
+    .light-theme {
+      --violet-1: oklch(99.4% 0.0028 278.2);
+      --violet-2: oklch(98.1% 0.0101 278.2);
+      --violet-3: oklch(96.1% 0.0192 278.2);
+      --violet-4: oklch(93.5% 0.0388 278.2);
+      --violet-5: oklch(90.4% 0.0578 278.2);
+      --violet-6: oklch(86.4% 0.0768 278.2);
+      --violet-7: oklch(80.8% 0.0974 278.2);
+      --violet-8: oklch(72.9% 0.13 278.2);
+      --violet-9: oklch(56% 0.203 278.2);
+      --violet-10: oklch(51.4% 0.1908 278.2);
+      --violet-11: oklch(51% 0.1908 278.2);
+      --violet-12: oklch(31.4% 0.1081 278.2);
+
+      --violet-a1: color(display-p3 0.0196 0.0196 1 / 0.008);
+      --violet-a2: color(display-p3 0.0196 0.1451 0.8784 / 0.032);
+      --violet-a3: color(display-p3 0.0078 0.1294 0.9412 / 0.063);
+      --violet-a4: color(display-p3 0.0039 0.1529 0.9294 / 0.106);
+      --violet-a5: color(display-p3 0.0039 0.1294 0.9255 / 0.157);
+      --violet-a6: color(display-p3 0.0039 0.1294 0.9294 / 0.22);
+      --violet-a7: color(display-p3 0.0039 0.098 0.9373 / 0.299);
+      --violet-a8: color(display-p3 0.0039 0.0706 0.8784 / 0.408);
+      --violet-a9: color(display-p3 0.0118 0 0.8039 / 0.636);
+      --violet-a10: color(display-p3 0.0118 0 0.6941 / 0.683);
+      --violet-a11: color(display-p3 0.0118 0 0.6863 / 0.687);
+      --violet-a12: color(display-p3 0 0 0.2745 / 0.848);
+
+      --violet-contrast: #fff;
+      --violet-surface: color(display-p3 0.9608 0.9647 1 / 0.8);
+      --violet-indicator: oklch(56% 0.203 278.2);
+      --violet-track: oklch(56% 0.203 278.2);
+    }
+  }
+}

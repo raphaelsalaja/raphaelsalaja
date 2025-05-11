@@ -1,9 +1,9 @@
-import type { Post } from "@/types/post";
+import type { Frontmatter } from "@/types/frontmatter";
 
 import { Posts } from "@/components/posts";
 
 interface PageProps {
-  params: Promise<Post>;
+  params: Promise<Frontmatter>;
 }
 
 export default async function Page(props: PageProps) {

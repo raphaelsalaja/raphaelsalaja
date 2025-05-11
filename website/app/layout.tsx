@@ -2,9 +2,9 @@ import { og } from "@/config/site";
 
 import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
-
+import localFont from "next/font/local";
 import "@/styles/main.css";
+import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
   title: og.title,
@@ -29,28 +29,52 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const runde = localFont({
+  src: [
+    {
+      path: "./fonts/openrunde/regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 
 export default async function RootLayout({
   breadcrumb,
-  footer,
   children,
+  footer,
 }: Readonly<{
-  footer: React.ReactNode;
   breadcrumb: React.ReactNode;
   children: React.ReactNode;
+  footer: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={runde.className}>
       <body>
         <main>
-          {breadcrumb}
-          {children}
-          {footer}
+          <Providers>
+            {/* <QueryClientProvider client={client}> */}
+            {breadcrumb}
+            {children}
+            {footer}
+            {/* </QueryClientProvider> */}
+          </Providers>
         </main>
       </body>
     </html>

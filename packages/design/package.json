@@ -9,7 +9,13 @@
   "exports": {
     "./*": "./src/*/index.tsx"
   },
-  "keywords": ["react", "modal", "motion", "dialog", "overlay"],
+  "keywords": [
+    "react",
+    "modal",
+    "motion",
+    "dialog",
+    "overlay"
+  ],
   "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -19,7 +25,11 @@
     "clsx": "^2.1.1",
     "esbuild-sass-plugin": "^3.3.1",
     "motion": "^11.18.2",
-    "react": "19.0.0"
+    "react": "19.0.0",
+    "slate": "^0.112.0",
+    "slate-history": "^0.113.1",
+    "slate-react": "^0.112.1",
+    "use-sound": "^4.0.3"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

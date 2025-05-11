@@ -10,7 +10,7 @@
     "module": "esnext",
     "noEmit": true,
     "resolveJsonModule": true,
-    "target": "es5",
+    "target": "es6",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
@@ -21,5 +21,16 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.json",
+    "src/**/*",
+    "website/**/*"
+  ]
 }

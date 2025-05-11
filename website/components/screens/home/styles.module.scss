@@ -4,3 +4,32 @@
   align-items: flex-start;
   gap: 64px;
 }
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    h1 {
+      font-weight: 500;
+    }
+  }
+
+  .about {
+    color: var(--text-secondary);
+    line-height: 150%;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+}

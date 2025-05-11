@@ -1,0 +1,2534 @@
+// AUTO-GENERATED FILE — DO NOT EDIT
+// Generated with scripts/generate-timezone-meta.js
+
+export const timeZoneMeta = [
+  {
+    "value": "Pacific/Niue",
+    "label": "Niue Time (NUT)",
+    "abbreviation": "NUT",
+    "country": "Niue",
+    "continent": "Oceania",
+    "offset": -660
+  },
+  {
+    "value": "Pacific/Midway",
+    "label": "Samoa Time (SST)",
+    "abbreviation": "SST",
+    "country": "United States Minor Outlying Islands",
+    "continent": "Oceania",
+    "offset": -660
+  },
+  {
+    "value": "Pacific/Pago_Pago",
+    "label": "Samoa Time (SST)",
+    "abbreviation": "SST",
+    "country": "American Samoa",
+    "continent": "Oceania",
+    "offset": -660
+  },
+  {
+    "value": "Pacific/Rarotonga",
+    "label": "Cook Islands Time (CKT)",
+    "abbreviation": "CKT",
+    "country": "Cook Islands",
+    "continent": "Oceania",
+    "offset": -600
+  },
+  {
+    "value": "Pacific/Honolulu",
+    "label": "Hawaii-Aleutian Time (HAST)",
+    "abbreviation": "HAST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -600
+  },
+  {
+    "value": "Pacific/Tahiti",
+    "label": "Tahiti Time (TAHT)",
+    "abbreviation": "TAHT",
+    "country": "French Polynesia",
+    "continent": "Oceania",
+    "offset": -600
+  },
+  {
+    "value": "Pacific/Marquesas",
+    "label": "Marquesas Time (MART)",
+    "abbreviation": "MART",
+    "country": "French Polynesia",
+    "continent": "Oceania",
+    "offset": -570
+  },
+  {
+    "value": "Pacific/Gambier",
+    "label": "Gambier Time (GAMT)",
+    "abbreviation": "GAMT",
+    "country": "French Polynesia",
+    "continent": "Oceania",
+    "offset": -540
+  },
+  {
+    "value": "America/Adak",
+    "label": "Hawaii-Aleutian Time (HAST)",
+    "abbreviation": "HAST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -600
+  },
+  {
+    "value": "America/Anchorage",
+    "label": "Alaska Time (AKST)",
+    "abbreviation": "AKST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -540
+  },
+  {
+    "value": "Pacific/Pitcairn",
+    "label": "Pitcairn Time (PST)",
+    "abbreviation": "PST",
+    "country": "Pitcairn",
+    "continent": "Oceania",
+    "offset": -480
+  },
+  {
+    "value": "America/Hermosillo",
+    "label": "Mexican Pacific Time (GMT-7)",
+    "abbreviation": "GMT-7",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Phoenix",
+    "label": "Mountain Time (MST)",
+    "abbreviation": "MST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Los_Angeles",
+    "label": "Pacific Time (PST)",
+    "abbreviation": "PST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -480
+  },
+  {
+    "value": "America/Tijuana",
+    "label": "Pacific Time (PST)",
+    "abbreviation": "PST",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -480
+  },
+  {
+    "value": "America/Vancouver",
+    "label": "Pacific Time (PST)",
+    "abbreviation": "PST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -480
+  },
+  {
+    "value": "America/Whitehorse",
+    "label": "Yukon Time (YT)",
+    "abbreviation": "YT",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Belize",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Belize",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Guatemala",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Guatemala",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Managua",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Nicaragua",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Mexico_City",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Costa_Rica",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Costa Rica",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/El_Salvador",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "El Salvador",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Regina",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Tegucigalpa",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Honduras",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "Pacific/Easter",
+    "label": "Easter Island Time (EAST)",
+    "abbreviation": "EAST",
+    "country": "Chile",
+    "continent": "South America",
+    "offset": -360
+  },
+  {
+    "value": "Pacific/Galapagos",
+    "label": "Galapagos Time (GALT)",
+    "abbreviation": "GALT",
+    "country": "Ecuador",
+    "continent": "South America",
+    "offset": -360
+  },
+  {
+    "value": "America/Edmonton",
+    "label": "Mountain Time (MST)",
+    "abbreviation": "MST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Ciudad_Juarez",
+    "label": "Mountain Time (MST)",
+    "abbreviation": "MST",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Denver",
+    "label": "Mountain Time (MST)",
+    "abbreviation": "MST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -420
+  },
+  {
+    "value": "America/Rio_Branco",
+    "label": "Acre Time (ACT)",
+    "abbreviation": "ACT",
+    "country": "Brazil",
+    "continent": "South America",
+    "offset": -300
+  },
+  {
+    "value": "America/Chicago",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Matamoros",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Winnipeg",
+    "label": "Central Time (CST)",
+    "abbreviation": "CST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -360
+  },
+  {
+    "value": "America/Bogota",
+    "label": "Colombia Time (COT)",
+    "abbreviation": "COT",
+    "country": "Colombia",
+    "continent": "South America",
+    "offset": -300
+  },
+  {
+    "value": "America/Atikokan",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Cancun",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Mexico",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Cayman",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Cayman Islands",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Jamaica",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Jamaica",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Panama",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Panama",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Guayaquil",
+    "label": "Ecuador Time (ECT)",
+    "abbreviation": "ECT",
+    "country": "Ecuador",
+    "continent": "South America",
+    "offset": -300
+  },
+  {
+    "value": "America/Lima",
+    "label": "Peru Time (PET)",
+    "abbreviation": "PET",
+    "country": "Peru",
+    "continent": "South America",
+    "offset": -300
+  },
+  {
+    "value": "America/Manaus",
+    "label": "Amazon Time (AMT)",
+    "abbreviation": "AMT",
+    "country": "Brazil",
+    "continent": "South America",
+    "offset": -240
+  },
+  {
+    "value": "America/St_Kitts",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saint Kitts and Nevis",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Blanc-Sablon",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Montserrat",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Montserrat",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Barbados",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Barbados",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Port_of_Spain",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Trinidad and Tobago",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Martinique",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Martinique",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/St_Lucia",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saint Lucia",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/St_Barthelemy",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saint Barthelemy",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/St_Vincent",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saint Vincent and the Grenadines",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Kralendijk",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Bonaire, Saint Eustatius and Saba ",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Guadeloupe",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Guadeloupe",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Marigot",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saint Martin",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Aruba",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Aruba",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Lower_Princes",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Sint Maarten",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Tortola",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "British Virgin Islands",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Dominica",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Dominica",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/St_Thomas",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "U.S. Virgin Islands",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Grenada",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Grenada",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Antigua",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Antigua and Barbuda",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Puerto_Rico",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Puerto Rico",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Santo_Domingo",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Dominican Republic",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Anguilla",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Anguilla",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Curacao",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Curacao",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/La_Paz",
+    "label": "Bolivia Time (BOT)",
+    "abbreviation": "BOT",
+    "country": "Bolivia",
+    "continent": "South America",
+    "offset": -240
+  },
+  {
+    "value": "America/Santiago",
+    "label": "Chile Time (CLT)",
+    "abbreviation": "CLT",
+    "country": "Chile",
+    "continent": "South America",
+    "offset": -240
+  },
+  {
+    "value": "America/Havana",
+    "label": "Cuba Time (CST)",
+    "abbreviation": "CST",
+    "country": "Cuba",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Grand_Turk",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Turks and Caicos Islands",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Nassau",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Bahamas",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/New_York",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "United States",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Port-au-Prince",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Haiti",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Toronto",
+    "label": "Eastern Time (EST)",
+    "abbreviation": "EST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -300
+  },
+  {
+    "value": "America/Guyana",
+    "label": "Guyana Time (GYT)",
+    "abbreviation": "GYT",
+    "country": "Guyana",
+    "continent": "South America",
+    "offset": -240
+  },
+  {
+    "value": "America/Asuncion",
+    "label": "Paraguay Time (PYT)",
+    "abbreviation": "PYT",
+    "country": "Paraguay",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/Caracas",
+    "label": "Venezuela Time (VET)",
+    "abbreviation": "VET",
+    "country": "Venezuela",
+    "continent": "South America",
+    "offset": -240
+  },
+  {
+    "value": "America/Argentina/Buenos_Aires",
+    "label": "Argentina Time (ART)",
+    "abbreviation": "ART",
+    "country": "Argentina",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/Halifax",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "Atlantic/Bermuda",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Bermuda",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Thule",
+    "label": "Atlantic Time (AST)",
+    "abbreviation": "AST",
+    "country": "Greenland",
+    "continent": "North America",
+    "offset": -240
+  },
+  {
+    "value": "America/Sao_Paulo",
+    "label": "Brasilia Time (BRT)",
+    "abbreviation": "BRT",
+    "country": "Brazil",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "Antarctica/Palmer",
+    "label": "Chile Time (CLT)",
+    "abbreviation": "CLT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": -180
+  },
+  {
+    "value": "America/Punta_Arenas",
+    "label": "Chile Time (CLT)",
+    "abbreviation": "CLT",
+    "country": "Chile",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "Atlantic/Stanley",
+    "label": "Falkland Islands Time (FKST)",
+    "abbreviation": "FKST",
+    "country": "Falkland Islands",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/Cayenne",
+    "label": "French Guiana Time (GFT)",
+    "abbreviation": "GFT",
+    "country": "French Guiana",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/Paramaribo",
+    "label": "Suriname Time (SRT)",
+    "abbreviation": "SRT",
+    "country": "Suriname",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/Montevideo",
+    "label": "Uruguay Time (UYT)",
+    "abbreviation": "UYT",
+    "country": "Uruguay",
+    "continent": "South America",
+    "offset": -180
+  },
+  {
+    "value": "America/St_Johns",
+    "label": "Newfoundland Time (NST)",
+    "abbreviation": "NST",
+    "country": "Canada",
+    "continent": "North America",
+    "offset": -210
+  },
+  {
+    "value": "America/Noronha",
+    "label": "Fernando de Noronha Time (FNT)",
+    "abbreviation": "FNT",
+    "country": "Brazil",
+    "continent": "South America",
+    "offset": -120
+  },
+  {
+    "value": "Atlantic/South_Georgia",
+    "label": "South Georgia Time (GST)",
+    "abbreviation": "GST",
+    "country": "South Georgia and the South Sandwich Islands",
+    "continent": "Antarctica",
+    "offset": -120
+  },
+  {
+    "value": "America/Miquelon",
+    "label": "St. Pierre & Miquelon Time (PM)",
+    "abbreviation": "PM",
+    "country": "Saint Pierre and Miquelon",
+    "continent": "North America",
+    "offset": -180
+  },
+  {
+    "value": "America/Nuuk",
+    "label": "America/Nuuk (GMT-2)",
+    "abbreviation": "GMT-2",
+    "country": "Greenland",
+    "continent": "North America",
+    "offset": -120
+  },
+  {
+    "value": "Atlantic/Cape_Verde",
+    "label": "Cape Verde Time (CVT)",
+    "abbreviation": "CVT",
+    "country": "Cabo Verde",
+    "continent": "Africa",
+    "offset": -60
+  },
+  {
+    "value": "Atlantic/Azores",
+    "label": "Azores Time (AZOT)",
+    "abbreviation": "AZOT",
+    "country": "Portugal",
+    "continent": "Europe",
+    "offset": -60
+  },
+  {
+    "value": "Africa/Abidjan",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Ivory Coast",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Bamako",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Mali",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Bissau",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Guinea-Bissau",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Conakry",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Guinea",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Dakar",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Senegal",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "America/Danmarkshavn",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Greenland",
+    "continent": "North America",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Freetown",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Sierra Leone",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Atlantic/St_Helena",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Saint Helena",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Accra",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Ghana",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Lome",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Togo",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Monrovia",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Liberia",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Nouakchott",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Mauritania",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Ouagadougou",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Burkina Faso",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Atlantic/Reykjavik",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Iceland",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Sao_Tome",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Sao Tome and Principe",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Banjul",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Gambia",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Algiers",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Algeria",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Tunis",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Tunisia",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Isle_of_Man",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Isle of Man",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Europe/Dublin",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Ireland",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Europe/London",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Europe/Jersey",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Jersey",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Europe/Guernsey",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Guernsey",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Bangui",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Central African Republic",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Malabo",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Equatorial Guinea",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Brazzaville",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Republic of the Congo",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Porto-Novo",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Benin",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Douala",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Cameroon",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Kinshasa",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Democratic Republic of the Congo",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Lagos",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Nigeria",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Libreville",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Gabon",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Luanda",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Angola",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Ndjamena",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Chad",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Niamey",
+    "label": "West Africa Time (WAT)",
+    "abbreviation": "WAT",
+    "country": "Niger",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Casablanca",
+    "label": "Western European Time (WET)",
+    "abbreviation": "WET",
+    "country": "Morocco",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Africa/El_Aaiun",
+    "label": "Western European Time (WET)",
+    "abbreviation": "WET",
+    "country": "Western Sahara",
+    "continent": "Africa",
+    "offset": 0
+  },
+  {
+    "value": "Atlantic/Canary",
+    "label": "Western European Time (WET)",
+    "abbreviation": "WET",
+    "country": "Spain",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Europe/Lisbon",
+    "label": "Western European Time (WET)",
+    "abbreviation": "WET",
+    "country": "Portugal",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Atlantic/Faroe",
+    "label": "Western European Time (WET)",
+    "abbreviation": "WET",
+    "country": "Faroe Islands",
+    "continent": "Europe",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Bujumbura",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Burundi",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Gaborone",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Botswana",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Harare",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Zimbabwe",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Juba",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "South Sudan",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Khartoum",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Sudan",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Kigali",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Rwanda",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Blantyre",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Malawi",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Lubumbashi",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Democratic Republic of the Congo",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Lusaka",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Zambia",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Maputo",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Mozambique",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Windhoek",
+    "label": "Central Africa Time (CAT)",
+    "abbreviation": "CAT",
+    "country": "Namibia",
+    "continent": "Africa",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Amsterdam",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "The Netherlands",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Andorra",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Andorra",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Belgrade",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Serbia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Berlin",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Germany",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Bratislava",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Slovakia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Brussels",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Belgium",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Budapest",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Hungary",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Copenhagen",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Denmark",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Gibraltar",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Gibraltar",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Ljubljana",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Slovenia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Arctic/Longyearbyen",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Svalbard and Jan Mayen",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Luxembourg",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Luxembourg",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Madrid",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Spain",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Monaco",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Monaco",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Oslo",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Norway",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Paris",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "France",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Podgorica",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Montenegro",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Prague",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Czechia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Rome",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Italy",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/San_Marino",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "San Marino",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Malta",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Malta",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Sarajevo",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Bosnia and Herzegovina",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Skopje",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "North Macedonia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Stockholm",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Sweden",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Tirane",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Albania",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Vaduz",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Liechtenstein",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Vatican",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Vatican",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Vienna",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Austria",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Warsaw",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Poland",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Zagreb",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Croatia",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Europe/Zurich",
+    "label": "Central European Time (CET)",
+    "abbreviation": "CET",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "offset": 60
+  },
+  {
+    "value": "Africa/Cairo",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Egypt",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Kaliningrad",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Tripoli",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Libya",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Antarctica/Troll",
+    "label": "Greenwich Mean Time (GMT)",
+    "abbreviation": "GMT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 0
+  },
+  {
+    "value": "Africa/Johannesburg",
+    "label": "South Africa Time (SAST)",
+    "abbreviation": "SAST",
+    "country": "South Africa",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Mbabane",
+    "label": "South Africa Time (SAST)",
+    "abbreviation": "SAST",
+    "country": "Eswatini",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Africa/Maseru",
+    "label": "South Africa Time (SAST)",
+    "abbreviation": "SAST",
+    "country": "Lesotho",
+    "continent": "Africa",
+    "offset": 120
+  },
+  {
+    "value": "Asia/Kuwait",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Kuwait",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Bahrain",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Bahrain",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Baghdad",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Iraq",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Qatar",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Qatar",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Riyadh",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Saudi Arabia",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Aden",
+    "label": "Arabian Time (AST)",
+    "abbreviation": "AST",
+    "country": "Yemen",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Amman",
+    "label": "Asia/Amman (GMT+3)",
+    "abbreviation": "GMT+3",
+    "country": "Jordan",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Damascus",
+    "label": "Asia/Damascus (GMT+3)",
+    "abbreviation": "GMT+3",
+    "country": "Syria",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Addis_Ababa",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Ethiopia",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Indian/Antananarivo",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Madagascar",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Asmara",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Eritrea",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Dar_es_Salaam",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Tanzania",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Djibouti",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Djibouti",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Kampala",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Uganda",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Indian/Mayotte",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Mayotte",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Mogadishu",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Somalia",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Indian/Comoro",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Comoros",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Africa/Nairobi",
+    "label": "East Africa Time (EAT)",
+    "abbreviation": "EAT",
+    "country": "Kenya",
+    "continent": "Africa",
+    "offset": 180
+  },
+  {
+    "value": "Europe/Athens",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Greece",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Asia/Beirut",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Lebanon",
+    "continent": "Asia",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Bucharest",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Romania",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Chisinau",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Moldova",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Asia/Hebron",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Palestinian Territory",
+    "continent": "Asia",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Helsinki",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Finland",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Kyiv",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Ukraine",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Mariehamn",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Aland Islands",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Asia/Nicosia",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Cyprus",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Riga",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Latvia",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Sofia",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Bulgaria",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Tallinn",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Estonia",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Vilnius",
+    "label": "Eastern European Time (EET)",
+    "abbreviation": "EET",
+    "country": "Lithuania",
+    "continent": "Europe",
+    "offset": 120
+  },
+  {
+    "value": "Asia/Jerusalem",
+    "label": "Israel Time (IST)",
+    "abbreviation": "IST",
+    "country": "Israel",
+    "continent": "Asia",
+    "offset": 120
+  },
+  {
+    "value": "Europe/Minsk",
+    "label": "Moscow Time (MSK)",
+    "abbreviation": "MSK",
+    "country": "Belarus",
+    "continent": "Europe",
+    "offset": 180
+  },
+  {
+    "value": "Europe/Moscow",
+    "label": "Moscow Time (MSK)",
+    "abbreviation": "MSK",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 180
+  },
+  {
+    "value": "Europe/Simferopol",
+    "label": "Moscow Time (MSK)",
+    "abbreviation": "MSK",
+    "country": "Ukraine",
+    "continent": "Europe",
+    "offset": 180
+  },
+  {
+    "value": "Antarctica/Syowa",
+    "label": "Syowa Time (SYOT)",
+    "abbreviation": "SYOT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 180
+  },
+  {
+    "value": "Europe/Istanbul",
+    "label": "Turkey Time (TRT)",
+    "abbreviation": "TRT",
+    "country": "Turkey",
+    "continent": "Asia",
+    "offset": 180
+  },
+  {
+    "value": "Asia/Tehran",
+    "label": "Iran Time (IRST)",
+    "abbreviation": "IRST",
+    "country": "Iran",
+    "continent": "Asia",
+    "offset": 210
+  },
+  {
+    "value": "Asia/Yerevan",
+    "label": "Armenia Time (AMT)",
+    "abbreviation": "AMT",
+    "country": "Armenia",
+    "continent": "Asia",
+    "offset": 240
+  },
+  {
+    "value": "Asia/Baku",
+    "label": "Azerbaijan Time (AZT)",
+    "abbreviation": "AZT",
+    "country": "Azerbaijan",
+    "continent": "Asia",
+    "offset": 240
+  },
+  {
+    "value": "Asia/Tbilisi",
+    "label": "Georgia Time (GET)",
+    "abbreviation": "GET",
+    "country": "Georgia",
+    "continent": "Asia",
+    "offset": 240
+  },
+  {
+    "value": "Asia/Dubai",
+    "label": "Gulf Time (GST)",
+    "abbreviation": "GST",
+    "country": "United Arab Emirates",
+    "continent": "Asia",
+    "offset": 240
+  },
+  {
+    "value": "Asia/Muscat",
+    "label": "Gulf Time (GST)",
+    "abbreviation": "GST",
+    "country": "Oman",
+    "continent": "Asia",
+    "offset": 240
+  },
+  {
+    "value": "Indian/Mauritius",
+    "label": "Mauritius Time (MUT)",
+    "abbreviation": "MUT",
+    "country": "Mauritius",
+    "continent": "Africa",
+    "offset": 240
+  },
+  {
+    "value": "Indian/Reunion",
+    "label": "Réunion Time (RET)",
+    "abbreviation": "RET",
+    "country": "Reunion",
+    "continent": "Africa",
+    "offset": 240
+  },
+  {
+    "value": "Europe/Samara",
+    "label": "Samara Time (SAMT)",
+    "abbreviation": "SAMT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 240
+  },
+  {
+    "value": "Indian/Mahe",
+    "label": "Seychelles Time (SCT)",
+    "abbreviation": "SCT",
+    "country": "Seychelles",
+    "continent": "Africa",
+    "offset": 240
+  },
+  {
+    "value": "Asia/Kabul",
+    "label": "Afghanistan Time (AFT)",
+    "abbreviation": "AFT",
+    "country": "Afghanistan",
+    "continent": "Asia",
+    "offset": 270
+  },
+  {
+    "value": "Indian/Kerguelen",
+    "label": "French Southern & Antarctic Time (FSAT)",
+    "abbreviation": "FSAT",
+    "country": "French Southern Territories",
+    "continent": "Antarctica",
+    "offset": 300
+  },
+  {
+    "value": "Indian/Maldives",
+    "label": "Maldives Time (MVT)",
+    "abbreviation": "MVT",
+    "country": "Maldives",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Antarctica/Mawson",
+    "label": "Mawson Time (MAWT)",
+    "abbreviation": "MAWT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Karachi",
+    "label": "Pakistan Time (PKT)",
+    "abbreviation": "PKT",
+    "country": "Pakistan",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Dushanbe",
+    "label": "Tajikistan Time (TJT)",
+    "abbreviation": "TJT",
+    "country": "Tajikistan",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Ashgabat",
+    "label": "Turkmenistan Time (TMT)",
+    "abbreviation": "TMT",
+    "country": "Turkmenistan",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Tashkent",
+    "label": "Uzbekistan Time (UZT)",
+    "abbreviation": "UZT",
+    "country": "Uzbekistan",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Yekaterinburg",
+    "label": "Yekaterinburg Time (YEKT)",
+    "abbreviation": "YEKT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 300
+  },
+  {
+    "value": "Asia/Colombo",
+    "label": "India Time (IST)",
+    "abbreviation": "IST",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "offset": 330
+  },
+  {
+    "value": "Asia/Kolkata",
+    "label": "India Time (IST)",
+    "abbreviation": "IST",
+    "country": "India",
+    "continent": "Asia",
+    "offset": 330
+  },
+  {
+    "value": "Asia/Kathmandu",
+    "label": "Nepal Time (NPT)",
+    "abbreviation": "NPT",
+    "country": "Nepal",
+    "continent": "Asia",
+    "offset": 345
+  },
+  {
+    "value": "Asia/Dhaka",
+    "label": "Bangladesh Time (BST)",
+    "abbreviation": "BST",
+    "country": "Bangladesh",
+    "continent": "Asia",
+    "offset": 360
+  },
+  {
+    "value": "Asia/Thimphu",
+    "label": "Bhutan Time (BTT)",
+    "abbreviation": "BTT",
+    "country": "Bhutan",
+    "continent": "Asia",
+    "offset": 360
+  },
+  {
+    "value": "Asia/Urumqi",
+    "label": "China Time (CST)",
+    "abbreviation": "CST",
+    "country": "China",
+    "continent": "Asia",
+    "offset": 360
+  },
+  {
+    "value": "Indian/Chagos",
+    "label": "Indian Ocean Time (IOT)",
+    "abbreviation": "IOT",
+    "country": "British Indian Ocean Territory",
+    "continent": "Asia",
+    "offset": 360
+  },
+  {
+    "value": "Asia/Bishkek",
+    "label": "Kyrgyzstan Time (KGT)",
+    "abbreviation": "KGT",
+    "country": "Kyrgyzstan",
+    "continent": "Asia",
+    "offset": 360
+  },
+  {
+    "value": "Asia/Omsk",
+    "label": "Omsk Time (OMST)",
+    "abbreviation": "OMST",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 360
+  },
+  {
+    "value": "Asia/Almaty",
+    "label": "West Kazakhstan Time (AQTT)",
+    "abbreviation": "AQTT",
+    "country": "Kazakhstan",
+    "continent": "Asia",
+    "offset": 300
+  },
+  {
+    "value": "Indian/Cocos",
+    "label": "Cocos Islands Time (CCT)",
+    "abbreviation": "CCT",
+    "country": "Cocos Islands",
+    "continent": "Asia",
+    "offset": 390
+  },
+  {
+    "value": "Asia/Yangon",
+    "label": "Myanmar Time (MMT)",
+    "abbreviation": "MMT",
+    "country": "Myanmar",
+    "continent": "Asia",
+    "offset": 390
+  },
+  {
+    "value": "Indian/Christmas",
+    "label": "Christmas Island Time (CXT)",
+    "abbreviation": "CXT",
+    "country": "Christmas Island",
+    "continent": "Oceania",
+    "offset": 420
+  },
+  {
+    "value": "Antarctica/Davis",
+    "label": "Davis Time (DAVT)",
+    "abbreviation": "DAVT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Hovd",
+    "label": "Hovd Time (HOVT)",
+    "abbreviation": "HOVT",
+    "country": "Mongolia",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Bangkok",
+    "label": "Indochina Time (ICT)",
+    "abbreviation": "ICT",
+    "country": "Thailand",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Ho_Chi_Minh",
+    "label": "Indochina Time (ICT)",
+    "abbreviation": "ICT",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Phnom_Penh",
+    "label": "Indochina Time (ICT)",
+    "abbreviation": "ICT",
+    "country": "Cambodia",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Vientiane",
+    "label": "Indochina Time (ICT)",
+    "abbreviation": "ICT",
+    "country": "Laos",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Novosibirsk",
+    "label": "Novosibirsk Time (NOVT)",
+    "abbreviation": "NOVT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 420
+  },
+  {
+    "value": "Asia/Jakarta",
+    "label": "Western Indonesia Time (WIB)",
+    "abbreviation": "WIB",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "offset": 420
+  },
+  {
+    "value": "Australia/Perth",
+    "label": "Australian Western Time (AWST)",
+    "abbreviation": "AWST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Brunei",
+    "label": "Brunei Darussalam Time (BNT)",
+    "abbreviation": "BNT",
+    "country": "Brunei",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Makassar",
+    "label": "Central Indonesia Time (WITA)",
+    "abbreviation": "WITA",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Macau",
+    "label": "China Time (CST)",
+    "abbreviation": "CST",
+    "country": "Macao",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Shanghai",
+    "label": "China Time (CST)",
+    "abbreviation": "CST",
+    "country": "China",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Hong_Kong",
+    "label": "Hong Kong Time (HKT)",
+    "abbreviation": "HKT",
+    "country": "Hong Kong",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Irkutsk",
+    "label": "Irkutsk Time (IRKT)",
+    "abbreviation": "IRKT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Kuala_Lumpur",
+    "label": "Malaysia Time (MYT)",
+    "abbreviation": "MYT",
+    "country": "Malaysia",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Manila",
+    "label": "Philippine Time (PHT)",
+    "abbreviation": "PHT",
+    "country": "Philippines",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Singapore",
+    "label": "Singapore Time (SGT)",
+    "abbreviation": "SGT",
+    "country": "Singapore",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Taipei",
+    "label": "Taipei Time (TWT)",
+    "abbreviation": "TWT",
+    "country": "Taiwan",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Asia/Ulaanbaatar",
+    "label": "Ulaanbaatar Time (ULAT)",
+    "abbreviation": "ULAT",
+    "country": "Mongolia",
+    "continent": "Asia",
+    "offset": 480
+  },
+  {
+    "value": "Australia/Eucla",
+    "label": "Australian Central Western Time (ACWST)",
+    "abbreviation": "ACWST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 525
+  },
+  {
+    "value": "Asia/Dili",
+    "label": "East Timor Time (TLT)",
+    "abbreviation": "TLT",
+    "country": "Timor Leste",
+    "continent": "Oceania",
+    "offset": 540
+  },
+  {
+    "value": "Asia/Jayapura",
+    "label": "Eastern Indonesia Time (WIT)",
+    "abbreviation": "WIT",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "offset": 540
+  },
+  {
+    "value": "Asia/Tokyo",
+    "label": "Japan Time (JST)",
+    "abbreviation": "JST",
+    "country": "Japan",
+    "continent": "Asia",
+    "offset": 540
+  },
+  {
+    "value": "Asia/Pyongyang",
+    "label": "Korean Time (KST)",
+    "abbreviation": "KST",
+    "country": "North Korea",
+    "continent": "Asia",
+    "offset": 540
+  },
+  {
+    "value": "Asia/Seoul",
+    "label": "Korean Time (KST)",
+    "abbreviation": "KST",
+    "country": "South Korea",
+    "continent": "Asia",
+    "offset": 540
+  },
+  {
+    "value": "Pacific/Palau",
+    "label": "Palau Time (PWT)",
+    "abbreviation": "PWT",
+    "country": "Palau",
+    "continent": "Oceania",
+    "offset": 540
+  },
+  {
+    "value": "Asia/Chita",
+    "label": "Yakutsk Time (YAKT)",
+    "abbreviation": "YAKT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 540
+  },
+  {
+    "value": "Australia/Adelaide",
+    "label": "Australian Central Time (ACST)",
+    "abbreviation": "ACST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 570
+  },
+  {
+    "value": "Australia/Darwin",
+    "label": "Australian Central Time (ACST)",
+    "abbreviation": "ACST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 570
+  },
+  {
+    "value": "Australia/Brisbane",
+    "label": "Australian Eastern Time (AEST)",
+    "abbreviation": "AEST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Australia/Sydney",
+    "label": "Australian Eastern Time (AEST)",
+    "abbreviation": "AEST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Pacific/Guam",
+    "label": "Chamorro Time (ChST)",
+    "abbreviation": "ChST",
+    "country": "Guam",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Pacific/Saipan",
+    "label": "Chamorro Time (ChST)",
+    "abbreviation": "ChST",
+    "country": "Northern Mariana Islands",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Pacific/Chuuk",
+    "label": "Chuuk Time (CHUT)",
+    "abbreviation": "CHUT",
+    "country": "Micronesia",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Antarctica/DumontDUrville",
+    "label": "Dumont-d’Urville Time (DDUT)",
+    "abbreviation": "DDUT",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 600
+  },
+  {
+    "value": "Pacific/Port_Moresby",
+    "label": "Papua New Guinea Time (PGT)",
+    "abbreviation": "PGT",
+    "country": "Papua New Guinea",
+    "continent": "Oceania",
+    "offset": 600
+  },
+  {
+    "value": "Asia/Vladivostok",
+    "label": "Vladivostok Time (VLAT)",
+    "abbreviation": "VLAT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 600
+  },
+  {
+    "value": "Australia/Lord_Howe",
+    "label": "Lord Howe Time (LHST)",
+    "abbreviation": "LHST",
+    "country": "Australia",
+    "continent": "Oceania",
+    "offset": 630
+  },
+  {
+    "value": "Antarctica/Casey",
+    "label": "Australian Western Time (AWST)",
+    "abbreviation": "AWST",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 480
+  },
+  {
+    "value": "Pacific/Bougainville",
+    "label": "Bougainville Time (BST)",
+    "abbreviation": "BST",
+    "country": "Papua New Guinea",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Kosrae",
+    "label": "Kosrae Time (KOST)",
+    "abbreviation": "KOST",
+    "country": "Micronesia",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Noumea",
+    "label": "New Caledonia Time (NCT)",
+    "abbreviation": "NCT",
+    "country": "New Caledonia",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Norfolk",
+    "label": "Norfolk Island Time (NFT)",
+    "abbreviation": "NFT",
+    "country": "Norfolk Island",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Asia/Sakhalin",
+    "label": "Sakhalin Time (SAKT)",
+    "abbreviation": "SAKT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Guadalcanal",
+    "label": "Solomon Islands Time (SBT)",
+    "abbreviation": "SBT",
+    "country": "Solomon Islands",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Efate",
+    "label": "Vanuatu Time (VUT)",
+    "abbreviation": "VUT",
+    "country": "Vanuatu",
+    "continent": "Oceania",
+    "offset": 660
+  },
+  {
+    "value": "Pacific/Fiji",
+    "label": "Fiji Time (FJT)",
+    "abbreviation": "FJT",
+    "country": "Fiji",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Tarawa",
+    "label": "Gilbert Islands Time (GILT)",
+    "abbreviation": "GILT",
+    "country": "Kiribati",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Majuro",
+    "label": "Marshall Islands Time (MHT)",
+    "abbreviation": "MHT",
+    "country": "Marshall Islands",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Nauru",
+    "label": "Nauru Time (NRT)",
+    "abbreviation": "NRT",
+    "country": "Nauru",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Auckland",
+    "label": "New Zealand Time (NZST)",
+    "abbreviation": "NZST",
+    "country": "New Zealand",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Antarctica/McMurdo",
+    "label": "New Zealand Time (NZST)",
+    "abbreviation": "NZST",
+    "country": "Antarctica",
+    "continent": "Antarctica",
+    "offset": 720
+  },
+  {
+    "value": "Asia/Kamchatka",
+    "label": "Petropavlovsk-Kamchatski Time (PETT)",
+    "abbreviation": "PETT",
+    "country": "Russia",
+    "continent": "Europe",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Funafuti",
+    "label": "Tuvalu Time (TVT)",
+    "abbreviation": "TVT",
+    "country": "Tuvalu",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Wake",
+    "label": "Wake Island Time (WAKT)",
+    "abbreviation": "WAKT",
+    "country": "United States Minor Outlying Islands",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Wallis",
+    "label": "Wallis & Futuna Time (WFT)",
+    "abbreviation": "WFT",
+    "country": "Wallis and Futuna",
+    "continent": "Oceania",
+    "offset": 720
+  },
+  {
+    "value": "Pacific/Chatham",
+    "label": "Chatham Time (CHAST)",
+    "abbreviation": "CHAST",
+    "country": "New Zealand",
+    "continent": "Oceania",
+    "offset": 765
+  },
+  {
+    "value": "Pacific/Apia",
+    "label": "Apia Time (WST)",
+    "abbreviation": "WST",
+    "country": "Samoa",
+    "continent": "Oceania",
+    "offset": 780
+  },
+  {
+    "value": "Pacific/Kanton",
+    "label": "Phoenix Islands Time (PHOT)",
+    "abbreviation": "PHOT",
+    "country": "Kiribati",
+    "continent": "Oceania",
+    "offset": 780
+  },
+  {
+    "value": "Pacific/Fakaofo",
+    "label": "Tokelau Time (TKT)",
+    "abbreviation": "TKT",
+    "country": "Tokelau",
+    "continent": "Oceania",
+    "offset": 780
+  },
+  {
+    "value": "Pacific/Tongatapu",
+    "label": "Tonga Time (TOT)",
+    "abbreviation": "TOT",
+    "country": "Tonga",
+    "continent": "Oceania",
+    "offset": 780
+  },
+  {
+    "value": "Pacific/Kiritimati",
+    "label": "Line Islands Time (LINT)",
+    "abbreviation": "LINT",
+    "country": "Kiribati",
+    "continent": "Oceania",
+    "offset": 840
+  }
+] as const;
+
+export type TimeZoneMeta = typeof timeZoneMeta[number];
+
+export type TimeZone = TimeZoneMeta["value"];
+export type TimeZoneLabel = TimeZoneMeta["label"];
+export type TimeZoneAbbreviation = TimeZoneMeta["abbreviation"];
+export type TimeZoneCountry = TimeZoneMeta["country"];
+export type TimeZoneContinent = TimeZoneMeta["continent"];
+export type TimeZoneOffset = TimeZoneMeta["offset"];

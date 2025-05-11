@@ -1,32 +1,52 @@
 @import url("@rs/styles/reset.css");
-@import url("@rs/styles/colors/black.css");
-@import url("@rs/styles/colors/white.css");
-@import url("@rs/styles/colors/blue.css");
+
+@import url("@rs/colors/black.css");
+@import url("@rs/colors/white.css");
+
+@import url("@rs/colors/blue.css");
+@import url("@rs/colors/green.css");
+@import url("@rs/colors/orange.css");
+@import url("@rs/colors/pink.css");
+@import url("@rs/colors/red.css");
+@import url("@rs/colors/violet.css");
+@import url("@rs/colors/yellow.css");
+@import url("@rs/colors/gray.css");
+@import url("@rs/colors/lime.css");
 
 :root {
-  --text-primary: var(--black-100);
-  --text-secondary: var(--black-50);
-  --text-tertiary: var(--black-40);
-  --text-quaternary: var(--black-20);
-  --text-destructive: var(--red-100);
+  /* text */
+  --text-primary: var(--gray-12);
+  --text-secondary: var(--gray-11);
+  --text-tertiary: var(--gray-10);
+  --text-quaternary: var(--gray-9);
 
-  --stroke-solid: hsl(0, 0%, 92%);
-  --stroke-solid: color(display-p3 0.92 0.92 0.92);
-  --stroke-transparent: var(--black-05);
+  /* stroke */
+  --stroke: var(--gray-3);
+  --stroke-alpha: var(--gray-a3);
 
-  --background-primary: hsla(0, 0%, 100%, 1);
-  --background-secondary: hsla(0, 0%, 98%, 1);
-  --background-tertiary: hsla(0, 0%, 96%, 1);
-  --background-quaternary: hsla(0, 0%, 94%, 1);
+  /* background */
+  --background-primary: #fff;
+  --background-secondary: var(--gray-2);
+  --background-tertiary: var(--gray-3);
+  --background-quaternary: var(--gray-4);
+
+  /* destructive */
+  --destructive-text: var(--red-9);
+  --destructive-background: var(--red-9);
+
+  /* accent */
+  --accent-text: var(--blue-1);
+  --accent-background: var(--blue-9);
+
+  /* box shadows */
+  --box-shadow-component: rgba(0, 0, 0, 0.125) 0px 3px 6px -2px;
 }
 
 html {
   color: var(--text-primary);
-
-  /* scrollbar */
+  /* scrollbar-width: thin;
   scrollbar-gutter: stable both-edges;
-  scrollbar-width: thin;
-  scrollbar-color: var(--stroke-solid) var(--background-primary);
+  scrollbar-color: var(--stroke) var(--background-primary); */
 }
 
 body {
@@ -38,7 +58,7 @@ body {
     display: flex;
     gap: 64px;
     padding: 96px 0px 24px 0px;
-    width: 640px;
+    width: 768px;
     flex-direction: column;
     align-items: flex-start;
     isolation: isolate;

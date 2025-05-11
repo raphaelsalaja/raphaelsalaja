@@ -1,0 +1,71 @@
+.dark,
+.dark-theme {
+  --orange-1: #000;
+  --orange-2: #190e0a;
+  --orange-3: #32170c;
+  --orange-4: #4b1700;
+  --orange-5: #5b2104;
+  --orange-6: #6b3015;
+  --orange-7: #834023;
+  --orange-8: #a8532d;
+  --orange-9: #fd6400;
+  --orange-10: #ef5700;
+  --orange-11: #ff9c6d;
+  --orange-12: #ffdbc9;
+
+  --orange-a1: #00000000;
+  --orange-a2: #ff8f6619;
+  --orange-a3: #ff763e32;
+  --orange-a4: #ff4f004b;
+  --orange-a5: #ff5d0c5b;
+  --orange-a6: #ff73336b;
+  --orange-a7: #ff7d4583;
+  --orange-a8: #ff7e45a8;
+  --orange-a9: #ff6500fd;
+  --orange-a10: #ff5d00ef;
+  --orange-a11: #ff9c6d;
+  --orange-a12: #ffdbc9;
+
+  --orange-contrast: #fff;
+  --orange-surface: #321c1480;
+  --orange-indicator: #fd6400;
+  --orange-track: #fd6400;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .dark,
+    .dark-theme {
+      --orange-1: oklch(0% 0.0127 43.14);
+      --orange-2: oklch(17.8% 0.0205 43.14);
+      --orange-3: oklch(24.2% 0.0483 43.14);
+      --orange-4: oklch(28.5% 0.085 43.14);
+      --orange-5: oklch(33% 0.0926 43.14);
+      --orange-6: oklch(38.4% 0.0927 43.14);
+      --orange-7: oklch(45.2% 0.1011 43.14);
+      --orange-8: oklch(54% 0.124 43.14);
+      --orange-9: oklch(69% 0.2039 43.14);
+      --orange-10: oklch(65.2% 0.2039 43.14);
+      --orange-11: oklch(79.9% 0.1741 43.14);
+      --orange-12: oklch(92.5% 0.0559 43.14);
+
+      --orange-a1: color(display-p3 0 0 0 / 0);
+      --orange-a2: color(display-p3 0.9922 0.6039 0.4745 / 0.091);
+      --orange-a3: color(display-p3 1 0.5216 0.3059 / 0.181);
+      --orange-a4: color(display-p3 1 0.3765 0.0902 / 0.271);
+      --orange-a5: color(display-p3 1 0.4431 0.1569 / 0.33);
+      --orange-a6: color(display-p3 1 0.5098 0.2824 / 0.393);
+      --orange-a7: color(display-p3 1 0.5569 0.3451 / 0.479);
+      --orange-a8: color(display-p3 1 0.5608 0.3451 / 0.616);
+      --orange-a9: color(display-p3 1 0.4667 0.1922 / 0.922);
+      --orange-a10: color(display-p3 1 0.4353 0.1804 / 0.871);
+      --orange-a11: color(display-p3 1 0.6667 0.4902 / 0.946);
+      --orange-a12: color(display-p3 1 0.8824 0.8157 / 0.977);
+
+      --orange-contrast: #fff;
+      --orange-surface: color(display-p3 0.1804 0.1176 0.0863 / 0.5);
+      --orange-indicator: oklch(69% 0.2039 43.14);
+      --orange-track: oklch(69% 0.2039 43.14);
+    }
+  }
+}
