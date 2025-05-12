@@ -1,8 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-
-import type { Frontmatter } from "@/types/frontmatter";
 import matter from "gray-matter";
+import type { Frontmatter } from "@/types/frontmatter";
 
 function readFile(filePath: string): Frontmatter | null {
   try {
@@ -32,14 +31,18 @@ function getFiles(dir: string): string[] {
 }
 
 export function getPosts(directory: string): Frontmatter[] {
-  const files = getFiles(
-    path.join(process.cwd(), "app", "(posts)", directory, "posts")
-  );
+  const files = getFiles(path.join(process.cwd(), "app", "(posts)", directory, "posts"));
   return files
-    .map((file) =>
-      readFile(
-        path.join(process.cwd(), "app", "(posts)", directory, "posts", file)
-      )
-    )
+    .map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file)))
     .filter((post): post is Frontmatter => post !== null);
+}
+
+export function getArchiveMedia(): string[] {
+  const mediaDir = path.join(process.cwd(), "public", "posts", "archive");
+  try {
+    return fs.readdirSync(mediaDir).filter((file) => /\.(jpg|jpeg|png|gif|mp4|webm)$/i.test(file));
+  } catch (error) {
+    console.error(`Failed to read directory at ${mediaDir}:`, error);
+    return [];
+  }
 }

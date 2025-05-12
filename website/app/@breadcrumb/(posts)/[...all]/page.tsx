@@ -1,15 +1,8 @@
-import { Logo } from "@/components/logo";
-import title from "title";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@rs/design/breadcrumb";
-
-import { Fragment } from "react";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@rs/design/breadcrumb";
+import { Fragment } from "react";
+import title from "title";
+import { Logo } from "@/components/logo";
 
 interface BreadcrumbsProps {
   items: {

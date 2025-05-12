@@ -1,10 +1,9 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-
-import styles from "./styles.module.css";
-import Controller from "../icons/controller";
 import { useState } from "react";
+import Controller from "../icons/controller";
+import styles from "./styles.module.css";
 
 const slides = Array.from(Array(10).keys());
 

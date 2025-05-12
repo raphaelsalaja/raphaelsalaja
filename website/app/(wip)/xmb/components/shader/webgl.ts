@@ -1,17 +1,13 @@
+import { NUM_PARTICLES, NUM_VERTICES, RESOLUTION } from "./constants";
 import {
-  BACKGROUND_VERTEX,
   BACKGROUND_FRAGMENT,
-  FLOW_VERTEX,
+  BACKGROUND_VERTEX,
   FLOW_FRAGMENT,
-  PARTICLE_VERTEX,
+  FLOW_VERTEX,
   PARTICLE_FRAGMENT,
+  PARTICLE_VERTEX,
 } from "./shaders";
-import { NUM_VERTICES, NUM_PARTICLES, RESOLUTION } from "./constants";
-import {
-  makeFlowVertices,
-  makeParticleSeeds,
-  createBayerTexture,
-} from "./utils";
+import { createBayerTexture, makeFlowVertices, makeParticleSeeds } from "./utils";
 
 // Create WebGL draw commands
 export function createDrawCommands(regl: any) {
@@ -30,13 +26,10 @@ export function createDrawCommands(regl: any) {
     },
     uniforms: {
       color: regl.prop("color"),
-      resolution: ({
+      resolution: ({ viewportWidth, viewportHeight }: { viewportWidth: number; viewportHeight: number }) => [
         viewportWidth,
         viewportHeight,
-      }: {
-        viewportWidth: number;
-        viewportHeight: number;
-      }) => [viewportWidth, viewportHeight],
+      ],
       bayerTexture: regl.texture({
         data: createBayerTexture(),
         format: "alpha",

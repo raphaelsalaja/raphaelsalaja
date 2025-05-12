@@ -6,20 +6,19 @@ import { useState } from "react";
 
 import { useHeadingTracker } from "@/hooks/useHeadingTracker";
 import { useReadingTime } from "@/hooks/useReadingTime";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
-
 // Components
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 // Styles
 import styles from "./styles.module.css";
 import "./styles.css";
-import { MeshGradient, SteppedSimplexNoise } from "@paper-design/shaders-react";
-import Carousel from "./carousel";
 import NumberFlow, { NumberFlowGroup } from "@number-flow/react";
-import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
-import ReadingTimeTracker from "./slider";
+import { MeshGradient, SteppedSimplexNoise } from "@paper-design/shaders-react";
 import { CircularProgressbar } from "react-circular-progressbar";
+import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
+import Carousel from "./carousel";
+import ReadingTimeTracker from "./slider";
 
 interface IslandProps extends HTMLMotionProps<"div"> {}
 

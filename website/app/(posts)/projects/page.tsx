@@ -1,6 +1,5 @@
-import type { Frontmatter } from "@/types/frontmatter";
-
 import { Posts } from "@/components/posts";
+import type { Frontmatter } from "@/types/frontmatter";
 
 interface PageProps {
   params: Promise<Frontmatter>;

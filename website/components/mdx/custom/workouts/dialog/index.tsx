@@ -1,11 +1,10 @@
 "use client";
 
-import { Workouts } from "@/data/health/types";
 import { Dialog } from "@base-ui-components/react/dialog";
-import styles from "./styles.module.scss";
 import { X } from "lucide-react";
-
+import { Workouts } from "@/data/health/types";
 import { WorkoutListItem } from "./components/workout-list-item";
+import styles from "./styles.module.scss";
 
 type WorkoutHeatmapData = {
   date: string;
@@ -18,11 +17,7 @@ interface WorkoutDialogProps {
   selectedDayData: WorkoutHeatmapData | null;
 }
 
-export const WorkoutDialog: React.FC<WorkoutDialogProps> = ({
-  open,
-  onOpenChange,
-  selectedDayData,
-}) => (
+export const WorkoutDialog: React.FC<WorkoutDialogProps> = ({ open, onOpenChange, selectedDayData }) => (
   <Dialog.Root open={open} onOpenChange={onOpenChange}>
     <Dialog.Portal>
       <Dialog.Backdrop className={styles.backdrop} />

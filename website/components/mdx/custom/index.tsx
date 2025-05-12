@@ -1,13 +1,12 @@
 import type { MDXComponents } from "mdx/types";
-
-import { Caret } from "./caret";
-import { Workouts } from "./workouts";
 import { Accordion } from "./accordion";
-import { FamilyWallet } from "./family-wallet";
+import { Caret } from "./caret";
+import { Conversions } from "./conversions";
 import { Dialogs } from "./dialogs";
+import { FamilyWallet } from "./family-wallet";
 import { Nature } from "./nature";
 import { Tone } from "./tone";
-import { Conversions } from "./conversions";
+import { Workouts } from "./workouts";
 
 export const CustomComponents: Partial<MDXComponents> = {
   Accordion,

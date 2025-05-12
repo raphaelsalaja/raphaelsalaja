@@ -1,7 +1,7 @@
-import type { Frontmatter } from "@/types/frontmatter";
+import { notFound } from "next/navigation";
 import { getPosts } from "@/lib/mdx";
 import { OpenGraph } from "@/lib/og";
-import { notFound } from "next/navigation";
+import type { Frontmatter } from "@/types/frontmatter";
 
 interface PageProps {
   params: Promise<Frontmatter>;

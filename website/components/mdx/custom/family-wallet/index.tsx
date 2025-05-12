@@ -1,10 +1,4 @@
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  AccordionTrigger,
-} from "@rs/design/accordion";
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel, AccordionTrigger } from "@rs/design/accordion";
 
 import { PlusIcon } from "lucide-react";
 
@@ -27,8 +21,7 @@ export const FamilyWallet: React.FC = () => {
           </AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          Sound effects are important because they help create an immersive
-          experience for the user.
+          Sound effects are important because they help create an immersive experience for the user.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
@@ -45,8 +38,7 @@ export const FamilyWallet: React.FC = () => {
           </AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          In moderation, sound effects can enhance the user experience. However,
-          overusing them can be distracting.
+          In moderation, sound effects can enhance the user experience. However, overusing them can be distracting.
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

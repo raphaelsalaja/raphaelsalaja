@@ -12,37 +12,28 @@ export function Footer() {
         <div className={styles.column}>
           <h1>Pages</h1>
           <Button asChild variant="ghost">
-            <Link href="/">Home</Link>
+            <Link href="/projects">Projects</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/">Projects</Link>
+            <Link href="/experiments">Experiments</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/">Experiments</Link>
+            <Link href="/insights">Insights</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/">Insights</Link>
+            <Link href="/archive">Archive</Link>
           </Button>
         </div>
         <div className={styles.column}>
           <h1>Connect</h1>
           <Button asChild variant="ghost">
-            <Link href="/">Twitter</Link>
+            <Link href="https://x.com/raphaelsalaja">Twitter</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/">GitHub</Link>
+            <Link href="https://github.com/raphaelsalaja">GitHub</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="/">Email</Link>
-          </Button>
-        </div>
-        <div className={styles.column}>
-          <h1>Website</h1>
-          <Button asChild variant="ghost">
-            <Link href="/">Colophon</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/">Source</Link>
+            <Link href="emailto:raphaelsalaja@gmail.com">Email</Link>
           </Button>
         </div>
       </div>

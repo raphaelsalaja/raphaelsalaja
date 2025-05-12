@@ -1,10 +1,9 @@
 "use client";
 
+import clsx from "clsx";
 import { Check, Clipboard, Code, Terminal } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
-
-import clsx from "clsx";
 import styles from "./styles.module.css";
 
 export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {

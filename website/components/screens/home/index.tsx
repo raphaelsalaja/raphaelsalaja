@@ -1,3 +1,4 @@
+import { Archive } from "@/components/archive";
 import { Posts } from "@/components/posts";
 import styles from "./styles.module.scss";
 
@@ -11,15 +12,15 @@ export default function Home() {
           <h1>Enginering Feelings</h1>
         </div>
         <p className={styles.about}>
-          I'm someone who loves mixing different influences, genres and styles
-          to create unique, innovative work. I enjoy pushing boundaries and
-          exploring new ways to express myself without limitations.
+          I'm someone who loves mixing different influences, genres and styles to create unique, innovative work. I
+          enjoy pushing boundaries and exploring new ways to express myself without limitations.
         </p>
       </div>
       <section className={styles.sections}>
         <Posts category="projects" />
         <Posts category="experiments" />
         <Posts category="insights" />
+        <Archive />
       </section>
     </div>
   );

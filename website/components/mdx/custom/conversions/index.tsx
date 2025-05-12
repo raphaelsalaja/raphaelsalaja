@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  MeasurementQuantity,
-  MeasurementRoot,
-  MeasurementUnit,
-} from "@rs/i18n";
+import { MeasurementQuantity, MeasurementRoot, MeasurementUnit } from "@rs/i18n";
 
 import styles from "./styles.module.scss";
 

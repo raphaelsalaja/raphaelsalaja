@@ -14,9 +14,8 @@ import remarkParse from "remark-parse";
 import "@/styles/mdx/index.css";
 
 import Stage from "@/components/stage";
-
-import { CustomComponents } from "./custom";
 import { BaseComponents } from "./base";
+import { CustomComponents } from "./custom";
 
 const components: MDXComponents = {
   Stage,
@@ -28,9 +27,7 @@ export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
   return (
     <MDXRemote
       {...props}
-      components={
-        components as React.ComponentProps<typeof MDXProvider>["components"]
-      }
+      components={components as React.ComponentProps<typeof MDXProvider>["components"]}
       options={{
         mdxOptions: {
           remarkPlugins: [remarkGfm],

@@ -1,13 +1,12 @@
 "use client";
 
-import { Browser, Deployment, Dimensions, Geolocation, Source, Time } from "@/components/metadata/metadata-instruments";
 import { QuestionMarkIcon } from "@radix-ui/react-icons";
+import { clsx } from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import type React from "react";
 import { useState } from "react";
-
-import { clsx } from "clsx";
+import { Browser, Deployment, Dimensions, Geolocation, Source, Time } from "@/components/metadata/metadata-instruments";
 
 const MetadataDialog: React.FC = () => {
   const [show, setShow] = useState(false);

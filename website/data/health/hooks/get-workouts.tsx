@@ -1,7 +1,7 @@
-import { supabase } from "@/utils/supabase/client";
-import { Period } from "@/types/period";
-import { Workouts } from "../types";
 import { useQuery } from "@tanstack/react-query";
+import { Period } from "@/types/period";
+import { supabase } from "@/utils/supabase/client";
+import { Workouts } from "../types";
 
 interface GetWorkoutsOptions {
   period?: Period;
@@ -9,9 +9,7 @@ interface GetWorkoutsOptions {
   to?: Date;
 }
 
-export async function getWorkouts(
-  opts: GetWorkoutsOptions = {}
-): Promise<Workouts[]> {
+export async function getWorkouts(opts: GetWorkoutsOptions = {}): Promise<Workouts[]> {
   const now = new Date();
 
   let start: Date;
@@ -84,10 +82,7 @@ export function useWorkouts({
   enabled = true,
 }: UseWorkoutsOptions) {
   return useQuery<Workouts[], Error>({
-    queryKey: [
-      "workouts",
-      { period, from: from?.toISOString(), to: to?.toISOString() },
-    ],
+    queryKey: ["workouts", { period, from: from?.toISOString(), to: to?.toISOString() }],
     queryFn: () => getWorkouts({ period, from, to }),
     staleTime,
     refetchOnWindowFocus: true,

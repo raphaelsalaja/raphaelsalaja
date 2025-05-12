@@ -1,4 +1,4 @@
-import { RESOLUTION, NUM_PARTICLES, PARTICLE_SIZE } from "./constants";
+import { NUM_PARTICLES, PARTICLE_SIZE, RESOLUTION } from "./constants";
 
 // Helper functions for geometry creation
 export function makeFlowVertices() {
@@ -24,11 +24,7 @@ export function makeFlowVertices() {
 export function makeParticleSeeds() {
   const seeds = [];
   for (let i = 0; i < NUM_PARTICLES; i++) {
-    seeds.push(
-      Math.random(),
-      Math.random(),
-      Math.random() ** 10 * PARTICLE_SIZE + 3
-    );
+    seeds.push(Math.random(), Math.random(), Math.random() ** 10 * PARTICLE_SIZE + 3);
   }
   return seeds;
 }
@@ -99,7 +95,7 @@ export function createBayerTexture() {
     244,
     116,
     212,
-    84
+    84,
   );
 }
 

@@ -1,37 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { Workouts } from "@/data/health/types";
-import { format, fromUnixTime } from "date-fns";
 import { Dialog } from "@base-ui-components/react/dialog";
-import styles from "../styles.module.scss";
+import { format, fromUnixTime } from "date-fns";
 import { X } from "lucide-react";
 import { motion } from "motion/react";
+import React, { useState } from "react";
+import { Workouts } from "@/data/health/types";
+import { getStatistic, jsonToStatistic } from "@/data/health/utils/getStatistic";
+import { QuantityType } from "@/types/swift/healthKit/quantity";
+import styles from "../styles.module.scss";
 import { formatDuration } from "../utils/formatDuration";
 import { Metric } from "./metric";
-import {
-  getStatistic,
-  jsonToStatistic,
-} from "@/data/health/utils/getStatistic";
-import { QuantityType } from "@/types/swift/healthKit/quantity";
 
 interface WorkoutListItemProps {
   workout: Workouts;
 }
 
-export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
-  workout,
-}) => {
-  const { parts } = formatDuration(
-    workout.start_timestamp,
-    workout.end_timestamp
-  );
+export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({ workout }) => {
+  const { parts } = formatDuration(workout.start_timestamp, workout.end_timestamp);
 
   const [openDetail, setOpenDetail] = useState(false);
 
-  const statistics = jsonToStatistic(
-    Array.isArray(workout.statistics) ? workout.statistics : []
-  );
+  const statistics = jsonToStatistic(Array.isArray(workout.statistics) ? workout.statistics : []);
 
   return (
     <Dialog.Root open={openDetail} onOpenChange={setOpenDetail}>
@@ -59,9 +49,7 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
                   <div data-seperator />
                   <span data-measurement-quantity>
                     {Math.round(workout.total_energy_burned)}
-                    <span data-measurement-unit>
-                      {workout.total_energy_burned_unit}
-                    </span>
+                    <span data-measurement-unit>{workout.total_energy_burned_unit}</span>
                   </span>
                 </>
               )}
@@ -70,9 +58,7 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
                   <div data-seperator />
                   <span data-measurement-quantity>
                     {(workout.total_distance / 1000).toFixed(2)}
-                    <span data-measurement-unit>
-                      {workout.total_distance_unit}
-                    </span>
+                    <span data-measurement-unit>{workout.total_distance_unit}</span>
                   </span>
                 </>
               )}
@@ -91,9 +77,7 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
       <Dialog.Portal>
         <Dialog.Popup className={styles.popup}>
           <Dialog.Title className={styles.title}>
-            <span data-title>
-              {format(fromUnixTime(workout.start_timestamp), "eee, d MMM")}
-            </span>
+            <span data-title>{format(fromUnixTime(workout.start_timestamp), "eee, d MMM")}</span>
           </Dialog.Title>
           <Dialog.Close className={styles.close}>
             <X strokeWidth={2.5} />
@@ -110,39 +94,28 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
                 <Metric
                   color="blue"
                   label="Total Distance"
-                  value={`${((workout.total_distance ?? 0) / 1000).toFixed(
-                    2
-                  )} KM`}
+                  value={`${((workout.total_distance ?? 0) / 1000).toFixed(2)} KM`}
                 />
               )}
               <Metric
                 color="green"
                 label="Workout Time"
-                value={
-                  formatDuration(workout.start_timestamp, workout.end_timestamp)
-                    .full
-                }
+                value={formatDuration(workout.start_timestamp, workout.end_timestamp).full}
               />
               <Metric
                 color="violet"
                 label="Avg Heart Rate"
-                value={`${Math.round(
-                  getStatistic(statistics, QuantityType.heartRate)?.average ?? 0
-                )} BPM`}
+                value={`${Math.round(getStatistic(statistics, QuantityType.heartRate)?.average ?? 0)} BPM`}
               />
               <Metric
                 color="orange"
                 label="Max Heart Rate"
-                value={`${Math.round(
-                  getStatistic(statistics, QuantityType.heartRate)?.max ?? 0
-                )} BPM`}
+                value={`${Math.round(getStatistic(statistics, QuantityType.heartRate)?.max ?? 0)} BPM`}
               />
               <Metric
                 color="yellow"
                 label="Min Heart Rate"
-                value={`${Math.round(
-                  getStatistic(statistics, QuantityType.heartRate)?.min ?? 0
-                )} BPM`}
+                value={`${Math.round(getStatistic(statistics, QuantityType.heartRate)?.min ?? 0)} BPM`}
               />
             </div>
           </div>

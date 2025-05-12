@@ -1,9 +1,10 @@
-import { getPosts } from "@/lib/mdx";
-import type { Frontmatter } from "@/types/frontmatter";
 import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
 import Image from "next/image";
 import Link from "next/link";
+import { getPosts } from "@/lib/mdx";
+import type { Frontmatter } from "@/types/frontmatter";
+import { Placeholder } from "./placeholder";
 import styles from "./styles.module.scss";
 
 interface PostsProps {
@@ -29,40 +30,10 @@ export const Posts = async ({
   const length = posts.length;
 
   const Thumbnail = ({ post }: { post: Frontmatter }) => {
-    const colors = [
-      "blue",
-      "gray",
-      "green",
-      "orange",
-      "pink",
-      "red",
-      "violet",
-      "yellow",
-      "lime",
-    ];
-
-    const postName = post.title?.toLowerCase() ?? "";
-
-    const hash = Array.from(postName).reduce(
-      (acc, char) => acc + char.charCodeAt(0),
-      0
-    );
-
-    const color = colors[hash % colors.length];
-
-    const background = `var(--${color}-9)`;
-
     if (post.media?.video) {
       return (
         <div className={styles.thumbnail}>
-          <video
-            src={post.media.video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className={styles.media}
-          >
+          <video src={post.media.video} autoPlay muted loop playsInline className={styles.media}>
             <track kind="captions" />
           </video>
         </div>
@@ -72,26 +43,12 @@ export const Posts = async ({
     if (post.media?.image) {
       return (
         <div className={styles.thumbnail}>
-          <Image
-            className={styles.media}
-            src={post.media.image}
-            alt={post.title || "Post image"}
-            fill
-            unoptimized
-          />
+          <Image className={styles.media} src={post.media.image} alt={post.title || "Post image"} fill unoptimized />
         </div>
       );
     }
 
-    return (
-      <div className={styles.thumbnail}>
-        <div className={styles.details}>
-          <span className={styles.title}>{post.title}</span>
-          <span className={styles.summary}>{post.summary}</span>
-        </div>
-        <div className={styles.bottom} style={{ background }} />
-      </div>
-    );
+    return <Placeholder post={post} />;
   };
 
   const isHome = !index;
@@ -127,12 +84,7 @@ export const Posts = async ({
           .map((post) => {
             if (post.disabled) {
               return (
-                <div
-                  className={styles.entry}
-                  key={post.slug}
-                  data-index={index ? "root" : false}
-                  data-disabled="true"
-                >
+                <div className={styles.entry} key={post.slug} data-index={index ? "root" : false} data-disabled="true">
                   <Thumbnail post={post} />
                 </div>
               );

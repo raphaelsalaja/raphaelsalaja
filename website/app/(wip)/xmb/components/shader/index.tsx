@@ -1,13 +1,12 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import createREGL from "regl";
 import { Pane } from "tweakpane";
-import { COLOR_PALETTE, DEFAULT_PARAMS, COLOR_NAMES } from "./constants";
+import { COLOR_NAMES, COLOR_PALETTE, DEFAULT_PARAMS } from "./constants";
+import styles from "./styles.module.css";
 import { setupCanvas } from "./utils";
 import { createDrawCommands } from "./webgl";
-
-import styles from "./styles.module.css";
 
 export default function Waves() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -67,7 +66,7 @@ export default function Waves() {
           paramRef.current.backgroundColor = COLOR_PALETTE[nextColorName];
 
           // Update the UI if needed
-          if (pane && pane.exportState) {
+          if (pane?.exportState) {
             const uiState = pane.exportState();
             if (uiState.children) {
               const colorControl = pane.children.find((c) => c.label === "Color");

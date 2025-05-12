@@ -60,36 +60,20 @@
   border-width: 0.5px;
   border-style: solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(
-    to right,
-    var(--white-a5) 0%,
-    var(--white-a1) 100%
-  );
+  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
   border-right: 0;
   border-left: 0;
   border-top: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--black-a12) 0%,
-    var(--black-a6) 100%
-  );
+  background: linear-gradient(to bottom, var(--black-a12) 0%, var(--black-a6) 100%);
 }
 .embla__viewport:after {
   bottom: 0px;
   border-width: 0.5px;
   border-style: solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(
-    to right,
-    var(--white-a5) 0%,
-    var(--white-a1) 100%
-  );
+  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
   border-right: 0;
   border-left: 0;
   border-bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--black-a6) 0%,
-    var(--black-a12) 100%
-  );
+  background: linear-gradient(to bottom, var(--black-a6) 0%, var(--black-a12) 100%);
 }

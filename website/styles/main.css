@@ -43,9 +43,11 @@
 
 html {
   color: var(--text-primary);
-  /* scrollbar-width: thin;
-  scrollbar-gutter: stable both-edges;
-  scrollbar-color: var(--stroke) var(--background-primary); */
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 }
 
 body {

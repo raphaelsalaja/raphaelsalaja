@@ -1,9 +1,5 @@
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@rs/design/breadcrumb";
 import { Logo } from "@/components/logo";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from "@rs/design/breadcrumb";
 
 export default function BreadcrumbSlot() {
   return (

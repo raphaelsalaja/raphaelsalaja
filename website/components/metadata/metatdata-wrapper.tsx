@@ -1,7 +1,7 @@
 "use client";
 
-import { MetadataDialog } from "@/components/metadata/metadata-dialog";
 import { usePathname } from "next/navigation";
+import { MetadataDialog } from "@/components/metadata/metadata-dialog";
 
 export default function MetadataDialogWrapper() {
   const pathname = usePathname();

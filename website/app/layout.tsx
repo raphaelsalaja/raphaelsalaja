@@ -1,9 +1,9 @@
-import { og } from "@/config/site";
-
 import type { Metadata } from "next";
-
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { og } from "@/config/site";
 import "@/styles/main.css";
+import clsx from "clsx";
 import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
@@ -55,6 +55,12 @@ const runde = localFont({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export default async function RootLayout({
   breadcrumb,
   children,
@@ -65,7 +71,7 @@ export default async function RootLayout({
   footer: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={runde.className}>
+    <html lang="en" className={clsx(runde.className, inter.variable)}>
       <body>
         <main>
           <Providers>

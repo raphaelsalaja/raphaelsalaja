@@ -2,8 +2,7 @@
 export const RESOLUTION = 50;
 export const NUM_PARTICLES = 400;
 export const PARTICLE_SIZE = 8;
-export const NUM_VERTICES =
-  RESOLUTION * RESOLUTION + (RESOLUTION + 2) * (RESOLUTION - 2) + 2;
+export const NUM_VERTICES = RESOLUTION * RESOLUTION + (RESOLUTION + 2) * (RESOLUTION - 2) + 2;
 
 // Color palette
 export const COLOR_PALETTE = {

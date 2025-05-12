@@ -1,17 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { formatISO, fromUnixTime } from "date-fns";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useWorkouts } from "@/data/health/hooks/get-workouts";
 import { Workouts as WorkoutTypes } from "@/data/health/types";
-import { formatISO, fromUnixTime } from "date-fns";
 import styles from "./styles.module.scss";
 import "./styles.scss";
-import { square } from "./templates";
-import { WorkoutDialog } from "./dialog";
-import { motion } from "motion/react";
 
 // @ts-ignore
 import CalHeatmap from "cal-heatmap";
+import { motion } from "motion/react";
+import { WorkoutDialog } from "./dialog";
+import { square } from "./templates";
 
 type WorkoutHeatmapData = {
   date: string;
@@ -20,23 +20,13 @@ type WorkoutHeatmapData = {
 
 export const Workouts: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const [selectedDayData, setSelectedDayData] =
-    useState<WorkoutHeatmapData | null>(null);
+  const [selectedDayData, setSelectedDayData] = useState<WorkoutHeatmapData | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const toDate = useMemo(() => new Date(), []);
-  const fromDate = useMemo(
-    () =>
-      new Date(toDate.getFullYear(), toDate.getMonth() - 1, toDate.getDate()),
-    [toDate]
-  );
+  const fromDate = useMemo(() => new Date(toDate.getFullYear(), toDate.getMonth() - 1, toDate.getDate()), [toDate]);
 
-  const {
-    data: workouts = [],
-    isLoading,
-    isError,
-    error,
-  } = useWorkouts({ from: fromDate, to: toDate });
+  const { data: workouts = [], isLoading, isError, error } = useWorkouts({ from: fromDate, to: toDate });
 
   const map = useMemo(() => {
     const m: Record<string, WorkoutHeatmapData> = {};
@@ -106,11 +96,7 @@ export const Workouts: React.FC = () => {
         {isLoading && <div style={{ width: 168, height: 168 }} />}
       </div>
 
-      <WorkoutDialog
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        selectedDayData={selectedDayData}
-      />
+      <WorkoutDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} selectedDayData={selectedDayData} />
     </motion.div>
   );
 };

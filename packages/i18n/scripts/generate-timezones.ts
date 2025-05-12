@@ -52,5 +52,3 @@ if (!existsSync(dirPath)) {
 }
 
 writeFileSync(outPath, `${content.trim()}\n`);
-
-console.log("✅ Time zone meta data written to src/data/timeZones.ts");

@@ -1,9 +1,9 @@
 "use client";
 
-import { useHeadingTracker } from "@/hooks/useHeadingTracker";
 import type { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
+import { useHeadingTracker } from "@/hooks/useHeadingTracker";
 
 import "./styles.css";
 

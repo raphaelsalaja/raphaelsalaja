@@ -22,16 +22,32 @@
 }
 
 .popup {
-  padding: 16px;
-  box-shadow:
-    0 0 0 1px var(--gray-a3),
-    0 2px 24px 0 rgba(0, 0, 0, 0.03),
-    0 4px 4px 0 rgba(0, 0, 0, 0.01),
-    0 2px 2px 0 rgba(0, 0, 0, 0.01);
+  display: flex;
+  position: relative;
+  border-radius: 4px;
+  width: 150px;
+  aspect-ratio: 1;
 
-  border-radius: 16px;
+  .image {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    border-radius: 4px;
+    z-index: 2;
+  }
 
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
+  .blur {
+    position: absolute;
+    max-width: unset;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    opacity: 0.5;
+    filter: blur(16px);
+    will-change: blur;
+    z-index: 1;
+  }
 }

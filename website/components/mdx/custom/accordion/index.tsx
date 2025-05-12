@@ -1,8 +1,8 @@
 import {
-  Accordion as AccordionRoot,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
+  Accordion as AccordionRoot,
   AccordionTrigger,
 } from "@rs/design/accordion";
 
@@ -27,8 +27,7 @@ export const Accordion: React.FC = () => {
           </AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          Sound effects are important because they help create an immersive
-          experience for the user.
+          Sound effects are important because they help create an immersive experience for the user.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
@@ -45,8 +44,7 @@ export const Accordion: React.FC = () => {
           </AccordionTrigger>
         </AccordionHeader>
         <AccordionPanel>
-          In moderation, sound effects can enhance the user experience. However,
-          overusing them can be distracting.
+          In moderation, sound effects can enhance the user experience. However, overusing them can be distracting.
         </AccordionPanel>
       </AccordionItem>
     </AccordionRoot>

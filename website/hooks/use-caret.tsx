@@ -25,13 +25,7 @@ export function useCaret(ref: React.RefObject<HTMLElement>): Caret {
     try {
       const el = ref.current;
       const sel = window.getSelection();
-      if (
-        !el ||
-        !sel ||
-        sel.rangeCount === 0 ||
-        !el.contains(sel.anchorNode) ||
-        !el.contains(sel.focusNode)
-      ) {
+      if (!el || !sel || sel.rangeCount === 0 || !el.contains(sel.anchorNode) || !el.contains(sel.focusNode)) {
         return;
       }
 
@@ -42,10 +36,7 @@ export function useCaret(ref: React.RefObject<HTMLElement>): Caret {
       if (sel.isCollapsed && rects.length === 0) {
         const br = range.getBoundingClientRect();
         const style = window.getComputedStyle(el);
-        const lineHeight =
-          Number.parseFloat(style.lineHeight) ||
-          Number.parseFloat(style.fontSize) ||
-          16;
+        const lineHeight = Number.parseFloat(style.lineHeight) || Number.parseFloat(style.fontSize) || 16;
         rects = [new DOMRect(br.left, br.top, 1, lineHeight)];
       }
 
