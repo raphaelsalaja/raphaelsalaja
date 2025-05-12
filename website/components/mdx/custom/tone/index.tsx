@@ -1,93 +1,83 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-
+import Slider from "./slider";
 import styles from "./styles.module.scss";
-import { Seperator } from "@rs/design/seperator";
 
-enum Positions {
-  START = -48,
-  END = 48,
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
+export function createVibe(vibe: number = 0) {
+  const v = Math.max(0, vibe);
+  const t0 = v / (v + 50);
+  const w = Math.sin(t0 * (Math.PI / 2));
+
+  return {
+    type: "spring" as const,
+    stiffness: lerp(400, 1000, w),
+    damping: lerp(40, 80, w),
+    mass: lerp(1, 10, w),
+  };
 }
 
 export const Tone: React.FC = () => {
-  const [position, setPosition] = useState<Positions>(Positions.START);
+  const [visible, setVisible] = useState(false);
+  const [tone, setTone] = useState(50);
+  const transition = createVibe(tone);
 
-  const isStart = position === Positions.START;
-  const nextPosition = isStart ? Positions.END : Positions.START;
+  useEffect(() => {
+    let mounted = true;
+    let iteration = 0;
 
-  const sharedStyles = {
-    scale: isStart ? 0.4 : 1,
-    background: isStart ? "var(--pink-4)" : "var(--pink-9)",
-  };
+    const wait = (ms: number) =>
+      new Promise<void>((res) => setTimeout(res, ms));
+
+    (async () => {
+      while (mounted) {
+        setVisible(true);
+        await wait(2000);
+
+        setVisible(false);
+        await wait(2000);
+
+        if (iteration === 0) {
+          setTone(0);
+        } else if (iteration === 1) {
+          setTone(100);
+        } else {
+          setTone(Math.random() * 100);
+        }
+        iteration++;
+        await wait(2000);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
-        <div
-          className={styles.circle}
-          style={{
-            transform: `translateX(${position}px) scale(${sharedStyles.scale})`,
-            background: sharedStyles.background,
-          }}
-        />
-        <div className={styles.timeline}>
-          <div className={styles.track}>
-            <div
-              className={`${styles.tick}`}
-              style={{ left: 0 }}
-              data-label="Initial"
-            />
-            <div
-              className={`${styles.tick}`}
-              style={{ right: 0 }}
-              data-label="Target"
-            />
-          </div>
-        </div>
-      </div>
-
-      <Seperator
-        className={styles.separator}
-        orientation="vertical"
-        variant="dashed"
+      <motion.div
+        animate={{
+          opacity: visible ? 1 : 0,
+          scale: visible ? 1 : 0,
+        }}
+        transition={transition}
+        className={styles.popup}
       />
 
-      <div className={styles.content}>
-        <motion.div
-          className={styles.circle}
-          animate={{
-            x: position,
-            ...sharedStyles,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 150,
-            damping: 19,
-            mass: 1.2,
-            onComplete: () => {
-              setTimeout(() => {
-                setPosition(nextPosition);
-              }, 500);
-            },
-          }}
-        />
-        <div className={styles.timeline}>
-          <div className={styles.track}>
-            <div
-              className={`${styles.tick}`}
-              style={{ left: 0 }}
-              data-label="Initial"
-            />
-            <div
-              className={`${styles.tick}`}
-              style={{ right: 0 }}
-              data-label="Target"
-            />
-          </div>
-        </div>
-      </div>
+      <Slider
+        value={tone}
+        onValueChange={(value) => {
+          if (typeof value === "number") {
+            setTone(value);
+          }
+        }}
+      />
     </div>
   );
 };

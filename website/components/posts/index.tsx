@@ -125,6 +125,19 @@ export const Posts = async ({
           })
           .slice(0, index ? posts.length : 3)
           .map((post) => {
+            if (post.disabled) {
+              return (
+                <div
+                  className={styles.entry}
+                  key={post.slug}
+                  data-index={index ? "root" : false}
+                  data-disabled="true"
+                >
+                  <Thumbnail post={post} />
+                </div>
+              );
+            }
+
             return (
               <Link
                 href={post.external ?? `/${category}/${post.slug}`}

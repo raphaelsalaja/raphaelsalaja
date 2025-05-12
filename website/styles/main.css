@@ -1,8 +1,7 @@
+@import url("@rs/transitions/springs.css");
 @import url("@rs/styles/reset.css");
-
 @import url("@rs/colors/black.css");
 @import url("@rs/colors/white.css");
-
 @import url("@rs/colors/blue.css");
 @import url("@rs/colors/green.css");
 @import url("@rs/colors/orange.css");

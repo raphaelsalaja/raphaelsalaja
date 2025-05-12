@@ -6,6 +6,7 @@ export type Frontmatter = {
   summary?: string;
   external?: string;
   thumbnail?: string;
+  disabled?: boolean;
 
   author?: {
     name?: string;

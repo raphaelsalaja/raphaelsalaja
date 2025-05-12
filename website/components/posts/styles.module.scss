@@ -71,6 +71,10 @@
       align-items: flex-start;
       align-self: stretch;
     }
+
+    &[data-disabled="true"] {
+      cursor: not-allowed;
+    }
   }
 }
 
