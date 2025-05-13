@@ -24,7 +24,8 @@ export const useUserPreferences = (): UserPreferences => {
 
     const shortLocale = locale.split("-")[0];
     const imperialLocales = ["en-US", "en-PH", "en-LC", "mm"];
-    const unitSystem: UserPreferences["unitSystem"] = imperialLocales.includes(shortLocale) ? "imperial" : "metric";
+    const unitSystem: UserPreferences["unitSystem"] =
+      imperialLocales.indexOf(shortLocale) >= 0 ? "imperial" : "metric";
 
     setPreferences({ locale, timeZone, unitSystem });
   }, []);
@@ -32,12 +33,18 @@ export const useUserPreferences = (): UserPreferences => {
   return preferences;
 };
 
-export function useMeasurement(value: number, unit: UnitsByMeasure<MeasureKind>) {
+export function useMeasurement(
+  value: number,
+  unit: UnitsByMeasure<MeasureKind>
+) {
   const { unitSystem } = useUserPreferences();
   const [isConverted, setIsConverted] = useState(false);
 
   const original = { quantity: value, unit };
-  const converted = useMemo(() => convert(value, unit).to("best", unitSystem), [value, unit, unitSystem]);
+  const converted = useMemo(
+    () => convert(value, unit).to("best", unitSystem),
+    [value, unit, unitSystem]
+  );
 
   const display = isConverted ? converted : original;
 
