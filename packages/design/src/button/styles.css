@@ -35,12 +35,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 0 0 0);
     }
   }
 
@@ -60,12 +56,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 0 0 0);
     }
   }
 
@@ -83,12 +75,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 0 0 0);
     }
   }
 
@@ -106,12 +94,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #ff2a4b;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.2784 0.3265);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #ff2a4b;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 1 0.2784 0.3265);
     }
   }
 
@@ -130,12 +114,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #ff902c;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.5911 0.2784);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #ff902c;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 1 0.5911 0.2784);
     }
   }
 
@@ -154,12 +134,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #00fac3;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #00fac3;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
     }
   }
 
@@ -209,12 +185,8 @@
 
     &:focus-visible,
     &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+      box-shadow: 0 0 0 2px color(display-p3 1 1 1), 0 0 0 4px color(display-p3 0 0 0);
     }
   }
 

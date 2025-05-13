@@ -1,17 +1,12 @@
 "use client";
 
-import convert from "convert";
-import { useUserPreferences } from "../hooks";
-import type { UnitsByMeasure, MeasureKind } from "convert";
-import {
-  motion,
-  AnimatePresence,
-  HTMLMotionProps,
-  MotionValue,
-} from "motion/react";
 import NumberFlow from "@number-flow/react";
+import convert from "convert";
+import type { MeasureKind, UnitsByMeasure } from "convert";
+import { AnimatePresence, HTMLMotionProps, motion } from "motion/react";
+import React from "react";
 import useMeasure from "react-use-measure";
-import React, { ReactNode } from "react";
+import { useUserPreferences } from "../hooks";
 
 interface MeasurementContextValue {
   original: { quantity: number; unit: UnitsByMeasure<MeasureKind> };
@@ -27,16 +22,13 @@ const defaultContextValue: MeasurementContextValue = {
   toggle: () => {},
 };
 
-const MeasurementContext =
-  React.createContext<MeasurementContextValue>(defaultContextValue);
+const MeasurementContext = React.createContext<MeasurementContextValue>(defaultContextValue);
 MeasurementContext.displayName = "MeasurementContext";
 
 export const useMeasurementContext = () => {
   const context = React.useContext(MeasurementContext);
   if (!context) {
-    throw new Error(
-      "Measurement components must be used within <MeasurementRoot>"
-    );
+    throw new Error("Measurement components must be used within <MeasurementRoot>");
   }
   return context;
 };
@@ -46,22 +38,12 @@ interface MeasurementRootProps extends HTMLMotionProps<"span"> {
   unit: UnitsByMeasure<MeasureKind>;
 }
 
-export const MeasurementRoot = ({
-  value,
-  unit,
-  ...props
-}: MeasurementRootProps) => {
+export const MeasurementRoot = ({ value, unit, ...props }: MeasurementRootProps) => {
   const { unitSystem } = useUserPreferences();
   const [isConverted, setIsConverted] = React.useState(false);
 
-  const original = React.useMemo(
-    () => ({ quantity: value, unit }),
-    [value, unit]
-  );
-  const converted = React.useMemo(
-    () => convert(value, unit).to("best", unitSystem),
-    [value, unit, unitSystem]
-  );
+  const original = React.useMemo(() => ({ quantity: value, unit }), [value, unit]);
+  const converted = React.useMemo(() => convert(value, unit).to("best", unitSystem), [value, unit, unitSystem]);
   const contextValue: MeasurementContextValue = {
     original,
     converted,

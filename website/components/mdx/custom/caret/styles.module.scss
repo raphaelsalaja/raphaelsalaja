@@ -5,18 +5,16 @@
   flex-direction: column;
   box-shadow:
     0 0 0 1px var(--gray-a4),
-    0 2px 24px 0 rgba(0, 0, 0, 0.03),
-    0 4px 4px 0 rgba(0, 0, 0, 0.01),
-    0 2px 2px 0 rgba(0, 0, 0, 0.01);
+    0 2px 24px 0 rgb(0 0 0 / 3%),
+    0 4px 4px 0 rgb(0 0 0 / 1%),
+    0 2px 2px 0 rgb(0 0 0 / 1%);
 
   .heading {
     display: flex;
     flex-direction: column;
-
-    gap: 0px;
+    gap: 0;
     align-items: baseline;
     padding: 12px;
-
     background: var(--black-a12);
 
     .date {
@@ -83,7 +81,6 @@
 
     &[data-selecting="false"] {
       animation: blink 1s ease infinite;
-
       @keyframes blink {
         50% {
           opacity: 0;

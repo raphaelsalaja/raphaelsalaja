@@ -24,9 +24,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
  *
  * Documentation: [BreadcrumbItem](https://your-docs-link.com/breadcrumbs#item)
  */
-const BreadcrumbItem: React.FC<React.ComponentPropsWithoutRef<"li">> = (
-  props
-) => {
+const BreadcrumbItem: React.FC<React.ComponentPropsWithoutRef<"li">> = (props) => {
   return <li data-shunpo-breadcrumb-list-item {...props} />;
 };
 
@@ -36,9 +34,10 @@ const BreadcrumbItem: React.FC<React.ComponentPropsWithoutRef<"li">> = (
  *
  * Documentation: [BreadcrumbLink](https://your-docs-link.com/breadcrumbs#link)
  */
-const BreadcrumbLink: React.FC<
-  React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }
-> = ({ asChild, ...props }) => {
+const BreadcrumbLink: React.FC<React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }> = ({
+  asChild,
+  ...props
+}) => {
   const Comp = asChild ? Slot : "a";
 
   return <Comp data-shunpo-breadcrumb-list-item-link {...props} />;
@@ -50,9 +49,7 @@ const BreadcrumbLink: React.FC<
  *
  * Documentation: [BreadcrumbPage](https://your-docs-link.com/breadcrumbs#page)
  */
-const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (
-  props
-) => (
+const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props) => (
   <span
     role="link"
     tabIndex={0}
@@ -69,24 +66,10 @@ const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (
  *
  * Documentation: [BreadcrumbSeparator](https://your-docs-link.com/breadcrumbs#separator)
  */
-const BreadcrumbSeparator: React.FC<React.ComponentProps<"li">> = ({
-  children,
-  ...props
-}) => (
-  <span
-    role="presentation"
-    aria-hidden="true"
-    data-shunpo-breadcrumb-list-item-separator
-    {...props}
-  >
+const BreadcrumbSeparator: React.FC<React.ComponentProps<"li">> = ({ children, ...props }) => (
+  <span role="presentation" aria-hidden="true" data-shunpo-breadcrumb-list-item-separator {...props}>
     {children ?? "/"}
   </span>
 );
 
-export {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-};
+export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator };

@@ -1,7 +1,7 @@
 .thumbnail {
   aspect-ratio: 3/2;
   object-fit: cover;
-  box-shadow: 0px 0px 0px 1px var(--stroke-alpha);
+  box-shadow: 0 0 0 1px var(--stroke-alpha);
   display: flex;
   position: relative;
   overflow: hidden;
@@ -18,10 +18,8 @@
 
     .content {
       display: flex;
-      justify-content: space-between;
+      place-content: flex-start space-between;
       align-items: flex-start;
-      align-content: flex-start;
-      gap: 8px;
       width: 100%;
       gap: 16px;
 
@@ -54,7 +52,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       width: 100%;
     }
 

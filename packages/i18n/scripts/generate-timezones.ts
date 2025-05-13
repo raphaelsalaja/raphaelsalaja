@@ -22,7 +22,7 @@ const timeZoneMeta = zones.map(
     country: tz.countryName,
     continent: tz.continentName,
     offset: tz.rawOffsetInMinutes, // in minutes
-  })
+  }),
 );
 
 // Generate stringified TypeScript export

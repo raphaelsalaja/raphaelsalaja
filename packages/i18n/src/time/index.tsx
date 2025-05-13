@@ -1,14 +1,10 @@
 "use client";
 
-import { useUserPreferences } from "../hooks";
-import { timeZoneMeta } from "../data/timeZones";
-import type {
-  TimeZone,
-  TimeZoneAbbreviation,
-  TimeZoneLabel as TZLabel,
-} from "../data/timeZones";
-import { motion, AnimatePresence, HTMLMotionProps } from "motion/react";
+import { AnimatePresence, HTMLMotionProps, motion } from "motion/react";
 import React from "react";
+import type { TimeZone, TimeZoneAbbreviation, TimeZoneLabel as TZLabel } from "../data/timeZones";
+import { timeZoneMeta } from "../data/timeZones";
+import { useUserPreferences } from "../hooks";
 
 interface TimeContextValue {
   isConverted: boolean;
@@ -35,9 +31,7 @@ export interface TimeProps extends HTMLMotionProps<"span"> {
 const normalizeZone = (zone: string | undefined): string => {
   if (!zone) return "UTC";
 
-  const exact = timeZoneMeta.find(
-    (z) => z.value === zone || z.abbreviation === zone
-  );
+  const exact = timeZoneMeta.find((z) => z.value === zone || z.abbreviation === zone);
   if (exact) return exact.value;
 
   const match = zone.match(/^GMT([+-])(\d+)$/i);
@@ -68,14 +62,8 @@ export const TimeRoot = ({ date, timeZone, ...props }: TimeProps) => {
   const preferences = useUserPreferences();
   const [isConverted, setIsConverted] = React.useState(false);
 
-  const inputDate = React.useMemo(
-    () => (typeof date === "string" ? new Date(date) : date),
-    [date]
-  );
-  const userZone = React.useMemo(
-    () => normalizeZone(preferences.timeZone),
-    [preferences.timeZone]
-  );
+  const inputDate = React.useMemo(() => (typeof date === "string" ? new Date(date) : date), [date]);
+  const userZone = React.useMemo(() => normalizeZone(preferences.timeZone), [preferences.timeZone]);
   const targetZone = React.useMemo(() => normalizeZone(timeZone), [timeZone]);
 
   const original = {

@@ -1,6 +1,8 @@
 .root {
-  --transition: all var(--elegant-spring-transition-duration)
+  --transition:
+    all var(--elegant-spring-transition-duration)
     var(--elegant-spring-timing-function);
+
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,7 +24,6 @@
   height: 100%;
   background-color: var(--lime-2);
   box-shadow: inset 0 0 0 1px var(--lime-2);
-
   user-select: none;
 }
 

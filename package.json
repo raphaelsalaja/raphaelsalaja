@@ -5,8 +5,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "build": "turbo build",
-    "build:turbo": "turbo lint && turbo build && pnpm install",
-    "format": "biome check . --fix --unsafe"
+    "build:turbo": "turbo lint && turbo build && pnpm install"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.1",

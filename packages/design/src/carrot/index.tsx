@@ -1,20 +1,11 @@
 "use client";
 
-import {
-  useMemo,
-  useRef,
-  createContext,
-  useContext,
-  Fragment,
-  useState,
-} from "react";
-
-import { useCaret } from "../hooks/use-caret";
-
-import { Editable } from "slate-react";
+import { createContext, Fragment, useContext, useMemo, useRef, useState } from "react";
+import { createEditor, Descendant, Editor } from "slate";
 import { withHistory } from "slate-history";
-import { withReact, Slate } from "slate-react";
-import { createEditor, Editor, Descendant } from "slate";
+import { Editable } from "slate-react";
+import { Slate, withReact } from "slate-react";
+import { useCaret } from "../hooks/use-caret";
 
 export type CaretState = {
   rects: DOMRect[];

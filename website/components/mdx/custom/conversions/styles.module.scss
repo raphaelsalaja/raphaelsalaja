@@ -15,7 +15,7 @@
     &::after {
       content: "";
       position: absolute;
-      inset: 2 -2px;
+      inset: 2px -2px;
       border-radius: 2px;
       background-color: var(--gray-4);
       transition: all 0.4s ease;
