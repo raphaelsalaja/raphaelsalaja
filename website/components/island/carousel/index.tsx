@@ -49,13 +49,17 @@ const Carousel: React.FC<PropType> = (props) => {
     };
 
     const slideNodes = emblaApi.slideNodes();
+    const listeners: Array<() => void> = [];
+
     slideNodes.forEach((slide, index) => {
-      slide.addEventListener("click", () => handleSlideClick(index));
+      const listener = () => handleSlideClick(index);
+      listeners.push(listener);
+      slide.addEventListener("click", listener);
     });
 
     return () => {
-      slideNodes.forEach((slide) => {
-        slide.removeEventListener("click", () => handleSlideClick(index));
+      slideNodes.forEach((slide, index) => {
+        slide.removeEventListener("click", listeners[index]);
       });
     };
   }, [emblaApi, titles]);

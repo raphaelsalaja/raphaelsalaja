@@ -69,7 +69,7 @@ export const Tone: React.FC = () => {
         }}
         className={styles.popup}
       >
-        <img alt="Tone" src="/posts/insights/tone/image.jpg" className={styles.blur} />
+        <Image alt="Tone" src="/posts/insights/tone/image.jpg" className={styles.blur} fill />
         <Image
           src="/posts/insights/tone/image.jpg"
           alt="Tone"
@@ -79,7 +79,6 @@ export const Tone: React.FC = () => {
           className={styles.image}
         />
       </motion.div>
-
       <Slider
         value={tone}
         onValueChange={(value) => {

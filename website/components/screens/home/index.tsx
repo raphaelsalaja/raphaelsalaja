@@ -12,7 +12,7 @@ export default function Home() {
           <h1>Enginering Feelings</h1>
         </div>
         <p className={styles.about}>
-          I'm someone who loves mixing different influences, genres and styles to create unique, innovative work. I
+          I&apos;m someone who loves mixing different influences, genres and styles to create unique, innovative work. I
           enjoy pushing boundaries and exploring new ways to express myself without limitations.
         </p>
       </div>

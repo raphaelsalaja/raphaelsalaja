@@ -3,6 +3,7 @@ import React from "react";
 export const Shape8: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg viewBox="0 0 200 200" fill="white" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Cross Shape</title>
       <g clipPath="url(#clip0_104_44)">
         <path
           fillRule="evenodd"

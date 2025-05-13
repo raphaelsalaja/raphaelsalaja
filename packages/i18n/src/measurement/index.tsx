@@ -1,18 +1,17 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
 import convert from "convert";
 import { useUserPreferences } from "../hooks";
 import type { UnitsByMeasure, MeasureKind } from "convert";
-import { motion, AnimatePresence } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  HTMLMotionProps,
+  MotionValue,
+} from "motion/react";
 import NumberFlow from "@number-flow/react";
 import useMeasure from "react-use-measure";
+import React, { ReactNode } from "react";
 
 interface MeasurementContextValue {
   original: { quantity: number; unit: UnitsByMeasure<MeasureKind> };
@@ -21,10 +20,19 @@ interface MeasurementContextValue {
   toggle: () => void;
 }
 
-const MeasurementContext = createContext<MeasurementContextValue | null>(null);
+const defaultContextValue: MeasurementContextValue = {
+  original: { quantity: 0, unit: "cm" as UnitsByMeasure<MeasureKind> },
+  converted: { quantity: 0, unit: "" },
+  isConverted: false,
+  toggle: () => {},
+};
+
+const MeasurementContext =
+  React.createContext<MeasurementContextValue>(defaultContextValue);
+MeasurementContext.displayName = "MeasurementContext";
 
 export const useMeasurementContext = () => {
-  const context = useContext(MeasurementContext);
+  const context = React.useContext(MeasurementContext);
   if (!context) {
     throw new Error(
       "Measurement components must be used within <MeasurementRoot>"
@@ -33,22 +41,24 @@ export const useMeasurementContext = () => {
   return context;
 };
 
-interface MeasurementRootProps {
+interface MeasurementRootProps extends HTMLMotionProps<"span"> {
   value: number;
   unit: UnitsByMeasure<MeasureKind>;
-  children: ReactNode;
 }
 
 export const MeasurementRoot = ({
   value,
   unit,
-  children,
+  ...props
 }: MeasurementRootProps) => {
   const { unitSystem } = useUserPreferences();
-  const [isConverted, setIsConverted] = useState(false);
+  const [isConverted, setIsConverted] = React.useState(false);
 
-  const original = useMemo(() => ({ quantity: value, unit }), [value, unit]);
-  const converted = useMemo(
+  const original = React.useMemo(
+    () => ({ quantity: value, unit }),
+    [value, unit]
+  );
+  const converted = React.useMemo(
     () => convert(value, unit).to("best", unitSystem),
     [value, unit, unitSystem]
   );
@@ -76,7 +86,7 @@ export const MeasurementRoot = ({
         data-rs-i18n-measurement-root
       >
         <motion.span data-rs-i18n-measurement-span ref={ref}>
-          {children}
+          {props.children}
         </motion.span>
       </motion.span>
     </MeasurementContext.Provider>

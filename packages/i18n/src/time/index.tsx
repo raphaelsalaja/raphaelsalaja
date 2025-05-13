@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
 import { useUserPreferences } from "../hooks";
 import { timeZoneMeta } from "../data/timeZones";
 import type {
@@ -14,7 +7,8 @@ import type {
   TimeZoneAbbreviation,
   TimeZoneLabel as TZLabel,
 } from "../data/timeZones";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, HTMLMotionProps } from "motion/react";
+import React from "react";
 
 interface TimeContextValue {
   isConverted: boolean;
@@ -23,20 +17,19 @@ interface TimeContextValue {
   converted: { date: string; label: string };
 }
 
-const TimeContext = createContext<TimeContextValue | null>(null);
+const TimeContext = React.createContext<TimeContextValue | null>(null);
 
 export const useTimeContext = () => {
-  const context = useContext(TimeContext);
+  const context = React.useContext(TimeContext);
   if (!context) {
     throw new Error("Time components must be used within <TimeRoot>");
   }
   return context;
 };
 
-export interface TimeProps {
+export interface TimeProps extends HTMLMotionProps<"span"> {
   date: Date | string;
   timeZone?: TimeZone | TZLabel | TimeZoneAbbreviation;
-  children: ReactNode;
 }
 
 const normalizeZone = (zone: string | undefined): string => {
@@ -71,19 +64,19 @@ const getLabel = (zone: string): string => {
 };
 
 // Root
-export const TimeRoot = ({ date, timeZone, children }: TimeProps) => {
+export const TimeRoot = ({ date, timeZone, ...props }: TimeProps) => {
   const preferences = useUserPreferences();
-  const [isConverted, setIsConverted] = useState(false);
+  const [isConverted, setIsConverted] = React.useState(false);
 
-  const inputDate = useMemo(
+  const inputDate = React.useMemo(
     () => (typeof date === "string" ? new Date(date) : date),
     [date]
   );
-  const userZone = useMemo(
+  const userZone = React.useMemo(
     () => normalizeZone(preferences.timeZone),
     [preferences.timeZone]
   );
-  const targetZone = useMemo(() => normalizeZone(timeZone), [timeZone]);
+  const targetZone = React.useMemo(() => normalizeZone(timeZone), [timeZone]);
 
   const original = {
     date: formatDate(inputDate, targetZone),
@@ -115,7 +108,7 @@ export const TimeRoot = ({ date, timeZone, children }: TimeProps) => {
         tabIndex={0}
         data-rs-i18n-timezone
       >
-        {children}
+        {props.children}
       </motion.span>
     </TimeContext.Provider>
   );

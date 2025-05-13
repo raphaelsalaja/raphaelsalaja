@@ -74,7 +74,12 @@ const Island: React.FC<IslandProps> = (props) => {
                   layout
                   layoutId="shader"
                   onClick={toggleExpanded}
-                  style={{ width: 48, height: 48, borderRadius: 8, overflow: "hidden" }}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 8,
+                    overflow: "hidden",
+                  }}
                 >
                   <SteppedSimplexNoise
                     color1="#56758f"
@@ -85,7 +90,6 @@ const Island: React.FC<IslandProps> = (props) => {
                     stepsNumber={10}
                     scale={0.07}
                     speed={0.5}
-                    seed={0}
                     style={{ width: "100%", height: "100%" }}
                   />
                 </motion.button>
@@ -134,7 +138,14 @@ const Island: React.FC<IslandProps> = (props) => {
                 layoutId="reading"
               >
                 <NumberFlowGroup>
-                  <span className={styles.time} style={{ "--number-flow-char-height": "12px" } as React.CSSProperties}>
+                  <span
+                    className={styles.time}
+                    style={
+                      {
+                        "--number-flow-char-height": "12px",
+                      } as React.CSSProperties
+                    }
+                  >
                     <NumberFlow
                       willChange
                       value={getMinutesAndSeconds(currentTime).minutes}
@@ -164,7 +175,12 @@ const Island: React.FC<IslandProps> = (props) => {
 
               <motion.div
                 className={styles.progress}
-                style={{ opacity: 0, position: "absolute", right: "0", bottom: "16px" }}
+                style={{
+                  opacity: 0,
+                  position: "absolute",
+                  right: "0",
+                  bottom: "16px",
+                }}
                 animate={{ scale: 0.5 }}
                 layoutId="progress-indicator"
               >
@@ -177,7 +193,13 @@ const Island: React.FC<IslandProps> = (props) => {
                 layout
                 layoutId="shader"
                 onClick={toggleExpanded}
-                style={{ width: 24, height: 24, borderRadius: 24, overflow: "hidden", zIndex: 10 }}
+                style={{
+                  width: 24,
+                  height: 24,
+                  borderRadius: 24,
+                  overflow: "hidden",
+                  zIndex: 10,
+                }}
               >
                 <MeshGradient
                   color1="#B7FC88"
@@ -185,7 +207,6 @@ const Island: React.FC<IslandProps> = (props) => {
                   color3="#88EB1E"
                   color4="#6FBA0A"
                   speed={0.5}
-                  seed={0}
                   style={{ width: "100%", height: "100%" }}
                 />
               </motion.button>
@@ -196,9 +217,21 @@ const Island: React.FC<IslandProps> = (props) => {
                   layout="position"
                   layoutId="heading"
                   className={styles.text}
-                  initial={{ opacity: 0, transform: `translateY(${-24 * direction}px)`, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, transform: "translateY(0)", filter: "blur(0px)" }}
-                  exit={{ opacity: 0, transform: `translateY(${24 * direction}px)`, filter: "blur(4px)" }}
+                  initial={{
+                    opacity: 0,
+                    transform: `translateY(${-24 * direction}px)`,
+                    filter: "blur(4px)",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    transform: "translateY(0)",
+                    filter: "blur(0px)",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transform: `translateY(${24 * direction}px)`,
+                    filter: "blur(4px)",
+                  }}
                 >
                   {heading}
                 </motion.p>

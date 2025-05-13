@@ -25,14 +25,14 @@ function getColor(name: string) {
 
 function getShape(name: string, color: string) {
   const shapes = [
-    <Shape1 className={styles.shape} />,
-    <Shape2 className={styles.shape} />,
-    <Shape3 className={styles.shape} />,
-    <Shape4 className={styles.shape} />,
-    <Shape5 className={styles.shape} />,
-    <Shape6 className={styles.shape} />,
-    <Shape7 className={styles.shape} />,
-    <Shape8 className={styles.shape} />,
+    <Shape1 key={1} className={styles.shape} />,
+    <Shape2 key={2} className={styles.shape} />,
+    <Shape3 key={3} className={styles.shape} />,
+    <Shape4 key={4} className={styles.shape} />,
+    <Shape5 key={5} className={styles.shape} />,
+    <Shape6 key={6} className={styles.shape} />,
+    <Shape7 key={7} className={styles.shape} />,
+    <Shape8 key={8} className={styles.shape} />,
   ];
 
   const hash = djb2(name.toLowerCase());
