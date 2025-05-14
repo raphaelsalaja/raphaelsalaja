@@ -2,7 +2,6 @@
 
 import { gray } from "@radix-ui/colors";
 import { motion } from "motion/react";
-import React from "react";
 
 interface CustomVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
   caption?: string;

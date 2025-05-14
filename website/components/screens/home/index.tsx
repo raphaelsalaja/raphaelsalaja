@@ -1,4 +1,3 @@
-import { Archive } from "@/components/archive";
 import { Posts } from "@/components/posts";
 import styles from "./styles.module.scss";
 
@@ -20,7 +19,6 @@ export default function Home() {
         <Posts category="projects" />
         <Posts category="experiments" />
         <Posts category="insights" />
-        <Archive />
       </section>
     </div>
   );

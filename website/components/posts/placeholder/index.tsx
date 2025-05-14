@@ -37,7 +37,7 @@ function getShape(name: string, color: string) {
 
   const hash = djb2(name.toLowerCase());
 
-  const index = hash % 10;
+  const index = hash % 8;
 
   return shapes[index];
 }

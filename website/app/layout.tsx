@@ -75,11 +75,9 @@ export default async function RootLayout({
       <body>
         <main>
           <Providers>
-            {/* <QueryClientProvider client={client}> */}
             {breadcrumb}
             {children}
             {footer}
-            {/* </QueryClientProvider> */}
           </Providers>
         </main>
       </body>

@@ -3,7 +3,6 @@
 import { gray } from "@radix-ui/colors";
 import { motion } from "motion/react";
 import Image, { type ImageProps } from "next/image";
-import React from "react";
 
 export default function CustomImage({ caption, ...props }: ImageProps & { caption?: string }) {
   const [isImageLoading, setImageLoading] = React.useState(true);
