@@ -23,8 +23,15 @@ export const Workouts: React.FC = () => {
   const [selectedDayData, setSelectedDayData] = useState<WorkoutHeatmapData | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const toDate = useMemo(() => new Date(), []);
-  const fromDate = useMemo(() => new Date(toDate.getFullYear(), toDate.getMonth() - 1, toDate.getDate()), [toDate]);
+  const toDate = useMemo(() => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth() + 1, 0);
+  }, []);
+
+  const fromDate = useMemo(() => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), 1);
+  }, []);
 
   const { data: workouts = [], isLoading, isError, error } = useWorkouts({ from: fromDate, to: toDate });
 
@@ -51,11 +58,13 @@ export const Workouts: React.FC = () => {
       animationDuration: 0,
       itemSelector: ref.current,
       verticalOrientation: false,
-      date: { start: fromDate, end: toDate },
+      date: {
+        start: toDate,
+        end: fromDate,
+      },
       scale: {
         opacity: {
           domain: [0, 4],
-
           baseColor: "#a6ff00",
         },
       },
@@ -77,6 +86,7 @@ export const Workouts: React.FC = () => {
     });
     cal.on("click", (_e: any, ts: string | number | Date) => {
       const day = formatISO(new Date(ts), { representation: "date" });
+      console.log("click", day);
       setSelectedDayData(map[day] || { date: day, workouts: [] });
       setIsDialogOpen(true);
     });

@@ -69,18 +69,11 @@ type UseWorkoutsOptions = {
   period?: Period;
   from?: Date;
   to?: Date;
-  // You can expose React Query’s options too:
   staleTime?: number;
   enabled?: boolean;
 };
 
-export function useWorkouts({
-  period,
-  from,
-  to,
-  staleTime = 1000 * 60 * 5, // 5 minutes
-  enabled = true,
-}: UseWorkoutsOptions) {
+export function useWorkouts({ period, from, to, staleTime = 1000 * 60 * 5, enabled = true }: UseWorkoutsOptions) {
   return useQuery<Workouts[], Error>({
     queryKey: ["workouts", { period, from: from?.toISOString(), to: to?.toISOString() }],
     queryFn: () => getWorkouts({ period, from, to }),

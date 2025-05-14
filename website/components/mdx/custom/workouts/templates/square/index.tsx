@@ -1,4 +1,4 @@
-const S = 5;
+const S = 6;
 
 export function square(DateHelper: any, options: any) {
   const getDates = (start: number, end: number) => DateHelper.intervals("day", start, DateHelper.date(end));
@@ -10,7 +10,7 @@ export function square(DateHelper: any, options: any) {
     columnsCount: () => S,
     mapping: (start: number, end: number, defaultValues: any) => {
       const allDates = getDates(start, end);
-      const dates = allDates.slice(-S * S);
+      const dates = allDates.slice(0, S * S); // take first 36 days
       return dates.map((t: number, i: number) => ({
         t,
         x: i % S,
