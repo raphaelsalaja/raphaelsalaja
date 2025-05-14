@@ -1,7 +1,6 @@
-@import url("@rs/styles/springs.css");
-@import url("@rs/styles/cubics.css");
-@import url("@rs/styles/reset.css");
-@import url("@rs/styles/colors.css");
+@import url("@rs/styles/reset");
+@import url("@rs/styles/colors");
+@import url("@rs/styles/transitions");
 
 :root {
   /* text */
