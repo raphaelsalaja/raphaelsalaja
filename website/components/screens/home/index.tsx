@@ -18,7 +18,7 @@ export default function Home() {
       <section className={styles.sections}>
         <Posts category="projects" />
         <Posts category="experiments" />
-        <Posts category="insights" />
+        <Posts category="insights" filter={false} />
       </section>
     </div>
   );

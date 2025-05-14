@@ -1,4 +1,3 @@
-import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@rs/design/breadcrumb";
 import { Fragment } from "react";
 import title from "title";
@@ -23,9 +22,7 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
       {items.map((item, i) => {
         return (
           <Fragment key={item.href}>
-            <BreadcrumbSeparator>
-              <ChevronRightIcon />
-            </BreadcrumbSeparator>
+            <BreadcrumbSeparator>/</BreadcrumbSeparator>
 
             {item.active ? (
               <BreadcrumbItem>

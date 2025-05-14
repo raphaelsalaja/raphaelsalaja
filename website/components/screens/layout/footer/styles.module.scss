@@ -1,7 +1,7 @@
 .footer {
   position: relative;
   display: flex;
-  padding: 24px 0;
+  padding: 12px 0;
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
@@ -15,7 +15,7 @@
     align-self: stretch;
 
     .legal {
-      color: var(--text-secondary);
+      color: var(--text-quaternary);
       font-size: 14px;
     }
   }
@@ -27,7 +27,7 @@
 
     .column {
       display: flex;
-      flex-direction: column;
+
       justify-content: center;
       align-items: flex-start;
       gap: 12px;
@@ -40,6 +40,7 @@
       a {
         font-size: 14px;
         font-weight: 400;
+        color: var(--text-quaternary);
       }
     }
   }

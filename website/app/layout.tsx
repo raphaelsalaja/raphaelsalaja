@@ -5,6 +5,7 @@ import { og } from "@/config/site";
 import "@/styles/main.css";
 import clsx from "clsx";
 import { Providers } from "@/components/providers";
+import { Layout } from "@/components/layouts/root";
 
 export const metadata: Metadata = {
   title: og.title,
@@ -72,15 +73,13 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" className={clsx(runde.className, inter.variable)}>
-      <body>
-        <main>
-          <Providers>
-            {breadcrumb}
-            {children}
-            {footer}
-          </Providers>
-        </main>
-      </body>
+      <Layout>
+        <Providers>
+          {breadcrumb}
+          {children}
+          {footer}
+        </Providers>
+      </Layout>
     </html>
   );
 }

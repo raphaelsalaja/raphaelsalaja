@@ -10,22 +10,6 @@ export function Footer() {
       </div>
       <div className={styles.links}>
         <div className={styles.column}>
-          <h1>Pages</h1>
-          <Button asChild variant="ghost">
-            <Link href="/projects">Projects</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/experiments">Experiments</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/insights">Insights</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/archive">Archive</Link>
-          </Button>
-        </div>
-        <div className={styles.column}>
-          <h1>Connect</h1>
           <Button asChild variant="ghost">
             <Link href="https://x.com/raphaelsalaja">Twitter</Link>
           </Button>

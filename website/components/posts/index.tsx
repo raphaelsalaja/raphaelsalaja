@@ -11,11 +11,13 @@ interface PostsProps {
   index?: boolean;
   category: string;
   title?: string;
+  filter?: boolean;
 }
 
 export const Posts = async ({
   category,
   index = false,
+  filter = true,
   title = category
     .split("-")
     .join(" ")
@@ -75,8 +77,8 @@ export const Posts = async ({
       >
         {posts
           .filter((post) => {
-            if (isHome) {
-              return post.media?.image || post.media?.video;
+            if (isHome && filter) {
+              // return post.media?.image || post.media?.video;
             }
             return true;
           })
