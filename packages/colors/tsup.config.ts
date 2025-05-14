@@ -1,6 +1,7 @@
 import { defineConfig } from "tsup";
+
 export default defineConfig({
-  entry: ["src/**/index.css"], // Capture nested CSS files
+  entry: ["src/**/index.css"],
   external: ["react"],
   clean: true,
   outDir: "dist",
