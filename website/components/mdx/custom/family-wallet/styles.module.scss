@@ -1,0 +1,96 @@
+.wallet {
+  --offset: 16px;
+
+  position: relative;
+  display: block;
+  background: var(--orange-9);
+
+  aspect-ratio: 3 / 1.8;
+  border-radius: 20;
+}
+
+.icon {
+  position: absolute;
+  left: var(--offset);
+  top: var(--offset);
+  width: 30px;
+  height: 30px;
+
+  .shape {
+    fill: var(--white-a12);
+  }
+}
+
+.details {
+  position: absolute;
+  left: var(--offset);
+  bottom: var(--offset);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.options {
+  position: absolute;
+  right: var(--offset);
+  top: var(--offset);
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 24px;
+
+  background: var(--white-a4);
+  color: var(--white-a10);
+  border-radius: 100%;
+  padding: 4px;
+}
+
+.copy {
+  position: absolute;
+  right: var(--offset);
+  top: var(--offset);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .symbol {
+    color: var(--white-a10);
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.customize {
+  position: absolute;
+  right: var(--offset);
+  bottom: var(--offset);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 32px;
+
+  background: var(--white-a4);
+  color: var(--white-a10);
+
+  border-radius: 16px;
+  width: 100px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+
+  &[data-text="primary"] {
+    color: var(--white-a12);
+  }
+
+  &[data-text="secondary"] {
+    color: var(--white-a8);
+  }
+}
