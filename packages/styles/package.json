@@ -6,7 +6,20 @@
     "dev": "tsup --watch --silent"
   },
   "exports": {
-    "./*.css": "./dist/*/index.css"
+    "./reset": "./dist/reset/index.css",
+    "./cubics": "./dist/cubics/index.css",
+    "./springs": "./dist/springs/index.css",
+    "./colors": "./dist/colors/index.css",
+    "./colors/black": "./dist/colors/black/index.css",
+    "./colors/blue": "./dist/colors/blue/index.css",
+    "./colors/green": "./dist/colors/green/index.css",
+    "./colors/lime": "./dist/colors/lime/index.css",
+    "./colors/orange": "./dist/colors/orange/index.css",
+    "./colors/pink": "./dist/colors/pink/index.css",
+    "./colors/red": "./dist/colors/red/index.css",
+    "./colors/violet": "./dist/colors/violet/index.css",
+    "./colors/white": "./dist/colors/white/index.css",
+    "./colors/yellow": "./dist/colors/yellow/index.css"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
