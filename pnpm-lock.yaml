@@ -181,24 +181,6 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
 
-  packages/transitions:
-    devDependencies:
-      '@rs/configuration':
-        specifier: workspace:*
-        version: link:../configuration
-      '@types/react':
-        specifier: 19.0.2
-        version: 19.0.2
-      tsup:
-        specifier: ^8.3.5
-        version: 8.4.0(postcss@8.5.3)(typescript@5.6.3)(yaml@2.7.1)
-      turbo:
-        specifier: ^2.2.3
-        version: 2.5.3
-      typescript:
-        specifier: 5.6.3
-        version: 5.6.3
-
   website:
     dependencies:
       '@base-ui-components/react':
@@ -333,9 +315,6 @@ importers:
       '@rs/styles':
         specifier: workspace:*
         version: link:../packages/styles
-      '@rs/transitions':
-        specifier: workspace:*
-        version: link:../packages/transitions
       '@solely/simple-fm':
         specifier: ^1.7.2
         version: 1.7.2
