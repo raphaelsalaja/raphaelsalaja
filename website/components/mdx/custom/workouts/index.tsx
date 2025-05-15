@@ -86,7 +86,6 @@ export const Workouts: React.FC = () => {
     });
     cal.on("click", (_e: any, ts: string | number | Date) => {
       const day = formatISO(new Date(ts), { representation: "date" });
-      console.log("click", day);
       setSelectedDayData(map[day] || { date: day, workouts: [] });
       setIsDialogOpen(true);
     });

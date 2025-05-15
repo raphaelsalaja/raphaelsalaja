@@ -5,7 +5,7 @@ import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
 import styles from "./styles.module.scss";
-import { CldImage } from "next-cloudinary";
+import * as Cloudinary from "@/components/cloudinary";
 
 interface PostsProps {
   index?: boolean;
@@ -35,9 +35,9 @@ export const Posts = async ({
     if (post.media?.video) {
       return (
         <div className={styles.thumbnail}>
-          <video src={post.media.video} autoPlay muted loop playsInline className={styles.media}>
+          <Cloudinary.Video src={post.media.video} autoPlay muted loop playsInline className={styles.media}>
             <track kind="captions" />
-          </video>
+          </Cloudinary.Video>
         </div>
       );
     }
@@ -45,7 +45,7 @@ export const Posts = async ({
     if (post.media?.image) {
       return (
         <div className={styles.thumbnail}>
-          <CldImage
+          <Cloudinary.Image
             className={styles.media}
             src={"thumbnail_dgjo6v"}
             alt={post.title || "Post image"}

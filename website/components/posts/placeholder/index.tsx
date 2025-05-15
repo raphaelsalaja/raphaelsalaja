@@ -72,17 +72,6 @@ export const Placeholder: React.FC<PlaceholderProps> = ({ post }) => {
           <p className={styles.text} data-text="secondary">
             {time.created}
           </p>
-          {tags && tags.length > 0 && (
-            <div className={styles.tags}>
-              {tags.slice(0, 1).map((tag, index) => (
-                <div key={index} className={styles.tag} style={{ background: `var(--${color}-a10)` }}>
-                  <p className={styles.text} data-text="secondary">
-                    {tag}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
         <div className={styles.line} style={{ background: `var(--${color}-a10)` }} />
       </div>

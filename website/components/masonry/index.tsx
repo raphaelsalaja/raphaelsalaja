@@ -4,6 +4,6 @@ import { Masonry as PlockMasonry } from "react-plock";
 
 type MasonryProps = React.ComponentProps<typeof PlockMasonry>;
 
-export const Masonry = async (props: MasonryProps) => {
+export const Masonry = (props: MasonryProps) => {
   return <PlockMasonry {...props} />;
 };

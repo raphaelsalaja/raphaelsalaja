@@ -2,7 +2,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import { getCldImageUrl } from "next-cloudinary";
 
-interface CloudinaryResource {
+export interface CloudinaryResource {
   asset_id: string;
   public_id: string;
   format: string;
