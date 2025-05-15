@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
-import styles from "./styles.module.scss";
-import { Shape6 as Icon } from "@/components/posts/placeholder/shapes";
 import { CopyIcon, EllipsisIcon } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import React from "react";
+import { Shape6 as Icon } from "@/components/posts/placeholder/shapes";
+import styles from "./styles.module.scss";
 
 export const FamilyWallet: React.FC = () => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ export const FamilyWallet: React.FC = () => {
       exit: { opacity: 0, filter: "blur(2px)" },
       transition: {
         ease: [0.19, 1, 0.22, 1],
-        duration: 0.4,
+        duration: 0.6,
       },
     },
   };
@@ -49,12 +49,6 @@ export const FamilyWallet: React.FC = () => {
         initial={{ width: properties.collapsed.wallet.width }}
         animate={{
           width: isExpanded ? properties.expanded.wallet.width : properties.collapsed.wallet.width,
-        }}
-        whileHover={{
-          scale: 1.05,
-        }}
-        whileTap={{
-          scale: 0.95,
         }}
         className={styles.wallet}
         onClick={() => setIsExpanded(!isExpanded)}

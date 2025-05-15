@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import Slider from "./slider";
 import styles from "./styles.module.scss";
 
+const src = "https://res.cloudinary.com/dkztfjtsq/image/upload/v1747263997/image_ojmod2.jpg";
+
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
@@ -69,9 +71,9 @@ export const Tone: React.FC = () => {
         }}
         className={styles.popup}
       >
-        <Image alt="Tone" src="/posts/insights/tone/image.jpg" className={styles.blur} fill />
+        <Image alt="Tone" src={src} className={styles.blur} fill />
         <Image
-          src="/posts/insights/tone/image.jpg"
+          src={src}
           alt="Tone"
           fill
           placeholder="blur"

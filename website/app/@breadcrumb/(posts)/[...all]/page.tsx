@@ -1,5 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@rs/design/breadcrumb";
-import { Fragment } from "react";
+import { ChevronRight } from "lucide-react";
+import React from "react";
 import title from "title";
 import { Logo } from "@/components/logo";
 
@@ -21,8 +22,10 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
       </BreadcrumbItem>
       {items.map((item, i) => {
         return (
-          <Fragment key={item.href}>
-            <BreadcrumbSeparator>/</BreadcrumbSeparator>
+          <React.Fragment key={item.href}>
+            <BreadcrumbSeparator>
+              <ChevronRight strokeWidth={2} size={16} />
+            </BreadcrumbSeparator>
 
             {item.active ? (
               <BreadcrumbItem>
@@ -35,7 +38,7 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
                 </BreadcrumbLink>
               </BreadcrumbItem>
             )}
-          </Fragment>
+          </React.Fragment>
         );
       })}
     </Breadcrumb>

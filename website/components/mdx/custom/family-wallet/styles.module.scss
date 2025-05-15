@@ -4,9 +4,8 @@
   position: relative;
   display: block;
   background: var(--orange-9);
-
   aspect-ratio: 3 / 1.8;
-  border-radius: 20;
+  border-radius: 20px;
 }
 
 .icon {
@@ -38,7 +37,6 @@
   flex-direction: column;
   width: 24px;
   height: 24px;
-
   background: var(--white-a4);
   color: var(--white-a10);
   border-radius: 100%;
@@ -49,14 +47,13 @@
   position: absolute;
   right: var(--offset);
   top: var(--offset);
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
   .symbol {
-    color: var(--white-a10);
+    color: var(--white-a8);
     width: 16px;
     height: 16px;
   }
@@ -66,17 +63,12 @@
   position: absolute;
   right: var(--offset);
   bottom: var(--offset);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 100px;
   height: 32px;
-
   background: var(--white-a4);
   color: var(--white-a10);
-
   border-radius: 16px;
   width: 100px;
 }

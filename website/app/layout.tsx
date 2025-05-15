@@ -4,8 +4,8 @@ import localFont from "next/font/local";
 import { og } from "@/config/site";
 import "@/styles/main.css";
 import clsx from "clsx";
-import { Providers } from "@/components/providers";
 import { Layout } from "@/components/layouts/root";
+import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
   title: og.title,

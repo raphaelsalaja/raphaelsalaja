@@ -2,12 +2,12 @@ import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
 import Image from "next/image";
 import Link from "next/link";
-import { getArchiveMedia } from "@/lib/mdx";
 
 import styles from "./styles.module.scss";
+import { getArchiveMedia } from "@/lib/cloudinary";
 
 export const Archive = async ({ index = false }) => {
-  const archive = getArchiveMedia();
+  const archive = await getArchiveMedia();
 
   const isImage = (url: string) => /\.(jpg|jpeg|png|gif|bmp|webp)$/.test(url);
   const isVideo = (url: string) => /\.(mp4|webm|ogg)$/.test(url);
@@ -39,12 +39,11 @@ export const Archive = async ({ index = false }) => {
         }}
       >
         {media.slice(0, index ? media.length : 3).map((content) => {
-          const src = `/posts/archive/${content}`;
           if (isVideo(content)) {
             return (
               <div className={styles.entry} key={content}>
                 <div className={styles.thumbnail}>
-                  <video src={src} autoPlay muted loop playsInline className={styles.media}>
+                  <video src={content} autoPlay muted loop playsInline className={styles.media}>
                     <track kind="captions" />
                   </video>
                 </div>
@@ -56,7 +55,7 @@ export const Archive = async ({ index = false }) => {
             return (
               <div className={styles.entry} key={content}>
                 <div className={styles.thumbnail}>
-                  <Image className={styles.media} src={src} alt={"Archive Image"} fill blurDataURL={src} />
+                  <Image className={styles.media} src={content} alt={"Archive Image"} fill />
                 </div>
               </div>
             );

@@ -1,4 +1,3 @@
-import { Video } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import { Link } from "next-view-transitions";
 import FigCaption, { FigCaptionProps } from "@/components/codeblock";
@@ -16,7 +15,4 @@ export const BaseComponents: Partial<MDXComponents> = {
   blockquote: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <blockquote {...props} />,
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   Link: ({ ...props }) => <Link {...props} />,
-  Video: ({ src, ...props }) => {
-    return <Video src={src} {...props} />;
-  },
 };

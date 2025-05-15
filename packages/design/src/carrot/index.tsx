@@ -135,12 +135,14 @@ function CarrotCaret() {
   );
 }
 
+// @ts-ignore
 type CarrotInputProps = React.ComponentProps<typeof Editable>;
 
 function CarrotInput(props: CarrotInputProps) {
   const { setFocused } = useCarrotContext();
 
   return (
+    // @ts-ignore
     <Editable
       {...props}
       data-rs-carrot-editable

@@ -1,98 +1,22 @@
-.posts {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  align-self: stretch;
-
-  .heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
-
-    [data-shunpo-button] {
-      &:hover {
-        .count {
-          color: var(--text-primary);
-        }
-      }
-    }
-
-    .title {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      position: relative;
-
-      .name {
-        font-weight: 450;
-        color: var(--text-secondary);
-        white-space: nowrap;
-      }
-
-      .count {
-        font-weight: 450;
-        color: var(--text-secondary);
-        white-space: nowrap;
-      }
-    }
-  }
-}
-
-.grid {
+.masonry {
   display: grid;
-  gap: 24px;
-  align-self: stretch;
-
-  &:has(.entry:hover) {
-    .entry {
-      filter: opacity(0.2) grayscale(1);
-      transform: scale(0.98);
-
-      &:hover {
-        filter: opacity(1) grayscale(0);
-        transform: scale(1.02);
-      }
-    }
-  }
-
-  .entry {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    position: relative;
-    width: 100%;
-    transition: all 0.2s ease;
-
-    .details {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      align-self: stretch;
-    }
-
-    &[data-disabled="true"] {
-      cursor: not-allowed;
-    }
-  }
-}
-
-.thumbnail {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px var(--stroke-alpha);
-  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1rem;
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  background: var(--background-primary);
 
-  .media {
-    object-fit: cover;
+  img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+  }
+
+  .item {
+    grid-row: span 1;
+  }
+
+  .item:nth-child(1),
+  .item:nth-child(5) {
+    grid-row: span 2;
   }
 }

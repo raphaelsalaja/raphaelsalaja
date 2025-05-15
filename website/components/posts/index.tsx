@@ -1,11 +1,11 @@
 import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
-import Image from "next/image";
 import Link from "next/link";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
 import styles from "./styles.module.scss";
+import { CldImage } from "next-cloudinary";
 
 interface PostsProps {
   index?: boolean;
@@ -45,7 +45,13 @@ export const Posts = async ({
     if (post.media?.image) {
       return (
         <div className={styles.thumbnail}>
-          <Image className={styles.media} src={post.media.image} alt={post.title || "Post image"} fill unoptimized />
+          <CldImage
+            className={styles.media}
+            src={"thumbnail_dgjo6v"}
+            alt={post.title || "Post image"}
+            fill
+            unoptimized
+          />
         </div>
       );
     }

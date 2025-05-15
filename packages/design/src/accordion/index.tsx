@@ -6,6 +6,7 @@ import "./styles.css";
 import { motion } from "motion/react";
 import useSound from "use-sound";
 import type { AudioSource } from "../types";
+import React from "react";
 
 interface AccordionRootProps extends React.ComponentPropsWithoutRef<typeof BaseAccordion.Root> {}
 /**
@@ -40,7 +41,7 @@ const AccordionItem: React.FC<AccordionItemProps> = (props) => {
             whileDrag={{ filter: "brightness(.98)" }}
             whileHover={{ filter: "brightness(.98)" }}
           >
-            <div {...rest} />
+            <div {...(rest as React.HTMLAttributes<HTMLDivElement>)} />
           </motion.div>
         );
       }}
@@ -100,7 +101,7 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = ({ icon, audio, childr
       render={({ hidden, ...rest }, { open }) => {
         return (
           <button
-            {...rest}
+            {...(rest as React.HTMLAttributes<HTMLButtonElement>)}
             onMouseUp={(e) => {
               onMouseUp();
               rest.onMouseUp?.(e);

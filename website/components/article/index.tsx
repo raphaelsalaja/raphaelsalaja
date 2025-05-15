@@ -1,3 +1,4 @@
+import React from "react";
 import { MDX } from "@/components/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 
