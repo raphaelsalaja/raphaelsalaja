@@ -1,6 +1,6 @@
-@import url("@rs/styles/colors");
-@import url("@rs/styles/transitions");
-@import url("@rs/styles/reset");
+@import url("@rs/styles/colors.css");
+@import url("@rs/styles/transitions.css");
+@import url("@rs/styles/reset.css");
 
 :root {
   /* text */
