@@ -153,15 +153,9 @@ importers:
       '@rs/configuration':
         specifier: workspace:*
         version: link:../configuration
-      tsup:
-        specifier: ^8.3.5
-        version: 8.4.0(postcss@8.5.3)(typescript@5.6.3)(yaml@2.7.1)
       turbo:
         specifier: ^2.2.3
         version: 2.5.3
-      typescript:
-        specifier: 5.6.3
-        version: 5.6.3
 
   website:
     dependencies:
