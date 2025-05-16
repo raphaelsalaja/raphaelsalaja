@@ -71,7 +71,7 @@ export const Tone: React.FC = () => {
         }}
         className={styles.popup}
       >
-        <Image alt="Tone" src={src} className={styles.blur} fill />
+        <Image alt="Tone" src={src} className={styles.blur} unoptimized fill />
         <Image
           src={src}
           alt="Tone"
@@ -79,6 +79,7 @@ export const Tone: React.FC = () => {
           placeholder="blur"
           blurDataURL="/posts/insights/tone/image.jpg"
           className={styles.image}
+          unoptimized
         />
       </motion.div>
       <Slider

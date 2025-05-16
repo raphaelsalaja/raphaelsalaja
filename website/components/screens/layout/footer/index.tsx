@@ -1,85 +1,100 @@
 "use client";
 
-import Button from "@rs/design/button";
-import dynamic from "next/dynamic";
-import { Link } from "next-view-transitions";
-import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
+import { EmblaCarouselType, EmblaEventType } from "embla-carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Base } from "./base";
+import { Spotify } from "./spotify";
 import styles from "./styles.module.scss";
 
-const Dither = dynamic(() => import("@/components/shaders/dither"), { ssr: false });
+const TWEEN_FACTOR_BASE = 0.84;
+
+const clamp = (value: number, min: number, max: number): number => Math.min(Math.max(value, min), max);
+
+const PAGES = [Base, Spotify, Base, Spotify, Base, Spotify] as const;
 
 export function Footer() {
+  const [viewportRef, embla] = useEmblaCarousel({
+    align: "center",
+    loop: false,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const tweenFactor = useRef(0);
+
+  const updateTweenFactor = useCallback((api: EmblaCarouselType) => {
+    tweenFactor.current = TWEEN_FACTOR_BASE * api.scrollSnapList().length;
+  }, []);
+
+  const opacity = useCallback((api: EmblaCarouselType, event?: EmblaEventType) => {
+    const engine = api.internalEngine();
+    const progress = api.scrollProgress();
+    const inView = api.slidesInView();
+    const isScroll = event === "scroll";
+
+    api.scrollSnapList().forEach((snap: number, snapIndex: number) => {
+      const diff = snap - progress;
+      const slides = engine.slideRegistry[snapIndex];
+
+      slides.forEach((slideIndex: number) => {
+        if (isScroll && !inView.includes(slideIndex)) return;
+
+        const t = 1 - Math.abs(diff * tweenFactor.current);
+        const opacity = clamp(t, 0, 1).toString();
+        const node = api.slideNodes()[slideIndex] as HTMLElement;
+        node.style.opacity = opacity;
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!embla) return;
+
+    updateTweenFactor(embla);
+    opacity(embla);
+
+    embla.on("reInit", updateTweenFactor);
+    embla.on("reInit", opacity);
+    embla.on("scroll", () => opacity(embla, "scroll"));
+    embla.on("select", () => {
+      opacity(embla);
+      setSelectedIndex(embla.selectedScrollSnap());
+    });
+
+    return () => {
+      embla.off("reInit", updateTweenFactor);
+      embla.off("reInit", opacity);
+      embla.off("scroll", () => opacity(embla, "scroll"));
+      embla.off("select", () => {
+        opacity(embla);
+        setSelectedIndex(embla.selectedScrollSnap());
+      });
+    };
+  }, [embla, updateTweenFactor, opacity]);
+
   return (
-    <footer className={styles.footer}>
-      <div className={styles.links}>
-        <div className={styles.column}>
-          <h1>Pages</h1>
-          <Button asChild variant="ghost">
-            <Link href="/">Home</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/projects">Projects</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/experiments">Experiments</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/insights">Insights</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="/archive">Archive</Link>
-          </Button>
-        </div>
-        <div className={styles.column}>
-          <h1>Connect</h1>
-          <Button asChild variant="ghost">
-            <Link href="https://x.com/raphaelsalaja">Twitter</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="https://www.instagram.com/raphaelsalaja">Instagram</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="https://github.com/raphaelsalaja">Github</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link href="emailto:raphaelsalaja@gmail.com">Email</Link>
-          </Button>
+    <div className={styles.embla}>
+      <div className={styles.viewport} ref={viewportRef}>
+        <div className={styles.container}>
+          {PAGES.map((Page, idx) => (
+            <div className={styles.slide} key={idx}>
+              <Page />
+            </div>
+          ))}
         </div>
       </div>
-
-      <div className={styles.copyright}>
-        <div className={styles.shapes}>
-          <div className={styles.shape} data-color="blue">
-            <Shape3 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="violet">
-            <Shape6 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="yellow">
-            <Shape2 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="gray">
-            <Shape8 className={styles.icon} />
-          </div>
-        </div>
-        <p className={styles.legal}>© {Date().split(" ")[3]} Raphael Salaja</p>
-      </div>
-
-      <div className={styles.background}>
-        <div style={{ width: "100%", height: "100%", position: "relative" }}>
-          <Dither
-            colorDark={"rgba(0,0,0,0.3)"}
-            colorLight={"rgba(255,255,255,1)"}
-            speed={0.5}
-            pixelSize={2}
-            ditherScale={1}
-            rotSpeed={0.1}
-            warpInit={1}
-            warpIter={2.5}
-            warpAmpl={2.0}
+      <div className={styles.dots}>
+        {PAGES.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            className={idx === selectedIndex ? `${styles.dot} ${styles.dotActive}` : styles.dot}
+            onClick={() => embla?.scrollTo(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
           />
-        </div>
+        ))}
       </div>
-    </footer>
+    </div>
   );
 }

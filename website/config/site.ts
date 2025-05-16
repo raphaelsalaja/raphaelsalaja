@@ -66,5 +66,4 @@ export const opengraph: Metadata = {
       "max-snippet": -1,
     },
   },
-  manifest: `${APP_URL}/site.webmanifest`,
 };
