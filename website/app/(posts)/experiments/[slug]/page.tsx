@@ -1,5 +1,5 @@
 import { MDX } from "@/components/mdx";
-import { createPostPage } from "@/lib/createPostPage";
+import { createPostPage } from "@/lib/create-post-page/iindex";
 
 const {
   generateStaticParams,

@@ -1,5 +1,5 @@
 import type { MDXComponents } from "mdx/types";
-import { Link } from "next-view-transitions";
+
 import FigCaption, { FigCaptionProps } from "@/components/codeblock";
 import Heading, { type HeadingProps } from "@/components/heading";
 
@@ -14,5 +14,4 @@ export const BaseComponents: Partial<MDXComponents> = {
   code: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <code {...props} />,
   blockquote: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <blockquote {...props} />,
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
-  Link: ({ ...props }) => <Link {...props} />,
 };

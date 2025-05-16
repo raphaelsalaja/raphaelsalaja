@@ -1,5 +1,5 @@
 import { Article } from "@/components/article";
-import { createPostPage } from "@/lib/createPostPage";
+import { createPostPage } from "@/lib/create-post-page/iindex";
 
 const {
   generateStaticParams,

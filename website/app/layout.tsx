@@ -1,3 +1,5 @@
+import { ViewTransitions } from "next-view-transitions";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
@@ -72,14 +74,16 @@ export default async function RootLayout({
   footer: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(runde.className, inter.variable)}>
-      <Layout>
-        <Providers>
-          {breadcrumb}
-          {children}
-          {footer}
-        </Providers>
-      </Layout>
-    </html>
+    <ViewTransitions>
+      <html lang="en" className={clsx(runde.className, inter.variable)}>
+        <Layout>
+          <Providers>
+            {breadcrumb}
+            {children}
+            {footer}
+          </Providers>
+        </Layout>
+      </html>
+    </ViewTransitions>
   );
 }

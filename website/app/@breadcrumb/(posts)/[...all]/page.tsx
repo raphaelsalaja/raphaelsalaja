@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import React from "react";
 import title from "title";
 import { Logo } from "@/components/logo";
+import { Link } from "next-view-transitions";
 
 interface BreadcrumbsProps {
   items: {
@@ -17,7 +18,9 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
     <Breadcrumb>
       <BreadcrumbItem>
         <BreadcrumbLink href="/">
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
         </BreadcrumbLink>
       </BreadcrumbItem>
       {items.map((item, i) => {
@@ -33,8 +36,10 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
               </BreadcrumbItem>
             ) : (
               <BreadcrumbItem>
-                <BreadcrumbLink key={item.href} href={item.href}>
-                  {item.text}
+                <BreadcrumbLink asChild>
+                  <Link href={item.href} key={item.href}>
+                    {item.text}
+                  </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             )}

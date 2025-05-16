@@ -46,14 +46,12 @@ export async function getArchiveMedia(): Promise<CloudinaryResource[]> {
         }
 
         if (resource.resource_type === "video") {
-          const blurDataURL = await generateVideoBlurDataURL(
-            resource.public_id
-          );
+          const blurDataURL = await generateVideoBlurDataURL(resource.public_id);
           return { ...resource, blurDataURL };
         }
 
         return resource;
-      })
+      }),
     );
 
     resources.push(...batch);
@@ -63,9 +61,7 @@ export async function getArchiveMedia(): Promise<CloudinaryResource[]> {
   return resources;
 }
 
-async function generateBlurDataURL(
-  public_id: string
-): Promise<string | undefined> {
+async function generateBlurDataURL(public_id: string): Promise<string | undefined> {
   try {
     const url = getCldImageUrl({
       src: public_id,
@@ -83,9 +79,7 @@ async function generateBlurDataURL(
   }
 }
 
-export async function generateVideoBlurDataURL(
-  public_id: string
-): Promise<string | undefined> {
+export async function generateVideoBlurDataURL(public_id: string): Promise<string | undefined> {
   try {
     const frameUrl = getCldImageUrl({
       src: public_id,

@@ -4,6 +4,9 @@ import nextMDX from "@next/mdx";
 const nextConfig = {
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
   transpilePackages: ["next-mdx-remote"],
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 const withMDX = nextMDX({

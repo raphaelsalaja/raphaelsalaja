@@ -1,11 +1,12 @@
 import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
+
+import * as Cloudinary from "@/components/cloudinary";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
 import styles from "./styles.module.scss";
-import * as Cloudinary from "@/components/cloudinary";
 
 interface PostsProps {
   index?: boolean;

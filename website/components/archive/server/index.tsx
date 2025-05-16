@@ -2,21 +2,23 @@
 
 import * as Cloudinary from "@/components/cloudinary";
 import { Masonry } from "@/components/masonry";
-
-import styles from "./styles.module.scss";
 import { CloudinaryResource } from "@/lib/cloudinary";
+import styles from "./styles.module.scss";
 
 export const MasonryWrapper = ({ items }: { items: any[] }) => {
   const isImage = (url: string) => /\.(jpg|jpeg|png|gif|bmp|webp)$/.test(url);
   const isVideo = (url: string) => /\.(mp4|webm|ogg)$/.test(url);
 
+  // randomize the order of items
+  items = items.sort(() => Math.random() - 0.5);
+
   return (
     <Masonry
       items={items}
       config={{
-        columns: [2, 3, 4],
-        gap: [16, 16, 16],
-        media: [640, 768, 1024],
+        columns: [2, 3],
+        gap: [24, 24],
+        media: [640, 768],
         useBalancedLayout: true,
       }}
       render={(item: unknown, idx: number) => {

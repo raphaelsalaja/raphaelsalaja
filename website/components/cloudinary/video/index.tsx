@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import type { VideoHTMLAttributes } from "react";
+import { useEffect, useState } from "react";
 
 interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
   blurDataURL?: string;

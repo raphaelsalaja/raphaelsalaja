@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "motion/react";
 import { CldImage } from "next-cloudinary";
+import { useState } from "react";
 
 interface CloudinaryImageProps extends React.ComponentProps<typeof CldImage> {
   blurDataURL?: string;

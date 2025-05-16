@@ -2,8 +2,8 @@
 
 import { Link1Icon } from "@radix-ui/react-icons";
 import { type HTMLMotionProps, motion } from "motion/react";
-import styles from "./styles.module.css";
 import React from "react";
+import styles from "./styles.module.css";
 
 export interface HeadingProps extends HTMLMotionProps<"h1"> {
   id: string;
