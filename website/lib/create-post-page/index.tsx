@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { getPosts } from "@/lib/mdx";
-import { OpenGraph } from "@/lib/og";
 import type { Frontmatter } from "@/types/frontmatter";
 
 interface PageProps {
@@ -18,21 +17,6 @@ export function createPostPage(route: string, renderContent: RenderFn) {
     }));
   }
 
-  async function generateMetadata(props: PageProps) {
-    const params = await props.params;
-    const post = Posts.find((post: { slug: string }) => post.slug === params.slug);
-    const title = post ? post.title : "";
-
-    return {
-      ...OpenGraph,
-      title,
-      openGraph: {
-        title,
-      },
-      twitter: {},
-    };
-  }
-
   async function Page(props: PageProps) {
     const params = await props.params;
     const post = Posts.find((post: { slug: string }) => post.slug === params.slug);
@@ -46,7 +30,6 @@ export function createPostPage(route: string, renderContent: RenderFn) {
 
   return {
     generateStaticParams,
-    generateMetadata,
     default: Page,
   };
 }

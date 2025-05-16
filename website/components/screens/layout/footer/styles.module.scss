@@ -106,3 +106,13 @@
     }
   }
 }
+
+.background {
+  position: absolute;
+  inset: -32px;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 24px;
+  overflow: hidden;
+  opacity: 0.2;
+}

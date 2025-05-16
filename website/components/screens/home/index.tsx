@@ -8,7 +8,7 @@ export default function Home() {
         <div className={styles.title}>
           <h1>Raphael Salaja</h1>
           <span>—</span>
-          <h1>Enginering Feelings</h1>
+          <h1>Engineering Feelings</h1>
         </div>
         <p className={styles.about}>
           I&apos;m someone who loves mixing different influences, genres and styles to create unique, innovative work. I

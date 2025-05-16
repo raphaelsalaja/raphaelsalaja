@@ -20,6 +20,8 @@
     "@paper-design/shaders-react": "^0.0.29",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-portal": "^1.1.6",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/postprocessing": "^3.0.4",
     "@rs/configuration": "workspace:*",
     "@rs/design": "workspace:*",
     "@rs/i18n": "workspace:*",
@@ -43,6 +45,7 @@
     "next-mdx-remote": "^5.0.0",
     "next-view-transitions": "^0.3.4",
     "postcss-dynamic-metrics": "^0.0.4",
+    "postprocessing": "^6.37.3",
     "react": "19.1.0",
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "19.1.0",
@@ -55,6 +58,7 @@
     "sass": "^1.88.0",
     "sharp": "^0.33.5",
     "shiki": "^1.26.1",
+    "three": "^0.176.0",
     "title": "^4.0.1"
   },
   "devDependencies": {

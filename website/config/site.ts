@@ -1,47 +1,32 @@
-export type OpenGraphMetadata = {
-  title: { default: string; template: string };
-  description: string;
-  keywords: string[];
-  authors: { name: string; url: string }[];
-  creator: string;
-  themeColor: { media: string; color: string }[];
-  openGraph: {
-    type: string;
-    locale: string;
-    url: string;
-    title: string;
-    description: string;
-    siteName: string;
-  };
-  twitter: {
-    card: string;
-    title: string;
-    description: string;
-    images: string[];
-    creator: string;
-  };
-  icons: {
-    icon: string;
-    shortcut: string;
-    apple: string;
-  };
-  url: string;
-  links: {
-    twitter: string;
-    github: string;
-  };
+import { Metadata } from "next";
+
+const {
+  NEXT_PUBLIC_VERCEL_ENV: env = "development",
+  NEXT_PUBLIC_VERCEL_BRANCH_URL: branchUrl,
+  NEXT_PUBLIC_VERCEL_URL: baseUrl,
+} = process.env;
+
+const APP_URLS: Record<string, string> = {
+  production: "https://www.raphaelsalaja.com",
+  preview: `https://${branchUrl || baseUrl}`,
+  development: "http://localhost:3000",
 };
 
-export const og: OpenGraphMetadata = {
+const APP_URL = APP_URLS[env] ?? APP_URLS.development;
+const APP_NAME = "Raphael Salaja";
+const APP_DESCRIPTION =
+  "Someone who loves mixing different influences, genres and styles to create unique, innovative work. I enjoy pushing boundaries and exploring new ways to express myself without limitations.";
+
+export const opengraph: Metadata = {
+  metadataBase: new URL(APP_URL),
   title: {
-    default: "Raphael Salaja",
+    default: APP_NAME,
     template: "%s",
   },
-  description:
-    "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
+  description: APP_DESCRIPTION,
   keywords: [
     "Raphael Salaja",
-    "Genreless Creator",
+    "Design Engineer",
     "Creative Endeavors",
     "Multidisciplinary Artist",
     "Innovative Works",
@@ -53,42 +38,31 @@ export const og: OpenGraphMetadata = {
     "YouTube",
     "Twitter",
   ],
-  authors: [
-    {
-      name: "shadcn",
-      url: "https://shadcn.com",
-    },
-  ],
-  creator: "shadcn",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://raphaelsalaja.com",
-    title: "Raphael Salaja",
-    description:
-      "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
-    siteName: "Raphael Salaja",
+    url: APP_URL,
+    title: APP_NAME,
+    siteName: APP_NAME,
+    description: APP_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
     title: "Raphael Salaja",
-    description:
-      "An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.",
-    images: ["https://raphaelsalaja.com/api/og"],
+    description: APP_DESCRIPTION,
+    images: [{ url: `${APP_URL}/og-default.png` }],
     creator: "@raphaelsalaja",
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  url: "https://raphaelsalaja.com",
-  links: {
-    twitter: "https://twitter.com/raphaelsalaja",
-    github: "https://github.com/rafunderscore",
-  },
+  manifest: `${APP_URL}/site.webmanifest`,
 };

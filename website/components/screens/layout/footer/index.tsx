@@ -5,7 +5,9 @@ import { Link } from "next-view-transitions";
 
 import styles from "./styles.module.scss";
 import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
-import { DotGrid } from "@paper-design/shaders-react";
+import dynamic from "next/dynamic";
+
+const Dither = dynamic(() => import("@/components/shaders/dither"), { ssr: false });
 
 export function Footer() {
   return (
@@ -62,6 +64,22 @@ export function Footer() {
           </div>
         </div>
         <p className={styles.legal}>© {Date().split(" ")[3]} Raphael Salaja</p>
+      </div>
+
+      <div className={styles.background}>
+        <div style={{ width: "100%", height: "100%", position: "relative" }}>
+          <Dither
+            colorDark={"rgba(0,0,0,0.3)"}
+            colorLight={"rgba(255,255,255,1)"}
+            speed={0.5}
+            pixelSize={2}
+            ditherScale={1}
+            rotSpeed={0.1}
+            warpInit={1}
+            warpIter={2.5}
+            warpAmpl={2.0}
+          />
+        </div>
       </div>
     </footer>
   );

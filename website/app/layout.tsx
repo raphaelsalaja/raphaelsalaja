@@ -3,34 +3,13 @@ import { ViewTransitions } from "next-view-transitions";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { og } from "@/config/site";
+import { opengraph } from "@/config/site";
 import "@/styles/main.css";
 import clsx from "clsx";
 import { Layout } from "@/components/layouts/root";
 import { Providers } from "@/components/providers";
 
-export const metadata: Metadata = {
-  title: og.title,
-  description: og.description,
-  keywords: og.keywords,
-  authors: og.authors,
-  creator: og.creator,
-  openGraph: og.openGraph,
-  twitter: og.twitter,
-  metadataBase: new URL(og.url),
-  manifest: `${og.url}/site.webmanifest`,
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+export const metadata: Metadata = opengraph;
 
 const runde = localFont({
   src: [
