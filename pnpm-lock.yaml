@@ -78,7 +78,7 @@ importers:
         specifier: ^3.3.3
         version: 3.5.3
       sass:
-        specifier: ^1.85.0
+        specifier: ^1.88.0
         version: 1.88.0
       tsup:
         specifier: ^8.3.5
@@ -133,7 +133,7 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
       sass:
-        specifier: ^1.87.0
+        specifier: ^1.88.0
         version: 1.88.0
       ts-node:
         specifier: ^10.9.2

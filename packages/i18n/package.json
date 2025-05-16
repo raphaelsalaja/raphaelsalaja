@@ -36,7 +36,7 @@
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
     "prettier": "^3.5.3",
-    "sass": "^1.87.0",
+    "sass": "^1.88.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.4.0",
     "turbo": "^2.5.0",
