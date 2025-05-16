@@ -73,7 +73,6 @@ export const Placeholder: React.FC<PlaceholderProps> = ({ post }) => {
             {time.created}
           </p>
         </div>
-        <div className={styles.line} style={{ background: `var(--${color}-a10)` }} />
       </div>
     </div>
   );
