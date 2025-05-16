@@ -8,6 +8,9 @@
       ],
       "dependsOn": [
         "^build"
+      ],
+      "env": [
+        "CLOUDINARY_API_SECRET"
       ]
     },
     "lint": {
