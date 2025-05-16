@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbS
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import title from "title";
-import { Logo } from "@/components/logo";
+
 import { Link } from "next-view-transitions";
 
 interface BreadcrumbsProps {
@@ -17,10 +17,8 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <Breadcrumb>
       <BreadcrumbItem>
-        <BreadcrumbLink href="/">
-          <Link href="/">
-            <Logo />
-          </Link>
+        <BreadcrumbLink href="/" asChild>
+          <Link href="/">Home</Link>
         </BreadcrumbLink>
       </BreadcrumbItem>
       {items.map((item, i) => {

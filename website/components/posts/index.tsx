@@ -76,12 +76,7 @@ export const Posts = async ({
         </div>
       )}
 
-      <div
-        className={styles.grid}
-        style={{
-          gridTemplateColumns: index ? "repeat(3, 1fr)" : "repeat(3, 1fr)",
-        }}
-      >
+      <div className={styles.grid}>
         {posts
           .filter((post) => {
             if (isHome && filter) {

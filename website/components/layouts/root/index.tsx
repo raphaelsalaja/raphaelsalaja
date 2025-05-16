@@ -1,7 +1,7 @@
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <body>
-      <main>{children}</main>
+      <main data-animate>{children}</main>
     </body>
   );
 };
