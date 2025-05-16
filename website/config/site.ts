@@ -16,6 +16,7 @@ const APP_URL = APP_URLS[env] ?? APP_URLS.development;
 const APP_NAME = "Raphael Salaja";
 const APP_DESCRIPTION =
   "Someone who loves mixing different influences, genres and styles to create unique, innovative work. I enjoy pushing boundaries and exploring new ways to express myself without limitations.";
+const APP_OPENGRAPH_IMAGE = `${APP_URL}/opengraph-image.png`;
 
 export const opengraph: Metadata = {
   metadataBase: new URL(APP_URL),
@@ -50,7 +51,7 @@ export const opengraph: Metadata = {
     card: "summary_large_image",
     title: "Raphael Salaja",
     description: APP_DESCRIPTION,
-    images: [{ url: `${APP_URL}/og-default.png` }],
+    images: [{ url: APP_OPENGRAPH_IMAGE }],
     creator: "@raphaelsalaja",
   },
   robots: {
