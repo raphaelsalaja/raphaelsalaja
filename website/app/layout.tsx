@@ -1,8 +1,7 @@
-import { ViewTransitions } from "next-view-transitions";
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { ViewTransitions } from "next-view-transitions";
 import { opengraph } from "@/config/site";
 import "@/styles/main.css";
 import clsx from "clsx";

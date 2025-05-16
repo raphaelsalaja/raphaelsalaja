@@ -1,11 +1,10 @@
 "use client";
 
 import Button from "@rs/design/button";
-import { Link } from "next-view-transitions";
-
-import styles from "./styles.module.scss";
-import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
 import dynamic from "next/dynamic";
+import { Link } from "next-view-transitions";
+import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
+import styles from "./styles.module.scss";
 
 const Dither = dynamic(() => import("@/components/shaders/dither"), { ssr: false });
 

@@ -1,8 +1,8 @@
 // components/shaders/rainbow-dither.tsx
 "use client";
 
-import { useRef, useEffect, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 function parseColor(input: string): [number, number, number, number] {

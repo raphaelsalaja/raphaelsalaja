@@ -1,9 +1,8 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@rs/design/breadcrumb";
 import { ChevronRight } from "lucide-react";
+import { Link } from "next-view-transitions";
 import React from "react";
 import title from "title";
-
-import { Link } from "next-view-transitions";
 
 interface BreadcrumbsProps {
   items: {

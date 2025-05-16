@@ -66,6 +66,7 @@
     "@types/node": "^22.10.5",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
+    "@types/three": "^0.176.0",
     "depcheck": "^1.4.7",
     "eslint": "9.17.0",
     "eslint-config-next": "15.3.2",
