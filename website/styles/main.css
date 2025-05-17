@@ -38,6 +38,9 @@ html {
     width: 0;
     background: transparent;
   }
+
+  /* make x axis unscrollable */
+  overflow-x: hidden;
 }
 
 body {
