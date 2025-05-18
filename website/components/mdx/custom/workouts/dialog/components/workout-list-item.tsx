@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import React, { useState } from "react";
 import { Workouts } from "@/data/health/types";
 import { getStatistic, jsonToStatistic } from "@/data/health/utils/getStatistic";
-import { QuantityType } from "@/types/swift/healthKit/quantity";
+import { QuantityType } from "@/types/quantity";
 import styles from "../styles.module.scss";
 import { formatDuration } from "../utils/formatDuration";
 import { Metric } from "./metric";

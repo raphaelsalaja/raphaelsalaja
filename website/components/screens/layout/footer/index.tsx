@@ -5,18 +5,20 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Base } from "./base";
-import { Spotify } from "./spotify";
+
 import styles from "./styles.module.scss";
 
-const TWEEN_FACTOR = 0.6;
+import { Widgets } from "./widgets";
+
 const MIN_SCALE = 0.8;
 const MAX_SCALE = 0.95;
+const TWEEN_FACTOR = 0.6;
 
 const clamp = (v: number, min: number, max: number): number => Math.min(Math.max(v, min), max);
 
 const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
-const PAGES = [Base, Spotify, Base, Spotify, Base, Spotify] as const;
+const PAGES = [Base, Widgets] as const;
 
 export function Footer() {
   const [viewportRef, embla] = useEmblaCarousel({ axis: "y", skipSnaps: true });

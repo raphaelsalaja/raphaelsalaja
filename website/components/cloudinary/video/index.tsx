@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { VideoHTMLAttributes } from "react";
 import { useEffect, useState } from "react";
 
@@ -19,8 +20,8 @@ export const Video = ({ blurDataURL, ...props }: VideoProps) => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       {blurDataURL && (
-        // biome-ignore lint/nursery/noImgElement: <explanation>
-        <img
+        <Image
+          unoptimized
           src={blurDataURL}
           alt=""
           style={{

@@ -21,6 +21,8 @@
   /* animation */
   transition: all 0.2s ease;
 
+  user-select: none;
+
   /* variants - primary */
   &[data-shunpo-button-variant="primary"] {
     color: #fff;
