@@ -23,6 +23,7 @@
     right: 32px;
     bottom: 32px;
     top: 32px;
+    pointer-events: none;
 
     .legal {
       color: var(--text-quaternary);
@@ -53,6 +54,11 @@
         font-size: 12px;
         font-weight: 500;
         color: var(--text-quaternary);
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--text-primary);
+        }
       }
     }
   }

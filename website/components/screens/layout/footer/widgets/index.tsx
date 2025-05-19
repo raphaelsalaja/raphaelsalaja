@@ -22,7 +22,7 @@ const SpotifyWidget: React.FC = () => {
 
   return (
     <Widget
-      art={item?.album.images[0]?.url ?? ""}
+      art={item?.album.images[0]?.url ?? "./placeholder.png"}
       primaryText={item?.name ?? "No track currently playing"}
       secondaryText={item?.artists?.[0]?.name ?? "Unknown Artist"}
       background="linear-gradient(180deg, var(--spotify-7) 0%, var(--spotify-9) 100%)"
