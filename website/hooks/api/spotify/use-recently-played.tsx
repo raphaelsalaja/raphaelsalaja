@@ -13,7 +13,6 @@ export function useSpotifyRecentlyPlayed() {
   return useQuery<CursorPagingObject<RecentlyPlayed>>({
     queryKey: ["spotify", "recently-played"],
     queryFn: fetchRecentlyPlayed,
-    refetchInterval: 60_000,
     staleTime: 60_000,
   });
 }

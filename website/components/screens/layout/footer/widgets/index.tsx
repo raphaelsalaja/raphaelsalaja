@@ -6,6 +6,7 @@ import { useSteamRecentlyPlayed } from "@/hooks/api/steam/use-recently-played";
 import { useTraktRecentlyWatched } from "@/hooks/api/trakt/use-recently-watched";
 import { Widget } from "./shell";
 import styles from "./styles.module.scss";
+import { useSpotifyPlaybackState } from "@/hooks/api/spotify/use-playback-state";
 
 export const Widgets: React.FC = () => (
   <div className={styles.footer}>
@@ -15,16 +16,25 @@ export const Widgets: React.FC = () => (
   </div>
 );
 
-const SpotifyWidget: React.FC = () => {
-  const { data } = useSpotifyRecentlyPlayed();
+export const SpotifyWidget: React.FC = () => {
+  const { data: recent } = useSpotifyRecentlyPlayed();
+  const { data: playbackState } = useSpotifyPlaybackState();
 
-  const item = data?.items?.[0]?.track;
+  const isPlaying = playbackState?.is_playing;
+  const playingTrack = playbackState?.item;
+  const recentTrack = recent?.items?.[0]?.track;
+  const track = isPlaying && playingTrack ? playingTrack : recentTrack;
+
+  const art = track?.album?.images?.[0]?.url ?? "./placeholder.png";
+  const primaryText = track?.name ?? "No track currently playing";
+  const secondaryText = track?.artists?.[0]?.name ?? "Unknown Artist";
+  console.log("Spotify Widget", { isPlaying, primaryText, secondaryText });
 
   return (
     <Widget
-      art={item?.album.images[0]?.url ?? "./placeholder.png"}
-      primaryText={item?.name ?? "No track currently playing"}
-      secondaryText={item?.artists?.[0]?.name ?? "Unknown Artist"}
+      art={art}
+      primaryText={primaryText}
+      secondaryText={secondaryText}
       background="linear-gradient(180deg, var(--spotify-7) 0%, var(--spotify-9) 100%)"
       aspectRatio="1 / 1"
     />
