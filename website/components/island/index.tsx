@@ -15,12 +15,11 @@ import styles from "./styles.module.css";
 import "./styles.css";
 
 import { MeshGradient, SteppedSimplexNoise } from "@paper-design/shaders-react";
+import dynamic from "next/dynamic";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
 import Carousel from "./carousel";
 import ReadingTimeTracker from "./slider";
-
-import dynamic from "next/dynamic";
 
 const NumberFlow = dynamic(() => import("@number-flow/react").then((mod) => mod.default), {
   ssr: false,
