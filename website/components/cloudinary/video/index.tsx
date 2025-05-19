@@ -21,6 +21,8 @@ export const Video = ({ blurDataURL, ...props }: VideoProps) => {
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       {blurDataURL && (
         <Image
+          width={100}
+          height={100}
           unoptimized
           src={blurDataURL}
           alt=""
