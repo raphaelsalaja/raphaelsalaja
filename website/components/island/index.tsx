@@ -13,12 +13,21 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 // Styles
 import styles from "./styles.module.css";
 import "./styles.css";
-import NumberFlow, { NumberFlowGroup } from "@number-flow/react";
+
 import { MeshGradient, SteppedSimplexNoise } from "@paper-design/shaders-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
 import Carousel from "./carousel";
 import ReadingTimeTracker from "./slider";
+
+import dynamic from "next/dynamic";
+
+const NumberFlow = dynamic(() => import("@number-flow/react").then((mod) => mod.default), {
+  ssr: false,
+});
+const NumberFlowGroup = dynamic(() => import("@number-flow/react").then((mod) => mod.NumberFlowGroup), {
+  ssr: false,
+});
 
 interface IslandProps extends HTMLMotionProps<"div"> {}
 

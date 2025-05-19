@@ -1,11 +1,7 @@
 import { Article } from "@/components/article";
 import { createPostPage } from "@/lib/create-post-page";
 
-const {
-  generateStaticParams,
-
-  default: Page,
-} = createPostPage("insights", (post) => <Article post={post} />);
+const { generateStaticParams, default: Page } = createPostPage("insights", (post) => <Article post={post} />);
 
 export { generateStaticParams };
 

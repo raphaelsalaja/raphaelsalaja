@@ -12,6 +12,5 @@ export function useTraktRecentlyWatched() {
     queryKey: ["trakt", "recently-watched"],
     queryFn: fetchRecentlyWatched,
     staleTime: 60_000,
-    refetchInterval: 60_000,
   });
 }

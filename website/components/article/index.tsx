@@ -1,6 +1,7 @@
 import React from "react";
 import { MDX } from "@/components/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
+import Island from "../island";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
   post: Frontmatter;
@@ -16,7 +17,7 @@ export const Article = ({ post, ...props }: ArticleProps) => {
         {summary && <p data-mdx-article-summary>{summary}</p>}
         <MDX source={content} />
       </article>
-      {/* <Island /> */}
+      <Island />
     </React.Fragment>
   );
 };

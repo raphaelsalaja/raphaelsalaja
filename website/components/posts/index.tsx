@@ -48,7 +48,7 @@ export const Posts = async ({
         <div className={styles.thumbnail}>
           <Cloudinary.Image
             className={styles.media}
-            src={"thumbnail_dgjo6v"}
+            src={post.media.image}
             alt={post.title || "Post image"}
             fill
             unoptimized
