@@ -20,12 +20,28 @@ const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
 const PAGES = [Base, Widgets] as const;
 
+function useIsTinyScreen(breakpoint = 480) {
+  const [isTiny, setIsTiny] = useState(typeof window !== "undefined" && window.innerWidth <= breakpoint);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTiny(window.innerWidth <= breakpoint);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isTiny;
+}
+
 export function Footer() {
   const [viewportRef, embla] = useEmblaCarousel({ axis: "y", skipSnaps: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const draggingRef = useRef(false);
   const tweenRef = useRef(0);
+
+  const isTiny = useIsTinyScreen(640);
 
   const updateTween = useCallback((api: EmblaCarouselType) => {
     tweenRef.current = TWEEN_FACTOR * api.scrollSnapList().length;
@@ -95,6 +111,20 @@ export function Footer() {
       embla.off("reInit", resetScales);
     };
   }, [embla, updateTween, scaleSlides, resetScales]);
+
+  if (isTiny) {
+    return (
+      <div className={styles.embla}>
+        <div className={styles.viewport}>
+          <div className={styles.container}>
+            <div className={styles.slide}>
+              <Base />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.embla} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
