@@ -33,11 +33,6 @@ export const opengraph: Metadata = {
     "Innovative Works",
     "Open Source",
     "Generative Art",
-    "GitHub",
-    "Patreon",
-    "Instagram",
-    "YouTube",
-    "Twitter",
   ],
   openGraph: {
     description: APP_DESCRIPTION,
