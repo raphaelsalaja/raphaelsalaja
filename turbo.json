@@ -10,7 +10,9 @@
         "^build"
       ],
       "env": [
-        "CLOUDINARY_API_SECRET"
+        "CLOUDINARY_API_SECRET",
+        "TRAKT_CLIENT_ID",
+        "TRAKT_USER_SLUG"
       ]
     },
     "lint": {
