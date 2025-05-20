@@ -28,7 +28,6 @@ export const SpotifyWidget: React.FC = () => {
   const art = track?.album?.images?.[0]?.url ?? "./placeholder.png";
   const primaryText = track?.name ?? "No track currently playing";
   const secondaryText = track?.artists?.[0]?.name ?? "Unknown Artist";
-  console.log("Spotify Widget", { isPlaying, primaryText, secondaryText });
 
   return (
     <Widget

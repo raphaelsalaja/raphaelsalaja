@@ -10,9 +10,6 @@ export const Base: React.FC = () => {
         <div className={styles.column}>
           <h1>Pages</h1>
           <Button asChild variant="ghost">
-            <Link href="/">Home</Link>
-          </Button>
-          <Button asChild variant="ghost">
             <Link href="/projects">Projects</Link>
           </Button>
           <Button asChild variant="ghost">
@@ -28,13 +25,16 @@ export const Base: React.FC = () => {
         <div className={styles.column}>
           <h1>Connect</h1>
           <Button asChild variant="ghost">
-            <Link href="https://x.com/raphaelsalaja">Twitter</Link>
+            <Link href="https://x.com/raphaelsalaja">X (Twitter)</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link href="https://www.instagram.com/raphaelsalaja">Instagram</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link href="https://github.com/raphaelsalaja">Github</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link href="https://www.linkedin.com/in/raphaelsalaja">LinkedIn</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link href="mailto:raphaelsalaja@gmail.com">Email</Link>
@@ -58,7 +58,7 @@ export const Base: React.FC = () => {
           </div>
         </div>
 
-        <p className={styles.legal}>© {new Date().getFullYear()} Raphael Salaja</p>
+        <p className={styles.legal}>© {new Date().getFullYear()}</p>
       </div>
     </div>
   );

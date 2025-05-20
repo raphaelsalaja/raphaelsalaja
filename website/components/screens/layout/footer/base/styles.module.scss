@@ -36,22 +36,26 @@
   .links {
     display: flex;
     align-items: flex-start;
-    gap: 48px;
+    gap: 64px;
+
+    @media (max-width: 768px) {
+      gap: 32px;
+    }
 
     .column {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      gap: 12px;
+      gap: 6px;
 
       h1 {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
       }
 
       a {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 500;
         color: var(--text-quaternary);
         transition: color 0.2s ease;
@@ -67,13 +71,12 @@
 .shapes {
   display: flex;
   grid: repeat(2, 1fr) / repeat(2, 1fr);
-  gap: 8px;
+  gap: 4px;
 
   @media (max-width: 768px) {
     display: grid;
     grid: repeat(2, 1fr) / repeat(2, 1fr);
     gap: 4px;
-    transform: scale(0.8);
     transform-origin: top right;
   }
 
@@ -83,11 +86,11 @@
     align-items: center;
     position: relative;
     aspect-ratio: 1;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
     transition: all 0.2s ease;
-    padding: 2px;
+    padding: 4px;
 
     &[data-color="blue"] {
       background-color: var(--red-a10);

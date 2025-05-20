@@ -18,7 +18,7 @@ const clamp = (v: number, min: number, max: number): number => Math.min(Math.max
 
 const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
-const PAGES = [Base, Widgets] as const;
+const PAGES = [Widgets, Base] as const;
 
 function useIsTinyScreen(breakpoint = 480) {
   const [isTiny, setIsTiny] = useState(typeof window !== "undefined" && window.innerWidth <= breakpoint);
@@ -157,7 +157,7 @@ export function Footer() {
               className={idx === selectedIndex ? `${styles.dot} ${styles.dotActive}` : styles.dot}
               onClick={() => embla?.scrollTo(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              style={{ transform: `scale(${idx === selectedIndex ? 1.2 : 1})` }}
+              style={{ transform: `scale(${idx === selectedIndex ? 1.2 : 0.8})` }}
             />
           ))}
         </div>

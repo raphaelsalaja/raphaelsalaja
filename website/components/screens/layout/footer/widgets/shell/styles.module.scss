@@ -44,14 +44,13 @@
   overflow: hidden;
 
   &.marquee {
-    mask-image:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        black 10%,
-        black 90%,
-        transparent 100%
-      );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
   }
 }
 
@@ -69,13 +68,13 @@
   }
 
   &[data-variant="primary"] {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--white-a12);
   }
 
   &[data-variant="secondary"] {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--white-a8);
   }
