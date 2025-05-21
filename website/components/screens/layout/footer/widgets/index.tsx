@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useSpotifyPlaybackState } from "@/hooks/api/spotify/use-playback-state";
 import { useSpotifyRecentlyPlayed } from "@/hooks/api/spotify/use-recently-played";
 import { useSteamRecentlyPlayed } from "@/hooks/api/steam/use-recently-played";
 import { useTraktRecentlyWatched } from "@/hooks/api/trakt/use-recently-watched";
 import { Widget } from "./shell";
 import styles from "./styles.module.scss";
-import { useSpotifyPlaybackState } from "@/hooks/api/spotify/use-playback-state";
 
 export const Widgets: React.FC = () => (
   <div className={styles.footer}>
@@ -17,8 +17,10 @@ export const Widgets: React.FC = () => (
 );
 
 export const SpotifyWidget: React.FC = () => {
-  const { data: recent } = useSpotifyRecentlyPlayed();
-  const { data: playbackState } = useSpotifyPlaybackState();
+  const { data: recent, isLoading: spotifyLoading } = useSpotifyRecentlyPlayed();
+  const { data: playbackState, isLoading: stateLoading } = useSpotifyPlaybackState();
+
+  const isLoading = spotifyLoading || stateLoading;
 
   const isPlaying = playbackState?.is_playing;
   const playingTrack = playbackState?.item;
@@ -32,10 +34,11 @@ export const SpotifyWidget: React.FC = () => {
   return (
     <Widget
       art={art}
-      primaryText={primaryText}
+      primaryText={primaryText ?? ""}
       secondaryText={secondaryText}
       background="linear-gradient(180deg, var(--spotify-7) 0%, var(--spotify-9) 100%)"
       aspectRatio="1 / 1"
+      isLoading={isLoading}
     />
   );
 };
@@ -43,13 +46,12 @@ export const SpotifyWidget: React.FC = () => {
 export const SteamWidget: React.FC = () => {
   const { data: game, isLoading, isError } = useSteamRecentlyPlayed();
 
-  if (isLoading || isError || !game) return null;
-
   return (
     <Widget
-      art={`https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.appid}/library_600x900.jpg`}
-      primaryText={game.name ?? "Unknown Game"}
-      secondaryText={game.app?.developers?.join(", ")}
+      isLoading={isLoading}
+      art={`https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game?.appid}/library_600x900.jpg`}
+      primaryText={game?.name ?? "Unknown Game"}
+      secondaryText={game?.app?.developers?.join(", ") ?? "Unknown Developer"}
       background="linear-gradient(180deg, #2a475e 0%, #1b2838 100%)"
       aspectRatio="6 / 9"
       customBackground={
@@ -59,7 +61,7 @@ export const SteamWidget: React.FC = () => {
             width={600}
             height={900}
             unoptimized
-            src={game.app?.background_raw || game.app?.background || "/steam-placeholder.png"}
+            src={game?.app?.background_raw || game?.app?.background || "/placeholder.png"}
             alt="Steam Background"
             className={styles.art}
           />
@@ -72,22 +74,19 @@ export const SteamWidget: React.FC = () => {
 export const TraktWidget: React.FC = () => {
   const { data: entry, isLoading, isError } = useTraktRecentlyWatched();
 
-  if (isLoading || isError || !entry) return null;
+  const rawPoster = entry?.images.poster?.[0];
 
-  const rawPoster = entry.images.poster?.[0];
+  const posterUrl = rawPoster?.startsWith("http") ? rawPoster : `https://${rawPoster}`;
 
-  if (!rawPoster) return null;
+  const primaryText = entry?.type === "movie" ? entry.title : entry?.showTitle;
 
-  const posterUrl = rawPoster.startsWith("http") ? rawPoster : `https://${rawPoster}`;
-
-  const primaryText = entry.type === "movie" ? entry.title : entry.showTitle;
-
-  const secondaryText = entry.type === "episode" ? `${entry.episodeTitle} S${entry.season}:E${entry.episode}` : "";
+  const secondaryText = entry?.type === "episode" ? `${entry.episodeTitle} S${entry.season}:E${entry.episode}` : "";
 
   return (
     <Widget
+      isLoading={isLoading}
       art={posterUrl}
-      primaryText={primaryText}
+      primaryText={primaryText ?? "Nothing recently watched"}
       secondaryText={secondaryText}
       background="linear-gradient(180deg, #991eeb 0%, #5822b4 100%)"
       aspectRatio="3 / 4.5"

@@ -17,9 +17,6 @@ export async function GET() {
     return NextResponse.json(recentlyPlayed);
   } catch (err: any) {
     console.error("Error fetching recently played", err);
-    return NextResponse.json(
-      { error: err.message || "Unknown error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
   }
 }

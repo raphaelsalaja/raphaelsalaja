@@ -96,7 +96,6 @@ export async function generateVideoBlurDataURL(public_id: string): Promise<strin
 
     return `data:${response.headers.get("content-type")};base64,${base64}`;
   } catch (err) {
-    console.error("Failed to generate blurDataURL for video:", public_id, err);
     return undefined;
   }
 }

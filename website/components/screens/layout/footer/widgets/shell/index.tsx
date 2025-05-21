@@ -1,71 +1,79 @@
-// components/shell.tsx
 "use client";
 
-import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 import styles from "./styles.module.scss";
+import { TextLine } from "./text-line";
+
+import "react-loading-skeleton/dist/skeleton.css";
+import { AnimatePresence, motion } from "motion/react";
 
 interface WidgetProps {
   art: string;
   primaryText: string;
-  secondaryText?: string;
+  secondaryText: string;
   background?: string;
+  isLoading?: boolean;
   aspectRatio?: string;
   customBackground?: React.ReactNode;
 }
 
 export const Widget: React.FC<WidgetProps> = ({
   art,
-  primaryText,
-  secondaryText,
+  isLoading = false,
+  primaryText = "",
+  secondaryText = "",
   background = "linear-gradient(180deg, #991eeb 0%, #5822b4 100%)",
   aspectRatio = "1 / 1",
   customBackground = null,
-}) => {
-  const primaryRef = useRef<HTMLParagraphElement>(null);
-  const secondaryRef = useRef<HTMLParagraphElement>(null);
-  const [primaryMarquee, setPrimaryMarquee] = useState(false);
-  const [secondaryMarquee, setSecondaryMarquee] = useState(false);
+}) => (
+  <div className={styles.widget} style={{ background }}>
+    <div className={styles.container}>
+      {customBackground}
 
-  useEffect(() => {
-    const p = primaryRef.current;
-    const s = secondaryRef.current;
+      <AnimatePresence mode="popLayout" initial={false}>
+        {isLoading ? (
+          <motion.div
+            key={"loading"}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ aspectRatio }}
+            className={styles.media}
+          >
+            <Skeleton
+              borderRadius={8}
+              style={{
+                width: "200px",
+                height: "200px",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                opacity: 0.6,
+                mixBlendMode: "lighten",
+              }}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key={art}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ aspectRatio }}
+            className={styles.media}
+          >
+            <Image src={art} fill alt="Media" unoptimized className={styles.art} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-    if (p) {
-      setPrimaryMarquee(p.scrollWidth > p.clientWidth);
-    }
-    if (s) {
-      setSecondaryMarquee(s.scrollWidth > s.clientWidth);
-    }
-  }, []);
-
-  return (
-    <div className={styles.widget} style={{ background }}>
-      <div className={styles.container}>
-        {customBackground}
-
-        <div className={styles.media} style={{ aspectRatio }}>
-          <Image src={art} width={100} height={100} alt={"Media"} unoptimized className={styles.art} />
-        </div>
-
-        <div className={styles.content}>
-          <p ref={primaryRef} className={clsx(styles.text, primaryMarquee && styles.marquee)} data-variant="primary">
-            {primaryText}
-          </p>
-
-          {secondaryText && (
-            <p
-              ref={secondaryRef}
-              className={clsx(styles.text, secondaryMarquee && styles.marquee)}
-              data-variant="secondary"
-            >
-              {secondaryText}
-            </p>
-          )}
-        </div>
+      <div className={styles.info}>
+        <TextLine isLoading={isLoading} text={primaryText} variant="primary" />
+        <TextLine isLoading={isLoading} skeleton={{ width: "40%" }} text={secondaryText} variant="secondary" />
       </div>
     </div>
-  );
-};
+  </div>
+);

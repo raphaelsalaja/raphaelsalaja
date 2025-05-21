@@ -16,7 +16,6 @@ function readFile(filePath: string): Frontmatter | null {
       content,
     } as Frontmatter;
   } catch (error) {
-    console.error(`Failed to read or parse the file at ${filePath}:`, error);
     return null;
   }
 }
@@ -25,7 +24,6 @@ function getFiles(dir: string): string[] {
   try {
     return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
   } catch (error) {
-    console.error(`Failed to read directory at ${dir}:`, error);
     return [];
   }
 }

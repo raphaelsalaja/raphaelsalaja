@@ -1,3 +1,5 @@
+// components/styles.module.scss
+
 .widget {
   display: flex;
   flex-direction: column;
@@ -29,6 +31,7 @@
 .container {
   position: relative;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -36,36 +39,31 @@
 }
 
 .info {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+/* each text line gets clipped and faded by the container */
+.lineContainer {
+  position: relative;
   width: 100%;
   overflow: hidden;
-
-  &.marquee {
-    mask-image: linear-gradient(
+  mask-image:
+    linear-gradient(
       to right,
       transparent 0%,
       black 10%,
       black 90%,
       transparent 100%
     );
-  }
 }
 
 .text {
   white-space: nowrap;
-  overflow: clip;
-  width: 100%;
+  overflow: hidden; // Keep or remove based on desired static text behavior
+  width: 100%; // Keep or remove based on desired static text behavior
   text-align: center;
-
-  &[data-variant="caps"] {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--white-a8);
-    text-transform: uppercase;
-  }
 
   &[data-variant="primary"] {
     font-size: 13px;
@@ -78,20 +76,10 @@
     font-weight: 500;
     color: var(--white-a8);
   }
-
-  &.marquee {
-    overflow: visible;
-    width: 100%;
-    animation: marquee 8s linear infinite;
-  }
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
+.secondary {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white-a8);
 }

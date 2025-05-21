@@ -34,7 +34,7 @@ function parseColor(input: string): [number, number, number, number] {
     const a = as !== undefined ? Number.parseFloat(as) : 1;
     return [r, g, b, a];
   }
-  console.warn(`Could not parse color "${input}", falling back to white`);
+
   return [1, 1, 1, 1];
 }
 
