@@ -1,5 +1,6 @@
 .wallet {
   --offset: 16px;
+
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -68,7 +69,7 @@
   height: 32px;
   background: var(--white-a4);
   border-radius: 16px;
-  padding: 0px 16px;
+  padding: 0 16px;
   width: fit-content;
   color: unset;
 }
@@ -84,12 +85,12 @@
   will-change: filter;
 
   &[data-text="primary"] {
-    margin: 0px;
+    margin: 0;
     color: var(--white-a12);
   }
 
   &[data-text="secondary"] {
-    margin: 0px;
+    margin: 0;
     color: var(--white-a8);
   }
 
@@ -121,7 +122,6 @@
   margin: auto;
   z-index: 100;
   display: flex;
-
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
@@ -176,23 +176,19 @@
 }
 
 .save {
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
   width: 100%;
   border-radius: 16px;
-  padding: 0px 16px;
+  padding: 0 16px;
   cursor: pointer;
-
   display: flex;
   font-size: 14px;
   font-weight: 600;
   line-height: normal;
   white-space: nowrap;
   field-sizing: content;
-  color: unset;
   will-change: filter;
-
   color: var(--white-a12);
 }
