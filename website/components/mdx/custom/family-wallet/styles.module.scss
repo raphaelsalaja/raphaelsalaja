@@ -1,17 +1,26 @@
 .wallet {
   --offset: 16px;
-
   position: relative;
-  display: block;
-  background: var(--orange-9);
+  display: flex;
+  justify-content: space-between;
   aspect-ratio: 3 / 1.8;
   border-radius: 20px;
+  padding: var(--offset);
+  transition: background 0.2s ease;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:nth-child(2) {
+      align-items: flex-end;
+    }
+  }
 }
 
 .icon {
-  position: absolute;
-  left: var(--offset);
-  top: var(--offset);
+  display: flex;
   width: 30px;
   height: 30px;
 
@@ -21,18 +30,12 @@
 }
 
 .details {
-  position: absolute;
-  left: var(--offset);
-  bottom: var(--offset);
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
 .options {
-  position: absolute;
-  right: var(--offset);
-  top: var(--offset);
   display: flex;
   flex-direction: column;
   width: 24px;
@@ -41,16 +44,15 @@
   color: var(--white-a10);
   border-radius: 100%;
   padding: 4px;
+  cursor: pointer;
 }
 
 .copy {
-  position: absolute;
-  right: var(--offset);
-  top: var(--offset);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
 
   .symbol {
     color: var(--white-a8);
@@ -60,29 +62,137 @@
 }
 
 .customize {
-  position: absolute;
-  right: var(--offset);
-  bottom: var(--offset);
   display: flex;
   align-items: center;
   justify-content: center;
   height: 32px;
   background: var(--white-a4);
-  color: var(--white-a10);
   border-radius: 16px;
-  width: 100px;
+  padding: 0px 16px;
+  width: fit-content;
+  color: unset;
 }
 
 .text {
+  display: flex;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
+  white-space: nowrap;
+  field-sizing: content;
+  color: unset;
+  will-change: filter;
 
   &[data-text="primary"] {
+    margin: 0px;
     color: var(--white-a12);
   }
 
   &[data-text="secondary"] {
+    margin: 0px;
     color: var(--white-a8);
   }
+
+  &::selection {
+    background: var(--white-a4);
+  }
+
+  &::placeholder {
+    color: var(--white-a6);
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 100;
+  display: flex;
+
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.picker {
+  background: transparent;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.swatch {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  gap: 8px;
+
+  .color {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 32px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 100px;
+      box-shadow: inset 0 0 0 3px var(--white-a12);
+      transform: scale(0);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    &[data-selected="true"] {
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 0px 16px;
+  cursor: pointer;
+
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+  field-sizing: content;
+  color: unset;
+  will-change: filter;
+
+  color: var(--white-a12);
 }

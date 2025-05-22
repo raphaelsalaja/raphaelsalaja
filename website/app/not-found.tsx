@@ -1,5 +1,5 @@
 "use client";
 
 export default function NotFound() {
-  return;
+  return <div>asdf</div>;
 }
