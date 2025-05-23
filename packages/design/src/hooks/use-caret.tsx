@@ -49,8 +49,8 @@ export function useCaret(ref: React.RefObject<HTMLElement | null>): Caret {
         rects,
         isSelecting: !sel.isCollapsed,
       });
-    } catch (err) {
-      console.warn("useCaret prevented crash:", err);
+    } catch (e) {
+      console.error("Error updating caret:", e);
     }
   }, [ref]);
 

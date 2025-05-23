@@ -5,10 +5,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Base } from "./base";
-
+import { Spotify } from "./spotify";
+import { Steam } from "./steam";
 import styles from "./styles.module.scss";
-
-import { Widgets } from "./widgets";
 
 const MIN_SCALE = 0.8;
 const MAX_SCALE = 0.95;
@@ -18,7 +17,7 @@ const clamp = (v: number, min: number, max: number): number => Math.min(Math.max
 
 const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
-const PAGES = [Base, Widgets] as const;
+const PAGES = [Base, Spotify, Steam] as const;
 
 function useIsTinyScreen(breakpoint = 480) {
   const [isTiny, setIsTiny] = useState(typeof window !== "undefined" && window.innerWidth <= breakpoint);

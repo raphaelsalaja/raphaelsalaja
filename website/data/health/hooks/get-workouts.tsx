@@ -59,7 +59,6 @@ export async function getWorkouts(opts: GetWorkoutsOptions = {}): Promise<Workou
     .order("end_timestamp", { ascending: false });
 
   if (error) {
-    console.error("getWorkouts failed", { fromIso, toIso }, error);
     throw error;
   }
   return data ?? [];

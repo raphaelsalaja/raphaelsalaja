@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { TraktHistoryEntry } from "@/types/trakt";
+import { components } from "@/types/trakt";
 
-async function fetchRecentlyWatched(): Promise<TraktHistoryEntry> {
-  const res = await fetch("/api/trakt/recently-watched");
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-}
+type Show = components["schemas"]["Show"];
 
-export function useTraktRecentlyWatched() {
-  return useQuery<TraktHistoryEntry, Error>({
-    queryKey: ["trakt", "recently-watched"],
-    queryFn: fetchRecentlyWatched,
+export function useTraktGetLastWatched() {
+  return useQuery({
+    queryKey: ["trakt", "last-watched-show"],
+    queryFn: async () => {
+      const res = await fetch("/api/trakt/get/last-watched");
+      if (!res.ok) {
+        throw new Error(await res.text());
+      }
+      return res.json() as Promise<Show | null>;
+    },
     staleTime: 60_000,
+    refetchOnWindowFocus: false,
   });
 }
