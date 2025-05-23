@@ -25,7 +25,7 @@ export default function NotFound() {
 
   return (
     <React.Fragment>
-      <div className={styles.canvas}>
+      <div className={styles.container}>
         <div
           data-us-project-src="/shaders/404.json"
           data-us-production="true"
@@ -37,11 +37,10 @@ export default function NotFound() {
           data-us-arialabel="404 - Not Found"
         />
       </div>
-      <div className={styles.container}>
-        <Link href="/" className={clsx(styles.home, jacquard.className)}>
-          return home
-        </Link>
-      </div>
+
+      <Link href="/" className={clsx(styles.home, jacquard.className)}>
+        return home
+      </Link>
     </React.Fragment>
   );
 }
