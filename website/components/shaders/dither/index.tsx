@@ -175,11 +175,11 @@ export default function Dither({
   colorLight = "rgba(241,235,207,1)",
   speed = 1,
   pixelSize = 2,
-  ditherScale = 1,
+  ditherScale = 0.5,
   rotSpeed = 0.1,
   warpInit = 1,
-  warpIter = 2.1,
-  warpAmpl = 3.1,
+  warpIter = 2,
+  warpAmpl = 3,
 }: DitherProps) {
   return (
     <Canvas

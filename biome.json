@@ -7,7 +7,15 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/node_modules", "!**/dist", "!**/.next", "!**/.vercel", "!**/.pnpm"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.next",
+      "!**/.vercel",
+      "!**/.pnpm",
+      "!**/*.umd.js"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -59,8 +67,14 @@
         "useSortedClasses": {
           "level": "error",
           "options": {
-            "attributes": ["classList"],
-            "functions": ["clsx", "cva", "tw"]
+            "attributes": [
+              "classList"
+            ],
+            "functions": [
+              "clsx",
+              "cva",
+              "tw"
+            ]
           }
         }
       },
@@ -88,7 +102,11 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.scss", "**/*.module.scss"],
+      "includes": [
+        "**/*.scss",
+        "**/*.module.scss",
+        "!**/*.umd.js"
+      ],
       "linter": {
         "enabled": false
       },

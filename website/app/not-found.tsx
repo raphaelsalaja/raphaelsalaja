@@ -1,5 +1,5 @@
-"use client";
+import NotFound from "@/components/screens/not-found";
 
-export default function NotFound() {
-  return <div>asdf</div>;
+export default function NotFound404() {
+  return <NotFound />;
 }
