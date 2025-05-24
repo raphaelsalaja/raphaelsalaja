@@ -13,7 +13,7 @@ import styles from "./styles.module.scss";
 
 export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
       <title>Spotify Logo</title>
       <g clipPath="url(#clip0_698_76)">
         <path
@@ -47,6 +47,8 @@ export const Spotify: React.FC = () => {
   const albumArtUrl = albumImages[0]?.url ?? "/placeholder.png";
   const artistName = firstArtist?.name;
   const artistId = firstArtist?.id;
+  const url = currentTrack?.external_urls?.spotify ?? "#";
+  const albumName = currentTrack?.album?.name || "Album Name";
 
   const explicitIndicator = isExplicit ? "🅴" : "";
 
@@ -60,6 +62,11 @@ export const Spotify: React.FC = () => {
     return new Intl.NumberFormat("en-US", { notation: "compact", compactDisplay: "short" }).format(total);
   }, [artistInfo?.followers?.total]);
 
+  console.log("Spotify component rendered", {
+    currentTrack,
+    playbackState,
+  });
+
   return (
     <div className={styles.spotify}>
       <div className={styles.background}>
@@ -72,84 +79,97 @@ export const Spotify: React.FC = () => {
             unoptimized
             className={styles.art}
           />
+
+          <div className={styles.gradient} />
         </ConditionalWrap>
       </div>
 
       <div className={styles.trailing}>
-        <div className={styles.artist}>
-          <div className={styles.profile}>
-            <ConditionalWrap
-              condition={isLoading}
-              wrap={() => (
-                <Skeleton
-                  className={styles.skeleton}
-                  width={24}
-                  height={24}
-                  style={{
-                    position: "absolute",
-                  }}
-                />
-              )}
-            >
-              <Image
-                src={artistInfo?.images?.[0]?.url ?? "/placeholder.png"}
-                width={300}
-                height={300}
-                alt="Spotify Artist"
-                unoptimized
-                className={styles.image}
-              />
-            </ConditionalWrap>
-          </div>
-          <ConditionalWrap
-            condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={128} height={14} />}
-          >
-            <div className={styles.details}>
-              <div className={styles.text}>{artistInfo?.name}</div>
-              <div className={styles.text}>·</div>
-              <div className={clsx(styles.text, styles.secondary)}>{followers}</div>
-            </div>
-          </ConditionalWrap>
-        </div>
-
-        <div className={styles.track}>
-          <ConditionalWrap
-            condition={isLoading}
-            wrap={() => (
-              <React.Fragment>
-                <Skeleton className={styles.skeleton} width={128} height={14} />
-                <Skeleton className={styles.skeleton} width={64} height={14} />
-              </React.Fragment>
-            )}
-          >
-            <React.Fragment>
-              <div className={styles.text}>
-                {trackTitle} {explicitIndicator}
-              </div>
-              <div className={clsx(styles.text, styles.secondary)}>{artistName}</div>
-            </React.Fragment>
-          </ConditionalWrap>
-        </div>
-      </div>
-      <div className={styles.center}>
         <ConditionalWrap
           condition={isLoading}
           wrap={() => (
-            <Skeleton className={clsx(styles.art)} height={"100%"} width={"100%"} style={{ position: "absolute" }} />
+            <div className={styles.profile}>
+              <Skeleton
+                className={styles.skeleton}
+                width={"100%"}
+                height={"100%"}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                }}
+              />
+            </div>
           )}
         >
-          <Image src={albumArtUrl} className={styles.art} width={300} height={300} alt="Art" unoptimized />
+          <div className={styles.profile}>
+            <Image
+              src={artistInfo?.images?.[0]?.url ?? "/placeholder.png"}
+              width={32}
+              height={32}
+              alt="Spotify Artist"
+              unoptimized
+              className={styles.art}
+            />
+          </div>
+        </ConditionalWrap>
+        <ConditionalWrap
+          condition={isLoading}
+          wrap={() => (
+            <div className={styles.artist}>
+              <div className={styles.details}>
+                <Skeleton className={styles.skeleton} width={72} height={14} />
+                <Skeleton className={styles.skeleton} width={128} height={14} />
+              </div>
+            </div>
+          )}
+        >
+          <div className={styles.artist}>
+            <div className={styles.details}>
+              <div className={clsx(styles.text)}>{artistInfo?.name}</div>
+              <div className={clsx(styles.text, styles.secondary)}>{followers} monthly listeners</div>
+            </div>
+          </div>
         </ConditionalWrap>
       </div>
+
+      <ConditionalWrap
+        condition={isLoading}
+        wrap={() => (
+          <div className={styles.center}>
+            <div className={styles.header}>
+              <Skeleton className={styles.skeleton} height={"100%"} style={{ position: "absolute" }} />
+            </div>
+            <div className={styles.details}>
+              <Skeleton className={styles.skeleton} width={104} height={14} />
+              <Skeleton className={styles.skeleton} width={80} height={14} />
+            </div>
+          </div>
+        )}
+      >
+        <div className={styles.center}>
+          <div className={styles.header}>
+            <Image
+              src={albumArtUrl}
+              width={300}
+              height={300}
+              alt="Spotify Album Art"
+              unoptimized
+              className={styles.art}
+            />
+          </div>
+          <div className={styles.details}>
+            <div className={clsx(styles.text, styles.trimmed)}>
+              {trackTitle} {explicitIndicator}
+            </div>
+            <div className={clsx(styles.text, styles.secondary)}>{albumName}</div>
+          </div>
+        </div>
+      </ConditionalWrap>
+
       <div className={styles.leading}>
         <Logo />
-        <ConditionalWrap
-          condition={isLoading}
-          wrap={() => (
-            <Skeleton className={styles.skeleton} width={128} height={24} style={{ opacity: 0.6, marginBottom: 4 }} />
-          )}
-        >
+        <ConditionalWrap condition={isLoading} wrap={() => <React.Fragment />}>
           <div className={styles.genres}>
             {artistInfo?.genres?.slice(0, 1).map((genre: string) => (
               <div key={genre} className={clsx(styles.text, styles.secondary, styles.genre)}>
