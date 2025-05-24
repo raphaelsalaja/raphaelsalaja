@@ -1,12 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Slider from "./slider";
 import styles from "./styles.module.scss";
-
-const src = "https://res.cloudinary.com/dkztfjtsq/image/upload/v1747263997/image_ojmod2.jpg";
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
@@ -71,16 +68,7 @@ export const Tone: React.FC = () => {
         }}
         className={styles.popup}
       >
-        <Image alt="Tone" src={src} className={styles.blur} unoptimized fill />
-        <Image
-          src={src}
-          alt="Tone"
-          fill
-          placeholder="blur"
-          blurDataURL="/posts/insights/tone/image.jpg"
-          className={styles.image}
-          unoptimized
-        />
+        <div className={styles.demo} />
       </motion.div>
       <Slider
         value={tone}

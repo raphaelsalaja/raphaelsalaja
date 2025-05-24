@@ -48,10 +48,10 @@ export const Posts = async ({
         <div className={styles.thumbnail}>
           <Media.Image
             fill
-            unoptimized
             src={post.media.image}
             className={styles.media}
             alt={post.title || "Post image"}
+            loading="lazy"
           />
         </div>
       );

@@ -34,7 +34,7 @@ export const Base: React.FC = () => {
             <Link href="https://github.com/raphaelsalaja">Github</Link>
           </Button>
           <Button asChild variant="ghost">
-            <Link href="https://www.linkedin.com/in/raphaelsalaja">LinkedIn</Link>
+            <Link href="https://www.linkedin.com/in/raphael-salaja">LinkedIn</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link href="mailto:raphaelsalaja@gmail.com">Email</Link>

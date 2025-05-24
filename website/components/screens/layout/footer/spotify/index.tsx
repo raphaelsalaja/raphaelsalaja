@@ -44,7 +44,7 @@ export const Spotify: React.FC = () => {
     explicit: isExplicit = false,
   } = currentTrack || {};
 
-  const albumArtUrl = albumImages[0]?.url ?? "/placeholder.png";
+  const albumArtUrl = albumImages[0]?.url ?? "/media/placeholder.png";
   const artistName = firstArtist?.name;
   const artistId = firstArtist?.id;
   const url = currentTrack?.external_urls?.spotify ?? "#";
@@ -99,7 +99,7 @@ export const Spotify: React.FC = () => {
         >
           <div className={styles.profile}>
             <Image
-              src={artistInfo?.images?.[0]?.url ?? "/placeholder.png"}
+              src={artistInfo?.images?.[0]?.url ?? "/media/placeholder.png"}
               width={32}
               height={32}
               alt="Spotify Artist"

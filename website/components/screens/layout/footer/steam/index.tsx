@@ -9,7 +9,7 @@ import { useSteamGetRecentlyPlayed } from "@/hooks/api/steam/use-recently-played
 import { ConditionalWrap } from "@/lib/conditional-wrap";
 import styles from "./styles.module.scss";
 
-const placeholder = "/placeholder.png";
+const placeholder = "/media/placeholder.png";
 
 export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
