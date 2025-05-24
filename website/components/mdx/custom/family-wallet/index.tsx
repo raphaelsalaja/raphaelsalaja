@@ -90,8 +90,7 @@ export const FamilyWallet: React.FC = () => {
   return (
     <MotionConfig
       transition={{
-        ease: [0.25, 0.1, 0.17, 1.51],
-
+        ease: [0.19, 1, 0.22, 1],
         duration: 0.4,
       }}
     >

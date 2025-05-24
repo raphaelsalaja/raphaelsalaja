@@ -27,7 +27,7 @@ export default function NotFound() {
     <React.Fragment>
       <div className={styles.container}>
         <div
-          data-us-project-src="/shaders/404.json"
+          data-us-project-src="/shaders/404-bw.json"
           data-us-production="true"
           data-us-scale="1"
           data-us-dpi="1"

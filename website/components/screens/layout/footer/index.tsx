@@ -17,7 +17,7 @@ const clamp = (v: number, min: number, max: number): number => Math.min(Math.max
 
 const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
-const PAGES = [Spotify, Base, Steam] as const;
+const PAGES = [Base, Spotify, Steam] as const;
 
 function useIsTinyScreen(breakpoint = 480) {
   const [isTiny, setIsTiny] = useState(typeof window !== "undefined" && window.innerWidth <= breakpoint);
