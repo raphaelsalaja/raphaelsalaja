@@ -62,11 +62,6 @@ export const Spotify: React.FC = () => {
     return new Intl.NumberFormat("en-US", { notation: "compact", compactDisplay: "short" }).format(total);
   }, [artistInfo?.followers?.total]);
 
-  console.log("Spotify component rendered", {
-    currentTrack,
-    playbackState,
-  });
-
   return (
     <div className={styles.spotify}>
       <div className={styles.background}>

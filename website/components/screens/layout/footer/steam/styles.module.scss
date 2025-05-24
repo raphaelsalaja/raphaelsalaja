@@ -17,16 +17,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(
-      180deg,
-      rgb(32 72 96 / 90%) 0%,
-      rgb(23 40 57 / 90%) 100%
-    );
-    background: linear-gradient(
-      180deg,
-      color(display-p3 0.1647 0.2784 0.3686 / 90%) 0%,
-      color(display-p3 0.1059 0.1569 0.2196 / 90%) 100%
-    );
+    background:
+      linear-gradient(
+        180deg,
+        rgb(32 72 96 / 90%) 0%,
+        rgb(23 40 57 / 90%) 100%
+      );
+    background:
+      linear-gradient(
+        180deg,
+        color(display-p3 0.1647 0.2784 0.3686 / 90%) 0%,
+        color(display-p3 0.1059 0.1569 0.2196 / 90%) 100%
+      );
 
     .art {
       position: absolute;

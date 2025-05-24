@@ -92,9 +92,7 @@
       "userDownsample": 1,
       "isElement": true,
       "opacity": 1,
-      "effects": [
-        "626546d7-5991-44d8-9de8-5c608cdbf7d1"
-      ],
+      "effects": ["626546d7-5991-44d8-9de8-5c608cdbf7d1"],
       "displace": 0,
       "trackMouse": 0.25,
       "anchorPoint": "center",
@@ -137,9 +135,7 @@
       "fontWeight": "400",
       "textAlign": "center",
       "textContent": "404",
-      "fill": [
-        "#FFFFFF"
-      ],
+      "fill": ["#FFFFFF"],
       "gradientAngle": 0,
       "gradientType": "linear",
       "fontSizeMode": "fixed",

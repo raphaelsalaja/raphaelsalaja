@@ -1,16 +1,23 @@
 "use client";
 
-import * as Cloudinary from "@/components/cloudinary";
+import Image from "next/image";
 import { Masonry } from "@/components/masonry";
-import { CloudinaryResource } from "@/lib/cloudinary";
 import styles from "./styles.module.scss";
 
-export const MasonryWrapper = ({ items }: { items: any[] }) => {
-  const isImage = (url: string) => /\.(jpg|jpeg|png|gif|bmp|webp)$/.test(url);
-  const isVideo = (url: string) => /\.(mp4|webm|ogg)$/.test(url);
+interface ResourceItem {
+  url: string;
+  blurDataURL?: string;
+  alt?: string;
+  width: number;
+  height: number;
+}
 
-  // randomize the order of items
-  items = items.sort(() => Math.random() - 0.5);
+export const MasonryWrapper = ({ items }: { items: ResourceItem[] }) => {
+  const isImage = (url: string) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(url);
+  const isVideo = (url: string) => /\.(mp4|webm|ogg)$/i.test(url);
+
+  // Shuffle items in place
+  items.sort(() => Math.random() - 0.5);
 
   return (
     <Masonry
@@ -22,35 +29,38 @@ export const MasonryWrapper = ({ items }: { items: any[] }) => {
         useBalancedLayout: true,
       }}
       render={(item: unknown, idx: number) => {
-        const { secure_url, blurDataURL, public_id, width, height } = item as CloudinaryResource;
+        const { url, blurDataURL, alt = "", width, height } = item as ResourceItem;
         const aspectRatio = `${width} / ${height}`;
 
-        if (isVideo(secure_url)) {
+        if (isVideo(url)) {
           return (
-            <div key={secure_url} className={styles.item} style={{ aspectRatio: aspectRatio }}>
-              <Cloudinary.Video
-                src={secure_url}
+            <div key={url} className={styles.item} style={{ aspectRatio }}>
+              <video
+                src={url}
                 autoPlay
                 muted
                 playsInline
                 loop
                 preload="auto"
-                blurDataURL={blurDataURL}
+                title={alt}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
           );
         }
 
-        if (isImage(secure_url)) {
+        if (isImage(url)) {
           return (
-            <div key={secure_url} className={styles.item} style={{ aspectRatio: aspectRatio }}>
-              <Cloudinary.Image
-                fill
-                key={secure_url}
-                src={secure_url}
-                alt={public_id}
-                placeholder="blur"
+            <div key={url} className={styles.item} style={{ aspectRatio }}>
+              <Image
+                src={url}
+                alt={alt}
+                width={width}
+                height={height}
+                placeholder={blurDataURL ? "blur" : undefined}
                 blurDataURL={blurDataURL}
+                style={{ objectFit: "cover" }}
+                loading="lazy"
               />
             </div>
           );
