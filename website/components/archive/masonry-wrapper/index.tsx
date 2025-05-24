@@ -1,23 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { Masonry } from "@/components/masonry";
+import * as Media from "@/components/media";
+import { MediaResource } from "@/lib/cloudinary";
 import styles from "./styles.module.scss";
 
-interface ResourceItem {
-  url: string;
-  blurDataURL?: string;
-  alt?: string;
-  width: number;
-  height: number;
-}
-
-export const MasonryWrapper = ({ items }: { items: ResourceItem[] }) => {
-  const isImage = (url: string) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(url);
-  const isVideo = (url: string) => /\.(mp4|webm|ogg)$/i.test(url);
-
-  // Shuffle items in place
-  items.sort(() => Math.random() - 0.5);
+export default function MasonryWrapper({ items }: { items: MediaResource[] }) {
+  const isImage = (src: string) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(src);
+  const isVideo = (src: string) => /\.(mp4|webm|ogg)$/i.test(src);
 
   return (
     <Masonry
@@ -28,15 +18,15 @@ export const MasonryWrapper = ({ items }: { items: ResourceItem[] }) => {
         media: [640, 768],
         useBalancedLayout: true,
       }}
-      render={(item: unknown, idx: number) => {
-        const { url, blurDataURL, alt = "", width, height } = item as ResourceItem;
+      render={(item, idx) => {
+        const { src, alt = "", width, height, blurDataURL } = item as MediaResource;
         const aspectRatio = `${width} / ${height}`;
 
-        if (isVideo(url)) {
+        if (isVideo(src)) {
           return (
-            <div key={url} className={styles.item} style={{ aspectRatio }}>
-              <video
-                src={url}
+            <div key={idx} className={styles.item} style={{ aspectRatio }}>
+              <Media.Video
+                src={src}
                 autoPlay
                 muted
                 playsInline
@@ -44,20 +34,21 @@ export const MasonryWrapper = ({ items }: { items: ResourceItem[] }) => {
                 preload="auto"
                 title={alt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                width={width}
+                height={height}
               />
             </div>
           );
         }
 
-        if (isImage(url)) {
+        if (isImage(src)) {
           return (
-            <div key={url} className={styles.item} style={{ aspectRatio }}>
-              <Image
-                src={url}
+            <div key={idx} className={styles.item} style={{ aspectRatio }}>
+              <Media.Image
+                src={src}
                 alt={alt}
                 width={width}
                 height={height}
-                placeholder={blurDataURL ? "blur" : undefined}
                 blurDataURL={blurDataURL}
                 style={{ objectFit: "cover" }}
                 loading="lazy"
@@ -70,4 +61,4 @@ export const MasonryWrapper = ({ items }: { items: ResourceItem[] }) => {
       }}
     />
   );
-};
+}

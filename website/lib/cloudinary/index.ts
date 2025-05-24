@@ -1,101 +1,58 @@
-// biome-ignore-all lint/style/noNonNullAssertion: Cloudinary config is required
-import { v2 as cloudinary } from "cloudinary";
-import { getCldImageUrl } from "next-cloudinary";
+import fs from "node:fs/promises";
+import path from "node:path";
+import sharp from "sharp";
 
-export interface CloudinaryResource {
-  asset_id: string;
-  public_id: string;
-  format: string;
-  version: number;
-  resource_type: "image" | "video" | "raw";
-  type: "upload" | "private" | "authenticated";
-  created_at: string;
-  bytes: number;
-  width: number;
-  height: number;
-  url: string;
-  secure_url: string;
-  access_mode: string;
-  tags?: string[];
-  metadata?: Record<string, any>;
+export interface MediaResource {
+  src: string;
+  alt: string;
+  type: "image" | "video";
+  width?: number;
+  height?: number;
   blurDataURL?: string;
 }
 
-cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!,
-  api_secret: process.env.CLOUDINARY_API_SECRET!,
-});
+export async function getArchiveMedia(): Promise<MediaResource[]> {
+  const directory = path.join(process.cwd(), "public", "media", "archive");
+  const files = await fs.readdir(directory, { withFileTypes: true });
+  const resources: MediaResource[] = [];
 
-export async function getArchiveMedia(): Promise<CloudinaryResource[]> {
-  const resources: CloudinaryResource[] = [];
-  let nextCursor: string | undefined;
+  for (const dirent of files) {
+    if (!dirent.isFile()) continue;
 
-  do {
-    const result = await cloudinary.search
-      .expression("folder:posts/archive/")
-      .max_results(100)
-      .next_cursor(nextCursor)
-      .execute();
+    const fileName = dirent.name;
+    const ext = path.extname(fileName).toLowerCase();
+    const filePath = path.join(directory, fileName);
+    const base: Pick<MediaResource, "src" | "alt"> = {
+      src: `/media/archive/${fileName}`,
+      alt: path.basename(fileName, ext),
+    };
 
-    const batch = await Promise.all(
-      result.resources.map(async (resource: any) => {
-        if (resource.resource_type === "image") {
-          const blurDataURL = await generateBlurDataURL(resource.public_id);
-          return { ...resource, blurDataURL };
-        }
+    if ([".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg"].includes(ext)) {
+      const img = sharp(filePath);
+      const meta = await img.metadata();
+      if (typeof meta.width !== "number" || typeof meta.height !== "number") {
+        continue;
+      }
+      const width = meta.width;
+      const height = meta.height;
+      const smallBuffer = await img.resize(10).blur().toBuffer();
+      const format = meta.format || "jpeg";
+      const blurDataURL = `data:image/${format};base64,${smallBuffer.toString("base64")}`;
 
-        if (resource.resource_type === "video") {
-          const blurDataURL = await generateVideoBlurDataURL(resource.public_id);
-          return { ...resource, blurDataURL };
-        }
-
-        return resource;
-      }),
-    );
-
-    resources.push(...batch);
-    nextCursor = result.next_cursor;
-  } while (nextCursor);
+      resources.push({
+        ...base,
+        type: "image",
+        width,
+        height,
+        blurDataURL,
+      });
+    } else if ([".mp4", ".mov", ".avi", ".webm"].includes(ext)) {
+      resources.push({
+        ...base,
+        type: "video",
+      });
+    }
+  }
 
   return resources;
-}
-
-async function generateBlurDataURL(public_id: string): Promise<string | undefined> {
-  try {
-    const url = getCldImageUrl({
-      src: public_id,
-      width: 10,
-      quality: 1,
-      format: "webp",
-    });
-
-    const response = await fetch(url);
-    const arrayBuffer = await response.arrayBuffer();
-    const base64 = Buffer.from(arrayBuffer).toString("base64");
-    return `data:${response.headers.get("content-type")};base64,${base64}`;
-  } catch {
-    return undefined;
-  }
-}
-
-export async function generateVideoBlurDataURL(public_id: string): Promise<string | undefined> {
-  try {
-    const frameUrl = getCldImageUrl({
-      src: public_id,
-      assetType: "video",
-      width: 10,
-      quality: 1,
-      format: "webp",
-      effects: [{ blur: "2000" }],
-    });
-
-    const response = await fetch(frameUrl);
-    const arrayBuffer = await response.arrayBuffer();
-    const base64 = Buffer.from(arrayBuffer).toString("base64");
-
-    return `data:${response.headers.get("content-type")};base64,${base64}`;
-  } catch (err) {
-    return undefined;
-  }
 }

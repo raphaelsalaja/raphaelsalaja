@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import { CldImage } from "next-cloudinary";
+import NextImage from "next/image";
 import { useState } from "react";
 
-interface CloudinaryImageProps extends React.ComponentProps<typeof CldImage> {
-  blurDataURL?: string;
-}
+type MediaImageProps = React.ComponentProps<typeof NextImage>;
 
-export const Image = ({ blurDataURL, ...props }: CloudinaryImageProps) => {
+export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -40,12 +38,7 @@ export const Image = ({ blurDataURL, ...props }: CloudinaryImageProps) => {
         animate={{ opacity: loaded ? 1 : 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <CldImage
-          {...props}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          placeholder={undefined}
-          onLoad={() => setLoaded(true)}
-        />
+        <NextImage {...props} onLoad={() => setLoaded(true)} />
       </motion.div>
     </div>
   );

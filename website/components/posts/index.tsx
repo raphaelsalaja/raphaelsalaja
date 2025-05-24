@@ -2,7 +2,7 @@ import Button from "@rs/design/button";
 import { Seperator } from "@rs/design/seperator";
 import { Link } from "next-view-transitions";
 
-import * as Cloudinary from "@/components/cloudinary";
+import * as Media from "@/components/media";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
@@ -36,9 +36,9 @@ export const Posts = async ({
     if (post.media?.video) {
       return (
         <div className={styles.thumbnail}>
-          <Cloudinary.Video src={post.media.video} autoPlay muted loop playsInline className={styles.media}>
+          <Media.Video src={post.media.video} autoPlay muted loop playsInline className={styles.media}>
             <track kind="captions" />
-          </Cloudinary.Video>
+          </Media.Video>
         </div>
       );
     }
@@ -46,12 +46,12 @@ export const Posts = async ({
     if (post.media?.image) {
       return (
         <div className={styles.thumbnail}>
-          <Cloudinary.Image
-            className={styles.media}
-            src={post.media.image}
-            alt={post.title || "Post image"}
+          <Media.Image
             fill
             unoptimized
+            src={post.media.image}
+            className={styles.media}
+            alt={post.title || "Post image"}
           />
         </div>
       );

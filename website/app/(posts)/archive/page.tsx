@@ -1,4 +1,4 @@
-import { Archive } from "@/components/archive";
+import Archive from "@/components/archive";
 
 export default async function Page() {
   return <Archive />;
