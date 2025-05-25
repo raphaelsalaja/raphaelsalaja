@@ -9,7 +9,7 @@ interface IRecentlyPlayedResponse {
 }
 
 async function fetchRecentlyPlayed(): Promise<IRecentlyPlayedResponse | null> {
-  const res = await fetch("/api/steam/get/recently-played");
+  const res = await fetch("/api/steam/recently-played");
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
