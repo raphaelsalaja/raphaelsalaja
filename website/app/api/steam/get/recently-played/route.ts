@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import SteamAPI, { GameDetails, GameInfoBasic, UserPlaytime } from "steamapi";
 import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
+export const runtime = "nodejs";
+
 /**
  * Fail fast on missing environment variables
  */
@@ -17,13 +19,17 @@ const steam = new SteamAPI(API_KEY);
 /**
  * Returns the most recently played game, or null if none
  */
-async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
+async function getMostRecentGame(
+  steamId: string
+): Promise<UserPlaytime<GameInfoBasic> | null> {
   const [recentGames, ownedGames] = await Promise.all([
     steam.getUserRecentGames(steamId, 0),
     steam.getUserOwnedGames(steamId),
   ]);
 
-  ownedGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));
+  ownedGames.sort(
+    (a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0)
+  );
 
   const lastPlayedId = ownedGames[0]?.game.id;
   return recentGames.find((g) => g.game.id === lastPlayedId) ?? null;
