@@ -3,33 +3,48 @@ import path from "node:path";
 import sharp from "sharp";
 import { parseMedia } from "@remotion/media-parser";
 import { nodeReader } from "@remotion/media-parser/node";
-import type { MediaResource } from "./types";
+import type { ImageResource, VideoResource, MediaResource } from "./types";
 
 const IMAGE_EXTS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg"];
 const VIDEO_EXTS = [".mp4", ".mov", ".avi", ".webm"];
 
+const MIME_TYPES: Record<string, string> = {
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".png": "image/png",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".avif": "image/avif",
+  ".svg": "image/svg+xml",
+  ".mp4": "video/mp4",
+  ".mov": "video/quicktime",
+  ".avi": "video/x-msvideo",
+  ".webm": "video/webm",
+};
+
 function resolvePublicDir(folder: string) {
-  const rel = folder.replace(/^\/+/, ""); // strip leading slash
+  const rel = folder.replace(/^\/+/, "");
   return path.join(process.cwd(), "public", rel);
 }
 
 async function readFilesInDir(dir: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true });
-  return entries.filter((d) => d.isFile()).map((d) => d.name);
+  return entries.filter((e) => e.isFile()).map((e) => e.name);
 }
 
 export async function getImageResourcesFromFolder(
   folder: string
-): Promise<MediaResource[]> {
+): Promise<ImageResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
-  const resources: MediaResource[] = [];
+  const resources: ImageResource[] = [];
 
   for (const name of files) {
     const ext = path.extname(name).toLowerCase();
     if (!IMAGE_EXTS.includes(ext)) continue;
 
     const fullPath = path.join(dir, name);
+    const stat = await fs.stat(fullPath);
     const img = sharp(fullPath);
     const meta = await img.metadata();
 
@@ -38,7 +53,7 @@ export async function getImageResourcesFromFolder(
     }
 
     const buffer = await img.resize(10).blur().toBuffer();
-    const format = meta.format ?? "jpeg";
+    const format = (meta.format ?? "jpeg") as ImageResource["format"];
 
     resources.push({
       src: path.posix.join(folder, name),
@@ -47,6 +62,9 @@ export async function getImageResourcesFromFolder(
       width: meta.width,
       height: meta.height,
       blurDataURL: `data:image/${format};base64,${buffer.toString("base64")}`,
+      format,
+      mimeType: MIME_TYPES[ext],
+      sizeBytes: stat.size,
     });
   }
 
@@ -55,28 +73,40 @@ export async function getImageResourcesFromFolder(
 
 export async function getVideoResourcesFromFolder(
   folder: string
-): Promise<MediaResource[]> {
+): Promise<VideoResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
-  const resources: MediaResource[] = [];
+  const resources: VideoResource[] = [];
 
   for (const name of files) {
     const ext = path.extname(name).toLowerCase();
     if (!VIDEO_EXTS.includes(ext)) continue;
 
     const fullPath = path.join(dir, name);
+    const stat = await fs.stat(fullPath);
     const metadata = await parseMedia({
       src: fullPath,
       reader: nodeReader,
       fields: { dimensions: true },
     });
 
+    const w = metadata.dimensions?.width;
+    const h = metadata.dimensions?.height;
+    if (typeof w !== "number" || typeof h !== "number") {
+      continue;
+    }
+
+    const format = ext.slice(1) as VideoResource["format"];
+
     resources.push({
       src: path.posix.join(folder, name),
       alt: path.basename(name, ext),
       type: "video",
-      width: metadata.dimensions?.width,
-      height: metadata.dimensions?.height,
+      width: w,
+      height: h,
+      format,
+      mimeType: MIME_TYPES[ext],
+      sizeBytes: stat.size,
     });
   }
 

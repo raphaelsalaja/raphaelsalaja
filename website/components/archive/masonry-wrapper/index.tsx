@@ -1,14 +1,16 @@
 "use client";
 
 import { Masonry } from "@/components/masonry";
+import { MediaResource } from "@/lib/media-fetching/types";
 import * as Media from "@/components/media";
-import { MediaResource } from "@/lib/media-fetching";
+
 import styles from "./styles.module.scss";
 
-export default function MasonryWrapper({ items }: { items: MediaResource[] }) {
-  const isImage = (src: string) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(src);
-  const isVideo = (src: string) => /\.(mp4|webm|ogg)$/i.test(src);
+interface MasonryWrapperProps {
+  items: MediaResource[];
+}
 
+export default function MasonryWrapper({ items }: MasonryWrapperProps) {
   return (
     <Masonry
       items={items}
@@ -18,47 +20,49 @@ export default function MasonryWrapper({ items }: { items: MediaResource[] }) {
         media: [640, 768],
         useBalancedLayout: true,
       }}
-      render={(item, idx) => {
-        const { src, alt = "", width, height, blurDataURL } = item as MediaResource;
-        const aspectRatio = `${width} / ${height}`;
-
-        if (isVideo(src)) {
-          return (
-            <div key={idx} className={styles.item} style={{ aspectRatio }}>
-              <Media.Video
-                src={src}
-                autoPlay
-                muted
-                playsInline
-                loop
-                preload="auto"
-                title={alt}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                width={width}
-                height={height}
-              />
-            </div>
-          );
-        }
-
-        if (isImage(src)) {
-          return (
-            <div key={idx} className={styles.item} style={{ aspectRatio }}>
-              <Media.Image
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                blurDataURL={blurDataURL}
-                style={{ objectFit: "cover" }}
-                loading="lazy"
-              />
-            </div>
-          );
-        }
-
-        return null;
-      }}
+      render={(item, idx) => <MediaItem key={idx} item={item as MediaResource} />}
     />
+  );
+}
+
+function MediaItem({ item }: { item: MediaResource }) {
+  const { src, alt, width, height } = item;
+  const containerStyle = { aspectRatio: `${width} / ${height}` };
+  const commonWrapperProps = {
+    className: styles.item,
+    style: containerStyle,
+  };
+
+  if (item.type === "video") {
+    return (
+      <div {...commonWrapperProps}>
+        <Media.Video
+          src={src}
+          title={alt}
+          width={width}
+          height={height}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div {...commonWrapperProps}>
+      <Media.Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        blurDataURL={(item as Extract<MediaResource, { type: "image" }>).blurDataURL}
+        loading="lazy"
+        style={{ objectFit: "cover" }}
+      />
+    </div>
   );
 }
