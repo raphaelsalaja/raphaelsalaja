@@ -1,5 +1,3 @@
 {
-  "files.exclude": {
-    ".next": true
-  }
+  "exportall.config.folderListener": []
 }

@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.button {
+  width: 100%;
+  height: 32px;
+  background: var(--lime-9);
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  color: var(--black-12);
+  font-weight: 500;
+
+  &:hover {
+    background: var(--lime-4);
+  }
+}
+
+.popup {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  width: 150px;
+  height: 150px;
+  z-index: 2;
+  background: var(--lime-9);
+}

@@ -1,0 +1,17 @@
+.heading {
+  display: flex;
+  position: relative;
+  gap: 8px;
+  align-items: center;
+  width: fit-content;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: -24px;
+  color: var(--text-primary);
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@rs/design",
+  "description": "Design tokens and components for my website",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch --silent"
+  },
+  "exports": {
+    "./*": "./src/*/index.tsx"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "motion",
+    "dialog",
+    "overlay"
+  ],
+  "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@base-ui-components/react": "1.0.0-alpha.8",
+    "@radix-ui/react-context-menu": "^2.2.6",
+    "@radix-ui/react-slot": "^1.1.1",
+    "clsx": "^2.1.1",
+    "esbuild-sass-plugin": "^3.3.1",
+    "motion": "^11.18.2",
+    "react": "19.0.0",
+    "slate": "^0.112.0",
+    "slate-history": "^0.113.1",
+    "slate-react": "^0.112.1",
+    "use-sound": "^4.0.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.0.0-beta.1",
+    "@rs/configuration": "workspace:*",
+    "@rs/styles": "workspace:*",
+    "@types/react": "19.1.4",
+    "@types/react-dom": "19.1.5",
+    "prettier": "^3.3.3",
+    "sass": "^1.88.0",
+    "tsup": "^8.3.5",
+    "turbo": "^2.2.3",
+    "typescript": "5.6.3"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

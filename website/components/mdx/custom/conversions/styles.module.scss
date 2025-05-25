@@ -1,0 +1,45 @@
+.paragraph {
+  display: inline;
+  align-items: flex-start;
+  padding: 48px;
+
+  [data-rs-i18n-measurement-root] {
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    width: fit-content;
+    display: inline-flex;
+    user-select: none;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px -2px;
+      border-radius: 2px;
+      background-color: var(--gray-4);
+      transition: all 0.4s ease;
+      opacity: 0.5;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    [data-rs-i18n-measurement-span] {
+      display: inline-flex;
+      gap: 2px;
+      color: inherit;
+    }
+
+    [data-rs-i18n-measurement-quantity],
+    [data-rs-i18n-measurement-unit] {
+      position: relative;
+      white-space: nowrap;
+      z-index: 1;
+      font-weight: 500;
+    }
+  }
+}

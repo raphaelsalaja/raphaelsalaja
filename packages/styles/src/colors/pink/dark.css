@@ -1,0 +1,71 @@
+.dark,
+.dark-theme {
+  --pink-1: #000;
+  --pink-2: #1a0b12;
+  --pink-3: #361023;
+  --pink-4: #4e0930;
+  --pink-5: #5e123b;
+  --pink-6: #6f2049;
+  --pink-7: #892f5d;
+  --pink-8: #b23d79;
+  --pink-9: #ff58ae;
+  --pink-10: #f24ba2;
+  --pink-11: #ff87c5;
+  --pink-12: #ffd0e5;
+
+  --pink-a1: #00000000;
+  --pink-a2: #ff6cb11a;
+  --pink-a3: #ff4ca636;
+  --pink-a4: #ff1e9d4e;
+  --pink-a5: #ff31a15e;
+  --pink-a6: #ff4aa86f;
+  --pink-a7: #ff58ae89;
+  --pink-a8: #ff58aeb2;
+  --pink-a9: #ff58ae;
+  --pink-a10: #ff4fabf2;
+  --pink-a11: #ff87c5;
+  --pink-a12: #ffd0e5;
+
+  --pink-contrast: #fff;
+  --pink-surface: #34162480;
+  --pink-indicator: #ff58ae;
+  --pink-track: #ff58ae;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .dark,
+    .dark-theme {
+      --pink-1: oklch(0% 0.0168 352.3);
+      --pink-2: oklch(17.5% 0.0276 352.3);
+      --pink-3: oklch(24.2% 0.0661 352.3);
+      --pink-4: oklch(28.7% 0.1053 352.3);
+      --pink-5: oklch(33% 0.1151 352.3);
+      --pink-6: oklch(38.2% 0.1194 352.3);
+      --pink-7: oklch(45.2% 0.1321 352.3);
+      --pink-8: oklch(54.2% 0.1622 352.3);
+      --pink-9: oklch(70.8% 0.2169 352.3);
+      --pink-10: oklch(67% 0.2169 352.3);
+      --pink-11: oklch(78.8% 0.192 352.3);
+      --pink-12: oklch(90.8% 0.0615 352.3);
+
+      --pink-a1: color(display-p3 0 0 0 / 0);
+      --pink-a2: color(display-p3 0.9922 0.498 0.7451 / 0.095);
+      --pink-a3: color(display-p3 0.9961 0.3686 0.6941 / 0.193);
+      --pink-a4: color(display-p3 1 0.2275 0.6627 / 0.279);
+      --pink-a5: color(display-p3 1 0.2902 0.6745 / 0.338);
+      --pink-a6: color(display-p3 1 0.3725 0.7059 / 0.4);
+      --pink-a7: color(display-p3 1 0.4196 0.7255 / 0.499);
+      --pink-a8: color(display-p3 1 0.4196 0.7216 / 0.648);
+      --pink-a9: color(display-p3 1 0.4235 0.7255 / 0.926);
+      --pink-a10: color(display-p3 1 0.3922 0.7137 / 0.879);
+      --pink-a11: color(display-p3 1 0.5882 0.8157 / 0.938);
+      --pink-a12: color(display-p3 1 0.8471 0.9176 / 0.973);
+
+      --pink-contrast: #fff;
+      --pink-surface: color(display-p3 0.1882 0.0941 0.1333 / 0.5);
+      --pink-indicator: oklch(70.8% 0.2169 352.3);
+      --pink-track: oklch(70.8% 0.2169 352.3);
+    }
+  }
+}

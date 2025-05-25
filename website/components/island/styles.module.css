@@ -1,0 +1,138 @@
+.island {
+  --background: #000;
+  --text: var(--white-a12);
+  --text-secondary: var(--white-a8);
+  --text-tertiary: var(--white-a6);
+
+  position: sticky;
+  bottom: 24px;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--background);
+  overflow: hidden;
+  content-visibility: auto;
+}
+
+.compact {
+  display: flex;
+  width: 256px;
+  height: 40px;
+  padding: 0px 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.expanded {
+  display: flex;
+  width: 384px;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+
+      .title {
+        overflow: hidden;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .author {
+        overflow: hidden;
+        color: var(--text-secondary);
+        text-overflow: ellipsis;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .titles {
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+
+    .title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      flex: 1 0 0;
+
+      overflow: hidden;
+      color: var(--text);
+      text-overflow: ellipsis;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 14px */
+      letter-spacing: -0.09px;
+      text-align: left;
+    }
+  }
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  flex: 1 0 0;
+
+  color: var(--text);
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 14px */
+  letter-spacing: -0.09px;
+  text-align: left;
+}
+
+.progress {
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.reading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+
+  justify-items: center;
+
+  .time {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    font-weight: 400;
+    min-width: 40px;
+    display: flex;
+    gap: -0.09px;
+  }
+
+  .time:first-child {
+    text-align: left;
+  }
+
+  .time:last-child {
+    justify-content: end;
+    text-align: right;
+  }
+}

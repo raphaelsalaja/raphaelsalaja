@@ -1,0 +1,40 @@
+.root {
+  --track: var(--white-a8);
+  --indicator: var(--white-a12);
+  --thumb: var(--white-a12);
+  width: 100%;
+}
+
+.control {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-block: 0.75rem;
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+  color: var(--white-a12);
+  font-size: 12;
+}
+
+.track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--track);
+  /* border-radius: 8px 0px 0px 8px; */
+  border-radius: 12px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.indicator {
+  background-color: var(--indicator);
+  user-select: none;
+}
+
+.thumb {
+  border-radius: 100%;
+  background-color: var(--thumb);
+  opacity: 0;
+}
