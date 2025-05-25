@@ -4,13 +4,20 @@ import { NextRequest, NextResponse } from "next/server";
 import SteamAPI from "steamapi";
 import { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
+export const runtime = "nodejs";
+
+export const revalidate = 60;
+
 const steam = new SteamAPI(process.env.STEAM_API_KEY!);
 
 export async function GET(request: NextRequest) {
   const steamId = process.env.STEAM_STEAM_ID;
 
   if (!steamId) {
-    return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Server misconfiguration" },
+      { status: 500 }
+    );
   }
 
   let game = null;
@@ -23,7 +30,9 @@ export async function GET(request: NextRequest) {
       return bLastPlayed - aLastPlayed;
     });
     const lastPlayedGameId = ownedGames[0]?.game.id;
-    const recent = recentGames.find((game) => game.game.id === lastPlayedGameId);
+    const recent = recentGames.find(
+      (game) => game.game.id === lastPlayedGameId
+    );
     game = recent ?? null;
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 502 });
@@ -39,7 +48,9 @@ export async function GET(request: NextRequest) {
 
   let reviews: GetAppReviewsResponse | null = null;
   try {
-    const url = new URL(`https://store.steampowered.com/appreviews/${game.game.id}`);
+    const url = new URL(
+      `https://store.steampowered.com/appreviews/${game.game.id}`
+    );
     url.searchParams.set("json", "1");
     url.searchParams.set("filter", "all");
 
@@ -48,7 +59,10 @@ export async function GET(request: NextRequest) {
     const data = await res.json();
     reviews = data;
   } catch (err) {
-    console.error(`Failed to fetch review counts for appid=${game.game.id}`, err);
+    console.error(
+      `Failed to fetch review counts for appid=${game.game.id}`,
+      err
+    );
   }
 
   return NextResponse.json({ game, details, reviews }, { status: 200 });
