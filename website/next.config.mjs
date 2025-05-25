@@ -7,6 +7,7 @@ const nextConfig = {
   experimental: {
     viewTransition: true,
   },
+  serverExternalPackages: ["steamapi"],
   images: {
     formats: ["image/webp"],
     minimumCacheTTL: 2678400,
