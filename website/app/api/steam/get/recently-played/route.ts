@@ -1,49 +1,78 @@
-// biome-ignore-all lint/style/noNonNullAssertion: env
-
 import { NextRequest, NextResponse } from "next/server";
-import SteamAPI from "steamapi";
-import { GetAppReviewsResponse } from "@/types/steam/appreviews";
+import SteamAPI, { GameDetails, GameInfoBasic, UserPlaytime } from "steamapi";
+import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
-export const revalidate = 60;
+/**
+ * Fail fast on missing environment variables
+ */
+const API_KEY = process.env.STEAM_API_KEY;
+const STEAM_ID = process.env.STEAM_STEAM_ID;
 
-const steam = new SteamAPI(process.env.STEAM_API_KEY!);
+if (!API_KEY || !STEAM_ID) {
+  throw new Error("Missing STEAM_API_KEY or STEAM_STEAM_ID in environment");
+}
 
-export async function GET(request: NextRequest) {
-  const steamId = process.env.STEAM_STEAM_ID;
+const steam = new SteamAPI(API_KEY);
 
-  if (!steamId) {
-    return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
+/**
+ * Returns the most recently played game, or null if none
+ */
+async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
+  const [recentGames, ownedGames] = await Promise.all([
+    steam.getUserRecentGames(steamId, 0),
+    steam.getUserOwnedGames(steamId),
+  ]);
+
+  ownedGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));
+
+  const lastPlayedId = ownedGames[0]?.game.id;
+  return recentGames.find((g) => g.game.id === lastPlayedId) ?? null;
+}
+
+/**
+ * Fetches all reviews for the given app ID
+ */
+async function fetchReviews(appId: number): Promise<GetAppReviewsResponse> {
+  const url = new URL(`https://store.steampowered.com/appreviews/${appId}`);
+  url.searchParams.set("json", "1");
+  url.searchParams.set("filter", "all");
+
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Failed to fetch reviews: ${response.status}`);
   }
 
-  let game = null;
+  return response.json();
+}
+
+/**
+ * GET handler: returns the most recently played game,
+ * its details, and all reviews.
+ */
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
-    const recent = await steam.getUserRecentGames(steamId, 1);
-    game = recent[0] ?? null;
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 502 });
+    const game = await getMostRecentGame(STEAM_ID as string);
+
+    if (!game) {
+      return NextResponse.json(null, { status: 204 });
+    }
+
+    const appId = game.game.id;
+    let details: GameDetails | null = null;
+    let reviews: GetAppReviewsResponse | null = null;
+
+    await Promise.allSettled([
+      steam.getGameDetails(appId).then((d) => {
+        details = d;
+      }),
+      fetchReviews(appId).then((r) => {
+        reviews = r;
+      }),
+    ]);
+
+    return NextResponse.json({ game, details, reviews }, { status: 200 });
+  } catch (error: any) {
+    const status = error.message.startsWith("Failed to fetch") ? 502 : 500;
+    return NextResponse.json({ error: error.message }, { status });
   }
-  if (!game) {
-    return NextResponse.json(null, { status: 204 });
-  }
-
-  let details = null;
-  try {
-    details = await steam.getGameDetails(game.game.id);
-  } catch (err: any) {}
-
-  let reviews: GetAppReviewsResponse | null = null;
-  try {
-    const url = new URL(`https://store.steampowered.com/appreviews/${game.game.id}`);
-    url.searchParams.set("json", "1");
-    url.searchParams.set("filter", "all");
-
-    const res = await fetch(url.toString());
-    if (!res.ok) throw new Error(`Steam appreviews ${res.status}`);
-    const data = await res.json();
-    reviews = data;
-  } catch (err) {
-    console.error(`Failed to fetch review counts for appid=${game.game.id}`, err);
-  }
-
-  return NextResponse.json({ game, details, reviews }, { status: 200 });
 }
