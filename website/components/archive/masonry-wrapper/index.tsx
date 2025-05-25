@@ -2,7 +2,7 @@
 
 import { Masonry } from "@/components/masonry";
 import * as Media from "@/components/media";
-import { MediaResource } from "@/lib/cloudinary";
+import { MediaResource } from "@/lib/media-fetching";
 import styles from "./styles.module.scss";
 
 export default function MasonryWrapper({ items }: { items: MediaResource[] }) {

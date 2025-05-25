@@ -186,6 +186,9 @@ importers:
       '@radix-ui/react-portal':
         specifier: ^1.1.6
         version: 1.1.8(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@remotion/media-parser':
+        specifier: 4.0.306
+        version: 4.0.306
       '@rs/configuration':
         specifier: workspace:*
         version: link:../packages/configuration
@@ -1569,6 +1572,9 @@ packages:
   '@redocly/openapi-core@1.34.3':
     resolution: {integrity: sha512-3arRdUp1fNx55itnjKiUhO6t4Mf91TsrTIYINDNLAZPS0TPd5YpiXRctwjel0qqWoOOhjA34cZ3m4dksLDFUYg==}
     engines: {node: '>=18.17.0', npm: '>=9.5.0'}
+
+  '@remotion/media-parser@4.0.306':
+    resolution: {integrity: sha512-sy0Uqj6mH6FD86gQhX479GU+iMDLYPH66pbwWuhWY1kS4uWfpLNenEvcxrreRXYCOqAMmZbOZ1EFBcf7VP3V7Q==}
 
   '@rollup/rollup-android-arm-eabi@4.40.0':
     resolution: {integrity: sha512-+Fbls/diZ0RDerhE8kyC6hjADCXA1K4yVNlH0EYfd2XjyH0UGgzaQ8MlT0pCXAThfxv3QUAczHaL+qSv1E4/Cg==}
@@ -6555,6 +6561,8 @@ snapshots:
       yaml-ast-parser: 0.0.43
     transitivePeerDependencies:
       - supports-color
+
+  '@remotion/media-parser@4.0.306': {}
 
   '@rollup/rollup-android-arm-eabi@4.40.0':
     optional: true
