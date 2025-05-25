@@ -1,8 +1,8 @@
 "use client";
 
 import { Masonry } from "@/components/masonry";
-import { MediaResource } from "@/lib/media-fetching/types";
 import * as Media from "@/components/media";
+import { MediaResource } from "@/lib/media-fetching/types";
 
 import styles from "./styles.module.scss";
 

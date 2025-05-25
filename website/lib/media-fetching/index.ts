@@ -1,9 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import sharp from "sharp";
 import { parseMedia } from "@remotion/media-parser";
 import { nodeReader } from "@remotion/media-parser/node";
-import type { ImageResource, VideoResource, MediaResource } from "./types";
+import sharp from "sharp";
+import type { ImageResource, MediaResource, VideoResource } from "./types";
 
 const IMAGE_EXTS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg"];
 const VIDEO_EXTS = [".mp4", ".mov", ".avi", ".webm"];
@@ -32,9 +32,7 @@ async function readFilesInDir(dir: string): Promise<string[]> {
   return entries.filter((e) => e.isFile()).map((e) => e.name);
 }
 
-export async function getImageResourcesFromFolder(
-  folder: string
-): Promise<ImageResource[]> {
+export async function getImageResourcesFromFolder(folder: string): Promise<ImageResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
   const resources: ImageResource[] = [];
@@ -71,9 +69,7 @@ export async function getImageResourcesFromFolder(
   return resources;
 }
 
-export async function getVideoResourcesFromFolder(
-  folder: string
-): Promise<VideoResource[]> {
+export async function getVideoResourcesFromFolder(folder: string): Promise<VideoResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
   const resources: VideoResource[] = [];
@@ -87,6 +83,7 @@ export async function getVideoResourcesFromFolder(
     const metadata = await parseMedia({
       src: fullPath,
       reader: nodeReader,
+      acknowledgeRemotionLicense: true,
       fields: { dimensions: true },
     });
 
@@ -113,9 +110,7 @@ export async function getVideoResourcesFromFolder(
   return resources;
 }
 
-export async function getMediaFromFolder(
-  folder: string
-): Promise<MediaResource[]> {
+export async function getMediaFromFolder(folder: string): Promise<MediaResource[]> {
   const [images, videos] = await Promise.all([
     getImageResourcesFromFolder(folder),
     getVideoResourcesFromFolder(folder),

@@ -1,4 +1,4 @@
-interface BaseResource {
+export interface BaseResource {
   src: string;
   alt: string;
   mimeType?: string;
