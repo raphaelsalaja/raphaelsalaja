@@ -12,17 +12,13 @@ if (!API_KEY || !STEAM_ID) {
 
 const steam = new SteamAPI(API_KEY);
 
-async function getMostRecentGame(
-  steamId: string
-): Promise<UserPlaytime<GameInfoBasic> | null> {
+async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
   const [recentGames, ownedGames] = await Promise.all([
     steam.getUserRecentGames(steamId, 0),
     steam.getUserOwnedGames(steamId),
   ]);
 
-  ownedGames.sort(
-    (a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0)
-  );
+  ownedGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));
 
   const lastPlayedId = ownedGames[0]?.game.id;
   return recentGames.find((g) => g.game.id === lastPlayedId) ?? null;
@@ -50,7 +46,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const appId = game.game.id;
+
     let details: GameDetails | null = null;
+
     let reviews: GetAppReviewsResponse | null = null;
 
     await Promise.allSettled([
@@ -62,7 +60,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       }),
     ]);
 
-    return NextResponse.json({ game, details, reviews }, { status: 200 });
+    const achievements = await steam.getUserAchievements(STEAM_ID as string, appId);
+
+    return NextResponse.json({ game, details, reviews, achievements: achievements.achievements }, { status: 200 });
   } catch (error: any) {
     const status = error.message.startsWith("Failed to fetch") ? 502 : 500;
     return NextResponse.json({ error: error.message }, { status });

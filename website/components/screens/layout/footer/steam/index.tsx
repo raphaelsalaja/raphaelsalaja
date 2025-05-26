@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import moment from "moment";
 import Image from "next/image";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
@@ -49,17 +48,24 @@ export const Steam: React.FC = () => {
   const game = data?.game;
   const details = data?.details;
   const reviews = data?.reviews;
+
+  const achievements = {
+    total: data?.achievements.length,
+    unlocked: data?.achievements?.filter((a) => a.unlocked).length || 0,
+  };
+
   const playtime = game?.minutes;
-  const achievements = details?.achievements;
+
   const name = details?.name;
   const developer = details?.developers[0];
   const background = details?.backgroundRaw || placeholder;
   const header = details?.headerImage || placeholder;
   const genres = details?.genres || [];
   const recent_reviews = formatNumber(reviews?.query_summary.total_reviews || 0);
-  const review_score_desc = reviews?.query_summary.review_score_desc;
+  const review_score_desc =
+    reviews?.query_summary.review_score_desc.replace("Overwhelmingly Positive", "Super Positive") || "No Reviews";
 
-  const isLoading = !game || !details || !reviews;
+  const isLoading = !game || !details || !reviews || !achievements;
 
   return (
     <div className={styles.steam}>
@@ -80,7 +86,9 @@ export const Steam: React.FC = () => {
             wrap={() => <Skeleton className={styles.skeleton} width={80} height={14} />}
           >
             <div className={clsx(styles.text, styles.secondary)}>
-              {moment.duration(playtime, "minutes").humanize(false)}
+              {playtime
+                ? `${Math.round((playtime / 60) * 10) / 10} ${Math.round((playtime / 60) * 10) / 10 === 1 ? "hour" : "hours"}`
+                : "0 hours"}
             </div>
           </ConditionalWrap>
         </div>
@@ -91,7 +99,7 @@ export const Steam: React.FC = () => {
             wrap={() => <Skeleton className={styles.skeleton} width={128} height={14} />}
           >
             <div className={clsx(styles.text, styles.secondary)}>
-              {achievements?.highlighted.length} / {achievements?.total}
+              {achievements?.unlocked} / {achievements?.total}
             </div>
           </ConditionalWrap>
         </div>

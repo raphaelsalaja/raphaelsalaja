@@ -75,9 +75,6 @@ export const opengraph: Metadata = {
   },
 };
 
-export function generateMetadataForPost(
-  title: string,
-  description: string
-): Metadata {
+export function generateMetadataForPost(title: string, description: string): Metadata {
   return createBaseMetadata(title, description);
 }

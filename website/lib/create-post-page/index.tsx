@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { generateMetadataForPost } from "@/config/site";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
-import { generateMetadataForPost } from "@/config/site";
-import type { Metadata } from "next";
 
 type Props = {
   params: Promise<Frontmatter>;

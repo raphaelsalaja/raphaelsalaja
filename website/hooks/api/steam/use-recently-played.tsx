@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { GameDetails, GameInfoBasic, UserPlaytime } from "steamapi";
+import { GameDetails, GameInfoBasic, UserAchievement, UserPlaytime } from "steamapi";
 import { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
 interface IRecentlyPlayedResponse {
   game: UserPlaytime<GameInfoBasic>;
   details: GameDetails | null;
   reviews: GetAppReviewsResponse;
+  achievements: UserAchievement[];
 }
 
 async function fetchRecentlyPlayed(): Promise<IRecentlyPlayedResponse | null> {
