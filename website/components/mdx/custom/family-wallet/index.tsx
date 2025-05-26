@@ -130,13 +130,13 @@ export const FamilyWallet: React.FC = () => {
                         onSubmit={handleDone}
                         disabled={!isEdit}
                       />
-                      <p data-text="secondary" className={styles.text}>
+                      <div data-text="secondary" className={styles.text}>
                         {wallet.balance.toLocaleString("en-US", {
                           style: "currency",
                           currency: "EUR",
                           minimumFractionDigits: 0,
                         })}
-                      </p>
+                      </div>
                     </motion.span>
                   </div>
 
@@ -210,6 +210,7 @@ export const FamilyWallet: React.FC = () => {
                       {isCustomize && (
                         <motion.div
                           className={styles.picker}
+                          key="color-picker"
                           initial={{
                             opacity: 0,
                             translateY: 24,
