@@ -213,18 +213,21 @@ export const FamilyWallet: React.FC = () => {
                           key="color-picker"
                           initial={{
                             opacity: 0,
-                            translateY: 24,
+                            translateY: 32,
+                            filter: "blur(12px)",
                             scale: 0.9,
                           }}
                           animate={{
                             opacity: 1,
+                            filter: "blur(0px)",
                             translateY: 0,
                             scale: 1,
                           }}
                           exit={{
                             opacity: 0,
-                            translateY: 24,
-                            scale: 0.9,
+                            translateY: 32,
+                            scale: 0.0,
+                            filter: "blur(12px)",
                             transition: { duration: 0.2 },
                           }}
                         >
