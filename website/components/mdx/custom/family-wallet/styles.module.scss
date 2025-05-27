@@ -19,6 +19,11 @@
       align-items: flex-end;
     }
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .icon {
@@ -47,6 +52,11 @@
   border-radius: 100%;
   padding: 4px;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .copy {
@@ -55,6 +65,11 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
   .symbol {
     color: var(--white-a8);
