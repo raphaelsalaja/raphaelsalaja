@@ -1,0 +1,93 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    h1 {
+      font-weight: 500;
+    }
+  }
+
+  .about {
+    color: var(--text-secondary);
+    line-height: 150%;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.morphing-label {
+  display: inline-flex;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+.morphing-char {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* Scale */
+.in-scale {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fade */
+.in-fade {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fall */
+.in-fall {
+  animation: fallIn 0.3s ease-out forwards;
+}
+
+@keyframes fallIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
