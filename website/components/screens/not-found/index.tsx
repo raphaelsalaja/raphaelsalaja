@@ -36,11 +36,11 @@ export default function NotFound() {
           data-us-alttext="404 - Not Found"
           data-us-arialabel="404 - Not Found"
         />
-      </div>
 
-      <Link href="/" className={clsx(styles.home, jacquard.className)}>
-        return home
-      </Link>
+        <Link href="/" className={clsx(styles.home, jacquard.className)}>
+          return home
+        </Link>
+      </div>
     </React.Fragment>
   );
 }

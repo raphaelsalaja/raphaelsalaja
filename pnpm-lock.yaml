@@ -21,6 +21,202 @@ importers:
         specifier: 5.8.3
         version: 5.8.3
 
+  intl:
+    dependencies:
+      '@base-ui-components/react':
+        specifier: 1.0.0-alpha.8
+        version: 1.0.0-alpha.8(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@mdx-js/loader':
+        specifier: ^3.1.0
+        version: 3.1.0(acorn@8.14.1)(webpack@5.99.8)
+      '@mdx-js/react':
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@19.1.4)(react@19.1.0)
+      '@next/mdx':
+        specifier: 15.3.2
+        version: 15.3.2(@mdx-js/loader@3.1.0(acorn@8.14.1)(webpack@5.99.8))(@mdx-js/react@3.1.0(@types/react@19.1.4)(react@19.1.0))
+      '@number-flow/react':
+        specifier: 0.5.9
+        version: 0.5.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@opentelemetry/api':
+        specifier: ^1.9.0
+        version: 1.9.0
+      '@paper-design/shaders-react':
+        specifier: ^0.0.29
+        version: 0.0.29
+      '@radix-ui/react-icons':
+        specifier: ^1.3.2
+        version: 1.3.2(react@19.1.0)
+      '@radix-ui/react-portal':
+        specifier: ^1.1.6
+        version: 1.1.8(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@remotion/media-parser':
+        specifier: 4.0.306
+        version: 4.0.306
+      '@rs/configuration':
+        specifier: workspace:*
+        version: link:../packages/configuration
+      '@rs/design':
+        specifier: workspace:*
+        version: link:../packages/design
+      '@rs/i18n':
+        specifier: workspace:*
+        version: link:../packages/i18n
+      '@rs/styles':
+        specifier: workspace:*
+        version: link:../packages/styles
+      '@statsfm/spotify.js':
+        specifier: ^1.13.0
+        version: 1.13.0
+      '@supabase/ssr':
+        specifier: ^0.6.1
+        version: 0.6.1(@supabase/supabase-js@2.49.4)
+      '@supabase/supabase-js':
+        specifier: ^2.49.4
+        version: 2.49.4
+      '@tanstack/react-query':
+        specifier: ^5.74.11
+        version: 5.76.1(react@19.1.0)
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
+      cal-heatmap:
+        specifier: ^4.2.4
+        version: 4.2.4
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
+      embla-carousel:
+        specifier: ^8.5.2
+        version: 8.6.0
+      embla-carousel-react:
+        specifier: ^8.6.0
+        version: 8.6.0(react@19.1.0)
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      lucide-react:
+        specifier: ^0.469.0
+        version: 0.469.0(react@19.1.0)
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
+      motion:
+        specifier: ^11.15.0
+        version: 11.18.2(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next:
+        specifier: 15.3.2
+        version: 15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.88.0)
+      next-mdx-remote:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/react@19.1.4)(acorn@8.14.1)(react@19.1.0)
+      next-view-transitions:
+        specifier: ^0.3.4
+        version: 0.3.4(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.88.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      postcss-dynamic-metrics:
+        specifier: ^0.0.4
+        version: 0.0.4
+      react:
+        specifier: 19.1.0
+        version: 19.1.0
+      react-circular-progressbar:
+        specifier: ^2.2.0
+        version: 2.2.0(react@19.1.0)
+      react-dom:
+        specifier: 19.1.0
+        version: 19.1.0(react@19.1.0)
+      react-loading-skeleton:
+        specifier: ^3.5.0
+        version: 3.5.0(react@19.1.0)
+      react-plock:
+        specifier: ^3.5.1
+        version: 3.5.1(react@19.1.0)
+      react-scan:
+        specifier: ^0.3.4
+        version: 0.3.4(@types/react@19.1.4)(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.88.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.40.0)
+      rehype-pretty-code:
+        specifier: ^0.14.0
+        version: 0.14.1(shiki@1.29.2)
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      rehype-stringify:
+        specifier: ^10.0.1
+        version: 10.0.1
+      remark-gfm:
+        specifier: ^4.0.0
+        version: 4.0.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      sass:
+        specifier: ^1.88.0
+        version: 1.88.0
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
+      shiki:
+        specifier: ^1.26.1
+        version: 1.29.2
+      steamapi:
+        specifier: ^3.1.1
+        version: 3.1.1
+      three:
+        specifier: ^0.176.0
+        version: 0.176.0
+      title:
+        specifier: ^4.0.1
+        version: 4.0.1
+    devDependencies:
+      '@next/bundle-analyzer':
+        specifier: ^15.3.2
+        version: 15.3.4
+      '@stylistic/stylelint-plugin':
+        specifier: ^3.1.2
+        version: 3.1.2(stylelint@16.19.1(typescript@5.8.3))
+      '@types/node':
+        specifier: ^22.10.5
+        version: 22.15.18
+      '@types/react':
+        specifier: 19.1.4
+        version: 19.1.4
+      '@types/react-dom':
+        specifier: 19.1.5
+        version: 19.1.5(@types/react@19.1.4)
+      '@types/three':
+        specifier: ^0.176.0
+        version: 0.176.0
+      depcheck:
+        specifier: ^1.4.7
+        version: 1.4.7
+      eslint:
+        specifier: 9.17.0
+        version: 9.17.0
+      eslint-config-next:
+        specifier: 15.3.2
+        version: 15.3.2(eslint@9.17.0)(typescript@5.8.3)
+      openapi-typescript:
+        specifier: ^7.8.0
+        version: 7.8.0(typescript@5.8.3)
+      stylelint:
+        specifier: ^16.12.0
+        version: 16.19.1(typescript@5.8.3)
+      stylelint-config-recommended-scss:
+        specifier: ^15.0.0
+        version: 15.0.0(postcss@8.5.3)(stylelint@16.19.1(typescript@5.8.3))
+      stylelint-config-standard:
+        specifier: ^38.0.0
+        version: 38.0.0(stylelint@16.19.1(typescript@5.8.3))
+      stylelint-order:
+        specifier: ^7.0.0
+        version: 7.0.0(stylelint@16.19.1(typescript@5.8.3))
+      typescript:
+        specifier: ^5.7.2
+        version: 5.8.3
+
   packages/configuration: {}
 
   packages/design:
@@ -540,6 +736,10 @@ packages:
 
   '@dimforge/rapier3d-compat@0.12.0':
     resolution: {integrity: sha512-uekIGetywIgopfD97oDL5PfeezkFpNhwlzlaEYNOA0N6ghdsOvh/HYjSMek5Q2O1PYvRSDFcqFVJl4r4ZBwOow==}
+
+  '@discoveryjs/json-ext@0.5.7':
+    resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
+    engines: {node: '>=10.0.0'}
 
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
@@ -1075,6 +1275,9 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
+  '@next/bundle-analyzer@15.3.4':
+    resolution: {integrity: sha512-AN9H9S+4WaIIahyJBGe6arLj5kopvVZPLffAJsDhkbQPGqirYqaHhwO6vheytXtdq3xNjwJLpbmYNa5ZQnitSw==}
+
   '@next/env@15.3.2':
     resolution: {integrity: sha512-xURk++7P7qR9JG1jJtLzPzf0qEvqCN0A/T3DXf8IPMKo9/6FfjxtEffRJIIew/bIL4T3C2jLLqBor8B/zVlx6g==}
 
@@ -1267,6 +1470,9 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@polka/url@1.0.0-next.29':
+    resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
@@ -2616,6 +2822,9 @@ packages:
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
+  debounce@1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+
   debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
     peerDependencies:
@@ -2716,6 +2925,9 @@ packages:
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
+
+  duplexer@0.1.2:
+    resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -3248,6 +3460,10 @@ packages:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
     engines: {node: '>=6.0'}
 
+  gzip-size@6.0.0:
+    resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
+    engines: {node: '>=10'}
+
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
     engines: {node: '>= 0.4'}
@@ -3314,6 +3530,9 @@ packages:
 
   howler@2.2.4:
     resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
+
+  html-escaper@2.0.2:
+    resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
 
   html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
@@ -3985,6 +4204,10 @@ packages:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
 
+  mrmime@2.0.1:
+    resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
+    engines: {node: '>=10'}
+
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -4115,6 +4338,10 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: ^5.x
+
+  opener@1.5.2:
+    resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
+    hasBin: true
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -4773,6 +5000,10 @@ packages:
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
+  sirv@2.0.4:
+    resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==}
+    engines: {node: '>= 10'}
+
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -5063,6 +5294,10 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  totalist@3.0.1:
+    resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
+    engines: {node: '>=6'}
+
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
@@ -5324,6 +5559,11 @@ packages:
   webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
 
+  webpack-bundle-analyzer@4.10.1:
+    resolution: {integrity: sha512-s3P7pgexgT/HTUSYgxJyn28A+99mmLq4HsJepMPzu0R8ImJc52QNqaFYW1Z2z2uIb1/J3eYgaAWVpaC+v/1aAQ==}
+    engines: {node: '>= 10.13.0'}
+    hasBin: true
+
   webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
@@ -5392,6 +5632,18 @@ packages:
   write-file-atomic@5.0.1:
     resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  ws@7.5.10:
+    resolution: {integrity: sha512-+dbF1tHwZpXcbOJdVOkzLDxZP1ailvSxM6ZweXTegylPny803bFhA+vqBYw4s31NSAk4S2Qz+AKXK9a4wkdjcQ==}
+    engines: {node: '>=8.3.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   ws@8.18.1:
     resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
@@ -5666,6 +5918,8 @@ snapshots:
       postcss-selector-parser: 7.1.0
 
   '@dimforge/rapier3d-compat@0.12.0': {}
+
+  '@discoveryjs/json-ext@0.5.7': {}
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
@@ -6140,6 +6394,13 @@ snapshots:
       '@types/react': 19.1.4
       react: 19.1.0
 
+  '@next/bundle-analyzer@15.3.4':
+    dependencies:
+      webpack-bundle-analyzer: 4.10.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@next/env@15.3.2': {}
 
   '@next/eslint-plugin-next@15.3.2':
@@ -6281,6 +6542,8 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@polka/url@1.0.0-next.29': {}
 
   '@popperjs/core@2.11.8': {}
 
@@ -7903,6 +8166,8 @@ snapshots:
 
   dayjs@1.11.13: {}
 
+  debounce@1.2.1: {}
+
   debug@3.2.7:
     dependencies:
       ms: 2.1.3
@@ -8005,6 +8270,8 @@ snapshots:
       call-bind-apply-helpers: 1.0.2
       es-errors: 1.3.0
       gopd: 1.2.0
+
+  duplexer@0.1.2: {}
 
   eastasianwidth@0.2.0: {}
 
@@ -8744,6 +9011,10 @@ snapshots:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
 
+  gzip-size@6.0.0:
+    dependencies:
+      duplexer: 0.1.2
+
   has-bigints@1.1.0: {}
 
   has-flag@4.0.0: {}
@@ -8872,6 +9143,8 @@ snapshots:
   hookified@1.8.2: {}
 
   howler@2.2.4: {}
+
+  html-escaper@2.0.2: {}
 
   html-tags@3.3.1: {}
 
@@ -9755,6 +10028,8 @@ snapshots:
 
   mri@1.2.0: {}
 
+  mrmime@2.0.1: {}
+
   ms@2.1.3: {}
 
   multimatch@5.0.0:
@@ -9910,6 +10185,8 @@ snapshots:
       supports-color: 10.0.0
       typescript: 5.8.3
       yargs-parser: 21.1.1
+
+  opener@1.5.2: {}
 
   optionator@0.9.4:
     dependencies:
@@ -10683,6 +10960,12 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.2
 
+  sirv@2.0.4:
+    dependencies:
+      '@polka/url': 1.0.0-next.29
+      mrmime: 2.0.1
+      totalist: 3.0.1
+
   sisteransi@1.0.5: {}
 
   slash@3.0.0: {}
@@ -10905,7 +11188,7 @@ snapshots:
       cosmiconfig: 9.0.0(typescript@5.8.3)
       css-functions-list: 3.2.3
       css-tree: 3.1.0
-      debug: 4.4.0
+      debug: 4.4.1(supports-color@10.0.0)
       fast-glob: 3.3.3
       fastest-levenshtein: 1.0.16
       file-entry-cache: 10.0.8
@@ -11034,6 +11317,8 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  totalist@3.0.1: {}
 
   tr46@0.0.3: {}
 
@@ -11360,6 +11645,25 @@ snapshots:
 
   webidl-conversions@4.0.2: {}
 
+  webpack-bundle-analyzer@4.10.1:
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      acorn: 8.14.1
+      acorn-walk: 8.3.4
+      commander: 7.2.0
+      debounce: 1.2.1
+      escape-string-regexp: 4.0.0
+      gzip-size: 6.0.0
+      html-escaper: 2.0.2
+      is-plain-object: 5.0.0
+      opener: 1.5.2
+      picocolors: 1.1.1
+      sirv: 2.0.4
+      ws: 7.5.10
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   webpack-sources@3.2.3:
     optional: true
 
@@ -11483,6 +11787,8 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 4.1.0
+
+  ws@7.5.10: {}
 
   ws@8.18.1: {}
 
