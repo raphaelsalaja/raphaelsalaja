@@ -7,6 +7,7 @@ import { FamilyWallet } from "./family-wallet";
 import { Nature } from "./nature";
 import { Tone } from "./tone";
 import { Workouts } from "./workouts";
+import { Dropdown } from "./dropdown";
 
 export const CustomComponents: Partial<MDXComponents> = {
   Accordion,
@@ -17,4 +18,5 @@ export const CustomComponents: Partial<MDXComponents> = {
   Tone,
   Dialogs,
   Conversions,
+  Dropdown,
 };

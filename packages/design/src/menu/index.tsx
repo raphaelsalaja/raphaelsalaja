@@ -22,6 +22,10 @@ const MenuTrigger: React.FC<MenuTriggerProps> = ({ ...props }) => {
   return <Menu.Trigger {...props} data-shunpo-menu-trigger />;
 };
 
+const MenuTriggerIndicator: React.FC<React.HTMLAttributes<HTMLSpanElement>> = ({ ...props }) => {
+  return <span {...props} data-shunpo-menu-trigger-indicator />;
+};
+
 interface MenuPortalProps extends React.ComponentProps<typeof Menu.Portal> {}
 
 const MenuPortal: React.FC<MenuPortalProps> = ({ ...props }) => {
@@ -52,10 +56,12 @@ const MenuArrow: React.FC<MenuArrowProps> = ({ ...props }) => {
   return <Menu.Arrow {...props} data-shunpo-menu-arrow />;
 };
 
-interface MenuItemProps extends React.ComponentProps<typeof Menu.Item> {}
+interface MenuItemProps extends React.ComponentProps<typeof Menu.Item> {
+  tone?: "default" | "danger";
+}
 
 const MenuItem: React.FC<MenuItemProps> = ({ ...props }) => {
-  return <Menu.Item {...props} data-shunpo-menu-item />;
+  return <Menu.Item {...props} data-shunpo-menu-item data-tone={props.tone || "default"} />;
 };
 
 interface MenuSeparatorProps extends React.ComponentProps<typeof Menu.Separator> {}
@@ -98,6 +104,7 @@ export {
   MenuRoot as Root,
   MenuLabel as Label,
   MenuTrigger as Trigger,
+  MenuTriggerIndicator as TriggerIndicator,
   MenuPortal as Portal,
   MenuBackdrop as Backdrop,
   MenuPositioner as Positioner,
