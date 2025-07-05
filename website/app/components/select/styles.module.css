@@ -1,0 +1,65 @@
+/* styles/variables.module.css */
+
+.select {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+
+  .label {
+    color: var(--Text-Secondary, #4d4d4d);
+    color: var(--Text-Secondary, color(display-p3 0.3 0.3 0.3));
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    letter-spacing: 0.01px;
+  }
+}
+
+.icon-button {
+  display: contents;
+}
+
+.item {
+  transition: all 0.2s ease;
+}
+
+.item-text {
+  font: inherit;
+}
+
+.item-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.04px;
+  margin: 0 0 4px;
+  white-space: nowrap;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+}
+
+.description {
+  color: var(--text-tertiary, color(display-p3 0.6 0.6 0.6));
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 1.5;
+  letter-spacing: -0.04px;
+}

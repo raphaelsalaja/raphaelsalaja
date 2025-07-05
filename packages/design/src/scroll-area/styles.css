@@ -1,0 +1,141 @@
+/* Scroll Area Styles */
+
+[data-shunpo-scroll-area-root] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+[data-shunpo-scroll-area-viewport] {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+[data-shunpo-scroll-area-scrollbar] {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  background-color: transparent;
+  border-radius: 4px;
+  transition: 
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+  user-select: none;
+  touch-action: none;
+  opacity: 0;
+}
+
+[data-shunpo-scroll-area-scrollbar]:hover {
+  background-color: var(--color-surface-secondary);
+  opacity: 1;
+}
+
+[data-shunpo-scroll-area-scrollbar][data-visible] {
+  opacity: 1;
+}
+
+/* Vertical scrollbar */
+[data-shunpo-scroll-area-scrollbar][data-orientation="vertical"] {
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  flex-direction: column;
+}
+
+/* Horizontal scrollbar */
+[data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"] {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  flex-direction: row;
+}
+
+[data-shunpo-scroll-area-thumb] {
+  position: relative;
+  flex: 1;
+  background-color: var(--color-border);
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+[data-shunpo-scroll-area-thumb]:hover {
+  background-color: var(--color-border-hover);
+}
+
+[data-shunpo-scroll-area-thumb]:active {
+  background-color: var(--color-text-tertiary);
+}
+
+/* Thumb sizing */
+[data-shunpo-scroll-area-scrollbar][data-orientation="vertical"] [data-shunpo-scroll-area-thumb] {
+  width: 8px;
+  margin: 2px;
+  min-height: 20px;
+}
+
+[data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"] [data-shunpo-scroll-area-thumb] {
+  height: 8px;
+  margin: 2px;
+  min-width: 20px;
+}
+
+[data-shunpo-scroll-area-corner] {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-surface-secondary);
+  border-radius: 0 0 4px 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+[data-shunpo-scroll-area-root]:hover [data-shunpo-scroll-area-corner] {
+  opacity: 1;
+}
+
+/* Auto-hide scrollbars */
+[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-shunpo-scroll-area-root][data-scrollbars="auto"]:hover [data-shunpo-scroll-area-scrollbar],
+[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar]:hover,
+[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar][data-dragging] {
+  opacity: 1;
+}
+
+/* Always visible scrollbars */
+[data-shunpo-scroll-area-root][data-scrollbars="visible"] [data-shunpo-scroll-area-scrollbar] {
+  opacity: 1;
+}
+
+/* Disabled scrollbars */
+[data-shunpo-scroll-area-scrollbar][data-disabled] {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Focus states */
+[data-shunpo-scroll-area-thumb]:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-shunpo-scroll-area-scrollbar] {
+    transition: opacity 0.1s ease;
+  }
+  
+  [data-shunpo-scroll-area-thumb] {
+    transition: background-color 0.1s ease;
+  }
+}

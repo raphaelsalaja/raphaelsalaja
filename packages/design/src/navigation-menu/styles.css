@@ -1,0 +1,272 @@
+/* NavigationMenu Root */
+[data-shunpo-navigation-menu-root] {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* NavigationMenu List */
+[data-shunpo-navigation-menu-list] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--background-color, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* NavigationMenu Item */
+[data-shunpo-navigation-menu-item] {
+  position: relative;
+}
+
+/* NavigationMenu Trigger */
+[data-shunpo-navigation-menu-trigger] {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+[data-shunpo-navigation-menu-trigger]:hover,
+[data-shunpo-navigation-menu-trigger][data-open] {
+  background-color: var(--item-hover-background-color, #f1f5f9);
+}
+
+[data-shunpo-navigation-menu-trigger]:focus-visible {
+  background-color: var(--item-hover-background-color, #f1f5f9);
+  box-shadow: 0 0 0 2px var(--focus-color, #3b82f6);
+}
+
+/* NavigationMenu Icon */
+[data-shunpo-navigation-menu-icon] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+[data-shunpo-navigation-menu-icon]::before {
+  content: "▼";
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+[data-shunpo-navigation-menu-trigger][data-open] [data-shunpo-navigation-menu-icon] {
+  transform: rotate(180deg);
+}
+
+/* NavigationMenu Content */
+[data-shunpo-navigation-menu-content] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+}
+
+[data-shunpo-navigation-menu-content][data-open] {
+  animation-name: navigationMenuContentIn;
+}
+
+[data-shunpo-navigation-menu-content][data-closed] {
+  animation-name: navigationMenuContentOut;
+}
+
+/* NavigationMenu Link */
+[data-shunpo-navigation-menu-link] {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-decoration: none;
+  color: var(--text-color, #374151);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+[data-shunpo-navigation-menu-link]:hover {
+  background-color: var(--item-hover-background-color, #f1f5f9);
+}
+
+[data-shunpo-navigation-menu-link]:focus-visible {
+  background-color: var(--item-hover-background-color, #f1f5f9);
+  box-shadow: 0 0 0 2px var(--focus-color, #3b82f6);
+}
+
+/* NavigationMenu Portal */
+/* Portal doesn't render a visual element */
+
+/* NavigationMenu Backdrop */
+[data-shunpo-navigation-menu-backdrop] {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: transparent;
+}
+
+/* NavigationMenu Positioner */
+[data-shunpo-navigation-menu-positioner] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* NavigationMenu Popup */
+[data-shunpo-navigation-menu-popup] {
+  background-color: var(--popup-background-color, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+[data-shunpo-navigation-menu-popup][data-open] {
+  animation: navigationMenuPopupIn 0.2s ease-out;
+}
+
+[data-shunpo-navigation-menu-popup][data-closed] {
+  animation: navigationMenuPopupOut 0.15s ease-in;
+}
+
+/* NavigationMenu Arrow */
+[data-shunpo-navigation-menu-arrow] {
+  fill: var(--popup-background-color, #ffffff);
+  stroke: var(--border-color, #e2e8f0);
+  stroke-width: 1px;
+  z-index: 1001;
+}
+
+/* NavigationMenu Viewport */
+[data-shunpo-navigation-menu-viewport] {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--popup-background-color, #ffffff);
+  border-radius: 0.5rem;
+  height: var(--height);
+  transition: height 0.3s ease, width 0.3s ease;
+}
+
+/* Content area within viewport */
+[data-shunpo-navigation-menu-viewport] > * {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  [data-shunpo-navigation-menu-list] {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  [data-shunpo-navigation-menu-positioner] {
+    position: static;
+    width: 100%;
+  }
+  
+  [data-shunpo-navigation-menu-popup] {
+    margin-top: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* Animations */
+@keyframes navigationMenuContentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes navigationMenuContentOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+}
+
+@keyframes navigationMenuPopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes navigationMenuPopupOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  [data-shunpo-navigation-menu-content],
+  [data-shunpo-navigation-menu-popup],
+  [data-shunpo-navigation-menu-viewport],
+  [data-shunpo-navigation-menu-icon] {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  [data-shunpo-navigation-menu-list],
+  [data-shunpo-navigation-menu-popup] {
+    border-width: 2px;
+  }
+}

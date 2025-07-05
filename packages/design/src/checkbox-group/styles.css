@@ -1,0 +1,31 @@
+/* Checkbox Group Styles */
+
+[data-shunpo-checkbox-group-root] {
+  display: flex;
+  gap: 12px;
+}
+
+[data-shunpo-checkbox-group-root][data-orientation="vertical"] {
+  flex-direction: column;
+}
+
+[data-shunpo-checkbox-group-root][data-orientation="horizontal"] {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Disabled state */
+[data-shunpo-checkbox-group-root][data-disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Dense spacing variant */
+[data-shunpo-checkbox-group-root][data-dense] {
+  gap: 8px;
+}
+
+/* Large spacing variant */
+[data-shunpo-checkbox-group-root][data-loose] {
+  gap: 16px;
+}

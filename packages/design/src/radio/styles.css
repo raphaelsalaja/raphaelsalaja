@@ -1,0 +1,120 @@
+/* Radio Styles */
+
+[data-shunpo-radio-root] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+  user-select: none;
+}
+
+/* Size variants */
+[data-shunpo-radio-root][data-size="sm"] {
+  width: 16px;
+  height: 16px;
+}
+
+[data-shunpo-radio-root][data-size="md"] {
+  width: 20px;
+  height: 20px;
+}
+
+[data-shunpo-radio-root][data-size="lg"] {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hover state */
+[data-shunpo-radio-root]:hover:not([data-disabled]) {
+  border-color: var(--color-border-hover);
+  background-color: var(--color-surface-hover);
+}
+
+/* Focus state */
+[data-shunpo-radio-root]:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Active state */
+[data-shunpo-radio-root]:active:not([data-disabled]) {
+  transform: scale(0.95);
+}
+
+/* Checked state */
+[data-shunpo-radio-root][data-checked] {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+[data-shunpo-radio-root][data-checked]:hover:not([data-disabled]) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* Disabled state */
+[data-shunpo-radio-root][data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Indicator */
+[data-shunpo-radio-indicator] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+[data-shunpo-radio-root][data-checked] [data-shunpo-radio-indicator] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Default radio dot indicator */
+[data-shunpo-radio-indicator]::before {
+  content: "";
+  display: block;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+/* Size-specific indicator sizes */
+[data-shunpo-radio-root][data-size="sm"] [data-shunpo-radio-indicator]::before {
+  width: 6px;
+  height: 6px;
+}
+
+[data-shunpo-radio-root][data-size="md"] [data-shunpo-radio-indicator]::before {
+  width: 8px;
+  height: 8px;
+}
+
+[data-shunpo-radio-root][data-size="lg"] [data-shunpo-radio-indicator]::before {
+  width: 10px;
+  height: 10px;
+}
+
+/* Alternative custom indicator support */
+[data-shunpo-radio-indicator] > * {
+  opacity: inherit;
+  transform: inherit;
+  transition: inherit;
+}
