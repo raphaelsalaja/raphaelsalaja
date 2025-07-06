@@ -1,6 +1,6 @@
 "use client";
 
-import { Seperator } from "@rs/design/seperator";
+import { Separator } from "@rs/design";
 import { motion } from "motion/react";
 import { useState } from "react";
 import styles from "./styles.module.scss";
@@ -39,7 +39,7 @@ export const Dialogs: React.FC = () => {
         </div>
       </div>
 
-      <Seperator className={styles.separator} orientation="vertical" variant="dashed" />
+      <Separator.Separator className={styles.separator} orientation="vertical" variant="dashed" />
 
       <div className={styles.content}>
         <motion.div

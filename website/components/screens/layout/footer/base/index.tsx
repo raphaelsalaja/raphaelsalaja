@@ -1,4 +1,4 @@
-import Button from "@rs/design/button";
+import { Button } from "@rs/design";
 import { Link } from "next-view-transitions";
 import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
 import styles from "./styles.module.scss";
@@ -9,36 +9,36 @@ export const Base: React.FC = () => {
       <div className={styles.links}>
         <div className={styles.column}>
           <h1>Pages</h1>
-          <Button asChild variant="ghost">
+          <Button.default asChild variant="ghost">
             <Link href="/projects">Projects</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="/experiments">Experiments</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="/insights">Insights</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="/archive">Archive</Link>
-          </Button>
+          </Button.default>
         </div>
         <div className={styles.column}>
           <h1>Connect</h1>
-          <Button asChild variant="ghost">
+          <Button.default asChild variant="ghost">
             <Link href="https://x.com/raphaelsalaja">X (Twitter)</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="https://www.instagram.com/raphaelsalaja">Instagram</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="https://github.com/raphaelsalaja">Github</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="https://www.linkedin.com/in/raphael-salaja">LinkedIn</Link>
-          </Button>
-          <Button asChild variant="ghost">
+          </Button.default>
+          <Button.default asChild variant="ghost">
             <Link href="mailto:raphaelsalaja@gmail.com">Email</Link>
-          </Button>
+          </Button.default>
         </div>
       </div>
 

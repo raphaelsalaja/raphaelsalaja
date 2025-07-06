@@ -6,6 +6,9 @@
         "$TURBO_DEFAULT$",
         ".env*"
       ],
+      "outputs": [
+        "dist/**"
+      ],
       "dependsOn": [
         "^build"
       ],

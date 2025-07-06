@@ -1,5 +1,5 @@
-import Button from "@rs/design/button";
-import { Seperator } from "@rs/design/seperator";
+import { Button } from "@rs/design";
+import { Separator } from "@rs/design";
 import { Link } from "next-view-transitions";
 
 import * as Media from "@/components/media";
@@ -66,13 +66,13 @@ export const Posts = async ({
     <div className={styles.posts}>
       {!index && (
         <div className={styles.heading}>
-          <Button asChild variant="ghost">
+          <Button.default asChild variant="ghost">
             <Link href={`/${category}`} className={styles.title}>
               <h1 className={styles.name}>{title}</h1>
               <h2 className={styles.count}>{length}</h2>
             </Link>
-          </Button>
-          <Seperator />
+          </Button.default>
+          <Separator.Separator />
         </div>
       )}
 

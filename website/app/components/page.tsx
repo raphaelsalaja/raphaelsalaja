@@ -2,7 +2,7 @@
 
 import { Header } from "./header";
 import { Select } from "./select";
-import styles from "./styles.module.css";
+import "./styles.css";
 
 export const Page = () => {
   return (

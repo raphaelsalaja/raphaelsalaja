@@ -2,21 +2,258 @@
   "name": "@rs/design",
   "description": "Design tokens and components for my website",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch --silent"
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
   },
   "exports": {
-    "./*": "./src/*/index.tsx"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./accordion": {
+      "types": "./dist/accordion.d.ts",
+      "import": "./dist/accordion.js",
+      "require": "./dist/accordion.cjs"
+    },
+    "./accordion/styles": "./dist/accordion.css",
+    "./alert-dialog": {
+      "types": "./dist/alert-dialog.d.ts",
+      "import": "./dist/alert-dialog.js",
+      "require": "./dist/alert-dialog.cjs"
+    },
+    "./alert-dialog/styles": "./dist/alert-dialog.css",
+    "./avatar": {
+      "types": "./dist/avatar.d.ts",
+      "import": "./dist/avatar.js",
+      "require": "./dist/avatar.cjs"
+    },
+    "./avatar/styles": "./dist/avatar.css",
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb.d.ts",
+      "import": "./dist/breadcrumb.js",
+      "require": "./dist/breadcrumb.cjs"
+    },
+    "./breadcrumb/styles": "./dist/breadcrumb.css",
+    "./button": {
+      "types": "./dist/button.d.ts",
+      "import": "./dist/button.js",
+      "require": "./dist/button.cjs"
+    },
+    "./button/styles": "./dist/button.css",
+    "./carrot": {
+      "types": "./dist/carrot.d.ts",
+      "import": "./dist/carrot.js",
+      "require": "./dist/carrot.cjs"
+    },
+    "./carrot/styles": "./dist/carrot.css",
+    "./checkbox": {
+      "types": "./dist/checkbox.d.ts",
+      "import": "./dist/checkbox.js",
+      "require": "./dist/checkbox.cjs"
+    },
+    "./checkbox/styles": "./dist/checkbox.css",
+    "./checkbox-group": {
+      "types": "./dist/checkbox-group.d.ts",
+      "import": "./dist/checkbox-group.js",
+      "require": "./dist/checkbox-group.cjs"
+    },
+    "./checkbox-group/styles": "./dist/checkbox-group.css",
+    "./collapsible": {
+      "types": "./dist/collapsible.d.ts",
+      "import": "./dist/collapsible.js",
+      "require": "./dist/collapsible.cjs"
+    },
+    "./collapsible/styles": "./dist/collapsible.css",
+    "./conditional-wrap": {
+      "types": "./dist/conditional-wrap.d.ts",
+      "import": "./dist/conditional-wrap.js",
+      "require": "./dist/conditional-wrap.cjs"
+    },
+    "./context-menu": {
+      "types": "./dist/context-menu.d.ts",
+      "import": "./dist/context-menu.js",
+      "require": "./dist/context-menu.cjs"
+    },
+    "./context-menu/styles": "./dist/context-menu.css",
+    "./dialog": {
+      "types": "./dist/dialog.d.ts",
+      "import": "./dist/dialog.js",
+      "require": "./dist/dialog.cjs"
+    },
+    "./dialog/styles": "./dist/dialog.css",
+    "./field": {
+      "types": "./dist/field.d.ts",
+      "import": "./dist/field.js",
+      "require": "./dist/field.cjs"
+    },
+    "./field/styles": "./dist/field.css",
+    "./fieldset": {
+      "types": "./dist/fieldset.d.ts",
+      "import": "./dist/fieldset.js",
+      "require": "./dist/fieldset.cjs"
+    },
+    "./fieldset/styles": "./dist/fieldset.css",
+    "./form": {
+      "types": "./dist/form.d.ts",
+      "import": "./dist/form.js",
+      "require": "./dist/form.cjs"
+    },
+    "./form/styles": "./dist/form.css",
+    "./input": {
+      "types": "./dist/input.d.ts",
+      "import": "./dist/input.js",
+      "require": "./dist/input.cjs"
+    },
+    "./input/styles": "./dist/input.css",
+    "./menu": {
+      "types": "./dist/menu.d.ts",
+      "import": "./dist/menu.js",
+      "require": "./dist/menu.cjs"
+    },
+    "./menu/styles": "./dist/menu.css",
+    "./menubar": {
+      "types": "./dist/menubar.d.ts",
+      "import": "./dist/menubar.js",
+      "require": "./dist/menubar.cjs"
+    },
+    "./menubar/styles": "./dist/menubar.css",
+    "./meter": {
+      "types": "./dist/meter.d.ts",
+      "import": "./dist/meter.js",
+      "require": "./dist/meter.cjs"
+    },
+    "./meter/styles": "./dist/meter.css",
+    "./navigation-menu": {
+      "types": "./dist/navigation-menu.d.ts",
+      "import": "./dist/navigation-menu.js",
+      "require": "./dist/navigation-menu.cjs"
+    },
+    "./navigation-menu/styles": "./dist/navigation-menu.css",
+    "./number-field": {
+      "types": "./dist/number-field.d.ts",
+      "import": "./dist/number-field.js",
+      "require": "./dist/number-field.cjs"
+    },
+    "./number-field/styles": "./dist/number-field.css",
+    "./popover": {
+      "types": "./dist/popover.d.ts",
+      "import": "./dist/popover.js",
+      "require": "./dist/popover.cjs"
+    },
+    "./popover/styles": "./dist/popover.css",
+    "./preview-card": {
+      "types": "./dist/preview-card.d.ts",
+      "import": "./dist/preview-card.js",
+      "require": "./dist/preview-card.cjs"
+    },
+    "./preview-card/styles": "./dist/preview-card.css",
+    "./progress": {
+      "types": "./dist/progress.d.ts",
+      "import": "./dist/progress.js",
+      "require": "./dist/progress.cjs"
+    },
+    "./progress/styles": "./dist/progress.css",
+    "./radio": {
+      "types": "./dist/radio.d.ts",
+      "import": "./dist/radio.js",
+      "require": "./dist/radio.cjs"
+    },
+    "./radio/styles": "./dist/radio.css",
+    "./scroll-area": {
+      "types": "./dist/scroll-area.d.ts",
+      "import": "./dist/scroll-area.js",
+      "require": "./dist/scroll-area.cjs"
+    },
+    "./scroll-area/styles": "./dist/scroll-area.css",
+    "./select": {
+      "types": "./dist/select.d.ts",
+      "import": "./dist/select.js",
+      "require": "./dist/select.cjs"
+    },
+    "./select/styles": "./dist/select.css",
+    "./separator": {
+      "types": "./dist/separator.d.ts",
+      "import": "./dist/separator.js",
+      "require": "./dist/separator.cjs"
+    },
+    "./separator/styles": "./dist/separator.css",
+    "./slider": {
+      "types": "./dist/slider.d.ts",
+      "import": "./dist/slider.js",
+      "require": "./dist/slider.cjs"
+    },
+    "./slider/styles": "./dist/slider.css",
+    "./switch": {
+      "types": "./dist/switch.d.ts",
+      "import": "./dist/switch.js",
+      "require": "./dist/switch.cjs"
+    },
+    "./switch/styles": "./dist/switch.css",
+    "./tabs": {
+      "types": "./dist/tabs.d.ts",
+      "import": "./dist/tabs.js",
+      "require": "./dist/tabs.cjs"
+    },
+    "./tabs/styles": "./dist/tabs.css",
+    "./toast": {
+      "types": "./dist/toast.d.ts",
+      "import": "./dist/toast.js",
+      "require": "./dist/toast.cjs"
+    },
+    "./toast/styles": "./dist/toast.css",
+    "./toggle": {
+      "types": "./dist/toggle.d.ts",
+      "import": "./dist/toggle.js",
+      "require": "./dist/toggle.cjs"
+    },
+    "./toggle/styles": "./dist/toggle.css",
+    "./toggle-group": {
+      "types": "./dist/toggle-group.d.ts",
+      "import": "./dist/toggle-group.js",
+      "require": "./dist/toggle-group.cjs"
+    },
+    "./toggle-group/styles": "./dist/toggle-group.css",
+    "./toolbar": {
+      "types": "./dist/toolbar.d.ts",
+      "import": "./dist/toolbar.js",
+      "require": "./dist/toolbar.cjs"
+    },
+    "./toolbar/styles": "./dist/toolbar.css",
+    "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
+      "import": "./dist/tooltip.js",
+      "require": "./dist/tooltip.cjs"
+    },
+    "./tooltip/styles": "./dist/tooltip.css",
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.js",
+      "require": "./dist/hooks.cjs"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "require": "./dist/types.cjs"
+    }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "react",
-    "modal",
-    "motion",
-    "dialog",
-    "overlay"
+    "components",
+    "design-system",
+    "ui",
+    "base-ui"
   ],
-  "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
+  "author": "Raphael Salaja <raphaelsalaja@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.1",
@@ -25,11 +262,14 @@
     "clsx": "^2.1.1",
     "esbuild-sass-plugin": "^3.3.1",
     "motion": "^11.18.2",
-    "react": "19.0.0",
     "slate": "^0.112.0",
     "slate-history": "^0.113.1",
     "slate-react": "^0.112.1",
     "use-sound": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.1",
@@ -37,12 +277,17 @@
     "@rs/styles": "workspace:*",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
-    "prettier": "^3.3.3",
     "sass": "^1.88.0",
     "tsup": "^8.3.5",
     "turbo": "^2.2.3",
     "typescript": "5.6.3"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
   "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18"

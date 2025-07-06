@@ -31,11 +31,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled}
         {...props}
       >
-        {children && (
-          <button type="button" className="children">
-            {children}
-          </button>
-        )}
+        {children}
       </Comp>
     );
   },

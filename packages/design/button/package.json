@@ -1,0 +1,58 @@
+{
+  "name": "@rs/design-button",
+  "description": "Button component for @rs/design system",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch --silent",
+    "clean": "rm -rf dist"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/styles.css"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "button",
+    "component",
+    "design-system",
+    "ui"
+  ],
+  "author": "Raphael Salaja <raphaelsalaja@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
+    "clsx": "^2.1.1",
+    "motion": "^11.18.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@rs/configuration": "workspace:*",
+    "@types/react": "19.1.4",
+    "tsup": "^8.3.5",
+    "typescript": "5.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=18"
+  }
+}
