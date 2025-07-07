@@ -1,3 +1,22 @@
+/* Define color variables that can handle fallbacks */
+:root {
+  /* Standard fallbacks */
+  --white-color: #fff;
+  --black-color: #000;
+  --hover-primary-color: #4d4d4d;
+  --hover-secondary-color: #fafafa;
+  --disabled-color: #b3b3b3;
+
+  /* Use display-p3 where supported */
+  @supports (color: color(display-p3 0 0 0)) {
+    --white-color: color(display-p3 1 1 1);
+    --black-color: color(display-p3 0 0 0);
+    --hover-primary-color: color(display-p3 0.3 0.3 0.3);
+    --hover-secondary-color: color(display-p3 0.9804 0.9804 0.9804);
+    --disabled-color: color(display-p3 0.702 0.702 0.702);
+  }
+}
+
 .button {
   /* layout */
   position: relative;
@@ -21,18 +40,14 @@
   /* animation */
   transition: all 0.2s ease;
 
-  user-select: none;
-
-  /* variants - primary */
+  user-select: none; /* variants - primary */
   &[data-shunpo-button-variant="primary"] {
-    color: #fff;
-    color: color(display-p3 1 1 1);
-    background: #000;
-    background: color(display-p3 0 0 0);
+    /* Use CSS variables with fallbacks */
+    color: var(--white-color);
+    background: var(--black-color);
 
     &:hover[aria-disabled="false"] {
-      background: #4d4d4d;
-      background: color(display-p3 0.3 0.3 0.3);
+      background: var(--hover-primary-color);
     }
 
     &:focus-visible,
@@ -40,24 +55,33 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 0 0 0);
+      }
     }
   }
 
   /* variants - secondary */
   &[data-shunpo-button-variant="secondary"] {
     color: #000;
-    color: color(display-p3 0 0 0);
     border: 1px solid rgb(0 0 0 / 10%);
-    border: 1px solid color(display-p3 0 0 0 / 10%);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
-    box-shadow: 0 1px 2px 0 color(display-p3 0 0 0 / 5%);
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 0 0 0);
+      border: 1px solid color(display-p3 0 0 0 / 10%);
+      box-shadow: 0 1px 2px 0 color(display-p3 0 0 0 / 5%);
+    }
 
     &:hover[aria-disabled="false"] {
       background: #fafafa;
-      background: color(display-p3 0.9804 0.9804 0.9804);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        background: color(display-p3 0.9804 0.9804 0.9804);
+      }
     }
 
     &:focus-visible,
@@ -65,22 +89,31 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 0 0 0);
+      }
     }
   }
 
   /* variants - tertiary */
   &[data-shunpo-button-variant="tertiary"] {
     color: #000;
-    color: color(display-p3 0 0 0);
     background: #fff;
-    background: color(display-p3 1 1 1);
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 0 0 0);
+      background: color(display-p3 1 1 1);
+    }
 
     &:hover[aria-disabled="false"] {
       background: #f5f5f5;
-      background: color(display-p3 0.96 0.96 0.96);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        background: color(display-p3 0.96 0.96 0.96);
+      }
     }
 
     &:focus-visible,
@@ -88,22 +121,31 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 0 0 0);
+      }
     }
   }
 
   /* variants - destructive */
   &[data-shunpo-button-variant="destructive"] {
     color: #fff;
-    color: color(display-p3 1 1 1);
     background: #ff2a4b;
-    background: color(display-p3 1 0.2784 0.3265);
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 1 1 1);
+      background: color(display-p3 1 0.2784 0.3265);
+    }
 
     &:hover:not([aria-disabled="true"]) {
       background: #ff939e;
-      background: color(display-p3 1 0.6 0.6267);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        background: color(display-p3 1 0.6 0.6267);
+      }
     }
 
     &:focus-visible,
@@ -111,23 +153,32 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #ff2a4b;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.2784 0.3265);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 1 0.2784 0.3265);
+      }
     }
   }
 
   /* variants - warning */
   &[data-shunpo-button-variant="warning"] {
     color: #fff;
-    color: color(display-p3 1 1 1);
     border-radius: 8px;
     background: #ff902c;
-    background: color(display-p3 1 0.5911 0.2784);
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 1 1 1);
+      background: color(display-p3 1 0.5911 0.2784);
+    }
 
     &:hover[aria-disabled="false"] {
       background: #ffc292;
-      background: color(display-p3 1 0.7733 0.6);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        background: color(display-p3 1 0.7733 0.6);
+      }
     }
 
     &:focus-visible,
@@ -135,23 +186,32 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #ff902c;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.5911 0.2784);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 1 0.5911 0.2784);
+      }
     }
   }
 
   /* variants - accent */
   &[data-shunpo-button-variant="accent"] {
     color: #fff;
-    color: color(display-p3 1 1 1);
     border-radius: 8px;
     background: #00fac3;
-    background: color(display-p3 0.0929 0.9628 0.7743);
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 1 1 1);
+      background: color(display-p3 0.0929 0.9628 0.7743);
+    }
 
     &:hover[aria-disabled="false"] {
       background: #7afee6;
-      background: color(display-p3 0.615 0.985 0.9033);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        background: color(display-p3 0.615 0.985 0.9033);
+      }
     }
 
     &:focus-visible,
@@ -159,9 +219,12 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #00fac3;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
+      }
     }
   }
 
@@ -177,12 +240,15 @@
 
     /* font */
     color: #b3b3b3;
-    color: color(display-p3 0.702 0.702 0.702);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
     letter-spacing: -0.09px;
+
+    @supports (color: color(display-p3 0 0 0)) {
+      color: color(display-p3 0.702 0.702 0.702);
+    }
 
     ::before {
       content: "";
@@ -197,15 +263,21 @@
 
     &:hover[aria-disabled="false"] {
       color: #000;
-      color: color(display-p3 0 0 0);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        color: color(display-p3 0 0 0);
+      }
 
       ::before {
         content: "";
         background: #f5f5f5;
-        background: color(display-p3 0.96 0.96 0.96);
         transition: all 0.2s ease;
         transform: scale(1);
         opacity: 1;
+
+        @supports (color: color(display-p3 0 0 0)) {
+          background: color(display-p3 0.96 0.96 0.96);
+        }
       }
     }
 
@@ -214,9 +286,12 @@
       box-shadow:
         0 0 0 2px #fff,
         0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
+
+      @supports (color: color(display-p3 0 0 0)) {
+        box-shadow:
+          0 0 0 2px color(display-p3 1 1 1),
+          0 0 0 4px color(display-p3 0 0 0);
+      }
     }
   }
 

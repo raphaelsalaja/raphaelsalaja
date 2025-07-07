@@ -11,7 +11,7 @@ const spotify = new SpotifyAPI({
   refreshToken: process.env.SPOTIFY_REFRESH_TOKEN!,
 });
 
-export async function GET(request: Request, context: { params: Promise<{ id: string }> }) {
+export async function GET(_request: Request, context: { params: Promise<{ id: string }> }) {
   // await the params promise first
   const { id } = await context.params;
 

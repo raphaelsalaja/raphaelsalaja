@@ -17,7 +17,9 @@
   border-radius: 0.5rem;
   background-color: var(--background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* NavigationMenu Item */
@@ -39,7 +41,9 @@
   border: none;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
   user-select: none;
   white-space: nowrap;
 }
@@ -106,7 +110,9 @@
   color: var(--text-color, #374151);
   cursor: pointer;
   outline: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
   user-select: none;
   white-space: nowrap;
 }
@@ -147,7 +153,9 @@
   background-color: var(--popup-background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   z-index: 1000;
   margin-top: 0.5rem;
@@ -177,7 +185,9 @@
   background-color: var(--popup-background-color, #ffffff);
   border-radius: 0.5rem;
   height: var(--height);
-  transition: height 0.3s ease, width 0.3s ease;
+  transition:
+    height 0.3s ease,
+    width 0.3s ease;
 }
 
 /* Content area within viewport */
@@ -193,12 +203,12 @@
     flex-direction: column;
     width: 100%;
   }
-  
+
   [data-shunpo-navigation-menu-positioner] {
     position: static;
     width: 100%;
   }
-  
+
   [data-shunpo-navigation-menu-popup] {
     margin-top: 0;
     border-radius: 0;

@@ -1,12 +1,11 @@
-import * as BaseSelect from "@rs/design/select";
 import * as BasePopover from "@rs/design/popover";
+import * as BaseSelect from "@rs/design/select";
 
 import { AnimatePresence, motion } from "motion/react";
-import useMeasure from "react-use-measure";
-
-import styles from "./styles.module.css";
-import { Check, Chevron } from "../icons";
 import React from "react";
+import useMeasure from "react-use-measure";
+import { Check, Chevron } from "../icons";
+import styles from "./styles.module.css";
 
 interface SelectProps {
   label: string;
@@ -30,9 +29,7 @@ export const Select: React.FC<SelectProps> = (props) => {
   const displayItem = highlightedItem || (Array.isArray(items) ? items[0] : null);
 
   // Transform items to Base UI format
-  const baseUIItems = Array.isArray(items)
-    ? items.map((item) => ({ label: item.label, value: item.value }))
-    : undefined;
+  const baseUIItems = Array.isArray(items) ? items.map((item) => ({ label: item.label, value: item.value })) : undefined;
 
   // Calculate direction based on item indices
   const getDirection = (currentItem: SelectItem | null, prevItem: SelectItem | null) => {
@@ -44,7 +41,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     return currentIndex > prevIndex ? 1 : -1;
   };
 
-  const direction = getDirection(displayItem, previousItem);
+  const _direction = getDirection(displayItem, previousItem);
 
   const animation = {
     initial: { opacity: 0 },
@@ -77,13 +74,7 @@ export const Select: React.FC<SelectProps> = (props) => {
                 <BaseSelect.Popup>
                   {Array.isArray(items) &&
                     items.map((item) => (
-                      <BaseSelect.Item
-                        key={item.label}
-                        value={item.value}
-                        className={styles.item}
-                        onMouseEnter={() => setHighlightedItem(item)}
-                        onMouseLeave={() => setHighlightedItem(null)}
-                      >
+                      <BaseSelect.Item key={item.label} value={item.value} className={styles.item} onMouseEnter={() => setHighlightedItem(item)} onMouseLeave={() => setHighlightedItem(null)}>
                         <BaseSelect.ItemText className={styles.itemText}>{item.label}</BaseSelect.ItemText>
                         <BaseSelect.ItemIndicator className={styles.itemIndicator}>
                           <Check size={16} />
@@ -105,11 +96,7 @@ export const Select: React.FC<SelectProps> = (props) => {
                           </AnimatePresence>
                         </BasePopover.Title>
                         <BasePopover.Description>
-                          <motion.div
-                            initial={false}
-                            animate={{ height: bounds.height }}
-                            transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1], delay: 0.01 }}
-                          >
+                          <motion.div initial={false} animate={{ height: bounds.height }} transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1], delay: 0.01 }}>
                             <div ref={ref}>
                               <AnimatePresence mode="popLayout">
                                 <motion.div key={displayItem.value} className={styles.description} {...animation}>

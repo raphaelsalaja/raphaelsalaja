@@ -37,13 +37,7 @@ const Heading = (props: HeadingProps) => {
   const transition = { duration: 0.2 };
 
   return (
-    <motion.h1
-      {...props}
-      className={styles.heading}
-      onClick={onClick}
-      onHoverStart={onHoverStart}
-      onHoverEnd={onHoverEnd}
-    >
+    <motion.h1 {...props} className={styles.heading} onClick={onClick} onHoverStart={onHoverStart} onHoverEnd={onHoverEnd}>
       <motion.div initial={initial} animate={animate} exit={exit} transition={transition} className={styles.icon}>
         <Link1Icon />
       </motion.div>

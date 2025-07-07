@@ -1,4 +1,5 @@
 @import url("@rs/styles/reset");
+@import url("./theme.css");
 
 html {
   color: var(--text-primary);
@@ -36,10 +37,12 @@ body {
   }
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
 ::view-transition-old(root) {
   animation: blur-out 0.4s ease forwards;
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
 ::view-transition-new(root) {
   animation: blur-in 0.4s ease forwards;
 }

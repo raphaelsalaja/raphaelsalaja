@@ -1,6 +1,6 @@
 "use client";
 
-import { CursorPagingObject, RecentlyPlayed } from "@statsfm/spotify.js";
+import type { CursorPagingObject, RecentlyPlayed } from "@statsfm/spotify.js";
 import { useQuery } from "@tanstack/react-query";
 
 async function fetchRecentlyPlayed(): Promise<CursorPagingObject<RecentlyPlayed>> {

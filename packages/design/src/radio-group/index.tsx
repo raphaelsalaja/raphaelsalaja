@@ -12,6 +12,4 @@ const RadioGroupRoot: React.FC<RadioGroupRootProps> = ({ size = "md", ...props }
   return <RadioGroup {...props} data-shunpo-radio-group-root data-size={size} />;
 };
 
-export {
-  RadioGroupRoot as Root,
-};
+export { RadioGroupRoot as Root };

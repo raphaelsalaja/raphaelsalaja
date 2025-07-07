@@ -18,7 +18,4 @@ const SwitchThumb: React.FC<SwitchThumbProps> = ({ ...props }) => {
   return <Switch.Thumb {...props} data-shunpo-switch-thumb />;
 };
 
-export {
-  SwitchRoot as Root,
-  SwitchThumb as Thumb,
-};
+export { SwitchRoot as Root, SwitchThumb as Thumb };

@@ -116,7 +116,7 @@
     color: var(--Text-Secondary, #4d4d4d);
     color: var(--Text-Secondary, color(display-p3 0.3 0.3 0.3));
     text-align: center;
-    font-family: Inter;
+
     font-size: 12px;
     font-style: normal;
     font-weight: 450;
@@ -140,7 +140,6 @@
 
   color: var(--Text-Tertiary, #999);
   color: var(--Text-Tertiary, color(display-p3 0.6 0.6 0.6));
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 450;
@@ -162,7 +161,7 @@
 
   color: var(--Text-Tertiary, #999);
   color: var(--Text-Tertiary, color(display-p3 0.6 0.6 0.6));
-  font-family: Inter;
+
   font-size: 13px;
   font-style: normal;
   font-weight: 450;

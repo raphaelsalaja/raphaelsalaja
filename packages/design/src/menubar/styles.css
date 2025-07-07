@@ -7,7 +7,9 @@
   border-radius: 0.5rem;
   padding: 0.25rem;
   gap: 0.125rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* Menubar Menu Root */
@@ -61,7 +63,9 @@
   background-color: var(--popup-background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   padding: 0.25rem;
   min-width: 12rem;
   max-width: 20rem;
@@ -298,7 +302,7 @@
   [data-shunpo-menubar-menu-popup] {
     animation: none;
   }
-  
+
   [data-shunpo-menubar-menu-trigger],
   [data-shunpo-menubar-menu-item],
   [data-shunpo-menubar-menu-submenu-trigger],
@@ -314,7 +318,7 @@
   [data-shunpo-menubar-menu-popup] {
     border-width: 2px;
   }
-  
+
   [data-shunpo-menubar-menu-separator] {
     height: 2px;
   }

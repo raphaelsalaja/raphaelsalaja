@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { GameDetails, GameInfoBasic, UserAchievement, UserPlaytime } from "steamapi";
-import { GetAppReviewsResponse } from "@/types/steam/appreviews";
+import type { GameDetails, GameInfoBasic, UserAchievement, UserPlaytime } from "steamapi";
+import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
 interface IRecentlyPlayedResponse {
   game: UserPlaytime<GameInfoBasic>;

@@ -13,8 +13,8 @@ export default function Page() {
       <h1>Playground</h1>
       <p>This is a playground for testing components and features.</p>
       <ul>
-        {routes.map((route, index) => (
-          <li key={index}>
+        {routes.map((route) => (
+          <li key={route.accordion.href}>
             <a href={route.accordion.href}>{route.accordion.title}</a>
           </li>
         ))}

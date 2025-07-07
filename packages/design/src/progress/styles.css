@@ -38,7 +38,7 @@
   height: 100%;
   background-color: var(--color-accent);
   border-radius: inherit;
-  transition: 
+  transition:
     width 0.3s ease,
     background-color 0.15s ease;
   transform-origin: left center;
@@ -77,16 +77,7 @@
 
 /* Striped variant */
 [data-shunpo-progress-root][data-striped] [data-shunpo-progress-indicator] {
-  background-image: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.1) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.1) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
   background-size: 16px 16px;
 }
 
@@ -114,7 +105,7 @@
   [data-shunpo-progress-track] {
     border: 1px solid var(--color-border);
   }
-  
+
   [data-shunpo-progress-indicator] {
     border: 1px solid transparent;
   }
@@ -125,7 +116,7 @@
   [data-shunpo-progress-indicator] {
     transition: background-color 0.15s ease;
   }
-  
+
   [data-shunpo-progress-root][data-indeterminate] [data-shunpo-progress-indicator],
   [data-shunpo-progress-root][data-striped][data-animated] [data-shunpo-progress-indicator] {
     animation: none;

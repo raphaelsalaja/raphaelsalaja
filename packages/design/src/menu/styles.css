@@ -5,6 +5,11 @@
   --elegant-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
+/* Define base indicator styles first before more specific selectors use them */
+[data-shunpo-menu-trigger-indicator] {
+  transition: transform var(--elegant-transition-duration) var(--elegant-timing-function);
+}
+
 [data-shunpo-menu-trigger] {
   /* Layout */
   display: flex;
@@ -17,8 +22,10 @@
   /* Style */
   border-radius: 8px;
   background: hsl(0, 0%, 100%);
-  box-shadow: 0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset, 0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset, 0px 0px
-    0px 1px hsla(0, 0%, 0%, 0.1);
+  box-shadow:
+    0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset,
+    0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset,
+    0px 0px 0px 1px hsla(0, 0%, 0%, 0.1);
 
   /* Typography */
   color: hsl(0, 0%, 19%);
@@ -38,26 +45,14 @@
     background: hsl(0, 0%, 96%);
   }
 
-  &[data-popup-open] {
-    [data-shunpo-menu-trigger-indicator] {
-      transform: rotateZ(-180deg);
-      animation: rotate-with-blur-open var(--elegant-transition-duration) var(--elegant-timing-function);
-    }
+  &[data-popup-open] [data-shunpo-menu-trigger-indicator] {
+    transform: rotateZ(-180deg);
+    animation: rotate-with-blur-open var(--elegant-transition-duration) var(--elegant-timing-function);
   }
 
-  &:not([data-popup-open]) {
-    [data-shunpo-menu-trigger-indicator] {
-      animation: rotate-with-blur-close var(--elegant-transition-duration) var(--elegant-timing-function);
-    }
+  &:not([data-popup-open]) [data-shunpo-menu-trigger-indicator] {
+    animation: rotate-with-blur-close var(--elegant-transition-duration) var(--elegant-timing-function);
   }
-}
-
-[data-shunpo-menu-trigger-indicator] {
-  transition: transform var(--elegant-transition-duration) var(--elegant-timing-function);
-}
-
-[data-shunpo-menu-trigger-indicator] {
-  transition: none;
 }
 
 @keyframes rotate-with-blur-open {

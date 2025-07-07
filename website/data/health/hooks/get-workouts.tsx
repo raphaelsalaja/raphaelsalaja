@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Period } from "@/types/period";
 import { supabase } from "@/utils/supabase/client";
-import { Workouts } from "../types";
+import type { Workouts } from "../types";
 
 interface GetWorkoutsOptions {
   period?: Period;
@@ -48,8 +48,8 @@ export async function getWorkouts(opts: GetWorkoutsOptions = {}): Promise<Workou
       })();
   }
 
-  const fromIso = start.toISOString();
-  const toIso = end.toISOString();
+  const _fromIso = start.toISOString();
+  const _toIso = end.toISOString();
 
   const { data, error } = await supabase
     .from("workouts")

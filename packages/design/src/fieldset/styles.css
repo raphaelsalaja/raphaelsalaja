@@ -84,7 +84,7 @@
   [data-shunpo-fieldset-root] {
     border-width: 2px;
   }
-  
+
   [data-shunpo-fieldset-root][data-variant="outlined"] {
     border-width: 3px;
   }

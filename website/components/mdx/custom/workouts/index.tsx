@@ -3,7 +3,7 @@
 import { formatISO, fromUnixTime } from "date-fns";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useWorkouts } from "@/data/health/hooks/get-workouts";
-import { Workouts as WorkoutTypes } from "@/data/health/types";
+import type { Workouts as WorkoutTypes } from "@/data/health/types";
 import styles from "./styles.module.scss";
 import "./styles.scss";
 
@@ -94,13 +94,7 @@ export const Workouts: React.FC = () => {
   if (isError) return <p>Error loading workouts: {error.message}</p>;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ delay: 1 }}
-      className={styles.container}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: 1 }} className={styles.container}>
       <div className={styles.heatmap} ref={ref}>
         {isLoading && <div style={{ width: 168, height: 168 }} />}
       </div>

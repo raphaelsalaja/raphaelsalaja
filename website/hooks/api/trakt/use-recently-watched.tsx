@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { components } from "@/types/trakt";
+import type { components } from "@/types/trakt";
 
 type Show = components["schemas"]["Show"];
 

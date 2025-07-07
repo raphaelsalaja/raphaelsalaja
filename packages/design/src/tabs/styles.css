@@ -9,7 +9,7 @@
 
 .label {
   color: #b3b3b3;
-  color: color(display-p3 0.702 0.702 0.702);
+
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -31,11 +31,11 @@
   cursor: pointer;
   border-radius: 8px;
   border: 1px solid #ededed;
-  border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+
   background: #fff;
-  background: color(display-p3 1 1 1);
+
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
-  box-shadow: 0 1px 4px 0 color(display-p3 0 0 0 / 5%);
+
   transition: all 0.2s ease;
 
   &[data-popup-open] > .icon {
@@ -44,7 +44,6 @@
 
   &:hover {
     background: #fafafa;
-    background: color(display-p3 0.9804 0.9804 0.9804);
   }
 
   &:focus {
@@ -55,7 +54,7 @@
 .value,
 .item .text {
   color: #000;
-  color: color(display-p3 0 0 0);
+
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -75,11 +74,9 @@
   width: var(--anchor-width);
   border-radius: 12px;
   border: 1px solid #ededed;
-  border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
+
   background: #fff;
-  background: color(display-p3 1 1 1);
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
-  box-shadow: 0 1px 4px 0 color(display-p3 0 0 0 / 5%);
   transform-origin: var(--transform-origin);
   transition: all 0.15s ease;
 
@@ -110,13 +107,12 @@
   cursor: pointer;
   border-radius: 8px;
   background: #fff;
-  background: color(display-p3 1 1 1);
+
   transition: all 0.2s ease;
 
   &[data-selected],
   &[data-highlighted] {
     background: #fafafa;
-    background: color(display-p3 0.9804 0.9804 0.9804);
   }
 
   &:focus {

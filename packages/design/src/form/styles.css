@@ -82,7 +82,7 @@
   [data-shunpo-form][data-layout="horizontal"] {
     flex-direction: column;
   }
-  
+
   [data-shunpo-form][data-layout="grid"] {
     grid-template-columns: 1fr;
   }

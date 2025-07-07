@@ -7,7 +7,7 @@
 
   .label {
     color: #b3b3b3;
-    color: color(display-p3 0.702 0.702 0.702);
+
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -25,11 +25,8 @@
     align-self: stretch;
     border-radius: 8px;
     border: 1px solid #ededed;
-    border: 1px solid color(display-p3 0.9294 0.9294 0.9294);
     background: #fff;
-    background: color(display-p3 1 1 1);
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
-    box-shadow: 0 1px 4px 0 color(display-p3 0 0 0 / 5%);
 
     /* font */
     font-size: 14px;
@@ -68,14 +65,12 @@
     &:focus-visible {
       outline: none;
       border: 1px solid rgb(0 0 0 / 40%);
-      border: 1px solid color(display-p3 0 0 0 / 40%);
+
       box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
-      box-shadow: 0 0 0 2px color(display-p3 0 0 0 / 10%);
     }
 
     ::placeholder {
       color: #b3b3b3;
-      color: color(display-p3 0.702 0.702 0.702);
     }
 
     input {
@@ -88,7 +83,6 @@
     align-items: center;
     gap: 8px;
     color: #b3b3b3;
-    color: color(display-p3 0.702 0.702 0.702);
     font-size: 14px;
     font-style: normal;
     font-weight: 500;

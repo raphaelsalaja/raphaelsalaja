@@ -3,7 +3,8 @@
 import { Dialog } from "@base-ui-components/react/dialog";
 import { CopyIcon, EllipsisIcon } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import { Shape6 as Icon } from "@/components/posts/placeholder/shapes";
 import styles from "./styles.module.scss";
 
@@ -121,15 +122,7 @@ export const FamilyWallet: React.FC = () => {
                     </motion.div>
 
                     <motion.span layoutId="bottom-trailing" className={styles.details}>
-                      <input
-                        data-text="primary"
-                        className={styles.text}
-                        type="text"
-                        value={wallet.name}
-                        onChange={(e) => setWallet({ ...wallet, name: e.target.value })}
-                        onSubmit={handleDone}
-                        disabled={!isEdit}
-                      />
+                      <input data-text="primary" className={styles.text} type="text" value={wallet.name} onChange={(e) => setWallet({ ...wallet, name: e.target.value })} onSubmit={handleDone} disabled={!isEdit} />
                       <div data-text="secondary" className={styles.text}>
                         {wallet.balance.toLocaleString("en-US", {
                           style: "currency",
@@ -141,15 +134,7 @@ export const FamilyWallet: React.FC = () => {
                   </div>
 
                   <div className={styles.column}>
-                    <motion.div
-                      initial={{ filter: "blur(10px)" }}
-                      animate={{ filter: "blur(0px)" }}
-                      exit={{ filter: "blur(10px)" }}
-                      whileHover={{ scale: 0.98 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={styles.options}
-                      layoutId="top-leading"
-                    >
+                    <motion.div initial={{ filter: "blur(10px)" }} animate={{ filter: "blur(0px)" }} exit={{ filter: "blur(10px)" }} whileHover={{ scale: 0.98 }} whileTap={{ scale: 0.95 }} className={styles.options} layoutId="top-leading">
                       <EllipsisIcon />
                     </motion.div>
 
@@ -179,13 +164,7 @@ export const FamilyWallet: React.FC = () => {
                         }
                       }}
                     >
-                      <motion.p
-                        key={state}
-                        className={styles.text}
-                        initial={{ filter: "blur(10px)" }}
-                        animate={{ filter: "blur(0px)" }}
-                        exit={{ filter: "blur(10px)" }}
-                      >
+                      <motion.p key={state} className={styles.text} initial={{ filter: "blur(10px)" }} animate={{ filter: "blur(0px)" }} exit={{ filter: "blur(10px)" }}>
                         {state === WalletState.EditNickname && "Done"}
                         {state === WalletState.Expanded && "Customize"}
                         {state === WalletState.Customize && "Edit Nickname"}
@@ -263,11 +242,7 @@ export const FamilyWallet: React.FC = () => {
                       )}
                     </AnimatePresence>
 
-                    <motion.button
-                      style={{ width: 400, background: `var(${wallet.color})` }}
-                      className={styles.wallet}
-                      layoutId="wallet"
-                    >
+                    <motion.button style={{ width: 400, background: `var(${wallet.color})` }} className={styles.wallet} layoutId="wallet">
                       <div className={styles.column}>
                         <motion.div layoutId="top-trailing" className={styles.icon}>
                           <Icon className={styles.shape} fill="var(--white-a12)" />
@@ -296,11 +271,7 @@ export const FamilyWallet: React.FC = () => {
                               }
                             }}
                           />
-                          <motion.p
-                            data-text="secondary"
-                            className={styles.text}
-                            animate={{ opacity: isEdit ? 0.5 : 1 }}
-                          >
+                          <motion.p data-text="secondary" className={styles.text} animate={{ opacity: isEdit ? 0.5 : 1 }}>
                             {wallet.balance.toLocaleString("en-US", {
                               style: "currency",
                               currency: "EUR",
@@ -355,13 +326,7 @@ export const FamilyWallet: React.FC = () => {
                             }
                           }}
                         >
-                          <motion.p
-                            key={state}
-                            className={styles.text}
-                            initial={{ filter: "blur(10px)" }}
-                            animate={{ filter: "blur(0px)" }}
-                            exit={{ filter: "blur(10px)" }}
-                          >
+                          <motion.p key={state} className={styles.text} initial={{ filter: "blur(10px)" }} animate={{ filter: "blur(0px)" }} exit={{ filter: "blur(10px)" }}>
                             {state === WalletState.EditNickname && "Done"}
                             {state === WalletState.Expanded && "Customize"}
                             {state === WalletState.Customize && "Edit Nickname"}

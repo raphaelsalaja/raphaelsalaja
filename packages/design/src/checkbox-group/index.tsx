@@ -12,6 +12,4 @@ const CheckboxGroupRoot: React.FC<CheckboxGroupRootProps> = ({ orientation = "ve
   return <CheckboxGroup {...props} data-shunpo-checkbox-group-root data-orientation={orientation} />;
 };
 
-export {
-  CheckboxGroupRoot as Root,
-};
+export { CheckboxGroupRoot as Root };

@@ -18,7 +18,4 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = ({ ...props }) => {
   return <Checkbox.Indicator {...props} data-shunpo-checkbox-indicator />;
 };
 
-export {
-  CheckboxRoot as Root,
-  CheckboxIndicator as Indicator,
-};
+export { CheckboxRoot as Root, CheckboxIndicator as Indicator };

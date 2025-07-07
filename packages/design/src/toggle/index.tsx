@@ -13,6 +13,4 @@ const ToggleRoot: React.FC<ToggleRootProps> = ({ size = "md", variant = "default
   return <Toggle {...props} data-shunpo-toggle-root data-size={size} data-variant={variant} />;
 };
 
-export {
-  ToggleRoot as Root,
-};
+export { ToggleRoot as Root };

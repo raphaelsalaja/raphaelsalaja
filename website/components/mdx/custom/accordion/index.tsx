@@ -1,10 +1,4 @@
-import {
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  Accordion as AccordionRoot,
-  AccordionTrigger,
-} from "@rs/design/accordion";
+import { AccordionHeader, AccordionItem, AccordionPanel, Accordion as AccordionRoot, AccordionTrigger } from "@rs/design/accordion";
 
 import { PlusIcon } from "lucide-react";
 
@@ -26,9 +20,7 @@ export const Accordion: React.FC = () => {
             Why are SFX important?
           </AccordionTrigger>
         </AccordionHeader>
-        <AccordionPanel>
-          Sound effects are important because they help create an immersive experience for the user.
-        </AccordionPanel>
+        <AccordionPanel>Sound effects are important because they help create an immersive experience for the user.</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader>
@@ -43,9 +35,7 @@ export const Accordion: React.FC = () => {
             When should I use SFX?
           </AccordionTrigger>
         </AccordionHeader>
-        <AccordionPanel>
-          In moderation, sound effects can enhance the user experience. However, overusing them can be distracting.
-        </AccordionPanel>
+        <AccordionPanel>In moderation, sound effects can enhance the user experience. However, overusing them can be distracting.</AccordionPanel>
       </AccordionItem>
     </AccordionRoot>
   );

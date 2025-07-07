@@ -1,4 +1,4 @@
-import { Json } from "../types/codegen.types";
+import type { Json } from "../types/codegen.types";
 
 export enum QuantityType {
   bodyMassIndex = "HKQuantityTypeIdentifierBodyMassIndex",

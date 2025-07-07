@@ -1,5 +1,5 @@
-import { Menubar } from "@base-ui-components/react/menubar";
 import { Menu } from "@base-ui-components/react/menu";
+import { Menubar } from "@base-ui-components/react/menubar";
 import type { ComponentPropsWithoutRef } from "react";
 import "./styles.css";
 

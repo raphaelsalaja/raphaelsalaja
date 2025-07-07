@@ -46,13 +46,7 @@ export const Posts = async ({
     if (post.media?.image) {
       return (
         <div className={styles.thumbnail}>
-          <Media.Image
-            fill
-            src={post.media.image}
-            className={styles.media}
-            alt={post.title || "Post image"}
-            loading="lazy"
-          />
+          <Media.Image fill src={post.media.image} className={styles.media} alt={post.title || "Post image"} loading="lazy" />
         </div>
       );
     }
@@ -78,7 +72,7 @@ export const Posts = async ({
 
       <div className={styles.grid}>
         {posts
-          .filter((post) => {
+          .filter((_post) => {
             if (isHome && filter) {
               // return post.media?.image || post.media?.video;
             }
@@ -95,12 +89,7 @@ export const Posts = async ({
             }
 
             return (
-              <Link
-                href={post.external ?? `/${category}/${post.slug}`}
-                className={styles.entry}
-                key={post.slug}
-                data-index={index ? "root" : false}
-              >
+              <Link href={post.external ?? `/${category}/${post.slug}`} className={styles.entry} key={post.slug} data-index={index ? "root" : false}>
                 <Thumbnail post={post} />
               </Link>
             );

@@ -1,5 +1,3 @@
-import { Slot } from "@radix-ui/react-slot";
-
 import "./styles.css";
 
 /**
@@ -12,8 +10,8 @@ interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {}
 
 const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   return (
-    <nav aria-label="breadcrumb" data-shunpo-breadcrumb {...props}>
-      <ol data-shunpo-breadcrumb-list {...props} />
+    <nav aria-label="breadcrumb" data-rs-breadcrumb {...props}>
+      <ol data-rs-breadcrumb-list {...props} />
     </nav>
   );
 };
@@ -25,22 +23,16 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
  * Documentation: [BreadcrumbItem](https://your-docs-link.com/breadcrumbs#item)
  */
 const BreadcrumbItem: React.FC<React.ComponentPropsWithoutRef<"li">> = (props) => {
-  return <li data-shunpo-breadcrumb-list-item {...props} />;
+  return <li data-rs-breadcrumb-list-item {...props} />;
 };
 
 /**
  * A navigational link within a breadcrumb.
- * Can be wrapped using `asChild` to inherit styles from another component.
  *
  * Documentation: [BreadcrumbLink](https://your-docs-link.com/breadcrumbs#link)
  */
-const BreadcrumbLink: React.FC<React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }> = ({
-  asChild,
-  ...props
-}) => {
-  const Comp = asChild ? Slot : "a";
-
-  return <Comp data-shunpo-breadcrumb-list-item-link {...props} />;
+const BreadcrumbLink: React.FC<React.ComponentPropsWithoutRef<"a">> = (props) => {
+  return <a data-rs-breadcrumb-list-item-link {...props} />;
 };
 
 /**
@@ -49,16 +41,7 @@ const BreadcrumbLink: React.FC<React.ComponentPropsWithoutRef<"a"> & { asChild?:
  *
  * Documentation: [BreadcrumbPage](https://your-docs-link.com/breadcrumbs#page)
  */
-const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props) => (
-  <span
-    role="link"
-    tabIndex={0}
-    aria-disabled="true"
-    aria-current="page"
-    data-shunpo-breadcrumb-current-page
-    {...props}
-  />
-);
+const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props) => <span role="link" tabIndex={0} aria-disabled="true" aria-current="page" data-rs-breadcrumb-current-page {...props} />;
 
 /**
  * A visual separator between breadcrumb items.
@@ -67,7 +50,7 @@ const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props)
  * Documentation: [BreadcrumbSeparator](https://your-docs-link.com/breadcrumbs#separator)
  */
 const BreadcrumbSeparator: React.FC<React.ComponentProps<"li">> = ({ children, ...props }) => (
-  <span role="presentation" aria-hidden="true" data-shunpo-breadcrumb-list-item-separator {...props}>
+  <span role="presentation" aria-hidden="true" data-rs-breadcrumb-list-item-separator {...props}>
     {children ?? "/"}
   </span>
 );

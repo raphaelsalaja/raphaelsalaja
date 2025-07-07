@@ -24,8 +24,4 @@ const AvatarFallback: React.FC<AvatarFallbackProps> = ({ ...props }) => {
   return <Avatar.Fallback {...props} data-shunpo-avatar-fallback />;
 };
 
-export {
-  AvatarRoot as Root,
-  AvatarImage as Image,
-  AvatarFallback as Fallback,
-};
+export { AvatarRoot as Root, AvatarImage as Image, AvatarFallback as Fallback };

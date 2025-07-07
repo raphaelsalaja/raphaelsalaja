@@ -49,7 +49,7 @@ export function useCaret(ref: React.RefObject<HTMLElement>): Caret {
         rects,
         isSelecting: !sel.isCollapsed,
       });
-    } catch (err) {}
+    } catch (_err) {}
   }, [ref]);
 
   useEffect(() => {

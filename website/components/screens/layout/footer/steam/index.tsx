@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
+import type React from "react";
 import Skeleton from "react-loading-skeleton";
 import { useSteamGetRecentlyPlayed } from "@/hooks/api/steam/use-recently-played";
 import { ConditionalWrap } from "@/lib/conditional-wrap";
@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 
 const placeholder = "/media/placeholder.png";
 
-export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (_props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <title>Steam Logo</title>
@@ -62,8 +62,7 @@ export const Steam: React.FC = () => {
   const header = details?.headerImage || placeholder;
   const genres = details?.genres || [];
   const recent_reviews = formatNumber(reviews?.query_summary.total_reviews || 0);
-  const review_score_desc =
-    reviews?.query_summary.review_score_desc.replace("Overwhelmingly Positive", "Super Positive") || "No Reviews";
+  const review_score_desc = reviews?.query_summary.review_score_desc.replace("Overwhelmingly Positive", "Super Positive") || "No Reviews";
 
   const isLoading = !game || !details || !reviews || !achievements;
 
@@ -72,32 +71,19 @@ export const Steam: React.FC = () => {
       <div className={styles.trailing}>
         <div className={styles.details}>
           <div className={clsx(styles.text, styles.caps)}>Recent Reviews</div>
-          <ConditionalWrap
-            condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={104} height={14} />}
-          >
+          <ConditionalWrap condition={isLoading} wrap={() => <Skeleton className={styles.skeleton} width={104} height={14} />}>
             <div className={clsx(styles.text, styles.secondary)}>{`${review_score_desc} (${recent_reviews})`}</div>
           </ConditionalWrap>
         </div>
         <div className={styles.details}>
           <div className={clsx(styles.text, styles.caps)}>Play Time</div>
-          <ConditionalWrap
-            condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={80} height={14} />}
-          >
-            <div className={clsx(styles.text, styles.secondary)}>
-              {playtime
-                ? `${Math.round((playtime / 60) * 10) / 10} ${Math.round((playtime / 60) * 10) / 10 === 1 ? "hour" : "hours"}`
-                : "0 hours"}
-            </div>
+          <ConditionalWrap condition={isLoading} wrap={() => <Skeleton className={styles.skeleton} width={80} height={14} />}>
+            <div className={clsx(styles.text, styles.secondary)}>{playtime ? `${Math.round((playtime / 60) * 10) / 10} ${Math.round((playtime / 60) * 10) / 10 === 1 ? "hour" : "hours"}` : "0 hours"}</div>
           </ConditionalWrap>
         </div>
         <div className={styles.details}>
           <div className={clsx(styles.text, styles.caps)}>Achivements</div>
-          <ConditionalWrap
-            condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={128} height={14} />}
-          >
+          <ConditionalWrap condition={isLoading} wrap={() => <Skeleton className={styles.skeleton} width={128} height={14} />}>
             <div className={clsx(styles.text, styles.secondary)}>
               {achievements?.unlocked} / {achievements?.total}
             </div>
@@ -154,14 +140,7 @@ export const Steam: React.FC = () => {
 
       <div className={styles.background}>
         <ConditionalWrap condition={isLoading} wrap={() => <div className={styles.background} />}>
-          <Image
-            src={background}
-            width={300}
-            height={300}
-            alt="Game Background Art"
-            unoptimized
-            className={styles.art}
-          />
+          <Image src={background} width={300} height={300} alt="Game Background Art" unoptimized className={styles.art} />
         </ConditionalWrap>
       </div>
     </div>

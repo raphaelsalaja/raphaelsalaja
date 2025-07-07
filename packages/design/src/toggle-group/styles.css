@@ -140,7 +140,7 @@
   [data-shunpo-toggle-group] {
     border-width: 2px;
   }
-  
+
   [data-shunpo-toggle-group][data-variant="outline"] > [data-shunpo-toggle] {
     border-width: 2px;
   }

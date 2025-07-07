@@ -1,7 +1,6 @@
-import React from "react";
-
-import styles from "./styles.module.css";
+import type React from "react";
 import { Arrow, Chevron, Clock, Divider, Dots } from "../icons";
+import styles from "./styles.module.css";
 
 export const Header: React.FC = () => {
   return (

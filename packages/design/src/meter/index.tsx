@@ -19,7 +19,4 @@ const MeterIndicator: React.FC<MeterIndicatorProps> = ({ ...props }) => {
   return <Meter.Indicator {...props} data-shunpo-meter-indicator />;
 };
 
-export {
-  MeterRoot as Root,
-  MeterIndicator as Indicator,
-};
+export { MeterRoot as Root, MeterIndicator as Indicator };

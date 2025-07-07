@@ -46,7 +46,9 @@
   background-color: var(--popup-background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 0.75rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding: 1rem;
   max-width: 24rem;
   z-index: 1000;
@@ -190,11 +192,11 @@
   [data-shunpo-preview-card-popup] {
     animation: none;
   }
-  
+
   [data-shunpo-preview-card-trigger] {
     transition: none;
   }
-  
+
   [data-shunpo-preview-card-popup][data-loading]::before {
     animation: none;
   }
@@ -205,7 +207,7 @@
   [data-shunpo-preview-card-popup] {
     border-width: 2px;
   }
-  
+
   [data-shunpo-preview-card-trigger] {
     text-decoration: underline;
   }

@@ -111,9 +111,6 @@ export async function getVideoResourcesFromFolder(folder: string): Promise<Video
 }
 
 export async function getMediaFromFolder(folder: string): Promise<MediaResource[]> {
-  const [images, videos] = await Promise.all([
-    getImageResourcesFromFolder(folder),
-    getVideoResourcesFromFolder(folder),
-  ]);
+  const [images, videos] = await Promise.all([getImageResourcesFromFolder(folder), getVideoResourcesFromFolder(folder)]);
   return [...images, ...videos];
 }

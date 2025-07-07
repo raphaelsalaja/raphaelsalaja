@@ -22,8 +22,4 @@ const CollapsiblePanel: React.FC<CollapsiblePanelProps> = ({ ...props }) => {
   return <Collapsible.Panel {...props} data-shunpo-collapsible-panel />;
 };
 
-export {
-  CollapsibleRoot as Root,
-  CollapsibleTrigger as Trigger,
-  CollapsiblePanel as Panel,
-};
+export { CollapsibleRoot as Root, CollapsibleTrigger as Trigger, CollapsiblePanel as Panel };

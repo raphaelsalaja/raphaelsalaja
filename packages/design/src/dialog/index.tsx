@@ -52,13 +52,4 @@ const DialogClose: React.FC<DialogCloseProps> = ({ ...props }) => {
   return <Dialog.Close {...props} data-shunpo-dialog-close />;
 };
 
-export {
-  DialogRoot as Root,
-  DialogTrigger as Trigger,
-  DialogPortal as Portal,
-  DialogBackdrop as Backdrop,
-  DialogPopup as Popup,
-  DialogTitle as Title,
-  DialogDescription as Description,
-  DialogClose as Close,
-};
+export { DialogRoot as Root, DialogTrigger as Trigger, DialogPortal as Portal, DialogBackdrop as Backdrop, DialogPopup as Popup, DialogTitle as Title, DialogDescription as Description, DialogClose as Close };

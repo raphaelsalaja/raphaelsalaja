@@ -1,6 +1,6 @@
 "use client";
 
-import { PlayerState } from "@statsfm/spotify.js";
+import type { PlayerState } from "@statsfm/spotify.js";
 import { useQuery } from "@tanstack/react-query";
 
 async function fetchPlaybackState(): Promise<PlayerState> {

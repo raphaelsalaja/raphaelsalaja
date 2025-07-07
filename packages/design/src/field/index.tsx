@@ -34,10 +34,4 @@ const FieldError: React.FC<FieldErrorProps> = ({ ...props }) => {
   return <Field.Error {...props} data-shunpo-field-error />;
 };
 
-export {
-  FieldRoot as Root,
-  FieldLabel as Label,
-  FieldControl as Control,
-  FieldDescription as Description,
-  FieldError as Error,
-};
+export { FieldRoot as Root, FieldLabel as Label, FieldControl as Control, FieldDescription as Description, FieldError as Error };

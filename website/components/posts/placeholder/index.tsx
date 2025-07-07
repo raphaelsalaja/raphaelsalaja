@@ -1,4 +1,4 @@
-import { Frontmatter } from "@/types/frontmatter";
+import type { Frontmatter } from "@/types/frontmatter";
 import { Shape1 } from "./shapes/1";
 import { Shape2 } from "./shapes/2";
 import { Shape3 } from "./shapes/3";
@@ -23,7 +23,7 @@ function getColor(name: string) {
   return colors[hash % colors.length];
 }
 
-function getShape(name: string, color: string) {
+function getShape(name: string, _color: string) {
   const shapes = [
     <Shape1 key={1} className={styles.shape} />,
     <Shape2 key={2} className={styles.shape} />,

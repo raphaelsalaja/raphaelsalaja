@@ -1,97 +1,83 @@
-import { Select } from "@base-ui-components/react/select";
-
 import "./styles.css";
 
-interface SelectRootProps extends React.ComponentProps<typeof Select.Root> {
-  label?: string;
-}
+import { Select } from "@base-ui-components/react/select";
 
-const SelectRoot: React.FC<SelectRootProps> = ({ ...props }) => {
-  return <Select.Root {...props} />;
+interface RootProps extends React.ComponentProps<typeof Select.Root> {}
+
+const Root: React.FC<RootProps> = ({ ...props }) => {
+  return <Select.Root data-rs-select-root {...props} />;
 };
 
-interface SelectTriggerProps extends React.ComponentProps<typeof Select.Trigger> {}
+interface TriggerProps extends React.ComponentProps<typeof Select.Trigger> {}
 
-const SelectTrigger: React.FC<SelectTriggerProps> = ({ ...props }) => {
-  return <Select.Trigger data-select-trigger {...props} />;
+const Trigger: React.FC<TriggerProps> = ({ ...props }) => {
+  return <Select.Trigger data-rs-select-trigger {...props} />;
 };
 
-interface SelectValueProps extends React.ComponentProps<typeof Select.Value> {}
+interface ValueProps extends React.ComponentProps<typeof Select.Value> {}
 
-const SelectValue: React.FC<SelectValueProps> = ({ ...props }) => {
-  return <Select.Value data-select-value {...props} />;
+const Value: React.FC<ValueProps> = ({ ...props }) => {
+  return <Select.Value data-rs-select-value {...props} />;
 };
 
-interface SelectIconProps extends React.ComponentProps<typeof Select.Icon> {}
+interface IconProps extends React.ComponentProps<typeof Select.Icon> {}
 
-const SelectIcon: React.FC<SelectIconProps> = ({ ...props }) => {
-  return <Select.Icon data-select-icon {...props} />;
+const Icon: React.FC<IconProps> = ({ ...props }) => {
+  return <Select.Icon data-rs-select-icon {...props} />;
 };
 
-interface SelectPortalProps extends React.ComponentProps<typeof Select.Portal> {}
+interface PortalProps extends React.ComponentProps<typeof Select.Portal> {}
 
-const SelectPortal: React.FC<SelectPortalProps> = ({ ...props }) => {
+const Portal: React.FC<PortalProps> = ({ ...props }) => {
   return <Select.Portal {...props} />;
 };
 
-interface SelectPositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
+interface PositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
 
-const SelectPositioner: React.FC<SelectPositionerProps> = ({ ...props }) => {
-  return <Select.Positioner data-select-positioner {...props} />;
+const Positioner: React.FC<PositionerProps> = ({ ...props }) => {
+  return <Select.Positioner data-rs-select-positioner {...props} />;
 };
 
-interface SelectPopupProps extends React.ComponentProps<typeof Select.Popup> {}
+interface PopupProps extends React.ComponentProps<typeof Select.Popup> {}
 
-const SelectPopup: React.FC<SelectPopupProps> = ({ ...props }) => {
-  return <Select.Popup data-select-popup {...props} />;
+const Popup: React.FC<PopupProps> = ({ ...props }) => {
+  return <Select.Popup data-rs-select-popup {...props} />;
 };
 
-interface SelectArrowProps extends React.ComponentProps<typeof Select.Arrow> {}
+interface ArrowProps extends React.ComponentProps<typeof Select.Arrow> {}
 
-const SelectArrow: React.FC<SelectArrowProps> = ({ ...props }) => {
+const Arrow: React.FC<ArrowProps> = ({ ...props }) => {
   return <Select.Arrow {...props} />;
 };
 
-interface SelectItemProps extends React.ComponentProps<typeof Select.Item> {}
+interface ItemProps extends React.ComponentProps<typeof Select.Item> {}
 
-const SelectItem: React.FC<SelectItemProps> = ({ ...props }) => {
-  return <Select.Item data-select-item {...props} />;
+const Item: React.FC<ItemProps> = ({ ...props }) => {
+  return <Select.Item data-rs-select-item {...props} />;
 };
 
-interface SelectItemIndicatorProps extends React.ComponentProps<typeof Select.ItemIndicator> {}
+interface ItemIndicatorProps extends React.ComponentProps<typeof Select.ItemIndicator> {}
 
-const SelectItemIndicator: React.FC<SelectItemIndicatorProps> = ({ ...props }) => {
+const ItemIndicator: React.FC<ItemIndicatorProps> = ({ ...props }) => {
   return <Select.ItemIndicator {...props} />;
 };
 
-interface SelectItemTextProps extends React.ComponentProps<typeof Select.ItemText> {}
+interface ItemTextProps extends React.ComponentProps<typeof Select.ItemText> {}
 
-const SelectItemText: React.FC<SelectItemTextProps> = ({ ...props }) => {
-  return <Select.ItemText data-select-item-text {...props} />;
+const ItemText: React.FC<ItemTextProps> = ({ ...props }) => {
+  return <Select.ItemText data-rs-select-item-text {...props} />;
 };
 
-export const Group: React.FC<React.ComponentProps<typeof Select.Group>> = ({ ...props }) => {
-  return <Select.Group data-select-group {...props} />;
+const Group: React.FC<React.ComponentProps<typeof Select.Group>> = ({ ...props }) => {
+  return <Select.Group data-rs-select-group {...props} />;
 };
 
-export const GroupLabel: React.FC<React.ComponentProps<typeof Select.GroupLabel>> = ({ ...props }) => {
-  return <Select.GroupLabel data-select-group-label {...props} />;
+const GroupLabel: React.FC<React.ComponentProps<typeof Select.GroupLabel>> = ({ ...props }) => {
+  return <Select.GroupLabel data-rs-select-group-label {...props} />;
 };
 
-export const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (props) => {
-  return <Select.Separator data-select-separator {...props} />;
+const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (props) => {
+  return <Select.Separator data-rs-select-separator {...props} />;
 };
 
-export {
-  SelectRoot as Root,
-  SelectTrigger as Trigger,
-  SelectValue as Value,
-  SelectIcon as Icon,
-  SelectPortal as Portal,
-  SelectPositioner as Positioner,
-  SelectPopup as Popup,
-  SelectArrow as Arrow,
-  SelectItem as Item,
-  SelectItemIndicator as ItemIndicator,
-  SelectItemText as ItemText,
-};
+export { Root, Trigger, Value, Icon, Portal, Positioner, Popup, Arrow, Item, ItemIndicator, ItemText, Group, GroupLabel, Separator };

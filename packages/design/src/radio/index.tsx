@@ -18,7 +18,4 @@ const RadioIndicator: React.FC<RadioIndicatorProps> = ({ ...props }) => {
   return <Radio.Indicator {...props} data-shunpo-radio-indicator />;
 };
 
-export {
-  RadioRoot as Root,
-  RadioIndicator as Indicator,
-};
+export { RadioRoot as Root, RadioIndicator as Indicator };

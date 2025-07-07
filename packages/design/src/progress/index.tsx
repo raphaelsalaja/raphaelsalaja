@@ -25,8 +25,4 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({ ...props }) => {
   return <Progress.Indicator {...props} data-shunpo-progress-indicator />;
 };
 
-export {
-  ProgressRoot as Root,
-  ProgressTrack as Track,
-  ProgressIndicator as Indicator,
-};
+export { ProgressRoot as Root, ProgressTrack as Track, ProgressIndicator as Indicator };

@@ -21,16 +21,5 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.json",
-    "src/**/*",
-    "website/**/*"
-  ]
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts", "**/*.js", "**/*.jsx", "**/*.json", "src/**/*", "website/**/*"]
 }

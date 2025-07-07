@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 import "./styles.css";
 
@@ -17,7 +17,11 @@ const Input: React.FC<InputProps> = ({ label, suffix, ...props }) => {
       )}
       <div className="field" data-shunpo-input-field>
         <input id={label} {...props} data-shunpo-input />
-        {suffix && <span className="suffix" data-shunpo-input-suffix>{suffix}</span>}
+        {suffix && (
+          <span className="suffix" data-shunpo-input-suffix>
+            {suffix}
+          </span>
+        )}
       </div>
     </div>
   );

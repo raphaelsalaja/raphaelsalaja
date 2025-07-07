@@ -19,7 +19,7 @@
   display: flex;
   background-color: transparent;
   border-radius: 4px;
-  transition: 
+  transition:
     background-color 0.15s ease,
     opacity 0.15s ease;
   user-select: none;
@@ -134,7 +134,7 @@
   [data-shunpo-scroll-area-scrollbar] {
     transition: opacity 0.1s ease;
   }
-  
+
   [data-shunpo-scroll-area-thumb] {
     transition: background-color 0.1s ease;
   }

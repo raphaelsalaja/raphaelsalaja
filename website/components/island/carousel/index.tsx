@@ -15,7 +15,7 @@ const Carousel: React.FC<PropType> = (props) => {
   const { options } = props;
   const { titles, headingIndex } = useHeadingTracker();
   const [emblaRef, emblaApi] = useEmblaCarousel({ ...options, axis: "y" });
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [_selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -69,7 +69,7 @@ const Carousel: React.FC<PropType> = (props) => {
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container" style={{ "--slide-count": titles.length } as React.CSSProperties}>
           {titles.map((title, index) => (
-            <div className="embla__slide" key={index}>
+            <div className="embla__slide" key={`${title.tagName}-${title.textContent}-${index}`}>
               <p className="embla__slide__number">{title.textContent}</p>
             </div>
           ))}

@@ -1,0 +1,9 @@
+:root {
+  --background-primary: #ffffff;
+  --background-secondary: #f7f7f7;
+  --background-tertiary: #eeeeee;
+  --background-quaternary: #dddddd;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #cccccc;
+}
