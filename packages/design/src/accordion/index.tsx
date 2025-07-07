@@ -3,9 +3,6 @@
 import { Accordion as BaseAccordion } from "@base-ui-components/react/accordion";
 
 import "./styles.css";
-import { motion } from "motion/react";
-import useSound from "use-sound";
-import type { AudioSource } from "../types";
 import React from "react";
 
 interface AccordionRootProps extends React.ComponentPropsWithoutRef<typeof BaseAccordion.Root> {}
@@ -27,26 +24,7 @@ interface AccordionItemProps extends React.ComponentPropsWithoutRef<typeof BaseA
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
 const AccordionItem: React.FC<AccordionItemProps> = (props) => {
-  return (
-    <BaseAccordion.Item
-      {...props}
-      data-shunpo-accordion-item
-      render={({ hidden, ...rest }, { open }) => {
-        return (
-          <motion.div
-            whileTap={{ scale: 0.98 }}
-            drag
-            dragElastic={0.1}
-            dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-            whileDrag={{ filter: "brightness(.98)" }}
-            whileHover={{ filter: "brightness(.98)" }}
-          >
-            <div {...(rest as React.HTMLAttributes<HTMLDivElement>)} />
-          </motion.div>
-        );
-      }}
-    />
-  );
+  return <BaseAccordion.Item {...props} data-shunpo-accordion-item />;
 };
 
 interface AccordionHeaderProps extends React.ComponentPropsWithoutRef<typeof BaseAccordion.Header> {}
@@ -62,39 +40,16 @@ const AccordionHeader: React.FC<AccordionHeaderProps> = (props) => {
 
 interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<typeof BaseAccordion.Trigger> {
   icon?: React.ReactNode;
-  audio?: {
-    onMouseDown?: AudioSource;
-    onMouseUp?: AudioSource;
-    onOpen?: AudioSource;
-    onClose?: AudioSource;
-  };
 }
 /**
  * A button that opens and closes the corresponding panel. Renders a <button> element.
  * Renders a `<button>` element.
  *
  * @param icon - An icon that indicates the state of the accordion.
- * @param audio - Audio files to play on different events. Accepts an object with the following
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const AccordionTrigger: React.FC<AccordionTriggerProps> = ({ icon, audio, children, ...props }) => {
-  const [onMouseDown] = useSound(audio?.onMouseDown || "", {
-    playbackRate: Math.random() * 0.2 + 0.9,
-  });
-
-  const [onMouseUp] = useSound(audio?.onMouseUp || "", {
-    playbackRate: Math.random() * 0.2 + 0.9,
-  });
-
-  const [onOpen] = useSound(audio?.onOpen || "", {
-    playbackRate: Math.random() * 0.2 + 0.9,
-  });
-
-  const [onClose] = useSound(audio?.onClose || "", {
-    playbackRate: Math.random() * 0.2 + 0.9,
-  });
-
+const AccordionTrigger: React.FC<AccordionTriggerProps> = ({ icon, children, ...props }) => {
   return (
     <BaseAccordion.Trigger
       {...props}
@@ -102,18 +57,6 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = ({ icon, audio, childr
         return (
           <button
             {...(rest as React.HTMLAttributes<HTMLButtonElement>)}
-            onMouseUp={(e) => {
-              onMouseUp();
-              rest.onMouseUp?.(e);
-            }}
-            onMouseDown={(e) => {
-              onMouseDown();
-              rest.onMouseDown?.(e);
-            }}
-            onClick={(e) => {
-              open ? onClose() : onOpen();
-              rest.onClick?.(e);
-            }}
             data-shunpo-accordion-trigger
           >
             {children}
@@ -148,32 +91,7 @@ interface AccordionPanelProps extends React.ComponentPropsWithoutRef<typeof Base
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
 const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
-  return (
-    <BaseAccordion.Panel
-      {...props}
-      keepMounted
-      render={({ hidden, ...props }, { open }) => {
-        return (
-          <motion.div
-            style={{
-              height: open ? "auto" : 0,
-              overflow: "hidden",
-            }}
-            animate={{
-              height: open ? "auto" : 0,
-              opacity: open ? 1 : 0,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.19, 1, 0.22, 1],
-            }}
-          >
-            <div data-shunpo-accordion-panel {...props} />
-          </motion.div>
-        );
-      }}
-    />
-  );
+  return <BaseAccordion.Panel data-shunpo-accordion-panel keepMounted {...props} />;
 };
 
 export { Accordion, AccordionItem, AccordionHeader, AccordionTrigger, AccordionIcon, AccordionPanel };
