@@ -12,7 +12,7 @@ interface AccordionRootProps extends React.ComponentPropsWithoutRef<typeof BaseA
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const Accordion: React.FC<AccordionRootProps> = ({ keepMounted = true, ...props }) => {
+const Root: React.FC<AccordionRootProps> = ({ keepMounted = true, ...props }) => {
   return <BaseAccordion.Root data-shunpo-accordion keepMounted={keepMounted} {...props} />;
 };
 
@@ -23,7 +23,7 @@ interface AccordionItemProps extends React.ComponentPropsWithoutRef<typeof BaseA
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const AccordionItem: React.FC<AccordionItemProps> = (props) => {
+const Item: React.FC<AccordionItemProps> = (props) => {
   return <BaseAccordion.Item {...props} data-shunpo-accordion-item />;
 };
 
@@ -34,7 +34,7 @@ interface AccordionHeaderProps extends React.ComponentPropsWithoutRef<typeof Bas
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const AccordionHeader: React.FC<AccordionHeaderProps> = (props) => {
+const Header: React.FC<AccordionHeaderProps> = (props) => {
   return <BaseAccordion.Header data-shunpo-accordion-header {...props} />;
 };
 
@@ -49,21 +49,12 @@ interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<typeof Ba
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const AccordionTrigger: React.FC<AccordionTriggerProps> = ({ icon, children, ...props }) => {
+const Trigger: React.FC<AccordionTriggerProps> = ({ icon, children, ...props }) => {
   return (
     <BaseAccordion.Trigger
+    data-shunpo-accordion-trigger
       {...props}
-      render={({ hidden, ...rest }, { open }) => {
-        return (
-          <button
-            {...(rest as React.HTMLAttributes<HTMLButtonElement>)}
-            data-shunpo-accordion-trigger
-          >
-            {children}
-            {icon && <AccordionIcon icon={icon} />}
-          </button>
-        );
-      }}
+      
     />
   );
 };
@@ -75,7 +66,7 @@ interface AccordionIconProps extends React.ComponentPropsWithoutRef<"span"> {
  * An icon that indicates the state of the accordion.
  * Renders a `<span>` element.
  */
-const AccordionIcon: React.FC<AccordionIconProps> = ({ icon, ...props }) => {
+const Icon: React.FC<AccordionIconProps> = ({ icon, ...props }) => {
   return (
     <span data-shunpo-accordion-icon {...props}>
       {icon}
@@ -90,8 +81,8 @@ interface AccordionPanelProps extends React.ComponentPropsWithoutRef<typeof Base
  *
  * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
  */
-const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
+const Panel: React.FC<AccordionPanelProps> = (props) => {
   return <BaseAccordion.Panel data-shunpo-accordion-panel keepMounted {...props} />;
 };
 
-export { Accordion, AccordionItem, AccordionHeader, AccordionTrigger, AccordionIcon, AccordionPanel };
+export { Root, Item, Header, Trigger, Icon, Panel };

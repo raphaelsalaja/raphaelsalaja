@@ -6,7 +6,10 @@
   "scripts": {
     "prebuild": "bunchee prepare",
     "build": "bunchee",
-    "clean": "rm -rf dist"
+    "dev": "bunchee --watch",
+    "clean": "rm -rf dist",
+    "lint": "biome check --fix --unsafe .",
+    "lint:fix": "biome check --fix --unsafe ."
   },
   "keywords": [
     "react",

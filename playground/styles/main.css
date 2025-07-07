@@ -1,0 +1,65 @@
+@import url("@rs/styles/reset");
+
+html {
+  color: var(--text-primary);
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  main {
+    display: flex;
+    gap: 48px;
+    padding: 96px 0;
+    width: 768px;
+    flex-direction: column;
+    align-items: flex-start;
+    isolation: isolate;
+    transition: width 0.4s ease;
+
+    &[data-animate] {
+      animation: blur-in 1s ease forwards;
+    }
+
+    @media (width <= 800px) {
+      width: 80%;
+    }
+  }
+}
+
+::view-transition-old(root) {
+  animation: blur-out 0.4s ease forwards;
+}
+
+::view-transition-new(root) {
+  animation: blur-in 0.4s ease forwards;
+}
+
+@keyframes blur-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blur-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

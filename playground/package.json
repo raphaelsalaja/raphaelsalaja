@@ -13,8 +13,10 @@
     "@rs/design": "workspace:*",
     "@rs/styles": "workspace:*",
     "next": "15.3.2",
+    "next-view-transitions": "^0.3.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "postcss-dynamic-metrics": "^0.0.4"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",

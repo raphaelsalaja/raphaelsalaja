@@ -1,6 +1,16 @@
 # Project Context
 
-This is a pnpm monorepo w**Content & Routing:**
+This is a pnpm monorepo featuring a Next.js 15 portfolio website with a comprehensive design system built on Base UI components. The architecture emphasizes accessibility, performance, and sophisticated interactive elements.
+
+## Architecture Overview
+
+**Monorepo Structure:**
+- `packages/design` - Base UI component library with `@rs/design` namespace
+- `packages/i18n` - Internationalization utilities with timezone/measurement formatting  
+- `packages/styles` - Global design tokens and CSS utilities
+- `website/` - Next.js 15 app with App Router and parallel routes
+
+**Content & Routing:**
 - MDX content in `app/(posts)/{category}/posts/*.mdx` with frontmatter
 - Use `createPostPage()` helper from `lib/create-post-page` for dynamic routes
 - Posts fetched via `getPosts(category)` from `lib/mdx`
@@ -8,7 +18,7 @@ This is a pnpm monorepo w**Content & Routing:**
 
 **API Routes & External Services:**
 - Spotify: `/api/spotify/{playback-state,recently-played,get-artist}`
-- Steam: `/api/steam/recently-played` 
+- Steam: `/api/steam/recently-played`, Trakt: `/api/trakt/*`
 - Environment variables required for API integrations (see `turbo.json`)
 
 **Styling & Animation:**
@@ -17,11 +27,49 @@ This is a pnpm monorepo w**Content & Routing:**
 - `next-view-transitions` for page transitions
 - CSS custom properties for dynamic values
 
+## Essential Workflows
+
+**Development:**
+```bash
+pnpm dev          # Starts all packages in watch mode via Turbo
+pnpm build        # Builds entire monorepo
+pnpm lint         # Runs Biome linter/formatter + Stylelint
+```
+
+**Component Development:**
+- All design system components in `packages/design/src/{component}/index.tsx`
+- Follow `data-rs-{component}-{part}` naming for CSS selectors
+- Use Base UI as foundation, extend with custom props/styling
+
+## Coding Standards
+
+**Base UI Integration:**
+- Always import from `@base-ui-components/react/[component]` with named imports
+- Wrap Base UI components to add custom `data-rs-*` attributes
+- Example pattern from `packages/design/src/menu/index.tsx`:
+  ```tsx
+  const MenuRoot: React.FC<MenuRootProps> = ({ ...props }) => {
+    return <Menu.Root {...props} data-rs-menu-root />;
+  };
+  ```
+
+**Environment Setup:**
+- Uses Biome for linting/formatting instead of ESLint/Prettier
+- TypeScript strict mode enabled, Node.js >=18 required
+- pnpm workspace with `workspace:*` internal dependencies
+- Environment variables defined in `turbo.json` for API integrations
+
+**File Structure Patterns:**
+- Export components from package entry points with barrel exports
+- CSS files co-located with component files using CSS Modules
+- Frontmatter interface in `types/frontmatter/index.tsx` for MDX posts
+- Post categories: `projects`, `experiments`, `insights`, `archive`
+
 ## Project-Specific Patterns
 
 **Posts System:**
 - Categories: `projects`, `experiments`, `insights`, `archive`
-- Frontmatter interface in `types/frontmatter/index.ts`
+- Frontmatter interface in `types/frontmatter/index.tsx`
 - Placeholder shapes for posts without media in `components/posts/placeholder/shapes`
 
 **Component Composition:**
@@ -54,7 +102,21 @@ This is a pnpm monorepo w**Content & Routing:**
 - CSS files co-located with component files
 - Add JSDoc comments for public APIs
 - Follow accessibility patterns from Base UI documentation
-- Test components with loading/error states using conditional rendering patterns a Next.js portfolio website featuring a modular design system. The architecture emphasizes accessibility, performance, and sophisticated interactive elements using Base UI components, Motion animations, and external API integrations.
+- Test components with loading/error states using conditional rendering patterns
+
+## Code Review and Best Practices
+
+- Test all UI components with common accessibility tools
+- Include at least one usage example in `/examples` for every new component
+- Follow the repo's file structure and naming conventions
+- Reuse and compose existing Base UI components; avoid duplicating logic
+- Use descriptive names for variables and functions
+- Write concise, self-explanatory commit messages
+
+## Documentation
+
+- When adding or updating a component, update its markdown docs in `/docs`
+- Link to the relevant Base UI docs for any complex usage or custom implementation
 
 ## Architecture Overview
 
@@ -95,6 +157,18 @@ pnpm lint         # Runs Biome linter/formatter + Stylelint
     return <Menu.Root {...props} data-shunpo-menu-root />;
   };
   ```
+
+**Environment Setup:**
+- Uses Biome for linting/formatting instead of ESLint/Prettier
+- TypeScript strict mode enabled, Node.js >=18 required
+- pnpm workspace with `workspace:*` internal dependencies
+- Environment variables defined in `turbo.json` for API integrations
+
+**File Structure Patterns:**
+- Export components from package entry points with barrel exports
+- CSS files co-located with component files using CSS Modules
+- Frontmatter interface in `types/frontmatter/index.tsx` for MDX posts
+- Post categories: `projects`, `experiments`, `insights`, `archive`
 
 ## Code Review and Best Practices
 
