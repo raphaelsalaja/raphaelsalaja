@@ -1,46 +1,34 @@
 "use client";
 
 import { useState } from 'react';
-import {
-  // Core Components
-  Button,
-  Input,
-  Select,
-  Checkbox,
-  Radio,
-  Switch,
-  Slider,
-  Progress,
-  Meter,
-  Separator,
-  
-  // Navigation
-  Tabs,
-  Menu,
-  Breadcrumb,
-  
-  // Layout
-  Accordion,
-  Collapsible,
-  Dialog,
-  AlertDialog,
-  Popover,
-  Tooltip,
-  
-  // Form Components
-  Field,
-  Fieldset,
-  NumberField,
-  CheckboxGroup,
-  
-  // Utility
-  Avatar,
-  ScrollArea,
-  Toggle,
-  
-  // Hooks and Utilities
-  ConditionalWrap
-} from '@rs/design';
+import Button from '@rs/design/button';
+// import { Input } from '@rs/design/input';
+import * as Select from '@rs/design/select';
+import * as Checkbox from '@rs/design/checkbox';
+// import * as Radio from '@rs/design/radio';
+// import * as Switch from '@rs/design/switch';
+import * as Slider from '@rs/design/slider';
+import * as Progress from '@rs/design/progress';
+import * as Meter from '@rs/design/meter';
+import * as Separator from '@rs/design/separator';
+import * as Tabs from '@rs/design/tabs';
+import * as Menu from '@rs/design/menu';
+import * as Breadcrumb from '@rs/design/breadcrumb';
+import * as Accordion from '@rs/design/accordion';
+import * as Collapsible from '@rs/design/collapsible';
+import * as Dialog from '@rs/design/dialog';
+import * as AlertDialog from '@rs/design/alert-dialog';
+import * as Popover from '@rs/design/popover';
+import * as Tooltip from '@rs/design/tooltip';
+import * as Field from '@rs/design/field';
+import * as Fieldset from '@rs/design/fieldset';
+// import * as NumberField from '@rs/design/number-field';
+// import * as RadioGroup from '@rs/design/radio-group';
+import * as CheckboxGroup from '@rs/design/checkbox-group';
+import * as Avatar from '@rs/design/avatar';
+import * as ScrollArea from '@rs/design/scroll-area';
+import * as Toggle from '@rs/design/toggle';
+import ConditionalWrap from '@rs/design/conditional-wrap';
 
 export default function PlaygroundPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -55,7 +43,7 @@ export default function PlaygroundPage() {
   const [selectValue, setSelectValue] = useState('');
   const [numberValue, setNumberValue] = useState(10);
   const [toggleValue, setToggleValue] = useState(false);
-  const [accordionValue, setAccordionValue] = useState('');
+  const [accordionValue, setAccordionValue] = useState<string[]>(['']);
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
 
   return (
@@ -73,8 +61,8 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Button</h3>
             <div className="demo-content inline-demo">
-              <Button.default>Default Button</Button.default>
-              <Button.default disabled>Disabled Button</Button.default>
+              <Button>Default Button</Button>
+              <Button disabled>Disabled Button</Button>
             </div>
             <div className="demo-description">
               Basic button component with hover and focus states.
@@ -84,8 +72,9 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Input</h3>
             <div className="demo-content block-demo">
-              <Input placeholder="Enter text..." />
-              <Input placeholder="Disabled input" disabled />
+              {/* <Input placeholder="Enter text..." />
+              <Input placeholder="Disabled input" disabled /> */}
+              <p>Input components temporarily commented out</p>
             </div>
             <div className="demo-description">
               Text input with placeholder and disabled states.
@@ -95,16 +84,18 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Select</h3>
             <div className="demo-content">
-              <Select.Root value={selectValue} onValueChange={setSelectValue}>
+              <Select.Root value={selectValue} onValueChange={(value) => setSelectValue(value as string)}>
                 <Select.Trigger>
-                  <Select.Value placeholder="Choose option..." />
+                  <Select.Value />
                 </Select.Trigger>
                 <Select.Portal>
-                  <Select.Content>
-                    <Select.Item value="option1">Option 1</Select.Item>
-                    <Select.Item value="option2">Option 2</Select.Item>
-                    <Select.Item value="option3">Option 3</Select.Item>
-                  </Select.Content>
+                  <Select.Positioner>
+                    <Select.Popup>
+                      <Select.Item value="option1">Option 1</Select.Item>
+                      <Select.Item value="option2">Option 2</Select.Item>
+                      <Select.Item value="option3">Option 3</Select.Item>
+                    </Select.Popup>
+                  </Select.Positioner>
                 </Select.Portal>
               </Select.Root>
             </div>
@@ -116,11 +107,12 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>NumberField</h3>
             <div className="demo-content">
-              <NumberField.Root value={numberValue} onValueChange={setNumberValue}>
+              {/* <NumberField.Root value={numberValue} onValueChange={(value) => setNumberValue(value || 0)}>
                 <NumberField.Input />
                 <NumberField.Increment />
                 <NumberField.Decrement />
-              </NumberField.Root>
+              </NumberField.Root> */}
+              <p>NumberField temporarily commented out</p>
             </div>
             <div className="demo-description">
               Number input with increment/decrement buttons.
@@ -138,12 +130,13 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Checkbox</h3>
             <div className="demo-content block-demo">
-              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {/* <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Checkbox.Root checked={checkboxChecked} onCheckedChange={setCheckboxChecked}>
                   <Checkbox.Indicator />
                 </Checkbox.Root>
-                Accept terms and conditions
-              </label>
+                <span>Accept terms and conditions</span>
+              </div> */}
+              <p>Checkbox temporarily commented out</p>
             </div>
             <div className="demo-description">
               Checkbox with custom indicator styling.
@@ -153,18 +146,23 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Radio</h3>
             <div className="demo-content block-demo">
-              <Radio.Root value={radioValue} onValueChange={setRadioValue}>
+              {/* <RadioGroup.Root value={radioValue} onValueChange={(value) => setRadioValue(value as string)}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <Radio.Item value="option1">
-                    <Radio.Indicator />
-                    Option 1
-                  </Radio.Item>
-                  <Radio.Item value="option2">
-                    <Radio.Indicator />
-                    Option 2
-                  </Radio.Item>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Radio.Root value="option1">
+                      <Radio.Indicator />
+                    </Radio.Root>
+                    <span>Option 1</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Radio.Root value="option2">
+                      <Radio.Indicator />
+                    </Radio.Root>
+                    <span>Option 2</span>
+                  </div>
                 </div>
-              </Radio.Root>
+              </RadioGroup.Root> */}
+              <p>Radio group temporarily commented out</p>
             </div>
             <div className="demo-description">
               Radio group with custom indicators.
@@ -174,12 +172,13 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Switch</h3>
             <div className="demo-content inline-demo">
-              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {/* <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Switch.Root checked={switchChecked} onCheckedChange={setSwitchChecked}>
                   <Switch.Thumb />
                 </Switch.Root>
-                Enable notifications
-              </label>
+                <span>Enable notifications</span>
+              </div> */}
+              <p>Switch temporarily commented out</p>
             </div>
             <div className="demo-description">
               Toggle switch with smooth thumb animation.
@@ -209,11 +208,13 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Slider</h3>
             <div className="demo-content">
-              <Slider.Root value={sliderValue} onValueChange={setSliderValue} min={0} max={100}>
-                <Slider.Track>
-                  <Slider.Range />
-                </Slider.Track>
-                <Slider.Thumb />
+              <Slider.Root value={sliderValue} onValueChange={(value) => setSliderValue(Array.isArray(value) ? value : [value])} min={0} max={100}>
+                <Slider.Control>
+                  <Slider.Track>
+                    <Slider.Indicator />
+                  </Slider.Track>
+                  <Slider.Thumb />
+                </Slider.Control>
               </Slider.Root>
               <p>Value: {sliderValue[0]}</p>
             </div>
@@ -280,15 +281,17 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <Menu.Root>
                 <Menu.Trigger>
-                  <Button.default>Open Menu</Button.default>
+                  Open Menu
                 </Menu.Trigger>
                 <Menu.Portal>
-                  <Menu.Content>
-                    <Menu.Item>New File</Menu.Item>
-                    <Menu.Item>Open File</Menu.Item>
-                    <Menu.Separator />
-                    <Menu.Item>Exit</Menu.Item>
-                  </Menu.Content>
+                  <Menu.Positioner>
+                    <Menu.Popup>
+                      <Menu.Item>New File</Menu.Item>
+                      <Menu.Item>Open File</Menu.Item>
+                      <Menu.Separator />
+                      <Menu.Item>Exit</Menu.Item>
+                    </Menu.Popup>
+                  </Menu.Positioner>
                 </Menu.Portal>
               </Menu.Root>
             </div>
@@ -300,19 +303,19 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Breadcrumb</h3>
             <div className="demo-content">
-              <Breadcrumb.Root>
-                <Breadcrumb.Item>
-                  <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Separator />
-                <Breadcrumb.Item>
-                  <Breadcrumb.Link href="/products">Products</Breadcrumb.Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Separator />
-                <Breadcrumb.Item>
-                  <Breadcrumb.Page>Current Page</Breadcrumb.Page>
-                </Breadcrumb.Item>
-              </Breadcrumb.Root>
+              <Breadcrumb.Breadcrumb>
+                <Breadcrumb.BreadcrumbItem>
+                  <Breadcrumb.BreadcrumbLink href="/">Home</Breadcrumb.BreadcrumbLink>
+                </Breadcrumb.BreadcrumbItem>
+                <Breadcrumb.BreadcrumbSeparator />
+                <Breadcrumb.BreadcrumbItem>
+                  <Breadcrumb.BreadcrumbLink href="/products">Products</Breadcrumb.BreadcrumbLink>
+                </Breadcrumb.BreadcrumbItem>
+                <Breadcrumb.BreadcrumbSeparator />
+                <Breadcrumb.BreadcrumbItem>
+                  <Breadcrumb.BreadcrumbPage>Current Page</Breadcrumb.BreadcrumbPage>
+                </Breadcrumb.BreadcrumbItem>
+              </Breadcrumb.Breadcrumb>
             </div>
             <div className="demo-description">
               Breadcrumb navigation showing page hierarchy.
@@ -330,24 +333,24 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Accordion</h3>
             <div className="demo-content">
-              <Accordion.Root value={accordionValue} onValueChange={setAccordionValue}>
-                <Accordion.Item value="item1">
-                  <Accordion.Header>
-                    <Accordion.Trigger>What is React?</Accordion.Trigger>
-                  </Accordion.Header>
-                  <Accordion.Content>
+              <Accordion.Accordion value={accordionValue} onValueChange={setAccordionValue}>
+                <Accordion.AccordionItem value="item1">
+                  <Accordion.AccordionHeader>
+                    <Accordion.AccordionTrigger>What is React?</Accordion.AccordionTrigger>
+                  </Accordion.AccordionHeader>
+                  <Accordion.AccordionPanel>
                     React is a JavaScript library for building user interfaces.
-                  </Accordion.Content>
-                </Accordion.Item>
-                <Accordion.Item value="item2">
-                  <Accordion.Header>
-                    <Accordion.Trigger>What is Base UI?</Accordion.Trigger>
-                  </Accordion.Header>
-                  <Accordion.Content>
+                  </Accordion.AccordionPanel>
+                </Accordion.AccordionItem>
+                <Accordion.AccordionItem value="item2">
+                  <Accordion.AccordionHeader>
+                    <Accordion.AccordionTrigger>What is Base UI?</Accordion.AccordionTrigger>
+                  </Accordion.AccordionHeader>
+                  <Accordion.AccordionPanel>
                     Base UI is a library of headless React components.
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion.Root>
+                  </Accordion.AccordionPanel>
+                </Accordion.AccordionItem>
+              </Accordion.Accordion>
             </div>
             <div className="demo-description">
               Collapsible accordion panels with smooth animations.
@@ -359,13 +362,13 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <Collapsible.Root open={collapsibleOpen} onOpenChange={setCollapsibleOpen}>
                 <Collapsible.Trigger>
-                  <Button.default>Toggle Content</Button.default>
+                  Toggle Content
                 </Collapsible.Trigger>
-                <Collapsible.Content>
+                <Collapsible.Panel>
                   <div style={{ padding: '1rem', background: '#f8f9fa', marginTop: '0.5rem' }}>
                     This content can be collapsed and expanded.
                   </div>
-                </Collapsible.Content>
+                </Collapsible.Panel>
               </Collapsible.Root>
             </div>
             <div className="demo-description">
@@ -410,19 +413,19 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
                 <Dialog.Trigger>
-                  <Button.default>Open Dialog</Button.default>
+                  Open Dialog
                 </Dialog.Trigger>
                 <Dialog.Portal>
                   <Dialog.Backdrop />
-                  <Dialog.Content>
+                  <Dialog.Popup>
                     <Dialog.Title>Dialog Title</Dialog.Title>
                     <Dialog.Description>
                       This is a modal dialog with backdrop.
                     </Dialog.Description>
                     <div style={{ marginTop: '1rem' }}>
-                      <Button.default onClick={() => setDialogOpen(false)}>Close</Button.default>
+                      <Button onClick={() => setDialogOpen(false)}>Close</Button>
                     </div>
-                  </Dialog.Content>
+                  </Dialog.Popup>
                 </Dialog.Portal>
               </Dialog.Root>
             </div>
@@ -436,24 +439,20 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <AlertDialog.Root open={alertDialogOpen} onOpenChange={setAlertDialogOpen}>
                 <AlertDialog.Trigger>
-                  <Button.default>Open Alert</Button.default>
+                  Open Alert
                 </AlertDialog.Trigger>
                 <AlertDialog.Portal>
                   <AlertDialog.Backdrop />
-                  <AlertDialog.Content>
+                  <AlertDialog.Popup>
                     <AlertDialog.Title>Confirm Action</AlertDialog.Title>
                     <AlertDialog.Description>
                       Are you sure you want to continue?
                     </AlertDialog.Description>
                     <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
-                      <AlertDialog.Cancel>
-                        <Button.default>Cancel</Button.default>
-                      </AlertDialog.Cancel>
-                      <AlertDialog.Action>
-                        <Button.default onClick={() => setAlertDialogOpen(false)}>Confirm</Button.default>
-                      </AlertDialog.Action>
+                      <Button onClick={() => setAlertDialogOpen(false)}>Cancel</Button>
+                      <Button onClick={() => setAlertDialogOpen(false)}>Confirm</Button>
                     </div>
-                  </AlertDialog.Content>
+                  </AlertDialog.Popup>
                 </AlertDialog.Portal>
               </AlertDialog.Root>
             </div>
@@ -467,15 +466,17 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <Popover.Root open={popoverOpen} onOpenChange={setPopoverOpen}>
                 <Popover.Trigger>
-                  <Button.default>Open Popover</Button.default>
+                  Open Popover
                 </Popover.Trigger>
                 <Popover.Portal>
-                  <Popover.Content>
-                    <div style={{ padding: '1rem' }}>
-                      <h4 style={{ margin: '0 0 0.5rem 0' }}>Popover Content</h4>
-                      <p style={{ margin: 0 }}>This is popover content.</p>
-                    </div>
-                  </Popover.Content>
+                  <Popover.Positioner>
+                    <Popover.Popup>
+                      <div style={{ padding: '1rem' }}>
+                        <h4 style={{ margin: '0 0 0.5rem 0' }}>Popover Content</h4>
+                        <p style={{ margin: 0 }}>This is popover content.</p>
+                      </div>
+                    </Popover.Popup>
+                  </Popover.Positioner>
                 </Popover.Portal>
               </Popover.Root>
             </div>
@@ -489,12 +490,14 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <Tooltip.Root>
                 <Tooltip.Trigger>
-                  <Button.default>Hover me</Button.default>
+                  Hover me
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
-                  <Tooltip.Content>
-                    This is a tooltip
-                  </Tooltip.Content>
+                  <Tooltip.Positioner>
+                    <Tooltip.Popup>
+                      This is a tooltip
+                    </Tooltip.Popup>
+                  </Tooltip.Positioner>
                 </Tooltip.Portal>
               </Tooltip.Root>
             </div>
@@ -511,13 +514,13 @@ export default function PlaygroundPage() {
         <h2>Form Components</h2>
         <div className="component-grid">
 
-          <div className="component-demo">
+          {/* <div className="component-demo">
             <h3>Field</h3>
             <div className="demo-content form-demo">
               <Field.Root>
                 <Field.Label>Email Address</Field.Label>
                 <Field.Control>
-                  <Input type="email" placeholder="Enter your email" />
+                  <p>Input temporarily commented out</p>
                 </Field.Control>
                 <Field.Description>We&apos;ll never share your email.</Field.Description>
               </Field.Root>
@@ -530,43 +533,43 @@ export default function PlaygroundPage() {
           <div className="component-demo">
             <h3>Fieldset</h3>
             <div className="demo-content form-demo">
-              <Fieldset.Root>
-                <Fieldset.Legend>Personal Information</Fieldset.Legend>
+              <Fieldset.FieldsetRoot>
+                <Fieldset.FieldsetLegend>Personal Information</Fieldset.FieldsetLegend>
                 <Field.Root>
                   <Field.Label>First Name</Field.Label>
                   <Field.Control>
-                    <Input placeholder="First name" />
+                    <p>Input temporarily commented out</p>
                   </Field.Control>
                 </Field.Root>
                 <Field.Root>
                   <Field.Label>Last Name</Field.Label>
                   <Field.Control>
-                    <Input placeholder="Last name" />
+                    <p>Input temporarily commented out</p>
                   </Field.Control>
                 </Field.Root>
-              </Fieldset.Root>
+              </Fieldset.FieldsetRoot>
             </div>
             <div className="demo-description">
               Fieldset for grouping related form fields.
             </div>
-          </div>
+          </div> */}
 
           <div className="component-demo">
             <h3>CheckboxGroup</h3>
             <div className="demo-content">
               <CheckboxGroup.Root>
-                <CheckboxGroup.Item value="react">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Checkbox.Root>
                     <Checkbox.Indicator />
                   </Checkbox.Root>
-                  React
-                </CheckboxGroup.Item>
-                <CheckboxGroup.Item value="vue">
+                  <span>React</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Checkbox.Root>
                     <Checkbox.Indicator />
                   </Checkbox.Root>
-                  Vue
-                </CheckboxGroup.Item>
+                  <span>Vue</span>
+                </div>
               </CheckboxGroup.Root>
             </div>
             <div className="demo-description">
@@ -602,7 +605,7 @@ export default function PlaygroundPage() {
             <h3>Separator</h3>
             <div className="demo-content">
               <div>Content above</div>
-              <Separator.Root />
+              <Separator.Separator />
               <div>Content below</div>
             </div>
             <div className="demo-description">
@@ -615,7 +618,7 @@ export default function PlaygroundPage() {
             <div className="demo-content">
               <ConditionalWrap
                 condition={true}
-                wrapper={(children: React.ReactNode) => <div style={{ padding: '1rem', background: '#e3f2fd' }}>{children}</div>}
+                wrap={(children: React.ReactNode) => <div style={{ padding: '1rem', background: '#e3f2fd' }}>{children}</div>}
               >
                 <p>This content is conditionally wrapped.</p>
               </ConditionalWrap>
@@ -638,18 +641,6 @@ export default function PlaygroundPage() {
           </pre>
           
           <p>Import components in your React application:</p>
-          <pre style={{ background: '#f1f3f4', padding: '1rem', borderRadius: '6px', overflow: 'auto' }}>
-            <code>{`import { Button, Input, Dialog } from '@rs/design';
-
-function MyComponent() {
-  return (
-    <div>
-      <Button.default>Click me</Button.default>
-      <Input placeholder="Enter text" />
-    </div>
-  );
-}`}</code>
-          </pre>
         </div>
       </section>
     </div>

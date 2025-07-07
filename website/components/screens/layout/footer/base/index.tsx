@@ -1,4 +1,4 @@
-import { Button } from "@rs/design";
+import * as Button from "@rs/design/button";
 import { Link } from "next-view-transitions";
 import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
 import styles from "./styles.module.scss";

@@ -7,13 +7,45 @@
 **Releases**
 [https://base-ui.com/react/overview/releases](https://base-ui.com/react/overview/releases)
 
-**Handbook**
+## @rs/design Component Library
+
+This project uses a custom design system (`@rs/design`) built on top of Base UI components. The design system follows path-based imports for better tree-shaking and modularity.
+
+**Import Patterns:**
+- **Single component imports:** `import Button from '@rs/design/button'`
+- **Namespace imports:** `import * as Dialog from '@rs/design/dialog'`
+- **Mixed usage:** Components that export both default and named exports
+
+**Component Structure:**
+Each `@rs/design` component wraps the corresponding Base UI component with:
+- Custom `data-shunpo-{component}-{part}` attributes for styling
+- Consistent prop interfaces extending Base UI props
+- TypeScript definitions and proper export patterns
+
+**Example Usage:**
+```tsx
+// Default export (e.g., Button)
+import Button from '@rs/design/button';
+<Button>Click me</Button>
+
+// Namespace import (e.g., Dialog, Menu, Select)
+import * as Dialog from '@rs/design/dialog';
+<Dialog.Root>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Content>Content</Dialog.Content>
+</Dialog.Root>
+```
+
+**Base UI Handbook** (Reference for extending @rs/design components)
 
 - Styling: [https://base-ui.com/react/handbook/styling](https://base-ui.com/react/handbook/styling)
 - Animation: [https://base-ui.com/react/handbook/animation](https://base-ui.com/react/handbook/animation)
 - Composition: [https://base-ui.com/react/handbook/composition](https://base-ui.com/react/handbook/composition)
 
-**Components**
+**Base UI Components Reference**
+
+The following Base UI components are available and wrapped in the `@rs/design` system:
+
 - Accordion: [https://base-ui.com/react/components/accordion](https://base-ui.com/react/components/accordion)
 - Alert Dialog: [https://base-ui.com/react/components/alert-dialog](https://base-ui.com/react/components/alert-dialog)
 - Avatar: [https://base-ui.com/react/components/avatar](https://base-ui.com/react/components/avatar)
@@ -46,6 +78,13 @@
 - Toggle Group: [https://base-ui.com/react/components/toggle-group](https://base-ui.com/react/components/toggle-group)
 - Toolbar: [https://base-ui.com/react/components/toolbar](https://base-ui.com/react/components/toolbar)
 - Tooltip: [https://base-ui.com/react/components/tooltip](https://base-ui.com/react/components/tooltip)
+
+**Development Guidelines for @rs/design:**
+- Always import from `@base-ui-components/react/[component]` with named imports when extending Base UI
+- Wrap Base UI components to add custom `data-shunpo-*` attributes for consistent styling
+- Follow the established pattern from existing components in `packages/design/src/`
+- Use path-based imports (`@rs/design/component`) instead of barrel imports for better tree-shaking
+- Ensure TypeScript definitions are properly exported for each component
 
 **Utilities**
 

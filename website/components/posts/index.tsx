@@ -1,5 +1,5 @@
-import { Button } from "@rs/design";
-import { Separator } from "@rs/design";
+import * as Button from "@rs/design/button";
+import { Separator } from "@rs/design/separator";
 import { Link } from "next-view-transitions";
 
 import * as Media from "@/components/media";
@@ -72,7 +72,7 @@ export const Posts = async ({
               <h2 className={styles.count}>{length}</h2>
             </Link>
           </Button.default>
-          <Separator.Separator />
+          <Separator />
         </div>
       )}
 
