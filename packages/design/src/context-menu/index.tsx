@@ -101,7 +101,8 @@ export const ContextMenuCheckboxItem: React.FC<ContextMenuCheckboxItemProps> = (
 };
 
 // ContextMenu CheckboxItemIndicator
-export interface ContextMenuCheckboxItemIndicatorProps extends ComponentPropsWithoutRef<typeof ContextMenu.CheckboxItemIndicator> {}
+export interface ContextMenuCheckboxItemIndicatorProps
+  extends ComponentPropsWithoutRef<typeof ContextMenu.CheckboxItemIndicator> {}
 
 export const ContextMenuCheckboxItemIndicator: React.FC<ContextMenuCheckboxItemIndicatorProps> = ({ ...props }) => {
   return <ContextMenu.CheckboxItemIndicator {...props} data-shunpo-context-menu-checkbox-item-indicator />;
@@ -122,7 +123,8 @@ export const ContextMenuRadioItem: React.FC<ContextMenuRadioItemProps> = ({ ...p
 };
 
 // ContextMenu RadioItemIndicator
-export interface ContextMenuRadioItemIndicatorProps extends ComponentPropsWithoutRef<typeof ContextMenu.RadioItemIndicator> {}
+export interface ContextMenuRadioItemIndicatorProps
+  extends ComponentPropsWithoutRef<typeof ContextMenu.RadioItemIndicator> {}
 
 export const ContextMenuRadioItemIndicator: React.FC<ContextMenuRadioItemIndicatorProps> = ({ ...props }) => {
   return <ContextMenu.RadioItemIndicator {...props} data-shunpo-context-menu-radio-item-indicator />;

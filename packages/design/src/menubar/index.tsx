@@ -110,7 +110,8 @@ export const MenubarMenuCheckboxItem: React.FC<MenubarMenuCheckboxItemProps> = (
 };
 
 // Menu CheckboxItemIndicator
-export interface MenubarMenuCheckboxItemIndicatorProps extends ComponentPropsWithoutRef<typeof Menu.CheckboxItemIndicator> {}
+export interface MenubarMenuCheckboxItemIndicatorProps
+  extends ComponentPropsWithoutRef<typeof Menu.CheckboxItemIndicator> {}
 
 export const MenubarMenuCheckboxItemIndicator: React.FC<MenubarMenuCheckboxItemIndicatorProps> = ({ ...props }) => {
   return <Menu.CheckboxItemIndicator {...props} data-shunpo-menubar-menu-checkbox-item-indicator />;

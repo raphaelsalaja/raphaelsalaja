@@ -34,4 +34,10 @@ const ScrollAreaCorner: React.FC<ScrollAreaCornerProps> = ({ ...props }) => {
   return <ScrollArea.Corner {...props} data-shunpo-scroll-area-corner />;
 };
 
-export { ScrollAreaRoot as Root, ScrollAreaViewport as Viewport, ScrollAreaScrollbar as Scrollbar, ScrollAreaThumb as Thumb, ScrollAreaCorner as Corner };
+export {
+  ScrollAreaRoot as Root,
+  ScrollAreaViewport as Viewport,
+  ScrollAreaScrollbar as Scrollbar,
+  ScrollAreaThumb as Thumb,
+  ScrollAreaCorner as Corner,
+};

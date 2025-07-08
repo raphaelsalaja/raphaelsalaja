@@ -12,13 +12,24 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: "primary" | "secondary" | "tertiary" | "accent" | "destructive" | "warning" | "ghost";
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, variant = "primary", disabled = false, focused, className, ...props }, ref) => {
-  return (
-    <button ref={ref} data-shunpo-button data-shunpo-button-variant={variant} data-shunpo-button-disabled={disabled} data-shunpo-button-focus-visible={focused} className={clsx("button", className)} aria-disabled={disabled} {...props}>
-      {children}
-    </button>
-  );
-});
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, variant = "primary", disabled = false, focused, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        data-shunpo-button
+        data-shunpo-button-variant={variant}
+        data-shunpo-button-disabled={disabled}
+        data-shunpo-button-focus-visible={focused}
+        className={clsx("button", className)}
+        aria-disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 Button.displayName = "Button";
 

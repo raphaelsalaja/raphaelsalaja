@@ -17,7 +17,9 @@ export default function Page() {
           <Accordion.Trigger>How do I get started?</Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Panel>
-          <div>Head to the “Quick start” guide in the docs. If you’ve used unstyled libraries before, you’ll feel at home.</div>
+          <div>
+            Head to the “Quick start” guide in the docs. If you’ve used unstyled libraries before, you’ll feel at home.
+          </div>
         </Accordion.Panel>
       </Accordion.Item>
 

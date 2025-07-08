@@ -126,7 +126,12 @@ export function Footer() {
   }
 
   return (
-    <section className={styles.embla} aria-label="Footer carousel" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <section
+      className={styles.embla}
+      aria-label="Footer carousel"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className={styles.viewport} ref={viewportRef}>
         <div className={styles.container}>
           {PAGES.map((Page, idx) => (

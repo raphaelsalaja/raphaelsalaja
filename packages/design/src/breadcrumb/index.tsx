@@ -41,7 +41,9 @@ const BreadcrumbLink: React.FC<React.ComponentPropsWithoutRef<"a">> = (props) =>
  *
  * Documentation: [BreadcrumbPage](https://your-docs-link.com/breadcrumbs#page)
  */
-const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props) => <span role="link" tabIndex={0} aria-disabled="true" aria-current="page" data-rs-breadcrumb-current-page {...props} />;
+const BreadcrumbPage: React.FC<React.ComponentPropsWithoutRef<"span">> = (props) => (
+  <span role="link" tabIndex={0} aria-disabled="true" aria-current="page" data-rs-breadcrumb-current-page {...props} />
+);
 
 /**
  * A visual separator between breadcrumb items.

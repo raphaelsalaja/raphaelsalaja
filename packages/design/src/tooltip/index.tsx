@@ -40,4 +40,11 @@ const TooltipArrow: React.FC<TooltipArrowProps> = ({ ...props }) => {
   return <Tooltip.Arrow {...props} data-shunpo-tooltip-arrow />;
 };
 
-export { TooltipRoot as Root, TooltipTrigger as Trigger, TooltipPortal as Portal, TooltipPositioner as Positioner, TooltipPopup as Popup, TooltipArrow as Arrow };
+export {
+  TooltipRoot as Root,
+  TooltipTrigger as Trigger,
+  TooltipPortal as Portal,
+  TooltipPositioner as Positioner,
+  TooltipPopup as Popup,
+  TooltipArrow as Arrow,
+};

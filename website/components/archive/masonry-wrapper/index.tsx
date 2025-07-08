@@ -36,14 +36,33 @@ function MediaItem({ item }: { item: MediaResource }) {
   if (item.type === "video") {
     return (
       <div {...commonWrapperProps}>
-        <Media.Video src={src} title={alt} width={width} height={height} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <Media.Video
+          src={src}
+          title={alt}
+          width={width}
+          height={height}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
       </div>
     );
   }
 
   return (
     <div {...commonWrapperProps}>
-      <Media.Image src={src} alt={alt} width={width} height={height} blurDataURL={(item as Extract<MediaResource, { type: "image" }>).blurDataURL} loading="lazy" style={{ objectFit: "cover" }} />
+      <Media.Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        blurDataURL={(item as Extract<MediaResource, { type: "image" }>).blurDataURL}
+        loading="lazy"
+        style={{ objectFit: "cover" }}
+      />
     </div>
   );
 }

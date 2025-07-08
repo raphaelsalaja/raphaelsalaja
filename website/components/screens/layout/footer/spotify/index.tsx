@@ -37,7 +37,12 @@ export const Spotify: React.FC = () => {
 
   const currentTrack = playbackState?.is_playing ? playbackState.item : recentPlays?.items?.[0]?.track;
 
-  const { name: trackTitle = "Track Title", album: { images: albumImages = [] } = {}, artists: [firstArtist] = [], explicit: isExplicit = false } = currentTrack || {};
+  const {
+    name: trackTitle = "Track Title",
+    album: { images: albumImages = [] } = {},
+    artists: [firstArtist] = [],
+    explicit: isExplicit = false,
+  } = currentTrack || {};
 
   const albumArtUrl = albumImages[0]?.url ?? "/media/placeholder.png";
   const _artistName = firstArtist?.name;
@@ -61,7 +66,14 @@ export const Spotify: React.FC = () => {
     <div className={styles.spotify}>
       <div className={styles.background}>
         <ConditionalWrap condition={isLoading} wrap={() => <div className={styles.background} />}>
-          <Image src={albumArtUrl} width={300} height={300} alt="Spotify Album Art" unoptimized className={styles.art} />
+          <Image
+            src={albumArtUrl}
+            width={300}
+            height={300}
+            alt="Spotify Album Art"
+            unoptimized
+            className={styles.art}
+          />
 
           <div className={styles.gradient} />
         </ConditionalWrap>
@@ -86,7 +98,14 @@ export const Spotify: React.FC = () => {
           )}
         >
           <div className={styles.profile}>
-            <Image src={artistInfo?.images?.[0]?.url ?? "/media/placeholder.png"} width={32} height={32} alt="Spotify Artist" unoptimized className={styles.art} />
+            <Image
+              src={artistInfo?.images?.[0]?.url ?? "/media/placeholder.png"}
+              width={32}
+              height={32}
+              alt="Spotify Artist"
+              unoptimized
+              className={styles.art}
+            />
           </div>
         </ConditionalWrap>
         <ConditionalWrap
@@ -125,7 +144,14 @@ export const Spotify: React.FC = () => {
       >
         <div className={styles.center}>
           <div className={styles.header}>
-            <Image src={albumArtUrl} width={300} height={300} alt="Spotify Album Art" unoptimized className={styles.art} />
+            <Image
+              src={albumArtUrl}
+              width={300}
+              height={300}
+              alt="Spotify Album Art"
+              unoptimized
+              className={styles.art}
+            />
           </div>
           <div className={styles.details}>
             <div className={clsx(styles.text, styles.trimmed)}>

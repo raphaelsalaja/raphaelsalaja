@@ -37,13 +37,15 @@ export const Page = () => {
                         label: "Compound",
                         value: "compound",
                         title: "Compound Exercise",
-                        description: "Work multiple muscle groups together in coordinated movement patterns. These exercises burn more calories, improve functional strength, and build coordination between muscle groups.",
+                        description:
+                          "Work multiple muscle groups together in coordinated movement patterns. These exercises burn more calories, improve functional strength, and build coordination between muscle groups.",
                       },
                       {
                         label: "Isolation",
                         value: "isolation",
                         title: "Isolation Exercise",
-                        description: "Target specific muscle groups to refine and strengthen particular areas with focused precision. Examples include bicep curls, leg extensions, and lateral raises.",
+                        description:
+                          "Target specific muscle groups to refine and strengthen particular areas with focused precision. Examples include bicep curls, leg extensions, and lateral raises.",
                       },
                       {
                         label: "Static",

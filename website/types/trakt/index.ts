@@ -2500,7 +2500,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -2541,11 +2548,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -2646,7 +2676,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -2687,11 +2724,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -2792,7 +2852,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -2833,11 +2900,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -2938,7 +3028,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -2979,11 +3076,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -3091,7 +3211,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -3141,7 +3272,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -3200,7 +3343,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -3250,7 +3404,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -3470,7 +3636,19 @@ export interface operations {
               progress: {
                 on_deck: {
                   /** @enum {string} */
-                  sort: "added" | "completed" | "episodes" | "time" | "plays" | "released" | "premiered" | "title" | "popularity" | "runtime" | "total-runtime" | "random";
+                  sort:
+                    | "added"
+                    | "completed"
+                    | "episodes"
+                    | "time"
+                    | "plays"
+                    | "released"
+                    | "premiered"
+                    | "title"
+                    | "popularity"
+                    | "runtime"
+                    | "total-runtime"
+                    | "random";
                   /** @enum {string} */
                   sort_how: "asc" | "desc";
                   refresh: boolean;
@@ -3814,7 +3992,18 @@ export interface operations {
                       runtime?: number;
                       country?: string;
                       /** @enum {string} */
-                      status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                      status?:
+                        | "released"
+                        | "planned"
+                        | "post production"
+                        | "canceled"
+                        | "in production"
+                        | "rumored"
+                        | "ended"
+                        | "returning series"
+                        | "pilot"
+                        | "continuing"
+                        | "upcoming";
                       rating?: number;
                       votes?: number;
                       comment_count?: number;
@@ -3864,7 +4053,19 @@ export interface operations {
                         | "donghua"
                       )[];
                       /** @enum {string} */
-                      certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                      certification?:
+                        | "undefined"
+                        | "Dark"
+                        | "G"
+                        | "NC-17"
+                        | "NR"
+                        | "PG"
+                        | "PG-13"
+                        | "R"
+                        | "TVMA"
+                        | "Unrated"
+                        | "X"
+                        | "Young";
                       original_title?: string | null;
                       colors?: {
                         poster: string[];
@@ -3903,11 +4104,34 @@ export interface operations {
                       };
                       runtime?: number;
                       /** @enum {string} */
-                      certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                      certification?:
+                        | "TV-14"
+                        | "TV-Y7"
+                        | "TV-Y"
+                        | "NR"
+                        | "TV-PG"
+                        | "TV-MA"
+                        | "TV-G"
+                        | "G"
+                        | "PG-13"
+                        | "NC-17"
+                        | "R"
+                        | "PG";
                       network?: string;
                       country?: string;
                       /** @enum {string} */
-                      status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                      status?:
+                        | "released"
+                        | "planned"
+                        | "post production"
+                        | "canceled"
+                        | "in production"
+                        | "rumored"
+                        | "ended"
+                        | "returning series"
+                        | "pilot"
+                        | "continuing"
+                        | "upcoming";
                       rating?: number;
                       votes?: number;
                       comment_count?: number;
@@ -3979,7 +4203,14 @@ export interface operations {
                       runtime: number;
                       overview: string | null;
                       /** @enum {string} */
-                      episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                      episode_type?:
+                        | "standard"
+                        | "series_premiere"
+                        | "season_premiere"
+                        | "mid_season_finale"
+                        | "mid_season_premiere"
+                        | "season_finale"
+                        | "series_finale";
                       ids: {
                         trakt: number;
                         tvdb: number;
@@ -4024,11 +4255,34 @@ export interface operations {
                       };
                       runtime?: number;
                       /** @enum {string} */
-                      certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                      certification?:
+                        | "TV-14"
+                        | "TV-Y7"
+                        | "TV-Y"
+                        | "NR"
+                        | "TV-PG"
+                        | "TV-MA"
+                        | "TV-G"
+                        | "G"
+                        | "PG-13"
+                        | "NC-17"
+                        | "R"
+                        | "PG";
                       network?: string;
                       country?: string;
                       /** @enum {string} */
-                      status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                      status?:
+                        | "released"
+                        | "planned"
+                        | "post production"
+                        | "canceled"
+                        | "in production"
+                        | "rumored"
+                        | "ended"
+                        | "returning series"
+                        | "pilot"
+                        | "continuing"
+                        | "upcoming";
                       rating?: number;
                       votes?: number;
                       comment_count?: number;
@@ -4303,7 +4557,14 @@ export interface operations {
                   runtime: number;
                   overview: string | null;
                   /** @enum {string} */
-                  episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                  episode_type?:
+                    | "standard"
+                    | "series_premiere"
+                    | "season_premiere"
+                    | "mid_season_finale"
+                    | "mid_season_premiere"
+                    | "season_finale"
+                    | "series_finale";
                   ids: {
                     trakt: number;
                     tvdb: number;
@@ -4344,11 +4605,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -4459,7 +4743,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -4509,7 +4804,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -4682,7 +4989,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -4732,7 +5050,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -4814,11 +5144,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -5001,7 +5354,14 @@ export interface operations {
                   runtime: number;
                   overview: string | null;
                   /** @enum {string} */
-                  episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                  episode_type?:
+                    | "standard"
+                    | "series_premiere"
+                    | "season_premiere"
+                    | "mid_season_finale"
+                    | "mid_season_premiere"
+                    | "season_finale"
+                    | "series_finale";
                   ids: {
                     trakt: number;
                     tvdb: number;
@@ -5114,7 +5474,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -5164,7 +5535,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -5192,7 +5575,14 @@ export interface operations {
                   runtime: number;
                   overview: string | null;
                   /** @enum {string} */
-                  episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                  episode_type?:
+                    | "standard"
+                    | "series_premiere"
+                    | "season_premiere"
+                    | "mid_season_finale"
+                    | "mid_season_premiere"
+                    | "season_finale"
+                    | "series_finale";
                   ids: {
                     trakt: number;
                     tvdb: number;
@@ -5233,11 +5623,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -5704,7 +6117,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -5754,7 +6178,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -5786,7 +6222,14 @@ export interface operations {
                   runtime: number;
                   overview: string | null;
                   /** @enum {string} */
-                  episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                  episode_type?:
+                    | "standard"
+                    | "series_premiere"
+                    | "season_premiere"
+                    | "mid_season_finale"
+                    | "mid_season_premiere"
+                    | "season_finale"
+                    | "series_finale";
                   ids: {
                     trakt: number;
                     tvdb: number;
@@ -5827,11 +6270,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -5946,7 +6412,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -5996,7 +6473,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -6061,7 +6550,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -6102,11 +6598,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6215,7 +6734,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -6256,11 +6782,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6375,7 +6924,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6425,7 +6985,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -6491,7 +7063,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -6532,11 +7111,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6646,7 +7248,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -6687,11 +7296,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6808,7 +7440,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -6858,7 +7501,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -6935,11 +7590,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -7150,7 +7828,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7200,7 +7889,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -7241,11 +7942,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7384,7 +8108,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7434,7 +8169,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -7475,11 +8222,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7618,7 +8388,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7668,7 +8449,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -7709,11 +8502,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -7824,7 +8640,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -7874,7 +8701,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -7943,11 +8782,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -8386,7 +9248,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -8436,7 +9309,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -8479,11 +9364,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -10343,11 +11251,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -12759,11 +13690,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -12837,7 +13791,14 @@ export interface operations {
                 runtime: number;
                 overview: string | null;
                 /** @enum {string} */
-                episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                episode_type?:
+                  | "standard"
+                  | "series_premiere"
+                  | "season_premiere"
+                  | "mid_season_finale"
+                  | "mid_season_premiere"
+                  | "season_finale"
+                  | "series_finale";
                 ids: {
                   trakt: number;
                   tvdb: number;
@@ -12865,7 +13826,14 @@ export interface operations {
                         runtime: number;
                         overview: string | null;
                         /** @enum {string} */
-                        episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                        episode_type?:
+                          | "standard"
+                          | "series_premiere"
+                          | "season_premiere"
+                          | "mid_season_finale"
+                          | "mid_season_premiere"
+                          | "season_finale"
+                          | "series_finale";
                         ids: {
                           trakt: number;
                           tvdb: number;
@@ -12941,11 +13909,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -13019,7 +14010,14 @@ export interface operations {
                 runtime: number;
                 overview: string | null;
                 /** @enum {string} */
-                episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                episode_type?:
+                  | "standard"
+                  | "series_premiere"
+                  | "season_premiere"
+                  | "mid_season_finale"
+                  | "mid_season_premiere"
+                  | "season_finale"
+                  | "series_finale";
                 ids: {
                   trakt: number;
                   tvdb: number;
@@ -13047,7 +14045,14 @@ export interface operations {
                         runtime: number;
                         overview: string | null;
                         /** @enum {string} */
-                        episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                        episode_type?:
+                          | "standard"
+                          | "series_premiere"
+                          | "season_premiere"
+                          | "mid_season_finale"
+                          | "mid_season_premiere"
+                          | "season_finale"
+                          | "series_finale";
                         ids: {
                           trakt: number;
                           tvdb: number;
@@ -14717,7 +15722,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -14767,7 +15783,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -14915,11 +15943,34 @@ export interface operations {
             };
             runtime?: number;
             /** @enum {string} */
-            certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+            certification?:
+              | "TV-14"
+              | "TV-Y7"
+              | "TV-Y"
+              | "NR"
+              | "TV-PG"
+              | "TV-MA"
+              | "TV-G"
+              | "G"
+              | "PG-13"
+              | "NC-17"
+              | "R"
+              | "PG";
             network?: string;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -15105,7 +16156,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -15155,7 +16217,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -15276,11 +16350,34 @@ export interface operations {
             };
             runtime?: number;
             /** @enum {string} */
-            certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+            certification?:
+              | "TV-14"
+              | "TV-Y7"
+              | "TV-Y"
+              | "NR"
+              | "TV-PG"
+              | "TV-MA"
+              | "TV-G"
+              | "G"
+              | "PG-13"
+              | "NC-17"
+              | "R"
+              | "PG";
             network?: string;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -15436,7 +16533,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -15486,7 +16594,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -15683,7 +16803,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -15733,7 +16864,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -16353,7 +17496,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -16403,7 +17557,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -16471,7 +17637,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -16521,7 +17698,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -16589,7 +17778,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -16639,7 +17839,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -16705,7 +17917,18 @@ export interface operations {
             runtime?: number;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -16755,7 +17978,19 @@ export interface operations {
               | "donghua"
             )[];
             /** @enum {string} */
-            certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+            certification?:
+              | "undefined"
+              | "Dark"
+              | "G"
+              | "NC-17"
+              | "NR"
+              | "PG"
+              | "PG-13"
+              | "R"
+              | "TVMA"
+              | "Unrated"
+              | "X"
+              | "Young";
             original_title?: string | null;
             colors?: {
               poster: string[];
@@ -16825,7 +18060,18 @@ export interface operations {
               runtime?: number;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -16875,7 +18121,19 @@ export interface operations {
                 | "donghua"
               )[];
               /** @enum {string} */
-              certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+              certification?:
+                | "undefined"
+                | "Dark"
+                | "G"
+                | "NC-17"
+                | "NR"
+                | "PG"
+                | "PG-13"
+                | "R"
+                | "TVMA"
+                | "Unrated"
+                | "X"
+                | "Young";
               original_title?: string | null;
               colors?: {
                 poster: string[];
@@ -16936,11 +18194,34 @@ export interface operations {
             };
             runtime?: number;
             /** @enum {string} */
-            certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+            certification?:
+              | "TV-14"
+              | "TV-Y7"
+              | "TV-Y"
+              | "NR"
+              | "TV-PG"
+              | "TV-MA"
+              | "TV-G"
+              | "G"
+              | "PG-13"
+              | "NC-17"
+              | "R"
+              | "PG";
             network?: string;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -17156,7 +18437,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -17184,7 +18472,14 @@ export interface operations {
                       runtime: number;
                       overview: string | null;
                       /** @enum {string} */
-                      episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+                      episode_type?:
+                        | "standard"
+                        | "series_premiere"
+                        | "season_premiere"
+                        | "mid_season_finale"
+                        | "mid_season_premiere"
+                        | "season_finale"
+                        | "series_finale";
                       ids: {
                         trakt: number;
                         tvdb: number;
@@ -17323,11 +18618,34 @@ export interface operations {
             };
             runtime?: number;
             /** @enum {string} */
-            certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+            certification?:
+              | "TV-14"
+              | "TV-Y7"
+              | "TV-Y"
+              | "NR"
+              | "TV-PG"
+              | "TV-MA"
+              | "TV-G"
+              | "G"
+              | "PG-13"
+              | "NC-17"
+              | "R"
+              | "PG";
             network?: string;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -17803,7 +19121,14 @@ export interface operations {
             runtime: number;
             overview: string | null;
             /** @enum {string} */
-            episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+            episode_type?:
+              | "standard"
+              | "series_premiere"
+              | "season_premiere"
+              | "mid_season_finale"
+              | "mid_season_premiere"
+              | "season_finale"
+              | "series_finale";
             ids: {
               trakt: number;
               tvdb: number;
@@ -18115,7 +19440,14 @@ export interface operations {
             runtime: number;
             overview: string | null;
             /** @enum {string} */
-            episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+            episode_type?:
+              | "standard"
+              | "series_premiere"
+              | "season_premiere"
+              | "mid_season_finale"
+              | "mid_season_premiere"
+              | "season_finale"
+              | "series_finale";
             ids: {
               trakt: number;
               tvdb: number;
@@ -18728,11 +20060,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -18859,11 +20214,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -18985,11 +20363,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -19109,11 +20510,34 @@ export interface operations {
             };
             runtime?: number;
             /** @enum {string} */
-            certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+            certification?:
+              | "TV-14"
+              | "TV-Y7"
+              | "TV-Y"
+              | "NR"
+              | "TV-PG"
+              | "TV-MA"
+              | "TV-G"
+              | "G"
+              | "PG-13"
+              | "NC-17"
+              | "R"
+              | "PG";
             network?: string;
             country?: string;
             /** @enum {string} */
-            status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+            status?:
+              | "released"
+              | "planned"
+              | "post production"
+              | "canceled"
+              | "in production"
+              | "rumored"
+              | "ended"
+              | "returning series"
+              | "pilot"
+              | "continuing"
+              | "upcoming";
             rating?: number;
             votes?: number;
             comment_count?: number;
@@ -19237,11 +20661,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -19355,7 +20802,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -19405,7 +20863,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -19445,11 +20915,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -19553,7 +21046,21 @@ export interface operations {
             /** @enum {string|null} */
             gender?: "male" | "female" | "non_binary" | null;
             /** @enum {string} */
-            known_for_department?: "acting" | "production" | "art" | "crew" | "costume & make-up" | "directing" | "writing" | "sound" | "camera" | "lighting" | "visual effects" | "editing" | "creator" | "created by";
+            known_for_department?:
+              | "acting"
+              | "production"
+              | "art"
+              | "crew"
+              | "costume & make-up"
+              | "directing"
+              | "writing"
+              | "sound"
+              | "camera"
+              | "lighting"
+              | "visual effects"
+              | "editing"
+              | "creator"
+              | "created by";
             updated_at?: string;
             images?: {
               headshot: string[];
@@ -19610,7 +21117,18 @@ export interface operations {
                 runtime?: number;
                 country?: string;
                 /** @enum {string} */
-                status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                status?:
+                  | "released"
+                  | "planned"
+                  | "post production"
+                  | "canceled"
+                  | "in production"
+                  | "rumored"
+                  | "ended"
+                  | "returning series"
+                  | "pilot"
+                  | "continuing"
+                  | "upcoming";
                 rating?: number;
                 votes?: number;
                 comment_count?: number;
@@ -19660,7 +21178,19 @@ export interface operations {
                   | "donghua"
                 )[];
                 /** @enum {string} */
-                certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                certification?:
+                  | "undefined"
+                  | "Dark"
+                  | "G"
+                  | "NC-17"
+                  | "NR"
+                  | "PG"
+                  | "PG-13"
+                  | "R"
+                  | "TVMA"
+                  | "Unrated"
+                  | "X"
+                  | "Young";
                 original_title?: string | null;
                 colors?: {
                   poster: string[];
@@ -19694,7 +21224,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -19744,7 +21285,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -19935,11 +21488,34 @@ export interface operations {
                 };
                 runtime?: number;
                 /** @enum {string} */
-                certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                certification?:
+                  | "TV-14"
+                  | "TV-Y7"
+                  | "TV-Y"
+                  | "NR"
+                  | "TV-PG"
+                  | "TV-MA"
+                  | "TV-G"
+                  | "G"
+                  | "PG-13"
+                  | "NC-17"
+                  | "R"
+                  | "PG";
                 network?: string;
                 country?: string;
                 /** @enum {string} */
-                status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                status?:
+                  | "released"
+                  | "planned"
+                  | "post production"
+                  | "canceled"
+                  | "in production"
+                  | "rumored"
+                  | "ended"
+                  | "returning series"
+                  | "pilot"
+                  | "continuing"
+                  | "upcoming";
                 rating?: number;
                 votes?: number;
                 comment_count?: number;
@@ -20029,11 +21605,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -20610,7 +22209,18 @@ export interface operations {
                   runtime?: number;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -20660,7 +22270,19 @@ export interface operations {
                     | "donghua"
                   )[];
                   /** @enum {string} */
-                  certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                  certification?:
+                    | "undefined"
+                    | "Dark"
+                    | "G"
+                    | "NC-17"
+                    | "NR"
+                    | "PG"
+                    | "PG-13"
+                    | "R"
+                    | "TVMA"
+                    | "Unrated"
+                    | "X"
+                    | "Young";
                   original_title?: string | null;
                   colors?: {
                     poster: string[];
@@ -20703,11 +22325,34 @@ export interface operations {
                   };
                   runtime?: number;
                   /** @enum {string} */
-                  certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                  certification?:
+                    | "TV-14"
+                    | "TV-Y7"
+                    | "TV-Y"
+                    | "NR"
+                    | "TV-PG"
+                    | "TV-MA"
+                    | "TV-G"
+                    | "G"
+                    | "PG-13"
+                    | "NC-17"
+                    | "R"
+                    | "PG";
                   network?: string;
                   country?: string;
                   /** @enum {string} */
-                  status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                  status?:
+                    | "released"
+                    | "planned"
+                    | "post production"
+                    | "canceled"
+                    | "in production"
+                    | "rumored"
+                    | "ended"
+                    | "returning series"
+                    | "pilot"
+                    | "continuing"
+                    | "upcoming";
                   rating?: number;
                   votes?: number;
                   comment_count?: number;
@@ -21262,7 +22907,18 @@ export interface operations {
                 runtime?: number;
                 country?: string;
                 /** @enum {string} */
-                status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                status?:
+                  | "released"
+                  | "planned"
+                  | "post production"
+                  | "canceled"
+                  | "in production"
+                  | "rumored"
+                  | "ended"
+                  | "returning series"
+                  | "pilot"
+                  | "continuing"
+                  | "upcoming";
                 rating?: number;
                 votes?: number;
                 comment_count?: number;
@@ -21312,7 +22968,19 @@ export interface operations {
                   | "donghua"
                 )[];
                 /** @enum {string} */
-                certification?: "undefined" | "Dark" | "G" | "NC-17" | "NR" | "PG" | "PG-13" | "R" | "TVMA" | "Unrated" | "X" | "Young";
+                certification?:
+                  | "undefined"
+                  | "Dark"
+                  | "G"
+                  | "NC-17"
+                  | "NR"
+                  | "PG"
+                  | "PG-13"
+                  | "R"
+                  | "TVMA"
+                  | "Unrated"
+                  | "X"
+                  | "Young";
                 original_title?: string | null;
                 colors?: {
                   poster: string[];
@@ -21349,11 +23017,34 @@ export interface operations {
                 };
                 runtime?: number;
                 /** @enum {string} */
-                certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+                certification?:
+                  | "TV-14"
+                  | "TV-Y7"
+                  | "TV-Y"
+                  | "NR"
+                  | "TV-PG"
+                  | "TV-MA"
+                  | "TV-G"
+                  | "G"
+                  | "PG-13"
+                  | "NC-17"
+                  | "R"
+                  | "PG";
                 network?: string;
                 country?: string;
                 /** @enum {string} */
-                status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+                status?:
+                  | "released"
+                  | "planned"
+                  | "post production"
+                  | "canceled"
+                  | "in production"
+                  | "rumored"
+                  | "ended"
+                  | "returning series"
+                  | "pilot"
+                  | "continuing"
+                  | "upcoming";
                 rating?: number;
                 votes?: number;
                 comment_count?: number;
@@ -21596,7 +23287,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -21637,11 +23335,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -21756,7 +23477,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -21797,11 +23525,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;
@@ -21916,7 +23667,14 @@ export interface operations {
               runtime: number;
               overview: string | null;
               /** @enum {string} */
-              episode_type?: "standard" | "series_premiere" | "season_premiere" | "mid_season_finale" | "mid_season_premiere" | "season_finale" | "series_finale";
+              episode_type?:
+                | "standard"
+                | "series_premiere"
+                | "season_premiere"
+                | "mid_season_finale"
+                | "mid_season_premiere"
+                | "season_finale"
+                | "series_finale";
               ids: {
                 trakt: number;
                 tvdb: number;
@@ -21957,11 +23715,34 @@ export interface operations {
               };
               runtime?: number;
               /** @enum {string} */
-              certification?: "TV-14" | "TV-Y7" | "TV-Y" | "NR" | "TV-PG" | "TV-MA" | "TV-G" | "G" | "PG-13" | "NC-17" | "R" | "PG";
+              certification?:
+                | "TV-14"
+                | "TV-Y7"
+                | "TV-Y"
+                | "NR"
+                | "TV-PG"
+                | "TV-MA"
+                | "TV-G"
+                | "G"
+                | "PG-13"
+                | "NC-17"
+                | "R"
+                | "PG";
               network?: string;
               country?: string;
               /** @enum {string} */
-              status?: "released" | "planned" | "post production" | "canceled" | "in production" | "rumored" | "ended" | "returning series" | "pilot" | "continuing" | "upcoming";
+              status?:
+                | "released"
+                | "planned"
+                | "post production"
+                | "canceled"
+                | "in production"
+                | "rumored"
+                | "ended"
+                | "returning series"
+                | "pilot"
+                | "continuing"
+                | "upcoming";
               rating?: number;
               votes?: number;
               comment_count?: number;

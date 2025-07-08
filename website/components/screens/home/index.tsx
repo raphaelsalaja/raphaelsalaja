@@ -10,7 +10,10 @@ export default function Home() {
           <span>—</span>
           <h1>Engineering Feelings</h1>
         </div>
-        <p className={styles.about}>I&apos;m someone who loves mixing different influences, genres and styles to create unique, innovative work. I enjoy pushing boundaries and exploring new ways to express myself without limitations.</p>
+        <p className={styles.about}>
+          I&apos;m someone who loves mixing different influences, genres and styles to create unique, innovative work. I
+          enjoy pushing boundaries and exploring new ways to express myself without limitations.
+        </p>
       </div>
       <section className={styles.sections}>
         <Posts category="projects" />

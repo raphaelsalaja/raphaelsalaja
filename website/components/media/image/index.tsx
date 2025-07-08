@@ -31,7 +31,12 @@ export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
         />
       )}
 
-      <motion.div style={{ position: "relative", width: "100%", height: "100%", zIndex: 2 }} initial={{ opacity: 0 }} animate={{ opacity: loaded ? 1 : 0 }} transition={{ duration: 0.4, ease: "easeOut" }}>
+      <motion.div
+        style={{ position: "relative", width: "100%", height: "100%", zIndex: 2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loaded ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         <NextImage {...props} onLoad={() => setLoaded(true)} />
       </motion.div>
     </div>

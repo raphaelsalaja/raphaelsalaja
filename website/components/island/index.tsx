@@ -89,14 +89,38 @@ const Island: React.FC<IslandProps> = (props) => {
                     overflow: "hidden",
                   }}
                 >
-                  <SteppedSimplexNoise color1="#56758f" color2="#91be6f" color3="#f94346" color4="#f9c54e" color5="#ffffff" stepsNumber={10} scale={0.07} speed={0.5} style={{ width: "100%", height: "100%" }} />
+                  <SteppedSimplexNoise
+                    color1="#56758f"
+                    color2="#91be6f"
+                    color3="#f94346"
+                    color4="#f9c54e"
+                    color5="#ffffff"
+                    stepsNumber={10}
+                    scale={0.07}
+                    speed={0.5}
+                    style={{ width: "100%", height: "100%" }}
+                  />
                 </motion.button>
 
                 <div className={styles.details}>
-                  <motion.p layout="position" layoutId="heading" className={styles.title} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <motion.p
+                    layout="position"
+                    layoutId="heading"
+                    className={styles.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
                     Cultivating Taste
                   </motion.p>
-                  <motion.p layout="position" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className={styles.author}>
+                  <motion.p
+                    layout="position"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className={styles.author}
+                  >
                     Raphael Salaja
                   </motion.p>
                 </div>
@@ -112,7 +136,15 @@ const Island: React.FC<IslandProps> = (props) => {
                 />
               </motion.div>
 
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className={styles.reading} layout layoutId="reading">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className={styles.reading}
+                layout
+                layoutId="reading"
+              >
                 <NumberFlowGroup>
                   <span
                     className={styles.time}
@@ -177,7 +209,14 @@ const Island: React.FC<IslandProps> = (props) => {
                   zIndex: 10,
                 }}
               >
-                <MeshGradient color1="#B7FC88" color2="#CD88FC" color3="#88EB1E" color4="#6FBA0A" speed={0.5} style={{ width: "100%", height: "100%" }} />
+                <MeshGradient
+                  color1="#B7FC88"
+                  color2="#CD88FC"
+                  color3="#88EB1E"
+                  color4="#6FBA0A"
+                  speed={0.5}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </motion.button>
 
               <AnimatePresence mode="popLayout" initial={false}>

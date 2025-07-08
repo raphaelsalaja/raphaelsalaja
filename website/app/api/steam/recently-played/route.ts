@@ -14,7 +14,10 @@ const steam = new SteamAPI(API_KEY);
 
 async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
   try {
-    const [recentGames, _ownedGames] = await Promise.all([steam.getUserRecentGames(steamId, 10), steam.getUserOwnedGames(steamId)]);
+    const [recentGames, _ownedGames] = await Promise.all([
+      steam.getUserRecentGames(steamId, 10),
+      steam.getUserOwnedGames(steamId),
+    ]);
 
     if (recentGames.length > 0) {
       recentGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));

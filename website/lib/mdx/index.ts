@@ -30,5 +30,7 @@ function getFiles(dir: string): string[] {
 
 export function getPosts(directory: string): Frontmatter[] {
   const files = getFiles(path.join(process.cwd(), "app", "(posts)", directory, "posts"));
-  return files.map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file))).filter((post): post is Frontmatter => post !== null);
+  return files
+    .map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file)))
+    .filter((post): post is Frontmatter => post !== null);
 }

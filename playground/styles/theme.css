@@ -72,5 +72,9 @@
   --duration-slow: 0.35s;
 
   /* shadows */
-  --shadow-dropdown: 0px -1px 0.5px 0px oklch(0% 0 0 / 6%) inset, 0px 1px 0.5px 0px oklch(0% 100% 0% / 40%) inset, 0px 0px 0px 1px oklch(0% 0 0 / 10%), 0px 4px 4px 2px oklch(0% 0 0 / 4%);
+  --shadow-dropdown:
+    0px -1px 0.5px 0px oklch(0% 0 0 / 6%) inset,
+    0px 1px 0.5px 0px oklch(0% 100% 0% / 40%) inset,
+    0px 0px 0px 1px oklch(0% 0 0 / 10%),
+    0px 4px 4px 2px oklch(0% 0 0 / 4%);
 }

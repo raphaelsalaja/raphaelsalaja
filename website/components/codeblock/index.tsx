@@ -74,7 +74,12 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
       <span className={styles.heading}>
         <Icon /> {props.children}
       </span>
-      <button type="button" disabled={isCopied} onClick={handleClickCopy} className={clsx(styles.copy, { [styles.copied]: isCopied })}>
+      <button
+        type="button"
+        disabled={isCopied}
+        onClick={handleClickCopy}
+        className={clsx(styles.copy, { [styles.copied]: isCopied })}
+      >
         <AnimatePresence mode="popLayout" initial={false}>
           {isCopied ? <CheckIcon {...iconProps} /> : <ClipboardIcon {...iconProps} />}
         </AnimatePresence>

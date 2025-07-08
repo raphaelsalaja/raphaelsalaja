@@ -42,4 +42,11 @@ const SliderThumb: React.FC<SliderThumbProps> = ({ ...props }) => {
   return <Slider.Thumb {...props} data-shunpo-slider-thumb />;
 };
 
-export { SliderRoot as Root, SliderValue as Value, SliderControl as Control, SliderTrack as Track, SliderIndicator as Indicator, SliderThumb as Thumb };
+export {
+  SliderRoot as Root,
+  SliderValue as Value,
+  SliderControl as Control,
+  SliderTrack as Track,
+  SliderIndicator as Indicator,
+  SliderThumb as Thumb,
+};
