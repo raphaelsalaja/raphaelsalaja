@@ -32,14 +32,13 @@
 }
 
 html {
+  overflow-x: hidden;
   color: var(--text-primary);
 
   &::-webkit-scrollbar {
     width: 0;
     background: transparent;
   }
-
-  overflow-x: hidden;
 }
 
 body {
@@ -49,11 +48,11 @@ body {
 
   main {
     display: flex;
-    gap: 48px;
-    padding: 96px 0;
-    width: 768px;
     flex-direction: column;
+    gap: 48px;
     align-items: flex-start;
+    width: 768px;
+    padding: 96px 0;
     isolation: isolate;
     transition: width 0.4s ease;
 

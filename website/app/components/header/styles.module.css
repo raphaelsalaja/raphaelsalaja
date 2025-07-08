@@ -1,11 +1,11 @@
 .header {
   /* Layout */
   display: flex;
-  height: 40px;
-  padding: 0 24px;
-  justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 24px;
 
   /* Style */
   border-bottom: 0.5px solid #dcdcdc;
@@ -18,14 +18,14 @@
 
 .trailing {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 
 .navigation {
   display: flex;
-  align-items: flex-end;
   gap: 8px;
+  align-items: flex-end;
 
   [data-icon] {
     width: 24px;
@@ -34,15 +34,15 @@
 
 .breadcrumbs {
   display: flex;
-  align-items: center;
   gap: 4px;
+  align-items: center;
 
   span {
-    color: #4d4d4d;
     font-size: 12px;
     font-style: normal;
     font-weight: 450;
     line-height: normal;
+    color: #4d4d4d;
     letter-spacing: 0.01px;
   }
 }

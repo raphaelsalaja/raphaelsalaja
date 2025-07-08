@@ -1,6 +1,6 @@
 "use client";
 
-import { CarrotCaret, CarrotContainer, type CarrotDescendant, CarrotInput, CarrotRoot } from "@rs/design/carrot";
+import { CarrotCaret, CarrotContainer, type CarrotDescendant, CarrotInput, CarrotRoot } from "@rs/experiments/carrot";
 import { useState } from "react";
 
 import styles from "./styles.module.scss";

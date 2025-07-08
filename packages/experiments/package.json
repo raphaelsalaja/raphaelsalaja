@@ -1,0 +1,20 @@
+{
+  "name": "@rs/experiments",
+  "version": "0.0.1",
+  "exports": {
+    "./carrot": "./carrot/index.tsx"
+  },
+  "devDependencies": {
+    "@rs/configuration": "workspace:*",
+    "turbo": "^2.2.3"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "slate": "^0.117.2",
+    "slate-history": "^0.113.1",
+    "slate-react": "^0.117.3"
+  }
+}

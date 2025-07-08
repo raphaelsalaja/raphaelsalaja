@@ -11,7 +11,6 @@ export const metadata = {
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
 });
 
@@ -22,7 +21,7 @@ export default async function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={clsx(inter.className)}>
+      <html lang="en" className={inter.className}>
         <body>
           <main data-animate>{children}</main>
         </body>

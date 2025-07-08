@@ -1,79 +1,78 @@
 .embla {
-  width: 100%;
-  margin: auto;
   --slide-height: 24px;
   --slide-spacing: 8px;
   --slide-size: calc(100% / 5);
+  width: 100%;
+  margin: auto;
 }
 
 .embla__viewport {
   position: relative;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 .embla__container {
   display: flex;
-  touch-action: pan-y pinch-zoom;
   flex-direction: column;
   height: calc(var(--slide-spacing) + var(--slide-height) * var(--slide-count));
   max-height: 128px;
   margin-top: calc(var(--slide-spacing) * -1);
+  touch-action: pan-y pinch-zoom;
 }
 .embla__slide {
-  transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
   min-height: 0;
-  color: white;
   padding-top: var(--slide-spacing);
+  color: white;
+  transform: translate3d(0, 0, 0);
 }
 .embla__slide__number {
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  color: var(--white-a8);
-
-  &:hover {
-    color: var(--white-a12);
-  }
-
   display: flex;
   align-items: center;
   justify-content: start;
   height: 100%;
+  font-weight: 400;
+
+  color: var(--white-a8);
+  cursor: pointer;
   user-select: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--white-a12);
+  }
 }
 
 .embla__viewport:before,
 .embla__viewport:after {
   position: absolute;
-  left: 0;
   right: 0;
-  content: "";
+  left: 0;
+  z-index: 1;
   display: block;
   height: calc(50% - 24px / 2);
-  z-index: 1;
   pointer-events: none;
+  content: "";
 }
 .embla__viewport:before {
   top: 0;
-  border-width: 0.5px;
+  background: linear-gradient(to bottom, var(--black-a12) 0%, var(--black-a6) 100%);
   border-style: solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
+  border-width: 0.5px;
+  border-top: 0;
   border-right: 0;
   border-left: 0;
-  border-top: 0;
-  background: linear-gradient(to bottom, var(--black-a12) 0%, var(--black-a6) 100%);
+  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
+  border-image-slice: 1;
 }
 .embla__viewport:after {
   bottom: 0px;
-  border-width: 0.5px;
-  border-style: solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
-  border-right: 0;
-  border-left: 0;
-  border-bottom: 0;
   background: linear-gradient(to bottom, var(--black-a6) 0%, var(--black-a12) 100%);
+  border-style: solid;
+  border-width: 0.5px;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-image-source: linear-gradient(to right, var(--white-a5) 0%, var(--white-a1) 100%);
+  border-image-slice: 1;
 }

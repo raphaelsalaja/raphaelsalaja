@@ -13,21 +13,21 @@ const fonts = [
 export default function Page() {
   return (
     <Select.Root items={fonts}>
-      <Select.Trigger>
+      <Select.Trigger style={{ maxWidth: "200px" }}>
         <Select.Value />
         <Select.Icon>
-          <ChevronUpDownIcon />
+          <Chevron />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Positioner sideOffset={8}>
+        <Select.Positioner>
           <Select.Popup>
             {fonts.map(({ label, value }) => (
               <Select.Item key={label} value={value}>
-                <Select.ItemIndicator>
-                  <CheckIcon />
-                </Select.ItemIndicator>
                 <Select.ItemText>{label}</Select.ItemText>
+                <Select.ItemIndicator>
+                  <Check />
+                </Select.ItemIndicator>
               </Select.Item>
             ))}
           </Select.Popup>
@@ -37,21 +37,30 @@ export default function Page() {
   );
 }
 
-function ChevronUpDownIcon(props: React.ComponentProps<"svg">) {
+function Chevron(props: React.ComponentProps<"svg">) {
   return (
-    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="currentcolor" strokeWidth="1.5" {...props}>
-      <title>Chevron Up Down Icon</title>
-      <path d="M0.5 4.5L4 1.5L7.5 4.5" />
-      <path d="M0.5 7.5L4 10.5L7.5 7.5" />
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Chevron Icon</title>
+      <path
+        d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 }
 
-function CheckIcon(props: React.ComponentProps<"svg">) {
+function Check(props: React.ComponentProps<"svg">) {
   return (
-    <svg fill="currentcolor" width="10" height="10" viewBox="0 0 10 10" {...props}>
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <title>Check Icon</title>
-      <path d="M9.1603 1.12218C9.50684 1.34873 9.60427 1.81354 9.37792 2.16038L5.13603 8.66012C5.01614 8.8438 4.82192 8.96576 4.60451 8.99384C4.3871 9.02194 4.1683 8.95335 4.00574 8.80615L1.24664 6.30769C0.939709 6.02975 0.916013 5.55541 1.19372 5.24822C1.47142 4.94102 1.94536 4.91731 2.2523 5.19524L4.36085 7.10461L8.12299 1.33999C8.34934 0.993152 8.81376 0.895638 9.1603 1.12218Z" />
+      <path
+        d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 }

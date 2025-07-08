@@ -37,15 +37,15 @@
 
   blockquote {
     padding: 0 16px;
-    border-left: 2px solid var(--stroke-alpha);
     color: var(--text-secondary);
+    border-left: 2px solid var(--stroke-alpha);
   }
 
-  ul {
+  [data-mdx-article] ul {
     li {
-      list-style-type: square;
-      margin-left: 16px;
       padding: 4px;
+      margin-left: 16px;
+      list-style-type: square;
 
       &::marker {
         color: var(--text-tertiary);

@@ -18,48 +18,48 @@
 
 .compact {
   display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
   width: 256px;
   height: 40px;
   padding: 0px 8px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
 }
 
 .expanded {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
   width: 384px;
   padding: 24px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
 
   .heading {
     display: flex;
-    align-items: center;
     gap: 12px;
+    align-items: center;
     width: 100%;
 
     .details {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 2px;
+      align-items: flex-start;
 
       .title {
         overflow: hidden;
-        color: var(--text);
+        text-overflow: ellipsis;
         font-size: 14px;
         font-weight: 500;
+        color: var(--text);
         white-space: nowrap;
-        text-overflow: ellipsis;
       }
 
       .author {
         overflow: hidden;
-        color: var(--text-secondary);
         text-overflow: ellipsis;
         font-size: 14px;
+        color: var(--text-secondary);
       }
     }
   }
@@ -71,37 +71,37 @@
 
     .title {
       display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
       flex: 1 0 0;
+      -webkit-box-orient: vertical;
 
       overflow: hidden;
-      color: var(--text);
       text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
       line-height: 100%; /* 14px */
-      letter-spacing: -0.09px;
+      color: var(--text);
       text-align: left;
+      letter-spacing: -0.09px;
     }
   }
 }
 
 .text {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   flex: 1 0 0;
-
-  color: var(--text);
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 14px */
-  letter-spacing: -0.09px;
+
+  color: var(--text);
   text-align: left;
+  letter-spacing: -0.09px;
 }
 
 .progress {
@@ -112,19 +112,19 @@
 
 .reading {
   display: flex;
-  width: 100%;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 
   justify-items: center;
+  width: 100%;
 
   .time {
-    color: var(--text-tertiary);
-    font-size: 12px;
-    font-weight: 400;
-    min-width: 40px;
     display: flex;
     gap: -0.09px;
+    min-width: 40px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-tertiary);
   }
 
   .time:first-child {

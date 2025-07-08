@@ -1,10 +1,9 @@
 "use client";
 
 import { createContext, Fragment, useContext, useMemo, useRef, useState } from "react";
-import { createEditor, Descendant, Editor } from "slate";
+import { createEditor, type Descendant, type Editor } from "slate";
 import { withHistory } from "slate-history";
-import { Editable } from "slate-react";
-import { Slate, withReact } from "slate-react";
+import { Editable, Slate, withReact } from "slate-react";
 import { useCaret } from "../hooks/use-caret";
 
 export type CaretState = {
@@ -117,9 +116,9 @@ function CarrotCaret() {
 
   return (
     <Fragment>
-      {selectionRects.map((rectangle, i) => (
+      {selectionRects.map((rectangle) => (
         <div
-          key={i}
+          key={`${rectangle.top}-${rectangle.left}-${rectangle.width}-${rectangle.height}`}
           data-rs-carrot-caret
           data-selecting={isSelecting}
           style={{
@@ -143,13 +142,7 @@ function CarrotInput(props: CarrotInputProps) {
 
   return (
     // @ts-ignore
-    <Editable
-      {...props}
-      data-rs-carrot-editable
-      style={{ caretColor: "transparent" }}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
-    />
+    <Editable {...props} data-rs-carrot-editable style={{ caretColor: "transparent" }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
   );
 }
 

@@ -24,6 +24,7 @@
     "@remotion/media-parser": "4.0.306",
     "@rs/configuration": "workspace:*",
     "@rs/design": "workspace:*",
+    "@rs/experiments": "workspace:*",
     "@rs/i18n": "workspace:*",
     "@rs/styles": "workspace:*",
     "@statsfm/spotify.js": "^1.13.0",

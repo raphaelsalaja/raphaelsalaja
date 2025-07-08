@@ -34,8 +34,8 @@ const Portal: React.FC<PortalProps> = ({ ...props }) => {
 
 interface PositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
 
-const Positioner: React.FC<PositionerProps> = ({ ...props }) => {
-  return <Select.Positioner data-rs-select-positioner {...props} />;
+const Positioner: React.FC<PositionerProps> = ({ alignItemWithTrigger = false, sideOffset = 8, ...props }) => {
+  return <Select.Positioner alignItemWithTrigger={alignItemWithTrigger} sideOffset={sideOffset} data-rs-select-positioner {...props} />;
 };
 
 interface PopupProps extends React.ComponentProps<typeof Select.Popup> {}

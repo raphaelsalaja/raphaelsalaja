@@ -1,6 +1,6 @@
 .heading {
-  display: flex;
   position: relative;
+  display: flex;
   gap: 8px;
   align-items: center;
   width: fit-content;
