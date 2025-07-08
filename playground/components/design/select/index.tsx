@@ -2,18 +2,34 @@
 
 import * as Select from "@rs/design/select";
 
-const fonts = [
-  { label: "Select font", value: null },
-  { label: "Sans-serif", value: "sans" },
-  { label: "Serif", value: "serif" },
-  { label: "Monospace", value: "mono" },
-  { label: "Cursive", value: "cursive" },
+const items = [
+  {
+    label: "Serif & Sans-serif",
+    options: [
+      { label: "Sans-serif", value: "sans" },
+      { label: "Serif", value: "serif" },
+    ],
+  },
+  {
+    label: "Monospaced & Cursive",
+    options: [
+      { label: "Monospace", value: "mono" },
+      { label: "Cursive", value: "cursive" },
+    ],
+  },
 ];
 
-export default function Page() {
+const map = items
+  .flatMap((group) => group.options)
+  .reduce<Record<string, string>>((acc, { value, label }) => {
+    if (value != null) acc[value] = label;
+    return acc;
+  }, {});
+
+export function SelectComponent() {
   return (
-    <Select.Root items={fonts}>
-      <Select.Trigger style={{ maxWidth: "200px" }}>
+    <Select.Root items={map}>
+      <Select.Trigger style={{ width: 256 }}>
         <Select.Value />
         <Select.Icon>
           <Chevron />
@@ -22,13 +38,19 @@ export default function Page() {
       <Select.Portal>
         <Select.Positioner>
           <Select.Popup>
-            {fonts.map(({ label, value }) => (
-              <Select.Item key={label} value={value}>
-                <Select.ItemText>{label}</Select.ItemText>
-                <Select.ItemIndicator>
-                  <Check />
-                </Select.ItemIndicator>
-              </Select.Item>
+            {items.map((group) => (
+              <Select.Group key={group.label}>
+                <Select.GroupLabel>{group.label}</Select.GroupLabel>
+                {group.options.map(({ label, value }) => (
+                  <Select.Item key={value} value={value}>
+                    <Select.ItemText>{label}</Select.ItemText>
+                    <Select.ItemIndicator>
+                      <Check />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+                {group !== items[items.length - 1] && <Select.Separator />}
+              </Select.Group>
             ))}
           </Select.Popup>
         </Select.Positioner>

@@ -1,6 +1,6 @@
 import * as Accordion from "@rs/design/accordion";
 
-export default function Page() {
+export const AccordionComponent = () => {
   return (
     <Accordion.Root>
       <Accordion.Item>
@@ -33,4 +33,4 @@ export default function Page() {
       </Accordion.Item>
     </Accordion.Root>
   );
-}
+};

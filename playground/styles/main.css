@@ -21,8 +21,8 @@ body {
     flex-direction: column;
     gap: 48px;
     align-items: flex-start;
-    width: 768px;
-    padding: 96px 0;
+    width: 640px;
+    padding: 128px 0;
     isolation: isolate;
     transition: width 0.4s ease;
 

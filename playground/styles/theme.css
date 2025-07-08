@@ -41,6 +41,7 @@
 
   /* font weight */
   --font-weight-light: 300;
+  --font-weight-flat: 400;
   --font-weight-normal: 450;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -72,9 +73,6 @@
   --duration-slow: 0.35s;
 
   /* shadows */
-  --shadow-dropdown:
-    0px -1px 0.5px 0px oklch(0% 0 0 / 6%) inset,
-    0px 1px 0.5px 0px oklch(0% 100% 0% / 40%) inset,
-    0px 0px 0px 1px oklch(0% 0 0 / 10%),
-    0px 4px 4px 2px oklch(0% 0 0 / 4%);
+
+  --shadow-dropdown: oklch(0 0 0 / 0.02) 0px 6px 18px, oklch(0 0 0 / 0.04) 0px 3px 9px, oklch(0 0 0 / 0.04) 0px 1px 1px;
 }
