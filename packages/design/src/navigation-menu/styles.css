@@ -3,20 +3,20 @@
   position: relative;
   z-index: 10;
   display: flex;
-  width: 100%;
   justify-content: center;
+  width: 100%;
 }
 
 /* NavigationMenu List */
 [data-shunpo-navigation-menu-list] {
   display: flex;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
   background-color: var(--background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.5rem;
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.1),
     0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -30,22 +30,22 @@
 /* NavigationMenu Trigger */
 [data-shunpo-navigation-menu-trigger] {
   display: flex;
-  align-items: center;
   gap: 0.25rem;
+  align-items: center;
   padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
   background-color: transparent;
   border: none;
-  cursor: pointer;
-  outline: none;
+  border-radius: 0.25rem;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
-  user-select: none;
-  white-space: nowrap;
 }
 
 [data-shunpo-navigation-menu-trigger]:hover,
@@ -69,8 +69,8 @@
 }
 
 [data-shunpo-navigation-menu-icon]::before {
-  content: "▼";
   font-size: 0.75rem;
+  content: "▼";
   opacity: 0.7;
 }
 
@@ -99,22 +99,22 @@
 /* NavigationMenu Link */
 [data-shunpo-navigation-menu-link] {
   display: flex;
-  align-items: center;
   gap: 0.25rem;
+  align-items: center;
   padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  text-decoration: none;
   color: var(--text-color, #374151);
+  white-space: nowrap;
+  text-decoration: none;
   cursor: pointer;
+  user-select: none;
   outline: none;
+  border-radius: 0.25rem;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
-  user-select: none;
-  white-space: nowrap;
 }
 
 [data-shunpo-navigation-menu-link]:hover {
@@ -143,22 +143,22 @@
   top: 100%;
   left: 0;
   z-index: 1000;
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 /* NavigationMenu Popup */
 [data-shunpo-navigation-menu-popup] {
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
   background-color: var(--popup-background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 0.5rem;
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  z-index: 1000;
-  margin-top: 0.5rem;
 }
 
 [data-shunpo-navigation-menu-popup][data-open] {
@@ -171,20 +171,20 @@
 
 /* NavigationMenu Arrow */
 [data-shunpo-navigation-menu-arrow] {
+  z-index: 1001;
   fill: var(--popup-background-color, #ffffff);
   stroke: var(--border-color, #e2e8f0);
   stroke-width: 1px;
-  z-index: 1001;
 }
 
 /* NavigationMenu Viewport */
 [data-shunpo-navigation-menu-viewport] {
   position: relative;
-  overflow: hidden;
   width: 100%;
+  height: var(--height);
+  overflow: hidden;
   background-color: var(--popup-background-color, #ffffff);
   border-radius: 0.5rem;
-  height: var(--height);
   transition:
     height 0.3s ease,
     width 0.3s ease;
@@ -192,9 +192,9 @@
 
 /* Content area within viewport */
 [data-shunpo-navigation-menu-viewport] > * {
-  padding: 1rem;
   display: grid;
   gap: 1rem;
+  padding: 1rem;
 }
 
 /* Responsive adjustments */
@@ -211,9 +211,9 @@
 
   [data-shunpo-navigation-menu-popup] {
     margin-top: 0;
-    border-radius: 0;
-    border-left: none;
     border-right: none;
+    border-left: none;
+    border-radius: 0;
   }
 }
 
@@ -268,8 +268,8 @@
   [data-shunpo-navigation-menu-popup],
   [data-shunpo-navigation-menu-viewport],
   [data-shunpo-navigation-menu-icon] {
-    animation: none;
     transition: none;
+    animation: none;
   }
 }
 

@@ -5,15 +5,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  user-select: none;
   background-color: var(--color-surface);
   border: 2px solid var(--color-border);
   border-radius: 4px;
-  cursor: pointer;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease,
     transform 0.1s ease;
-  user-select: none;
 }
 
 /* Size variants */
@@ -34,8 +34,8 @@
 
 /* Hover state */
 [data-shunpo-checkbox-root]:hover:not([data-disabled]) {
-  border-color: var(--color-border-hover);
   background-color: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
 }
 
 /* Focus state */
@@ -51,9 +51,9 @@
 
 /* Checked state */
 [data-shunpo-checkbox-root][data-checked] {
+  color: var(--color-accent-contrast);
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-accent-contrast);
 }
 
 [data-shunpo-checkbox-root][data-checked]:hover:not([data-disabled]) {
@@ -63,16 +63,16 @@
 
 /* Indeterminate state */
 [data-shunpo-checkbox-root][data-indeterminate] {
+  color: var(--color-accent-contrast);
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-accent-contrast);
 }
 
 /* Disabled state */
 [data-shunpo-checkbox-root][data-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
   pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Indicator */
@@ -98,8 +98,8 @@
 
 /* Default icons for different states */
 [data-shunpo-checkbox-indicator]::before {
-  content: "";
   display: block;
+  content: "";
   background-color: currentColor;
   mask-repeat: no-repeat;
   mask-position: center;

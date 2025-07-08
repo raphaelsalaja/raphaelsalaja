@@ -28,8 +28,8 @@
 /* Form layouts */
 [data-shunpo-form][data-layout="horizontal"] {
   flex-direction: row;
-  align-items: flex-start;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 [data-shunpo-form][data-layout="grid"] {
@@ -40,15 +40,15 @@
 
 /* Form with fieldsets */
 [data-shunpo-form] fieldset {
-  border: 1px solid var(--border-color, #e2e8f0);
-  border-radius: 0.5rem;
   padding: 1rem;
   margin: 0;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.5rem;
 }
 
 [data-shunpo-form] legend {
-  font-weight: 600;
   padding: 0 0.5rem;
+  font-weight: 600;
   color: var(--text-color, #374151);
 }
 
@@ -63,8 +63,8 @@
 
 /* Disabled form */
 [data-shunpo-form][data-disabled] {
-  opacity: 0.6;
   pointer-events: none;
+  opacity: 0.6;
 }
 
 /* Loading state */
@@ -73,8 +73,8 @@
 }
 
 [data-shunpo-form][data-loading] button[type="submit"] {
-  opacity: 0.7;
   cursor: wait;
+  opacity: 0.7;
 }
 
 /* Responsive adjustments */

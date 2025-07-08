@@ -11,9 +11,9 @@
 }
 
 [data-shunpo-breadcrumb-list-item] {
-  color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
+  color: var(--text-secondary);
   transition: color 0.2s ease;
 
   &:hover {
@@ -22,11 +22,11 @@
 }
 
 [data-shunpo-breadcrumb-list-item-link] {
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
   font-size: 12px;
   font-weight: 500;
+  color: var(--text-secondary);
   cursor: pointer;
+  transition: color 0.2s ease;
 
   &:hover {
     color: var(--text-primary);
@@ -34,11 +34,11 @@
 }
 
 [data-shunpo-breadcrumb-current-page] {
-  color: var(--text-primary);
   font: inherit;
+  color: var(--text-primary);
 }
 
 [data-shunpo-breadcrumb-list-item-separator] {
-  color: var(--text-secondary);
   font: inherit;
+  color: var(--text-secondary);
 }

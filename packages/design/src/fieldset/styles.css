@@ -1,15 +1,15 @@
 /* Fieldset Root */
 [data-shunpo-fieldset-root] {
-  border: 1px solid var(--border-color, #e2e8f0);
-  border-radius: 0.5rem;
+  min-width: 0;
   padding: 1rem;
   margin: 0;
-  min-width: 0;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.5rem;
 }
 
 [data-shunpo-fieldset-root][data-disabled] {
-  opacity: 0.6;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 [data-shunpo-fieldset-root][data-disabled] * {
@@ -18,31 +18,31 @@
 
 /* Fieldset Legend */
 [data-shunpo-fieldset-legend] {
-  font-weight: 600;
+  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: -0.5rem;
   font-size: 0.875rem;
+  font-weight: 600;
   line-height: 1.25rem;
   color: var(--text-color, #374151);
-  padding: 0 0.5rem;
-  margin-left: -0.5rem;
-  margin-bottom: 0.5rem;
   background-color: var(--background-color, #ffffff);
 }
 
 /* Variants */
 [data-shunpo-fieldset-root][data-variant="outlined"] {
-  border: 2px solid var(--border-color, #e2e8f0);
   background-color: transparent;
+  border: 2px solid var(--border-color, #e2e8f0);
 }
 
 [data-shunpo-fieldset-root][data-variant="filled"] {
-  border: none;
   background-color: var(--surface-color, #f8fafc);
+  border: none;
 }
 
 [data-shunpo-fieldset-root][data-variant="ghost"] {
-  border: none;
-  background-color: transparent;
   padding: 0.5rem;
+  background-color: transparent;
+  border: none;
 }
 
 /* Size variants */
@@ -51,8 +51,8 @@
 }
 
 [data-shunpo-fieldset-root][data-size="sm"] [data-shunpo-fieldset-legend] {
-  font-size: 0.75rem;
   margin-bottom: 0.375rem;
+  font-size: 0.75rem;
 }
 
 [data-shunpo-fieldset-root][data-size="lg"] {
@@ -60,8 +60,8 @@
 }
 
 [data-shunpo-fieldset-root][data-size="lg"] [data-shunpo-fieldset-legend] {
-  font-size: 1rem;
   margin-bottom: 0.75rem;
+  font-size: 1rem;
 }
 
 /* Error state */

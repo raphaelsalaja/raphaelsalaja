@@ -16,8 +16,8 @@
 
 /* Disabled state */
 [data-shunpo-checkbox-group-root][data-disabled] {
-  opacity: 0.5;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 /* Dense spacing variant */

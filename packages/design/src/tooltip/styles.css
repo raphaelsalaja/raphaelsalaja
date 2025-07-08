@@ -5,14 +5,14 @@
   z-index: 1100;
   max-width: 300px;
   padding: 8px 12px;
-  background-color: var(--color-surface-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 12px;
   line-height: 1.4;
   color: var(--color-text-primary);
   word-wrap: break-word;
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: scale(0.95);
   transition:
@@ -44,12 +44,12 @@
 /* Arrow */
 [data-shunpo-tooltip-arrow] {
   position: absolute;
+  z-index: -1;
   width: 8px;
   height: 8px;
   background-color: var(--color-surface-secondary);
   border: 1px solid var(--color-border);
   transform: rotate(45deg);
-  z-index: -1;
 }
 
 [data-shunpo-tooltip-popup][data-side="top"] [data-shunpo-tooltip-arrow] {
@@ -60,20 +60,20 @@
 
 [data-shunpo-tooltip-popup][data-side="bottom"] [data-shunpo-tooltip-arrow] {
   top: -5px;
-  border-bottom: none;
   border-right: none;
+  border-bottom: none;
 }
 
 [data-shunpo-tooltip-popup][data-side="left"] [data-shunpo-tooltip-arrow] {
   right: -5px;
-  border-left: none;
   border-bottom: none;
+  border-left: none;
 }
 
 [data-shunpo-tooltip-popup][data-side="right"] [data-shunpo-tooltip-arrow] {
   left: -5px;
-  border-right: none;
   border-top: none;
+  border-right: none;
 }
 
 /* Trigger accessibility */
@@ -95,9 +95,9 @@
 
 /* Dark theme variant */
 [data-theme="dark"] [data-shunpo-tooltip-popup] {
+  color: var(--color-gray-100);
   background-color: var(--color-gray-900);
   border-color: var(--color-gray-700);
-  color: var(--color-gray-100);
 }
 
 [data-theme="dark"] [data-shunpo-tooltip-arrow] {
@@ -108,16 +108,16 @@
 /* High contrast variant */
 @media (prefers-contrast: high) {
   [data-shunpo-tooltip-popup] {
-    border-width: 2px;
     font-weight: 500;
+    border-width: 2px;
   }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   [data-shunpo-tooltip-popup] {
-    transition: opacity 0.1s ease;
     transform: none;
+    transition: opacity 0.1s ease;
   }
 
   [data-shunpo-tooltip-popup][data-starting-style],

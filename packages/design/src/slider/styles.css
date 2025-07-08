@@ -5,14 +5,14 @@
   display: flex;
   align-items: center;
   width: 100%;
-  user-select: none;
   touch-action: none;
+  user-select: none;
 }
 
 [data-shunpo-slider-root][data-orientation="vertical"] {
   flex-direction: column;
-  height: 200px;
   width: auto;
+  height: 200px;
 }
 
 /* Size variants */
@@ -48,15 +48,15 @@
   position: absolute;
   top: -32px;
   left: 0;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-text-secondary);
-  background-color: var(--color-surface);
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 [data-shunpo-slider-root][data-orientation="vertical"] [data-shunpo-slider-value] {
@@ -82,10 +82,10 @@
 /* Track */
 [data-shunpo-slider-track] {
   position: relative;
+  flex: 1;
+  overflow: hidden;
   background-color: var(--color-surface-secondary);
   border-radius: 9999px;
-  overflow: hidden;
-  flex: 1;
 }
 
 [data-shunpo-slider-root][data-size="sm"] [data-shunpo-slider-track] {
@@ -129,33 +129,33 @@
 }
 
 [data-shunpo-slider-root][data-orientation="horizontal"] [data-shunpo-slider-indicator] {
-  height: 100%;
-  left: 0;
   top: 0;
+  left: 0;
+  height: 100%;
 }
 
 [data-shunpo-slider-root][data-orientation="vertical"] [data-shunpo-slider-indicator] {
-  width: 100%;
   bottom: 0;
   left: 0;
+  width: 100%;
 }
 
 /* Thumb */
 [data-shunpo-slider-thumb] {
   position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: grab;
+  user-select: none;
   background-color: var(--color-surface);
   border: 2px solid var(--color-accent);
   border-radius: 50%;
-  cursor: grab;
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
     border-color 0.15s ease;
-  user-select: none;
-  z-index: 1;
 }
 
 /* Size-specific thumb dimensions */
@@ -176,8 +176,8 @@
 
 /* Thumb states */
 [data-shunpo-slider-thumb]:hover {
-  transform: scale(1.1);
   box-shadow: 0 0 0 8px rgba(var(--color-accent-rgb), 0.1);
+  transform: scale(1.1);
 }
 
 [data-shunpo-slider-thumb]:focus-visible {
@@ -188,14 +188,14 @@
 [data-shunpo-slider-thumb]:active,
 [data-shunpo-slider-thumb][data-dragging] {
   cursor: grabbing;
-  transform: scale(1.15);
   box-shadow: 0 0 0 12px rgba(var(--color-accent-rgb), 0.15);
+  transform: scale(1.15);
 }
 
 /* Disabled state */
 [data-shunpo-slider-root][data-disabled] {
-  opacity: 0.5;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 [data-shunpo-slider-root][data-disabled] [data-shunpo-slider-thumb] {

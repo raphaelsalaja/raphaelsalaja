@@ -60,7 +60,7 @@ export const Posts = async ({
     <div className={styles.posts}>
       {!index && (
         <div className={styles.heading}>
-          <Button.default asChild variant="ghost">
+          <Button.default variant="ghost">
             <Link href={`/${category}`} className={styles.title}>
               <h1 className={styles.name}>{title}</h1>
               <h2 className={styles.count}>{length}</h2>

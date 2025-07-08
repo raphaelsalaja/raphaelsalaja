@@ -7,7 +7,7 @@
     "scan": "next dev --turbopack & npx react-scan@latest localhost:3000",
     "build": "next build",
     "start": "next start",
-    "lint": "pnpm biome check --fix --unsafe . && npx stylelint \"**/*.scss\" --fix",
+    "lint": "pnpm biome check --fix --unsafe . --verbose && npx stylelint \"**/*.scss\" --fix",
     "lint:styles": "npx stylelint \"**/*.scss\" --fix",
     "generate:health": "npx supabase gen types typescript --project-id hegcyvdenbmwgjreiapq --schema public > data/health/types/codegen.types.ts"
   },

@@ -2,14 +2,14 @@
 
 [data-shunpo-toast-viewport] {
   position: fixed;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
   max-height: calc(100vh - 40px);
   overflow: hidden;
   pointer-events: none;
@@ -21,42 +21,42 @@
 
 [data-shunpo-toast-root] {
   position: relative;
+  z-index: calc(1000 - var(--toast-index));
   display: flex;
-  align-items: flex-start;
   gap: 12px;
+  align-items: flex-start;
   width: 100%;
   padding: 16px;
+  pointer-events: auto;
+  cursor: default;
+  user-select: none;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow:
     0 10px 38px -10px rgba(22, 23, 24, 0.35),
     0 10px 20px -15px rgba(22, 23, 24, 0.2);
-  pointer-events: auto;
-  cursor: default;
-  user-select: none;
-  transform: scale(calc(1 - (0.1 * var(--toast-index))));
   opacity: 1;
+  transform: scale(calc(1 - (0.1 * var(--toast-index))));
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  z-index: calc(1000 - var(--toast-index));
 }
 
 /* Variant styling */
 [data-shunpo-toast-root][data-variant="success"] {
-  border-color: var(--color-success);
   background-color: var(--color-success-subtle);
+  border-color: var(--color-success);
 }
 
 [data-shunpo-toast-root][data-variant="warning"] {
-  border-color: var(--color-warning);
   background-color: var(--color-warning-subtle);
+  border-color: var(--color-warning);
 }
 
 [data-shunpo-toast-root][data-variant="error"] {
-  border-color: var(--color-error);
   background-color: var(--color-error-subtle);
+  border-color: var(--color-error);
 }
 
 /* Expanded state */
@@ -97,8 +97,8 @@
 
 /* Content */
 .toast-content {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 4px;
 }
@@ -125,13 +125,13 @@
   justify-content: center;
   padding: 6px 12px;
   margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
   background-color: transparent;
   border: 1px solid var(--color-border);
   border-radius: 4px;
-  color: var(--color-text-primary);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease;
@@ -158,19 +158,19 @@
   width: 24px;
   height: 24px;
   padding: 0;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
   background: none;
   border: none;
   border-radius: 4px;
-  color: var(--color-text-tertiary);
-  cursor: pointer;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
 }
 
 [data-shunpo-toast-close]:hover {
-  background-color: var(--color-surface-secondary);
   color: var(--color-text-secondary);
+  background-color: var(--color-surface-secondary);
 }
 
 [data-shunpo-toast-close]:focus-visible {
@@ -179,10 +179,10 @@
 }
 
 [data-shunpo-toast-close]::before {
-  content: "";
   display: block;
   width: 12px;
   height: 12px;
+  content: "";
   background-color: currentColor;
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
   mask-repeat: no-repeat;
@@ -205,8 +205,8 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   [data-shunpo-toast-viewport] {
-    bottom: 16px;
     right: 16px;
+    bottom: 16px;
     left: 16px;
     max-width: none;
   }

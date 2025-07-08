@@ -3,15 +3,15 @@
 
 /* PreviewCard Trigger */
 [data-shunpo-preview-card-trigger] {
-  cursor: pointer;
-  outline: none;
-  transition: color 0.15s ease;
-  text-decoration: none;
-  color: var(--link-color, #3b82f6);
-  border: none;
-  background: transparent;
   padding: 0;
   font: inherit;
+  color: var(--link-color, #3b82f6);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  border: none;
+  transition: color 0.15s ease;
 }
 
 [data-shunpo-preview-card-trigger]:hover {
@@ -20,8 +20,8 @@
 }
 
 [data-shunpo-preview-card-trigger]:focus-visible {
-  box-shadow: 0 0 0 2px var(--focus-color, #3b82f6);
   border-radius: 0.125rem;
+  box-shadow: 0 0 0 2px var(--focus-color, #3b82f6);
 }
 
 /* PreviewCard Portal */
@@ -43,16 +43,16 @@
 
 /* PreviewCard Popup */
 [data-shunpo-preview-card-popup] {
+  z-index: 1000;
+  max-width: 24rem;
+  padding: 1rem;
+  overflow: hidden;
   background-color: var(--popup-background-color, #ffffff);
   border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 0.75rem;
   box-shadow:
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  padding: 1rem;
-  max-width: 24rem;
-  z-index: 1000;
-  overflow: hidden;
 }
 
 [data-shunpo-preview-card-popup][data-open] {
@@ -65,10 +65,10 @@
 
 /* PreviewCard Arrow */
 [data-shunpo-preview-card-arrow] {
+  z-index: 1001;
   fill: var(--popup-background-color, #ffffff);
   stroke: var(--border-color, #e2e8f0);
   stroke-width: 1px;
-  z-index: 1001;
 }
 
 /* Content styling within preview card */
@@ -97,8 +97,8 @@
 
 [data-shunpo-preview-card-popup] p {
   margin: 0 0 0.75rem 0;
-  line-height: 1.5;
   font-size: 0.875rem;
+  line-height: 1.5;
   color: var(--text-color, #374151);
 }
 
@@ -109,8 +109,8 @@
 [data-shunpo-preview-card-popup] img {
   width: 100%;
   height: auto;
-  border-radius: 0.5rem;
   margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
 }
 
 [data-shunpo-preview-card-popup] a {
@@ -131,9 +131,9 @@
 }
 
 [data-shunpo-preview-card-popup][data-loading]::before {
-  content: "";
   width: 1rem;
   height: 1rem;
+  content: "";
   border: 2px solid var(--border-color, #e2e8f0);
   border-top-color: var(--primary-color, #3b82f6);
   border-radius: 50%;
@@ -142,20 +142,20 @@
 
 /* Error state */
 [data-shunpo-preview-card-popup][data-error] {
+  padding: 2rem 1rem;
   color: var(--error-color, #ef4444);
   text-align: center;
-  padding: 2rem 1rem;
 }
 
 /* Size variants */
 [data-shunpo-preview-card-popup][data-size="sm"] {
-  padding: 0.75rem;
   max-width: 16rem;
+  padding: 0.75rem;
 }
 
 [data-shunpo-preview-card-popup][data-size="lg"] {
-  padding: 1.5rem;
   max-width: 32rem;
+  padding: 1.5rem;
 }
 
 /* Animations */

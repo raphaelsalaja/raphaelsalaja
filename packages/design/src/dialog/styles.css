@@ -5,8 +5,8 @@
   inset: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
   opacity: 0;
+  backdrop-filter: blur(4px);
   transition: opacity 0.2s ease-out;
 }
 
@@ -23,18 +23,18 @@
   max-width: 90vw;
   max-height: 90vh;
   padding: 24px;
+  overflow-y: auto;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   box-shadow:
     0 10px 38px -10px rgba(22, 23, 24, 0.35),
     0 10px 20px -15px rgba(22, 23, 24, 0.2);
-  transform: translate(-50%, -50%) scale(0.96);
   opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
   transition:
     opacity 0.2s ease-out,
     transform 0.2s ease-out;
-  overflow-y: auto;
 }
 
 [data-shunpo-dialog-popup][data-open] {
@@ -67,19 +67,19 @@
   width: 32px;
   height: 32px;
   padding: 0;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
   background: none;
   border: none;
   border-radius: 6px;
-  color: var(--color-text-tertiary);
-  cursor: pointer;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
 }
 
 [data-shunpo-dialog-close]:hover {
-  background-color: var(--color-surface-secondary);
   color: var(--color-text-secondary);
+  background-color: var(--color-surface-secondary);
 }
 
 [data-shunpo-dialog-close]:focus-visible {
@@ -94,8 +94,8 @@
 
 [data-shunpo-dialog-popup] .actions {
   display: flex;
-  justify-content: flex-end;
   gap: 12px;
+  justify-content: flex-end;
   margin-top: 24px;
 }
 

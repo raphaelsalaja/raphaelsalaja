@@ -1,11 +1,5 @@
-const routes = [
-  {
-    accordion: {
-      title: "Accordion",
-      href: "/accordion",
-    },
-  },
-];
+import Link from "next/link";
+import { routes } from "../utils/routes";
 
 export default function Page() {
   return (
@@ -13,9 +7,9 @@ export default function Page() {
       <h1>Playground</h1>
       <p>This is a playground for testing components and features.</p>
       <ul>
-        {routes.map((route) => (
-          <li key={route.accordion.href}>
-            <a href={route.accordion.href}>{route.accordion.title}</a>
+        {routes.map(({ href, title }) => (
+          <li key={href}>
+            <Link href={href}>{title}</Link>
           </li>
         ))}
       </ul>

@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check --fix --unsafe .",
-    "lint:fix": "biome check --fix --unsafe ."
+    "lint": "biome check --fix --unsafe . --verbose"
   },
   "dependencies": {
     "@rs/design": "workspace:*",

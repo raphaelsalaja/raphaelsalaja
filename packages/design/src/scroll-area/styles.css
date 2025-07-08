@@ -17,14 +17,14 @@
   position: absolute;
   z-index: 10;
   display: flex;
+  touch-action: none;
+  user-select: none;
   background-color: transparent;
   border-radius: 4px;
+  opacity: 0;
   transition:
     background-color 0.15s ease,
     opacity 0.15s ease;
-  user-select: none;
-  touch-action: none;
-  opacity: 0;
 }
 
 [data-shunpo-scroll-area-scrollbar]:hover {
@@ -40,27 +40,27 @@
 [data-shunpo-scroll-area-scrollbar][data-orientation="vertical"] {
   top: 0;
   right: 0;
+  flex-direction: column;
   width: 12px;
   height: 100%;
-  flex-direction: column;
 }
 
 /* Horizontal scrollbar */
 [data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"] {
   bottom: 0;
   left: 0;
+  flex-direction: row;
   width: 100%;
   height: 12px;
-  flex-direction: row;
 }
 
 [data-shunpo-scroll-area-thumb] {
   position: relative;
   flex: 1;
+  cursor: pointer;
   background-color: var(--color-border);
   border-radius: 4px;
   transition: background-color 0.15s ease;
-  cursor: pointer;
 }
 
 [data-shunpo-scroll-area-thumb]:hover {
@@ -74,20 +74,20 @@
 /* Thumb sizing */
 [data-shunpo-scroll-area-scrollbar][data-orientation="vertical"] [data-shunpo-scroll-area-thumb] {
   width: 8px;
-  margin: 2px;
   min-height: 20px;
+  margin: 2px;
 }
 
 [data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"] [data-shunpo-scroll-area-thumb] {
+  min-width: 20px;
   height: 8px;
   margin: 2px;
-  min-width: 20px;
 }
 
 [data-shunpo-scroll-area-corner] {
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   width: 12px;
   height: 12px;
   background-color: var(--color-surface-secondary);

@@ -7,7 +7,7 @@
     "build": "bunchee",
     "dev": "bunchee --watch",
     "clean": "rm -rf dist",
-    "lint": "biome lint --write --unsafe ."
+    "lint": "biome check --fix --unsafe . --verbose"
   },
   "keywords": [
     "react",

@@ -8,10 +8,10 @@
 
 [data-shunpo-number-field-scrub-area] {
   display: inline-block;
+  padding: 2px;
+  touch-action: none;
   cursor: ew-resize;
   user-select: none;
-  touch-action: none;
-  padding: 2px;
   border-radius: 4px;
   transition: background-color 0.15s ease;
 }
@@ -21,20 +21,20 @@
 }
 
 [data-shunpo-number-field-scrub-area][data-scrubbing] {
-  background-color: var(--color-accent-subtle);
   cursor: none;
+  background-color: var(--color-accent-subtle);
 }
 
 [data-shunpo-number-field-scrub-area-cursor] {
   position: fixed;
-  pointer-events: none;
   z-index: 9999;
   width: 20px;
   height: 20px;
+  pointer-events: none;
   background-color: var(--color-accent);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   opacity: 0;
+  transform: translate(-50%, -50%);
   transition: opacity 0.15s ease;
 }
 
@@ -46,10 +46,10 @@
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  overflow: hidden;
   transition: border-color 0.15s ease;
 }
 
@@ -63,21 +63,21 @@
 }
 
 [data-shunpo-number-field-group][data-disabled] {
-  opacity: 0.5;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 [data-shunpo-number-field-input] {
   flex: 1;
   width: 100%;
   padding: 8px 12px;
-  background: none;
-  border: none;
-  outline: none;
   font-size: 14px;
   line-height: 1.4;
   color: var(--color-text-primary);
   text-align: center;
+  outline: none;
+  background: none;
+  border: none;
 }
 
 [data-shunpo-number-field-input]::placeholder {
@@ -97,20 +97,20 @@
   width: 32px;
   height: 100%;
   padding: 0;
-  background-color: transparent;
-  border: none;
   color: var(--color-text-secondary);
   cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: none;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
-  user-select: none;
 }
 
 [data-shunpo-number-field-increment]:hover,
 [data-shunpo-number-field-decrement]:hover {
-  background-color: var(--color-surface-hover);
   color: var(--color-text-primary);
+  background-color: var(--color-surface-hover);
 }
 
 [data-shunpo-number-field-increment]:active,
@@ -126,18 +126,18 @@
 
 [data-shunpo-number-field-increment][data-disabled],
 [data-shunpo-number-field-decrement][data-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
   pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Icons for stepper buttons */
 [data-shunpo-number-field-increment]::before,
 [data-shunpo-number-field-decrement]::before {
-  content: "";
   display: block;
   width: 12px;
   height: 12px;
+  content: "";
   background-color: currentColor;
   mask-repeat: no-repeat;
   mask-position: center;

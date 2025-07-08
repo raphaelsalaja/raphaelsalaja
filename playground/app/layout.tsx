@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Inter } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 
