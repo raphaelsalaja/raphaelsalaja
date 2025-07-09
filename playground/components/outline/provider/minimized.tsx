@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import type React from "react";
 import type { HeadingLink } from "../types";
-import { defaultTransition, getScale } from "../utils";
+import { defaultTransition } from "../utils";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -21,7 +21,7 @@ export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActiv
     }}
     animate={{
       opacity: isHovered ? 0 : 1,
-      scale: isHovered ? 1 : getScale(headingLinks.length),
+      scale: isHovered ? 1 : 0.8,
       transition: { ...defaultTransition },
     }}
     className={styles.minimized}
@@ -34,9 +34,7 @@ export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActiv
             data-selector={`#${link.tagName}`}
             data-active={contentIsActive(link.id) ? "true" : "false"}
             className={styles.line}
-          >
-            {link.title}
-          </motion.div>
+          />
         ))}
       </motion.div>
     </AnimatePresence>
