@@ -1,0 +1,11 @@
+.demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 384px;
+  padding: 16px;
+  margin-top: 12px;
+  border: 0.5px solid var(--border-primary);
+  border-radius: 8px;
+}

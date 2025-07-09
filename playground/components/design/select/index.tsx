@@ -1,6 +1,6 @@
 "use client";
 
-import * as Select from "@rs/design/select";
+import * as DesignSelect from "@rs/design/select";
 
 const items = [
   {
@@ -26,36 +26,36 @@ const map = items
     return acc;
   }, {});
 
-export function SelectComponent() {
+export function Select() {
   return (
-    <Select.Root items={map}>
-      <Select.Trigger style={{ width: 256 }}>
-        <Select.Value />
-        <Select.Icon>
+    <DesignSelect.Root items={map}>
+      <DesignSelect.Trigger style={{ width: 256 }}>
+        <DesignSelect.Value />
+        <DesignSelect.Icon>
           <Chevron />
-        </Select.Icon>
-      </Select.Trigger>
-      <Select.Portal>
-        <Select.Positioner>
-          <Select.Popup>
+        </DesignSelect.Icon>
+      </DesignSelect.Trigger>
+      <DesignSelect.Portal>
+        <DesignSelect.Positioner>
+          <DesignSelect.Popup>
             {items.map((group) => (
-              <Select.Group key={group.label}>
-                <Select.GroupLabel>{group.label}</Select.GroupLabel>
+              <DesignSelect.Group key={group.label}>
+                <DesignSelect.GroupLabel>{group.label}</DesignSelect.GroupLabel>
                 {group.options.map(({ label, value }) => (
-                  <Select.Item key={value} value={value}>
-                    <Select.ItemText>{label}</Select.ItemText>
-                    <Select.ItemIndicator>
+                  <DesignSelect.Item key={value} value={value}>
+                    <DesignSelect.ItemText>{label}</DesignSelect.ItemText>
+                    <DesignSelect.ItemIndicator>
                       <Check />
-                    </Select.ItemIndicator>
-                  </Select.Item>
+                    </DesignSelect.ItemIndicator>
+                  </DesignSelect.Item>
                 ))}
-                {group !== items[items.length - 1] && <Select.Separator />}
-              </Select.Group>
+                {group !== items[items.length - 1] && <DesignSelect.Separator />}
+              </DesignSelect.Group>
             ))}
-          </Select.Popup>
-        </Select.Positioner>
-      </Select.Portal>
-    </Select.Root>
+          </DesignSelect.Popup>
+        </DesignSelect.Positioner>
+      </DesignSelect.Portal>
+    </DesignSelect.Root>
   );
 }
 

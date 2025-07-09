@@ -1,0 +1,44 @@
+// components/Outline/MinimizedOutline.tsx
+
+import { AnimatePresence, motion } from "motion/react";
+import type React from "react";
+import type { HeadingLink } from "../types";
+import { defaultTransition, getScale } from "../utils";
+import styles from "./styles.module.css";
+
+interface Props {
+  headingLinks: HeadingLink[];
+  contentIsActive: (id: string) => boolean;
+  isHovered: boolean;
+}
+
+export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActive, isHovered }) => (
+  <motion.div
+    style={{
+      transformOrigin: "left center",
+      zIndex: 1,
+      y: "-50%",
+    }}
+    animate={{
+      opacity: isHovered ? 0 : 1,
+      scale: isHovered ? 1 : getScale(headingLinks.length),
+      transition: { ...defaultTransition },
+    }}
+    className={styles.minimized}
+  >
+    <AnimatePresence>
+      <motion.div className={styles.list}>
+        {headingLinks.map((link) => (
+          <motion.div
+            key={link.id}
+            data-selector={`#${link.tagName}`}
+            data-active={contentIsActive(link.id) ? "true" : "false"}
+            className={styles.line}
+          >
+            {link.title}
+          </motion.div>
+        ))}
+      </motion.div>
+    </AnimatePresence>
+  </motion.div>
+);

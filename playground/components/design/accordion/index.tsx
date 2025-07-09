@@ -1,36 +1,36 @@
-import * as Accordion from "@rs/design/accordion";
+import * as DesignAccordion from "@rs/design/accordion";
 
-export const AccordionComponent = () => {
+export const Accordion = () => {
   return (
-    <Accordion.Root>
-      <Accordion.Item>
-        <Accordion.Header>
-          <Accordion.Trigger>What is Base UI?</Accordion.Trigger>
-        </Accordion.Header>
-        <Accordion.Panel>
+    <DesignAccordion.Root>
+      <DesignAccordion.Item>
+        <DesignAccordion.Header>
+          <DesignAccordion.Trigger>What is Base UI?</DesignAccordion.Trigger>
+        </DesignAccordion.Header>
+        <DesignAccordion.Panel>
           <div>Base UI is a library of high-quality unstyled React components for design systems and web apps.</div>
-        </Accordion.Panel>
-      </Accordion.Item>
+        </DesignAccordion.Panel>
+      </DesignAccordion.Item>
 
-      <Accordion.Item>
-        <Accordion.Header>
-          <Accordion.Trigger>How do I get started?</Accordion.Trigger>
-        </Accordion.Header>
-        <Accordion.Panel>
+      <DesignAccordion.Item>
+        <DesignAccordion.Header>
+          <DesignAccordion.Trigger>How do I get started?</DesignAccordion.Trigger>
+        </DesignAccordion.Header>
+        <DesignAccordion.Panel>
           <div>
             Head to the “Quick start” guide in the docs. If you’ve used unstyled libraries before, you’ll feel at home.
           </div>
-        </Accordion.Panel>
-      </Accordion.Item>
+        </DesignAccordion.Panel>
+      </DesignAccordion.Item>
 
-      <Accordion.Item>
-        <Accordion.Header>
-          <Accordion.Trigger>Can I use it for my project?</Accordion.Trigger>
-        </Accordion.Header>
-        <Accordion.Panel>
+      <DesignAccordion.Item>
+        <DesignAccordion.Header>
+          <DesignAccordion.Trigger>Can I use it for my project?</DesignAccordion.Trigger>
+        </DesignAccordion.Header>
+        <DesignAccordion.Panel>
           <div>Of course! Base UI is free and open source.</div>
-        </Accordion.Panel>
-      </Accordion.Item>
-    </Accordion.Root>
+        </DesignAccordion.Panel>
+      </DesignAccordion.Item>
+    </DesignAccordion.Root>
   );
 };

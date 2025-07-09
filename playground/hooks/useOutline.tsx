@@ -9,7 +9,7 @@ export interface HeadingLink {
   element: HTMLHeadingElement;
 }
 
-type UseTableOfContentsOptions = {
+type UseOutlineOptions = {
   /**
    * CSS selector for the headings to include in the table of contents
    * @default 'h1, h2, h3'
@@ -32,7 +32,7 @@ type UseTableOfContentsOptions = {
 /**
  * Custom hook to generate a table of contents from headings in the document
  */
-export function useTableOfContents(options?: UseTableOfContentsOptions) {
+export function useOutline(options?: UseOutlineOptions) {
   const {
     selectors = "h1, h2, h3",
     rootElement = typeof document !== "undefined" ? document : null,
