@@ -1,6 +1,8 @@
 import type { JSX } from "react";
 
-export function Code(props: JSX.IntrinsicElements["svg"]) {
+type IconProps = React.SVGProps<SVGSVGElement>;
+
+export function Code(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <title>Code Icon</title>
@@ -15,7 +17,7 @@ export function Code(props: JSX.IntrinsicElements["svg"]) {
   );
 }
 
-export function Terminal(props: JSX.IntrinsicElements["svg"]) {
+export function Terminal(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <title>Terminal Icon</title>
@@ -30,7 +32,7 @@ export function Terminal(props: JSX.IntrinsicElements["svg"]) {
   );
 }
 
-export function Clipboard(props: JSX.IntrinsicElements["svg"]) {
+export function Clipboard(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <title>Clipboard Icon</title>
@@ -53,11 +55,23 @@ export function Clipboard(props: JSX.IntrinsicElements["svg"]) {
   );
 }
 
-export function Check(props: JSX.IntrinsicElements["svg"]) {
+export function Check(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
       <title>Check Icon</title>
       <path d="M8 13L11 16L16 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function Triangle(props: IconProps) {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+      <title>Triangle Icon</title>
+      <path
+        d="M9.52231 9.75C8.27409 9.75 7.57194 11.1856 8.33828 12.1709L10.816 15.3565C11.4165 16.1286 12.5835 16.1286 13.184 15.3565L15.6617 12.1709C16.428 11.1856 15.7259 9.75 14.4777 9.75H9.52231Z"
+        fill="currentColor"
+      />
     </svg>
   );
 }

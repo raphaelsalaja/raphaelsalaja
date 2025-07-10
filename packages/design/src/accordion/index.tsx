@@ -1,44 +1,35 @@
 "use client";
 
-import "./style.css";
+import "./styles.css";
+
 import { Accordion } from "@base-ui-components/react/accordion";
 
-type WithRef<C extends React.ElementType> = React.ComponentPropsWithoutRef<C> & {
-  ref?: React.ComponentRef<C>;
-};
+type WithRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>;
 
 export function Root(props: WithRef<typeof Accordion.Root>) {
-  const { ref, ...rest } = props;
-  return <Accordion.Root ref={ref} data-rs-accordion-root="" {...rest} />;
+  return <Accordion.Root data-rs-accordion-root {...props} />;
 }
 
 export function Item(props: WithRef<typeof Accordion.Item>) {
-  const { ref, ...rest } = props;
-  return <Accordion.Item ref={ref} data-rs-accordion-item="" {...rest} />;
+  return <Accordion.Item data-rs-accordion-item {...props} />;
 }
 
 export function Header(props: WithRef<typeof Accordion.Header>) {
-  const { ref, ...rest } = props;
-  return <Accordion.Header ref={ref} data-rs-accordion-header="" {...rest} />;
+  return <Accordion.Header data-rs-accordion-header {...props} />;
 }
 
 export function Trigger(props: WithRef<typeof Accordion.Trigger>) {
-  const { ref, ...rest } = props;
-  return <Accordion.Trigger ref={ref} data-rs-accordion-trigger="" {...rest} />;
+  return <Accordion.Trigger data-rs-accordion-trigger {...props} />;
 }
 
 export function Panel(props: WithRef<typeof Accordion.Panel>) {
-  const { ref, ...rest } = props;
-  return <Accordion.Panel ref={ref} data-rs-accordion-panel="" {...rest} />;
+  return <Accordion.Panel data-rs-accordion-panel {...props} />;
 }
 
-// For plain “span” elements we just inline the element type
-export function Content(props: React.ComponentPropsWithoutRef<"span"> & { ref?: React.Ref<HTMLSpanElement> }) {
-  const { ref, ...rest } = props;
-  return <span ref={ref} data-rs-accordion-content="" {...rest} />;
+export function Content(props: WithRef<"div">) {
+  return <div data-rs-accordion-content {...props} />;
 }
 
-export function TriggerIcon(props: React.ComponentPropsWithoutRef<"span"> & { ref?: React.Ref<HTMLSpanElement> }) {
-  const { ref, ...rest } = props;
-  return <span ref={ref} data-rs-accordion-trigger-icon="" {...rest} />;
+export function TriggerIcon(props: WithRef<"div">) {
+  return <div data-rs-accordion-trigger-icon {...props} />;
 }

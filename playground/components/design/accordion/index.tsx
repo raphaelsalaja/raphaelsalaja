@@ -1,6 +1,9 @@
 "use client";
 
 import * as DesignAccordion from "@rs/design/accordion";
+import * as Icons from "@/components/icons";
+
+const Icon = () => <Icons.Triangle width={16} height={16} />;
 
 export const Accordion = () => {
   return (
@@ -9,7 +12,9 @@ export const Accordion = () => {
         <DesignAccordion.Header>
           <DesignAccordion.Trigger>
             What is Base UI?
-            <DesignAccordion.TriggerIcon />
+            <DesignAccordion.TriggerIcon>
+              <Icon />
+            </DesignAccordion.TriggerIcon>
           </DesignAccordion.Trigger>
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
@@ -23,7 +28,9 @@ export const Accordion = () => {
         <DesignAccordion.Header>
           <DesignAccordion.Trigger>
             How do I get started?
-            <DesignAccordion.TriggerIcon />
+            <DesignAccordion.TriggerIcon>
+              <Icon />
+            </DesignAccordion.TriggerIcon>
           </DesignAccordion.Trigger>
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
@@ -37,7 +44,9 @@ export const Accordion = () => {
         <DesignAccordion.Header>
           <DesignAccordion.Trigger>
             Can I use it for my project?
-            <DesignAccordion.TriggerIcon />
+            <DesignAccordion.TriggerIcon>
+              <Icon />
+            </DesignAccordion.TriggerIcon>
           </DesignAccordion.Trigger>
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
