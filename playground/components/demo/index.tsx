@@ -6,7 +6,7 @@ interface DemoProps extends React.ComponentPropsWithoutRef<"div"> {}
 
 export const Demo = ({ children, ...props }: DemoProps) => {
   return (
-    <div className={styles.demo} {...props}>
+    <div data-component-demo="" className={styles.demo} {...props}>
       <div>{children}</div>
     </div>
   );

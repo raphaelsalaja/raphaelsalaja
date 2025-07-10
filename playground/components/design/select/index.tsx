@@ -3,33 +3,33 @@
 import * as DesignSelect from "@rs/design/select";
 
 const items = [
-  {
-    label: "Serif & Sans-serif",
-    options: [
-      { label: "Sans-serif", value: "sans" },
-      { label: "Serif", value: "serif" },
-    ],
-  },
-  {
-    label: "Monospaced & Cursive",
-    options: [
-      { label: "Monospace", value: "mono" },
-      { label: "Cursive", value: "cursive" },
-    ],
-  },
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Carrot", value: "carrot" },
+  { label: "Broccoli", value: "broccoli" },
+  { label: "Cauliflower", value: "cauliflower" },
+  { label: "Milk", value: "milk" },
+  { label: "Cheese", value: "cheese" },
+  { label: "Yogurt", value: "yogurt" },
+  { label: "Orange", value: "orange" },
+  { label: "Grapes", value: "grapes" },
+  { label: "Strawberry", value: "strawberry" },
+  { label: "Blueberry", value: "blueberry" },
+  { label: "Pineapple", value: "pineapple" },
+  { label: "Mango", value: "mango" },
+  { label: "Peach", value: "peach" },
 ];
 
-const map = items
-  .flatMap((group) => group.options)
-  .reduce<Record<string, string>>((acc, { value, label }) => {
-    if (value != null) acc[value] = label;
-    return acc;
-  }, {});
+const groups = {
+  Fruits: ["apple", "banana", "orange", "grapes", "strawberry", "blueberry", "pineapple", "mango", "peach"],
+  Vegetables: ["carrot", "broccoli", "cauliflower"],
+  Dairy: ["milk", "cheese", "yogurt"],
+};
 
 export function Select() {
   return (
-    <DesignSelect.Root items={map}>
-      <DesignSelect.Trigger style={{ width: 256 }}>
+    <DesignSelect.Root items={items} defaultValue={items[0].value}>
+      <DesignSelect.Trigger style={{ width: 150 }}>
         <DesignSelect.Value />
         <DesignSelect.Icon>
           <Chevron />
@@ -37,22 +37,24 @@ export function Select() {
       </DesignSelect.Trigger>
       <DesignSelect.Portal>
         <DesignSelect.Positioner>
+          <DesignSelect.ScrollUpArrow />
           <DesignSelect.Popup>
-            {items.map((group) => (
-              <DesignSelect.Group key={group.label}>
-                <DesignSelect.GroupLabel>{group.label}</DesignSelect.GroupLabel>
-                {group.options.map(({ label, value }) => (
+            {Object.entries(groups).map(([groupLabel, groupItems]) => (
+              <DesignSelect.Group key={groupLabel}>
+                <DesignSelect.GroupLabel>{groupLabel}</DesignSelect.GroupLabel>
+                {groupItems.map((value) => (
                   <DesignSelect.Item key={value} value={value}>
-                    <DesignSelect.ItemText>{label}</DesignSelect.ItemText>
+                    <DesignSelect.ItemText>{items.find((item) => item.value === value)?.label}</DesignSelect.ItemText>
                     <DesignSelect.ItemIndicator>
                       <Check />
                     </DesignSelect.ItemIndicator>
                   </DesignSelect.Item>
                 ))}
-                {group !== items[items.length - 1] && <DesignSelect.Separator />}
+                {groupLabel !== Object.keys(groups).slice(-1)[0] && <DesignSelect.Separator />}
               </DesignSelect.Group>
             ))}
           </DesignSelect.Popup>
+          <DesignSelect.ScrollDownArrow />
         </DesignSelect.Positioner>
       </DesignSelect.Portal>
     </DesignSelect.Root>

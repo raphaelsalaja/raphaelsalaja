@@ -87,6 +87,14 @@ const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (prop
   return <Select.Separator data-rs-select-separator {...props} />;
 };
 
+const ScrollUpArrow: React.FC<React.ComponentProps<typeof Select.ScrollUpArrow>> = (props) => {
+  return <Select.ScrollUpArrow data-rs-select-scroll-arrow {...props} />;
+};
+
+const ScrollDownArrow: React.FC<React.ComponentProps<typeof Select.ScrollDownArrow>> = (props) => {
+  return <Select.ScrollDownArrow data-rs-select-scroll-arrow {...props} />;
+};
+
 export {
   Root,
   Trigger,
@@ -102,4 +110,6 @@ export {
   Group,
   GroupLabel,
   Separator,
+  ScrollUpArrow,
+  ScrollDownArrow,
 };

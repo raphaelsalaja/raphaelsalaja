@@ -4,39 +4,36 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/generate-component-json.js",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check --fix --unsafe . --verbose",
-    "gen:mdx": "node scripts/generate-component-mdx.js",
-    "gen:json": "node scripts/generate-component-json.js"
+    "lint": "biome check --fix --unsafe . --verbose"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "15.3.2",
+    "@next/mdx": "15.3.5",
     "@rs/design": "workspace:*",
     "@rs/styles": "workspace:*",
     "@types/mdx": "^2.0.13",
     "effect": "^3.16.12",
     "gray-matter": "^4.0.3",
-    "motion": "^12.23.0",
-    "next": "15.3.2",
+    "motion": "^12.23.2",
+    "next": "15.3.5",
     "next-mdx-remote": "^5.0.0",
     "next-view-transitions": "^0.3.4",
     "postcss-dynamic-metrics": "^0.0.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rehype-highlight": "^7.0.2",
-    "rehype-pretty-code": "^0.14.0",
+    "rehype-pretty-code": "^0.14.1",
     "rehype-stringify": "^10.0.1",
-    "remark-gfm": "^4.0.1",
-    "shiki": "^1.26.1"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.0",
-    "typescript": "~5.7.2"
+    "@types/node": "^24.0.12",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "shiki": "3.7.0",
+    "typescript": "~5.8.3"
   }
 }

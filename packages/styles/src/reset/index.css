@@ -5,14 +5,19 @@
 }
 
 * {
+  padding: 0;
   margin: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  overflow-wrap: break-word;
-  text-decoration: none;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
   color: inherit;
   text-wrap: pretty;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  border: 0;
 }
 
 body {
@@ -38,32 +43,32 @@ select {
 ul,
 li,
 ol {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 button {
-  background: none;
-  border: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  background: none;
+  border: none;
 }
 
 input {
-  background: none;
-  border: none;
   padding: 0;
   font: inherit;
   outline: inherit;
+  background: none;
+  border: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  -webkit-appearance: none;
 }
 
 input[type="number"] {

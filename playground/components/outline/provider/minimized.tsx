@@ -19,6 +19,7 @@ export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActiv
       zIndex: 1,
       y: "-50%",
     }}
+    initial={{ opacity: 0, scale: 0.8 }}
     animate={{
       opacity: isHovered ? 0 : 1,
       scale: isHovered ? 1 : 0.8,
@@ -26,7 +27,7 @@ export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActiv
     }}
     className={styles.minimized}
   >
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       <motion.div className={styles.list}>
         {headingLinks.map((link) => (
           <motion.div

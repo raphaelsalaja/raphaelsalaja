@@ -23,6 +23,7 @@ export const ExpandedOutline: React.FC<Props> = ({ headingLinks, contentIsActive
         transformOrigin: "left center",
         zIndex: 2,
       }}
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={{
         y: "-50%",
         x: isHovered ? 0 : -16,
@@ -34,7 +35,7 @@ export const ExpandedOutline: React.FC<Props> = ({ headingLinks, contentIsActive
       onMouseEnter={() => onHoverChange(true)}
       onMouseLeave={() => onHoverChange(false)}
     >
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <motion.div className={styles.list}>
           {headingLinks.map((link) => (
             <motion.a

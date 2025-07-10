@@ -40,6 +40,10 @@ export const OutlineProvider: React.FC<OutlineProps> = (props) => {
 
       {"children" in props && (
         <div
+          style={{
+            position: "relative",
+            width: "100%",
+          }}
           ref={(node) => {
             if (contentRef === defaultContentRef) {
               defaultContentRef.current = node;
