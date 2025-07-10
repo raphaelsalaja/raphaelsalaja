@@ -11,6 +11,7 @@ export const metadata = {
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 export default async function RootLayout({

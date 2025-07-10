@@ -4,5 +4,6 @@ import { getFiles } from "@/utils/mdx";
 
 export default async function Page() {
   const components: MDX[] = await getFiles();
+
   return <Documentation components={components} />;
 }
