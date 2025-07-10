@@ -15,6 +15,11 @@
     line-height: 24px;
     color: var(--text-primary);
     scroll-margin-top: 80px;
+
+    /* if first */
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h1,

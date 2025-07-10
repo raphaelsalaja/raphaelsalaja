@@ -14,8 +14,6 @@
   line-height: inherit;
   vertical-align: baseline;
   color: inherit;
-  text-wrap: pretty;
-  overflow-wrap: break-word;
   text-decoration: none;
   border: 0;
 }
