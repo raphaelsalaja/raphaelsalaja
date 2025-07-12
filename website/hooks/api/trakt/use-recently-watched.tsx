@@ -14,6 +14,5 @@ export function useTraktGetLastWatched() {
       return res.json() as Promise<Show | null>;
     },
     staleTime: 60_000,
-    refetchOnWindowFocus: false,
   });
 }

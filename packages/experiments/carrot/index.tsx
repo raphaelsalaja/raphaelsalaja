@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, Fragment, useContext, useMemo, useRef, useState } from "react";
+import React, { type ComponentProps, Fragment, type ReactNode, type RefObject, useMemo, useRef, useState } from "react";
 import { createEditor, type Descendant, type Editor } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, Slate, withReact } from "slate-react";
@@ -16,23 +16,23 @@ export type CarrotContextType = {
   editor: Editor;
   value: Descendant[];
   onChange: (value: Descendant[]) => void;
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref: RefObject<HTMLDivElement | null>;
   caret: CaretState;
   selectionRects: DOMRect[];
   focused: boolean;
   setFocused: (b: boolean) => void;
 };
 
-const CarrotContext = createContext<CarrotContextType | null>(null);
+const CarrotContext = React.createContext<CarrotContextType | null>(null);
 
 export function useCarrotContext() {
-  const ctx = useContext(CarrotContext);
+  const ctx = React.useContext(CarrotContext);
   if (!ctx) throw new Error("useCarrotContext must be inside <Carrot.Root>");
   return ctx;
 }
 
 type CarrotRootProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   value: Descendant[];
   onChange: (value: Descendant[]) => void;
 };
@@ -77,7 +77,7 @@ function CarrotRoot({ children, value, onChange }: CarrotRootProps) {
   );
 }
 
-function CarrotContainer({ children }: { children: React.ReactNode }) {
+function CarrotContainer({ children }: { children: ReactNode }) {
   const { ref } = useCarrotContext();
   return (
     <div ref={ref} data-rs-carrot-container>
@@ -134,15 +134,19 @@ function CarrotCaret() {
   );
 }
 
-// @ts-ignore
-type CarrotInputProps = React.ComponentProps<typeof Editable>;
+type CarrotInputProps = ComponentProps<typeof Editable>;
 
 function CarrotInput(props: CarrotInputProps) {
   const { setFocused } = useCarrotContext();
 
   return (
-    // @ts-ignore
-    <Editable {...props} data-rs-carrot-editable style={{ caretColor: "transparent" }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
+    <Editable
+      {...props}
+      data-rs-carrot-editable
+      style={{ caretColor: "transparent" }}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+    />
   );
 }
 

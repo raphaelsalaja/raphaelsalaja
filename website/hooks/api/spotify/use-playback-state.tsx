@@ -13,7 +13,6 @@ export function useSpotifyPlaybackState() {
   return useQuery<PlayerState>({
     queryKey: ["spotify", "playback-state"],
     queryFn: fetchPlaybackState,
-    refetchInterval: 60_000,
     staleTime: 60_000,
   });
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import { AnimatePresence, motion } from "motion/react";
+import type React from "react";
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
-import { Check, Clipboard, Code, Terminal } from "../../icons";
+import { Clipboard, Code, Terminal } from "../../icons";
 import styles from "./styles.module.css";
 
 export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -46,9 +46,9 @@ export function Figcaption({ ...props }: FigCaptionProps) {
   };
 
   return (
-    <figcaption ref={figCaptionRef} className={styles.code} {...props}>
+    <figcaption ref={figCaptionRef as React.Ref<HTMLElement>} className={styles.code} {...props}>
       <span className={styles.heading}>
-        <Icon /> {props.children}
+        <Icon /> {props.children as React.ReactNode}
       </span>
       <button
         type="button"

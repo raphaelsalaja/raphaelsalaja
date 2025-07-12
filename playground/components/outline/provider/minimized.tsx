@@ -1,7 +1,6 @@
 // components/Outline/MinimizedOutline.tsx
 
 import { AnimatePresence, motion } from "motion/react";
-import type React from "react";
 import type { HeadingLink } from "../types";
 import { defaultTransition } from "../utils";
 import styles from "./styles.module.css";
@@ -12,7 +11,7 @@ interface Props {
   isHovered: boolean;
 }
 
-export const MinimizedOutline: React.FC<Props> = ({ headingLinks, contentIsActive, isHovered }) => (
+export const MinimizedOutline = ({ headingLinks, contentIsActive, isHovered }: Props) => (
   <motion.div
     style={{
       transformOrigin: "left center",

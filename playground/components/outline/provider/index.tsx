@@ -1,18 +1,18 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useOutline } from "@/hooks/useOutline";
 import type { OutlineProps } from "../types";
 import { ExpandedOutline } from "./expanded";
 import { MinimizedOutline } from "./minimized";
 
-export const OutlineProvider: React.FC<OutlineProps> = (props) => {
+export const OutlineProvider = (props: OutlineProps) => {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   const defaultContentRef = useRef<HTMLDivElement>(null);
-  const contentRef = "contentRef" in props ? props.contentRef! : defaultContentRef;
+  const contentRef = "contentRef" in props ? props.contentRef : defaultContentRef;
 
   useEffect(() => {
-    if (contentRef.current) setRootElement(contentRef.current);
+    if (contentRef?.current) setRootElement(contentRef.current);
   }, [contentRef]);
 
   const providedLinks = "headingLinks" in props ? props.headingLinks : undefined;
@@ -28,7 +28,7 @@ export const OutlineProvider: React.FC<OutlineProps> = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Fragment>
+    <>
       <MinimizedOutline headingLinks={headingLinks} contentIsActive={contentIsActive} isHovered={isHovered} />
 
       <ExpandedOutline
@@ -54,6 +54,6 @@ export const OutlineProvider: React.FC<OutlineProps> = (props) => {
           {props.children}
         </div>
       )}
-    </Fragment>
+    </>
   );
 };

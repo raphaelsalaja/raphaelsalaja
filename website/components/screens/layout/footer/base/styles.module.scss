@@ -7,7 +7,7 @@
   align-self: stretch;
   padding: 32px;
   background-color: var(--background-secondary);
-  border-radius: 24px;
+  border-radius: 12px;
 
   .copyright {
     display: flex;
@@ -60,7 +60,8 @@
         }
       }
     }
-    @media (width <= 768px) {
+
+    @media (width <=768px) {
       gap: 32px;
     }
   }
@@ -115,7 +116,8 @@
       height: 16px;
     }
   }
-  @media (width <= 768px) {
+
+  @media (width <=768px) {
     display: grid;
     grid: repeat(2, 1fr) / repeat(2, 1fr);
     gap: 4px;

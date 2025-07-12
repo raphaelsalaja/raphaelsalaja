@@ -47,6 +47,14 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
+  /* font weight */
+  --font-weight-300: "wght" 300, "opsz" 14;
+  --font-weight-400: "wght" 400, "opsz" 14;
+  --font-weight-450: "wght" 450, "opsz" 14;
+  --font-weight-500: "wght" 500, "opsz" 14;
+  --font-weight-600: "wght" 600, "opsz" 14;
+  --font-weight-700: "wght" 700, "opsz" 14;
+
   /* eases */
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

@@ -14,7 +14,7 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 import styles from "./styles.module.css";
 import "./styles.css";
 
-import { MeshGradient, SteppedSimplexNoise } from "@paper-design/shaders-react";
+import { MeshGradient, SimplexNoise } from "@paper-design/shaders-react";
 import dynamic from "next/dynamic";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
@@ -89,17 +89,7 @@ const Island: React.FC<IslandProps> = (props) => {
                     overflow: "hidden",
                   }}
                 >
-                  <SteppedSimplexNoise
-                    color1="#56758f"
-                    color2="#91be6f"
-                    color3="#f94346"
-                    color4="#f9c54e"
-                    color5="#ffffff"
-                    stepsNumber={10}
-                    scale={0.07}
-                    speed={0.5}
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                  <SimplexNoise scale={0.07} speed={0.5} style={{ width: "100%", height: "100%" }} />
                 </motion.button>
 
                 <div className={styles.details}>
@@ -209,14 +199,7 @@ const Island: React.FC<IslandProps> = (props) => {
                   zIndex: 10,
                 }}
               >
-                <MeshGradient
-                  color1="#B7FC88"
-                  color2="#CD88FC"
-                  color3="#88EB1E"
-                  color4="#6FBA0A"
-                  speed={0.5}
-                  style={{ width: "100%", height: "100%" }}
-                />
+                <MeshGradient speed={0.5} style={{ width: "100%", height: "100%" }} />
               </motion.button>
 
               <AnimatePresence mode="popLayout" initial={false}>

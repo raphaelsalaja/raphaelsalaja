@@ -112,7 +112,7 @@ export const Select: React.FC<SelectProps> = (props) => {
                             <div ref={ref}>
                               <AnimatePresence mode="popLayout">
                                 <motion.div key={displayItem.value} className={styles.description} {...animation}>
-                                  {displayItem.description}
+                                  {/* {displayItem.description} */}
                                 </motion.div>
                               </AnimatePresence>
                             </div>

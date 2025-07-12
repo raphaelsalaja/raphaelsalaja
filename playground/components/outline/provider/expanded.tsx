@@ -1,7 +1,6 @@
 // components/Outline/ExpandedOutline.tsx
 
 import { AnimatePresence, motion } from "motion/react";
-import type React from "react";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import type { HeadingLink } from "../types";
 import { defaultTransition, getScale } from "../utils";
@@ -14,7 +13,7 @@ interface Props {
   onHoverChange: (hovered: boolean) => void;
 }
 
-export const ExpandedOutline: React.FC<Props> = ({ headingLinks, contentIsActive, isHovered, onHoverChange }) => {
+export const ExpandedOutline = ({ headingLinks, contentIsActive, isHovered, onHoverChange }: Props) => {
   const { handleLinkClick } = useSmoothScroll(120);
 
   return (

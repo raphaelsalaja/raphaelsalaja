@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
+import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
 import { opengraph } from "@/config/site";
 import "@/styles/main.css";
@@ -10,10 +9,8 @@ import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = opengraph;
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+const inter = localFont({
+  src: "./fonts/inter/variable.ttf",
 });
 
 export default async function RootLayout({

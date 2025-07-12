@@ -1,12 +1,9 @@
-import * as Button from "@rs/design/button";
-import { Separator } from "@rs/design/separator";
 import { Link } from "next-view-transitions";
-
 import * as Media from "@/components/media";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 
 interface PostsProps {
   index?: boolean;
@@ -60,28 +57,18 @@ export const Posts = async ({
     return <Placeholder post={post} />;
   };
 
-  const isHome = !index;
-
   return (
     <div className={styles.posts}>
       {!index && (
-        <div className={styles.heading}>
-          <Button.default variant="ghost">
-            <Link href={`/${category}`} className={styles.title}>
-              <h1 className={styles.name}>{title}</h1>
-              <h2 className={styles.count}>{length}</h2>
-            </Link>
-          </Button.default>
-          <Separator />
-        </div>
+        <Link href={`/${category}`} className={styles.heading}>
+          <h1 className={styles.name}>{title}</h1>
+          <h2 className={styles.count}>{length}</h2>
+        </Link>
       )}
 
       <div className={styles.grid}>
         {posts
           .filter((_post) => {
-            if (isHome && filter) {
-              // return post.media?.image || post.media?.video;
-            }
             return true;
           })
           .slice(0, index ? posts.length : 3)

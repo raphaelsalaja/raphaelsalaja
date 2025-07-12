@@ -111,7 +111,12 @@ export function useOutline(options?: UseOutlineOptions) {
       window.removeEventListener("scroll", handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rootElement]); // Only depend on rootElement to avoid infinite loops
+  }, [
+    rootElement, // Initial check for active heading
+    determineActiveHeading,
+    determineActiveHeading, // Gather headings when component mounts
+    gatherHeadings,
+  ]); // Only depend on rootElement to avoid infinite loops
 
   // Re-gather headings when elements might have changed
   useEffect(() => {
@@ -126,7 +131,7 @@ export function useOutline(options?: UseOutlineOptions) {
 
     return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rootElement]);
+  }, [rootElement, gatherHeadings]);
 
   // Function to check if a heading is active
   const contentIsActive = useCallback(

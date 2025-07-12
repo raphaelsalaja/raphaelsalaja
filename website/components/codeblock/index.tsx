@@ -70,20 +70,21 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
   };
 
   return (
-    <figcaption ref={figCaptionRef} className={styles.code}>
-      <span className={styles.heading}>
-        <Icon /> {props.children}
-      </span>
-      <button
-        type="button"
-        disabled={isCopied}
-        onClick={handleClickCopy}
-        className={clsx(styles.copy, { [styles.copied]: isCopied })}
-      >
-        <AnimatePresence mode="popLayout" initial={false}>
-          {isCopied ? <CheckIcon {...iconProps} /> : <ClipboardIcon {...iconProps} />}
-        </AnimatePresence>
-      </button>
-    </figcaption>
+    <div></div>
+    // <figcaption ref={figCaptionRef} className={styles.code}>
+    //   <span className={styles.heading}>
+    //     <Icon /> {props.children}
+    //   </span>
+    //   <button
+    //     type="button"
+    //     disabled={isCopied}
+    //     onClick={handleClickCopy}
+    //     className={clsx(styles.copy, { [styles.copied]: isCopied })}
+    //   >
+    //     <AnimatePresence mode="popLayout" initial={false}>
+    //       {isCopied ? <CheckIcon {...iconProps} /> : <ClipboardIcon {...iconProps} />}
+    //     </AnimatePresence>
+    //   </button>
+    // </figcaption>
   );
 }

@@ -12,7 +12,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 
 import { Demo } from "@/components/demo";
-import { Accordion, Select } from "@/components/design";
+import { Accordion, Breadcrumb, Select } from "@/components/design";
 import { Figcaption } from "@/components/mdx/figcaption";
 
 import "./styles.css";
@@ -26,6 +26,7 @@ const mono = MonoFont({
 const components: MDXComponents = {
   Accordion,
   Select,
+  Breadcrumb,
   Demo,
   figcaption: (props: React.ComponentProps<typeof Figcaption>) => <Figcaption {...props} />,
   code: (props: React.HTMLAttributes<HTMLElement>) => (
