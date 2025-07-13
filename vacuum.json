@@ -1,0 +1,24 @@
+{
+  "patterns": [
+    "node_modules",
+    ".turbo",
+    "packages/*/node_modules",
+    "packages/*/dist",
+    "packages/*/.turbo",
+    "website/node_modules",
+    "website/.next",
+    "website/.turbo",
+    "playground/node_modules",
+    "playground/.next",
+    "playground/.turbo",
+    "dump/**/*",
+    "**/.DS_Store",
+    "**/coverage",
+    "**/dist",
+    "**/*.log",
+    "**/*.tsbuildinfo"
+  ],
+  "postClean": [
+    "pnpm install"
+  ]
+}

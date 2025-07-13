@@ -22,8 +22,8 @@
     "next-mdx-remote": "^5.0.0",
     "next-view-transitions": "^0.3.4",
     "postcss-dynamic-metrics": "^0.0.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "rehype-highlight": "^7.0.2",
     "rehype-pretty-code": "^0.14.1",
     "rehype-stringify": "^10.0.1",
@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.12",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
     "shiki": "3.7.0",
     "typescript": "~5.8.3"
   }
