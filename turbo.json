@@ -7,7 +7,8 @@
         ".env*"
       ],
       "outputs": [
-        "dist/**"
+        "dist/**",
+        ".next/**"
       ],
       "dependsOn": [
         "^build"
