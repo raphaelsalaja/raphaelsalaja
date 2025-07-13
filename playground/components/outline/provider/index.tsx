@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useOutline } from "@/hooks/useOutline";
 import type { OutlineProps } from "../types";
 import { ExpandedOutline } from "./expanded";
 import { MinimizedOutline } from "./minimized";
 
-export const OutlineProvider = (props: OutlineProps) => {
+export const OutlineProvider: React.FC<OutlineProps> = (props) => {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
-  const [defaultContentElement, setDefaultContentElement] = useState<HTMLDivElement | null>(null);
-  const contentRef = "contentRef" in props ? props.contentRef : { current: defaultContentElement };
+  const contentRef = props.contentRef;
 
   useEffect(() => {
     if (contentRef?.current) setRootElement(contentRef.current);
@@ -28,7 +27,7 @@ export const OutlineProvider = (props: OutlineProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <>
+    <Fragment>
       <MinimizedOutline headingLinks={headingLinks} contentIsActive={contentIsActive} isHovered={isHovered} />
 
       <ExpandedOutline
@@ -38,22 +37,15 @@ export const OutlineProvider = (props: OutlineProps) => {
         onHoverChange={setIsHovered}
       />
 
-      {"children" in props && (
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-          }}
-          ref={(node) => {
-            if ("contentRef" in props === false) {
-              setDefaultContentElement(node);
-              if (node) setRootElement(node);
-            }
-          }}
-        >
-          {props.children}
-        </div>
-      )}
-    </>
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+        }}
+        ref={props.contentRef}
+      >
+        {props.children}
+      </div>
+    </Fragment>
   );
 };

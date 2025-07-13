@@ -61,33 +61,6 @@ export function useOutline(options?: UseOutlineOptions) {
     setHeadingLinks(links);
   }, [rootElement, selectors]);
 
-  // Function to check which heading is active
-  const determineActiveHeading = useCallback(() => {
-    if (headingLinks.length === 0 || typeof window === "undefined") return;
-
-    // Get current scroll position
-    const scrollPosition = window.scrollY;
-
-    // Find the last heading that is above the current scroll position plus offset
-    for (let i = headingLinks.length - 1; i >= 0; i--) {
-      const heading = headingLinks[i];
-
-      // Get element position
-      const rect = heading.element.getBoundingClientRect();
-      const elemTop = rect.top + scrollPosition;
-
-      if (scrollPosition >= elemTop - offset) {
-        setActiveId(heading.id);
-        return;
-      }
-    }
-
-    // If no heading is found, set the first one as active
-    if (headingLinks.length > 0) {
-      setActiveId(headingLinks[0].id);
-    }
-  }, [headingLinks, offset]);
-
   // Set up listeners and gather headings
   useEffect(() => {
     // Wait for DOM to be ready
@@ -95,6 +68,36 @@ export function useOutline(options?: UseOutlineOptions) {
 
     // Gather headings when component mounts
     gatherHeadings();
+  }, [gatherHeadings, rootElement]);
+
+  // Separate effect for scroll handling that depends on headingLinks
+  useEffect(() => {
+    if (headingLinks.length === 0 || typeof window === "undefined" || !rootElement) return;
+
+    // Function to check which heading is active
+    const determineActiveHeading = () => {
+      // Get current scroll position
+      const scrollPosition = window.scrollY;
+
+      // Find the last heading that is above the current scroll position plus offset
+      for (let i = headingLinks.length - 1; i >= 0; i--) {
+        const heading = headingLinks[i];
+
+        // Get element position
+        const rect = heading.element.getBoundingClientRect();
+        const elemTop = rect.top + scrollPosition;
+
+        if (scrollPosition >= elemTop - offset) {
+          setActiveId(heading.id);
+          return;
+        }
+      }
+
+      // If no heading is found, set the first one as active
+      if (headingLinks.length > 0) {
+        setActiveId(headingLinks[0].id);
+      }
+    };
 
     // Set up scroll event listener
     const handleScroll = () => {
@@ -110,22 +113,20 @@ export function useOutline(options?: UseOutlineOptions) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rootElement, determineActiveHeading, gatherHeadings]); // Only depend on rootElement to avoid infinite loops
+  }, [headingLinks, offset, rootElement]);
 
   // Re-gather headings when elements might have changed
   useEffect(() => {
+    if (!rootElement) return;
+
     const observer = new MutationObserver(gatherHeadings);
 
-    if (rootElement) {
-      observer.observe(rootElement, {
-        childList: true,
-        subtree: true,
-      });
-    }
+    observer.observe(rootElement, {
+      childList: true,
+      subtree: true,
+    });
 
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rootElement, gatherHeadings]);
 
   // Function to check if a heading is active

@@ -1,3 +1,5 @@
+"use client";
+
 import * as DesignBreadcrumb from "@rs/design/breadcrumb";
 import { Link } from "next-view-transitions";
 import { ChevronRight } from "@/components/icons";
