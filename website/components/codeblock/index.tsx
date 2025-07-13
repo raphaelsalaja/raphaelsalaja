@@ -1,10 +1,8 @@
 "use client";
 
-import clsx from "clsx";
 import { Check, Clipboard, Code, Terminal } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
-import styles from "./styles.module.css";
 
 export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   "data-language"?: string;
@@ -12,7 +10,7 @@ export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLEl
 
 export default function FigCaption({ ...props }: FigCaptionProps) {
   const language = props["data-language"];
-  const [isCopied, setIsCopied] = useState(false);
+  const [_isCopied, setIsCopied] = useState(false);
 
   const figCaptionRef = useRef<HTMLElement>(null);
   const preRef = useRef<HTMLPreElement | null>(null);
@@ -23,7 +21,7 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
     }
   }, []);
 
-  const Icon = () => {
+  const _Icon = () => {
     switch (language) {
       case "bash":
         return <Terminal width={14} />;
@@ -34,7 +32,7 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
     }
   };
 
-  const handleClickCopy = async () => {
+  const _handleClickCopy = async () => {
     const code = preRef.current?.textContent;
     if (code) {
       await navigator.clipboard.writeText(code);
@@ -45,10 +43,10 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
     }
   };
 
-  const CheckIcon = motion.create(Check);
-  const ClipboardIcon = motion.create(Clipboard);
+  const _CheckIcon = motion.create(Check);
+  const _ClipboardIcon = motion.create(Clipboard);
 
-  const iconProps = {
+  const _iconProps = {
     initial: {
       opacity: 0,
       scale: 0.8,

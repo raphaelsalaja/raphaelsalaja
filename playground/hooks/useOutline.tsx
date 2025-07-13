@@ -111,12 +111,7 @@ export function useOutline(options?: UseOutlineOptions) {
       window.removeEventListener("scroll", handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    rootElement, // Initial check for active heading
-    determineActiveHeading,
-    determineActiveHeading, // Gather headings when component mounts
-    gatherHeadings,
-  ]); // Only depend on rootElement to avoid infinite loops
+  }, [rootElement, determineActiveHeading, gatherHeadings]); // Only depend on rootElement to avoid infinite loops
 
   // Re-gather headings when elements might have changed
   useEffect(() => {

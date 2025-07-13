@@ -23,7 +23,7 @@ function getColor(name: string) {
   return colors[hash % colors.length];
 }
 
-function getShape(name: string, _color: string) {
+function _getShape(name: string, _color: string) {
   const shapes = [
     <Shape1 key={1} className={styles.shape} />,
     <Shape2 key={2} className={styles.shape} />,
@@ -49,7 +49,7 @@ interface PlaceholderProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Placeholder: React.FC<PlaceholderProps> = ({ post }) => {
   const { title, summary, time } = post;
 
-  const color = getColor(title);
+  const _color = getColor(title);
 
   return (
     <div className={styles.thumbnail}>
