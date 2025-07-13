@@ -91,7 +91,7 @@
   object-fit: cover;
   background: var(--background-primary);
   border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--stroke-alpha);
+  box-shadow: 0 0 0 1px var(--border-primary);
 
   .media {
     width: 100%;

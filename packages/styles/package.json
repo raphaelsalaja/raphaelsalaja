@@ -4,6 +4,7 @@
   "exports": {
     "./reset": "./src/reset/index.css",
     "./colors": "./src/colors/index.css",
+    "./theme": "./src/theme/index.css",
     "./transitions": "./src/transitions/index.css"
   },
   "devDependencies": {

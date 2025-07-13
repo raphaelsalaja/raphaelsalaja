@@ -14,7 +14,7 @@
   gap: 12px;
   align-items: flex-start;
   align-self: stretch;
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 .title {
