@@ -1,4 +1,6 @@
-## Commit Message Format
+---
+description: "Guidance for writing clear, concise, and actionable commit messages"
+---
 
 ```
 <type>(<scope>): <short description>
