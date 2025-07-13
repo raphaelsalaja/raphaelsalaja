@@ -79,11 +79,7 @@ function CarrotRoot({ children, value, onChange }: CarrotRootProps) {
 
 function CarrotContainer({ children }: { children: ReactNode }) {
   const { ref } = useCarrotContext();
-  return (
-    <div ref={ref} data-rs-carrot-container>
-      {children}
-    </div>
-  );
+  return <div data-rs-carrot-container>{children}</div>;
 }
 
 function CarrotCaret() {

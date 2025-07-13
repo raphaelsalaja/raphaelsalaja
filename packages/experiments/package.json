@@ -9,10 +9,9 @@
   },
   "devDependencies": {
     "@rs/configuration": "workspace:*",
-    "turbo": "^2.2.3",
-    "react": "18.3.1",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "18.3.1"
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "turbo": "^2.5.4"
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
@@ -21,6 +20,6 @@
   "dependencies": {
     "slate": "^0.117.2",
     "slate-history": "^0.113.1",
-    "slate-react": "^0.117.3"
+    "slate-react": "^0.117.4"
   }
 }

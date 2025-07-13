@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useOutline } from "@/hooks/useOutline";
 import type { OutlineProps } from "../types";
 import { ExpandedOutline } from "./expanded";
@@ -8,8 +8,8 @@ import { MinimizedOutline } from "./minimized";
 
 export const OutlineProvider = (props: OutlineProps) => {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
-  const defaultContentRef = useRef<HTMLDivElement>(null);
-  const contentRef = "contentRef" in props ? props.contentRef : defaultContentRef;
+  const [defaultContentElement, setDefaultContentElement] = useState<HTMLDivElement | null>(null);
+  const contentRef = "contentRef" in props ? props.contentRef : { current: defaultContentElement };
 
   useEffect(() => {
     if (contentRef?.current) setRootElement(contentRef.current);
@@ -45,8 +45,8 @@ export const OutlineProvider = (props: OutlineProps) => {
             width: "100%",
           }}
           ref={(node) => {
-            if (contentRef === defaultContentRef) {
-              defaultContentRef.current = node;
+            if ("contentRef" in props === false) {
+              setDefaultContentElement(node);
               if (node) setRootElement(node);
             }
           }}

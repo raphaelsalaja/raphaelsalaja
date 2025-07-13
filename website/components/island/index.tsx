@@ -162,7 +162,6 @@ const Island = (props: IslandProps) => {
               </NumberFlowGroup>
 
               <ReadingTimeTracker
-                // @ts-expect-error React 19 compatibility issue
                 value={progress}
                 // onValueChange={handleSliderChange}
                 onValueCommitted={handleSliderCommit}
