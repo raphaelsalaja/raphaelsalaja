@@ -15,7 +15,6 @@ interface PostsProps {
 export const Posts = async ({
   category,
   index = false,
-  filter = true,
   title = category
     .split("-")
     .join(" ")
@@ -24,6 +23,8 @@ export const Posts = async ({
   const data = await getPosts(category);
 
   const posts = data.sort((a, b) => {
+    if (a.media && !b.media) return -1;
+    if (!a.media && b.media) return 1;
     return Number(new Date(b.time.created)) - Number(new Date(a.time.created));
   });
 
