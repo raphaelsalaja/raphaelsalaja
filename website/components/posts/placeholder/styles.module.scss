@@ -2,7 +2,6 @@
   aspect-ratio: 3/2;
   object-fit: cover;
   box-shadow: 0 0 0 1px var(--border-primary);
-  border-radius: 8px;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -39,7 +38,6 @@
         aspect-ratio: 1;
         width: 24px;
         height: 24px;
-        border-radius: 6px;
 
         .shape {
           width: 16px;
