@@ -1,44 +1,35 @@
-[data-shunpo-breadcrumb] {
-  font-size: 12px;
-  line-height: 150%;
+[data-rs-breadcrumb] {
+  font-size: var(--font-size-regular);
+  font-variation-settings: var(--font-weight-450);
 }
 
-[data-shunpo-breadcrumb-list] {
+[data-rs-breadcrumb-list] {
   display: flex;
-  gap: 8px;
-
+  gap: 6px;
   align-items: center;
 }
 
-[data-shunpo-breadcrumb-list-item] {
+[data-rs-breadcrumb-list-item] {
   color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--text-primary);
-  }
 }
 
-[data-shunpo-breadcrumb-list-item-link] {
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--text-primary);
-  }
+[data-rs-breadcrumb-list-item-link] {
+  color: var(--text-tertiary);
 }
 
-[data-shunpo-breadcrumb-current-page] {
+[data-rs-breadcrumb-list-item],
+[data-rs-breadcrumb-list-item-link] {
+  transition: all var(--duration-quick) var(--ease-out-cubic);
+}
+
+[data-rs-breadcrumb-list-item-link]:hover {
   color: var(--text-primary);
-  font: inherit;
 }
 
-[data-shunpo-breadcrumb-list-item-separator] {
-  color: var(--text-secondary);
-  font: inherit;
+[data-rs-breadcrumb-current-page] {
+  color: var(--text-primary);
+}
+
+[data-rs-breadcrumb-list-item-separator] {
+  color: var(--text-tertiary);
 }

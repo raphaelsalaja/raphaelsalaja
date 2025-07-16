@@ -48,7 +48,7 @@ const Heading = (props: HeadingProps) => {
         <Link1Icon />
       </motion.div>
 
-      {props.children as React.ReactNode}
+      {/* {props.children as React.ReactNode} */}
     </motion.h1>
   );
 };

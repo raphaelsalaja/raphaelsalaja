@@ -12,7 +12,6 @@ export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       {blurDataURL && (
-        // biome-ignore lint/nursery/noImgElement: <explanation>
         <motion.img
           src={blurDataURL}
           alt=""
@@ -28,7 +27,7 @@ export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
           }}
           initial={{ opacity: 1 }}
           animate={{ opacity: loaded ? 0 : 1 }}
-          transition={{ duration: 0.4, ease: "ease" }}
+          transition={{ duration: 0.4 }}
         />
       )}
 

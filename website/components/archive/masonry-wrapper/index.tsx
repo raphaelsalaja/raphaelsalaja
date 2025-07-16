@@ -2,7 +2,7 @@
 
 import { Masonry } from "@/components/masonry";
 import * as Media from "@/components/media";
-import { MediaResource } from "@/lib/media-fetching/types";
+import type { MediaResource } from "@/lib/media-fetching/types";
 
 import styles from "./styles.module.scss";
 

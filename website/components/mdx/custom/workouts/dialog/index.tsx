@@ -2,7 +2,7 @@
 
 import { Dialog } from "@base-ui-components/react/dialog";
 import { X } from "lucide-react";
-import { Workouts } from "@/data/health/types";
+import type { Workouts } from "@/data/health/types";
 import { WorkoutListItem } from "./components/workout-list-item";
 import styles from "./styles.module.scss";
 

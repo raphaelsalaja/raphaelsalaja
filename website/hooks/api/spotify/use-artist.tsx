@@ -12,7 +12,7 @@ export function useSpotifyArtist(id: string) {
   return useQuery({
     queryKey: ["spotify", "artist", id],
     queryFn: () => fetchArtist(id),
-    staleTime: 60_000,
     enabled: Boolean(id),
+    staleTime: 60_000,
   });
 }

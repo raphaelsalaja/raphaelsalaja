@@ -5,18 +5,21 @@
 }
 
 * {
+  padding: 0;
   margin: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  overflow-wrap: break-word;
-  text-decoration: none;
-  color: inherit;
-  text-wrap: pretty;
-}
-
-body {
+  vertical-align: baseline;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-variation-settings: inherit;
+  font-feature-settings: "calt", "ccmp", "locl", "kern";
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: inherit;
+  color: inherit;
+  text-transform: none;
+  text-decoration: none;
 }
 
 img,
@@ -38,36 +41,35 @@ select {
 ul,
 li,
 ol {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 button {
-  background: none;
-  border: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
-  outline: inherit;
+  background: none;
+  border: none;
 }
 
 input {
-  background: none;
-  border: none;
   padding: 0;
   font: inherit;
-  outline: inherit;
+  background: none;
+  border: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  -webkit-appearance: none;
 }
 
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 #root,

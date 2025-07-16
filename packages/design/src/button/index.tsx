@@ -1,15 +1,11 @@
-import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
-import { type HTMLMotionProps, motion } from "motion/react";
 import { forwardRef } from "react";
 
 import "./styles.css";
 
-export interface ButtonProps extends HTMLMotionProps<"button"> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   className?: string;
-  asChild?: boolean;
-  asMotion?: boolean;
   disabled?: boolean;
   focused?: boolean;
   children?: React.ReactNode;
@@ -17,11 +13,9 @@ export interface ButtonProps extends HTMLMotionProps<"button"> {
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ asChild, children, variant = "primary", disabled = false, focused, className, asMotion, ...props }, ref) => {
-    const Comp = asChild ? Slot : asMotion ? (motion.button as any) : "button";
-
+  ({ children, variant = "primary", disabled = false, focused, className, ...props }, ref) => {
     return (
-      <Comp
+      <button
         ref={ref}
         data-shunpo-button
         data-shunpo-button-variant={variant}
@@ -31,12 +25,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled}
         {...props}
       >
-        {children && (
-          <button type="button" className="children">
-            {children}
-          </button>
-        )}
-      </Comp>
+        {children}
+      </button>
     );
   },
 );

@@ -3,7 +3,7 @@
 import { formatISO, fromUnixTime } from "date-fns";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useWorkouts } from "@/data/health/hooks/get-workouts";
-import { Workouts as WorkoutTypes } from "@/data/health/types";
+import type { Workouts as WorkoutTypes } from "@/data/health/types";
 import styles from "./styles.module.scss";
 import "./styles.scss";
 

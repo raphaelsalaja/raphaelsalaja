@@ -3,6 +3,19 @@
   font-size: 14px;
   line-height: 1.5;
 
+  strong {
+    font-weight: 500;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
   h1 + h2,
   h1 + p,
   h2 + p,
@@ -22,30 +35,17 @@
     margin-top: 24px;
   }
 
-  strong {
-    font-weight: 500;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 500;
-  }
-
   blockquote {
     padding: 0 16px;
-    border-left: 2px solid var(--stroke-alpha);
     color: var(--text-secondary);
+    border-left: 2px solid var(--border-primary);
   }
 
-  ul {
+  [data-mdx-article] ul {
     li {
-      list-style-type: square;
-      margin-left: 16px;
       padding: 4px;
+      margin-left: 16px;
+      list-style-type: square;
 
       &::marker {
         color: var(--text-tertiary);

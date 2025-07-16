@@ -9,7 +9,7 @@ export function useOverflow(ref: RefObject<HTMLElement>) {
   const [refYScrollBegin, setRefYScrollBegin] = useState(true);
   const [refYScrollEnd, setRefYScrollEnd] = useState(false);
 
-  const size = useWindowSize();
+  const _size = useWindowSize();
 
   useEffect(() => {
     const element = ref.current;

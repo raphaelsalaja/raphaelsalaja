@@ -15,7 +15,7 @@ function readFile(filePath: string): Frontmatter | null {
       slug,
       content,
     } as Frontmatter;
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
@@ -23,7 +23,7 @@ function readFile(filePath: string): Frontmatter | null {
 function getFiles(dir: string): string[] {
   try {
     return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
-  } catch (error) {
+  } catch (_error) {
     return [];
   }
 }

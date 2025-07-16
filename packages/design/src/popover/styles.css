@@ -1,0 +1,137 @@
+/* Popover Styles */
+
+:root {
+  --elegant-transition-duration: 0.15s;
+  --elegant-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+[data-popover-root] {
+  isolation: isolate;
+}
+
+[data-popover-trigger] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+[data-popover-backdrop] {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: hsla(0, 0%, 0%, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+[data-popover-positioner] {
+  z-index: 50;
+}
+
+[data-popover-popup] {
+  position: relative;
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  padding: 4px 0px;
+  overflow: hidden;
+
+  /* Style */
+  outline: none;
+  background: hsl(0, 0%, 100%);
+  border-radius: 8px;
+  box-shadow:
+    0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset,
+    0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset,
+    0px 0px 0px 1px hsla(0, 0%, 0%, 0.1),
+    0px 8px 16px 4px hsla(0, 0%, 0%, 0.08);
+  transform-origin: var(--transform-origin);
+
+  /* Interaction */
+  transition: all var(--elegant-transition-duration) var(--elegant-timing-function);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+[data-popover-arrow] {
+  fill: hsl(0, 0%, 100%);
+  stroke: hsla(0, 0%, 0%, 0.1);
+  stroke-width: 1px;
+}
+
+[data-popover-title] {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+
+  justify-content: space-between;
+  height: 32px;
+  padding: 0px 14px;
+
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 1.5;
+
+  color: var(--Text-Primary, #1f1f1f);
+  letter-spacing: -0.04px;
+  border-bottom: 1px solid var(--Border-Primary, #ededed);
+}
+
+[data-popover-description] {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+
+  padding: 0px 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  /* Typography */
+  color: hsl(0, 0%, 45%);
+}
+
+[data-popover-close] {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: center;
+  padding: 6px 12px;
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 450;
+
+  /* Typography */
+  color: hsl(0, 0%, 19%);
+  letter-spacing: -0.04px;
+
+  /* Interaction */
+  cursor: pointer;
+  background: var(--White, #fff);
+  border: 1px solid var(--Border-Primary, #ededed);
+
+  /* Style */
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: hsl(0, 0%, 98%);
+  }
+
+  &[data-pressed] {
+    background: hsl(0, 0%, 96%);
+  }
+}

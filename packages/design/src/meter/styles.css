@@ -1,0 +1,74 @@
+/* Meter Styles */
+
+[data-shunpo-meter-root] {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-surface-secondary);
+  border-radius: 4px;
+}
+
+/* Size variants */
+[data-shunpo-meter-root][data-size="sm"] {
+  height: 4px;
+}
+
+[data-shunpo-meter-root][data-size="md"] {
+  height: 8px;
+}
+
+[data-shunpo-meter-root][data-size="lg"] {
+  height: 12px;
+}
+
+[data-shunpo-meter-indicator] {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: inherit;
+  transition:
+    width 0.3s ease,
+    background-color 0.15s ease;
+}
+
+/* Variant colors */
+[data-shunpo-meter-root][data-variant="success"] [data-shunpo-meter-indicator] {
+  background-color: var(--color-success);
+}
+
+[data-shunpo-meter-root][data-variant="warning"] [data-shunpo-meter-indicator] {
+  background-color: var(--color-warning);
+}
+
+[data-shunpo-meter-root][data-variant="error"] [data-shunpo-meter-indicator] {
+  background-color: var(--color-error);
+}
+
+/* Value-based color changes */
+[data-shunpo-meter-root][data-optimum="high"] [data-shunpo-meter-indicator] {
+  background-color: var(--color-success);
+}
+
+[data-shunpo-meter-root][data-optimum="low"] [data-shunpo-meter-indicator] {
+  background-color: var(--color-error);
+}
+
+[data-shunpo-meter-root][data-sub-optimum] [data-shunpo-meter-indicator] {
+  background-color: var(--color-warning);
+}
+
+[data-shunpo-meter-root][data-sub-sub-optimum] [data-shunpo-meter-indicator] {
+  background-color: var(--color-error);
+}
+
+/* Accessibility improvements */
+[data-shunpo-meter-root]:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  [data-shunpo-meter-root] {
+    border: 1px solid var(--color-border);
+  }
+}

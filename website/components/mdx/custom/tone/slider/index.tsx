@@ -1,8 +1,8 @@
 import { Slider as BaseSlider } from "@base-ui-components/react/slider";
-import * as React from "react";
+import type * as React from "react";
 import styles from "./styles.module.scss";
 
-export interface SliderRootProps extends React.ComponentProps<typeof BaseSlider.Root> {}
+type SliderRootProps = React.ComponentProps<typeof BaseSlider.Root>;
 
 export default function Slider({ ...props }: SliderRootProps) {
   const { value, onValueChange } = props;

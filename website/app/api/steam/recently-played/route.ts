@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-import SteamAPI, { GameDetails, GameInfoBasic, UserPlaytime } from "steamapi";
+import { type NextRequest, NextResponse } from "next/server";
+import SteamAPI, { type GameDetails, type GameInfoBasic, type UserPlaytime } from "steamapi";
 import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
 const API_KEY = process.env.STEAM_API_KEY;
@@ -14,7 +14,7 @@ const steam = new SteamAPI(API_KEY);
 
 async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
   try {
-    const [recentGames, ownedGames] = await Promise.all([
+    const [recentGames, _ownedGames] = await Promise.all([
       steam.getUserRecentGames(steamId, 10),
       steam.getUserOwnedGames(steamId),
     ]);
@@ -46,7 +46,7 @@ async function fetchReviews(appId: number): Promise<GetAppReviewsResponse> {
   return response.json();
 }
 
-export async function GET(request: NextRequest): Promise<NextResponse> {
+export async function GET(_request: NextRequest): Promise<NextResponse> {
   try {
     const game = await getMostRecentGame(STEAM_ID as string);
 

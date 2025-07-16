@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 
-import FigCaption, { FigCaptionProps } from "@/components/codeblock";
+import FigCaption, { type FigCaptionProps } from "@/components/codeblock";
 import Heading, { type HeadingProps } from "@/components/heading";
 
 export const BaseComponents: Partial<MDXComponents> = {

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 const {
   NEXT_PUBLIC_VERCEL_ENV: env = "development",

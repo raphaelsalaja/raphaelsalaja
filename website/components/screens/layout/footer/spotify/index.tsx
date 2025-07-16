@@ -45,9 +45,9 @@ export const Spotify: React.FC = () => {
   } = currentTrack || {};
 
   const albumArtUrl = albumImages[0]?.url ?? "/media/placeholder.png";
-  const artistName = firstArtist?.name;
+  const _artistName = firstArtist?.name;
   const artistId = firstArtist?.id;
-  const url = currentTrack?.external_urls?.spotify ?? "#";
+  const _url = currentTrack?.external_urls?.spotify ?? "#";
   const albumName = currentTrack?.album?.name || "Album Name";
 
   const explicitIndicator = isExplicit ? "🅴" : "";

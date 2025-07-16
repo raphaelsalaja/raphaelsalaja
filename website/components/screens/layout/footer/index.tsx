@@ -1,6 +1,6 @@
 "use client";
 
-import { EmblaCarouselType } from "embla-carousel";
+import type { EmblaCarouselType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -126,11 +126,16 @@ export function Footer() {
   }
 
   return (
-    <div className={styles.embla} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <section
+      className={styles.embla}
+      aria-label="Footer carousel"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className={styles.viewport} ref={viewportRef}>
         <div className={styles.container}>
           {PAGES.map((Page, idx) => (
-            <div className={styles.slide} key={idx}>
+            <div className={styles.slide} key={Page.name || `page-${idx}`}>
               <Page />
             </div>
           ))}
@@ -149,9 +154,9 @@ export function Footer() {
         className={styles.controls}
       >
         <div className={styles.dots}>
-          {PAGES.map((_, idx) => (
+          {PAGES.map((Page, idx) => (
             <button
-              key={idx}
+              key={Page.name || `dot-${idx}`}
               type="button"
               className={idx === selectedIndex ? `${styles.dot} ${styles.dotActive}` : styles.dot}
               onClick={() => embla?.scrollTo(idx)}
@@ -161,6 +166,6 @@ export function Footer() {
           ))}
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 }

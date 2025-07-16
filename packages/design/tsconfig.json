@@ -1,9 +1,3 @@
 {
-  "extends": "@rs/configuration/tsconfig.json",
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2015"],
-    "module": "ESNext",
-    "target": "es6"
-  }
+  "extends": "@rs/configuration/tsconfig.json"
 }

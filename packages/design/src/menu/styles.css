@@ -1,50 +1,97 @@
+/* styles/variables.module.css */
+
+:root {
+  --elegant-transition-duration: 0.15s;
+  --elegant-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* Define base indicator styles first before more specific selectors use them */
+[data-shunpo-menu-trigger-indicator] {
+  transition: transform var(--elegant-transition-duration) var(--elegant-timing-function);
+}
+
 [data-shunpo-menu-trigger] {
   /* Layout */
   display: flex;
-  height: 32px;
-  padding: 8px 12px;
-  justify-content: space-between;
   align-items: center;
   align-self: stretch;
-
-  /* Style */
-  border-radius: 8px;
-  background: hsl(0, 0%, 100%);
-  box-shadow: 0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset, 0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset, 0px 0px
-    0px 1px hsla(0, 0%, 0%, 0.1);
+  justify-content: space-between;
+  height: 32px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 450;
 
   /* Typography */
   color: hsl(0, 0%, 19%);
-  font-size: 13px;
-  font-weight: 450;
   letter-spacing: -0.04px;
 
   /* Interaction */
   cursor: pointer;
+  background: hsl(0, 0%, 100%);
+
+  /* Style */
+  border-radius: 8px;
+  box-shadow:
+    0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset,
+    0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset,
+    0px 0px 0px 1px hsla(0, 0%, 0%, 0.1);
   transition: all 0.2s ease;
 
   &:hover {
     background: hsl(0, 0%, 98%);
   }
 
-  &[data-popup-open] {
-    [data-shunpo-menu-trigger-indicator] {
-      transform: rotateZ(-180deg) perspective(100px);
-    }
+  &[data-pressed] {
+    background: hsl(0, 0%, 96%);
+  }
+
+  &[data-popup-open] [data-shunpo-menu-trigger-indicator] {
+    transform: rotateZ(-180deg);
+    animation: rotate-with-blur-open var(--elegant-transition-duration) var(--elegant-timing-function);
+  }
+
+  &:not([data-popup-open]) [data-shunpo-menu-trigger-indicator] {
+    animation: rotate-with-blur-close var(--elegant-transition-duration) var(--elegant-timing-function);
   }
 }
 
-[data-shunpo-menu-trigger-indicator] {
-  transition: transform 0.2s ease;
+@keyframes rotate-with-blur-open {
+  0% {
+    transform: rotateZ(0deg);
+    filter: blur(0px);
+  }
+  50% {
+    transform: rotateZ(-90deg);
+    filter: blur(1px);
+  }
+  100% {
+    transform: rotateZ(-180deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes rotate-with-blur-close {
+  0% {
+    transform: rotateZ(-180deg);
+    filter: blur(0px);
+  }
+  50% {
+    transform: rotateZ(-90deg);
+    filter: blur(1px);
+  }
+  100% {
+    transform: rotateZ(0deg);
+    filter: blur(0px);
+  }
 }
 
 [data-shunpo-menu-positioner] {
-  /* transition: transform 0.2s ease; */
-  /* Layout */
+  z-index: 50;
   min-width: var(--anchor-width, 200px);
 }
 
 [data-shunpo-menu-popup] {
+  position: relative;
   /* Layout */
   display: flex;
   flex-direction: column;
@@ -53,52 +100,52 @@
 
   /* Style */
   outline: none;
-  border-radius: 8px;
   background: hsl(0, 0%, 100%);
+  border-radius: 8px;
   box-shadow:
     0px -1px 0.5px 0px hsla(0, 0%, 0%, 0.06) inset,
     0px 1px 0.5px 0px hsla(0, 0%, 100%, 0.4) inset,
     0px 0px 0px 1px hsla(0, 0%, 0%, 0.1),
-    0px 8px 8px 4px hsla(0, 0%, 0%, 0.06);
+    0px 4px 4px 2px hsla(0, 0%, 0%, 0.04);
+  transform-origin: var(--transform-origin);
 
   /* Interaction */
-  transition: all 0.1s ease;
-  transform-origin: var(--transform-origin);
+  transition: all var(--elegant-transition-duration) var(--elegant-timing-function);
 
   &[data-starting-style],
   &[data-ending-style] {
     opacity: 0;
-    transform: scale(0.98);
+    filter: blur(2px);
+    transform: scale(0.95);
   }
 }
 
 [data-shunpo-menu-item] {
   /* Layout */
   display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
   height: 32px;
   padding: 0px 10px;
   margin: 0px 4px;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-
-  /* Style */
-  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 450;
 
   /* Typography */
   color: hsl(0, 0%, 19%);
-  font-size: 13px;
-  font-weight: 450;
   letter-spacing: -0.04px;
 
   /* Interaction */
   cursor: pointer;
+
+  /* Style */
+  border-radius: 6px;
   transition: all 0.2s ease;
 
   &[data-highlighted] {
     outline: none;
     background: hsl(0, 0%, 96%);
-    font-weight: 500;
   }
 
   /* Variants */
@@ -114,30 +161,30 @@
 [data-shunpo-menu-group-label] {
   /* Layout */
   display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
   height: 32px;
   padding: 0px 10px;
   margin: 0px 4px;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
+  font-size: 13px;
+  font-weight: 400;
 
   /* Typography */
   color: hsl(0, 0%, 45%);
-  font-size: 13px;
-  font-weight: 400;
   letter-spacing: -0.04px;
 }
 
 [data-shunpo-menu-separator] {
   display: flex;
-  height: 1px;
-  margin: 2px 0px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   align-self: stretch;
+  justify-content: center;
+  height: 1px;
+  margin: 2px 0px;
+  background: hsl(0, 0%, 92%);
 
   /* Style */
   border-radius: 6px;
-  background: hsl(0, 0%, 92%);
 }

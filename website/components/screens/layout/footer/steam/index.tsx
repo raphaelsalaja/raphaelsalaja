@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
+import type React from "react";
 import Skeleton from "react-loading-skeleton";
 import { useSteamGetRecentlyPlayed } from "@/hooks/api/steam/use-recently-played";
 import { ConditionalWrap } from "@/lib/conditional-wrap";
@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 
 const placeholder = "/media/placeholder.png";
 
-export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (_props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <title>Steam Logo</title>

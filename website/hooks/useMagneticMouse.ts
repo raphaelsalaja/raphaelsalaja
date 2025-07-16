@@ -1,5 +1,5 @@
 import { useMotionValue, useSpring } from "motion/react";
-import React from "react";
+import type React from "react";
 
 interface MagneticMouseOptions {
   strength?: number;

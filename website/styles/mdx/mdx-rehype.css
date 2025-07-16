@@ -12,18 +12,13 @@ html {
       background-color: var(--shiki-dark-bg);
     }
   }
-}
 
-html {
   code[data-line-numbers] {
-    counter-reset: line;
     color: var(--text-tertiary);
+    counter-reset: line;
   }
 
   code[data-line-numbers] > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-
     display: inline-block;
     width: 12px;
     margin-right: 24px;
@@ -61,26 +56,26 @@ html {
 }
 
 [data-rehype-pretty-code-figure] {
+  position: relative;
   width: 100%;
   margin-top: 4px;
-  border: 1px solid var(--stroke-alpha);
-  border-radius: 8px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 8px 0px;
-  position: relative;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 5%) 0 4px 8px 0;
 
   pre {
     position: relative;
-    padding: 16px;
-    font-size: 12px;
     max-height: 384px;
+    padding: 16px;
     overflow-x: auto;
+    font-size: 12px;
     background: white;
   }
 
   pre ::selection {
-    background-color: var(--orange-a2);
     color: var(--orange-a9);
+    background-color: var(--orange-a2);
   }
 
   [data-highlighted-line] {
@@ -88,21 +83,18 @@ html {
     z-index: 0;
 
     &::before {
-      content: "";
       position: absolute;
-      top: 0;
-      left: -16px;
-      right: 0;
-      bottom: 0;
+      inset: 0 0 0 -16px;
+      z-index: -1;
+      content: "";
       background-color: var(--highlight-background);
       box-shadow: inset 1px 0 0 var(--highlight-foreground);
-      z-index: -1;
     }
   }
 
   pre [data-highlighted-line] {
+    box-sizing: content-box;
     background-color: var(--blue-20);
     box-shadow: inset 1px 0 0 var(--blue-90);
-    box-sizing: content-box;
   }
 }

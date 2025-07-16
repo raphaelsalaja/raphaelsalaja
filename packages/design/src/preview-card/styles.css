@@ -1,0 +1,214 @@
+/* PreviewCard Root */
+/* Preview card root doesn't render an element */
+
+/* PreviewCard Trigger */
+[data-shunpo-preview-card-trigger] {
+  padding: 0;
+  font: inherit;
+  color: var(--link-color, #3b82f6);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  border: none;
+  transition: color 0.15s ease;
+}
+
+[data-shunpo-preview-card-trigger]:hover {
+  color: var(--link-hover-color, #2563eb);
+  text-decoration: underline;
+}
+
+[data-shunpo-preview-card-trigger]:focus-visible {
+  border-radius: 0.125rem;
+  box-shadow: 0 0 0 2px var(--focus-color, #3b82f6);
+}
+
+/* PreviewCard Portal */
+/* Portal doesn't render a visual element */
+
+/* PreviewCard Backdrop */
+[data-shunpo-preview-card-backdrop] {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: transparent;
+}
+
+/* PreviewCard Positioner */
+[data-shunpo-preview-card-positioner] {
+  position: absolute;
+  z-index: 1000;
+}
+
+/* PreviewCard Popup */
+[data-shunpo-preview-card-popup] {
+  z-index: 1000;
+  max-width: 24rem;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: var(--popup-background-color, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+[data-shunpo-preview-card-popup][data-open] {
+  animation: previewCardIn 0.2s ease-out;
+}
+
+[data-shunpo-preview-card-popup][data-closed] {
+  animation: previewCardOut 0.15s ease-in;
+}
+
+/* PreviewCard Arrow */
+[data-shunpo-preview-card-arrow] {
+  z-index: 1001;
+  fill: var(--popup-background-color, #ffffff);
+  stroke: var(--border-color, #e2e8f0);
+  stroke-width: 1px;
+}
+
+/* Content styling within preview card */
+[data-shunpo-preview-card-popup] h1,
+[data-shunpo-preview-card-popup] h2,
+[data-shunpo-preview-card-popup] h3,
+[data-shunpo-preview-card-popup] h4,
+[data-shunpo-preview-card-popup] h5,
+[data-shunpo-preview-card-popup] h6 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+[data-shunpo-preview-card-popup] h1 {
+  font-size: 1.25rem;
+}
+
+[data-shunpo-preview-card-popup] h2 {
+  font-size: 1.125rem;
+}
+
+[data-shunpo-preview-card-popup] h3 {
+  font-size: 1rem;
+}
+
+[data-shunpo-preview-card-popup] p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color, #374151);
+}
+
+[data-shunpo-preview-card-popup] p:last-child {
+  margin-bottom: 0;
+}
+
+[data-shunpo-preview-card-popup] img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+[data-shunpo-preview-card-popup] a {
+  color: var(--link-color, #3b82f6);
+  text-decoration: none;
+}
+
+[data-shunpo-preview-card-popup] a:hover {
+  text-decoration: underline;
+}
+
+/* Loading state */
+[data-shunpo-preview-card-popup][data-loading] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4rem;
+}
+
+[data-shunpo-preview-card-popup][data-loading]::before {
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  border: 2px solid var(--border-color, #e2e8f0);
+  border-top-color: var(--primary-color, #3b82f6);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Error state */
+[data-shunpo-preview-card-popup][data-error] {
+  padding: 2rem 1rem;
+  color: var(--error-color, #ef4444);
+  text-align: center;
+}
+
+/* Size variants */
+[data-shunpo-preview-card-popup][data-size="sm"] {
+  max-width: 16rem;
+  padding: 0.75rem;
+}
+
+[data-shunpo-preview-card-popup][data-size="lg"] {
+  max-width: 32rem;
+  padding: 1.5rem;
+}
+
+/* Animations */
+@keyframes previewCardIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes previewCardOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  [data-shunpo-preview-card-popup] {
+    animation: none;
+  }
+
+  [data-shunpo-preview-card-trigger] {
+    transition: none;
+  }
+
+  [data-shunpo-preview-card-popup][data-loading]::before {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  [data-shunpo-preview-card-popup] {
+    border-width: 2px;
+  }
+
+  [data-shunpo-preview-card-trigger] {
+    text-decoration: underline;
+  }
+}

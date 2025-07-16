@@ -1,12 +1,9 @@
-import Button from "@rs/design/button";
-import { Seperator } from "@rs/design/seperator";
 import { Link } from "next-view-transitions";
-
 import * as Media from "@/components/media";
 import { getPosts } from "@/lib/mdx";
 import type { Frontmatter } from "@/types/frontmatter";
 import { Placeholder } from "./placeholder";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 
 interface PostsProps {
   index?: boolean;
@@ -18,7 +15,6 @@ interface PostsProps {
 export const Posts = async ({
   category,
   index = false,
-  filter = true,
   title = category
     .split("-")
     .join(" ")
@@ -27,6 +23,8 @@ export const Posts = async ({
   const data = await getPosts(category);
 
   const posts = data.sort((a, b) => {
+    if (a.media && !b.media) return -1;
+    if (!a.media && b.media) return 1;
     return Number(new Date(b.time.created)) - Number(new Date(a.time.created));
   });
 
@@ -60,28 +58,18 @@ export const Posts = async ({
     return <Placeholder post={post} />;
   };
 
-  const isHome = !index;
-
   return (
     <div className={styles.posts}>
       {!index && (
-        <div className={styles.heading}>
-          <Button asChild variant="ghost">
-            <Link href={`/${category}`} className={styles.title}>
-              <h1 className={styles.name}>{title}</h1>
-              <h2 className={styles.count}>{length}</h2>
-            </Link>
-          </Button>
-          <Seperator />
-        </div>
+        <Link href={`/${category}`} className={styles.heading}>
+          <h1 className={styles.name}>{title}</h1>
+          <h2 className={styles.count}>{length}</h2>
+        </Link>
       )}
 
       <div className={styles.grid}>
         {posts
-          .filter((post) => {
-            if (isHome && filter) {
-              // return post.media?.image || post.media?.video;
-            }
+          .filter((_post) => {
             return true;
           })
           .slice(0, index ? posts.length : 3)

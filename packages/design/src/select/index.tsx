@@ -1,126 +1,115 @@
-import { Select } from "@base-ui-components/react/select";
-
 import "./styles.css";
 
-interface SelectRootProps extends React.ComponentProps<typeof Select.Root> {}
+import { Select } from "@base-ui-components/react/select";
 
-const SelectRoot: React.FC<SelectRootProps> = ({ children, ...props }) => {
+interface RootProps extends React.ComponentProps<typeof Select.Root> {}
+
+const Root: React.FC<RootProps> = ({ ...props }) => {
+  return <Select.Root data-rs-select-root {...props} />;
+};
+
+interface TriggerProps extends React.ComponentProps<typeof Select.Trigger> {}
+
+const Trigger: React.FC<TriggerProps> = ({ ...props }) => {
+  return <Select.Trigger data-rs-select-trigger {...props} />;
+};
+
+interface ValueProps extends React.ComponentProps<typeof Select.Value> {}
+
+const Value: React.FC<ValueProps> = ({ ...props }) => {
+  return <Select.Value data-rs-select-value {...props} />;
+};
+
+interface IconProps extends React.ComponentProps<typeof Select.Icon> {}
+
+const Icon: React.FC<IconProps> = ({ ...props }) => {
+  return <Select.Icon data-rs-select-icon {...props} />;
+};
+
+interface PortalProps extends React.ComponentProps<typeof Select.Portal> {}
+
+const Portal: React.FC<PortalProps> = ({ ...props }) => {
+  return <Select.Portal {...props} />;
+};
+
+interface PositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
+
+const Positioner: React.FC<PositionerProps> = ({ alignItemWithTrigger = false, sideOffset = 8, ...props }) => {
   return (
-    <div className="select">
-      <Select.Root {...props}>{children}</Select.Root>
-    </div>
+    <Select.Positioner
+      alignItemWithTrigger={alignItemWithTrigger}
+      sideOffset={sideOffset}
+      data-rs-select-positioner
+      {...props}
+    />
   );
 };
 
-interface SelectLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface PopupProps extends React.ComponentProps<typeof Select.Popup> {}
 
-const SelectLabel: React.FC<SelectLabelProps> = ({ children, ...props }) => {
-  return (
-    <span className="label" {...props}>
-      {children}
-    </span>
-  );
+const Popup: React.FC<PopupProps> = ({ ...props }) => {
+  return <Select.Popup data-rs-select-popup {...props} />;
 };
 
-interface SelectTriggerProps extends React.ComponentProps<typeof Select.Trigger> {}
+interface ArrowProps extends React.ComponentProps<typeof Select.Arrow> {}
 
-const SelectTrigger: React.FC<SelectTriggerProps> = ({ children, ...props }) => {
-  return (
-    <Select.Trigger className="trigger" {...props}>
-      {children}
-    </Select.Trigger>
-  );
+const Arrow: React.FC<ArrowProps> = ({ ...props }) => {
+  return <Select.Arrow {...props} />;
 };
 
-interface SelectValueProps extends React.ComponentProps<typeof Select.Value> {}
+interface ItemProps extends React.ComponentProps<typeof Select.Item> {}
 
-const SelectValue: React.FC<SelectValueProps> = ({ children, ...props }) => {
-  return (
-    <Select.Value className="value" {...props}>
-      {children}
-    </Select.Value>
-  );
+const Item: React.FC<ItemProps> = ({ ...props }) => {
+  return <Select.Item data-rs-select-item {...props} />;
 };
 
-interface SelectIconProps extends React.ComponentProps<typeof Select.Icon> {}
+interface ItemIndicatorProps extends React.ComponentProps<typeof Select.ItemIndicator> {}
 
-const SelectIcon: React.FC<SelectIconProps> = ({ children, ...props }) => {
-  return (
-    <Select.Icon className="icon" {...props}>
-      {children}
-    </Select.Icon>
-  );
+const ItemIndicator: React.FC<ItemIndicatorProps> = ({ ...props }) => {
+  return <Select.ItemIndicator {...props} />;
 };
 
-interface SelectPortalProps extends React.ComponentProps<typeof Select.Portal> {}
+interface ItemTextProps extends React.ComponentProps<typeof Select.ItemText> {}
 
-const SelectPortal: React.FC<SelectPortalProps> = ({ children, ...props }) => {
-  return <Select.Portal {...props}>{children}</Select.Portal>;
+const ItemText: React.FC<ItemTextProps> = ({ ...props }) => {
+  return <Select.ItemText data-rs-select-item-text {...props} />;
 };
 
-interface SelectPositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
-
-const SelectPositioner: React.FC<SelectPositionerProps> = ({ children, ...props }) => {
-  return (
-    <Select.Positioner className="positioner" {...props}>
-      {children}
-    </Select.Positioner>
-  );
+const Group: React.FC<React.ComponentProps<typeof Select.Group>> = ({ ...props }) => {
+  return <Select.Group data-rs-select-group {...props} />;
 };
 
-interface SelectPopupProps extends React.ComponentProps<typeof Select.Popup> {}
-
-const SelectPopup: React.FC<SelectPopupProps> = ({ children, ...props }) => {
-  return (
-    <Select.Popup className="popup" {...props}>
-      {children}
-    </Select.Popup>
-  );
+const GroupLabel: React.FC<React.ComponentProps<typeof Select.GroupLabel>> = ({ ...props }) => {
+  return <Select.GroupLabel data-rs-select-group-label {...props} />;
 };
 
-interface SelectArrowProps extends React.ComponentProps<typeof Select.Arrow> {}
-
-const SelectArrow: React.FC<SelectArrowProps> = ({ children, ...props }) => {
-  return <Select.Arrow {...props}>{children}</Select.Arrow>;
+const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (props) => {
+  return <Select.Separator data-rs-select-separator {...props} />;
 };
 
-interface SelectItemProps extends React.ComponentProps<typeof Select.Item> {}
-
-const SelectItem: React.FC<SelectItemProps> = ({ children, ...props }) => {
-  return (
-    <Select.Item className="item" {...props}>
-      {children}
-    </Select.Item>
-  );
+const ScrollUpArrow: React.FC<React.ComponentProps<typeof Select.ScrollUpArrow>> = (props) => {
+  return <Select.ScrollUpArrow data-rs-select-scroll-arrow {...props} />;
 };
 
-interface SelectItemIndicatorProps extends React.ComponentProps<typeof Select.ItemIndicator> {}
-
-const SelectItemIndicator: React.FC<SelectItemIndicatorProps> = ({ children, ...props }) => {
-  return <Select.ItemIndicator {...props}>{children}</Select.ItemIndicator>;
-};
-
-interface SelectItemTextProps extends React.ComponentProps<typeof Select.ItemText> {}
-
-const SelectItemText: React.FC<SelectItemTextProps> = ({ children, ...props }) => {
-  return (
-    <Select.ItemText className="text" {...props}>
-      {children}
-    </Select.ItemText>
-  );
+const ScrollDownArrow: React.FC<React.ComponentProps<typeof Select.ScrollDownArrow>> = (props) => {
+  return <Select.ScrollDownArrow data-rs-select-scroll-arrow {...props} />;
 };
 
 export {
-  SelectRoot as Root,
-  SelectLabel as Label,
-  SelectTrigger as Trigger,
-  SelectValue as Value,
-  SelectIcon as Icon,
-  SelectPortal as Portal,
-  SelectPositioner as Positioner,
-  SelectPopup as Popup,
-  SelectArrow as Arrow,
-  SelectItem as Item,
-  SelectItemIndicator as ItemIndicator,
-  SelectItemText as ItemText,
+  Root,
+  Trigger,
+  Value,
+  Icon,
+  Portal,
+  Positioner,
+  Popup,
+  Arrow,
+  Item,
+  ItemIndicator,
+  ItemText,
+  Group,
+  GroupLabel,
+  Separator,
+  ScrollUpArrow,
+  ScrollDownArrow,
 };

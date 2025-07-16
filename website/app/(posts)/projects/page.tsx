@@ -5,6 +5,6 @@ interface PageProps {
   params: Promise<Frontmatter>;
 }
 
-export default async function Page(props: PageProps) {
+export default async function Page(_props: PageProps) {
   return <Posts category="projects" index />;
 }

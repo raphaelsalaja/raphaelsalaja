@@ -1,7 +1,7 @@
 "use client";
 
-import { AnimatePresence, AnimatePresenceProps, HTMLMotionProps, motion } from "motion/react";
-import * as React from "react";
+import { AnimatePresence, type AnimatePresenceProps, type HTMLMotionProps, motion } from "motion/react";
+import type * as React from "react";
 
 type Props = React.PropsWithChildren<{
   condition: boolean;

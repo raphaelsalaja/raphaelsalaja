@@ -1,45 +1,21 @@
 @import url("@rs/styles/colors");
 @import url("@rs/styles/transitions");
 @import url("@rs/styles/reset");
+@import url("@rs/styles/theme");
 
 :root {
-  /* text */
-  --text-primary: var(--gray-12);
-  --text-secondary: var(--gray-11);
-  --text-tertiary: var(--gray-10);
-  --text-quaternary: var(--gray-9);
-
-  /* stroke */
-  --stroke: var(--gray-3);
-  --stroke-alpha: var(--gray-a3);
-
-  /* background */
-  --background-primary: #fff;
-  --background-secondary: var(--gray-2);
-  --background-tertiary: var(--gray-3);
-  --background-quaternary: var(--gray-4);
-
-  /* destructive */
-  --destructive-text: var(--red-9);
-  --destructive-background: var(--red-9);
-
-  /* accent */
   --accent-text: var(--blue-1);
   --accent-background: var(--blue-9);
-
-  /* box shadows */
-  --box-shadow-component: rgb(0 0 0 / 12.5%) 0px 3px 6px -2px;
 }
 
 html {
+  overflow-x: hidden;
   color: var(--text-primary);
 
   &::-webkit-scrollbar {
     width: 0;
     background: transparent;
   }
-
-  overflow-x: hidden;
 }
 
 body {
@@ -49,11 +25,11 @@ body {
 
   main {
     display: flex;
-    gap: 48px;
-    padding: 96px 0;
-    width: 768px;
     flex-direction: column;
+    gap: 48px;
     align-items: flex-start;
+    width: 768px;
+    padding: 96px 0;
     isolation: isolate;
     transition: width 0.4s ease;
 
@@ -67,10 +43,12 @@ body {
   }
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
 ::view-transition-old(root) {
   animation: blur-out 0.4s ease forwards;
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
 ::view-transition-new(root) {
   animation: blur-in 0.4s ease forwards;
 }

@@ -1,4 +1,4 @@
-import { Frontmatter } from "@/types/frontmatter";
+import type { Frontmatter } from "@/types/frontmatter";
 import { Shape1 } from "./shapes/1";
 import { Shape2 } from "./shapes/2";
 import { Shape3 } from "./shapes/3";
@@ -23,7 +23,7 @@ function getColor(name: string) {
   return colors[hash % colors.length];
 }
 
-function getShape(name: string, color: string) {
+function _getShape(name: string, _color: string) {
   const shapes = [
     <Shape1 key={1} className={styles.shape} />,
     <Shape2 key={2} className={styles.shape} />,
@@ -47,13 +47,12 @@ interface PlaceholderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Placeholder: React.FC<PlaceholderProps> = ({ post }) => {
-  const { title, summary, time, tags } = post;
+  const { title, summary, time } = post;
 
-  const color = getColor(title);
-  const shape = getShape(title, color);
+  const _color = getColor(title);
 
   return (
-    <div className={styles.thumbnail} style={{ background: `var(--${color}-a9)` }}>
+    <div className={styles.thumbnail}>
       <div className={styles.placeholder}>
         <div className={styles.content}>
           <div className={styles.details}>
@@ -63,9 +62,6 @@ export const Placeholder: React.FC<PlaceholderProps> = ({ post }) => {
             <p className={styles.text} data-text="secondary">
               {summary}
             </p>
-          </div>
-          <div className={styles.square} style={{ background: `var(--${color}-a10)` }}>
-            {shape}
           </div>
         </div>
         <div className={styles.extra}>

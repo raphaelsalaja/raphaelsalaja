@@ -1,6 +1,6 @@
 "use client";
 
-import { PlayerState } from "@statsfm/spotify.js";
+import type { PlayerState } from "@statsfm/spotify.js";
 import { useQuery } from "@tanstack/react-query";
 
 async function fetchPlaybackState(): Promise<PlayerState> {
@@ -13,7 +13,6 @@ export function useSpotifyPlaybackState() {
   return useQuery<PlayerState>({
     queryKey: ["spotify", "playback-state"],
     queryFn: fetchPlaybackState,
-    refetchInterval: 60_000,
     staleTime: 60_000,
   });
 }

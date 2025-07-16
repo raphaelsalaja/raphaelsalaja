@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { components } from "@/types/trakt";
+import type { components } from "@/types/trakt";
 
 type Show = components["schemas"]["Show"];
 
@@ -14,6 +14,5 @@ export function useTraktGetLastWatched() {
       return res.json() as Promise<Show | null>;
     },
     staleTime: 60_000,
-    refetchOnWindowFocus: false,
   });
 }

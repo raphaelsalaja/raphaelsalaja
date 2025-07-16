@@ -1,227 +1,272 @@
+/* 1) Variables with P3 fallback */
+:root {
+  /* Standard fallbacks */
+  --white-color: #fff;
+  --black-color: #000;
+  --hover-primary-color: #4d4d4d;
+  --hover-secondary-color: #fafafa;
+  --disabled-color: #b3b3b3;
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+  :root {
+    --white-color: color(display-p3 1 1 1);
+    --black-color: color(display-p3 0 0 0);
+    --hover-primary-color: color(display-p3 0.3 0.3 0.3);
+    --hover-secondary-color: color(display-p3 0.9804 0.9804 0.9804);
+    --disabled-color: color(display-p3 0.702 0.702 0.702);
+  }
+}
+
+/* 2) Base .button */
 .button {
-  /* layout */
   position: relative;
   display: inline-flex;
+  flex-shrink: 0;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   height: 32px;
   padding: 0 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  border-radius: 8px;
-
-  /* font */
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: 100%;
   letter-spacing: -0.18px;
   white-space: nowrap;
-
-  /* animation */
-  transition: all 0.2s ease;
-
   user-select: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
 
-  /* variants - primary */
-  &[data-shunpo-button-variant="primary"] {
-    color: #fff;
-    color: color(display-p3 1 1 1);
-    background: #000;
-    background: color(display-p3 0 0 0);
-
-    &:hover[aria-disabled="false"] {
-      background: #4d4d4d;
-      background: color(display-p3 0.3 0.3 0.3);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
-    }
+/* 3) Primary */
+.button[data-shunpo-button-variant="primary"] {
+  color: var(--white-color);
+  background: var(--black-color);
+}
+.button[data-shunpo-button-variant="primary"]:hover:not([aria-disabled="true"]) {
+  background: var(--hover-primary-color);
+}
+.button[data-shunpo-button-variant="primary"]:focus-visible,
+.button[data-shunpo-button-variant="primary"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #000;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="primary"]:focus-visible,
+  .button[data-shunpo-button-variant="primary"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 0 0 0);
   }
+}
 
-  /* variants - secondary */
-  &[data-shunpo-button-variant="secondary"] {
-    color: #000;
+/* 4) Secondary */
+.button[data-shunpo-button-variant="secondary"] {
+  color: #000;
+  border: 1px solid rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="secondary"] {
     color: color(display-p3 0 0 0);
-    border: 1px solid rgb(0 0 0 / 10%);
     border: 1px solid color(display-p3 0 0 0 / 10%);
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
     box-shadow: 0 1px 2px 0 color(display-p3 0 0 0 / 5%);
-
-    &:hover[aria-disabled="false"] {
-      background: #fafafa;
-      background: color(display-p3 0.9804 0.9804 0.9804);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
-    }
   }
+}
+.button[data-shunpo-button-variant="secondary"]:hover:not([aria-disabled="true"]) {
+  background: var(--hover-secondary-color);
+}
+.button[data-shunpo-button-variant="secondary"]:focus-visible,
+.button[data-shunpo-button-variant="secondary"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #000;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="secondary"]:focus-visible,
+  .button[data-shunpo-button-variant="secondary"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 0 0 0);
+  }
+}
 
-  /* variants - tertiary */
-  &[data-shunpo-button-variant="tertiary"] {
-    color: #000;
+/* 5) Tertiary */
+.button[data-shunpo-button-variant="tertiary"] {
+  color: #000;
+  background: #fff;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="tertiary"] {
     color: color(display-p3 0 0 0);
-    background: #fff;
     background: color(display-p3 1 1 1);
-
-    &:hover[aria-disabled="false"] {
-      background: #f5f5f5;
-      background: color(display-p3 0.96 0.96 0.96);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
-    }
   }
+}
+.button[data-shunpo-button-variant="tertiary"]:hover:not([aria-disabled="true"]) {
+  background: #f5f5f5;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="tertiary"]:hover:not([aria-disabled="true"]) {
+    background: color(display-p3 0.96 0.96 0.96);
+  }
+}
+.button[data-shunpo-button-variant="tertiary"]:focus-visible,
+.button[data-shunpo-button-variant="tertiary"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #000;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="tertiary"]:focus-visible,
+  .button[data-shunpo-button-variant="tertiary"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 0 0 0);
+  }
+}
 
-  /* variants - destructive */
-  &[data-shunpo-button-variant="destructive"] {
-    color: #fff;
-    color: color(display-p3 1 1 1);
-    background: #ff2a4b;
+/* 6) Destructive */
+.button[data-shunpo-button-variant="destructive"] {
+  color: #fff;
+  background: #ff2a4b; /* fallback red */
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="destructive"] {
     background: color(display-p3 1 0.2784 0.3265);
-
-    &:hover:not([aria-disabled="true"]) {
-      background: #ff939e;
-      background: color(display-p3 1 0.6 0.6267);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #ff2a4b;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.2784 0.3265);
-    }
   }
+}
+.button[data-shunpo-button-variant="destructive"]:hover:not([aria-disabled="true"]) {
+  background: #ff6a7c;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="destructive"]:hover:not([aria-disabled="true"]) {
+    background: color(display-p3 1 0.6 0.6267);
+  }
+}
+.button[data-shunpo-button-variant="destructive"]:focus-visible,
+.button[data-shunpo-button-variant="destructive"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #ff2a4b;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="destructive"]:focus-visible,
+  .button[data-shunpo-button-variant="destructive"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 1 0.2784 0.3265);
+  }
+}
 
-  /* variants - warning */
-  &[data-shunpo-button-variant="warning"] {
-    color: #fff;
-    color: color(display-p3 1 1 1);
-    border-radius: 8px;
-    background: #ff902c;
+/* 7) Warning */
+.button[data-shunpo-button-variant="warning"] {
+  color: #fff;
+  background: #ff902c;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="warning"] {
     background: color(display-p3 1 0.5911 0.2784);
-
-    &:hover[aria-disabled="false"] {
-      background: #ffc292;
-      background: color(display-p3 1 0.7733 0.6);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #ff902c;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 1 0.5911 0.2784);
-    }
   }
+}
+.button[data-shunpo-button-variant="warning"]:hover:not([aria-disabled="true"]) {
+  background: #ffc292;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="warning"]:hover:not([aria-disabled="true"]) {
+    background: color(display-p3 1 0.7733 0.6);
+  }
+}
+.button[data-shunpo-button-variant="warning"]:focus-visible,
+.button[data-shunpo-button-variant="warning"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #ff902c;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="warning"]:focus-visible,
+  .button[data-shunpo-button-variant="warning"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 1 0.5911 0.2784);
+  }
+}
 
-  /* variants - accent */
-  &[data-shunpo-button-variant="accent"] {
-    color: #fff;
-    color: color(display-p3 1 1 1);
-    border-radius: 8px;
-    background: #00fac3;
+/* 8) Accent */
+.button[data-shunpo-button-variant="accent"] {
+  color: #fff;
+  background: #00fac3;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="accent"] {
     background: color(display-p3 0.0929 0.9628 0.7743);
-
-    &:hover[aria-disabled="false"] {
-      background: #7afee6;
-      background: color(display-p3 0.615 0.985 0.9033);
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #00fac3;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
-    }
   }
+}
+.button[data-shunpo-button-variant="accent"]:hover:not([aria-disabled="true"]) {
+  background: #7afee6;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="accent"]:hover:not([aria-disabled="true"]) {
+    background: color(display-p3 0.615 0.985 0.9033);
+  }
+}
+.button[data-shunpo-button-variant="accent"]:focus-visible,
+.button[data-shunpo-button-variant="accent"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #00fac3;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="accent"]:focus-visible,
+  .button[data-shunpo-button-variant="accent"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 0.0929 0.9628 0.7743);
+  }
+}
 
-  /* variants - ghost */
-  &[data-shunpo-button-variant="ghost"] {
-    /* layout */
-    height: fit-content;
-    padding: 0;
-
-    /* style */
-    background: transparent;
-    border: none;
-
-    /* font */
-    color: #b3b3b3;
+/* 9) Ghost */
+.button[data-shunpo-button-variant="ghost"] {
+  height: fit-content;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #b3b3b3;
+  letter-spacing: -0.09px;
+  background: transparent;
+  border: none;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="ghost"] {
     color: color(display-p3 0.702 0.702 0.702);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: -0.09px;
-
-    ::before {
-      content: "";
-      position: absolute;
-      inset: -2px -6px;
-      z-index: -1;
-      border-radius: 6px;
-      opacity: 0;
-      transition: all 0.2s ease;
-      transform: scale(0.95);
-    }
-
-    &:hover[aria-disabled="false"] {
-      color: #000;
-      color: color(display-p3 0 0 0);
-
-      ::before {
-        content: "";
-        background: #f5f5f5;
-        background: color(display-p3 0.96 0.96 0.96);
-        transition: all 0.2s ease;
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    &:focus-visible,
-    &[data-shunpo-button-focus-visible="true"] {
-      box-shadow:
-        0 0 0 2px #fff,
-        0 0 0 4px #000;
-      box-shadow:
-        0 0 0 2px color(display-p3 1 1 1),
-        0 0 0 4px color(display-p3 0 0 0);
-    }
   }
-
-  &[aria-disabled="true"] {
-    filter: opacity(0.2);
-    cursor: not-allowed;
+}
+.button[data-shunpo-button-variant="ghost"]:hover:not([aria-disabled="true"]) {
+  color: #000;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="ghost"]:hover:not([aria-disabled="true"]) {
+    color: color(display-p3 0 0 0);
   }
+}
+.button[data-shunpo-button-variant="ghost"]:focus-visible,
+.button[data-shunpo-button-variant="ghost"][data-shunpo-button-focus-visible="true"] {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #000;
+}
+@supports (color: color(display-p3 0 0 0)) {
+  .button[data-shunpo-button-variant="ghost"]:focus-visible,
+  .button[data-shunpo-button-variant="ghost"][data-shunpo-button-focus-visible="true"] {
+    box-shadow:
+      0 0 0 2px color(display-p3 1 1 1),
+      0 0 0 4px color(display-p3 0 0 0);
+  }
+}
+
+/* 10) Universal disabled */
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  filter: opacity(0.2);
 }
