@@ -38,7 +38,7 @@
   blockquote {
     padding: 0 16px;
     color: var(--text-secondary);
-    border-left: 2px solid var(--stroke-alpha);
+    border-left: 2px solid var(--border-primary);
   }
 
   [data-mdx-article] ul {

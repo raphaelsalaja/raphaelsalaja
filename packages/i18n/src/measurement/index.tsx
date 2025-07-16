@@ -1,9 +1,9 @@
 "use client";
 
 import NumberFlow from "@number-flow/react";
-import convert from "convert";
 import type { MeasureKind, UnitsByMeasure } from "convert";
-import { AnimatePresence, HTMLMotionProps, motion } from "motion/react";
+import convert from "convert";
+import { AnimatePresence, type HTMLMotionProps, motion } from "motion/react";
 import React from "react";
 import useMeasure from "react-use-measure";
 import { useUserPreferences } from "../hooks";

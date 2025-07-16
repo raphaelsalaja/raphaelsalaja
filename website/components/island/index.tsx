@@ -1,8 +1,8 @@
 "use client";
 
-import * as Portal from "@radix-ui/react-portal";
 import { AnimatePresence, type HTMLMotionProps, motion } from "motion/react";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 import { useHeadingTracker } from "@/hooks/useHeadingTracker";
 import { useReadingTime } from "@/hooks/useReadingTime";
@@ -30,7 +30,7 @@ const NumberFlowGroup = dynamic(() => import("@number-flow/react").then((mod) =>
 
 interface IslandProps extends HTMLMotionProps<"div"> {}
 
-const Island: React.FC<IslandProps> = (props) => {
+const Island = (props: IslandProps) => {
   const { progress } = useScrollProgress();
   const { heading } = useHeadingTracker();
   const time = useReadingTime();
@@ -62,180 +62,179 @@ const Island: React.FC<IslandProps> = (props) => {
   const toggleExpanded = () => setExpanded(!expanded);
   const direction = useScrollDirection();
 
-  return (
-    <Portal.Root asChild>
-      <motion.div
-        className={styles.island}
-        style={{
-          borderRadius: "32px",
-          boxShadow: "0px 4px 16px 0px rgba(0, 0, 0, 0.25)",
-        }}
-        layout
-        layoutId="container"
-        {...props}
-      >
-        <AnimatePresence mode="popLayout" initial={false} propagate>
-          {expanded ? (
-            <motion.div key="expanded" className={styles.expanded} layout layoutId="expanded">
-              <div className={styles.heading}>
-                <motion.button
-                  layout
-                  layoutId="shader"
-                  onClick={toggleExpanded}
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 8,
-                    overflow: "hidden",
-                  }}
-                >
-                  <SimplexNoise scale={0.07} speed={0.5} style={{ width: "100%", height: "100%" }} />
-                </motion.button>
-
-                <div className={styles.details}>
-                  <motion.p
-                    layout="position"
-                    layoutId="heading"
-                    className={styles.title}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Cultivating Taste
-                  </motion.p>
-                  <motion.p
-                    layout="position"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={styles.author}
-                  >
-                    Raphael Salaja
-                  </motion.p>
-                </div>
-              </div>
-
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="carousel">
-                <Carousel
-                  options={{
-                    loop: false,
-                    align: "center",
-                    containScroll: false,
-                  }}
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className={styles.reading}
-                layout
-                layoutId="reading"
-              >
-                <NumberFlowGroup>
-                  <span
-                    className={styles.time}
-                    style={
-                      {
-                        "--number-flow-char-height": "12px",
-                      } as React.CSSProperties
-                    }
-                  >
-                    <NumberFlow
-                      willChange
-                      value={getMinutesAndSeconds(currentTime).minutes}
-                      format={{
-                        minimumIntegerDigits: 2,
-                      }}
-                    />
-                    <span>:</span>
-                    <NumberFlow
-                      willChange
-                      value={getMinutesAndSeconds(currentTime).seconds}
-                      format={{
-                        minimumIntegerDigits: 2,
-                      }}
-                    />
-                  </span>
-                </NumberFlowGroup>
-
-                <ReadingTimeTracker
-                  value={progress}
-                  // onValueChange={handleSliderChange}
-                  onValueCommitted={handleSliderCommit}
-                />
-
-                <span className={styles.time}>{formatTimeMMSS(time.total)}</span>
-              </motion.div>
-
-              <motion.div
-                className={styles.progress}
-                style={{
-                  opacity: 0,
-                  position: "absolute",
-                  right: "0",
-                  bottom: "16px",
-                }}
-                animate={{ scale: 0.5 }}
-                layoutId="progress-indicator"
-              >
-                <CircularProgressbar strokeWidth={12} value={progress} />
-              </motion.div>
-            </motion.div>
-          ) : (
-            <motion.div key="compact" className={styles.compact} layoutId="compact">
+  return createPortal(
+    <motion.div
+      className={styles.island}
+      style={{
+        borderRadius: "32px",
+        boxShadow: "0px 4px 16px 0px rgba(0, 0, 0, 0.25)",
+      }}
+      layout
+      layoutId="container"
+      {...props}
+    >
+      <AnimatePresence mode="popLayout" initial={false} propagate>
+        {expanded ? (
+          <motion.div key="expanded" className={styles.expanded} layout layoutId="expanded">
+            <div className={styles.heading}>
               <motion.button
                 layout
                 layoutId="shader"
                 onClick={toggleExpanded}
                 style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: 24,
+                  width: 48,
+                  height: 48,
+                  borderRadius: 8,
                   overflow: "hidden",
-                  zIndex: 10,
                 }}
               >
-                <MeshGradient speed={0.5} style={{ width: "100%", height: "100%" }} />
+                <SimplexNoise scale={0.07} speed={0.5} style={{ width: "100%", height: "100%" }} />
               </motion.button>
 
-              <AnimatePresence mode="popLayout" initial={false}>
+              <div className={styles.details}>
                 <motion.p
-                  key={heading}
                   layout="position"
                   layoutId="heading"
-                  className={styles.text}
-                  initial={{
-                    opacity: 0,
-                    transform: `translateY(${-24 * direction}px)`,
-                    filter: "blur(4px)",
-                  }}
-                  animate={{
-                    opacity: 1,
-                    transform: "translateY(0)",
-                    filter: "blur(0px)",
-                  }}
-                  exit={{
-                    opacity: 0,
-                    transform: `translateY(${24 * direction}px)`,
-                    filter: "blur(4px)",
-                  }}
+                  className={styles.title}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                 >
-                  {heading}
+                  Cultivating Taste
                 </motion.p>
-              </AnimatePresence>
+                <motion.p
+                  layout="position"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className={styles.author}
+                >
+                  Raphael Salaja
+                </motion.p>
+              </div>
+            </div>
 
-              <motion.div className={styles.progress} animate={{ scale: 1 }} layoutId="progress-indicator">
-                <CircularProgressbar strokeWidth={12} value={progress} />
-              </motion.div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="carousel">
+              <Carousel
+                options={{
+                  loop: false,
+                  align: "center",
+                  containScroll: false,
+                }}
+              />
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </Portal.Root>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className={styles.reading}
+              layout
+              layoutId="reading"
+            >
+              <NumberFlowGroup>
+                <span
+                  className={styles.time}
+                  style={
+                    {
+                      "--number-flow-char-height": "12px",
+                    } as React.CSSProperties
+                  }
+                >
+                  <NumberFlow
+                    willChange
+                    value={getMinutesAndSeconds(currentTime).minutes}
+                    format={{
+                      minimumIntegerDigits: 2,
+                    }}
+                  />
+                  <span>:</span>
+                  <NumberFlow
+                    willChange
+                    value={getMinutesAndSeconds(currentTime).seconds}
+                    format={{
+                      minimumIntegerDigits: 2,
+                    }}
+                  />
+                </span>
+              </NumberFlowGroup>
+
+              <ReadingTimeTracker
+                value={progress}
+                // onValueChange={handleSliderChange}
+                onValueCommitted={handleSliderCommit}
+              />
+
+              <span className={styles.time}>{formatTimeMMSS(time.total)}</span>
+            </motion.div>
+
+            <motion.div
+              className={styles.progress}
+              style={{
+                opacity: 0,
+                position: "absolute",
+                right: "0",
+                bottom: "16px",
+              }}
+              animate={{ scale: 0.5 }}
+              layoutId="progress-indicator"
+            >
+              <CircularProgressbar strokeWidth={12} value={progress} />
+            </motion.div>
+          </motion.div>
+        ) : (
+          <motion.div key="compact" className={styles.compact} layoutId="compact">
+            <motion.button
+              layout
+              layoutId="shader"
+              onClick={toggleExpanded}
+              style={{
+                width: 24,
+                height: 24,
+                borderRadius: 24,
+                overflow: "hidden",
+                zIndex: 10,
+              }}
+            >
+              <MeshGradient speed={0.5} style={{ width: "100%", height: "100%" }} />
+            </motion.button>
+
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.p
+                key={heading}
+                layout="position"
+                layoutId="heading"
+                className={styles.text}
+                initial={{
+                  opacity: 0,
+                  transform: `translateY(${-24 * direction}px)`,
+                  filter: "blur(4px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  transform: "translateY(0)",
+                  filter: "blur(0px)",
+                }}
+                exit={{
+                  opacity: 0,
+                  transform: `translateY(${24 * direction}px)`,
+                  filter: "blur(4px)",
+                }}
+              >
+                {heading}
+              </motion.p>
+            </AnimatePresence>
+
+            <motion.div className={styles.progress} animate={{ scale: 1 }} layoutId="progress-indicator">
+              <CircularProgressbar strokeWidth={12} value={progress} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>,
+    document.body,
   );
 };
 

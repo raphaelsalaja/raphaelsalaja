@@ -27,7 +27,7 @@ export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
           }}
           initial={{ opacity: 1 }}
           animate={{ opacity: loaded ? 0 : 1 }}
-          transition={{ duration: 0.4, ease: "ease" }}
+          transition={{ duration: 0.4 }}
         />
       )}
 

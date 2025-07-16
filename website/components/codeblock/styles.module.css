@@ -6,7 +6,7 @@
   margin-bottom: -24px;
   font-weight: 400;
   background: var(--background-secondary);
-  border-bottom: 1px solid var(--stroke-alpha);
+  border-bottom: 1px solid var(--border-primary);
 
   .heading {
     display: flex;

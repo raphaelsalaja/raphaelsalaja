@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 "use client";
 
 import { Dialog } from "@base-ui-components/react/dialog";

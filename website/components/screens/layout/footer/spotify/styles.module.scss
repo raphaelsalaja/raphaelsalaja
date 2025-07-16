@@ -4,7 +4,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-
+  border-radius: 12px;
   overflow: hidden;
 
   [data-condition] {
@@ -150,7 +150,7 @@
 
   .genres {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     gap: 8px;
   }
 }

@@ -1,7 +1,6 @@
 import * as Button from "@rs/design/button";
 import { Link } from "next-view-transitions";
-import { Shape2, Shape3, Shape6, Shape8 } from "@/components/posts/placeholder/shapes";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 
 export const Base: React.FC = () => {
   return (
@@ -43,19 +42,11 @@ export const Base: React.FC = () => {
       </div>
 
       <div className={styles.copyright}>
-        <div className={styles.shapes}>
-          <div className={styles.shape} data-color="blue">
-            <Shape3 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="violet">
-            <Shape6 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="yellow">
-            <Shape2 className={styles.icon} />
-          </div>
-          <div className={styles.shape} data-color="gray">
-            <Shape8 className={styles.icon} />
-          </div>
+        <div className={styles.logo}>
+          <div className={styles.circle} />
+          <div className={styles.circle} />
+          <div className={styles.circle} />
+          <div className={styles.circle} />
         </div>
 
         <p className={styles.legal}>© {new Date().getFullYear()}</p>

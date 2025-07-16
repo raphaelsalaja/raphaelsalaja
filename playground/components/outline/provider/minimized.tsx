@@ -1,5 +1,3 @@
-// components/Outline/MinimizedOutline.tsx
-
 import { AnimatePresence, motion } from "motion/react";
 import type { HeadingLink } from "../types";
 import { defaultTransition } from "../utils";

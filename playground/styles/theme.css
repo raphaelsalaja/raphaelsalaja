@@ -18,9 +18,10 @@
   --border-tertiary: oklch(0 0 0 / 15%);
 
   /* text */
-  --text-primary: oklch(0.2393 0 0);
-  --text-secondary: oklch(0.4202 0 0);
-  --text-tertiary: oklch(0.68295 0 0);
+  --text-primary: oklch(0.22213 0 0);
+  --text-secondary: oklch(0.30557 0 0);
+  --text-tertiary: oklch(0.47421 0 0);
+  --text-quaternary: oklch(0.6901 0 0);
 
   /* accents */
   --accent-primary: oklch(0.701 0.1627 250.14);
@@ -81,6 +82,5 @@
   --duration-slow: 0.35s;
 
   /* shadows */
-
   --shadow-dropdown: oklch(0 0 0 / 0.02) 0px 6px 18px, oklch(0 0 0 / 0.04) 0px 3px 9px, oklch(0 0 0 / 0.04) 0px 1px 1px;
 }

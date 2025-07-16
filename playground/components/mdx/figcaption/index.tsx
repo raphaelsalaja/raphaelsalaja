@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import type React from "react";
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
 import { Clipboard, Code, Terminal } from "../../icons";
@@ -54,7 +53,7 @@ export function Figcaption({ ...props }: FigCaptionProps) {
         type="button"
         disabled={isCopied}
         onClick={handleClickCopy}
-        className={clsx(styles.copy, { [styles.copied]: isCopied })}
+        className={`${styles.copy} ${isCopied ? styles.copied : ""}`}
       >
         <Clipboard width={16} />
       </button>
