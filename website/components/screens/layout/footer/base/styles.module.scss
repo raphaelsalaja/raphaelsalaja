@@ -6,8 +6,7 @@
   align-items: flex-start;
   align-self: stretch;
   padding: 32px;
-  background-color: var(--background-secondary);
-  border-radius: 12px;
+  background-color: oklch(0.98 0 0);
 
   .copyright {
     display: flex;

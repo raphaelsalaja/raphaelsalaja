@@ -3,8 +3,7 @@
   display: flex;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 0 0 1px var(--stroke-alpha);
-  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
 
   img {
     width: 100%;

@@ -23,7 +23,6 @@
     z-index: -1;
     content: "";
     background: var(--background-secondary);
-    border-radius: 6px;
     opacity: 0;
     transition: opacity 0.2s ease;
   }
@@ -90,8 +89,7 @@
   overflow: hidden;
   object-fit: cover;
   background: var(--background-primary);
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--stroke-alpha);
+  box-shadow: 0 0 0 1px var(--border-primary);
 
   .media {
     width: 100%;

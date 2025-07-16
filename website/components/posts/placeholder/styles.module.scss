@@ -1,8 +1,8 @@
 .thumbnail {
   aspect-ratio: 3/2;
   object-fit: cover;
-  box-shadow: 0 0 0 1px var(--stroke-alpha);
-  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+
   display: flex;
   position: relative;
   overflow: hidden;
