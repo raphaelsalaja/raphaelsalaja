@@ -14,8 +14,10 @@ export const OutlineProvider: React.FC<OutlineProps> = (props) => {
     if (contentRef?.current) setRootElement(contentRef.current);
   }, [contentRef]);
 
-  const providedLinks = "headingLinks" in props ? props.headingLinks : undefined;
-  const providedActive = "contentIsActive" in props ? props.contentIsActive : undefined;
+  const providedLinks =
+    "headingLinks" in props ? props.headingLinks : undefined;
+  const providedActive =
+    "contentIsActive" in props ? props.contentIsActive : undefined;
 
   const { headingLinks: calcLinks, contentIsActive: calcActive } = useOutline(
     rootElement ? { rootElement, offset: 120 } : undefined,
@@ -28,7 +30,11 @@ export const OutlineProvider: React.FC<OutlineProps> = (props) => {
 
   return (
     <Fragment>
-      <MinimizedOutline headingLinks={headingLinks} contentIsActive={contentIsActive} isHovered={isHovered} />
+      <MinimizedOutline
+        headingLinks={headingLinks}
+        contentIsActive={contentIsActive}
+        isHovered={isHovered}
+      />
 
       <ExpandedOutline
         headingLinks={headingLinks}

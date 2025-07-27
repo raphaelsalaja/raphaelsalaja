@@ -1,7 +1,8 @@
 const S = 6;
 
 export function square(DateHelper: any, _options: any) {
-  const getDates = (start: number, end: number) => DateHelper.intervals("day", start, DateHelper.date(end));
+  const getDates = (start: number, end: number) =>
+    DateHelper.intervals("day", start, DateHelper.date(end));
 
   return {
     name: "square",

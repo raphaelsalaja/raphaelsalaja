@@ -67,9 +67,15 @@ const Carousel: React.FC<PropType> = (props) => {
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container" style={{ "--slide-count": titles.length } as React.CSSProperties}>
+        <div
+          className="embla__container"
+          style={{ "--slide-count": titles.length } as React.CSSProperties}
+        >
           {titles.map((title, index) => (
-            <div className="embla__slide" key={`${title.tagName}-${title.textContent}-${index}`}>
+            <div
+              className="embla__slide"
+              key={`${title.tagName}-${title.textContent}-${index}`}
+            >
               <p className="embla__slide__number">{title.textContent}</p>
             </div>
           ))}

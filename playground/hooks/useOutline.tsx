@@ -72,7 +72,12 @@ export function useOutline(options?: UseOutlineOptions) {
 
   // Separate effect for scroll handling that depends on headingLinks
   useEffect(() => {
-    if (headingLinks.length === 0 || typeof window === "undefined" || !rootElement) return;
+    if (
+      headingLinks.length === 0 ||
+      typeof window === "undefined" ||
+      !rootElement
+    )
+      return;
 
     // Function to check which heading is active
     const determineActiveHeading = () => {

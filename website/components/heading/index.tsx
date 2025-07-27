@@ -17,7 +17,8 @@ const Heading = (props: HeadingProps) => {
       const element = document.getElementById(props.id);
       if (element) {
         const yOffset = -48;
-        const yPosition = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        const yPosition =
+          element.getBoundingClientRect().top + window.scrollY + yOffset;
         window.scrollTo({ top: yPosition, behavior: "smooth" });
       }
     }
@@ -44,7 +45,13 @@ const Heading = (props: HeadingProps) => {
       onHoverStart={onHoverStart}
       onHoverEnd={onHoverEnd}
     >
-      <motion.div initial={initial} animate={animate} exit={exit} transition={transition} className={styles.icon}>
+      <motion.div
+        initial={initial}
+        animate={animate}
+        exit={exit}
+        transition={transition}
+        className={styles.icon}
+      >
         <Link1Icon />
       </motion.div>
 

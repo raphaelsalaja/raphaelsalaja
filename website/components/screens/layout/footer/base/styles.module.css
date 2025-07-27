@@ -90,5 +90,9 @@
 .circle:not(:last-of-type) {
   --size: 10px;
   --position: 22px;
-  mask: radial-gradient(circle var(--size) at var(--position) 50%, transparent 99%, white 100%);
+  mask: radial-gradient(
+    circle var(--size) at var(--position) 50%,
+    transparent 99%,
+    white 100%
+  );
 }

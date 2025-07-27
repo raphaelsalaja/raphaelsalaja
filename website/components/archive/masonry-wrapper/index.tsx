@@ -20,7 +20,9 @@ export default function MasonryWrapper({ items }: MasonryWrapperProps) {
         media: [640, 768],
         useBalancedLayout: true,
       }}
-      render={(item, idx) => <MediaItem key={idx} item={item as MediaResource} />}
+      render={(item, idx) => (
+        <MediaItem key={idx} item={item as MediaResource} />
+      )}
     />
   );
 }
@@ -59,7 +61,9 @@ function MediaItem({ item }: { item: MediaResource }) {
         alt={alt}
         width={width}
         height={height}
-        blurDataURL={(item as Extract<MediaResource, { type: "image" }>).blurDataURL}
+        blurDataURL={
+          (item as Extract<MediaResource, { type: "image" }>).blurDataURL
+        }
         loading="lazy"
         style={{ objectFit: "cover" }}
       />

@@ -20,7 +20,8 @@ type WorkoutHeatmapData = {
 
 export const Workouts: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const [selectedDayData, setSelectedDayData] = useState<WorkoutHeatmapData | null>(null);
+  const [selectedDayData, setSelectedDayData] =
+    useState<WorkoutHeatmapData | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const toDate = useMemo(() => {
@@ -33,7 +34,12 @@ export const Workouts: React.FC = () => {
     return new Date(now.getFullYear(), now.getMonth(), 1);
   }, []);
 
-  const { data: workouts = [], isLoading, isError, error } = useWorkouts({ from: fromDate, to: toDate });
+  const {
+    data: workouts = [],
+    isLoading,
+    isError,
+    error,
+  } = useWorkouts({ from: fromDate, to: toDate });
 
   const map = useMemo(() => {
     const m: Record<string, WorkoutHeatmapData> = {};
@@ -105,7 +111,11 @@ export const Workouts: React.FC = () => {
         {isLoading && <div style={{ width: 168, height: 168 }} />}
       </div>
 
-      <WorkoutDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} selectedDayData={selectedDayData} />
+      <WorkoutDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        selectedDayData={selectedDayData}
+      />
     </motion.div>
   );
 };

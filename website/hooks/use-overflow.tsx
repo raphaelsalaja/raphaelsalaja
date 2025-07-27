@@ -22,9 +22,13 @@ export function useOverflow(ref: RefObject<HTMLElement>) {
 
     const handleScroll = () => {
       const atXStart = element.scrollLeft <= 0;
-      const atXEnd = Math.ceil(element.scrollLeft + element.clientWidth) >= element.scrollWidth;
+      const atXEnd =
+        Math.ceil(element.scrollLeft + element.clientWidth) >=
+        element.scrollWidth;
       const atYStart = element.scrollTop <= 0;
-      const atYEnd = Math.ceil(element.scrollTop + element.clientHeight) >= element.scrollHeight;
+      const atYEnd =
+        Math.ceil(element.scrollTop + element.clientHeight) >=
+        element.scrollHeight;
 
       setRefXScrollBegin(atXStart);
       setRefXScrollEnd(atXEnd);

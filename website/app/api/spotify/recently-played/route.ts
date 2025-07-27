@@ -16,6 +16,9 @@ export async function GET() {
     const recentlyPlayed = await spotify.me.recentlyPlayed({ limit: 1 });
     return NextResponse.json(recentlyPlayed);
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
+    return NextResponse.json(
+      { error: err.message || "Unknown error" },
+      { status: 500 },
+    );
   }
 }

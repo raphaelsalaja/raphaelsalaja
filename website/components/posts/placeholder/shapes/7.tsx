@@ -1,6 +1,11 @@
 export const Shape7: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
-    <svg viewBox="0 0 200 200" fill="white" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      viewBox="0 0 200 200"
+      fill="white"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <title>Starburst Shape</title>
       <g clipPath="url(#clip0_104_40)">
         <path

@@ -34,7 +34,9 @@ export function createPostPage(route: string, renderContent: RenderFn) {
 
   async function Page(props: Props) {
     const params = await props.params;
-    const post = Posts.find((post: { slug: string }) => post.slug === params.slug);
+    const post = Posts.find(
+      (post: { slug: string }) => post.slug === params.slug,
+    );
 
     if (!post) {
       notFound();

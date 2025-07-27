@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-export function useHeadingTracker(selector = "[data-mdx-article] h1, h2, h3, h4, h5, h6"): {
+export function useHeadingTracker(
+  selector = "[data-mdx-article] h1, h2, h3, h4, h5, h6",
+): {
   heading: string;
   titles: Element[];
   headingIndex: number;

@@ -2,7 +2,12 @@ type IconProps = React.SVGProps<SVGSVGElement>;
 
 export function Code(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Code Icon</title>
       <path
         d="M10 20L14 4M18 8.00004L19.9775 9.75781C21.32 10.9512 21.32 13.0489 19.9775 14.2423L18 16M6 16L4.02251 14.2423C2.67996 13.0489 2.67996 10.9512 4.02251 9.75781L6 8.00004"
@@ -17,7 +22,12 @@ export function Code(props: IconProps) {
 
 export function Terminal(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Terminal Icon</title>
       <path
         d="M7.5 8L9.25 9.75L7.5 11.5M12 11.5H14M7 20H17C18.6569 20 20 18.6569 20 17V7C20 5.34315 18.6569 4 17 4H7C5.34315 4 4 5.34315 4 7V17C4 18.6569 5.34315 20 7 20Z"
@@ -32,7 +42,12 @@ export function Terminal(props: IconProps) {
 
 export function Clipboard(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Clipboard Icon</title>
 
       <path
@@ -55,16 +70,32 @@ export function Clipboard(props: IconProps) {
 
 export function Check(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Check Icon</title>
-      <path d="M8 13L11 16L16 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M8 13L11 16L16 8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 export function Triangle(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Triangle Icon</title>
       <path
         d="M9.52231 9.75C8.27409 9.75 7.57194 11.1856 8.33828 12.1709L10.816 15.3565C11.4165 16.1286 12.5835 16.1286 13.184 15.3565L15.6617 12.1709C16.428 11.1856 15.7259 9.75 14.4777 9.75H9.52231Z"
@@ -76,7 +107,12 @@ export function Triangle(props: IconProps) {
 
 export function ChevronRight(props: IconProps) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Chevron Right Icon</title>
       <path
         fillRule="evenodd"

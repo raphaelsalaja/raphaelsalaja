@@ -15,7 +15,9 @@ export function formatDuration(start: number, end: number) {
   if (minutes) parts.push(`${minutes}m`);
   if (!parts.length && seconds) parts.push(`${seconds}s`);
 
-  const full = [hours, minutes, seconds].map((n) => String(n).padStart(2, "0")).join(":");
+  const full = [hours, minutes, seconds]
+    .map((n) => String(n).padStart(2, "0"))
+    .join(":");
 
   return { parts, full };
 }

@@ -12,7 +12,13 @@ const placeholder = "/media/placeholder.png";
 
 export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (_props) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <title>Steam Logo</title>
       <g clipPath="url(#clip0_703_142)">
         <path
@@ -61,9 +67,14 @@ export const Steam: React.FC = () => {
   const background = details?.backgroundRaw || placeholder;
   const header = details?.headerImage || placeholder;
   const genres = details?.genres || [];
-  const recent_reviews = formatNumber(reviews?.query_summary.total_reviews || 0);
+  const recent_reviews = formatNumber(
+    reviews?.query_summary.total_reviews || 0,
+  );
   const review_score_desc =
-    reviews?.query_summary.review_score_desc.replace("Overwhelmingly Positive", "Super Positive") || "No Reviews";
+    reviews?.query_summary.review_score_desc.replace(
+      "Overwhelmingly Positive",
+      "Super Positive",
+    ) || "No Reviews";
 
   const isLoading = !game || !details || !reviews || !achievements;
 
@@ -74,16 +85,22 @@ export const Steam: React.FC = () => {
           <div className={clsx(styles.text, styles.caps)}>Recent Reviews</div>
           <ConditionalWrap
             condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={104} height={14} />}
+            wrap={() => (
+              <Skeleton className={styles.skeleton} width={104} height={14} />
+            )}
           >
-            <div className={clsx(styles.text, styles.secondary)}>{`${review_score_desc} (${recent_reviews})`}</div>
+            <div
+              className={clsx(styles.text, styles.secondary)}
+            >{`${review_score_desc} (${recent_reviews})`}</div>
           </ConditionalWrap>
         </div>
         <div className={styles.details}>
           <div className={clsx(styles.text, styles.caps)}>Play Time</div>
           <ConditionalWrap
             condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={80} height={14} />}
+            wrap={() => (
+              <Skeleton className={styles.skeleton} width={80} height={14} />
+            )}
           >
             <div className={clsx(styles.text, styles.secondary)}>
               {playtime
@@ -96,7 +113,9 @@ export const Steam: React.FC = () => {
           <div className={clsx(styles.text, styles.caps)}>Achivements</div>
           <ConditionalWrap
             condition={isLoading}
-            wrap={() => <Skeleton className={styles.skeleton} width={128} height={14} />}
+            wrap={() => (
+              <Skeleton className={styles.skeleton} width={128} height={14} />
+            )}
           >
             <div className={clsx(styles.text, styles.secondary)}>
               {achievements?.unlocked} / {achievements?.total}
@@ -110,7 +129,11 @@ export const Steam: React.FC = () => {
         wrap={() => (
           <div className={styles.center}>
             <div className={styles.header}>
-              <Skeleton className={styles.skeleton} height={"100%"} style={{ position: "absolute" }} />
+              <Skeleton
+                className={styles.skeleton}
+                height={"100%"}
+                style={{ position: "absolute" }}
+              />
             </div>
             <div className={styles.details}>
               <Skeleton className={styles.skeleton} width={104} height={14} />
@@ -121,11 +144,20 @@ export const Steam: React.FC = () => {
       >
         <div className={styles.center}>
           <div className={styles.header}>
-            <Image src={header} width={300} height={300} alt="Spotify Album Art" unoptimized className={styles.art} />
+            <Image
+              src={header}
+              width={300}
+              height={300}
+              alt="Spotify Album Art"
+              unoptimized
+              className={styles.art}
+            />
           </div>
           <div className={styles.details}>
             <div className={styles.text}>{name}</div>
-            <div className={clsx(styles.text, styles.secondary)}>{developer}</div>
+            <div className={clsx(styles.text, styles.secondary)}>
+              {developer}
+            </div>
           </div>
         </div>
       </ConditionalWrap>
@@ -136,15 +168,33 @@ export const Steam: React.FC = () => {
           condition={isLoading}
           wrap={() => (
             <div className={styles.genres}>
-              <Skeleton className={styles.skeleton} borderRadius={4} width={56} height={16} />
-              <Skeleton className={styles.skeleton} borderRadius={4} width={80} height={16} />
-              <Skeleton className={styles.skeleton} borderRadius={4} width={72} height={16} />
+              <Skeleton
+                className={styles.skeleton}
+                borderRadius={4}
+                width={56}
+                height={16}
+              />
+              <Skeleton
+                className={styles.skeleton}
+                borderRadius={4}
+                width={80}
+                height={16}
+              />
+              <Skeleton
+                className={styles.skeleton}
+                borderRadius={4}
+                width={72}
+                height={16}
+              />
             </div>
           )}
         >
           <div className={styles.genres}>
             {genres.slice(0, 3).map((genre) => (
-              <div key={genre.description} className={clsx(styles.genre, styles.text, styles.caps)}>
+              <div
+                key={genre.description}
+                className={clsx(styles.genre, styles.text, styles.caps)}
+              >
                 {genre.description}
               </div>
             ))}
@@ -153,7 +203,10 @@ export const Steam: React.FC = () => {
       </div>
 
       <div className={styles.background}>
-        <ConditionalWrap condition={isLoading} wrap={() => <div className={styles.background} />}>
+        <ConditionalWrap
+          condition={isLoading}
+          wrap={() => <div className={styles.background} />}
+        >
           <Image
             src={background}
             width={300}

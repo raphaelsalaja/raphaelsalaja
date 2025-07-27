@@ -33,13 +33,25 @@ export const Dialogs: React.FC = () => {
         />
         <div className={styles.timeline}>
           <div className={styles.track}>
-            <div className={`${styles.tick}`} style={{ left: 0 }} data-label="Initial" />
-            <div className={`${styles.tick}`} style={{ right: 0 }} data-label="Target" />
+            <div
+              className={`${styles.tick}`}
+              style={{ left: 0 }}
+              data-label="Initial"
+            />
+            <div
+              className={`${styles.tick}`}
+              style={{ right: 0 }}
+              data-label="Target"
+            />
           </div>
         </div>
       </div>
 
-      <Separator className={styles.separator} orientation="vertical" variant="dashed" />
+      <Separator
+        className={styles.separator}
+        orientation="vertical"
+        variant="dashed"
+      />
 
       <div className={styles.content}>
         <motion.div
@@ -62,8 +74,16 @@ export const Dialogs: React.FC = () => {
         />
         <div className={styles.timeline}>
           <div className={styles.track}>
-            <div className={`${styles.tick}`} style={{ left: 0 }} data-label="Initial" />
-            <div className={`${styles.tick}`} style={{ right: 0 }} data-label="Target" />
+            <div
+              className={`${styles.tick}`}
+              style={{ left: 0 }}
+              data-label="Initial"
+            />
+            <div
+              className={`${styles.tick}`}
+              style={{ right: 0 }}
+              data-label="Target"
+            />
           </div>
         </div>
       </div>

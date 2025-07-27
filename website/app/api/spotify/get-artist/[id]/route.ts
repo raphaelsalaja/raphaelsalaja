@@ -11,7 +11,10 @@ const spotify = new SpotifyAPI({
   refreshToken: process.env.SPOTIFY_REFRESH_TOKEN!,
 });
 
-export async function GET(_request: Request, context: { params: Promise<{ id: string }> }) {
+export async function GET(
+  _request: Request,
+  context: { params: Promise<{ id: string }> },
+) {
   // await the params promise first
   const { id } = await context.params;
 
@@ -23,6 +26,9 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
     const artist = await spotify.artists.get(id);
     return NextResponse.json(artist);
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
+    return NextResponse.json(
+      { error: err.message || "Unknown error" },
+      { status: 500 },
+    );
   }
 }

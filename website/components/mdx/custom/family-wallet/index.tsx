@@ -123,13 +123,18 @@ export const FamilyWallet: React.FC = () => {
                       <Icon className={styles.shape} fill="var(--white-a12)" />
                     </motion.div>
 
-                    <motion.span layoutId="bottom-trailing" className={styles.details}>
+                    <motion.span
+                      layoutId="bottom-trailing"
+                      className={styles.details}
+                    >
                       <input
                         data-text="primary"
                         className={styles.text}
                         type="text"
                         value={wallet.name}
-                        onChange={(e) => setWallet({ ...wallet, name: e.target.value })}
+                        onChange={(e) =>
+                          setWallet({ ...wallet, name: e.target.value })
+                        }
                         onSubmit={handleDone}
                         disabled={!isEdit}
                       />
@@ -164,8 +169,12 @@ export const FamilyWallet: React.FC = () => {
                       animate={{ opacity: 0, filter: "blur(10px)" }}
                       exit={{ opacity: 0, filter: "blur(10px)" }}
                       style={{
-                        color: isEdit ? family(wallet.color) : "var(--white-a10)",
-                        background: isEdit ? "var(--white-a12)" : "var(--white-a4)",
+                        color: isEdit
+                          ? family(wallet.color)
+                          : "var(--white-a10)",
+                        background: isEdit
+                          ? "var(--white-a12)"
+                          : "var(--white-a4)",
                         borderRadius: 100,
                       }}
                       onClick={() => {
@@ -244,7 +253,9 @@ export const FamilyWallet: React.FC = () => {
                                 whileHover={{
                                   opacity: 0.8,
                                 }}
-                                data-selected={wallet.color === color ? "true" : "false"}
+                                data-selected={
+                                  wallet.color === color ? "true" : "false"
+                                }
                               />
                             ))}
                           </div>
@@ -272,18 +283,29 @@ export const FamilyWallet: React.FC = () => {
                       layoutId="wallet"
                     >
                       <div className={styles.column}>
-                        <motion.div layoutId="top-trailing" className={styles.icon}>
-                          <Icon className={styles.shape} fill="var(--white-a12)" />
+                        <motion.div
+                          layoutId="top-trailing"
+                          className={styles.icon}
+                        >
+                          <Icon
+                            className={styles.shape}
+                            fill="var(--white-a12)"
+                          />
                         </motion.div>
 
-                        <motion.span layoutId="bottom-trailing" className={styles.details}>
+                        <motion.span
+                          layoutId="bottom-trailing"
+                          className={styles.details}
+                        >
                           <input
                             ref={nameInputRef}
                             data-text="primary"
                             className={styles.text}
                             type="text"
                             value={wallet.name}
-                            onChange={(e) => setWallet({ ...wallet, name: e.target.value })}
+                            onChange={(e) =>
+                              setWallet({ ...wallet, name: e.target.value })
+                            }
                             onSubmit={handleDone}
                             disabled={!isEdit}
                             placeholder="Wallet Name"
@@ -316,13 +338,18 @@ export const FamilyWallet: React.FC = () => {
                       <div className={styles.column}>
                         <motion.div
                           initial={{ filter: "blur(10px)" }}
-                          animate={{ filter: "blur(0px)", opacity: isEdit ? 0.5 : 1 }}
+                          animate={{
+                            filter: "blur(0px)",
+                            opacity: isEdit ? 0.5 : 1,
+                          }}
                           exit={{ filter: "blur(10px)" }}
                           whileHover={{ scale: 0.98 }}
                           whileTap={{ scale: 0.95 }}
                           layoutId="top-leading"
                           className={styles.copy}
-                          onClick={() => navigator.clipboard.writeText(wallet.address)}
+                          onClick={() =>
+                            navigator.clipboard.writeText(wallet.address)
+                          }
                         >
                           <p data-text="primary" className={styles.text}>
                             Copy Address
@@ -340,8 +367,12 @@ export const FamilyWallet: React.FC = () => {
                           whileHover={{ scale: 0.98, opacity: 0.8 }}
                           whileTap={{ scale: 0.95 }}
                           style={{
-                            color: isEdit ? family(wallet.color) : "var(--white-a10)",
-                            background: isEdit ? "var(--white-a12)" : "var(--white-a4)",
+                            color: isEdit
+                              ? family(wallet.color)
+                              : "var(--white-a10)",
+                            background: isEdit
+                              ? "var(--white-a12)"
+                              : "var(--white-a4)",
                             borderRadius: 100,
                           }}
                           onClick={() => {

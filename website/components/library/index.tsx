@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 import { nanoid } from "nanoid";
 import { Link } from "next-view-transitions";
-import React from "react";
 import { getLibraryPages } from "@/lib/fumadocs";
 import styles from "./styles.module.css";
 

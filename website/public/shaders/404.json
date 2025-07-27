@@ -66,7 +66,10 @@
       "userDownsample": 1,
       "isElement": true,
       "opacity": 1,
-      "effects": ["626546d7-5991-44d8-9de8-5c608cdbf7d1", "e9c1322e-588c-4b5f-bddc-4f1915770c96"],
+      "effects": [
+        "626546d7-5991-44d8-9de8-5c608cdbf7d1",
+        "e9c1322e-588c-4b5f-bddc-4f1915770c96"
+      ],
       "displace": 0,
       "trackMouse": 0.2,
       "anchorPoint": "center",

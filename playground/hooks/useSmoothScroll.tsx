@@ -15,7 +15,8 @@ export function useSmoothScroll(offset = 0) {
 
       if (!element) return;
 
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - offset;
 
       window.scrollTo({

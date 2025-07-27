@@ -32,7 +32,9 @@ async function readFilesInDir(dir: string): Promise<string[]> {
   return entries.filter((e) => e.isFile()).map((e) => e.name);
 }
 
-export async function getImageResourcesFromFolder(folder: string): Promise<ImageResource[]> {
+export async function getImageResourcesFromFolder(
+  folder: string,
+): Promise<ImageResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
   const resources: ImageResource[] = [];
@@ -69,7 +71,9 @@ export async function getImageResourcesFromFolder(folder: string): Promise<Image
   return resources;
 }
 
-export async function getVideoResourcesFromFolder(folder: string): Promise<VideoResource[]> {
+export async function getVideoResourcesFromFolder(
+  folder: string,
+): Promise<VideoResource[]> {
   const dir = resolvePublicDir(folder);
   const files = await readFilesInDir(dir);
   const resources: VideoResource[] = [];
@@ -110,7 +114,9 @@ export async function getVideoResourcesFromFolder(folder: string): Promise<Video
   return resources;
 }
 
-export async function getMediaFromFolder(folder: string): Promise<MediaResource[]> {
+export async function getMediaFromFolder(
+  folder: string,
+): Promise<MediaResource[]> {
   const [images, videos] = await Promise.all([
     getImageResourcesFromFolder(folder),
     getVideoResourcesFromFolder(folder),

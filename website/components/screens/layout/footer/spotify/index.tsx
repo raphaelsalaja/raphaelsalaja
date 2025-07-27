@@ -13,7 +13,14 @@ import styles from "./styles.module.scss";
 
 export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      {...props}
+    >
       <title>Spotify Logo</title>
       <g clipPath="url(#clip0_698_76)">
         <path
@@ -32,10 +39,14 @@ export const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 };
 
 export const Spotify: React.FC = () => {
-  const { data: playbackState, isLoading: isStateLoading } = useSpotifyPlaybackState();
-  const { data: recentPlays, isLoading: isRecentLoading } = useSpotifyRecentlyPlayed();
+  const { data: playbackState, isLoading: isStateLoading } =
+    useSpotifyPlaybackState();
+  const { data: recentPlays, isLoading: isRecentLoading } =
+    useSpotifyRecentlyPlayed();
 
-  const currentTrack = playbackState?.is_playing ? playbackState.item : recentPlays?.items?.[0]?.track;
+  const currentTrack = playbackState?.is_playing
+    ? playbackState.item
+    : recentPlays?.items?.[0]?.track;
 
   const {
     name: trackTitle = "Track Title",
@@ -52,20 +63,27 @@ export const Spotify: React.FC = () => {
 
   const explicitIndicator = isExplicit ? "🅴" : "";
 
-  const { data: artistInfo, isLoading: isArtistLoading } = useSpotifyArtist(artistId);
+  const { data: artistInfo, isLoading: isArtistLoading } =
+    useSpotifyArtist(artistId);
 
   const isLoading = isStateLoading || isRecentLoading || isArtistLoading;
 
   const followers = useMemo(() => {
     const total = artistInfo?.followers?.total;
     if (!total) return "Unknown";
-    return new Intl.NumberFormat("en-US", { notation: "compact", compactDisplay: "short" }).format(total);
+    return new Intl.NumberFormat("en-US", {
+      notation: "compact",
+      compactDisplay: "short",
+    }).format(total);
   }, [artistInfo?.followers?.total]);
 
   return (
     <div className={styles.spotify}>
       <div className={styles.background}>
-        <ConditionalWrap condition={isLoading} wrap={() => <div className={styles.background} />}>
+        <ConditionalWrap
+          condition={isLoading}
+          wrap={() => <div className={styles.background} />}
+        >
           <Image
             src={albumArtUrl}
             width={300}
@@ -122,7 +140,9 @@ export const Spotify: React.FC = () => {
           <div className={styles.artist}>
             <div className={styles.details}>
               <div className={clsx(styles.text)}>{artistInfo?.name}</div>
-              <div className={clsx(styles.text, styles.secondary)}>{followers} monthly listeners</div>
+              <div className={clsx(styles.text, styles.secondary)}>
+                {followers} monthly listeners
+              </div>
             </div>
           </div>
         </ConditionalWrap>
@@ -133,7 +153,11 @@ export const Spotify: React.FC = () => {
         wrap={() => (
           <div className={styles.center}>
             <div className={styles.header}>
-              <Skeleton className={styles.skeleton} height={"100%"} style={{ position: "absolute" }} />
+              <Skeleton
+                className={styles.skeleton}
+                height={"100%"}
+                style={{ position: "absolute" }}
+              />
             </div>
             <div className={styles.details}>
               <Skeleton className={styles.skeleton} width={104} height={14} />
@@ -157,7 +181,9 @@ export const Spotify: React.FC = () => {
             <div className={clsx(styles.text, styles.trimmed)}>
               {trackTitle} {explicitIndicator}
             </div>
-            <div className={clsx(styles.text, styles.secondary)}>{albumName}</div>
+            <div className={clsx(styles.text, styles.secondary)}>
+              {albumName}
+            </div>
           </div>
         </div>
       </ConditionalWrap>
@@ -167,7 +193,10 @@ export const Spotify: React.FC = () => {
         <ConditionalWrap condition={isLoading} wrap={() => <React.Fragment />}>
           <div className={styles.genres}>
             {artistInfo?.genres?.slice(0, 1).map((genre: string) => (
-              <div key={genre} className={clsx(styles.text, styles.secondary, styles.genre)}>
+              <div
+                key={genre}
+                className={clsx(styles.text, styles.secondary, styles.genre)}
+              >
                 {title(genre)}
               </div>
             ))}

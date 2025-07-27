@@ -1,12 +1,4 @@
 import type { Frontmatter } from "@/types/frontmatter";
-import { Shape1 } from "./shapes/1";
-import { Shape2 } from "./shapes/2";
-import { Shape3 } from "./shapes/3";
-import { Shape4 } from "./shapes/4";
-import { Shape5 } from "./shapes/5";
-import { Shape6 } from "./shapes/6";
-import { Shape7 } from "./shapes/7";
-import { Shape8 } from "./shapes/8";
 import styles from "./styles.module.scss";
 
 function djb2(str: string) {
@@ -17,7 +9,7 @@ function djb2(str: string) {
   return hash >>> 0;
 }
 
-function getColor(name: string) {
+function _getColor(name: string) {
   const colors = [
     "blue",
     "gray",

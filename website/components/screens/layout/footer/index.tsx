@@ -13,14 +13,17 @@ const MIN_SCALE = 0.8;
 const MAX_SCALE = 0.95;
 const TWEEN_FACTOR = 0.6;
 
-const clamp = (v: number, min: number, max: number): number => Math.min(Math.max(v, min), max);
+const clamp = (v: number, min: number, max: number): number =>
+  Math.min(Math.max(v, min), max);
 
 const easeOutQuad = (t: number): number => 1 - (1 - t) * (1 - t);
 
 const PAGES = [Base, Spotify, Steam] as const;
 
 function useIsTinyScreen(breakpoint = 480) {
-  const [isTiny, setIsTiny] = useState(typeof window !== "undefined" && window.innerWidth <= breakpoint);
+  const [isTiny, setIsTiny] = useState(
+    typeof window !== "undefined" && window.innerWidth <= breakpoint,
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -158,10 +161,16 @@ export function Footer() {
             <button
               key={Page.name || `dot-${idx}`}
               type="button"
-              className={idx === selectedIndex ? `${styles.dot} ${styles.dotActive}` : styles.dot}
+              className={
+                idx === selectedIndex
+                  ? `${styles.dot} ${styles.dotActive}`
+                  : styles.dot
+              }
               onClick={() => embla?.scrollTo(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              style={{ transform: `scale(${idx === selectedIndex ? 1.2 : 0.8})` }}
+              style={{
+                transform: `scale(${idx === selectedIndex ? 1.2 : 0.8})`,
+              }}
             />
           ))}
         </div>

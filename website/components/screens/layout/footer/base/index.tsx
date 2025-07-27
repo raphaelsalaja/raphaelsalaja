@@ -27,13 +27,17 @@ export const Base: React.FC = () => {
             <Link href="https://x.com/raphaelsalaja">X (Twitter)</Link>
           </Button.default>
           <Button.default variant="ghost">
-            <Link href="https://www.instagram.com/raphaelsalaja">Instagram</Link>
+            <Link href="https://www.instagram.com/raphaelsalaja">
+              Instagram
+            </Link>
           </Button.default>
           <Button.default variant="ghost">
             <Link href="https://github.com/raphaelsalaja">Github</Link>
           </Button.default>
           <Button.default variant="ghost">
-            <Link href="https://www.linkedin.com/in/raphael-salaja">LinkedIn</Link>
+            <Link href="https://www.linkedin.com/in/raphael-salaja">
+              LinkedIn
+            </Link>
           </Button.default>
           <Button.default variant="ghost">
             <Link href="mailto:raphaelsalaja@gmail.com">Email</Link>

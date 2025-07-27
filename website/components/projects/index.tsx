@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { Link } from "next-view-transitions";
 import * as Media from "@/components/media";
-import { getProjectsPages, source } from "@/lib/fumadocs";
+import { getProjectsPages } from "@/lib/fumadocs";
 import styles from "./styles.module.css";
 
 const DEFAULT_PROJECT_LIMIT = 6;

@@ -1,7 +1,10 @@
 import React from "react";
 
 const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = React.useState({ x: null, y: null });
+  const [mousePosition, setMousePosition] = React.useState({
+    x: null,
+    y: null,
+  });
 
   React.useEffect(() => {
     const updateMousePosition = (ev: { clientX: any; clientY: any }) => {

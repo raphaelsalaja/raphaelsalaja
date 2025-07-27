@@ -3,31 +3,31 @@ import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
-  metaSchema
+  metaSchema,
 } from "fumadocs-mdx/config";
 import { z } from "zod";
+
 var docs = defineDocs({
   dir: "content",
   docs: {
     schema: frontmatterSchema.extend({
       date: z.string(),
       external: z.string().optional(),
-      media: z.object({
-        video: z.string().optional(),
-        image: z.string().optional()
-      }).optional(),
+      media: z
+        .object({
+          video: z.string().optional(),
+          image: z.string().optional(),
+        })
+        .optional(),
       tags: z.array(z.string()).optional(),
-      disabled: z.boolean().optional()
-    })
+      disabled: z.boolean().optional(),
+    }),
   },
   meta: {
-    schema: metaSchema
-  }
+    schema: metaSchema,
+  },
 });
 var source_config_default = defineConfig({
-  mdxOptions: {}
+  mdxOptions: {},
 });
-export {
-  source_config_default as default,
-  docs
-};
+export { source_config_default as default, docs };

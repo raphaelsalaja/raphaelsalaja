@@ -19,7 +19,10 @@ export async function GET() {
   });
 
   if (!res.ok) {
-    return NextResponse.json({ error: `Trakt returned ${res.status}` }, { status: 502 });
+    return NextResponse.json(
+      { error: `Trakt returned ${res.status}` },
+      { status: 502 },
+    );
   }
 
   const data = await res.json();

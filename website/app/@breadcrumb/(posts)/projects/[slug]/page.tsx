@@ -3,7 +3,9 @@ import * as Breadcrumb from "@/components/breadcrumb";
 
 const page = "projects";
 
-export default async function Page(props: { params: Promise<{ slug: string }> }) {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const data = await props.params;
   const slug = title(data.slug.replace(/-/g, " "));
 

@@ -17,7 +17,11 @@ interface WorkoutDialogProps {
   selectedDayData: WorkoutHeatmapData | null;
 }
 
-export const WorkoutDialog: React.FC<WorkoutDialogProps> = ({ open, onOpenChange, selectedDayData }) => (
+export const WorkoutDialog: React.FC<WorkoutDialogProps> = ({
+  open,
+  onOpenChange,
+  selectedDayData,
+}) => (
   <Dialog.Root open={open} onOpenChange={onOpenChange}>
     <Dialog.Portal>
       <Dialog.Backdrop className={styles.backdrop} />

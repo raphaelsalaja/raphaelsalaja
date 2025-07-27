@@ -6,6 +6,7 @@ import "@/styles/main.css";
 import clsx from "clsx";
 import { Layout } from "@/components/layouts/root";
 import { Providers } from "@/components/providers";
+import { Footer } from "@/components/screens/layout/footer";
 
 export const metadata: Metadata = opengraph;
 
@@ -16,11 +17,9 @@ const inter = localFont({
 export default async function RootLayout({
   breadcrumb,
   children,
-  footer,
 }: Readonly<{
   breadcrumb: React.ReactNode;
   children: React.ReactNode;
-  footer: React.ReactNode;
 }>) {
   return (
     <ViewTransitions>
@@ -29,7 +28,7 @@ export default async function RootLayout({
           <Providers>
             {breadcrumb}
             {children}
-            {footer}
+            <Footer />
           </Providers>
         </Layout>
       </html>

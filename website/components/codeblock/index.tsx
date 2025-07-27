@@ -2,9 +2,16 @@
 
 import { Check, Clipboard, Code, Terminal } from "lucide-react";
 import { motion } from "motion/react";
-import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
+import {
+  type DetailedHTMLProps,
+  type HTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface FigCaptionProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   "data-language"?: string;
 }
 
@@ -17,7 +24,8 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
 
   useEffect(() => {
     if (figCaptionRef.current) {
-      preRef.current = figCaptionRef.current.nextElementSibling as HTMLPreElement;
+      preRef.current = figCaptionRef.current
+        .nextElementSibling as HTMLPreElement;
     }
   }, []);
 

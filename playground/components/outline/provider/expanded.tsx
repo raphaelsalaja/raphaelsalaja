@@ -13,7 +13,12 @@ interface Props {
   onHoverChange: (hovered: boolean) => void;
 }
 
-export const ExpandedOutline = ({ headingLinks, contentIsActive, isHovered, onHoverChange }: Props) => {
+export const ExpandedOutline = ({
+  headingLinks,
+  contentIsActive,
+  isHovered,
+  onHoverChange,
+}: Props) => {
   const { handleLinkClick } = useSmoothScroll(120);
 
   return (
