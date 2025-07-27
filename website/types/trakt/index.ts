@@ -4370,11 +4370,24 @@ export interface operations {
                   privacy?: "public" | "private";
                   share_link?: string;
                   /** @enum {string} */
-                  type?: "all" | "personal" | "official" | "watchlist" | "favorites";
+                  type?:
+                    | "all"
+                    | "personal"
+                    | "official"
+                    | "watchlist"
+                    | "favorites";
                   display_numbers?: boolean;
                   allow_comments?: boolean;
                   /** @enum {string} */
-                  sort_by?: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+                  sort_by?:
+                    | "rank"
+                    | "added"
+                    | "title"
+                    | "released"
+                    | "runtime"
+                    | "popularity"
+                    | "percentage"
+                    | "votes";
                   /** @enum {string} */
                   sort_how?: "asc" | "desc";
                   created_at?: string;
@@ -7400,7 +7413,15 @@ export interface operations {
       path: {
         /** @description The slug that identifies the user, or "me" for the authenticated user. */
         id: "me" | string;
-        sort: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+        sort:
+          | "rank"
+          | "added"
+          | "title"
+          | "released"
+          | "runtime"
+          | "popularity"
+          | "percentage"
+          | "votes";
       };
       cookie?: never;
     };
@@ -7544,7 +7565,15 @@ export interface operations {
       path: {
         /** @description The slug that identifies the user, or "me" for the authenticated user. */
         id: "me" | string;
-        sort: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+        sort:
+          | "rank"
+          | "added"
+          | "title"
+          | "released"
+          | "runtime"
+          | "popularity"
+          | "percentage"
+          | "votes";
       };
       cookie?: never;
     };
@@ -8599,7 +8628,15 @@ export interface operations {
       path: {
         /** @description The slug that identifies the user, or "me" for the authenticated user. */
         id: "me" | string;
-        sort: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+        sort:
+          | "rank"
+          | "added"
+          | "title"
+          | "released"
+          | "runtime"
+          | "popularity"
+          | "percentage"
+          | "votes";
       };
       cookie?: never;
     };
@@ -8735,7 +8772,15 @@ export interface operations {
       path: {
         /** @description The slug that identifies the user, or "me" for the authenticated user. */
         id: "me" | string;
-        sort: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+        sort:
+          | "rank"
+          | "added"
+          | "title"
+          | "released"
+          | "runtime"
+          | "popularity"
+          | "percentage"
+          | "votes";
       };
       cookie?: never;
     };
@@ -8972,7 +9017,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -9047,7 +9100,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -9122,7 +9183,7 @@ export interface operations {
       };
     };
   };
-  getUsersListsListSummary: {
+  getUsersListsListdescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -9155,7 +9216,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -10684,7 +10753,13 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        section: "calendar" | "progress_watched" | "progress_collected" | "recommendations" | "comments" | "dropped";
+        section:
+          | "calendar"
+          | "progress_watched"
+          | "progress_collected"
+          | "recommendations"
+          | "comments"
+          | "dropped";
       };
       cookie?: never;
     };
@@ -16489,7 +16564,7 @@ export interface operations {
       };
     };
   };
-  getMoviesSummary: {
+  getMoviesdescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -17247,7 +17322,14 @@ export interface operations {
             url: string;
             site: string;
             /** @enum {string} */
-            type: "trailer" | "clip" | "teaser" | "featurette" | "recap" | "behind the scenes" | "opening credits";
+            type:
+              | "trailer"
+              | "clip"
+              | "teaser"
+              | "featurette"
+              | "recap"
+              | "behind the scenes"
+              | "opening credits";
             size: number;
             official: boolean;
             published_at: string;
@@ -17296,7 +17378,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -17346,7 +17436,14 @@ export interface operations {
       path: {
         /** @description The slug of the resource. */
         id: string;
-        sort: "newest" | "oldest" | "likes" | "replies" | "highest" | "lowest" | "plays";
+        sort:
+          | "newest"
+          | "oldest"
+          | "likes"
+          | "replies"
+          | "highest"
+          | "lowest"
+          | "plays";
       };
       cookie?: never;
     };
@@ -18144,7 +18241,7 @@ export interface operations {
       };
     };
   };
-  getShowsSummary: {
+  getShowsdescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -19172,7 +19269,14 @@ export interface operations {
             url: string;
             site: string;
             /** @enum {string} */
-            type: "trailer" | "clip" | "teaser" | "featurette" | "recap" | "behind the scenes" | "opening credits";
+            type:
+              | "trailer"
+              | "clip"
+              | "teaser"
+              | "featurette"
+              | "recap"
+              | "behind the scenes"
+              | "opening credits";
             size: number;
             official: boolean;
             published_at: string;
@@ -19209,7 +19313,14 @@ export interface operations {
             url: string;
             site: string;
             /** @enum {string} */
-            type: "trailer" | "clip" | "teaser" | "featurette" | "recap" | "behind the scenes" | "opening credits";
+            type:
+              | "trailer"
+              | "clip"
+              | "teaser"
+              | "featurette"
+              | "recap"
+              | "behind the scenes"
+              | "opening credits";
             size: number;
             official: boolean;
             published_at: string;
@@ -19258,7 +19369,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -19308,7 +19427,14 @@ export interface operations {
       path: {
         /** @description The slug of the resource. */
         id: string;
-        sort: "newest" | "oldest" | "likes" | "replies" | "highest" | "lowest" | "plays";
+        sort:
+          | "newest"
+          | "oldest"
+          | "likes"
+          | "replies"
+          | "highest"
+          | "lowest"
+          | "plays";
       };
       cookie?: never;
     };
@@ -19401,7 +19527,7 @@ export interface operations {
       };
     };
   };
-  getShowsEpisodeSummary: {
+  getShowsEpisodedescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -19677,7 +19803,14 @@ export interface operations {
         season: number;
         /** @description Episode number */
         episode: number;
-        sort: "newest" | "oldest" | "likes" | "replies" | "highest" | "lowest" | "plays";
+        sort:
+          | "newest"
+          | "oldest"
+          | "likes"
+          | "replies"
+          | "highest"
+          | "lowest"
+          | "plays";
       };
       cookie?: never;
     };
@@ -21002,7 +21135,7 @@ export interface operations {
       };
     };
   };
-  getPeopleSummary: {
+  getPeopledescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -21953,7 +22086,15 @@ export interface operations {
               display_numbers: boolean;
               allow_comments: boolean;
               /** @enum {string} */
-              sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+              sort_by:
+                | "rank"
+                | "added"
+                | "title"
+                | "released"
+                | "runtime"
+                | "popularity"
+                | "percentage"
+                | "votes";
               /** @enum {string} */
               sort_how: "asc" | "desc";
               created_at: string;
@@ -22037,7 +22178,15 @@ export interface operations {
               display_numbers: boolean;
               allow_comments: boolean;
               /** @enum {string} */
-              sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+              sort_by:
+                | "rank"
+                | "added"
+                | "title"
+                | "released"
+                | "runtime"
+                | "popularity"
+                | "percentage"
+                | "votes";
               /** @enum {string} */
               sort_how: "asc" | "desc";
               created_at: string;
@@ -22081,7 +22230,7 @@ export interface operations {
       };
     };
   };
-  getListsSummary: {
+  getListsdescription: {
     parameters: {
       query?: {
         /** @description Extended information to include in the response. */
@@ -22117,7 +22266,15 @@ export interface operations {
             display_numbers: boolean;
             allow_comments: boolean;
             /** @enum {string} */
-            sort_by: "rank" | "added" | "title" | "released" | "runtime" | "popularity" | "percentage" | "votes";
+            sort_by:
+              | "rank"
+              | "added"
+              | "title"
+              | "released"
+              | "runtime"
+              | "popularity"
+              | "percentage"
+              | "votes";
             /** @enum {string} */
             sort_how: "asc" | "desc";
             created_at: string;
@@ -23196,7 +23353,14 @@ export interface operations {
             us: {
               name: string;
               /** @enum {string} */
-              slug: "tv-y" | "tv-y7" | "tv-g" | "tv-pg" | "tv-14" | "tv-ma" | "nr";
+              slug:
+                | "tv-y"
+                | "tv-y7"
+                | "tv-g"
+                | "tv-pg"
+                | "tv-14"
+                | "tv-ma"
+                | "nr";
               description: string;
             }[];
           };

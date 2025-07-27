@@ -1,4 +1,4 @@
-import nextMDX from "@next/mdx";
+import { createMDX } from "fumadocs-mdx/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -29,8 +29,6 @@ const nextConfig = {
   },
 };
 
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-});
+const withMDX = createMDX({});
 
 export default withMDX(nextConfig);

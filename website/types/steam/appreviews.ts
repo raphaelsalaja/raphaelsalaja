@@ -56,7 +56,7 @@ export interface AppReview {
 
 export interface GetAppReviewsResponse {
   success: 1;
-  query_summary: QuerySummary;
+  query_description: QuerySummary;
   reviews: AppReview[];
   cursor: string;
 }

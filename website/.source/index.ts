@@ -1,0 +1,15 @@
+// @ts-nocheck -- skip type checking
+import * as docs_10 from "../content/writing/white-tees.mdx?collection=docs&hash=1753636105057"
+import * as docs_9 from "../content/writing/tone.mdx?collection=docs&hash=1753636105057"
+import * as docs_8 from "../content/writing/the-concept-of-taste.mdx?collection=docs&hash=1753636105057"
+import * as docs_7 from "../content/writing/nature.mdx?collection=docs&hash=1753636105057"
+import * as docs_6 from "../content/projects/toldo.mdx?collection=docs&hash=1753636105057"
+import * as docs_5 from "../content/projects/spatial-arena.mdx?collection=docs&hash=1753636105057"
+import * as docs_4 from "../content/projects/opensea-v2.mdx?collection=docs&hash=1753636105057"
+import * as docs_3 from "../content/projects/metallurgy.mdx?collection=docs&hash=1753636105057"
+import * as docs_2 from "../content/projects/lens-developer-dashboard.mdx?collection=docs&hash=1753636105057"
+import * as docs_1 from "../content/projects/layers.mdx?collection=docs&hash=1753636105057"
+import * as docs_0 from "../content/projects/daybreak.mdx?collection=docs&hash=1753636105057"
+import { _runtime } from "fumadocs-mdx"
+import * as _source from "../source.config"
+export const docs = _runtime.docs<typeof _source.docs>([{ info: {"path":"projects/daybreak.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/daybreak.mdx"}, data: docs_0 }, { info: {"path":"projects/layers.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/layers.mdx"}, data: docs_1 }, { info: {"path":"projects/lens-developer-dashboard.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/lens-developer-dashboard.mdx"}, data: docs_2 }, { info: {"path":"projects/metallurgy.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/metallurgy.mdx"}, data: docs_3 }, { info: {"path":"projects/opensea-v2.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/opensea-v2.mdx"}, data: docs_4 }, { info: {"path":"projects/spatial-arena.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/spatial-arena.mdx"}, data: docs_5 }, { info: {"path":"projects/toldo.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/projects/toldo.mdx"}, data: docs_6 }, { info: {"path":"writing/nature.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/writing/nature.mdx"}, data: docs_7 }, { info: {"path":"writing/the-concept-of-taste.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/writing/the-concept-of-taste.mdx"}, data: docs_8 }, { info: {"path":"writing/tone.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/writing/tone.mdx"}, data: docs_9 }, { info: {"path":"writing/white-tees.mdx","absolutePath":"/Users/raphaelsalaja/Developer/raphaelsalaja/website/content/writing/white-tees.mdx"}, data: docs_10 }], [])
