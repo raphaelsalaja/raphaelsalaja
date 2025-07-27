@@ -43,7 +43,9 @@
   color: var(--white-color);
   background: var(--black-color);
 }
-.button[data-shunpo-button-variant="primary"]:hover:not([aria-disabled="true"]) {
+.button[data-shunpo-button-variant="primary"]:hover:not(
+    [aria-disabled="true"]
+  ) {
   background: var(--hover-primary-color);
 }
 .button[data-shunpo-button-variant="primary"]:focus-visible,
@@ -74,7 +76,9 @@
     box-shadow: 0 1px 2px 0 color(display-p3 0 0 0 / 5%);
   }
 }
-.button[data-shunpo-button-variant="secondary"]:hover:not([aria-disabled="true"]) {
+.button[data-shunpo-button-variant="secondary"]:hover:not(
+    [aria-disabled="true"]
+  ) {
   background: var(--hover-secondary-color);
 }
 .button[data-shunpo-button-variant="secondary"]:focus-visible,
@@ -103,11 +107,15 @@
     background: color(display-p3 1 1 1);
   }
 }
-.button[data-shunpo-button-variant="tertiary"]:hover:not([aria-disabled="true"]) {
+.button[data-shunpo-button-variant="tertiary"]:hover:not(
+    [aria-disabled="true"]
+  ) {
   background: #f5f5f5;
 }
 @supports (color: color(display-p3 0 0 0)) {
-  .button[data-shunpo-button-variant="tertiary"]:hover:not([aria-disabled="true"]) {
+  .button[data-shunpo-button-variant="tertiary"]:hover:not(
+      [aria-disabled="true"]
+    ) {
     background: color(display-p3 0.96 0.96 0.96);
   }
 }
@@ -136,11 +144,15 @@
     background: color(display-p3 1 0.2784 0.3265);
   }
 }
-.button[data-shunpo-button-variant="destructive"]:hover:not([aria-disabled="true"]) {
+.button[data-shunpo-button-variant="destructive"]:hover:not(
+    [aria-disabled="true"]
+  ) {
   background: #ff6a7c;
 }
 @supports (color: color(display-p3 0 0 0)) {
-  .button[data-shunpo-button-variant="destructive"]:hover:not([aria-disabled="true"]) {
+  .button[data-shunpo-button-variant="destructive"]:hover:not(
+      [aria-disabled="true"]
+    ) {
     background: color(display-p3 1 0.6 0.6267);
   }
 }
@@ -169,11 +181,15 @@
     background: color(display-p3 1 0.5911 0.2784);
   }
 }
-.button[data-shunpo-button-variant="warning"]:hover:not([aria-disabled="true"]) {
+.button[data-shunpo-button-variant="warning"]:hover:not(
+    [aria-disabled="true"]
+  ) {
   background: #ffc292;
 }
 @supports (color: color(display-p3 0 0 0)) {
-  .button[data-shunpo-button-variant="warning"]:hover:not([aria-disabled="true"]) {
+  .button[data-shunpo-button-variant="warning"]:hover:not(
+      [aria-disabled="true"]
+    ) {
     background: color(display-p3 1 0.7733 0.6);
   }
 }
@@ -206,7 +222,9 @@
   background: #7afee6;
 }
 @supports (color: color(display-p3 0 0 0)) {
-  .button[data-shunpo-button-variant="accent"]:hover:not([aria-disabled="true"]) {
+  .button[data-shunpo-button-variant="accent"]:hover:not(
+      [aria-disabled="true"]
+    ) {
     background: color(display-p3 0.615 0.985 0.9033);
   }
 }
@@ -246,7 +264,9 @@
   color: #000;
 }
 @supports (color: color(display-p3 0 0 0)) {
-  .button[data-shunpo-button-variant="ghost"]:hover:not([aria-disabled="true"]) {
+  .button[data-shunpo-button-variant="ghost"]:hover:not(
+      [aria-disabled="true"]
+    ) {
     color: color(display-p3 0 0 0);
   }
 }

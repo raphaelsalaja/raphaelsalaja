@@ -10,19 +10,22 @@ const DialogRoot: React.FC<DialogRootProps> = ({ ...props }) => {
   return <Dialog.Root {...props} data-shunpo-dialog-root />;
 };
 
-interface DialogTriggerProps extends React.ComponentProps<typeof Dialog.Trigger> {}
+interface DialogTriggerProps
+  extends React.ComponentProps<typeof Dialog.Trigger> {}
 
 const DialogTrigger: React.FC<DialogTriggerProps> = ({ ...props }) => {
   return <Dialog.Trigger {...props} data-shunpo-dialog-trigger />;
 };
 
-interface DialogPortalProps extends React.ComponentProps<typeof Dialog.Portal> {}
+interface DialogPortalProps
+  extends React.ComponentProps<typeof Dialog.Portal> {}
 
 const DialogPortal: React.FC<DialogPortalProps> = ({ ...props }) => {
   return <Dialog.Portal {...props} data-shunpo-dialog-portal />;
 };
 
-interface DialogBackdropProps extends React.ComponentProps<typeof Dialog.Backdrop> {}
+interface DialogBackdropProps
+  extends React.ComponentProps<typeof Dialog.Backdrop> {}
 
 const DialogBackdrop: React.FC<DialogBackdropProps> = ({ ...props }) => {
   return <Dialog.Backdrop {...props} data-shunpo-dialog-backdrop />;
@@ -40,7 +43,8 @@ const DialogTitle: React.FC<DialogTitleProps> = ({ ...props }) => {
   return <Dialog.Title {...props} data-shunpo-dialog-title />;
 };
 
-interface DialogDescriptionProps extends React.ComponentProps<typeof Dialog.Description> {}
+interface DialogDescriptionProps
+  extends React.ComponentProps<typeof Dialog.Description> {}
 
 const DialogDescription: React.FC<DialogDescriptionProps> = ({ ...props }) => {
   return <Dialog.Description {...props} data-shunpo-dialog-description />;

@@ -9,8 +9,19 @@ interface ToggleRootProps extends React.ComponentProps<typeof Toggle> {
   variant?: "default" | "outline" | "ghost";
 }
 
-const ToggleRoot: React.FC<ToggleRootProps> = ({ size = "md", variant = "default", ...props }) => {
-  return <Toggle {...props} data-shunpo-toggle-root data-size={size} data-variant={variant} />;
+const ToggleRoot: React.FC<ToggleRootProps> = ({
+  size = "md",
+  variant = "default",
+  ...props
+}) => {
+  return (
+    <Toggle
+      {...props}
+      data-shunpo-toggle-root
+      data-size={size}
+      data-variant={variant}
+    />
+  );
 };
 
 export { ToggleRoot as Root };

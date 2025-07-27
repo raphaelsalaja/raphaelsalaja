@@ -18,7 +18,8 @@ const SliderValue: React.FC<SliderValueProps> = ({ ...props }) => {
   return <Slider.Value {...props} data-shunpo-slider-value />;
 };
 
-interface SliderControlProps extends React.ComponentProps<typeof Slider.Control> {}
+interface SliderControlProps
+  extends React.ComponentProps<typeof Slider.Control> {}
 
 const SliderControl: React.FC<SliderControlProps> = ({ ...props }) => {
   return <Slider.Control {...props} data-shunpo-slider-control />;
@@ -30,7 +31,8 @@ const SliderTrack: React.FC<SliderTrackProps> = ({ ...props }) => {
   return <Slider.Track {...props} data-shunpo-slider-track />;
 };
 
-interface SliderIndicatorProps extends React.ComponentProps<typeof Slider.Indicator> {}
+interface SliderIndicatorProps
+  extends React.ComponentProps<typeof Slider.Indicator> {}
 
 const SliderIndicator: React.FC<SliderIndicatorProps> = ({ ...props }) => {
   return <Slider.Indicator {...props} data-shunpo-slider-indicator />;

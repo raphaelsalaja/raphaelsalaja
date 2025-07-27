@@ -16,13 +16,15 @@ const FieldLabel: React.FC<FieldLabelProps> = ({ ...props }) => {
   return <Field.Label {...props} data-shunpo-field-label />;
 };
 
-interface FieldControlProps extends React.ComponentProps<typeof Field.Control> {}
+interface FieldControlProps
+  extends React.ComponentProps<typeof Field.Control> {}
 
 const FieldControl: React.FC<FieldControlProps> = ({ ...props }) => {
   return <Field.Control {...props} data-shunpo-field-control />;
 };
 
-interface FieldDescriptionProps extends React.ComponentProps<typeof Field.Description> {}
+interface FieldDescriptionProps
+  extends React.ComponentProps<typeof Field.Description> {}
 
 const FieldDescription: React.FC<FieldDescriptionProps> = ({ ...props }) => {
   return <Field.Description {...props} data-shunpo-field-description />;

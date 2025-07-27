@@ -49,7 +49,8 @@
   transform-origin: var(--transform-origin);
 
   /* Interaction */
-  transition: all var(--elegant-transition-duration) var(--elegant-timing-function);
+  transition: all var(--elegant-transition-duration)
+    var(--elegant-timing-function);
 
   &[data-starting-style],
   &[data-ending-style] {

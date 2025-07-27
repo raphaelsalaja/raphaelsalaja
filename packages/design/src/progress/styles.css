@@ -45,20 +45,24 @@
 }
 
 /* Variant colors */
-[data-shunpo-progress-root][data-variant="success"] [data-shunpo-progress-indicator] {
+[data-shunpo-progress-root][data-variant="success"]
+  [data-shunpo-progress-indicator] {
   background-color: var(--color-success);
 }
 
-[data-shunpo-progress-root][data-variant="warning"] [data-shunpo-progress-indicator] {
+[data-shunpo-progress-root][data-variant="warning"]
+  [data-shunpo-progress-indicator] {
   background-color: var(--color-warning);
 }
 
-[data-shunpo-progress-root][data-variant="error"] [data-shunpo-progress-indicator] {
+[data-shunpo-progress-root][data-variant="error"]
+  [data-shunpo-progress-indicator] {
   background-color: var(--color-error);
 }
 
 /* Indeterminate state animation */
-[data-shunpo-progress-root][data-indeterminate] [data-shunpo-progress-indicator] {
+[data-shunpo-progress-root][data-indeterminate]
+  [data-shunpo-progress-indicator] {
   width: 40% !important;
   animation: progress-indeterminate 2s infinite ease-in-out;
 }
@@ -90,7 +94,8 @@
   background-size: 16px 16px;
 }
 
-[data-shunpo-progress-root][data-striped][data-animated] [data-shunpo-progress-indicator] {
+[data-shunpo-progress-root][data-striped][data-animated]
+  [data-shunpo-progress-indicator] {
   animation: progress-stripes 1s linear infinite;
 }
 
@@ -126,8 +131,10 @@
     transition: background-color 0.15s ease;
   }
 
-  [data-shunpo-progress-root][data-indeterminate] [data-shunpo-progress-indicator],
-  [data-shunpo-progress-root][data-striped][data-animated] [data-shunpo-progress-indicator] {
+  [data-shunpo-progress-root][data-indeterminate]
+    [data-shunpo-progress-indicator],
+  [data-shunpo-progress-root][data-striped][data-animated]
+    [data-shunpo-progress-indicator] {
     animation: none;
   }
 }

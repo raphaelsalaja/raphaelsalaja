@@ -3,17 +3,35 @@ import { forwardRef } from "react";
 
 import "./styles.css";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   className?: string;
   disabled?: boolean;
   focused?: boolean;
   children?: React.ReactNode;
-  variant?: "primary" | "secondary" | "tertiary" | "accent" | "destructive" | "warning" | "ghost";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "accent"
+    | "destructive"
+    | "warning"
+    | "ghost";
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, variant = "primary", disabled = false, focused, className, ...props }, ref) => {
+  (
+    {
+      children,
+      variant = "primary",
+      disabled = false,
+      focused,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <button
         ref={ref}

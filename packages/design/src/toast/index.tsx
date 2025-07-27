@@ -4,7 +4,8 @@ import { Toast } from "@base-ui-components/react/toast";
 
 import "./styles.css";
 
-interface ToastProviderProps extends React.ComponentProps<typeof Toast.Provider> {}
+interface ToastProviderProps
+  extends React.ComponentProps<typeof Toast.Provider> {}
 
 const ToastProvider: React.FC<ToastProviderProps> = ({ ...props }) => {
   return <Toast.Provider {...props} data-shunpo-toast-provider />;
@@ -16,7 +17,8 @@ const ToastPortal: React.FC<ToastPortalProps> = ({ ...props }) => {
   return <Toast.Portal {...props} data-shunpo-toast-portal />;
 };
 
-interface ToastViewportProps extends React.ComponentProps<typeof Toast.Viewport> {}
+interface ToastViewportProps
+  extends React.ComponentProps<typeof Toast.Viewport> {}
 
 const ToastViewport: React.FC<ToastViewportProps> = ({ ...props }) => {
   return <Toast.Viewport {...props} data-shunpo-toast-viewport />;
@@ -26,8 +28,13 @@ interface ToastRootProps extends React.ComponentProps<typeof Toast.Root> {
   variant?: "default" | "success" | "warning" | "error";
 }
 
-const ToastRoot: React.FC<ToastRootProps> = ({ variant = "default", ...props }) => {
-  return <Toast.Root {...props} data-shunpo-toast-root data-variant={variant} />;
+const ToastRoot: React.FC<ToastRootProps> = ({
+  variant = "default",
+  ...props
+}) => {
+  return (
+    <Toast.Root {...props} data-shunpo-toast-root data-variant={variant} />
+  );
 };
 
 interface ToastTitleProps extends React.ComponentProps<typeof Toast.Title> {}
@@ -36,7 +43,8 @@ const ToastTitle: React.FC<ToastTitleProps> = ({ ...props }) => {
   return <Toast.Title {...props} data-shunpo-toast-title />;
 };
 
-interface ToastDescriptionProps extends React.ComponentProps<typeof Toast.Description> {}
+interface ToastDescriptionProps
+  extends React.ComponentProps<typeof Toast.Description> {}
 
 const ToastDescription: React.FC<ToastDescriptionProps> = ({ ...props }) => {
   return <Toast.Description {...props} data-shunpo-toast-description />;

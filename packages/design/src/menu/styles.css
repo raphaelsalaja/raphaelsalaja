@@ -7,7 +7,8 @@
 
 /* Define base indicator styles first before more specific selectors use them */
 [data-shunpo-menu-trigger-indicator] {
-  transition: transform var(--elegant-transition-duration) var(--elegant-timing-function);
+  transition: transform var(--elegant-transition-duration)
+    var(--elegant-timing-function);
 }
 
 [data-shunpo-menu-trigger] {
@@ -47,11 +48,13 @@
 
   &[data-popup-open] [data-shunpo-menu-trigger-indicator] {
     transform: rotateZ(-180deg);
-    animation: rotate-with-blur-open var(--elegant-transition-duration) var(--elegant-timing-function);
+    animation: rotate-with-blur-open var(--elegant-transition-duration)
+      var(--elegant-timing-function);
   }
 
   &:not([data-popup-open]) [data-shunpo-menu-trigger-indicator] {
-    animation: rotate-with-blur-close var(--elegant-transition-duration) var(--elegant-timing-function);
+    animation: rotate-with-blur-close var(--elegant-transition-duration)
+      var(--elegant-timing-function);
   }
 }
 
@@ -110,7 +113,8 @@
   transform-origin: var(--transform-origin);
 
   /* Interaction */
-  transition: all var(--elegant-transition-duration) var(--elegant-timing-function);
+  transition: all var(--elegant-transition-duration)
+    var(--elegant-timing-function);
 
   &[data-starting-style],
   &[data-ending-style] {

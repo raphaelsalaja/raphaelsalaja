@@ -32,9 +32,14 @@ const Portal: React.FC<PortalProps> = ({ ...props }) => {
   return <Select.Portal {...props} />;
 };
 
-interface PositionerProps extends React.ComponentProps<typeof Select.Positioner> {}
+interface PositionerProps
+  extends React.ComponentProps<typeof Select.Positioner> {}
 
-const Positioner: React.FC<PositionerProps> = ({ alignItemWithTrigger = false, sideOffset = 8, ...props }) => {
+const Positioner: React.FC<PositionerProps> = ({
+  alignItemWithTrigger = false,
+  sideOffset = 8,
+  ...props
+}) => {
   return (
     <Select.Positioner
       alignItemWithTrigger={alignItemWithTrigger}
@@ -63,7 +68,8 @@ const Item: React.FC<ItemProps> = ({ ...props }) => {
   return <Select.Item data-rs-select-item {...props} />;
 };
 
-interface ItemIndicatorProps extends React.ComponentProps<typeof Select.ItemIndicator> {}
+interface ItemIndicatorProps
+  extends React.ComponentProps<typeof Select.ItemIndicator> {}
 
 const ItemIndicator: React.FC<ItemIndicatorProps> = ({ ...props }) => {
   return <Select.ItemIndicator {...props} />;
@@ -75,23 +81,33 @@ const ItemText: React.FC<ItemTextProps> = ({ ...props }) => {
   return <Select.ItemText data-rs-select-item-text {...props} />;
 };
 
-const Group: React.FC<React.ComponentProps<typeof Select.Group>> = ({ ...props }) => {
+const Group: React.FC<React.ComponentProps<typeof Select.Group>> = ({
+  ...props
+}) => {
   return <Select.Group data-rs-select-group {...props} />;
 };
 
-const GroupLabel: React.FC<React.ComponentProps<typeof Select.GroupLabel>> = ({ ...props }) => {
+const GroupLabel: React.FC<React.ComponentProps<typeof Select.GroupLabel>> = ({
+  ...props
+}) => {
   return <Select.GroupLabel data-rs-select-group-label {...props} />;
 };
 
-const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (props) => {
+const Separator: React.FC<React.ComponentProps<typeof Select.Separator>> = (
+  props,
+) => {
   return <Select.Separator data-rs-select-separator {...props} />;
 };
 
-const ScrollUpArrow: React.FC<React.ComponentProps<typeof Select.ScrollUpArrow>> = (props) => {
+const ScrollUpArrow: React.FC<
+  React.ComponentProps<typeof Select.ScrollUpArrow>
+> = (props) => {
   return <Select.ScrollUpArrow data-rs-select-scroll-arrow {...props} />;
 };
 
-const ScrollDownArrow: React.FC<React.ComponentProps<typeof Select.ScrollDownArrow>> = (props) => {
+const ScrollDownArrow: React.FC<
+  React.ComponentProps<typeof Select.ScrollDownArrow>
+> = (props) => {
   return <Select.ScrollDownArrow data-rs-select-scroll-arrow {...props} />;
 };
 

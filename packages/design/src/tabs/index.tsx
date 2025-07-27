@@ -37,9 +37,13 @@ const TabsTab: React.FC<TabsTabProps> = ({ children, ...props }) => {
   );
 };
 
-interface TabsIndicatorProps extends React.ComponentProps<typeof Tabs.Indicator> {}
+interface TabsIndicatorProps
+  extends React.ComponentProps<typeof Tabs.Indicator> {}
 
-const TabsIndicator: React.FC<TabsIndicatorProps> = ({ children, ...props }) => {
+const TabsIndicator: React.FC<TabsIndicatorProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <Tabs.Indicator className="indicator" {...props}>
       {children}

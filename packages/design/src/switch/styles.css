@@ -90,24 +90,29 @@
 }
 
 /* Checked thumb positions */
-[data-shunpo-switch-root][data-size="sm"][data-checked] [data-shunpo-switch-thumb] {
+[data-shunpo-switch-root][data-size="sm"][data-checked]
+  [data-shunpo-switch-thumb] {
   transform: translateX(16px);
 }
 
-[data-shunpo-switch-root][data-size="md"][data-checked] [data-shunpo-switch-thumb] {
+[data-shunpo-switch-root][data-size="md"][data-checked]
+  [data-shunpo-switch-thumb] {
   transform: translateX(22px);
 }
 
-[data-shunpo-switch-root][data-size="lg"][data-checked] [data-shunpo-switch-thumb] {
+[data-shunpo-switch-root][data-size="lg"][data-checked]
+  [data-shunpo-switch-thumb] {
   transform: translateX(26px);
 }
 
 /* Enhanced visual feedback */
-[data-shunpo-switch-root]:active:not([data-disabled]) [data-shunpo-switch-thumb] {
+[data-shunpo-switch-root]:active:not([data-disabled])
+  [data-shunpo-switch-thumb] {
   transform: scale(1.1) translateX(var(--thumb-translate, 2px));
 }
 
-[data-shunpo-switch-root][data-checked]:active:not([data-disabled]) [data-shunpo-switch-thumb] {
+[data-shunpo-switch-root][data-checked]:active:not([data-disabled])
+  [data-shunpo-switch-thumb] {
   transform: scale(1.1) translateX(var(--thumb-translate-checked));
 }
 

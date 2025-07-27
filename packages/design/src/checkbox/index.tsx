@@ -8,11 +8,17 @@ interface CheckboxRootProps extends React.ComponentProps<typeof Checkbox.Root> {
   size?: "sm" | "md" | "lg";
 }
 
-const CheckboxRoot: React.FC<CheckboxRootProps> = ({ size = "md", ...props }) => {
-  return <Checkbox.Root {...props} data-shunpo-checkbox-root data-size={size} />;
+const CheckboxRoot: React.FC<CheckboxRootProps> = ({
+  size = "md",
+  ...props
+}) => {
+  return (
+    <Checkbox.Root {...props} data-shunpo-checkbox-root data-size={size} />
+  );
 };
 
-interface CheckboxIndicatorProps extends React.ComponentProps<typeof Checkbox.Indicator> {}
+interface CheckboxIndicatorProps
+  extends React.ComponentProps<typeof Checkbox.Indicator> {}
 
 const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = ({ ...props }) => {
   return <Checkbox.Indicator {...props} data-shunpo-checkbox-indicator />;

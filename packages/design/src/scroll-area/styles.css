@@ -72,13 +72,15 @@
 }
 
 /* Thumb sizing */
-[data-shunpo-scroll-area-scrollbar][data-orientation="vertical"] [data-shunpo-scroll-area-thumb] {
+[data-shunpo-scroll-area-scrollbar][data-orientation="vertical"]
+  [data-shunpo-scroll-area-thumb] {
   width: 8px;
   min-height: 20px;
   margin: 2px;
 }
 
-[data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"] [data-shunpo-scroll-area-thumb] {
+[data-shunpo-scroll-area-scrollbar][data-orientation="horizontal"]
+  [data-shunpo-scroll-area-thumb] {
   min-width: 20px;
   height: 8px;
   margin: 2px;
@@ -101,19 +103,24 @@
 }
 
 /* Auto-hide scrollbars */
-[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar] {
+[data-shunpo-scroll-area-root][data-scrollbars="auto"]
+  [data-shunpo-scroll-area-scrollbar] {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-[data-shunpo-scroll-area-root][data-scrollbars="auto"]:hover [data-shunpo-scroll-area-scrollbar],
-[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar]:hover,
-[data-shunpo-scroll-area-root][data-scrollbars="auto"] [data-shunpo-scroll-area-scrollbar][data-dragging] {
+[data-shunpo-scroll-area-root][data-scrollbars="auto"]:hover
+  [data-shunpo-scroll-area-scrollbar],
+[data-shunpo-scroll-area-root][data-scrollbars="auto"]
+  [data-shunpo-scroll-area-scrollbar]:hover,
+[data-shunpo-scroll-area-root][data-scrollbars="auto"]
+  [data-shunpo-scroll-area-scrollbar][data-dragging] {
   opacity: 1;
 }
 
 /* Always visible scrollbars */
-[data-shunpo-scroll-area-root][data-scrollbars="visible"] [data-shunpo-scroll-area-scrollbar] {
+[data-shunpo-scroll-area-root][data-scrollbars="visible"]
+  [data-shunpo-scroll-area-scrollbar] {
   opacity: 1;
 }
 

@@ -22,7 +22,9 @@ const MenuTrigger: React.FC<MenuTriggerProps> = ({ ...props }) => {
   return <Menu.Trigger {...props} data-shunpo-menu-trigger />;
 };
 
-const MenuTriggerIndicator: React.FC<React.HTMLAttributes<HTMLSpanElement>> = ({ ...props }) => {
+const MenuTriggerIndicator: React.FC<React.HTMLAttributes<HTMLSpanElement>> = ({
+  ...props
+}) => {
   return <span {...props} data-shunpo-menu-trigger-indicator />;
 };
 
@@ -32,13 +34,15 @@ const MenuPortal: React.FC<MenuPortalProps> = ({ ...props }) => {
   return <Menu.Portal {...props} data-shunpo-menu-portal />;
 };
 
-interface MenuBackdropProps extends React.ComponentProps<typeof Menu.Backdrop> {}
+interface MenuBackdropProps
+  extends React.ComponentProps<typeof Menu.Backdrop> {}
 
 const MenuBackdrop: React.FC<MenuBackdropProps> = ({ ...props }) => {
   return <Menu.Backdrop {...props} data-shunpo-menu-backdrop />;
 };
 
-interface MenuPositionerProps extends React.ComponentProps<typeof Menu.Positioner> {}
+interface MenuPositionerProps
+  extends React.ComponentProps<typeof Menu.Positioner> {}
 
 const MenuPositioner: React.FC<MenuPositionerProps> = ({ ...props }) => {
   return <Menu.Positioner {...props} data-shunpo-menu-positioner />;
@@ -61,10 +65,17 @@ interface MenuItemProps extends React.ComponentProps<typeof Menu.Item> {
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ ...props }) => {
-  return <Menu.Item {...props} data-shunpo-menu-item data-tone={props.tone || "default"} />;
+  return (
+    <Menu.Item
+      {...props}
+      data-shunpo-menu-item
+      data-tone={props.tone || "default"}
+    />
+  );
 };
 
-interface MenuSeparatorProps extends React.ComponentProps<typeof Menu.Separator> {}
+interface MenuSeparatorProps
+  extends React.ComponentProps<typeof Menu.Separator> {}
 
 const MenuSeparator: React.FC<MenuSeparatorProps> = ({ ...props }) => {
   return <Menu.Separator {...props} data-shunpo-menu-separator />;
@@ -76,25 +87,29 @@ const MenuGroup: React.FC<MenuGroupProps> = ({ ...props }) => {
   return <Menu.Group {...props} data-shunpo-menu-group />;
 };
 
-interface MenuGroupLabelProps extends React.ComponentProps<typeof Menu.GroupLabel> {}
+interface MenuGroupLabelProps
+  extends React.ComponentProps<typeof Menu.GroupLabel> {}
 
 const MenuGroupLabel: React.FC<MenuGroupLabelProps> = ({ ...props }) => {
   return <Menu.GroupLabel {...props} data-shunpo-menu-group-label />;
 };
 
-interface MenuRadioGroupProps extends React.ComponentProps<typeof Menu.RadioGroup> {}
+interface MenuRadioGroupProps
+  extends React.ComponentProps<typeof Menu.RadioGroup> {}
 
 const MenuRadioGroup: React.FC<MenuRadioGroupProps> = ({ ...props }) => {
   return <Menu.RadioGroup {...props} data-shunpo-menu-radio-group />;
 };
 
-interface MenuRadioItemProps extends React.ComponentProps<typeof Menu.RadioItem> {}
+interface MenuRadioItemProps
+  extends React.ComponentProps<typeof Menu.RadioItem> {}
 
 const MenuRadioItem: React.FC<MenuRadioItemProps> = ({ ...props }) => {
   return <Menu.RadioItem {...props} data-shunpo-menu-radio-item />;
 };
 
-interface MenuCheckboxItemProps extends React.ComponentProps<typeof Menu.CheckboxItem> {}
+interface MenuCheckboxItemProps
+  extends React.ComponentProps<typeof Menu.CheckboxItem> {}
 
 const MenuCheckboxItem: React.FC<MenuCheckboxItemProps> = ({ ...props }) => {
   return <Menu.CheckboxItem {...props} data-shunpo-menu-checkbox-item />;

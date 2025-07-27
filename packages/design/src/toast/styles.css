@@ -75,24 +75,29 @@
 }
 
 [data-shunpo-toast-root][data-ending-style][data-swipe-direction="right"] {
-  transform: translateX(calc(var(--toast-swipe-movement-x) + 150%)) scale(calc(1 - (0.1 * var(--toast-index))));
+  transform: translateX(calc(var(--toast-swipe-movement-x) + 150%))
+    scale(calc(1 - (0.1 * var(--toast-index))));
 }
 
 [data-shunpo-toast-root][data-ending-style][data-swipe-direction="left"] {
-  transform: translateX(calc(var(--toast-swipe-movement-x) - 150%)) scale(calc(1 - (0.1 * var(--toast-index))));
+  transform: translateX(calc(var(--toast-swipe-movement-x) - 150%))
+    scale(calc(1 - (0.1 * var(--toast-index))));
 }
 
 [data-shunpo-toast-root][data-ending-style][data-swipe-direction="up"] {
-  transform: translateY(calc(var(--toast-swipe-movement-y) - 150%)) scale(calc(1 - (0.1 * var(--toast-index))));
+  transform: translateY(calc(var(--toast-swipe-movement-y) - 150%))
+    scale(calc(1 - (0.1 * var(--toast-index))));
 }
 
 [data-shunpo-toast-root][data-ending-style][data-swipe-direction="down"] {
-  transform: translateY(calc(var(--toast-swipe-movement-y) + 150%)) scale(calc(1 - (0.1 * var(--toast-index))));
+  transform: translateY(calc(var(--toast-swipe-movement-y) + 150%))
+    scale(calc(1 - (0.1 * var(--toast-index))));
 }
 
 /* Swipe gesture feedback */
 [data-shunpo-toast-root][data-swiping] {
-  transform: translateX(var(--toast-swipe-movement-x)) translateY(var(--toast-swipe-movement-y))
+  transform: translateX(var(--toast-swipe-movement-x))
+    translateY(var(--toast-swipe-movement-y))
     scale(calc(1 - (0.1 * var(--toast-index))));
 }
 

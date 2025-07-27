@@ -18,7 +18,8 @@ const AvatarImage: React.FC<AvatarImageProps> = ({ ...props }) => {
   return <Avatar.Image {...props} data-shunpo-avatar-image />;
 };
 
-interface AvatarFallbackProps extends React.ComponentProps<typeof Avatar.Fallback> {}
+interface AvatarFallbackProps
+  extends React.ComponentProps<typeof Avatar.Fallback> {}
 
 const AvatarFallback: React.FC<AvatarFallbackProps> = ({ ...props }) => {
   return <Avatar.Fallback {...props} data-shunpo-avatar-fallback />;

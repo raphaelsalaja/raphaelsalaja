@@ -14,7 +14,10 @@ export function Item({ ...props }: React.ComponentProps<"li">) {
   return <li data-rs-breadcrumb-list-item {...props} />;
 }
 
-export function Link({ render = <a href="/">Link</a>, ...props }: useRender.ComponentProps<"a">) {
+export function Link({
+  render = <a href="/">Link</a>,
+  ...props
+}: useRender.ComponentProps<"a">) {
   const element = useRender({
     render,
     props: {
@@ -40,9 +43,23 @@ export function Page({ ...props }: React.ComponentProps<"span">) {
 }
 
 export function Separator({ ...props }: React.ComponentProps<"li">) {
-  return <span role="presentation" aria-hidden="true" data-rs-breadcrumb-list-item-separator {...props} />;
+  return (
+    <span
+      role="presentation"
+      aria-hidden="true"
+      data-rs-breadcrumb-list-item-separator
+      {...props}
+    />
+  );
 }
 
 export function Collapsed({ ...props }: React.ComponentProps<"span">) {
-  return <span role="presentation" aria-hidden="true" data-rs-breadcrumb-collapsed {...props} />;
+  return (
+    <span
+      role="presentation"
+      aria-hidden="true"
+      data-rs-breadcrumb-collapsed
+      {...props}
+    />
+  );
 }

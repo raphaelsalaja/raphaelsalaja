@@ -6,8 +6,18 @@ interface SeparatorProps extends React.ComponentProps<typeof Separator> {
   variant?: "default" | "dashed" | "unset";
 }
 
-const SeparatorComponent = ({ variant = "default", className, ...props }: SeparatorProps) => {
-  return <Separator data-shunpo-separator={variant} className={className} {...props} />;
+const SeparatorComponent = ({
+  variant = "default",
+  className,
+  ...props
+}: SeparatorProps) => {
+  return (
+    <Separator
+      data-shunpo-separator={variant}
+      className={className}
+      {...props}
+    />
+  );
 };
 
 export { SeparatorComponent as Separator };

@@ -77,7 +77,8 @@
   align-items: flex-start;
 }
 
-[data-shunpo-field-root][data-orientation="horizontal"] [data-shunpo-field-label] {
+[data-shunpo-field-root][data-orientation="horizontal"]
+  [data-shunpo-field-label] {
   flex-shrink: 0;
   min-width: 120px;
   margin-top: 8px;
