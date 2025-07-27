@@ -27,7 +27,7 @@ article {
 
   time {
     font-variation-settings: var(--font-weight-500);
-    color: var(--text-secondary);
+    color: var(--text-quaternary);
   }
 
   p + h2,
@@ -47,7 +47,7 @@ article {
   h2 + p,
   h3 + p,
   header + p,
-  /* if p is first child */
+  [data-stage] + p,
   p:first-child {
     margin-top: 16px;
   }
@@ -65,7 +65,7 @@ article {
     border-left: 4px solid var(--border-primary);
 
     p {
-      color: var(--text-secondary);
+      color: var(--text-quaternary);
     }
   }
 
@@ -88,7 +88,7 @@ article {
     font-size: 12px;
     font-variation-settings: var(--font-weight-500);
     line-height: 1.2;
-    color: var(--text-secondary);
+    color: var(--text-quaternary);
     text-align: center;
   }
 }

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
-const ROOT = "writing";
+const ROOT = "library";
 
 export function generateStaticParams() {
   return source.generateParams().map(({ slug }) => ({
@@ -30,10 +30,15 @@ export default async function Page(props: {
   const page = source.getPage([ROOT, params.slug]);
   if (!page) notFound();
 
+  const { title, date } = page.data;
   const MDXContent = page.data.body;
 
   return (
     <article>
+      <header>
+        <h1>{title}</h1>
+        <time>{date && <time>{date}</time>}</time>
+      </header>
       <MDXContent components={getMDXComponents()} />
     </article>
   );

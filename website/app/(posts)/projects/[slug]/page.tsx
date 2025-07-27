@@ -1,29 +1,20 @@
-// import { Article } from "@/components/article";
-// import { createPostPage } from "@/lib/create-post-page";
-
 import { notFound } from "next/navigation";
 import { source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
-// const {
-//   generateStaticParams,
-//   generateMetadata,
-//   default: Page,
-// } = createPostPage("projects", (post) => <Article post={post} />);
-
-// export { generateMetadata, generateStaticParams };
-
-// export default Page;
+const ROOT = "projects";
 
 export function generateStaticParams() {
-  return source.generateParams();
+  return source.generateParams().map(({ slug }) => ({
+    slug: slug.join("/"),
+  }));
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = source.getPage([ROOT, params.slug]);
   if (!page) notFound();
 
   return {
@@ -33,21 +24,17 @@ export async function generateMetadata(props: {
 }
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const page = source.getPage([ROOT, params.slug]);
   if (!page) notFound();
 
-  const Content = page.data.body;
+  const MDXContent = page.data.body;
 
   return (
-    <div className="prose dark:prose-invert">
-      <h1>{page.data.title}</h1>
-      <p className="text-sm text-gray-500 dark:text-gray-400">
-        {page.data.description}
-      </p>
-      <Content components={getMDXComponents()} />
-    </div>
+    <article>
+      <MDXContent components={getMDXComponents()} />
+    </article>
   );
 }

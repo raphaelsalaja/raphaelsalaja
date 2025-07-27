@@ -10,12 +10,7 @@ export const docs = defineDocs({
   dir: "content",
   docs: {
     schema: frontmatterSchema.extend({
-      time: z
-        .object({
-          created: z.string().optional(),
-          updated: z.string().optional(),
-        })
-        .optional(),
+      date: z.string(),
       external: z.string().optional(),
       media: z
         .object({
@@ -35,3 +30,5 @@ export const docs = defineDocs({
 export default defineConfig({
   mdxOptions: {},
 });
+
+export type Frontmatter = z.infer<typeof docs.docs.schema>;

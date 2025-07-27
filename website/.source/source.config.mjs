@@ -10,10 +10,7 @@ var docs = defineDocs({
   dir: "content",
   docs: {
     schema: frontmatterSchema.extend({
-      time: z.object({
-        created: z.string().optional(),
-        updated: z.string().optional()
-      }).optional(),
+      date: z.string(),
       external: z.string().optional(),
       media: z.object({
         video: z.string().optional(),
