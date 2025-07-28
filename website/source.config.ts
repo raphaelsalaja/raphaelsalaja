@@ -20,6 +20,7 @@ export const docs = defineDocs({
         .optional(),
       tags: z.array(z.string()).optional(),
       disabled: z.boolean().optional(),
+      timestamp: z.number().optional(),
     }),
   },
   meta: {

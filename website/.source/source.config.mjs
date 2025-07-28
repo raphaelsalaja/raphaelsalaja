@@ -17,7 +17,8 @@ var docs = defineDocs({
         image: z.string().optional()
       }).optional(),
       tags: z.array(z.string()).optional(),
-      disabled: z.boolean().optional()
+      disabled: z.boolean().optional(),
+      timestamp: z.number().optional()
     })
   },
   meta: {

@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { ArrowUpRight } from "lucide-react";
 import { nanoid } from "nanoid";
 import { Link } from "next-view-transitions";
 import { getLibraryPages } from "@/lib/fumadocs";
@@ -35,9 +34,6 @@ export const Library = async ({ index = false }: ProjectsProps) => {
       <Link href={href} {...entryProps} key={id}>
         <div className={styles.a}>
           <h3 className={styles.title}>{post.data.title}</h3>
-        </div>
-        <div className={styles.b}>
-          <p>{post.data.description}</p>
         </div>
         <div className={styles.c}>
           <p className={styles.date}>{post.data.tags?.join(", ") || ""}</p>
