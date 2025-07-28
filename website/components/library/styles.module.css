@@ -98,7 +98,7 @@
     grid-area: b;
     width: 100%;
     margin: 0;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
 
     p {
       width: 100%;
@@ -111,20 +111,20 @@
   .c {
     grid-area: c;
     margin: 0;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
   }
 
   .d {
     grid-area: d;
     justify-self: end;
     margin: 0;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     white-space: nowrap;
   }
 
   .date {
     margin: 0;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     white-space: nowrap;
   }
 }

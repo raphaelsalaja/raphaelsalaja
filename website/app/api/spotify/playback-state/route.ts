@@ -14,7 +14,16 @@ const spotify = new SpotifyAPI({
 export async function GET() {
   try {
     const recentlyPlayed = await spotify.me.getPlaybackState();
-    return NextResponse.json(recentlyPlayed);
+
+    const response = NextResponse.json(recentlyPlayed);
+
+    // Add caching headers
+    response.headers.set(
+      "Cache-Control",
+      "public, s-maxage=5, stale-while-revalidate=30",
+    );
+
+    return response;
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message || "Unknown error" },

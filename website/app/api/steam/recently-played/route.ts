@@ -86,7 +86,6 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
           details = results[0].status === "fulfilled" ? results[0].value : null;
           reviews = results[1].status === "fulfilled" ? results[1].value : null;
 
-          // Try to get achievements
           let achievements = null;
           try {
             const achievementData = await steam.getUserAchievements(
@@ -106,14 +105,25 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
               achievements,
               note: "No recent games found, showing most recently played owned game",
             },
-            { status: 200 },
+            {
+              status: 200,
+              headers: {
+                "Cache-Control":
+                  "public, s-maxage=300, stale-while-revalidate=600",
+              },
+            },
           );
         }
       } catch (error) {
         console.error("Failed to fetch owned games:", error);
       }
 
-      return new NextResponse(null, { status: 204 });
+      return new NextResponse(null, {
+        status: 204,
+        headers: {
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const appId = game.game.id;
@@ -148,7 +158,12 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
 
     return NextResponse.json(
       { game, details, reviews, achievements },
-      { status: 200 },
+      {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+        },
+      },
     );
   } catch (error: any) {
     const status = error.message.startsWith("Failed to fetch") ? 502 : 500;

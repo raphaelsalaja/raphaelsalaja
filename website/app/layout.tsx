@@ -6,7 +6,6 @@ import "@/styles/main.css";
 import clsx from "clsx";
 import { Layout } from "@/components/layouts/root";
 import { Providers } from "@/components/providers";
-import { Footer } from "@/components/screens/layout/footer";
 
 export const metadata: Metadata = opengraph;
 
@@ -28,7 +27,6 @@ export default async function RootLayout({
           <Providers>
             {breadcrumb}
             {children}
-            <Footer />
           </Providers>
         </Layout>
       </html>

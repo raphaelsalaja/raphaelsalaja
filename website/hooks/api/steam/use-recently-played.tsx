@@ -24,6 +24,13 @@ export function useSteamGetRecentlyPlayed() {
   return useQuery<IRecentlyPlayedResponse | null, Error>({
     queryKey: ["steam", "recently-played"],
     queryFn: fetchRecentlyPlayed,
-    staleTime: 60_000,
+    staleTime: Infinity, // Never consider stale - fetch once only
+    gcTime: 24 * 60 * 60 * 1000, // Keep in cache for 24 hours
+    refetchInterval: false, // Disable automatic refetching
+    refetchIntervalInBackground: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 }

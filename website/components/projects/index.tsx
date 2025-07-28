@@ -1,7 +1,9 @@
 import { nanoid } from "nanoid";
 import { Link } from "next-view-transitions";
+import React from "react";
 import * as Media from "@/components/media";
 import { getProjectsPages } from "@/lib/fumadocs";
+import { ArrowUpRight } from "../icons";
 import styles from "./styles.module.css";
 
 const DEFAULT_PROJECT_LIMIT = 6;
@@ -83,7 +85,7 @@ export const Projects = async ({ index = false }: ProjectsProps) => {
   };
 
   return (
-    <div className={styles.posts}>
+    <div className={styles.projects}>
       {index && (
         <Link href="/projects" className={styles.heading}>
           <h1 className={styles.name}>Projects</h1>
