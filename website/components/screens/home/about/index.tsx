@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 function useAnimatedSkeletonText(
   isLoading: boolean,
   value: string | undefined,
-  width: number | string,
+  _width: number | string,
   image?: string,
   type: "spotify" | "steam" = "spotify",
 ): React.ReactNode {

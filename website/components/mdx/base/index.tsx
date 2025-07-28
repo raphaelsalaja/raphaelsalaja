@@ -1,10 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 import FigCaption, { type FigCaptionProps } from "@/components/codeblock";
-import Heading, { type HeadingProps } from "@/components/heading";
 import { Image } from "@/components/image";
 
 export const BaseComponents: Partial<MDXComponents> = {
-  h1: (props: HeadingProps) => <Heading {...props} />,
+  // h1: (props: HeadingProps) => <Heading {...props} />,
   h2: ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2 {...props} />
   ),
@@ -15,7 +14,7 @@ export const BaseComponents: Partial<MDXComponents> = {
     <a {...props} />
   ),
   ol: ({ ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol {...props} />
+    <ol {...props} start={1} />
   ),
   li: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <li {...props} />,
   pre: ({ ...props }: React.HTMLAttributes<HTMLPreElement>) => (

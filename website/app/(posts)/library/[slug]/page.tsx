@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { OutlineProvider } from "@/components/outline";
 import { source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
@@ -34,12 +35,14 @@ export default async function Page(props: {
   const MDXContent = page.data.body;
 
   return (
-    <article>
-      <header>
-        <h1>{title}</h1>
-        <time>{date && <time>{date}</time>}</time>
-      </header>
-      <MDXContent components={getMDXComponents()} />
-    </article>
+    <OutlineProvider>
+      <article>
+        <header>
+          <h1>{title}</h1>
+          <time>{date && <time>{date}</time>}</time>
+        </header>
+        <MDXContent components={getMDXComponents()} />
+      </article>
+    </OutlineProvider>
   );
 }

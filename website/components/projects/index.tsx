@@ -1,9 +1,7 @@
 import { nanoid } from "nanoid";
 import { Link } from "next-view-transitions";
-import React from "react";
 import * as Media from "@/components/media";
 import { getProjectsPages } from "@/lib/fumadocs";
-import { ArrowUpRight } from "../icons";
 import styles from "./styles.module.css";
 
 const DEFAULT_PROJECT_LIMIT = 6;
