@@ -118,8 +118,7 @@ article {
 
     a {
       position: absolute;
-      top: 100%;
-      padding-left: 2px;
+      margin: 2px 2px;
       font-size: 10px;
       line-height: 1;
       color: var(--text-quaternary);
@@ -182,13 +181,13 @@ article {
       left: -12px;
       font-size: 10px;
       font-variation-settings: var(--font-weight-500);
-      content: counter(list) ".";
+      content: counter(list);
     }
 
     [data-footnote-backref] {
       position: absolute;
       inset: 0;
-      bottom: 0.5em;
+      bottom: 8px;
       z-index: 1;
       display: inline-block;
       overflow: hidden;
