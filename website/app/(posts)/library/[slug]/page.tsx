@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import { OutlineProvider } from "@/components/outline";
+import { Article } from "@/components/article";
 import { source } from "@/lib/fumadocs";
-import { getMDXComponents } from "@/mdx-components";
 
 const ROOT = "library";
 
@@ -29,20 +28,8 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage([ROOT, params.slug]);
+
   if (!page) notFound();
 
-  const { title, date } = page.data;
-  const MDXContent = page.data.body;
-
-  return (
-    <OutlineProvider>
-      <article>
-        <header>
-          <h1>{title}</h1>
-          <time>{date && <time>{date}</time>}</time>
-        </header>
-        <MDXContent components={getMDXComponents()} />
-      </article>
-    </OutlineProvider>
-  );
+  return <Article page={page} />;
 }

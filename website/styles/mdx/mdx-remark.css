@@ -7,6 +7,24 @@ article {
     color: var(--text-primary);
   }
 
+  center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 384px;
+    margin-top: 48px;
+    overflow: hidden;
+    background: var(--background-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+  }
+
+  center + p {
+    margin-top: 48px;
+  }
+
   header {
     display: flex;
     flex-direction: column;
@@ -98,7 +116,7 @@ article {
     text-align: center;
   }
 
-  caption {
+  sub {
     display: block;
     width: 100%;
 

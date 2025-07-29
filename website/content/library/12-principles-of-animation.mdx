@@ -1,7 +1,7 @@
 ---
 title: "12 Principles of Animation"
 description: "A guide to the foundational principles of animation, from squash and stretch to timing and exaggeration, and how they can be applied to create more engaging and lifelike animations."
-date: "21 June 2025"
+date: "31 July 2025"
 tags: ["Animation"]
 ---
 
@@ -9,10 +9,10 @@ Animation on the web has come a long way from simple transitions and hover effec
 
 # Why Animation Matters
 
-Motion is more than a visual flourish. It’s a tool for communication. The right animation helps users understand what just happened, what’s about to happen, and where their attention should go next. It can guide, reassure, and even delight. 
+Motion is more than a visual flourish. It’s a tool for communication. The right animation helps users understand what just happened, what’s about to happen, and where their attention should go next. It can guide, reassure, and even delight.
 Transforming routine workflows into memorable experiences.
 
-> The 12 principles of animation were introduced by two animators at Disney in 1981. Ollie Johnston and Frank Thomas included them in their book The Illusion of Life: Disney Animation, which was released that year. [^1] 
+> The 12 principles of animation were introduced by two animators at Disney in 1981. Ollie Johnston and Frank Thomas included them in their book The Illusion of Life: Disney Animation, which was released that year. [^1]
 
 But not all animation is created equal. The difference between good and great often comes down to intention. Great animation is purposeful, subtle, and rooted in the principles that have guided designers for decades.
 
@@ -20,25 +20,176 @@ But not all animation is created equal. The difference between good and great of
 
 Physicality matters. Even digital objects benefit from a sense of mass and flexibility. Whether it’s a button expanding on click or a modal gently settling into place, subtle deformation adds life and tactility.[^2]
 
-<Stage>
+<center>
   <SquashStretch />
-</Stage>
-<caption>
-This recreation of Family's icon picker demonstrates the squash and stretch principle in action. [^2]
-</caption>
-
-
+</center>
+<sub>
+  This recreation of Family's icon picker demonstrates the squash and stretch
+  principle in action. [^2]
+</sub>
 
 Utilize in moderation. Overdoing squash and stretch can lead to a cartoonish effect that distracts rather than enhances. The key is to find the right balance that feels natural and complements the overall design.
 
 Apps that need to convey a sense of professionalism or seriousness should use this principle sparingly, while playful or whimsical interfaces can lean into it more heavily.
 
+# Anticipation
 
+Anticipation is the of preparing users for what comes next. In practice, this means giving a clue before a major action occurs. Such cues tap into subconscious expectations.
 
+Use anticipation to set up important transitions or calls-to-action – like a notification icon that wiggles gently to imply updates awaiting.
 
+<center>
+  <Anticipation />
+</center>
+
+Avoid overusing it on every tiny interaction, too much anticipation can feel gimmicky or slow the experience. Save it for moments where an extra hint helps the user, and keep it quick. The goal is to inform the user about what’s coming, without making them wait unnecessarily.
+
+# Staging
+
+If anticipation is about the before, staging is about the during. This principle is all about focusing the user’s attention on what matters most as an interaction unfolds.
+
+In UI terms, staging might mean introducing interface elements one by one in a sequence. Imagine opening a complex settings panel: the backdrop might fade in first, then the panel slides into view, and finally the primary control within that panel gets a subtle highlight.
+
+<center>
+  <Staging />
+</center>
+
+Choreograph the sequence, in this example, we use the backdrop to blur out the background to provide focus.
+
+Avoid animating too many things at the same exact time, or the user won’t know where to look. Staging is not always needed for very simple interactions, but for anything complex, it brings clarity.
+
+# Straight Ahead Action & Pose to Pose
+
+There’s more than one way to animate a sequence. Straight ahead action means animating one frame after another in order. Pose to pose involves planning key moments and then filling in the gaps between.
+
+We usually rely on pose-to-pose on the web. We define the start and end states (keyframes) and let software interpolate the in-betweens. When trying to create animations, try to keep this in mind. You don't have to plan every single frame in detail. Instead, take the key points, and allow eases and transitions to fill in the gaps.
+
+<center>
+  <StraightAheadActionAndPoseToPose />
+</center>
+
+When it comes to deciding on what should be interpolated, consider how often this action will be used. For example, Apple only animates out their context menus as they are used so frequently, animating them in all the time can start to feel sluggish for the user.
+
+# Follow Through & Overlapping Action
+
+In real life, when you stop suddenly, parts of you (like hair or clothing) might continue moving – and when you start moving, not everything accelerates at once. **Follow through** and **overlapping action** bring this natural continuity into UI animations. Practically, this means elements in an interface don’t all start and stop in unison. One element might lead, and others follow with a slight lag. This makes the motion feel layered and realistic.
+
+A classic example is a slide-out menu (navigation drawer). The panel begins to slide out, and a split second later the individual menu items inside it might each ease into place one after the other. The menu as a whole has follow-through – it doesn’t just appear and stop abruptly – and the items have overlapping action, trailing the container’s motion. Another example: imagine scrolling through a list where each card enters the viewport with a tiny delay relative to the previous card. Instead of a block of content popping in together, you get a graceful cascade. This **staggered timing** is overlapping action at work, turning a static list into a dynamic flow.
+
+<center>
+  <FollowThroughAndOverlappingAction />
+</center>
+
+- **Navigation drawers/menus:** Let content items move slightly after the drawer itself – as the drawer settles, the options inside finish sliding in, creating depth.
+- **Scrolling lists:** Stagger the appearance of list elements so new items follow through as you scroll, rather than jumping in all at once.
+- **Button interactions:** A button press might cause the button to briefly squash (follow through), and an icon on it to bounce just after (overlap), giving a satisfying sense of elasticity.
+
+These layered motions should be subtle – milliseconds of difference – but they add polish. The interface feels less mechanical and more organic.
+
+**When to use it:** Employ follow-through and overlapping action to soften transitions and make them feel natural. Anytime an abrupt stop or start feels jarring, adding a bit of overlap can help. For example, closing a modal could trigger a slight lingering movement in its backdrop or content, so it doesn’t vanish too stiffly. Be cautious not to overdo it: too much delay between elements can make the UI sluggish or unresponsive. The trick is in the timing – just a touch of delay or extra movement can go a long way. If you remove these animations entirely, things often feel too sudden – what one designer calls “digital whiplash,” that disorienting snap when an element just disappears without grace[^5]. So use follow-through to avoid that whiplash, but ensure the interface still feels snappy.
+
+# Slow In & Slow Out
+
+Most things in nature don’t start or stop instantly – and neither should good UI animations. **Slow in & slow out** (also known as easing in and out) means an object begins motion gradually, then speeds up, then slows down again at the end. This principle is the cornerstone of smooth, comfortable transitions. In practice, it’s all about easing curves: an element might ease-out as it leaves the screen (starting fast and gently coming to rest) or ease-in when it appears (starting slow then accelerating). The result mimics how a car accelerates and brakes, or how a human moves – avoiding the jolt of an abrupt linear motion.
+
+In a modern app, you see this everywhere. Tap a menu icon and the menu doesn’t just materialize – it might pop out quickly then ease into position at the last moment. A modal window might scale up from the center of the screen, moving fastest at mid-animation and easing to a stop as it reaches full size. These behaviors reassure the user’s eye; nothing slams to a halt. Google’s Material Design guidelines, for example, heavily emphasize using easing for transitions so that movement feels natural and “unforced”.
+
+<center>
+  <SlowInSlowOut />
+</center>
+
+**When to use it:** Almost always. For the majority of interface animations – moving elements, fading things in/out, resizing components – you’ll want some form of ease. A common default is ease-out for exiting elements (so they gently come to rest) and ease-in-out for larger, two-direction movements. Use linear (no easing) only in rare cases where robotic, constant speed is desired (perhaps a marquee text crawl, or an indeterminate progress bar where continuous motion indicates endless work). If an animation feels off or too abrupt, chances are you need to adjust the easing or duration. On the flip side, don’t overdo the ease (making it _too_ slow or bouncy), which can make the interface feel laggy. Aim for quick but gentle – fast acceleration and a soft landing – to keep things feeling both responsive and refined.
+
+# Arcs
+
+Natural movement isn’t strictly straight-lined. **Arcs** describe the slightly curved paths that objects tend to follow due to gravity and inertia. In UI design, incorporating an arc into a motion can make it feel more organic. For example, when something flies from point A to B on your interface (say, an icon moving into a cart), adding a bit of arc – like a subtle upward curve in the trajectory – can appear more fluid and less like a mechanical slide. Humans are used to seeing arcs in the physical world (think of how you’d toss a set of keys to someone; they travel in an arc), so we find this motion comforting and realistic.
+
+In practice, you might use arcs for playful or prominent transitions. A floating action button that, when tapped, transforms into a toolbar might follow a curved path outward, reinforcing the idea of a natural expansion. Or consider a drag-and-drop interaction: if a user drags an element and releases it, instead of the element just snapping straight to its new spot, you could animate it along a gentle curve as it “falls” into place – maybe even with a tiny bounce at the end for effect. This is far more pleasing than a dead-straight interpolation.
+
+<center>
+  <Arcs />
+</center>
+
+**When to use it:** Use arcs when a movement covers enough distance or is meant to feel physical. Small UI shifts (like a 5px nudge) don’t need an arc, but moving something across the screen often benefits from one. Arcs work well in whimsical, friendly interfaces (e.g. a mobile email app where swiping an email to archive sends it flying off in a curve, implying it’s gone into the archive bin). They might be less appropriate in very strict, data-heavy UIs where you want motions to be minimal. As always, subtlety is key – the arc should usually be slight, not a huge rainbow curve, unless you deliberately want a cartoon effect. When used right, arcs make motions feel _guided by physics_ and can subconsciously signal weight or momentum. If a straight-line animation feels a bit too stiff, try an arc and notice the difference in character it brings.
+
+# Secondary Action
+
+Not every motion in an animation is the star of the show. **Secondary actions** are the little flourishes that support the main action, adding depth and feedback without stealing the spotlight. In classic animation, if a character jumps (primary action), their scarf fluttering is secondary. In UI design, secondary actions might be something like a checkmark icon that pops and then does a brief sparkle after a form is successfully submitted – the sparkle isn’t the main message (the checkmark is), but it reinforces the feeling of “success” in a fun way.
+
+Secondary actions in interfaces are often seen in microinteractions. Think of a “like” button heart: you tap it (primary action: heart fills in), and then maybe it emits a few tiny particles or a subtle burst animation (secondary action) to celebrate the like. Or when pulling to refresh in an app – the primary action is the content refreshing, but the little spinner that twirls or the character that does a flip is a secondary animation to entertain and assure you that the app is fetching data. These details make the experience memorable. They also provide feedback: the user sees something happening that correlates with their action.
+
+<center>
+  <SecondaryAction />
+</center>
+
+**When to use it:** Add secondary actions to inject delight and clarity into moments of user feedback. They work great for confirmations (like a sent email animation that shows a paper plane flying off after the send – the plane is secondary to the act of sending) or for states that might otherwise feel static (like an empty state illustration that animates subtly). Importantly, the secondary action should never override or confuse the primary action. If your secondary flourish is so loud that it distracts from the main outcome, dial it back. For example, a slight bounce or fade is usually enough – avoid turning a simple tap confirmation into a fireworks show (unless your app’s personality truly calls for it). Used judiciously, secondary actions add a layer of polish and joy, showing users that you’ve sweat the details.
+
+# Timing
+
+Timing is everything. In animation, **timing** refers to the speed of an action – how fast or slow, and by extension how long it lasts. In UI animations, timing controls the rhythm of the experience. Even when we have all the right motions (squash/stretch, anticipation, etc.), choosing the right duration for each is what makes the interface feel snappy or sluggish, deliberate or chaotic. For example, a tooltip appearing might feel just right at 150 milliseconds, but utterly annoying at 400 milliseconds. The difference? Timing.
+
+Good timing in interfaces often follows a simple rule: **fast in, faster out**. That is, things that enter the screen (new content) can take a tiny bit more time to give the eye a chance to catch them, but things leaving the screen can go quicker. Users tend to care more about what’s coming next than what just went away, so you can afford to let exit animations be brief. A practical tip from Material Design is to stagger your durations: an element entering might use, say, 300ms to fade in, but when it goes away, it fades out in 200ms – short and sweet. This makes the interface feel responsive, focusing attention on the next interaction rather than a drawn-out goodbye.
+
+Another aspect of timing is delays between actions. Sometimes adding a _very short_ delay before starting an animation can actually make multiple events feel more ordered or connected. For example, if clicking a button triggers a complex transition, you might start the first part immediately and the next part 100ms later, so it doesn’t all blur together.
+
+<center>
+  <Timing />
+</center>
+
+**When to use it:** Always consider timing for your animations – it’s a critical tuning parameter. Use slower timing (and perhaps a longer easing) for emphasizing something important or to give a sense of weight (e.g. a warning dialog might purposefully appear a bit slower to underscore its seriousness). Use faster timing for routine, expected interactions – things like hovering, pressing buttons, or simple list transitions should feel almost instant to preserve momentum. Beware of making anything last too long; users will tolerate only very short pauses before an interface feels laggy. If in doubt, err on the side of slightly faster – you can often compensate with easing to keep it feeling smooth. And remember, consistency matters: similar actions should have similar timings so the interface feels coherent. The right timing can even create an _illusion_ of speed – a well-timed animation can make an operation feel quicker and more responsive than a raw instant change, by aligning with user expectations of how fast it “should” be.
+
+# Exaggeration
+
+Sometimes clarity or engagement calls for pushing reality a bit. **Exaggeration** means intentionally amplifying a motion or effect beyond what is realistic, in order to make a point. In cartoons, this might be a character stretching ridiculously or a jaw dropping to the floor. In UI, exaggeration is more about _emphasizing feedback or transitions_ so they’re unmistakable (and fun). For instance, consider a delete animation where the item you’re deleting does a quick little shake (as if saying “nooooo!”) before fading out – that’s exaggerated feedback to ensure the user notices the delete action and maybe even smiles at the drama of it. Another example: a success state might pop into place with a bit of an overshoot – the element grows slightly larger than its final size, then settles – which is an exaggerated way to make that success feel energetic and satisfyingly final.
+
+Exaggeration can also help usability. Imagine an error wiggle on a form field – the field doesn’t just subtly highlight red, it _shakes_ side to side. It’s an exaggerated motion that instantly draws attention to the problem field, much harder to miss than a tiny change. Similarly, overshooting animations (where elements briefly go past their target and then snap back) can make interfaces feel more playful and communicative, as if the UI has a personality that’s excited or expressive.
+
+<center>
+  <Exaggeration />
+</center>
+
+**When to use it:** Use exaggeration sparingly for moments when you want the user to **feel** something strongly or notice something important. It’s particularly at home in onboarding sequences, empty states, confirmations, or error notifications – times where a touch of theatrics can increase engagement or clarity. Products aimed at kids or creative communities, for example, might lean more on exaggerated animations to create a fun vibe. In a professional dashboard or a banking app, you’ll likely use it much less, perhaps only for critical alerts or celebratory highlights (like reaching a savings goal with a brief confetti burst). Always consider the brand and context: exaggeration should feel consistent with your app’s personality. And be mindful not to let it impede function – no animation should be so over-the-top that it delays the user’s next step or confuses the message. When done right, though, a dash of exaggeration injects energy and ensures no important event goes unnoticed.
+
+# Solid Drawing
+
+“Solid drawing” in traditional animation is about making sure objects feel three-dimensional and believable in their space. In digital product design, we translate **Solid Drawing** into creating a sense of _depth and realism_ in the interface. This doesn’t mean going full skeuomorphic (making everything look like real-world objects), unless that suits your product. It can be as simple as using shadows, layering, and perspective subtly to communicate hierarchy and interactivity. For example, modern design systems like Material Design use elevation shadows to indicate what’s on top of what – a floating button casts a shadow on content below, telling your eye it’s a separate layer you can press. That’s solid drawing at work: giving UI elements weight and anchoring them in an implied 3D space.
+
+Another aspect is consistency in how things are drawn and move. If an icon rotates in 3D, it shouldn’t suddenly look flat or inverted incorrectly – paying attention to how things scale or skew maintains the illusion of volume. Think of a card flip animation: to feel convincing, the card might scale down slightly as it rotates, simulating perspective, and maybe darken a bit as it “turns” away. Such touches make the animation feel physically present, not just a flat morph.
+
+<center>
+  <SolidDrawing />
+</center>
+
+**When to use it:** Leverage solid drawing principles whenever you want your interface to convey structure or realism. Dashboards and complex apps benefit from depth cues (shadows, layer overlaps) to help users understand what’s foreground vs background. Interactive elements often need some “visual heft” to feel clickable – even a slight emboss effect on a button or a hover shadow can do this. If you’re working in 3D or AR interfaces, solid drawing is absolutely crucial to ground virtual objects in the user’s world. On the flip side, if your style is ultra-flat and minimal, you might intentionally reject too much realism – but even then, a touch of depth (like a soft shadow or subtle motion parallax) can quietly reinforce that the UI isn’t just a static graphic, but a living system of components. The key is to match your product’s aesthetic: use just enough realism to enhance understanding. A finance app might opt for clean lines with gentle shadows for trustworthiness, whereas a game app might go full 3D with bouncing icons. As technology like AR/VR grows, expect solid drawing to matter even more, blending digital and physical cues to meet user expectations.
+
+# Appeal
+
+Last but certainly not least, **appeal** ties everything together. In Disney’s terms, appeal is about making characters charismatic and engaging. In UI and product design, **appeal** is about crafting an experience that is visually _and_ emotionally compelling to the user. It’s the difference between an interface that is technically usable and one that people _want_ to use. Think of the products you find delightful – chances are, they have a certain polish or personality that just feels good. That’s appeal. It could be the friendly illustration on an empty state that makes you smile, the smoothness of every interaction, or the cohesive style that makes every screen feel part of a thoughtful whole.
+
+Appeal in modern interfaces often comes from a combination of the above principles working in harmony. When motion and design are used thoughtfully, the result is an interface with a soul. For example, a travel app might use warm, welcoming animation on its onboarding screens (like a playful airplane graphic that moves along as you swipe through introduction pages) – this creates a positive first impression and sets an emotional tone. Little interactive delights, like a toggle that has a happy face icon that winks when switched on, can make an interface more lovable without harming usability. The _visual design_ (color, typography, layout) also contributes to appeal, but animation can elevate it by adding the dimension of time and interactivity to the aesthetics.
+
+<center>
+  <Appeal />
+</center>
+
+**When to use it:** Always consider appeal, especially if you’re aiming for a product that stands out or creates an emotional bond with users. Ask yourself for any design: is there an opportunity to make this more engaging or delightful, without detracting from function? That might mean adding a tasteful animation or choosing a more charismatic illustration instead of a generic one. Be careful to stay on-brand and appropriate – a banking app can have appeal (through trust-inspiring, smooth animations and a refined look) but probably shouldn’t have dancing dollar signs on every click. Meanwhile, a kids’ educational app can crank up the appeal with fun characters and bouncy animations. In short, appeal is the holistic principle: it’s about _design with personality_. An interface with high appeal feels crafted and human, rather than impersonal. It invites users in and makes them feel something – whether that’s confidence, joy, or curiosity. That emotional resonance is what turns users into fans.
+
+# Why These Principles Still Matter
+
+Animation in digital design isn’t about mimicking Disney films – it’s about applying time-tested concepts to make modern interfaces better. These 12 principles might have originated in hand-drawn cartoons, but they’ve proven remarkably adaptable and relevant to today’s apps and websites. Why? Because at their core, they deal with how to communicate through motion, and human brains haven’t changed: we still respond to things that move with lifelike timing, that anticipate our actions, that show follow-through, and that carry personality.
+
+In an era of AI-driven software and ultra-fast development cycles, spending effort on polished animations can be a differentiator. As one design engineer put it, to stand out in a world of competent products, _“you need to make your product feel great. One way of doing that is through animations.”_[^4] Thoughtful motion design makes an interface feel crafted, intentional, and higher quality. It can guide users through new experiences, making complex tasks feel intuitive. It can also convey brand values – is your product playful? Serious? Innovative? The animations you choose (or choose not to include) send a message.
+
+Crucially, these principles help designers avoid the two extremes: **soulless** or **overdone**. Without principles, one app might have jarring, quick-as-possible movements that technically get the job done but feel sterile or confusing, while another might be riddled with flashy effects that frustrate users. The sweet spot is using just enough animation, of the right kind, at the right moments. Johnston and Thomas’s principles give us a language and framework to find that balance. Even in 2025 and beyond, the foundation they laid helps teams debate and decide: _Should we add a bit of anticipation here? Is this transition clear enough or do we need staging? Could we exaggerate this button’s feedback, or would that break our serious tone?_ These questions lead to better design outcomes.
+
+In the end, great interface animations are almost invisible – users just “feel” an app is smooth and enjoyable, often without pinpointing why. That feeling comes from adherence to these classic principles. Squash and stretch makes things feel tactile, slow-in/slow-out makes them feel natural, secondary actions and appeal make them delightful. By respecting the physics and theatrics of the real world, we make the digital world more comfortable. So whether you’re designing the latest productivity tool or a quirky game, keep these principles in your toolkit. They are as relevant as ever, helping transform functional products into _exceptional experiences_ that resonate with users on a human level.
 
 [^1]: [The Illusion of Life: Disney Animation](https://www.amazon.com/Illusion-Life-Disney-Animation/dp/0786860707) is an amazing book that delves into the principles of animation, including squash and stretch, anticipation, and more. It’s a must-read for anyone serious about mastering animation.
+
 [^2]: The [Family](https://www.family.co) Wallet Icon Picker is a great example of how squash and stretch can be used effectively in a user interface. The icon picker uses subtle animations to make the selection process feel more engaging and intuitive.
 
+[^3]: [Web Interface Guidelines](https://interfaces.rauno.me/)
 
+[^4]: Emil Kowalski, [Good vs Great Animations](https://emilkowal.ski/ui/good-vs-great-animations) – A blog post emphasizing that well-crafted animations (used with purpose) can elevate a product from merely good to truly great. Kowalski notes that knowing **when** and **how** to use animation can drastically change how a product is perceived, making the experience feel “great” to the user.
 
+[^5]: Benji Taylor's [Family Values](https://benji.org/family-values) – A behind-the-scenes look at the design of the Family crypto wallet app (2024). Taylor discusses how subtle motions were used to maintain fluidity and context. Notably, he mentions that without these animations, the app felt abrupt – “the static approach feels like digital whiplash” – underscoring the value of follow-through and continuity in UI transitions.

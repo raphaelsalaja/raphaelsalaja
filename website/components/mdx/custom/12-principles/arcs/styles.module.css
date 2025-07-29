@@ -1,0 +1,13 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: var(--font-openrunde);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: -0.017px;
+  background: color-mix(in srgb, var(--green) 20%, transparent);
+  border-radius: 100px;
+}

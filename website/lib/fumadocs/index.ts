@@ -25,3 +25,5 @@ export const getProjectsPages = () => {
       return getDate(b).getTime() - getDate(a).getTime();
     });
 };
+
+export type Page = ReturnType<typeof source.getPages>[number];

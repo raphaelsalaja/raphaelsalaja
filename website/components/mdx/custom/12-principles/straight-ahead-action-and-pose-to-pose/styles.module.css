@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  position: relative;
+  width: 4px;
+  height: 100%;
+}
+
+.select {
+  &::before {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    font-size: 12px;
+    font-variation-settings: var(--font-weight-500);
+    color: var(--text-quaternary);
+    white-space: nowrap;
+    content: attr(data-caption);
+    transform: translateX(-50%);
+  }
+}
+
+.popup[data-animation="pose-to-pose"] {
+  transition: none !important;
+}

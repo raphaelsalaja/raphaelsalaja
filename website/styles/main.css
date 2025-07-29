@@ -9,8 +9,13 @@
 }
 
 html {
-  overflow-x: hidden;
+  caret-color: black;
   color: var(--text-primary);
+
+  ::selection {
+    overflow-x: hidden;
+    color: var(--white);
+    background: var(--text-primary);
 
   &::-webkit-scrollbar {
     width: 0;

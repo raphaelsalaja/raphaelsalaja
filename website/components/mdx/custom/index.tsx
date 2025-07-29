@@ -1,5 +1,18 @@
 import type { MDXComponents } from "mdx/types";
-import { SquashStretch } from "./12-principles/squash-and-stretch";
+import {
+  Anticipation,
+  Appeal,
+  Arcs,
+  Exaggeration,
+  FollowThroughAndOverlappingAction,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  SquashStretch,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+} from "./12-principles";
 import { Caret } from "./caret";
 import { Conversions } from "./conversions";
 import { Dialogs } from "./dialogs";
@@ -14,6 +27,17 @@ export const CustomComponents: Partial<MDXComponents> = {
   Nature,
   Tone,
   Dialogs,
-  SquashStretch,
   Conversions,
+  SquashStretch,
+  Anticipation,
+  Arcs,
+  Exaggeration,
+  FollowThroughAndOverlappingAction,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+  Appeal,
 };
