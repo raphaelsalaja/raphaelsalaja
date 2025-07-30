@@ -1,82 +1,141 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
-import { Crown, Fire, Toast } from "@/components/icons";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
-const icons = {
-  fire: Fire,
-  crown: Crown,
-  toast: Toast,
-};
+const inOutCubic: [number, number, number, number] = [0.645, 0.045, 0.355, 1];
 
 export function SolidDrawing() {
-  const [icon, setIcon] = useState<keyof typeof icons>("fire");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
-  const MotionIcon = motion.create(icons[icon]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const restartAnimation = () => {
+    setIsLoaded(false);
+    setAnimationKey((prev) => prev + 1);
+  };
 
   return (
     <div className={styles.container}>
-      <div className={styles.visual}>
-        <MotionIcon
-          key={icon}
-          initial={{
-            scaleX: 1,
-            scaleY: 1,
-          }}
-          animate={{
-            scaleX: [1.3, 1],
-            scaleY: [0.8, 1],
-            opacity: 1,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 110,
-            damping: 2,
-            mass: 0.1,
-          }}
-          style={{
-            transformOrigin: "center center",
-          }}
-          className={styles.icon}
-          color="var(--white)"
-        />
-      </div>
-      <div className={styles.picker}>
-        <svg
-          className={styles.arrow}
+      <div className={styles.wrapper}>
+        <motion.svg
+          key={`svg-${animationKey}`}
+          viewBox="0 0 128 128"
           xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
+          className={styles.globe}
         >
-          <title>Arrow</title>
-          <path
-            d="M4.31851 15.6642C3.32312 17.6558 4.77047 20 6.99765 20H17.0019C19.2291 20 20.6764 17.6558 19.6811 15.6642L14.6789 5.65629C13.5751 3.4479 10.4244 3.4479 9.32065 5.65629L4.31851 15.6642Z"
-            fill="oklch(0.12 0 0)"
+          <title>Globe</title>
+
+          <motion.circle cx="64" cy="64" r="36" fill="var(--background)" />
+          <motion.circle
+            cx="64"
+            cy="64"
+            r="26"
+            fill="var(--background)"
+            stroke="var(--orange-ring)"
+            strokeWidth="6"
+            initial={{
+              strokeDasharray: "2 4.09",
+            }}
+            animate={{
+              rotate: [0, 360],
+              strokeDasharray: isLoaded ? "2 0" : "2 4.09",
+              transition: {
+                default: { repeat: Infinity, ease: "linear", duration: 4 },
+                strokeDasharray: {
+                  duration: 0.4,
+                  ease: inOutCubic,
+                },
+              },
+            }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration: 4,
+            }}
           />
-        </svg>
-        {Object.keys(icons).map((iconKey) => {
-          const key = iconKey as keyof typeof icons;
-          const Icon = icons[key];
-          return (
-            <button
-              key={key}
-              className={styles.option}
-              onClick={() => setIcon(key)}
-              type="button"
-              data-active={icon === key ? "true" : "false"}
-            >
-              <Icon
-                className={styles.icon}
-                color={"var(--white)"}
-                opacity={icon === key ? 1 : 0.5}
-              />
-            </button>
-          );
-        })}
+          <motion.circle
+            cx="64"
+            cy="64"
+            r="16"
+            fill="var(--orange)"
+            initial={{
+              scale: 0,
+              fill: "var(--background)",
+            }}
+            animate={{
+              scale: isLoaded ? 1 : 0,
+              fill: isLoaded ? "var(--orange)" : "var(--background)",
+            }}
+            transition={{
+              duration: 0.4,
+              ease: inOutCubic,
+            }}
+          />
+        </motion.svg>
+
+        <motion.div
+          key={`orbit-${animationKey}`}
+          initial={{
+            transform:
+              "translate(-50%, -50%) rotateY(15deg) translateZ(50px) rotateY(345deg)",
+          }}
+          animate={
+            isLoaded
+              ? {
+                  transform:
+                    "translate(-50%, -50%) rotateY(15deg) translateZ(50px) rotateY(345deg)",
+                  transition: { ease: [0.19, 1, 0.22, 1], duration: 3 },
+                }
+              : {
+                  transform: [
+                    "translate(-50%, -50%) rotateY(360deg) translateZ(48px) rotateY(0deg)",
+                    "translate(-50%, -50%) rotateY(0deg) translateZ(48px) rotateY(360deg)",
+                  ],
+                  transition: { repeat: Infinity, ease: "linear", duration: 3 },
+                }
+          }
+          className={styles.orbit}
+          data-loaded={isLoaded}
+        >
+          <div className={styles.bg} />
+          <motion.div
+            animate={{
+              background: isLoaded ? "var(--purple)" : "var(--orange)",
+            }}
+            transformTemplate={(latest, generated) => `translate(-50%, -50%) `}
+            className={styles.mg}
+          />
+          <motion.div
+            animate={{
+              width: isLoaded ? 0 : 8,
+              height: isLoaded ? 0 : 8,
+            }}
+            transformTemplate={(latest, generated) => `translate(-50%, -50%)`}
+            className={styles.fg}
+            transition={{
+              duration: 0.4,
+              ease: inOutCubic,
+            }}
+          />
+        </motion.div>
       </div>
+
+      <button
+        onClick={restartAnimation}
+        className={styles.button}
+        type="button"
+      >
+        Restart Animation
+      </button>
     </div>
   );
 }
