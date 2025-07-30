@@ -2,12 +2,12 @@
   --track: var(--stroke);
 
   stroke: var(--track);
-  stroke-linecap: round;
+  strokeLinecap: round;
 }
 
 .CircularProgressbar-trail {
   stroke: var(--white-a6);
-  stroke-linecap: round;
+  strokeLinecap: round;
 }
 
 number-flow-react::part(left),

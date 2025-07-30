@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export interface HeadingLink {
   id: string;
@@ -27,7 +27,16 @@ type UseOutlineOptions = {
    * @default 100
    */
   offset?: number;
+
+  /**
+   * Array of IDs to exclude from the table of contents
+   * @default []
+   */
+  excludeIds?: string[];
 };
+
+// Default exclude IDs - moved outside to prevent recreation
+const DEFAULT_EXCLUDE_IDS = ["footnote-label"];
 
 /**
  * Custom hook to generate a table of contents from headings in the document
@@ -37,7 +46,14 @@ export function useOutline(options?: UseOutlineOptions) {
     selectors = "h1, h2, h3",
     rootElement = typeof document !== "undefined" ? document : null,
     offset = 100,
+    excludeIds,
   } = options || {};
+
+  // Memoize excludeIds to prevent recreation on every render
+  const memoizedExcludeIds = useMemo(
+    () => excludeIds || DEFAULT_EXCLUDE_IDS,
+    [excludeIds],
+  );
 
   const [headingLinks, setHeadingLinks] = useState<HeadingLink[]>([]);
   const [activeId, setActiveId] = useState<string>("");
@@ -51,6 +67,8 @@ export function useOutline(options?: UseOutlineOptions) {
     const links: HeadingLink[] = Array.from(headingElements)
       // Filter out headings without IDs or content
       .filter((heading) => heading.id && heading.textContent)
+      // Filter out headings with excluded IDs
+      .filter((heading) => !memoizedExcludeIds.includes(heading.id))
       .map((heading) => ({
         id: heading.id,
         title: heading.textContent || "",
@@ -59,7 +77,7 @@ export function useOutline(options?: UseOutlineOptions) {
       }));
 
     setHeadingLinks(links);
-  }, [rootElement, selectors]);
+  }, [rootElement, selectors, memoizedExcludeIds]);
 
   // Set up listeners and gather headings
   useEffect(() => {

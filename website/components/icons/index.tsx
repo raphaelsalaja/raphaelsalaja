@@ -1,4 +1,5 @@
 import type * as React from "react";
+import { JSX } from "react/jsx-dev-runtime";
 
 export interface IconProps extends React.SVGAttributes<SVGElement> {
   children?: never;
@@ -77,6 +78,27 @@ export function Toast({ color = "currentColor", ...props }: IconProps) {
       <title>Toast icon</title>
       <path
         d="M12 3C9.37749 3 6.95383 3.5884 5.1504 4.59031C3.38084 5.5734 2 7.09122 2 9C2 10.4701 2.82568 11.7132 4 12.6468V17C4 19.2091 5.79086 21 8 21H16C18.2091 21 20 19.2091 20 17V12.6468C21.1743 11.7132 22 10.4701 22 9C22 7.09122 20.6192 5.5734 18.8496 4.59031C17.0462 3.5884 14.6225 3 12 3Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
+export function FilledCheck({ color = "currentColor", ...props }: IconProps) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <title>Filled Check icon</title>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM15.774 10.1333C16.1237 9.70582 16.0607 9.0758 15.6332 8.72607C15.2058 8.37635 14.5758 8.43935 14.226 8.86679L10.4258 13.5116L9.20711 12.2929C8.81658 11.9024 8.18342 11.9024 7.79289 12.2929C7.40237 12.6834 7.40237 13.3166 7.79289 13.7071L9.79289 15.7071C9.99267 15.9069 10.2676 16.0129 10.5498 15.9988C10.832 15.9847 11.095 15.8519 11.274 15.6333L15.774 10.1333Z"
         fill={color}
       />
     </svg>
