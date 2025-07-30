@@ -1,8 +1,9 @@
 .container {
   display: flex;
-  gap: 48px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 48px;
 }
 
 .divider {
@@ -27,4 +28,11 @@
 
 .popup[data-animation="pose-to-pose"] {
   transition: none !important;
+}
+
+.popup[data-animation="blend"] {
+  &[data-starting-style] {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
