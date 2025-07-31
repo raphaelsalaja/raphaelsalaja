@@ -1,27 +1,23 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 
 const inOutCubic: [number, number, number, number] = [0.645, 0.045, 0.355, 1];
 
+const ORBIT_DURATION = 2.5;
+
 export function SolidDrawing() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [animationKey, setAnimationKey] = useState(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 8000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const restartAnimation = () => {
-    setIsLoaded(false);
-    setAnimationKey((prev) => prev + 1);
-  };
+  const toggleAnimation = useCallback(() => {
+    setIsPlaying((prev) => !prev);
+    if (!isPlaying) {
+      setAnimationKey((prev) => prev + 1);
+    }
+  }, [isPlaying]);
 
   return (
     <div className={styles.container}>
@@ -46,20 +42,19 @@ export function SolidDrawing() {
               strokeDasharray: "2 4.09",
             }}
             animate={{
-              rotate: [0, 360],
-              strokeDasharray: isLoaded ? "2 0" : "2 4.09",
+              rotate: isPlaying ? [0, 360] : 0,
+              strokeDasharray: !isPlaying ? "2 0" : "2 4.09",
               transition: {
-                default: { repeat: Infinity, ease: "linear", duration: 4 },
+                rotate: {
+                  repeat: isPlaying ? Infinity : 0,
+                  ease: "linear",
+                  duration: 2,
+                },
                 strokeDasharray: {
-                  duration: 0.4,
+                  duration: 0.7,
                   ease: inOutCubic,
                 },
               },
-            }}
-            transition={{
-              repeat: Infinity,
-              ease: "linear",
-              duration: 4,
             }}
           />
           <motion.circle
@@ -72,8 +67,8 @@ export function SolidDrawing() {
               fill: "var(--background)",
             }}
             animate={{
-              scale: isLoaded ? 1 : 0,
-              fill: isLoaded ? "var(--orange)" : "var(--background)",
+              scale: !isPlaying ? 1 : 0,
+              fill: !isPlaying ? "var(--orange)" : "var(--background)",
             }}
             transition={{
               duration: 0.4,
@@ -86,13 +81,13 @@ export function SolidDrawing() {
           key={`orbit-${animationKey}`}
           initial={{
             transform:
-              "translate(-50%, -50%) rotateY(15deg) translateZ(50px) rotateY(345deg)",
+              "translate(-50%, -50%) rotateY(20deg) translateZ(48px) rotateY(340deg)",
           }}
           animate={
-            isLoaded
+            !isPlaying
               ? {
                   transform:
-                    "translate(-50%, -50%) rotateY(15deg) translateZ(50px) rotateY(345deg)",
+                    "translate(-50%, -50%) rotateY(20deg) translateZ(48px) rotateY(340deg)",
                   transition: { ease: [0.19, 1, 0.22, 1], duration: 3 },
                 }
               : {
@@ -100,26 +95,30 @@ export function SolidDrawing() {
                     "translate(-50%, -50%) rotateY(360deg) translateZ(48px) rotateY(0deg)",
                     "translate(-50%, -50%) rotateY(0deg) translateZ(48px) rotateY(360deg)",
                   ],
-                  transition: { repeat: Infinity, ease: "linear", duration: 3 },
+                  transition: {
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: ORBIT_DURATION,
+                  },
                 }
           }
           className={styles.orbit}
-          data-loaded={isLoaded}
+          data-loaded={!isPlaying}
         >
           <div className={styles.bg} />
           <motion.div
             animate={{
-              background: isLoaded ? "var(--purple)" : "var(--orange)",
+              background: !isPlaying ? "var(--purple)" : "var(--orange)",
             }}
-            transformTemplate={(latest, generated) => `translate(-50%, -50%) `}
+            transformTemplate={() => `translate(-50%, -50%) `}
             className={styles.mg}
           />
           <motion.div
             animate={{
-              width: isLoaded ? 0 : 8,
-              height: isLoaded ? 0 : 8,
+              width: !isPlaying ? 0 : 8,
+              height: !isPlaying ? 0 : 8,
             }}
-            transformTemplate={(latest, generated) => `translate(-50%, -50%)`}
+            transformTemplate={() => `translate(-50%, -50%)`}
             className={styles.fg}
             transition={{
               duration: 0.4,
@@ -129,12 +128,8 @@ export function SolidDrawing() {
         </motion.div>
       </div>
 
-      <button
-        onClick={restartAnimation}
-        className={styles.button}
-        type="button"
-      >
-        Restart Animation
+      <button onClick={toggleAnimation} className={styles.button} type="button">
+        {isPlaying ? "Pause" : "Play"}
       </button>
     </div>
   );

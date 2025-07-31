@@ -1,14 +1,8 @@
 {
-  "inputs": [
-    {
-      "type": "promptString"
-    }
-  ],
-  "servers": {
-    "effect-docs": {
-      "command": "npx",
-      "args": ["-y", "effect-mcp"],
-      "env": {}
-    }
-  }
+	"inputs": [
+		{
+			"type": "promptString"
+		}
+	],
+	"servers": {}
 }

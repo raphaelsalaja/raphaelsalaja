@@ -1,11 +1,10 @@
 .container {
-  --orange: #ef5f3a;
-  --orange-ring: #6b331d;
-  --purple: #6367cf;
+  --orange: var(--pink);
+  --orange-ring: color-mix(in srgb, var(--pink) 20%, transparent);
+  --purple: var(--blue);
   --background: #1b1b1e;
 
   position: relative;
-  /* center */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,6 +97,7 @@
   font-variation-settings: var(--font-weight-500);
   color: oklch(100% 0 0 / 40%);
   cursor: pointer;
+  user-select: none;
   transform: translateX(-50%);
   transform-origin: center center;
   transition: all 0.2s ease;
