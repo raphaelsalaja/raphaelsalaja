@@ -11,10 +11,10 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
       {...props}
     >
       <title>DiaBrowser</title>
-      <g clip-path="url(#a)">
+      <g clipPath="url(#a)">
         <path
           fill="color(display-p3 .9216 .9216 .9216)"
-          fill-opacity=".82"
+          fillOpacity=".82"
           d="M0 10C0 4.477 4.477 0 10 0h380c5.523 0 10 4.477 10 10v280c0 5.523-4.477 10-10 10H10c-5.523 0-10-4.477-10-10z"
         />
         <circle
@@ -23,7 +23,7 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
           r="5.75"
           fill="color(display-p3 .9255 .4157 .3686)"
           stroke="color(display-p3 .6902 .3255 .2902)"
-          stroke-width=".5"
+          strokeWidth=".5"
         />
         <circle
           cx="44"
@@ -31,7 +31,7 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
           r="5.75"
           fill="color(display-p3 .9569 .7451 .3098)"
           stroke="color(display-p3 .6824 .549 .3059)"
-          stroke-width=".5"
+          strokeWidth=".5"
         />
         <circle
           cx="64"
@@ -39,7 +39,7 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
           r="5.75"
           fill="color(display-p3 .3843 .7725 .3294)"
           stroke="color(display-p3 .4118 .5804 .3725)"
-          stroke-width=".5"
+          strokeWidth=".5"
         />
         <path
           fill="color(display-p3 .9882 .9882 .9882)"
@@ -47,18 +47,18 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
         />
         <path
           fill="color(display-p3 .1961 .1961 .1961)"
-          fill-opacity=".5"
+          fillOpacity=".5"
           d="M372.997 25.26a.806.806 0 0 1-.308-.058.93.93 0 0 1-.269-.192l-4.88-4.989a.726.726 0 0 1-.211-.525.7.7 0 0 1 .103-.378.737.737 0 0 1 .262-.275.741.741 0 0 1 .916.134l4.387 4.496 4.387-4.496a.748.748 0 0 1 .544-.237c.137 0 .261.034.372.103.115.068.204.16.268.275a.7.7 0 0 1 .103.378c0 .205-.073.38-.218.525l-4.88 4.989a.917.917 0 0 1-.269.192.801.801 0 0 1-.307.058"
         />
         <g filter="url(#b)">
-          <g clip-path="url(#c)">
+          <g clipPath="url(#c)">
             <path
               fill="color(display-p3 .9882 .9882 .9882)"
               d="M6 42h388v40H6z"
             />
             <path
               fill="color(display-p3 .1961 .1961 .1961)"
-              fill-opacity=".1"
+              fillOpacity=".1"
               d="M394 82v-.5H6v1h388z"
             />
             <path fill="#fff" d="M6 82h388v237.763H6z" />
@@ -84,10 +84,10 @@ export const DiaBrowser = (props: SVGMotionProps<SVGElement>) => {
           height="268"
           x="0"
           y="38"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             result="hardAlpha"

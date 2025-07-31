@@ -1,64 +1,59 @@
-import type { MDXProvider } from "@mdx-js/react";
+import "@/styles/mdx.css";
+import "@/styles/shiki.css";
+
 import type { MDXComponents } from "mdx/types";
-import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
-
-import type React from "react";
-import type { JSX } from "react";
-
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
-
-import "@/styles/mdx/index.css";
-
+import FigCaption, { type FigCaptionProps } from "@/components/codeblock";
+import { Image } from "@/components/image";
+import {
+  Anticipation,
+  Appeal,
+  Arcs,
+  Caret,
+  Conversions,
+  Dialogs,
+  Exaggeration,
+  FamilyWallet,
+  FollowThroughAndOverlappingAction,
+  Nature,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  SquashStretch,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+  Tone,
+  Workouts,
+} from "@/components/mdx";
 import Stage from "@/components/stage";
-import { BaseComponents } from "./components/mdx/base";
-import { CustomComponents } from "./components/mdx/custom";
 
 const components: MDXComponents = {
+  figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
+  img: (props) => <Image {...props} />,
+  SquashStretch,
+  Anticipation,
+  Arcs,
+  Exaggeration,
+  FollowThroughAndOverlappingAction,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+  Appeal,
   Stage,
-  ...CustomComponents,
-  ...BaseComponents,
+  Workouts,
+  Caret,
+  FamilyWallet,
+  Nature,
+  Tone,
+  Dialogs,
+  Conversions,
 };
-
-export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
-  return (
-    <MDXRemote
-      {...props}
-      components={
-        components as React.ComponentProps<typeof MDXProvider>["components"]
-      }
-      options={{
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-          rehypePlugins: [
-            remarkParse,
-            rehypeSlug,
-            [
-              rehypePrettyCode,
-              {
-                bypassInlineCode: true,
-                theme: {
-                  dark: "github-dark",
-                  light: "github-light",
-                },
-                keepBackground: false,
-                defaultLang: "tsx",
-              },
-            ],
-            rehypeStringify,
-          ],
-        },
-      }}
-    />
-  );
-}
 
 export function getMDXComponents(): MDXComponents {
   return {
     ...components,
-    // Add any additional components or overrides here
   };
 }

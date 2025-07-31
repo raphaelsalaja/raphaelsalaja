@@ -4,6 +4,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { opengraph } from "@/config/site";
 import "@/styles/main.css";
 import clsx from "clsx";
+import { Roboto_Mono } from "next/font/google";
 import { Layout } from "@/components/layouts/root";
 import { Providers } from "@/components/providers";
 
@@ -39,6 +40,12 @@ const openrunde = localFont({
   ],
 });
 
+const mono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export default async function RootLayout({
   breadcrumb,
   children,
@@ -48,7 +55,10 @@ export default async function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={clsx(inter.className, openrunde.variable)}>
+      <html
+        lang="en"
+        className={clsx(inter.className, openrunde.variable, mono.variable)}
+      >
         <Layout>
           <Providers>
             {breadcrumb}

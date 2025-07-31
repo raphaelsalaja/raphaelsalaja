@@ -119,28 +119,32 @@ article {
   sub {
     display: block;
     width: 100%;
+    padding: 16px 32px 32px;
+    margin-top: 0px !important;
+    font-size: 12px;
+    font-variation-settings: var(--font-weight-500);
+    line-height: 24px;
+    color: var(--text-quaternary);
+    text-align: center;
 
     p {
-      padding: 16px 32px 32px;
-      margin-top: 0px !important;
-      font-size: 12px;
-      font-variation-settings: var(--font-weight-500);
-      line-height: 24px;
-      color: var(--text-quaternary);
-      text-align: center;
+      font: inherit;
+      color: inherit;
     }
   }
 
   sup {
-    position: absolute;
+    display: inline-block;
+    padding: 0 0 0 4px;
+    font-size: 10px;
+    font-variation-settings: var(--font-weight-500);
+    line-height: 1.5;
+    vertical-align: super;
+    color: var(--text-quaternary);
 
     a {
-      position: absolute;
-      margin: 2px 2px;
-      font-size: 10px;
-      line-height: 1;
-      color: var(--text-quaternary);
-      transition: all 0.2s ease;
+      font: inherit;
+      color: inherit;
 
       &:hover {
         color: var(--text-secondary);

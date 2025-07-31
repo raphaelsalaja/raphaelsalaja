@@ -47,37 +47,40 @@ export function Staging() {
 
       <AnimatePresence initial={false} mode="popLayout">
         {staged && (
-          <React.Fragment>
-            <motion.div
-              key="image"
-              style={{
-                backgroundImage: `url(${url})`,
-              }}
-              layoutCrossfade={false}
-              transformTemplate={(_latest, generated) =>
-                `translate(-50%, -50%) ${generated}`
-              }
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 1 }}
-              transition={{
-                ease: [1, -0.4, 0.35, 0.95],
-                duration: 0.4,
-              }}
-              className={`${styles.image} ${styles.staged}`}
-              onTap={() => setStaged(false)}
-              layoutId="image"
-            />
+          <motion.div
+            key="image"
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+            layoutCrossfade={false}
+            transformTemplate={(_latest, generated) =>
+              `translate(-50%, -50%) ${generated}`
+            }
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            transition={{
+              ease: [1, -0.4, 0.35, 0.95],
+              duration: 0.4,
+            }}
+            className={`${styles.image} ${styles.staged}`}
+            onTap={() => setStaged(false)}
+            layoutId="image"
+          />
+        )}
+      </AnimatePresence>
 
-            <motion.div
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(2px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)", zIndex: -1 }}
-              transition={{ duration: 0.2 }}
-              className={styles.overlay}
-              onTap={() => setStaged(false)}
-            />
-          </React.Fragment>
+      <AnimatePresence initial={false} mode="popLayout">
+        {staged && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(2px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.2 }}
+            className={styles.overlay}
+            onTap={() => setStaged(false)}
+          />
         )}
       </AnimatePresence>
     </div>

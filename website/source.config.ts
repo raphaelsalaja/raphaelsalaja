@@ -1,9 +1,14 @@
 import {
+  rehypeCode,
+  rehypeCodeDefaultOptions,
+} from "fumadocs-core/mdx-plugins";
+import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
   metaSchema,
 } from "fumadocs-mdx/config";
+
 import { z } from "zod";
 
 export const docs = defineDocs({
@@ -29,7 +34,19 @@ export const docs = defineDocs({
 });
 
 export default defineConfig({
-  mdxOptions: {},
+  lastModifiedTime: "git",
+  mdxOptions: {
+    rehypeCodeOptions: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+      inline: "tailing-curly-colon",
+      defaultColor: false,
+      transformers: [...(rehypeCodeDefaultOptions.transformers ?? [])],
+    },
+    rehypePlugins: [rehypeCode],
+  },
 });
 
 export type Frontmatter = z.infer<typeof docs.docs.schema>;

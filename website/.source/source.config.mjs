@@ -1,5 +1,9 @@
 // source.config.ts
 import {
+  rehypeCode,
+  rehypeCodeDefaultOptions
+} from "fumadocs-core/mdx-plugins";
+import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
@@ -26,7 +30,19 @@ var docs = defineDocs({
   }
 });
 var source_config_default = defineConfig({
-  mdxOptions: {}
+  lastModifiedTime: "git",
+  mdxOptions: {
+    rehypeCodeOptions: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark"
+      },
+      inline: "tailing-curly-colon",
+      defaultColor: false,
+      transformers: [...rehypeCodeDefaultOptions.transformers ?? []]
+    },
+    rehypePlugins: [rehypeCode]
+  }
 });
 export {
   source_config_default as default,

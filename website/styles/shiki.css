@@ -1,0 +1,10 @@
+html {
+  p code {
+    padding: 2px 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+  }
+}
