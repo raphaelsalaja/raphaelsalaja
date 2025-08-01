@@ -7,19 +7,31 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/node_modules", "!**/dist", "!**/.next", "!**/.vercel", "!**/.pnpm", "!**/*.svg"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.next",
+      "!**/.vercel",
+      "!**/.pnpm",
+      "!**/*.svg"
+    ]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2
   },
+
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "suspicious": {
         "noDuplicateProperties": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
       }
     },
     "domains": {
