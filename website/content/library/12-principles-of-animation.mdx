@@ -37,13 +37,11 @@ Utilize in moderation. Overdoing squash and stretch can lead to a cartoonish eff
 
 Anticipation is the of preparing users for what comes next. In practice, this means giving a clue before a major action occurs. Such cues tap into subconscious expectations.
 
-Use anticipation to set up important transitions or calls-to-action – like a notification icon that wiggles gently to imply updates awaiting.
+Use anticipation to set up important transitions or calls-to-action – like a notification icon that wiggles gently to imply updates awaiting. Select the issue below and tru to delete it to see how you can anticipate a deletion.
 
 <center>
   <Anticipation />
 </center>
-
-We can take advantage of easing curves as well to create a more fluid and natural anticipation effect. We will cover this later.
 
 Avoid overusing it on every tiny interaction, too much anticipation can feel gimmicky or slow the experience. Save it for moments where an extra hint helps the user, and keep it quick. The goal is to inform the user about what’s coming, without making them wait unnecessarily.
 
@@ -98,7 +96,7 @@ This principle is the cornerstone of smooth, comfortable transitions. In practic
   <SlowInSlowOut />
 </center>
 
-You see this everywhere. Tap a menu icon and the menu doesn’t just materialize – it might pop out quickly then ease into position at the last moment.
+Above shows a few of the widely used easing functions. Check out [easing.dev](https://easing.dev) for a more comprehensive list, as well as the ability to create your own.[^4]
 
 The kind of eases you use as well can make a difference. Use an `ease-out` to make elements feel more snappy. Use an `ease-in` for elements that are entering the viewport. Experiement with these, check out Lochie's [easing.dev](https://easing.dev) for a collection of easing curves to play with.
 
@@ -106,25 +104,25 @@ The kind of eases you use as well can make a difference. Use an `ease-out` to ma
 
 Arcs make movement feel organic. Instead of sliding elements in straight lines, a gentle curve adds realism and comfort.
 
-Use arcs for larger transitions or playful effects, but keep them subtle unless your app’s personality calls for more. They work best when trying to lead a user's eye through the interface.
-
 <center>
   <Arcs />
 </center>
+
+Use arcs for larger transitions or playful effects, but keep them subtle unless your app’s personality calls for more. They work best when trying to lead a user's eye through the interface.
 
 ## Secondary Action
 
 These are little flourishes that support the main action, adding depth and feedback without stealing the spotlight.
 
-In classic animation, if a character jumps, their scarf fluttering is secondary. In UI design, secondary actions might be something like a checkmark icon that pops and then does a brief sparkle after a form is successfully submitted. The sparkle isn’t the main message, but it reinforces the feeling of success in a fun way.
+Secondary actions might be something like a checkmark icon that pops and then does a brief sparkle after a form is successfully submitted. The sparkle isn’t the main message, but it reinforces the feeling of success in a fun way.
 
 <center>
   <SecondaryAction />
 </center>
 
-Add secondary actions to inject delight and clarity into moments of user feedback. They work great for confirmations or for states that might otherwise feel static.
+Add secondary actions to inject delight and clarity into moments of user feedback. Sound can also be a secondary action, like a subtle click or whoosh that reinforces the feeling of interaction.
 
-Importantly, the secondary action should never override or confuse the primary action. If your secondary flourish is so loud that it distracts from the main outcome, dial it back.
+Think of your favourite games or media, when they want to show impact they often use sound effects and visual effects to enhance the moment. Utilize this frame of thinking.
 
 ## Timing
 
@@ -197,6 +195,8 @@ In the end, great interface animations are almost invisible. Users just feel tha
 
 [^3]: [Dia](https://www.diabrowser.com/) have a very nice example of follow-through in their splitting tabs animation. Check out the browser to see the live version.
 
-[^4]: The [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158) talk from WWDC23 is a great resource for learning about how to use springs in animations. It's mainly about SwiftUI, but the concepts apply to any animation framework.
+[^4]: Lochie's [easing.dev](https://easing.dev) is a great resource for exploring different easing functions and their applications. You can also build your own springs here too.
 
-[^5]: A recreation of the Linear loading animation, made by Emil can be found on their [Twitter](https://x.com/emilkowalski_/status/1937134338816053290/video/1) [Dia Browser](https://www.diabrowser.com/).
+[^5]: The [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158) talk from WWDC23 is a great resource for learning about how to use springs in animations. It's mainly about SwiftUI, but the concepts apply to any animation framework.
+
+[^6]: A recreation of the Linear loading animation, made by Emil can be found on their [Twitter](https://x.com/emilkowalski_/status/1937134338816053290/video/1) [Dia Browser](https://www.diabrowser.com/).

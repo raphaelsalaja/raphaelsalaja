@@ -60,7 +60,7 @@
 [data-shunpo-context-menu-arrow] {
   fill: var(--popup-background-color, #ffffff);
   stroke: var(--border-color, #e2e8f0);
-  stroke-width: 1px;
+  strokeWidth: 1px;
 }
 
 /* Context Menu Item */

@@ -97,6 +97,20 @@ article {
     margin-top: 24px;
   }
 
+  a {
+    color: var(--text-quaternary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentcolor 20%, transparent);
+    text-underline-offset: 2px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-secondary);
+    }
+  }
+
   p + [data-rehype-pretty-code-figure],
   [data-rehype-pretty-code-figure] + p {
     margin-top: 24px;

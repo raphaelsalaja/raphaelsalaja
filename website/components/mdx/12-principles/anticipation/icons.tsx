@@ -25,9 +25,9 @@ export const InProgress = (props: IconProps) => {
         r="6"
         fill="none"
         stroke="lch(80% 90 85)"
-        stroke-width="1.5"
-        stroke-dasharray="3.14 0"
-        stroke-dashoffset="-0.7"
+        strokeWidth="1.5"
+        strokeDasharray="3.14 0"
+        strokeDashoffset="-0.7"
       ></circle>
       <circle
         cx="7"
@@ -35,11 +35,42 @@ export const InProgress = (props: IconProps) => {
         r="2"
         fill="none"
         stroke="lch(80% 90 85)"
-        stroke-width="4"
-        stroke-dasharray="12.189379495928398 24.378758991856795"
-        stroke-dashoffset="6.094689747964199"
+        strokeWidth="4"
+        strokeDasharray="12.189379495928398 24.378758991856795"
+        strokeDashoffset="6.094689747964199"
         transform="rotate(-90 7 7)"
       ></circle>
+    </svg>
+  );
+};
+
+export const Done = (props: IconProps) => {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" {...props}>
+      <circle cx="7" cy="7" r="6" fill="lch(70% 40 120)" />
+      <path
+        d="M4.5 7L6.5 9L10 5.5"
+        stroke="white"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const Todo = (props: IconProps) => {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" {...props}>
+      <circle
+        cx="7"
+        cy="7"
+        r="6"
+        fill="none"
+        stroke="lch(50% 0 0)"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 };

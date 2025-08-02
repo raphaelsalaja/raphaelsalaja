@@ -68,7 +68,7 @@
   z-index: 1001;
   fill: var(--popup-background-color, #ffffff);
   stroke: var(--border-color, #e2e8f0);
-  stroke-width: 1px;
+  strokeWidth: 1px;
 }
 
 /* Content styling within preview card */

@@ -1,11 +1,10 @@
 .container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
+
   width: 100%;
   height: 384px;
-  padding: 63px;
+  padding: 24px 32px;
 }
 
 .issues {
@@ -19,7 +18,7 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  height: 100%;
+  height: 40px;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -36,6 +35,12 @@
   height: 0.5px;
   background: var(--border-secondary);
   -webkit-box-flex: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .issue {
@@ -81,12 +86,14 @@
 }
 
 .checkbox {
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 16px;
   height: 16px;
   margin-right: 2px;
+  pointer-events: none;
   border: 1px solid transparent;
   border-radius: 4px;
   transition: all 0.15s ease;
@@ -107,6 +114,7 @@
 .id {
   font-size: 13px;
   font-variation-settings: var(--font-weight-450);
+  font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
   text-align: left;
 }
@@ -208,15 +216,16 @@
   transform: scale(0.97);
 }
 
-.delete:active .hold {
-  width: 100%;
-  transition: all 1s linear;
-}
-
 .hold {
   position: absolute;
   inset: 0;
   width: 0%;
   background-color: color-mix(in srgb, var(--black) 20%, transparent);
   transition: all 0.4s cubic-bezier(1, -0.4, 0.35, 0.95);
+}
+
+.delete:active .hold,
+.delete[data-holding="true"] .hold {
+  width: 100%;
+  transition: all 1s linear;
 }
