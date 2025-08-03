@@ -14,7 +14,8 @@
       "!**/.next",
       "!**/.vercel",
       "!**/.pnpm",
-      "!**/*.svg"
+      "!**/*.svg",
+      "!**/lib/unicornStudio.umd.js"
     ]
   },
   "formatter": {
@@ -29,6 +30,9 @@
       "recommended": true,
       "suspicious": {
         "noDuplicateProperties": "off"
+      },
+      "style": {
+        "noDescendingSpecificity": "off"
       },
       "a11y": {
         "noSvgWithoutTitle": "off"

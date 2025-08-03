@@ -2,6 +2,7 @@
 
 import { SpotifyAPI } from "@statsfm/spotify.js";
 import { NextResponse } from "next/server";
+import type { ApiError } from "@/types/api";
 
 const spotify = new SpotifyAPI({
   clientCredentials: {
@@ -25,9 +26,10 @@ export async function GET(
   try {
     const artist = await spotify.artists.get(id);
     return NextResponse.json(artist);
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const error = err as ApiError;
     return NextResponse.json(
-      { error: err.message || "Unknown error" },
+      { error: error.message || "Unknown error" },
       { status: 500 },
     );
   }

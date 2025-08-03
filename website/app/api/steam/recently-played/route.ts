@@ -93,7 +93,7 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
               appId,
             );
             achievements = achievementData?.achievements || null;
-          } catch (error: any) {
+          } catch (error: unknown) {
             console.error("Failed to fetch achievements:", error.message);
           }
 
@@ -152,7 +152,7 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
         appId,
       );
       achievements = achievementData?.achievements || null;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Failed to fetch achievements:", error.message);
     }
 
@@ -165,7 +165,7 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
         },
       },
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     const status = error.message.startsWith("Failed to fetch") ? 502 : 500;
     return NextResponse.json(
       {

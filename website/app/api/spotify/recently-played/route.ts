@@ -24,7 +24,7 @@ export async function GET() {
     );
 
     return response;
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
       { error: err.message || "Unknown error" },
       { status: 500 },
