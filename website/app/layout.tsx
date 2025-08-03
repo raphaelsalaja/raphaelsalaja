@@ -1,12 +1,12 @@
+import clsx from "clsx";
 import type { Metadata } from "next";
+import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
-import { opengraph } from "@/config/site";
-import "@/styles/main.css";
-import clsx from "clsx";
-import { Roboto_Mono } from "next/font/google";
-import { Layout } from "@/components/layouts/root";
 import { Providers } from "@/components/providers";
+import { opengraph } from "@/config/site";
+
+import "@/styles/main.css";
 
 export const metadata: Metadata = opengraph;
 
@@ -59,12 +59,14 @@ export default async function RootLayout({
         lang="en"
         className={clsx(inter.className, openrunde.variable, mono.variable)}
       >
-        <Layout>
-          <Providers>
-            {breadcrumb}
-            {children}
-          </Providers>
-        </Layout>
+        <body>
+          <main data-animate>
+            <Providers>
+              {breadcrumb}
+              {children}
+            </Providers>
+          </main>
+        </body>
       </html>
     </ViewTransitions>
   );
