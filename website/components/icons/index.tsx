@@ -1,5 +1,4 @@
 import type * as React from "react";
-import { JSX } from "react/jsx-dev-runtime";
 
 export interface IconProps extends React.SVGAttributes<SVGElement> {
   children?: never;
@@ -119,6 +118,40 @@ export function AphexTwinIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M3196.54 395.191c-1547.15 0-2801.345 1254.219-2801.345 2801.349 0 1547.17 1254.195 2801.36 2801.345 2801.36 1547.17 0 2801.36-1254.19 2801.36-2801.36 0-1547.13-1254.19-2801.349-2801.36-2801.349m0 5997.909C1431.12 6393.1 0 4961.98 0 3196.54 0 1431.16 1431.12 0 3196.54 0 4961.98 0 6393.1 1431.16 6393.1 3196.54c0 1765.44-1431.12 3196.56-3196.56 3196.56"
         transform="matrix(.13333 0 0 -.13333 0 852.413)"
+      />
+    </svg>
+  );
+}
+
+interface DirectionProps extends React.SVGProps<SVGSVGElement> {
+  direction: "up" | "down" | "left" | "right";
+}
+
+export function Direction({
+  color = "currentColor",
+  direction,
+  ...props
+}: DirectionProps) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="var(--text-tertiary)"
+      style={{
+        rotate: {
+          up: "0deg",
+          down: "180deg",
+          left: "270deg",
+          right: "90deg",
+        }[direction],
+      }}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 3C12.3978 3 12.7793 3.15803 13.0606 3.43934L18.5607 8.93934C19.1464 9.52512 19.1464 10.4749 18.5607 11.0607C17.9749 11.6464 17.0251 11.6464 16.4393 11.0607L13.5 8.12131V19.5C13.5 20.3284 12.8284 21 12 21C11.1716 21 10.5 20.3284 10.5 19.5V8.12133L7.56066 11.0607C6.97488 11.6464 6.02513 11.6464 5.43934 11.0607C4.85355 10.4749 4.85355 9.52513 5.43934 8.93934L10.9393 3.43934C11.2206 3.15804 11.6022 3 12 3Z"
+        fill="inherit"
       />
     </svg>
   );

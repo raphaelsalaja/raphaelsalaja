@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { TimeMachine, type TimeMachineFrame } from "@/components/time-machine";
 import styles from "./styles.module.css";
 
@@ -13,15 +12,7 @@ const TWITTER_CLIPS = [
         "https://pbs.twimg.com/profile_images/1689659361726263298/wBOYRobp_400x400.png",
     },
     video: "/media/tweets/john-phamous.mp4",
-  },
-  {
-    user: {
-      name: "Antimetal",
-      handle: "@antimetal",
-      avatar:
-        "https://pbs.twimg.com/profile_images/1933164122058743808/n9Dlkr88_400x400.jpg",
-    },
-    video: "/media/tweets/antimetal.mp4",
+    link: "https://x.com/JohnPhamous",
   },
   {
     user: {
@@ -31,6 +22,7 @@ const TWITTER_CLIPS = [
         "https://pbs.twimg.com/profile_images/1897964636441358336/Pc6OPmvP_400x400.jpg",
     },
     video: "/media/tweets/gustav-ekerot.mp4",
+    link: "https://x.com/designgurra",
   },
   {
     user: {
@@ -40,6 +32,7 @@ const TWITTER_CLIPS = [
         "https://pbs.twimg.com/profile_images/1495909945887186948/-QYeJ-YY_400x400.jpg",
     },
     video: "/media/tweets/abhijeet-singh.mp4",
+    link: "https://x.com/abjt14",
   },
   {
     user: {
@@ -48,7 +41,8 @@ const TWITTER_CLIPS = [
       avatar:
         "https://pbs.twimg.com/profile_images/1928266972330086404/lrqNJSR-_400x400.jpg",
     },
-    video: "/media/tweets/smintfy.mp4",
+    video: "/media/tweets/mint.mp4",
+    link: "https://x.com/smintfy",
   },
   {
     user: {
@@ -58,69 +52,104 @@ const TWITTER_CLIPS = [
         "https://pbs.twimg.com/profile_images/773427888360161280/TgO3ynCO_400x400.jpg",
     },
     video: "/media/tweets/xavier.mp4",
+    link: "https://x.com/KMkota0",
+  },
+  {
+    user: {
+      name: "Florian",
+      handle: "@flornkm",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1891988475940839424/AQwPa6Qk_400x400.jpg",
+    },
+    video: "/media/tweets/florian.mp4",
+    link: "https://x.com/flornkm",
+  },
+  {
+    user: {
+      name: "lochie",
+      handle: "@lochieaxon",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1512490237007921153/mcklA8Qq_400x400.jpg",
+    },
+    video: "/media/tweets/lochie.mp4",
+    link: "https://x.com/lochiexon",
+  },
+  {
+    user: {
+      name: "Pran",
+      handle: "@pranathiperii",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1876539283600793600/r6b8Jaqe_400x400.jpg",
+    },
+    video: "/media/tweets/pran.mp4",
+    link: "https://x.com/raphaelsalaja",
+  },
+  {
+    user: {
+      name: "Jakub Krehel",
+      handle: "@jakubkrehel",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1951699725486288897/1Fpow798_400x400.jpg",
+    },
+    video: "/media/tweets/jakub-krehel.mp4",
+    link: "https://x.com/jakubkrehel",
+  },
+  {
+    user: {
+      name: "Henry Heffernan",
+      handle: "@henryheffernan",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1600134283703640065/xY0RRLS9_400x400.jpg",
+    },
+    video: "/media/tweets/henry-heffernan.mp4",
+    link: "https://x.com/henryheffernan",
   },
 ];
 
 export function Appeal() {
   const frames: TimeMachineFrame[] = TWITTER_CLIPS.map((clip, index) => ({
     id: `frame-${index + 1}`,
-    content: <TwitterFrame user={clip.user} video={clip.video} />,
+    content: <TwitterFrame {...clip} />,
   }));
 
   return (
-    <div className={styles.container}>
-      <TimeMachine
-        frames={frames}
-        config={{
-          wheelThreshold: 750,
-          frameSpacing: 24,
-          maxVisibleFrames: 3,
-        }}
-        showControls={false}
-      />
-    </div>
+    <TimeMachine
+      frames={frames}
+      config={{
+        wheelThreshold: 750,
+        frameSpacing: 24,
+        maxVisibleFrames: 3,
+      }}
+      className={styles.container}
+    />
   );
 }
 
-interface TwitterFrameProps {
-  user: {
-    name: string;
-    handle: string;
-    avatar: string;
-  };
-  video: string;
-}
+// type of the  array
+type TwitterFrameProps = (typeof TWITTER_CLIPS)[number];
 
-const TwitterFrame = ({
-  user = {
-    name: "JohnPhamous",
-    handle: "@JohnPhamous",
-    avatar:
-      "https://pbs.twimg.com/profile_images/1689659361726263298/wBOYRobp_400x400.png",
-  },
-  video = "https://cdn.rauno.me/ixd/iphone-dynamic-island-physics-c.mp4#t=0.01",
-}: TwitterFrameProps) => {
+const TwitterFrame = ({ ...props }: TwitterFrameProps) => {
   return (
     <div className={styles.post}>
       <video
         className={styles.video}
-        src={video}
+        src={props.video}
         autoPlay
         loop
         muted
         playsInline
       />
-      <div className={styles.header}>
+      <a className={styles.header} href={props.link}>
         <img
           className={styles.avatar}
-          src={user.avatar}
-          alt={`${user.name}'s avatar`}
+          src={props.user.avatar}
+          alt={`${props.user.name}'s avatar`}
           width={48}
           height={48}
         />
-        <span className={styles.name}>{user.name}</span>
-        <span className={styles.handle}>{user.handle}</span>
-      </div>
+        <span className={styles.name}>{props.user.name}</span>
+        <span className={styles.handle}>{props.user.handle}</span>
+      </a>
     </div>
   );
 };

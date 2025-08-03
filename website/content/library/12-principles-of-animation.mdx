@@ -1,14 +1,11 @@
 ---
 title: "12 Principles of Animation"
 description: "A guide to the foundational principles of animation, from squash and stretch to timing and exaggeration, and how they can be applied to create more engaging and lifelike animations."
-date: "31 July 2025"
+date: "07 August 2025"
 tags: ["Animation"]
 ---
 
-Animation on the web has come a long way from simple transitions and hover effects. Today, it’s not just about adding movement for the sake of flair, but about creating experiences that feel intuitive, alive, and unmistakably modern.
-
-Motion is more than a visual flourish. It’s a tool for communication. The right animation helps users understand what just happened, what’s about to happen, and where their attention should go next. It can guide, reassure, and even delight.
-Transforming routine workflows into memorable experiences.
+Animation on the web has come a long way from simple transitions and hover effects. Motion is more than flair; it is communication, guiding users, reassuring them, and delighting them while transforming routine workflows into memorable experiences.
 
 But not all animation is created equal. The difference between good and great often comes down to intention. Great animation is purposeful, subtle, and rooted in the principles that have guided designers for decades.
 
@@ -96,7 +93,7 @@ This principle is the cornerstone of smooth, comfortable transitions. In practic
   <SlowInSlowOut />
 </center>
 
-Above shows a few of the widely used easing functions. Check out [easing.dev](https://easing.dev) for a more comprehensive list, as well as the ability to create your own.[^4]
+Above shows a few of the widely used easing functions. Check out [easing.dev](https://easing.dev) for a more comprehensive list, as well as the ability to create your own.[^5]
 
 The kind of eases you use as well can make a difference. Use an `ease-out` to make elements feel more snappy. Use an `ease-in` for elements that are entering the viewport. Experiement with these, check out Lochie's [easing.dev](https://easing.dev) for a collection of easing curves to play with.
 
@@ -109,7 +106,7 @@ Arcs make movement feel organic. Instead of sliding elements in straight lines, 
   muted
   src="https://cdn.rauno.me/ixd/iphone-dynamic-island-physics-c.mp4#t=0.01"
 />
-<sub>Apple's Dynamic Island.[^3]</sub>
+<sub>Apple's Dynamic Island.[^6]</sub>
 
 Arcs are hard to implement when it comes to ux. It's more relevant for brining information forward, like on a landing page.
 
@@ -164,19 +161,20 @@ It can be as simple as using shadows, layering, and perspective subtly to commun
 <center>
   <SolidDrawing />
 </center>
-<sub>Linear Orbit[^5]</sub>
+<sub>Linear Orbit[^7]</sub>
 
 When it comes to coding 3D transforms, take note of using `perspective` to create depth, which we use in this example. This CSS property allows you to define how far the object is from the viewer, giving a sense of realism to the 3D effect.
 
 Another aspect is consistency in how things are drawn and move. If an icon rotates in 3D, it shouldn’t suddenly look flat or inverted incorrectly, paying attention to how things scale or skew maintains the illusion of volume.
 
-# Appeal
+## Appeal
 
 Lastly, appeal ties everything together. This is about crafting an experience that is visually and emotionally compelling to the user. It’s the difference between an interface that is technically usable and one that people want to use.
 
 <center>
   <Appeal />
 </center>
+<sub>A small sample of delightful creations on the web.[^8]</sub>
 
 Think of the products you find delightful to use, or always go back to. What makes them special? Is it the attention to detail, the playful interactions, or the way they anticipate your needs? Those elements contribute to their appeal.
 
@@ -188,9 +186,9 @@ In a world of AI-driven software and fast development cycles, polished animation
 
 These principles help teams avoid the two extremes: sterile or overdone. Without them, you get either lifeless, jarring movements or flashy effects that frustrate. The sweet spot is just enough animation, of the right kind, at the right moments.
 
-In the end, great interface animations are almost invisible. Users just feel that an app is smooth and enjoyable, often without knowing why. That’s the magic of classic principles.
+In the end, great interface animations are almost invisible. Users just feel that an app is smooth and enjoyable, often without knowing why. That’s the magic of these principles.
 
-....making products more comfortable, more human, and more memorable.
+....making products more fun, human, and memorable.
 
 [^1]: [The Illusion of Life: Disney Animation](https://www.amazon.com/Illusion-Life-Disney-Animation/dp/0786860707) is an amazing book that delves into the principles of animation, including squash and stretch, anticipation, and more. It’s a must-read for anyone serious about mastering animation.
 
@@ -198,10 +196,12 @@ In the end, great interface animations are almost invisible. Users just feel tha
 
 [^3]: [Dia](https://www.diabrowser.com/) have a very nice example of follow-through in their splitting tabs animation. Check out the browser to see the live version.
 
-[^4]: Rauno recorded this clip in his [Invisible Details of Interaction Design](https://rauno.me/craft/interaction-design) essay. Worth the read.
+[^4]: The [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158) talk from WWDC23 is a great resource for learning about how to use springs in animations. It's mainly about SwiftUI, but the concepts apply to any animation framework.
 
 [^5]: Lochie's [easing.dev](https://easing.dev) is a great resource for exploring different easing functions and their applications. You can also build your own springs here too.
 
-[^6]: The [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158) talk from WWDC23 is a great resource for learning about how to use springs in animations. It's mainly about SwiftUI, but the concepts apply to any animation framework.
+[^6]: Rauno recorded this clip in his [Invisible Details of Interaction Design](https://rauno.me/craft/interaction-design) essay. Worth the read.
 
 [^7]: A recreation of the Linear loading animation, made by Emil can be found on their [Twitter](https://x.com/emilkowalski_/status/1937134338816053290/video/1) [Dia Browser](https://www.diabrowser.com/).
+
+[^8]: Some wonderful people building on the web, check out their profiles. [John Phamous](https://x.com/JohnPhamous), [Gustav Ekerot](https://x.com/designgurra), [Abhijeet Singh](https://x.com/abjt14), [Mint](https://x.com/smintfy), [Xavier (Jack)](https://x.com/KMkota0), [Florian](https://x.com/flornkm), [Lochie Axon](https://x.com/lochiexon), [Pranathi Peri](https://x.com/raphaelsalaja), [Jakub Krehel](https://x.com/jakubkrehel) and [Henry Heffernan](https://x.com/henryheffernan).
