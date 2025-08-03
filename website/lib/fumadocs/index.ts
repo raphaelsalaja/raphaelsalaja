@@ -16,10 +16,10 @@ export const getLibraryPages = () => {
     });
 };
 
-export const getProjectsPages = () => {
+export const getWorkPages = () => {
   const pages = source.getPages();
   return pages
-    .filter((page) => page.slugs[0] === "projects")
+    .filter((page) => page.slugs[0] === "work")
     .sort((a, b) => {
       const getDate = (post: typeof a) => new Date(post.data.date);
       return getDate(b).getTime() - getDate(a).getTime();

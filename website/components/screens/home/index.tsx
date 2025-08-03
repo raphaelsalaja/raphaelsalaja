@@ -1,5 +1,5 @@
 import { Library } from "@/components/library";
-import { Projects } from "@/components/projects";
+import { Work } from "@/components/work";
 import About from "./about";
 import styles from "./styles.module.css";
 
@@ -8,7 +8,7 @@ export default function Home() {
     <div className={styles.layout}>
       <About />
       <section className={styles.sections}>
-        <Projects />
+        <Work />
         <Library />
       </section>
     </div>

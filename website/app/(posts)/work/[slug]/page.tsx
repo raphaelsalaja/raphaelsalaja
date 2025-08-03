@@ -3,7 +3,7 @@ import { Support } from "@/components/support";
 import { source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
-const ROOT = "projects";
+const ROOT = "work";
 
 export function generateStaticParams() {
   return source.generateParams().map(({ slug }) => ({

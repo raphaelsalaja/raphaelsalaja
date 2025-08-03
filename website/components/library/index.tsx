@@ -4,11 +4,11 @@ import { Link } from "next-view-transitions";
 import { getLibraryPages } from "@/lib/fumadocs";
 import styles from "./styles.module.css";
 
-interface ProjectsProps {
+interface WorkProps {
   index?: boolean;
 }
 
-export const Library = async ({ index = false }: ProjectsProps) => {
+export const Library = async ({ index = false }: WorkProps) => {
   const posts = getLibraryPages();
 
   const formatDate = (post: (typeof posts)[number]) => {

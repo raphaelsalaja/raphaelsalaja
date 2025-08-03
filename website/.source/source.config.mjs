@@ -22,7 +22,8 @@ var docs = defineDocs({
       }).optional(),
       tags: z.array(z.string()).optional(),
       disabled: z.boolean().optional(),
-      timestamp: z.number().optional()
+      timestamp: z.number().optional(),
+      category: z.enum(["experiments", "experience", "projects"]).optional()
     })
   },
   meta: {

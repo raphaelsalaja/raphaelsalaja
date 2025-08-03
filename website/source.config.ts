@@ -26,6 +26,7 @@ export const docs = defineDocs({
       tags: z.array(z.string()).optional(),
       disabled: z.boolean().optional(),
       timestamp: z.number().optional(),
+      category: z.enum(["experiments", "experience", "projects"]).optional(),
     }),
   },
   meta: {

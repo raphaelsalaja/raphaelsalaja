@@ -1,7 +1,7 @@
 import title from "title";
 import * as Breadcrumb from "@/components/breadcrumb";
 
-const page = "projects";
+const page = "work";
 
 export default async function Page(props: {
   params: Promise<{ slug: string }>;
