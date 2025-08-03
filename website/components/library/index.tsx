@@ -17,13 +17,11 @@ export const Library = async ({ index = false }: ProjectsProps) => {
   };
 
   const renderProjectEntry = (post: (typeof posts)[number]) => {
-    const key = post.slugs.join("/");
     const isDisabled = post.data.disabled;
     const href = post.data.external ?? `/${post.slugs.join("/")}`;
 
     const entryProps = {
       className: styles.grid,
-      key,
       "data-index": index ? "root" : false,
       ...(isDisabled && { "data-disabled": "true" }),
     };
@@ -31,7 +29,7 @@ export const Library = async ({ index = false }: ProjectsProps) => {
     const id = `library-post-${nanoid(8)}`;
 
     return (
-      <Link href={href} {...entryProps} key={id}>
+      <Link href={href} key={id} {...entryProps}>
         <div className={styles.a}>
           <h3 className={styles.title}>{post.data.title}</h3>
         </div>

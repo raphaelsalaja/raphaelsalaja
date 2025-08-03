@@ -116,11 +116,6 @@ export function Appeal() {
     <TimeMachine
       showControls={false}
       frames={frames}
-      config={{
-        wheelThreshold: 750,
-        frameSpacing: 24,
-        maxVisibleFrames: 3,
-      }}
       className={styles.container}
     />
   );

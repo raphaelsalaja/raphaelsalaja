@@ -5,23 +5,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Direction } from "../icons";
 import styles from "./styles.module.css";
 
-// Configuration for the Time Machine effect
 const TIME_MACHINE_CONFIG = {
-  // Scroll sensitivity
-  wheelThreshold: 750,
+  wheelThreshold: 500,
   touchThreshold: 20,
-
-  // Visual settings
   maxVisibleFrames: 5,
-  frameSpacing: 24, // Y offset between frames
-  scaleStep: 0.09, // How much each frame scales
-
-  // Animation
-  animationDuration: 0.25,
-  blurAmount: 2, // px
-
-  // Performance
-  enableVirtualization: true, // Only render visible frames for better performance
+  frameSpacing: 24,
+  scaleStep: 0.07,
+  animationDuration: 0.2,
+  blurAmount: 4,
+  enableVirtualization: true,
 };
 
 export interface TimeMachineFrame {

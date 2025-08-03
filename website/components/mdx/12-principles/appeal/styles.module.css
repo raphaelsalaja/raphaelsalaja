@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   width: 640px;
-  height: 384px;
+  height: 512px;
 
   @media (max-width: 640px) {
     scale: 0.75;

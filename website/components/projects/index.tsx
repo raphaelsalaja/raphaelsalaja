@@ -53,30 +53,32 @@ export const Projects = async ({ index = false }: ProjectsProps) => {
 
   const visiblePosts = posts.slice(
     0,
-    index ? DEFAULT_PROJECT_LIMIT : posts.length,
+    index ? posts.length : DEFAULT_PROJECT_LIMIT,
   );
 
   const renderProjectEntry = (post: (typeof posts)[number]) => {
-    const key = post.slugs.join("/");
     const isDisabled = post.data.disabled;
     const href = post.data.external ?? `/${post.slugs.join("/")}`;
     const thumbnail = renderThumbnail({ post });
 
     const entryProps = {
       className: styles.entry,
-      key,
       "data-index": index ? "root" : false,
       ...(isDisabled && { "data-disabled": "true" }),
     };
 
-    if (isDisabled) {
-      return <div {...entryProps}>{thumbnail}</div>;
-    }
-
     const id = `projects-post-${nanoid(8)}`;
 
+    if (isDisabled) {
+      return (
+        <div key={id} {...entryProps}>
+          {thumbnail}
+        </div>
+      );
+    }
+
     return (
-      <Link href={href} {...entryProps} key={id}>
+      <Link href={href} key={id} {...entryProps}>
         {thumbnail}
       </Link>
     );
@@ -84,10 +86,10 @@ export const Projects = async ({ index = false }: ProjectsProps) => {
 
   return (
     <div className={styles.projects}>
-      {index && (
+      {!index && (
         <Link href="/projects" className={styles.heading}>
           <h1 className={styles.name}>Projects</h1>
-          <h2 className={styles.count}>{length}</h2>
+          <h2 className={styles.count}>{length}+</h2>
         </Link>
       )}
 

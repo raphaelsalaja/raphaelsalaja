@@ -8,7 +8,7 @@ export default function Home() {
     <div className={styles.layout}>
       <About />
       <section className={styles.sections}>
-        <Projects index />
+        <Projects />
         <Library />
       </section>
     </div>

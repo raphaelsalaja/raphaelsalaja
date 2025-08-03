@@ -23,4 +23,5 @@
   aspect-ratio: 3 / 2;
   overflow: hidden;
   border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }

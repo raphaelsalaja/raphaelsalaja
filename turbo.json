@@ -6,16 +6,12 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^build"],
       "env": [
-        "CLOUDINARY_API_SECRET",
         "SPOTIFY_CLIENT_ID",
         "SPOTIFY_CLIENT_SECRET",
         "SPOTIFY_REFRESH_TOKEN",
         "STEAM_STEAM_ID",
         "STEAM_API_KEY",
-        "STEAM_DOMAIN_NAME",
-        "TRAKT_CLIENT_ID",
-        "TRAKT_USER_SLUG",
-        "TRAKT_CLIENT_SECRET"
+        "STEAM_DOMAIN_NAME"
       ]
     },
     "lint": {

@@ -1,12 +1,9 @@
-import { APP_ENV } from "@/config/site";
+import { env } from "@/env";
 import { polar } from "@/lib/polar";
-
-const PRODUCTION_ID = "9a70b39c-e723-46d5-9679-23aa767285c0";
-const SANDBOX_ID = "b080889d-5963-4c04-bb3e-e30052903ab2";
 
 export async function Support() {
   const product = await polar.products.get({
-    id: APP_ENV === "production" ? PRODUCTION_ID : SANDBOX_ID,
+    id: env.NEXT_PUBLIC_POLAR_PRODUCT_ID,
   });
 
   const href = `/checkout?products=${product.id}`;
