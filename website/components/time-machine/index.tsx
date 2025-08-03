@@ -6,13 +6,13 @@ import { Direction } from "../icons";
 import styles from "./styles.module.css";
 
 const TIME_MACHINE_CONFIG = {
-  wheelThreshold: 500,
+  wheelThreshold: 150,
   touchThreshold: 20,
   maxVisibleFrames: 5,
-  frameSpacing: 24,
-  scaleStep: 0.07,
+  frameSpacing: 18,
+  scaleStep: 0.06,
   animationDuration: 0.2,
-  blurAmount: 4,
+  blurAmount: 1,
   enableVirtualization: true,
 };
 
@@ -40,23 +40,26 @@ export function TimeMachine({
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef(0);
   const scrollAccumulator = useRef(0);
+  const isScrolling = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Merge user config with defaults (memoized to prevent recalculation)
   const finalConfig = useMemo(
     () => ({ ...TIME_MACHINE_CONFIG, ...config }),
     [config],
   );
 
-  // Optimized frame change handlers
   const goToNextFrame = useCallback(() => {
-    setActiveIndex((prev) => Math.min(prev + 1, frames.length - 1));
-  }, [frames.length]);
+    const newIndex = Math.min(activeIndex + 1, frames.length - 1);
+    setActiveIndex(newIndex);
+    scrollAccumulator.current = 0;
+  }, [activeIndex, frames.length]);
 
   const goToPrevFrame = useCallback(() => {
-    setActiveIndex((prev) => Math.max(prev - 1, 0));
-  }, []);
+    const newIndex = Math.max(activeIndex - 1, 0);
+    setActiveIndex(newIndex);
+    scrollAccumulator.current = 0;
+  }, [activeIndex]);
 
-  // Notify parent of frame changes
   useEffect(() => {
     onFrameChange?.(activeIndex);
   }, [activeIndex, onFrameChange]);
@@ -68,21 +71,31 @@ export function TimeMachine({
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
 
-      // Accumulate scroll delta for smoother transitions
       scrollAccumulator.current += e.deltaY;
 
       const threshold = finalConfig.wheelThreshold;
 
       if (Math.abs(scrollAccumulator.current) >= threshold) {
-        if (scrollAccumulator.current > 0) {
-          goToNextFrame();
+        if (scrollAccumulator.current > 0 && activeIndex < frames.length - 1) {
+          const newIndex = Math.min(activeIndex + 1, frames.length - 1);
+          setActiveIndex(newIndex);
+          scrollAccumulator.current = 0;
+        } else if (scrollAccumulator.current < 0 && activeIndex > 0) {
+          const newIndex = Math.max(activeIndex - 1, 0);
+          setActiveIndex(newIndex);
+          scrollAccumulator.current = 0;
         } else {
-          goToPrevFrame();
+          scrollAccumulator.current = 0;
         }
-
-        // Reset accumulator after frame change
-        scrollAccumulator.current = 0;
       }
+
+      isScrolling.current = true;
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+      scrollTimeout.current = setTimeout(() => {
+        isScrolling.current = false;
+      }, 100);
     };
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -113,18 +126,21 @@ export function TimeMachine({
       container.removeEventListener("wheel", handleWheel);
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchend", handleTouchEnd);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
     };
   }, [
     finalConfig.wheelThreshold,
     finalConfig.touchThreshold,
     goToNextFrame,
     goToPrevFrame,
+    frames.length,
+    activeIndex,
   ]);
 
-  // Optimize visible frames calculation with virtualization
   const visibleFrames = useMemo(() => {
     if (!finalConfig.enableVirtualization) {
-      // Render all frames if virtualization is disabled
       return frames.map((frame, index) => ({
         ...frame,
         index,
@@ -135,8 +151,7 @@ export function TimeMachine({
       }));
     }
 
-    // Only calculate frames that are actually visible for performance
-    const renderBuffer = 2; // Render a few extra frames for smooth transitions
+    const renderBuffer = 2;
     const startIndex = Math.max(0, activeIndex - renderBuffer);
     const endIndex = Math.min(
       frames.length - 1,
@@ -172,7 +187,6 @@ export function TimeMachine({
       >
         {visibleFrames.map(
           ({ content, id, index, distanceFromActive, isVisible }) => {
-            // Skip rendering frames that are too far away for performance
             if (
               Math.abs(distanceFromActive) >
               finalConfig.maxVisibleFrames + 1
@@ -187,28 +201,30 @@ export function TimeMachine({
                 data-active={distanceFromActive === 0}
                 initial={false}
                 style={{
-                  zIndex: frames.length - index, // Use actual index for z-index
+                  zIndex: frames.length - index,
                   pointerEvents: distanceFromActive === 0 ? "auto" : "none",
                 }}
                 animate={{
                   x: "-50%",
                   y: `calc(-50% + ${
                     distanceFromActive < 0
-                      ? Math.abs(distanceFromActive) * finalConfig.frameSpacing // Past frames: positive Y (move backward)
-                      : distanceFromActive * -finalConfig.frameSpacing // Future frames: negative Y (move forward)
+                      ? Math.abs(distanceFromActive) * finalConfig.frameSpacing
+                      : distanceFromActive * -finalConfig.frameSpacing
                   }px)`,
                   scale:
                     distanceFromActive < 0
-                      ? 1 + Math.abs(distanceFromActive) * finalConfig.scaleStep // Past frames: get bigger
-                      : 1 - distanceFromActive * finalConfig.scaleStep, // Future frames: get smaller
+                      ? 1 + Math.abs(distanceFromActive) * finalConfig.scaleStep
+                      : 1 -
+                        Math.abs(distanceFromActive) * finalConfig.scaleStep,
                   opacity: isVisible ? 1 : 0,
                   filter:
                     distanceFromActive < 0
                       ? `blur(${finalConfig.blurAmount}px)`
-                      : "blur(0px)", // Blur past frames
+                      : "blur(0px)",
                 }}
                 transition={{
                   duration: finalConfig.animationDuration,
+                  ease: "easeOut",
                 }}
               >
                 {content}
