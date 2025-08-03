@@ -1,5 +1,3 @@
-import { Link } from "next-view-transitions";
-import React from "react";
 import { APP_ENV } from "@/config/site";
 import { polar } from "@/lib/polar";
 
