@@ -2,7 +2,7 @@ import "@/styles/mdx.css";
 import "@/styles/shiki.css";
 
 import type { MDXComponents } from "mdx/types";
-import FigCaption, { type FigCaptionProps } from "@/components/codeblock";
+
 import { Image } from "@/components/image";
 import {
   Anticipation,
@@ -25,10 +25,8 @@ import {
   Tone,
   Workouts,
 } from "@/components/mdx";
-import Stage from "@/components/stage";
 
 const components: MDXComponents = {
-  figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   img: (props) => <Image {...props} />,
   SquashStretch,
   Anticipation,
@@ -42,7 +40,6 @@ const components: MDXComponents = {
   StraightAheadActionAndPoseToPose,
   Timing,
   Appeal,
-  Stage,
   Workouts,
   Caret,
   FamilyWallet,
