@@ -64,7 +64,7 @@ export function Exaggeration() {
         { duration: 0.3 },
       );
 
-      const hintTimeout = setTimeout(() => {
+      const _hintTimeout = setTimeout(() => {
         setHint(true);
       }, HINT_DELAY);
 

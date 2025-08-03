@@ -22,4 +22,5 @@ export interface OutlinePropsWithChildren {
 
 export type OutlineProps = OutlinePropsWithHeadings | OutlinePropsWithChildren;
 
+// biome-ignore lint/suspicious/noExplicitAny: TODO
 export type MotionTransition = Transition<any>;

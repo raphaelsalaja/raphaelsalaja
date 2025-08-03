@@ -1,58 +1,62 @@
-"use client";
-
 import Image from "next/image";
 import type { VideoHTMLAttributes } from "react";
-import { useEffect, useState } from "react";
+import PLACEHOLDERS from "./placeholders.json";
 
-interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
-  blurDataURL?: string;
+interface VideoMetadata {
+  placeholder: string;
+  aspectRatio: number;
 }
 
-export const Video = ({ blurDataURL, ...props }: VideoProps) => {
-  const [loaded, setLoaded] = useState(false);
+interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
+  src: string;
+}
 
-  useEffect(() => {
-    if (props.autoPlay && props.preload !== "none") {
-      setLoaded(true);
-    }
-  }, [props.autoPlay, props.preload]);
+type PlaceholdersType = Record<string, VideoMetadata>;
+
+export const Video = ({ src, className, style, ...props }: VideoProps) => {
+  const placeholders = PLACEHOLDERS as PlaceholdersType;
+  const metadata = placeholders[src];
+  const aspectRatio = metadata?.aspectRatio || 16 / 9;
+  const placeholder = metadata?.placeholder;
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      {blurDataURL && (
+    <div
+      style={{
+        position: "relative",
+        aspectRatio,
+        width: "100%",
+        ...style,
+      }}
+    >
+      {placeholder && (
         <Image
-          width={100}
-          height={100}
+          aria-hidden="true"
+          src={placeholder}
+          fill
           unoptimized
-          src={blurDataURL}
-          alt=""
           style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
-            filter: "blur(20px)",
-            transform: "scale(1.05)",
-            transition: "opacity 0.4s ease-out",
-            opacity: loaded ? 0 : 1,
+            filter: "blur(32px)",
+            scale: "1.2",
             zIndex: 1,
             pointerEvents: "none",
           }}
+          alt=""
         />
       )}
 
       <video
         {...props}
-        onLoadedData={() => setLoaded(true)}
+        src={src}
         style={{
+          position: "absolute",
+          inset: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "opacity 0.4s ease-out",
-          opacity: loaded ? 1 : 0,
           zIndex: 2,
         }}
+        className={className}
       />
     </div>
   );

@@ -1,34 +1,37 @@
 // source.config.ts
 import {
   rehypeCode,
-  rehypeCodeDefaultOptions
+  rehypeCodeDefaultOptions,
 } from "fumadocs-core/mdx-plugins";
 import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
-  metaSchema
+  metaSchema,
 } from "fumadocs-mdx/config";
 import { z } from "zod";
+
 var docs = defineDocs({
   dir: "content",
   docs: {
     schema: frontmatterSchema.extend({
       date: z.string(),
       external: z.string().optional(),
-      media: z.object({
-        video: z.string().optional(),
-        image: z.string().optional()
-      }).optional(),
+      media: z
+        .object({
+          video: z.string().optional(),
+          image: z.string().optional(),
+        })
+        .optional(),
       tags: z.array(z.string()).optional(),
       disabled: z.boolean().optional(),
       timestamp: z.number().optional(),
-      category: z.enum(["experiments", "experience", "projects"]).optional()
-    })
+      category: z.enum(["experiments", "experience", "projects"]).optional(),
+    }),
   },
   meta: {
-    schema: metaSchema
-  }
+    schema: metaSchema,
+  },
 });
 var source_config_default = defineConfig({
   lastModifiedTime: "git",
@@ -36,16 +39,13 @@ var source_config_default = defineConfig({
     rehypeCodeOptions: {
       themes: {
         light: "github-light",
-        dark: "github-dark"
+        dark: "github-dark",
       },
       inline: "tailing-curly-colon",
       defaultColor: false,
-      transformers: [...rehypeCodeDefaultOptions.transformers ?? []]
+      transformers: [...(rehypeCodeDefaultOptions.transformers ?? [])],
     },
-    rehypePlugins: [rehypeCode]
-  }
+    rehypePlugins: [rehypeCode],
+  },
 });
-export {
-  source_config_default as default,
-  docs
-};
+export { source_config_default as default, docs };

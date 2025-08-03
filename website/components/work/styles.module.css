@@ -1,7 +1,7 @@
 .work {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
   align-items: flex-start;
   align-self: stretch;
 }
@@ -18,7 +18,7 @@
 
   &::before {
     position: absolute;
-    inset: -2px -8px;
+    inset: -4px -6px;
     z-index: -1;
     content: "";
     background: var(--background-secondary);
@@ -49,12 +49,10 @@
   align-self: stretch;
 
   .title {
-    padding-bottom: 8px;
     margin: 0;
     font-size: 14px;
     font-variation-settings: var(--font-weight-500);
     color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-primary);
   }
 }
 

@@ -1,13 +1,12 @@
 .CircularProgressbar-path {
   --track: var(--stroke);
-
   stroke: var(--track);
-  strokeLinecap: round;
+  stroke-linecap: round;
 }
 
 .CircularProgressbar-trail {
   stroke: var(--white-a6);
-  strokeLinecap: round;
+  stroke-linecap: round;
 }
 
 number-flow-react::part(left),

@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run generate:placeholders && next build",
     "start": "next start",
-    "lint": "biome check --fix --unsafe . --verbose",
-    "postinstall": "fumadocs-mdx"
+    "lint": "biome check --fix --unsafe .",
+    "postinstall": "fumadocs-mdx",
+    "generate:placeholders": "node scripts/generate-placeholders.js"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.1",

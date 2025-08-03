@@ -25,9 +25,11 @@ import {
   Tone,
   Workouts,
 } from "@/components/mdx";
+import { Video } from "./components/media";
 
 const components: MDXComponents = {
   img: (props) => <Image {...props} />,
+  video: (props) => <Video loop {...props} />,
   SquashStretch,
   Anticipation,
   Arcs,

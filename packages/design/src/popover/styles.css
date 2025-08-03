@@ -62,7 +62,7 @@
 [data-popover-arrow] {
   fill: hsl(0, 0%, 100%);
   stroke: hsla(0, 0%, 0%, 0.1);
-  strokeWidth: 1px;
+  stroke-width: 1px;
 }
 
 [data-popover-title] {

@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check --fix --unsafe . --verbose"
+    "lint": "biome check --fix --unsafe ."
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

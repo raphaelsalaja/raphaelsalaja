@@ -45,7 +45,7 @@ export function SecondaryAction() {
           initial={false}
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
-          transformTemplate={(latest, generated) =>
+          transformTemplate={(_latest, generated) =>
             `translate(-50%, -50%) ${generated}`
           }
           animate={{

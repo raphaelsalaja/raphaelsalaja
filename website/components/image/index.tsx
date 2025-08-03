@@ -1,8 +1,8 @@
 "use client";
 
-import NextImage from "next/image";
 import React from "react";
 import * as Cambio from "@/components/cambio";
+import * as Media from "@/components/media";
 import styles from "./styles.module.css";
 
 interface ImageProps
@@ -16,7 +16,7 @@ export function Image(props: ImageProps) {
     <React.Fragment>
       <Cambio.Root>
         <Cambio.Trigger className={styles.trigger}>
-          <NextImage
+          <Media.Image
             src={src}
             alt={alt}
             unoptimized
@@ -27,7 +27,7 @@ export function Image(props: ImageProps) {
         <Cambio.Portal>
           <Cambio.Backdrop className={styles.backdrop} />
           <Cambio.Popup className={styles.popup}>
-            <NextImage
+            <Media.Image
               src={src}
               alt={alt}
               unoptimized
