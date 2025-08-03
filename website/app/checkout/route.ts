@@ -11,6 +11,6 @@ export const GET = Checkout({
     APP_ENV === "development"
       ? env.POLAR_SANDBOX_SUCCESS_URL
       : env.POLAR_SUCCESS_URL,
-  server: "sandbox",
+  server: APP_ENV === "development" ? "sandbox" : "production",
   theme: "light",
 });

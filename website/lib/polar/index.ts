@@ -7,5 +7,5 @@ export const polar = new Polar({
     APP_ENV === "development"
       ? env.POLAR_SANDBOX_ACCESS_TOKEN
       : env.POLAR_ACCESS_TOKEN,
-  server: "sandbox",
+  server: APP_ENV === "development" ? "sandbox" : "production",
 });

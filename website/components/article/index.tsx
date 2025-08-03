@@ -2,6 +2,7 @@ import type React from "react";
 import type { Page } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 import { OutlineProvider } from "../outline";
+import { Support } from "../support";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
   page: Page;
@@ -18,6 +19,7 @@ export const Article = ({ page }: ArticleProps) => {
           <time>{date && <time>{date}</time>}</time>
         </header>
         <MDX components={getMDXComponents()} />
+        <Support />
       </article>
     </OutlineProvider>
   );

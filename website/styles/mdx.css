@@ -181,7 +181,8 @@ article {
     }
   }
 
-  [data-footnotes] {
+  [data-footnotes],
+  [data-support] {
     margin-top: 64px;
 
     &::before {
@@ -197,6 +198,7 @@ article {
     a,
     p,
     h2,
+    h4,
     ol,
     li {
       font-size: 12px;

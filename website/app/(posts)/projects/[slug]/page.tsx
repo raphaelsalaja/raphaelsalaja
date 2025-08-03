@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Support } from "@/components/support";
 import { source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
@@ -35,6 +36,7 @@ export default async function Page(props: {
   return (
     <article>
       <MDXContent components={getMDXComponents()} />
+      <Support />
     </article>
   );
 }
