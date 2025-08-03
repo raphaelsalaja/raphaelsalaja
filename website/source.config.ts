@@ -17,16 +17,21 @@ export const docs = defineDocs({
     schema: frontmatterSchema.extend({
       date: z.string(),
       external: z.string().optional(),
-      media: z
-        .object({
-          video: z.string().optional(),
-          image: z.string().optional(),
-        })
-        .optional(),
-      tags: z.array(z.string()).optional(),
+      preview: z.string().optional(),
       disabled: z.boolean().optional(),
       timestamp: z.number().optional(),
-      category: z.enum(["experiments", "experience", "projects"]).optional(),
+      category: z
+        .enum([
+          "Experiments",
+          "Experience",
+          "Projects",
+          "Animation",
+          "Thoughts",
+          "Craft",
+          "Design",
+          "Fashion",
+        ])
+        .optional(),
     }),
   },
   meta: {

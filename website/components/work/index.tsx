@@ -5,12 +5,12 @@ import styles from "./styles.module.css";
 
 const DEFAULT_PROJECT_LIMIT = 6;
 
-const CATEGORY_ORDER = ["projects", "experiments", "experience"] as const;
+const CATEGORY_ORDER = ["Experiments", "Experience", "Projects"] as const;
 
 const CATEGORY_DISPLAY_NAMES = {
-  projects: "Projects",
-  experiments: "Experiments",
-  experience: "Experience",
+  Projects: "Projects",
+  Experiments: "Experiments",
+  Experience: "Experience",
 } as const;
 
 interface WorkProps {
@@ -27,7 +27,7 @@ export const Work = async ({ index = false }: WorkProps) => {
   ) => {
     const isDisabled = post.data.disabled;
     const href = post.data.external ?? `/${post.slugs.join("/")}`;
-    const { media } = post.data;
+    const { preview } = post.data;
 
     const entryProps = {
       className: styles.entry,
@@ -35,10 +35,10 @@ export const Work = async ({ index = false }: WorkProps) => {
       ...(isDisabled && { "data-disabled": "true" }),
     };
 
-    const thumbnail = media?.video ? (
+    const thumbnail = preview ? (
       <div className={styles.thumbnail}>
         <Media.Video
-          src={media.video}
+          src={preview}
           autoPlay
           muted
           loop

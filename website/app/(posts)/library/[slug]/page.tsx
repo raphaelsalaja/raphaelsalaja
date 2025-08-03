@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/components/article";
+import { generateMetadataForPost } from "@/config/site";
 import { source } from "@/lib/fumadocs";
 
 const ROOT = "library";
@@ -13,22 +14,21 @@ export function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-  const page = source.getPage([ROOT, params.slug]);
+  const { slug } = await props.params;
+  const page = source.getPage([ROOT, slug]);
   if (!page) notFound();
 
-  return {
-    title: page.data.title,
-    description: page.data.description,
-  };
+  return generateMetadataForPost(
+    page.data.title,
+    page.data.description ?? "Design Engineer",
+  );
 }
 
 export default async function Page(props: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-  const page = source.getPage([ROOT, params.slug]);
-
+  const { slug } = await props.params;
+  const page = source.getPage([ROOT, slug]);
   if (!page) notFound();
 
   return <Article page={page} />;

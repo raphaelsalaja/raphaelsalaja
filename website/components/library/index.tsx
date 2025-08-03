@@ -34,7 +34,7 @@ export const Library = async ({ index = false }: WorkProps) => {
           <h3 className={styles.title}>{post.data.title}</h3>
         </div>
         <div className={styles.c}>
-          <p className={styles.date}>{post.data.tags?.join(", ") || ""}</p>
+          <p className={styles.date}>{post.data.category}</p>
         </div>
         <div className={styles.d}>
           <time className={styles.date}>{formatDate(post)}</time>
