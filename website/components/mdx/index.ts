@@ -5,6 +5,7 @@ export * from "./12-principles/appeal";
 export * from "./12-principles/arcs";
 export * from "./12-principles/exaggeration";
 export * from "./12-principles/follow-through-and-overlapping-action";
+export * from "./12-principles/polar-support";
 export * from "./12-principles/secondary-action";
 export * from "./12-principles/slow-in-and-slow-out";
 export * from "./12-principles/solid-drawing";

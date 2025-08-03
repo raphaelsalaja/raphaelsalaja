@@ -6,6 +6,8 @@ const {
   NEXT_PUBLIC_VERCEL_URL: baseUrl,
 } = process.env;
 
+export const APP_ENV = env;
+
 const APP_URLS: Record<string, string> = {
   production: "https://www.raphaelsalaja.com",
   preview: `https://${branchUrl || baseUrl}`,
