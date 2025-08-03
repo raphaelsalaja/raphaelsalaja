@@ -113,7 +113,7 @@ export function Anticipation() {
                 <HighPriority />
               </div>
               <span className={styles.id}>{issue.id}</span>
-              <InProgress />
+              <InProgress className={styles.status} />
               <span className={styles.title}>{issue.title}</span>
               <div className={styles.spacer} />
               <Avatar className={styles.avatar} />
@@ -151,7 +151,7 @@ export function Anticipation() {
             className={styles.popup}
           >
             <Bolt className={styles.bolt} />
-            <span className={styles.selected}>1 selected</span>
+            <span className={styles.selected}>Quick Actions</span>
             <button
               type="button"
               className={styles.clear}

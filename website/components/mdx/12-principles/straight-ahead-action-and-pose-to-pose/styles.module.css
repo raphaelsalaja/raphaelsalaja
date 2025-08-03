@@ -1,15 +1,25 @@
 .container {
   display: flex;
+  gap: 32px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   padding: 48px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 72px;
+  }
 }
 
 .divider {
   position: relative;
   width: 4px;
   height: 100%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .select {

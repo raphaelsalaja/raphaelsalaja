@@ -114,6 +114,7 @@ export function Appeal() {
 
   return (
     <TimeMachine
+      showControls={false}
       frames={frames}
       config={{
         wheelThreshold: 750,
@@ -125,7 +126,6 @@ export function Appeal() {
   );
 }
 
-// type of the  array
 type TwitterFrameProps = (typeof TWITTER_CLIPS)[number];
 
 const TwitterFrame = ({ ...props }: TwitterFrameProps) => {

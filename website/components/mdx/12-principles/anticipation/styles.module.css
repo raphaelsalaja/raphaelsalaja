@@ -1,7 +1,6 @@
 .container {
   position: relative;
   display: block;
-
   width: 100%;
   height: 384px;
   padding: 24px 32px;
@@ -28,6 +27,7 @@
   font-variation-settings: var(--font-weight-500);
   color: var(--text-primary);
   text-align: left;
+  white-space: nowrap;
 }
 
 .line {
@@ -35,6 +35,7 @@
   height: 0.5px;
   background: var(--border-secondary);
   -webkit-box-flex: 1;
+  white-space: nowrap;
 }
 
 .list {
@@ -51,6 +52,7 @@
   align-items: center;
   width: 100%;
   height: 40px;
+  white-space: nowrap;
   transition: all 0.15s ease;
 
   > :not(:first-child) {
@@ -109,6 +111,16 @@
   -webkit-box-align: center;
   align-items: center;
   flex-shrink: 0;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.status {
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .id {
@@ -117,6 +129,7 @@
   font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
   text-align: left;
+  white-space: nowrap;
 }
 
 .title {
@@ -133,6 +146,10 @@
   flex-direction: row;
   -webkit-box-flex: 1;
   flex-grow: 1;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .avatar {
@@ -141,12 +158,20 @@
   border-radius: 100px;
   box-shadow: inset 0 0px 0px 2px var(--text-quaternary);
   fill: var(--text-tertiary);
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .date {
   font-size: 12px;
   font-variation-settings: var(--font-weight-450);
   color: var(--text-tertiary);
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .popup {
@@ -183,6 +208,7 @@
   font-variation-settings: var(--font-weight-500);
   color: var(--text-tertiary);
   text-align: left;
+  white-space: nowrap;
 }
 
 .clear,
@@ -195,6 +221,7 @@
   overflow: hidden;
   font-size: 13px;
   font-variation-settings: var(--font-weight-600);
+  user-select: none;
   border: none;
   border-radius: 100px;
   transition: all 0.15s ease;
@@ -208,6 +235,7 @@
 
 .delete {
   color: var(--white);
+  user-select: none;
   background: var(--red-9);
 }
 

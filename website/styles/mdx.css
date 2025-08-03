@@ -5,6 +5,7 @@ article {
     font-variation-settings: var(--font-weight-450);
     line-height: 24px;
     color: var(--text-primary);
+    text-wrap: pretty;
   }
 
   video {
