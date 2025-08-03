@@ -1,10 +1,10 @@
-import { Posts } from "@/components/posts";
-import type { Frontmatter } from "@/types/frontmatter";
+import { Projects } from "@/components/projects";
+import type { Frontmatter } from "@/source.config";
 
 interface PageProps {
   params: Promise<Frontmatter>;
 }
 
 export default async function Page(_props: PageProps) {
-  return <Posts category="projects" index />;
+  return <Projects index />;
 }

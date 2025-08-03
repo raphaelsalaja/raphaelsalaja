@@ -5,7 +5,10 @@ import React from "react";
 import * as Cambio from "@/components/cambio";
 import styles from "./styles.module.css";
 
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
+interface ImageProps
+  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> {
+  src?: string;
+}
 export function Image(props: ImageProps) {
   const { src = "", alt = "" } = props;
 

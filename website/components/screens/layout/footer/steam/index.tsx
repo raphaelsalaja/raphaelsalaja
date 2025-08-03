@@ -68,10 +68,11 @@ export const Steam: React.FC = () => {
   const header = details?.headerImage || placeholder;
   const genres = details?.genres || [];
   const recent_reviews = formatNumber(
-    reviews?.query_summary.total_reviews || 0,
+    reviews?.query_description.total_reviews || 0,
   );
+
   const review_score_desc =
-    reviews?.query_summary.review_score_desc.replace(
+    reviews?.query_description.review_score_desc.replace(
       "Overwhelmingly Positive",
       "Super Positive",
     ) || "No Reviews";

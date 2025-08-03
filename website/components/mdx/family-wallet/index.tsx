@@ -7,7 +7,6 @@ import { CopyIcon, EllipsisIcon } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
-import { Shape6 as Icon } from "@/components/posts/placeholder/shapes";
 import styles from "./styles.module.scss";
 
 enum WalletState {
