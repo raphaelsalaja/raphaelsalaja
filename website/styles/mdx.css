@@ -7,6 +7,19 @@ article {
     color: var(--text-primary);
   }
 
+  video {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 48px;
+    overflow: hidden;
+    background: var(--background-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+  }
+
   center {
     position: relative;
     display: flex;
@@ -21,6 +34,7 @@ article {
     border-radius: 8px;
   }
 
+  video,
   center + p {
     margin-top: 48px;
   }

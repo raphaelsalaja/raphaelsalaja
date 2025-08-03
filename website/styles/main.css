@@ -9,17 +9,15 @@
 }
 
 html {
-  caret-color: black;
   color: var(--text-primary);
+  caret-color: black;
+  scrollbar-color: oklch(0 0 0 / 5%) transparent;
+  scrollbar-width: thin;
 
   ::selection {
     overflow-x: hidden;
     color: var(--white);
     background: var(--text-primary);
-
-  &::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
   }
 }
 
