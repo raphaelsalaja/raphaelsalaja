@@ -82,7 +82,7 @@ const TWITTER_CLIPS = [
         "https://pbs.twimg.com/profile_images/1876539283600793600/r6b8Jaqe_400x400.jpg",
     },
     video: "/media/tweets/pran.mp4",
-    link: "https://x.com/raphaelsalaja",
+    link: "https://x.com/pranathiperii",
   },
   {
     user: {
