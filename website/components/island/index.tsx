@@ -17,7 +17,7 @@ import "./styles.css";
 import { MeshGradient, SimplexNoise } from "@paper-design/shaders-react";
 import dynamic from "next/dynamic";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
+import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatting";
 import Carousel from "./carousel";
 import ReadingTimeTracker from "./slider";
 

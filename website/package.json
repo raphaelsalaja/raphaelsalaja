@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "biome check --fix --unsafe .",
     "postinstall": "fumadocs-mdx",
-    "generate:placeholders": "node scripts/generate-media-placeholders.js"
+    "generate:placeholders": "tsx scripts/generate-media-placeholders.ts"
   },
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.1",
@@ -38,6 +38,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "cal-heatmap": "^4.2.4",
+    "chalk": "^5.5.0",
     "clsx": "^2.1.1",
     "consola": "^3.4.2",
     "d3-ease": "^3.0.1",
@@ -88,6 +89,7 @@
     "eslint": "9.32.0",
     "eslint-config-next": "15.4.4",
     "openapi-typescript": "^7.8.0",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }
 }

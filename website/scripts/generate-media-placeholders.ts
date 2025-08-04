@@ -8,12 +8,13 @@
  * 2. Creates placeholder entries with aspect ratios
  * 3. Outputs placeholders.json files for both Image and Video components
  *
- * Usage: node scripts/generate-media-placeholders.js
+ * Usage: tsx scripts/generate-media-placeholders.ts
  */
 
-const fs = require("node:fs").promises;
-const path = require("node:path");
-const { logger } = require("./logger");
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import chalk from "chalk";
+import { logger } from "./logger.js";
 
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 const IMAGE_PLACEHOLDERS_FILE = path.join(
@@ -37,7 +38,7 @@ const IMAGE_ASPECT_RATIO_DEFAULTS = {
   "1:1": 1, // Square
   "9:16": 9 / 16, // Vertical/mobile
   "2:1": 2, // Banner/hero images
-};
+} as const;
 
 const VIDEO_ASPECT_RATIO_DEFAULTS = {
   "16:9": 16 / 9, // Standard video
@@ -45,11 +46,28 @@ const VIDEO_ASPECT_RATIO_DEFAULTS = {
   "21:9": 21 / 9, // Ultrawide
   "9:16": 9 / 16, // Vertical/mobile
   "1:1": 1, // Square
-};
+} as const;
 
-async function findMediaFiles(dir, basePath = "") {
-  const imageFiles = [];
-  const videoFiles = [];
+interface MediaFile {
+  fullPath: string;
+  publicPath: string;
+}
+
+interface MediaFiles {
+  imageFiles: MediaFile[];
+  videoFiles: MediaFile[];
+}
+
+interface PlaceholderData {
+  placeholder: string;
+  aspectRatio: number;
+}
+
+type PlaceholderMap = Record<string, PlaceholderData>;
+
+async function findMediaFiles(dir: string, basePath = ""): Promise<MediaFiles> {
+  const imageFiles: MediaFile[] = [];
+  const videoFiles: MediaFile[] = [];
 
   try {
     const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -73,13 +91,13 @@ async function findMediaFiles(dir, basePath = "") {
       }
     }
   } catch (error) {
-    logger.warn(`Could not read directory ${dir}: ${error.message}`);
+    logger.warn(`Could not read directory ${dir}: ${(error as Error).message}`);
   }
 
   return { imageFiles, videoFiles };
 }
 
-function getImageAspectRatio(filename) {
+function getImageAspectRatio(filename: string): number {
   const lower = filename.toLowerCase();
 
   if (
@@ -121,7 +139,7 @@ function getImageAspectRatio(filename) {
   return IMAGE_ASPECT_RATIO_DEFAULTS["3:2"];
 }
 
-function getVideoAspectRatio(filename) {
+function getVideoAspectRatio(filename: string): number {
   const lower = filename.toLowerCase();
 
   if (
@@ -144,8 +162,11 @@ function getVideoAspectRatio(filename) {
   return VIDEO_ASPECT_RATIO_DEFAULTS["16:9"];
 }
 
-async function generatePlaceholders(files, aspectRatioFn) {
-  const placeholders = {};
+async function generatePlaceholders(
+  files: MediaFile[],
+  aspectRatioFn: (filename: string) => number,
+): Promise<PlaceholderMap> {
+  const placeholders: PlaceholderMap = {};
 
   for (const { publicPath } of files) {
     const filename = path.basename(publicPath);
@@ -160,19 +181,15 @@ async function generatePlaceholders(files, aspectRatioFn) {
   return placeholders;
 }
 
-async function main() {
+async function main(): Promise<void> {
   try {
     // Find all media files
     const { imageFiles, videoFiles } = await findMediaFiles(PUBLIC_DIR);
 
-    let successfulTasks = 0;
-    const failedTasks = 0;
-    const skippedTasks = 0;
-
     // Process images
     if (imageFiles.length > 0) {
-      const imagePlaceholdersDir = path.dirname(IMAGE_PLACEHOLDERS_FILE);
-      await fs.mkdir(imagePlaceholdersDir, { recursive: true });
+      const imageDir = path.dirname(IMAGE_PLACEHOLDERS_FILE);
+      await fs.mkdir(imageDir, { recursive: true });
 
       const imagePlaceholders = await generatePlaceholders(
         imageFiles,
@@ -183,13 +200,12 @@ async function main() {
         IMAGE_PLACEHOLDERS_FILE,
         JSON.stringify(imagePlaceholders, null, 2),
       );
-      successfulTasks++;
     }
 
     // Process videos
     if (videoFiles.length > 0) {
-      const videoPlaceholdersDir = path.dirname(VIDEO_PLACEHOLDERS_FILE);
-      await fs.mkdir(videoPlaceholdersDir, { recursive: true });
+      const videoDir = path.dirname(VIDEO_PLACEHOLDERS_FILE);
+      await fs.mkdir(videoDir, { recursive: true });
 
       const videoPlaceholders = await generatePlaceholders(
         videoFiles,
@@ -200,22 +216,39 @@ async function main() {
         VIDEO_PLACEHOLDERS_FILE,
         JSON.stringify(videoPlaceholders, null, 2),
       );
-      successfulTasks++;
     }
 
-    console.log("\nMedia placeholders:");
-    console.table({
-      videos: videoFiles.length,
-      images: imageFiles.length,
-    });
+    // Prepare counts
+    const videoCount = videoFiles.length;
+    const imageCount = imageFiles.length;
+    const totalCount = videoCount + imageCount;
+
+    // Simple output matching the desired format
+    const width = 63;
+
+    console.log(
+      `${chalk.gray("●")} ${chalk.underline("Placeholders")}${" ".repeat(width - "placeholders".length - 8)}${chalk.underline("Generated")}`,
+    );
+    console.log(
+      `${chalk.gray("├")} ${chalk.gray("○")} videos${" ".repeat(width - "videos".length - 8)}${videoCount} urls`,
+    );
+    console.log(
+      `${chalk.gray("├")} ${chalk.gray("○")} images${" ".repeat(width - "images".length - 8)}${imageCount} urls`,
+    );
+    console.log(
+      `${chalk.gray("└")} ${chalk.gray("●")} total${" ".repeat(width - "total".length - 8)}${totalCount} urls`,
+    );
   } catch (error) {
-    logger.error("Failed to generate media placeholders:", error.message);
+    logger.error(
+      "Failed to generate media placeholders:",
+      (error as Error).message,
+    );
     process.exit(1);
   }
 }
 
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
 
-module.exports = { main };
+export { main };
