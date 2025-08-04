@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import type React from "react";
-import { isServerMobile } from "@/hooks/use-is-mobile";
+import { OutlineProvider } from "@/components/outline";
 import type { Page } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
-import { OutlineProvider } from "../outline";
 import { Support } from "../support";
+import { MobileAwareArticle } from "./mobile-aware";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
   page: Page;
@@ -17,18 +17,12 @@ export const Article = async ({ page }: ArticleProps) => {
     notFound();
   }
 
-  if (desktop && (await isServerMobile())) {
-    return (
-      <article>
-        <p>
-          This article is under construction to achieve the best viewing
-          pleasure on mobile devices.
-        </p>
-        <p>Please check back later :)</p>
-      </article>
-    );
+  // For desktop-only content, use client-side mobile detection
+  if (desktop) {
+    return <MobileAwareArticle page={page} />;
   }
 
+  // Regular article rendering for non-desktop-only content
   return (
     <OutlineProvider>
       <article>
