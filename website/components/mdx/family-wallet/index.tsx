@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 "use client";
 
 import { Dialog } from "@base-ui-components/react/dialog";
@@ -7,6 +5,7 @@ import { CopyIcon, EllipsisIcon } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
+import { Toast } from "@/components/icons";
 import styles from "./styles.module.scss";
 
 enum WalletState {
@@ -119,7 +118,10 @@ export const FamilyWallet: React.FC = () => {
                 >
                   <div className={styles.column}>
                     <motion.div layoutId="top-trailing" className={styles.icon}>
-                      <Icon className={styles.shape} fill="var(--white-a12)" />
+                      <Toast
+                        className={styles.shape}
+                        color="var(--white-a12)"
+                      />
                     </motion.div>
 
                     <motion.span
@@ -157,7 +159,7 @@ export const FamilyWallet: React.FC = () => {
                       className={styles.options}
                       layoutId="top-leading"
                     >
-                      <EllipsisIcon />
+                      <EllipsisIcon color="var(--white-a12)" />
                     </motion.div>
 
                     <motion.div
@@ -286,9 +288,9 @@ export const FamilyWallet: React.FC = () => {
                           layoutId="top-trailing"
                           className={styles.icon}
                         >
-                          <Icon
+                          <Toast
                             className={styles.shape}
-                            fill="var(--white-a12)"
+                            color="var(--white-a12)"
                           />
                         </motion.div>
 

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import type React from "react";
 import type { Page } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
@@ -9,7 +10,11 @@ interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
 }
 
 export const Article = ({ page }: ArticleProps) => {
-  const { title, date, body: MDX } = page.data;
+  const { title, date, body: MDX, external } = page.data;
+
+  if (external) {
+    notFound();
+  }
 
   return (
     <OutlineProvider>

@@ -93,7 +93,7 @@
 .text {
   display: flex;
   font-size: 16px;
-  font-weight: 600;
+  font-variation-settings: var(--font-weight-600);
   line-height: normal;
   white-space: nowrap;
   field-sizing: content;
@@ -201,7 +201,7 @@
   cursor: pointer;
   display: flex;
   font-size: 14px;
-  font-weight: 600;
+  font-variation-settings: var(--font-weight-600);
   line-height: normal;
   white-space: nowrap;
   field-sizing: content;
