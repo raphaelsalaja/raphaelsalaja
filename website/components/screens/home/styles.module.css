@@ -27,4 +27,5 @@
   flex-direction: column;
   gap: 64px;
   align-items: flex-start;
+  width: 100%;
 }

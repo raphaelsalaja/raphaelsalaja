@@ -52,12 +52,10 @@
 }
 
 .grid {
-  --grid-columns: 10;
   --grid-gap: 32px;
   position: relative;
   display: grid;
-  grid-template-areas: "a a a a a a a c c d";
-  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  grid-template-columns: 1fr auto auto;
   grid-gap: var(--grid-gap);
   align-items: center;
   width: 100%;
@@ -88,38 +86,22 @@
   }
 
   .a {
-    grid-area: a;
     margin: 0;
     font-variation-settings: var(--font-weight-500);
     color: var(--text-primary);
   }
 
   .b {
-    grid-area: b;
-    width: 100%;
     margin: 0;
     color: var(--text-tertiary);
-
-    p {
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
   }
 
   .c {
-    grid-area: c;
-    margin: 0;
-    color: var(--text-tertiary);
-  }
-
-  .d {
-    grid-area: d;
     justify-self: end;
     width: 100%;
     margin: 0;
     color: var(--text-tertiary);
+    text-align: right;
     white-space: nowrap;
   }
 

@@ -33,10 +33,10 @@ export const Library = async ({ index = false }: WorkProps) => {
         <div className={styles.a}>
           <h3 className={styles.title}>{post.data.title}</h3>
         </div>
-        <div className={styles.c}>
+        <div className={styles.b}>
           <p className={styles.date}>{post.data.category}</p>
         </div>
-        <div className={styles.d}>
+        <div className={styles.c}>
           <time className={styles.date}>{formatDate(post)}</time>
         </div>
       </Link>
