@@ -2,13 +2,14 @@
 
 import { SpotifyAPI } from "@statsfm/spotify.js";
 import { NextResponse } from "next/server";
+import { env } from "@/env";
 
 const spotify = new SpotifyAPI({
   clientCredentials: {
-    clientId: process.env.SPOTIFY_CLIENT_ID!,
-    clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
+    clientId: env.SPOTIFY_CLIENT_ID!,
+    clientSecret: env.SPOTIFY_CLIENT_SECRET!,
   },
-  refreshToken: process.env.SPOTIFY_REFRESH_TOKEN!,
+  refreshToken: env.SPOTIFY_REFRESH_TOKEN!,
 });
 
 export async function GET() {
@@ -26,7 +27,7 @@ export async function GET() {
     return response;
   } catch (err: unknown) {
     return NextResponse.json(
-      { error: err.message || "Unknown error" },
+      { error: err instanceof Error ? err.message : "Unknown error" },
       { status: 500 },
     );
   }

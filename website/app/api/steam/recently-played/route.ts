@@ -4,11 +4,11 @@ import SteamAPI, {
   type GameInfoBasic,
   type UserPlaytime,
 } from "steamapi";
+import { env } from "@/env";
 import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
-const API_KEY = process.env.STEAM_API_KEY;
-
-const STEAM_ID = process.env.STEAM_STEAM_ID;
+const API_KEY = env.STEAM_API_KEY;
+const STEAM_ID = env.STEAM_STEAM_ID;
 
 if (!API_KEY || !STEAM_ID) {
   throw new Error("Missing STEAM_API_KEY or STEAM_STEAM_ID in environment");
@@ -94,7 +94,10 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
             );
             achievements = achievementData?.achievements || null;
           } catch (error: unknown) {
-            console.error("Failed to fetch achievements:", error.message);
+            console.error(
+              "Failed to fetch achievements:",
+              error instanceof Error ? error.message : error,
+            );
           }
 
           return NextResponse.json(
@@ -153,7 +156,10 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
       );
       achievements = achievementData?.achievements || null;
     } catch (error: unknown) {
-      console.error("Failed to fetch achievements:", error.message);
+      console.error(
+        "Failed to fetch achievements:",
+        error instanceof Error ? error.message : error,
+      );
     }
 
     return NextResponse.json(
@@ -166,11 +172,16 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
       },
     );
   } catch (error: unknown) {
-    const status = error.message.startsWith("Failed to fetch") ? 502 : 500;
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    const status = errorMessage.startsWith("Failed to fetch") ? 502 : 500;
     return NextResponse.json(
       {
-        error: error.message,
-        stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
+        error: errorMessage,
+        stack:
+          process.env.NODE_ENV === "development" && error instanceof Error
+            ? error.stack
+            : undefined,
       },
       { status },
     );
