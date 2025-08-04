@@ -12,6 +12,11 @@ interface GetWorkoutsOptions {
 export async function getWorkouts(
   opts: GetWorkoutsOptions = {},
 ): Promise<Workouts[]> {
+  if (!supabase) {
+    console.warn("Supabase not configured, returning empty workouts array");
+    return [];
+  }
+
   const now = new Date();
 
   let start: Date;

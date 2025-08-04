@@ -3,24 +3,24 @@ import { z } from "zod";
 
 export const env = createEnv({
   shared: {
-    NEXT_PUBLIC_APP_URL: z.url(),
+    NEXT_PUBLIC_APP_URL: z.string().url().default("https://raphaelsalaja.com"),
   },
   server: {
-    SPOTIFY_CLIENT_ID: z.string(),
-    SPOTIFY_CLIENT_SECRET: z.string(),
-    SPOTIFY_REFRESH_TOKEN: z.string(),
-    STEAM_STEAM_ID: z.string(),
-    STEAM_API_KEY: z.string(),
-    STEAM_DOMAIN_NAME: z.string(),
-    POLAR_ACCESS_TOKEN: z.string(),
-    POLAR_SUCCESS_URL: z.url(),
+    SPOTIFY_CLIENT_ID: z.string().optional(),
+    SPOTIFY_CLIENT_SECRET: z.string().optional(),
+    SPOTIFY_REFRESH_TOKEN: z.string().optional(),
+    STEAM_STEAM_ID: z.string().optional(),
+    STEAM_API_KEY: z.string().optional(),
+    STEAM_DOMAIN_NAME: z.string().optional(),
+    POLAR_ACCESS_TOKEN: z.string().optional(),
+    POLAR_SUCCESS_URL: z.string().url().optional(),
   },
   client: {
-    NEXT_PUBLIC_APP_URL: z.url(),
-    NEXT_PUBLIC_SUPABASE_URL: z.url(),
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
-    NEXT_PUBLIC_POLAR_PRODUCT_ID: z.uuid(),
-    NEXT_PUBLIC_POLAR_SERVER: z.enum(["sandbox", "production"]),
+    NEXT_PUBLIC_APP_URL: z.string().url().default("https://raphaelsalaja.com"),
+    NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().optional(),
+    NEXT_PUBLIC_POLAR_PRODUCT_ID: z.string().uuid().optional(),
+    NEXT_PUBLIC_POLAR_SERVER: z.enum(["sandbox", "production"]).optional(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
