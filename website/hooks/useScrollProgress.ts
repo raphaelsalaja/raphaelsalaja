@@ -9,7 +9,8 @@ export function useScrollProgress(): {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
 
       if (maxScroll <= 0) {
         setProgress(100);

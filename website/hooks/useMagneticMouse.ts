@@ -11,8 +11,15 @@ interface MagneticMouseOptions {
   buffer?: number;
 }
 
-export const useMagneticMouse = (ref: React.RefObject<HTMLElement | null>, options?: MagneticMouseOptions) => {
-  const { strength = 0.1, springConfig = { damping: 20, stiffness: 300, mass: 0.5 }, buffer = 0 } = options || {};
+export const useMagneticMouse = (
+  ref: React.RefObject<HTMLElement | null>,
+  options?: MagneticMouseOptions,
+) => {
+  const {
+    strength = 0.1,
+    springConfig = { damping: 20, stiffness: 300, mass: 0.5 },
+    buffer = 0,
+  } = options || {};
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -25,8 +32,10 @@ export const useMagneticMouse = (ref: React.RefObject<HTMLElement | null>, optio
       const rect = ref.current.getBoundingClientRect();
       const { clientX, clientY } = event;
 
-      const isInsideX = clientX >= rect.left - buffer && clientX <= rect.right + buffer;
-      const isInsideY = clientY >= rect.top - buffer && clientY <= rect.bottom + buffer;
+      const isInsideX =
+        clientX >= rect.left - buffer && clientX <= rect.right + buffer;
+      const isInsideY =
+        clientY >= rect.top - buffer && clientY <= rect.bottom + buffer;
 
       if (isInsideX && isInsideY) {
         const x = clientX - rect.left - rect.width / 2;

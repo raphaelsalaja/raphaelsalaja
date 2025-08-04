@@ -1,11 +1,18 @@
 "use client";
 
 import type React from "react";
-import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
+import {
+  type DetailedHTMLProps,
+  type HTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Clipboard, Code, Terminal } from "../../icons";
 import styles from "./styles.module.css";
 
-export interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface FigCaptionProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   "data-language"?: string;
 }
 
@@ -18,7 +25,8 @@ export function Figcaption({ ...props }: FigCaptionProps) {
 
   useEffect(() => {
     if (figCaptionRef.current) {
-      preRef.current = figCaptionRef.current.nextElementSibling as HTMLPreElement;
+      preRef.current = figCaptionRef.current
+        .nextElementSibling as HTMLPreElement;
     }
   }, []);
 
@@ -45,7 +53,11 @@ export function Figcaption({ ...props }: FigCaptionProps) {
   };
 
   return (
-    <figcaption ref={figCaptionRef as React.Ref<HTMLElement>} className={styles.code} {...props}>
+    <figcaption
+      ref={figCaptionRef as React.Ref<HTMLElement>}
+      className={styles.code}
+      {...props}
+    >
       <span className={styles.heading}>
         <Icon /> {props.children as React.ReactNode}
       </span>

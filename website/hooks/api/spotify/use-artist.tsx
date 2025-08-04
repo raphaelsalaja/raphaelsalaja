@@ -13,6 +13,5 @@ export function useSpotifyArtist(id: string) {
     queryKey: ["spotify", "artist", id],
     queryFn: () => fetchArtist(id),
     enabled: Boolean(id),
-    staleTime: 60_000,
   });
 }

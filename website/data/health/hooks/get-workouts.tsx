@@ -9,7 +9,14 @@ interface GetWorkoutsOptions {
   to?: Date;
 }
 
-export async function getWorkouts(opts: GetWorkoutsOptions = {}): Promise<Workouts[]> {
+export async function getWorkouts(
+  opts: GetWorkoutsOptions = {},
+): Promise<Workouts[]> {
+  if (!supabase) {
+    console.warn("Supabase not configured, returning empty workouts array");
+    return [];
+  }
+
   const now = new Date();
 
   let start: Date;
@@ -72,9 +79,18 @@ type UseWorkoutsOptions = {
   enabled?: boolean;
 };
 
-export function useWorkouts({ period, from, to, staleTime = 1000 * 60 * 5, enabled = true }: UseWorkoutsOptions) {
+export function useWorkouts({
+  period,
+  from,
+  to,
+  staleTime = 1000 * 60 * 5,
+  enabled = true,
+}: UseWorkoutsOptions) {
   return useQuery<Workouts[], Error>({
-    queryKey: ["workouts", { period, from: from?.toISOString(), to: to?.toISOString() }],
+    queryKey: [
+      "workouts",
+      { period, from: from?.toISOString(), to: to?.toISOString() },
+    ],
     queryFn: () => getWorkouts({ period, from, to }),
     staleTime,
     refetchOnWindowFocus: true,

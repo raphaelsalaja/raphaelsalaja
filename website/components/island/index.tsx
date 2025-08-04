@@ -17,16 +17,22 @@ import "./styles.css";
 import { MeshGradient, SimplexNoise } from "@paper-design/shaders-react";
 import dynamic from "next/dynamic";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatTime";
+import { formatTimeMMSS, getMinutesAndSeconds } from "@/utils/formatting";
 import Carousel from "./carousel";
 import ReadingTimeTracker from "./slider";
 
-const NumberFlow = dynamic(() => import("@number-flow/react").then((mod) => mod.default), {
-  ssr: false,
-});
-const NumberFlowGroup = dynamic(() => import("@number-flow/react").then((mod) => mod.NumberFlowGroup), {
-  ssr: false,
-});
+const NumberFlow = dynamic(
+  () => import("@number-flow/react").then((mod) => mod.default),
+  {
+    ssr: false,
+  },
+);
+const NumberFlowGroup = dynamic(
+  () => import("@number-flow/react").then((mod) => mod.NumberFlowGroup),
+  {
+    ssr: false,
+  },
+);
 
 interface IslandProps extends HTMLMotionProps<"div"> {}
 
@@ -48,9 +54,13 @@ const Island = (props: IslandProps) => {
   //   });
   // };
 
-  const handleSliderCommit = (value: number | readonly number[], _event: Event) => {
+  const handleSliderCommit = (
+    value: number | readonly number[],
+    _event: Event,
+  ) => {
     const finalValue = Array.isArray(value) ? value[0] : value;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
     const targetScrollPosition = (finalValue / 100) * maxScroll;
 
     window.scrollTo({
@@ -75,7 +85,12 @@ const Island = (props: IslandProps) => {
     >
       <AnimatePresence mode="popLayout" initial={false} propagate>
         {expanded ? (
-          <motion.div key="expanded" className={styles.expanded} layout layoutId="expanded">
+          <motion.div
+            key="expanded"
+            className={styles.expanded}
+            layout
+            layoutId="expanded"
+          >
             <div className={styles.heading}>
               <motion.button
                 layout
@@ -88,7 +103,11 @@ const Island = (props: IslandProps) => {
                   overflow: "hidden",
                 }}
               >
-                <SimplexNoise scale={0.07} speed={0.5} style={{ width: "100%", height: "100%" }} />
+                <SimplexNoise
+                  scale={0.07}
+                  speed={0.5}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </motion.button>
 
               <div className={styles.details}>
@@ -115,7 +134,12 @@ const Island = (props: IslandProps) => {
               </div>
             </div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key="carousel">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              key="carousel"
+            >
               <Carousel
                 options={{
                   loop: false,
@@ -185,7 +209,11 @@ const Island = (props: IslandProps) => {
             </motion.div>
           </motion.div>
         ) : (
-          <motion.div key="compact" className={styles.compact} layoutId="compact">
+          <motion.div
+            key="compact"
+            className={styles.compact}
+            layoutId="compact"
+          >
             <motion.button
               layout
               layoutId="shader"
@@ -198,7 +226,10 @@ const Island = (props: IslandProps) => {
                 zIndex: 10,
               }}
             >
-              <MeshGradient speed={0.5} style={{ width: "100%", height: "100%" }} />
+              <MeshGradient
+                speed={0.5}
+                style={{ width: "100%", height: "100%" }}
+              />
             </motion.button>
 
             <AnimatePresence mode="popLayout" initial={false}>
@@ -227,7 +258,11 @@ const Island = (props: IslandProps) => {
               </motion.p>
             </AnimatePresence>
 
-            <motion.div className={styles.progress} animate={{ scale: 1 }} layoutId="progress-indicator">
+            <motion.div
+              className={styles.progress}
+              animate={{ scale: 1 }}
+              layoutId="progress-indicator"
+            >
               <CircularProgressbar strokeWidth={12} value={progress} />
             </motion.div>
           </motion.div>

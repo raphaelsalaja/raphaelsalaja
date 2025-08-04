@@ -1,11 +1,19 @@
-import { createBrowserClient } from "@supabase/ssr";
+// biome-ignore-all lint/style/noNonNullAssertion: env
 
-export const createClient = () =>
-  createBrowserClient(
-    // biome-ignore lint/style/noNonNullAssertion: env variable is always set
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    // biome-ignore lint/style/noNonNullAssertion: env variable is always set
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+import { createBrowserClient } from "@supabase/ssr";
+import { env } from "@/env";
+
+export const createClient = () => {
+  if (!env.NEXT_PUBLIC_SUPABASE_URL || !env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    // Return a mock client or throw an error that can be handled gracefully
+    console.warn("Supabase environment variables not configured");
+    return null;
+  }
+
+  return createBrowserClient(
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
+};
 
 export const supabase = createClient();

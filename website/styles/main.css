@@ -9,12 +9,15 @@
 }
 
 html {
-  overflow-x: hidden;
   color: var(--text-primary);
+  caret-color: black;
+  scrollbar-color: oklch(0 0 0 / 5%) transparent;
+  scrollbar-width: thin;
 
-  &::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
+  ::selection {
+    overflow-x: hidden;
+    color: var(--white);
+    background: var(--text-primary);
   }
 }
 
@@ -28,17 +31,44 @@ body {
     flex-direction: column;
     gap: 48px;
     align-items: flex-start;
-    width: 768px;
+    width: 640px;
     padding: 96px 0;
     isolation: isolate;
     transition: width 0.4s ease;
 
     &[data-animate] {
-      animation: blur-in 1s ease forwards;
+      animation: blur-in 0.4s ease forwards;
     }
 
     @media (width <= 800px) {
       width: 80%;
+    }
+
+    &::before {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      height: 128px;
+      pointer-events: none;
+      content: "";
+      background: linear-gradient(
+        180deg,
+        #fff 0,
+        hsla(0, 0%, 100%, 0.738) 19%,
+        hsla(0, 0%, 100%, 0.541) 34%,
+        hsla(0, 0%, 100%, 0.382) 47%,
+        hsla(0, 0%, 100%, 0.278) 56.5%,
+        hsla(0, 0%, 100%, 0.194) 65%,
+        hsla(0, 0%, 100%, 0.126) 73%,
+        hsla(0, 0%, 100%, 0.075) 80.2%,
+        hsla(0, 0%, 100%, 0.042) 86.1%,
+        hsla(0, 0%, 100%, 0.021) 91%,
+        hsla(0, 0%, 100%, 0.008) 95.2%,
+        hsla(0, 0%, 100%, 0.002) 98.2%,
+        hsla(0, 0%, 100%, 0)
+      );
     }
   }
 }

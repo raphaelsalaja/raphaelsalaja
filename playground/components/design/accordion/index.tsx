@@ -19,7 +19,8 @@ export const Accordion = () => {
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
           <DesignAccordion.Content>
-            Base UI is a library of high-quality unstyled React components for design systems and web apps.
+            Base UI is a library of high-quality unstyled React components for
+            design systems and web apps.
           </DesignAccordion.Content>
         </DesignAccordion.Panel>
       </DesignAccordion.Item>
@@ -35,7 +36,8 @@ export const Accordion = () => {
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
           <DesignAccordion.Content>
-            Head to the “Quick start” guide in the docs. If you’ve used unstyled libraries before, you’ll feel at home.
+            Head to the “Quick start” guide in the docs. If you’ve used unstyled
+            libraries before, you’ll feel at home.
           </DesignAccordion.Content>
         </DesignAccordion.Panel>
       </DesignAccordion.Item>
@@ -50,7 +52,9 @@ export const Accordion = () => {
           </DesignAccordion.Trigger>
         </DesignAccordion.Header>
         <DesignAccordion.Panel>
-          <DesignAccordion.Content>Of course! Base UI is free and open source.</DesignAccordion.Content>
+          <DesignAccordion.Content>
+            Of course! Base UI is free and open source.
+          </DesignAccordion.Content>
         </DesignAccordion.Panel>
       </DesignAccordion.Item>
     </DesignAccordion.Root>

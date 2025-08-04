@@ -1,44 +1,69 @@
-"use client";
-
-import { motion } from "motion/react";
 import NextImage from "next/image";
-import { useState } from "react";
+import PLACEHOLDERS from "./placeholders.json";
 
-type MediaImageProps = React.ComponentProps<typeof NextImage>;
+interface ImageMetadata {
+  placeholder: string;
+  aspectRatio: number;
+}
 
-export const Image = ({ blurDataURL, ...props }: MediaImageProps) => {
-  const [loaded, setLoaded] = useState(false);
+type MediaImageProps = React.ComponentProps<typeof NextImage> & {
+  src: string;
+};
+
+type PlaceholdersType = Record<string, ImageMetadata>;
+
+export const Image = ({
+  src,
+  style,
+  blurDataURL,
+  ...props
+}: MediaImageProps) => {
+  const placeholders = PLACEHOLDERS as PlaceholdersType;
+  const metadata = placeholders[src];
+
+  // Use provided blurDataURL or fallback to generated placeholder
+  const placeholder = blurDataURL || metadata?.placeholder;
+  const aspectRatio = metadata?.aspectRatio;
+
+  const containerStyle = {
+    position: "relative" as const,
+    width: "100%",
+    height: "100%",
+    ...(aspectRatio && { aspectRatio }),
+    ...style,
+  };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      {blurDataURL && (
-        <motion.img
-          src={blurDataURL}
-          alt=""
+    <div style={containerStyle}>
+      {placeholder && (
+        <NextImage
+          aria-hidden="true"
+          src={placeholder}
+          fill
+          unoptimized
           style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             filter: "blur(4px)",
-            transform: "scale(1.5)",
+            scale: "1.5",
             zIndex: 1,
+            pointerEvents: "none",
           }}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: loaded ? 0 : 1 }}
-          transition={{ duration: 0.4 }}
+          alt=""
         />
       )}
 
-      <motion.div
-        style={{ position: "relative", width: "100%", height: "100%", zIndex: 2 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: loaded ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
-        <NextImage {...props} onLoad={() => setLoaded(true)} />
-      </motion.div>
+      <NextImage
+        {...props}
+        src={src}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 2,
+        }}
+      />
     </div>
   );
 };

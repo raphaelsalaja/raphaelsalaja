@@ -1,6 +1,5 @@
 .CircularProgressbar-path {
   --track: var(--stroke);
-
   stroke: var(--track);
   stroke-linecap: round;
 }

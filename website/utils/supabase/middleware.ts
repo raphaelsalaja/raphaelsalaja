@@ -1,7 +1,19 @@
+// biome-ignore-all lint/style/noNonNullAssertion: env
+
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import { env } from "@/env";
 
 export const createClient = (request: NextRequest) => {
+  if (!env.NEXT_PUBLIC_SUPABASE_URL || !env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    console.warn("Supabase environment variables not configured");
+    return NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    });
+  }
+
   let supabaseResponse = NextResponse.next({
     request: {
       headers: request.headers,
@@ -9,21 +21,23 @@ export const createClient = (request: NextRequest) => {
   });
 
   const _supabase = createServerClient(
-    // biome-ignore lint/style/noNonNullAssertion: env variable is always set
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    // biome-ignore lint/style/noNonNullAssertion: env variable is always set
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
         getAll() {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value),
+          );
           supabaseResponse = NextResponse.next({
             request,
           });
-          cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options));
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options),
+          );
         },
       },
     },

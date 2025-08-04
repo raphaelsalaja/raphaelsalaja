@@ -1,19 +1,31 @@
+import { notFound } from "next/navigation";
 import type React from "react";
-import { MDX } from "@/components/mdx";
-import type { Frontmatter } from "@/types/frontmatter";
+import type { Page } from "@/lib/fumadocs";
+import { getMDXComponents } from "@/mdx-components";
+import { OutlineProvider } from "../outline";
+import { Support } from "../support";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
-  post: Frontmatter;
+  page: Page;
 }
 
-export const Article = ({ post, ...props }: ArticleProps) => {
-  const { title, summary, content } = post;
+export const Article = ({ page }: ArticleProps) => {
+  const { title, date, body: MDX, external } = page.data;
+
+  if (external) {
+    notFound();
+  }
 
   return (
-    <article data-mdx-article {...props}>
-      <h1>{title}</h1>
-      {summary && <p data-mdx-article-summary>{summary}</p>}
-      <MDX source={content} />
-    </article>
+    <OutlineProvider>
+      <article>
+        <header>
+          <h1>{title}</h1>
+          <time>{date && <time>{date}</time>}</time>
+        </header>
+        <MDX components={getMDXComponents()} />
+        <Support />
+      </article>
+    </OutlineProvider>
   );
 };

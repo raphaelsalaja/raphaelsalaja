@@ -1,5 +1,4 @@
 packages:
-  - 'intl'
-  - 'website'
-  - 'playground'
-  - 'packages/*'
+  - "website"
+  - "playground"
+  - "packages/*"

@@ -1,10 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
-import SteamAPI, { type GameDetails, type GameInfoBasic, type UserPlaytime } from "steamapi";
+import SteamAPI, {
+  type GameDetails,
+  type GameInfoBasic,
+  type UserPlaytime,
+} from "steamapi";
+import { env } from "@/env";
 import type { GetAppReviewsResponse } from "@/types/steam/appreviews";
 
-const API_KEY = process.env.STEAM_API_KEY;
-
-const STEAM_ID = process.env.STEAM_STEAM_ID;
+const API_KEY = env.STEAM_API_KEY;
+const STEAM_ID = env.STEAM_STEAM_ID;
 
 if (!API_KEY || !STEAM_ID) {
   throw new Error("Missing STEAM_API_KEY or STEAM_STEAM_ID in environment");
@@ -12,7 +16,9 @@ if (!API_KEY || !STEAM_ID) {
 
 const steam = new SteamAPI(API_KEY);
 
-async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfoBasic> | null> {
+async function getMostRecentGame(
+  steamId: string,
+): Promise<UserPlaytime<GameInfoBasic> | null> {
   try {
     const [recentGames, _ownedGames] = await Promise.all([
       steam.getUserRecentGames(steamId, 10),
@@ -20,7 +26,9 @@ async function getMostRecentGame(steamId: string): Promise<UserPlaytime<GameInfo
     ]);
 
     if (recentGames.length > 0) {
-      recentGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));
+      recentGames.sort(
+        (a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0),
+      );
       const mostRecent = recentGames[0];
 
       return mostRecent;
@@ -54,7 +62,10 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
       try {
         const ownedGames = await steam.getUserOwnedGames(STEAM_ID as string);
         if (ownedGames.length > 0) {
-          ownedGames.sort((a, b) => (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0));
+          ownedGames.sort(
+            (a, b) =>
+              (b.lastPlayedTimestamp ?? 0) - (a.lastPlayedTimestamp ?? 0),
+          );
           const mostRecentOwned = ownedGames[0];
 
           const appId = mostRecentOwned.game.id;
@@ -75,13 +86,18 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
           details = results[0].status === "fulfilled" ? results[0].value : null;
           reviews = results[1].status === "fulfilled" ? results[1].value : null;
 
-          // Try to get achievements
           let achievements = null;
           try {
-            const achievementData = await steam.getUserAchievements(STEAM_ID as string, appId);
+            const achievementData = await steam.getUserAchievements(
+              STEAM_ID as string,
+              appId,
+            );
             achievements = achievementData?.achievements || null;
-          } catch (error: any) {
-            console.error("Failed to fetch achievements:", error.message);
+          } catch (error: unknown) {
+            console.error(
+              "Failed to fetch achievements:",
+              error instanceof Error ? error.message : error,
+            );
           }
 
           return NextResponse.json(
@@ -92,14 +108,25 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
               achievements,
               note: "No recent games found, showing most recently played owned game",
             },
-            { status: 200 },
+            {
+              status: 200,
+              headers: {
+                "Cache-Control":
+                  "public, s-maxage=300, stale-while-revalidate=600",
+              },
+            },
           );
         }
       } catch (error) {
         console.error("Failed to fetch owned games:", error);
       }
 
-      return new NextResponse(null, { status: 204 });
+      return new NextResponse(null, {
+        status: 204,
+        headers: {
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const appId = game.game.id;
@@ -123,19 +150,38 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
 
     let achievements = null;
     try {
-      const achievementData = await steam.getUserAchievements(STEAM_ID as string, appId);
+      const achievementData = await steam.getUserAchievements(
+        STEAM_ID as string,
+        appId,
+      );
       achievements = achievementData?.achievements || null;
-    } catch (error: any) {
-      console.error("Failed to fetch achievements:", error.message);
+    } catch (error: unknown) {
+      console.error(
+        "Failed to fetch achievements:",
+        error instanceof Error ? error.message : error,
+      );
     }
 
-    return NextResponse.json({ game, details, reviews, achievements }, { status: 200 });
-  } catch (error: any) {
-    const status = error.message.startsWith("Failed to fetch") ? 502 : 500;
+    return NextResponse.json(
+      { game, details, reviews, achievements },
+      {
+        status: 200,
+        headers: {
+          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+        },
+      },
+    );
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    const status = errorMessage.startsWith("Failed to fetch") ? 502 : 500;
     return NextResponse.json(
       {
-        error: error.message,
-        stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
+        error: errorMessage,
+        stack:
+          process.env.NODE_ENV === "development" && error instanceof Error
+            ? error.stack
+            : undefined,
       },
       { status },
     );

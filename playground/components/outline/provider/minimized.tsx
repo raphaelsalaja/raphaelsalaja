@@ -9,7 +9,11 @@ interface Props {
   isHovered: boolean;
 }
 
-export const MinimizedOutline = ({ headingLinks, contentIsActive, isHovered }: Props) => (
+export const MinimizedOutline = ({
+  headingLinks,
+  contentIsActive,
+  isHovered,
+}: Props) => (
   <motion.div
     style={{
       transformOrigin: "left center",

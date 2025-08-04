@@ -6,7 +6,10 @@ export function getScale(length: number) {
   const minLinks = 50;
   const maxLinks = 80;
   const clamped = Math.min(Math.max(length, minLinks), maxLinks);
-  return minScale + (maxScale - minScale) * ((clamped - minLinks) / (maxLinks - minLinks));
+  return (
+    minScale +
+    (maxScale - minScale) * ((clamped - minLinks) / (maxLinks - minLinks))
+  );
 }
 
 export const defaultTransition: MotionTransition = {

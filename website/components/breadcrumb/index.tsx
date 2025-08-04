@@ -32,7 +32,10 @@ export function Slug({ page, slug }: { page: string; slug: string }) {
         </Breadcrumb.Item>
         <Breadcrumb.Separator>{Chevron}</Breadcrumb.Separator>
         <Breadcrumb.Item>
-          <Breadcrumb.Link render={<Link href={`/${page}`}>{title(page)}</Link>} href={`/${page}`} />
+          <Breadcrumb.Link
+            render={<Link href={`/${page}`}>{title(page)}</Link>}
+            href={`/${page}`}
+          />
         </Breadcrumb.Item>
         <Breadcrumb.Separator>{Chevron}</Breadcrumb.Separator>
         <Breadcrumb.Item>

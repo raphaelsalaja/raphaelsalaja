@@ -9,19 +9,28 @@ export function Breadcrumb() {
     <DesignBreadcrumb.Root>
       <DesignBreadcrumb.List>
         <DesignBreadcrumb.Item>
-          <DesignBreadcrumb.Link render={<Link href="/">First</Link>} href="/" />
+          <DesignBreadcrumb.Link
+            render={<Link href="/">First</Link>}
+            href="/"
+          />
         </DesignBreadcrumb.Item>
         <DesignBreadcrumb.Separator>
           <ChevronRight width={16} height={16} />
         </DesignBreadcrumb.Separator>
         <DesignBreadcrumb.Item>
-          <DesignBreadcrumb.Link render={<Link href="/">Second</Link>} href="/" />
+          <DesignBreadcrumb.Link
+            render={<Link href="/">Second</Link>}
+            href="/"
+          />
         </DesignBreadcrumb.Item>
         <DesignBreadcrumb.Separator>
           <ChevronRight width={16} height={16} />
         </DesignBreadcrumb.Separator>
         <DesignBreadcrumb.Item>
-          <DesignBreadcrumb.Link render={<Link href="/">Third</Link>} href="/" />
+          <DesignBreadcrumb.Link
+            render={<Link href="/">Third</Link>}
+            href="/"
+          />
         </DesignBreadcrumb.Item>
         <DesignBreadcrumb.Separator>
           <ChevronRight width={16} height={16} />

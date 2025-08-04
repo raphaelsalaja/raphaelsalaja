@@ -4,7 +4,7 @@ node_modules
 # next.js
 .next
 .vercel
-.env.local
+.env.*
 
 # turbo
 .turbo
@@ -14,3 +14,5 @@ node_modules
 
 # tsup
 dist
+
+.env*.local

@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatTimeMMSS } from "../utils/formatTime";
+import { formatTimeMMSS } from "@/utils/formatting";
 
-// Words per minute reading speed
 const WORDS_PER_MINUTE = 200;
 
-// Calculate reading time from text
 function calculateReadingTime(text: string) {
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.floor(words / WORDS_PER_MINUTE);
-  const seconds = Math.floor((words % WORDS_PER_MINUTE) / (WORDS_PER_MINUTE / 60));
-  const total = (words / WORDS_PER_MINUTE) * 60; // total seconds
+  const seconds = Math.floor(
+    (words % WORDS_PER_MINUTE) / (WORDS_PER_MINUTE / 60),
+  );
+  const total = (words / WORDS_PER_MINUTE) * 60;
 
   const clean = formatTimeMMSS(total);
 
