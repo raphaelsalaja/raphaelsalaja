@@ -29,6 +29,7 @@ export default async function Page(props: {
 }) {
   const { slug } = await props.params;
   const page = source.getPage([ROOT, slug]);
+
   if (!page) notFound();
 
   return <Article page={page} />;

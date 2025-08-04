@@ -20,6 +20,7 @@ export const docs = defineDocs({
       preview: z.string().optional(),
       disabled: z.boolean().optional(),
       timestamp: z.number().optional(),
+      desktop: z.boolean().optional(),
       category: z
         .enum([
           "Experiments",
