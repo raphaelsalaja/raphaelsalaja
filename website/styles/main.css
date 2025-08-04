@@ -37,7 +37,7 @@ body {
     transition: width 0.4s ease;
 
     &[data-animate] {
-      animation: blur-in 1s ease forwards;
+      animation: blur-in 0.4s ease forwards;
     }
 
     @media (width <= 800px) {
