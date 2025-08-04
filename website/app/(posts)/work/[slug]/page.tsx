@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/components/article";
-import { Support } from "@/components/support";
 import { generateMetadataForPost } from "@/config/site";
 import { source } from "@/lib/fumadocs";
-import { getMDXComponents } from "@/mdx-components";
 
 const ROOT = "work";
 

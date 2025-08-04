@@ -1,6 +1,8 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextProvider } from "fumadocs-core/framework/next";
 import { useState } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -33,6 +35,8 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       <QueryClientProvider client={queryClient}>
         <SkeletonTheme baseColor="#e6e6e6" highlightColor="#ffffff">
           {children}
+          <Analytics />
+          <SpeedInsights />
         </SkeletonTheme>
       </QueryClientProvider>
     </NextProvider>

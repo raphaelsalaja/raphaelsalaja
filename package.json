@@ -10,13 +10,9 @@
     "build:website": "turbo run build --filter=website",
     "build:design": "turbo run build --filter=@rs/design --filter=playground",
     "build:turbo": "turbo lint && turbo build && pnpm install",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish",
-    "clean": "vacuum clean",
-    "clean:dry": "vacuum clean --dry-run",
-    "clean:verbose": "vacuum clean --verbose"
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {
-    "@rs/vacuum": "workspace:*",
     "@biomejs/biome": "2.1.2",
     "@changesets/cli": "^2.29.5",
     "prettier": "^3.6.2",
