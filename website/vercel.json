@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm build:website",
   "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "functions": {
@@ -65,24 +65,6 @@
           "value": "strict-origin-when-cross-origin"
         }
       ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/github",
-      "destination": "https://github.com/raphaelsalaja"
-    },
-    {
-      "source": "/linkedin",
-      "destination": "https://linkedin.com/in/raphaelsalaja/"
-    },
-    {
-      "source": "/twitter",
-      "destination": "https://x.com/raphaelsalaja"
-    },
-    {
-      "source": "/instagram",
-      "destination": "https://instagram.com/raphaelsalaja/"
     }
   ]
 }
