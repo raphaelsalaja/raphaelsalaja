@@ -12,7 +12,8 @@
         "STEAM_STEAM_ID",
         "STEAM_API_KEY",
         "STEAM_DOMAIN_NAME",
-        "POLAR_ACCESS_TOKEN"
+        "POLAR_ACCESS_TOKEN",
+        "POLAR_SUCCESS_URL"
       ]
     },
     "lint": {
