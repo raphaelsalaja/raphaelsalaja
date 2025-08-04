@@ -11,7 +11,7 @@ export const accessToken = () => {
     case "production":
       return env.POLAR_ACCESS_PRODUCTION_TOKEN;
     default:
-      return env.NEXT_PUBLIC_APP_DEVELOPMENT_URL;
+      return env.POLAR_ACCESS_DEVELOPMENT_TOKEN;
   }
 };
 
@@ -50,7 +50,7 @@ export const id = () => {
     case "production":
       return env.NEXT_PUBLIC_POLAR_PRODUCTION_PRODUCT_ID;
     default:
-      return env.NEXT_PUBLIC_APP_DEVELOPMENT_URL;
+      return env.NEXT_PUBLIC_POLAR_DEVELOPMENT_PRODUCT_ID;
   }
 };
 
