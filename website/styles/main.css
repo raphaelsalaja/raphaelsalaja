@@ -8,6 +8,10 @@
   --accent-background: var(--blue-9);
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 html {
   color: var(--text-primary);
   caret-color: black;
