@@ -1,12 +1,9 @@
+// biome-ignore-all lint/style/noNonNullAssertion: env
+
 import { env } from "@/env";
 import { polar } from "@/lib/polar";
 
 export async function Support() {
-  if (!polar || !env.NEXT_PUBLIC_POLAR_PRODUCT_ID) {
-    console.warn("Polar not configured, skipping support component");
-    return null;
-  }
-
   try {
     const product = await polar.products.get({
       id: env.NEXT_PUBLIC_POLAR_PRODUCT_ID,
