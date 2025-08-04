@@ -4,25 +4,18 @@ import { OutlineProvider } from "@/components/outline";
 import type { Page } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 import { Support } from "../support";
-import { MobileAwareArticle } from "./mobile-aware";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
   page: Page;
 }
 
 export const Article = async ({ page }: ArticleProps) => {
-  const { title, date, body: MDX, external, desktop } = page.data;
+  const { title, date, body: MDX, external } = page.data;
 
   if (external) {
     notFound();
   }
 
-  // For desktop-only content, use client-side mobile detection
-  if (desktop) {
-    return <MobileAwareArticle page={page} />;
-  }
-
-  // Regular article rendering for non-desktop-only content
   return (
     <OutlineProvider>
       <article>
