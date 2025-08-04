@@ -11,6 +11,17 @@ export default function About() {
         styles to create unique work. I enjoy pushing boundaries and exploring
         new ways to express myself without limitations.
       </p>
+      <p>
+        You can reach out to me on{" "}
+        <a className={styles.link} href="https://x.com/raphaelsalaja">
+          Twitter
+        </a>{" "}
+        or see more of my work on{" "}
+        <a className={styles.link} href="https://github.com/raphaelsalaja">
+          GitHub
+        </a>
+        .
+      </p>
     </div>
   );
 }
