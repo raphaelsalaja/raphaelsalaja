@@ -1,9 +1,9 @@
 import { Checkout } from "@polar-sh/nextjs";
-import { env } from "@/env";
+import { accessToken, server, successUrl } from "@/lib/polar";
 
 export const GET = Checkout({
-  accessToken: env.POLAR_ACCESS_TOKEN,
-  successUrl: env.POLAR_SUCCESS_URL,
-  server: env.NEXT_PUBLIC_POLAR_SERVER,
+  accessToken: accessToken(),
+  successUrl: successUrl(),
+  server: server(),
   theme: "light",
 });

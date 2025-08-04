@@ -1,9 +1,8 @@
-import { env } from "@/env";
-import { polar } from "@/lib/polar";
+import { id, polar } from "@/lib/polar";
 
 export async function Support() {
   const product = await polar.products.get({
-    id: env.NEXT_PUBLIC_POLAR_PRODUCT_ID,
+    id: id(),
   });
 
   const href = `/checkout?products=${product.id}`;
