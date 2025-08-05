@@ -17,7 +17,7 @@ export const MinimizedOutline = ({
   <motion.div
     style={{
       transformOrigin: "left center",
-      zIndex: 1,
+      zIndex: 999999,
       y: "-50%",
     }}
     initial={{ opacity: 0, scale: 0.8 }}

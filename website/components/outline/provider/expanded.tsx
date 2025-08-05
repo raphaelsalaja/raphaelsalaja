@@ -25,7 +25,7 @@ export const ExpandedOutline = ({
     <motion.div
       style={{
         transformOrigin: "left center",
-        zIndex: 2,
+        zIndex: 9999999,
       }}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{
