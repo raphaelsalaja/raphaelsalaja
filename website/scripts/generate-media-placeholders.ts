@@ -26,10 +26,6 @@ const VIDEO_PLACEHOLDERS_FILE = path.join(
   "components/media/video/placeholders.json",
 );
 
-// Default placeholder image (1x1 transparent pixel)
-const DEFAULT_PLACEHOLDER =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==";
-
 // Common aspect ratios for different content types
 const IMAGE_ASPECT_RATIO_DEFAULTS = {
   "16:9": 16 / 9, // Wide images
@@ -162,18 +158,60 @@ function getVideoAspectRatio(filename: string): number {
   return VIDEO_ASPECT_RATIO_DEFAULTS["16:9"];
 }
 
-async function generatePlaceholders(
+function generateColoredPlaceholder(filename: string): string {
+  // Generate a simple colored placeholder based on filename
+  const colors = [
+    "#f3f4f6", // gray-100
+    "#e5e7eb", // gray-200
+    "#d1d5db", // gray-300
+    "#9ca3af", // gray-400
+    "#f9fafb", // gray-50
+  ];
+
+  // Use filename to consistently pick a color
+  const colorIndex =
+    filename.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) %
+    colors.length;
+  const color = colors[colorIndex];
+
+  // Create a simple 10x10 colored rectangle
+  const svg = `<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="10" fill="${color}"/></svg>`;
+  const base64 = Buffer.from(svg).toString("base64");
+
+  return `data:image/svg+xml;base64,${base64}`;
+}
+
+async function generateImagePlaceholders(
   files: MediaFile[],
-  aspectRatioFn: (filename: string) => number,
 ): Promise<PlaceholderMap> {
   const placeholders: PlaceholderMap = {};
 
   for (const { publicPath } of files) {
     const filename = path.basename(publicPath);
-    const aspectRatio = aspectRatioFn(filename);
+    const aspectRatio = getImageAspectRatio(filename);
+    const placeholder = generateColoredPlaceholder(filename);
 
     placeholders[publicPath] = {
-      placeholder: DEFAULT_PLACEHOLDER,
+      placeholder,
+      aspectRatio,
+    };
+  }
+
+  return placeholders;
+}
+
+async function generateVideoPlaceholders(
+  files: MediaFile[],
+): Promise<PlaceholderMap> {
+  const placeholders: PlaceholderMap = {};
+
+  for (const { publicPath } of files) {
+    const filename = path.basename(publicPath);
+    const aspectRatio = getVideoAspectRatio(filename);
+    const placeholder = generateColoredPlaceholder(filename);
+
+    placeholders[publicPath] = {
+      placeholder,
       aspectRatio,
     };
   }
@@ -191,10 +229,7 @@ async function main(): Promise<void> {
       const imageDir = path.dirname(IMAGE_PLACEHOLDERS_FILE);
       await fs.mkdir(imageDir, { recursive: true });
 
-      const imagePlaceholders = await generatePlaceholders(
-        imageFiles,
-        getImageAspectRatio,
-      );
+      const imagePlaceholders = await generateImagePlaceholders(imageFiles);
 
       await fs.writeFile(
         IMAGE_PLACEHOLDERS_FILE,
@@ -207,10 +242,7 @@ async function main(): Promise<void> {
       const videoDir = path.dirname(VIDEO_PLACEHOLDERS_FILE);
       await fs.mkdir(videoDir, { recursive: true });
 
-      const videoPlaceholders = await generatePlaceholders(
-        videoFiles,
-        getVideoAspectRatio,
-      );
+      const videoPlaceholders = await generateVideoPlaceholders(videoFiles);
 
       await fs.writeFile(
         VIDEO_PLACEHOLDERS_FILE,
