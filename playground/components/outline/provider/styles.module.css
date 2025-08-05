@@ -2,7 +2,7 @@
   position: fixed;
   top: 50%;
   left: 0px;
-  z-index: 1;
+  z-index: 999999;
   display: flex;
   max-height: calc(100% - 64px);
   padding-left: 24px;
@@ -20,7 +20,7 @@
   position: fixed;
   top: 50%;
   left: 0px;
-  z-index: 2;
+  z-index: 9999999;
   display: flex;
   max-height: calc(100% - 64px);
   padding-left: 24px;
