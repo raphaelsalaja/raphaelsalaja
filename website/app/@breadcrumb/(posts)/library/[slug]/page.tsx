@@ -8,5 +8,5 @@ export default async function Page(props: {
 
   const slug = title(data.slug.replace(/-/g, " "));
 
-  return <Breadcrumb.Root page={slug} />;
+  return <Breadcrumb.Home />;
 }

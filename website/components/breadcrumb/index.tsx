@@ -7,6 +7,18 @@ import title from "title";
 
 const Chevron = <ChevronRightIcon width={14} />;
 
+export function Home() {
+  return (
+    <Breadcrumb.Root>
+      <Breadcrumb.List>
+        <Breadcrumb.Item>
+          <Breadcrumb.Link render={<Link href="/">Home</Link>} href="/" />
+        </Breadcrumb.Item>
+      </Breadcrumb.List>
+    </Breadcrumb.Root>
+  );
+}
+
 export function Root({ page }: { page: string }) {
   return (
     <Breadcrumb.Root>

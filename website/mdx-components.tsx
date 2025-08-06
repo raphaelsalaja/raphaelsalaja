@@ -25,6 +25,7 @@ import {
   Tone,
   Workouts,
 } from "@/components/mdx";
+import { UserSelectButton } from "./components/mdx/sweating-details/user-select";
 import { Video } from "./components/media";
 
 const components: MDXComponents = {
@@ -49,6 +50,7 @@ const components: MDXComponents = {
   Tone,
   Dialogs,
   Conversions,
+  UserSelectButton,
 };
 
 export function getMDXComponents(): MDXComponents {

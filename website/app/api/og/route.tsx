@@ -50,7 +50,7 @@ export async function GET(request: Request) {
               letterSpacing: -0.69,
             }}
           >
-            {title}
+            {title === "Raphael Salaja" ? "Engineering Feelings" : title}
           </div>
         ) : (
           <div
