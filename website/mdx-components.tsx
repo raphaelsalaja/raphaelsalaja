@@ -5,44 +5,23 @@ import type { MDXComponents } from "mdx/types";
 
 import { Image } from "@/components/image";
 import {
-  Anticipation,
-  Appeal,
-  Arcs,
   Caret,
   Conversions,
   Dialogs,
-  Exaggeration,
   FamilyWallet,
-  FollowThroughAndOverlappingAction,
   Nature,
-  SecondaryAction,
-  SlowInSlowOut,
-  SolidDrawing,
-  SquashStretch,
-  Staging,
-  StraightAheadActionAndPoseToPose,
-  Timing,
   Tone,
   Workouts,
 } from "@/components/mdx";
+import { Principles } from "./components/mdx/12-principles";
+import { BatteryIcon } from "./components/mdx/battery-icon";
 import { UserSelectButton } from "./components/mdx/sweating-details/user-select";
 import { Video } from "./components/media";
 
 const components: MDXComponents = {
   img: (props) => <Image {...props} />,
   video: (props) => <Video loop {...props} />,
-  SquashStretch,
-  Anticipation,
-  Arcs,
-  Exaggeration,
-  FollowThroughAndOverlappingAction,
-  SecondaryAction,
-  SlowInSlowOut,
-  SolidDrawing,
-  Staging,
-  StraightAheadActionAndPoseToPose,
-  Timing,
-  Appeal,
+  ...Principles,
   Workouts,
   Caret,
   FamilyWallet,
@@ -50,6 +29,7 @@ const components: MDXComponents = {
   Tone,
   Dialogs,
   Conversions,
+  BatteryIcon,
   UserSelectButton,
 };
 

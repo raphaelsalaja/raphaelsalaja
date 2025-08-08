@@ -1,14 +1,27 @@
-// start:ng42.barrel
-export * from "./anticipation";
-export * from "./appeal";
-export * from "./arcs";
-export * from "./exaggeration";
-export * from "./follow-through-and-overlapping-action";
-export * from "./secondary-action";
-export * from "./slow-in-and-slow-out";
-export * from "./solid-drawing";
-export * from "./squash-and-stretch";
-export * from "./staging";
-export * from "./straight-ahead-action-and-pose-to-pose";
-export * from "./timing";
-// end:ng42.barrel
+import { Anticipation } from "./anticipation";
+import { Appeal } from "./appeal";
+import { Arcs } from "./arcs";
+import { Exaggeration } from "./exaggeration";
+import { FollowThroughAndOverlappingAction } from "./follow-through-and-overlapping-action";
+import { SecondaryAction } from "./secondary-action";
+import { SlowInSlowOut } from "./slow-in-and-slow-out";
+import { SolidDrawing } from "./solid-drawing";
+import { SquashStretch } from "./squash-and-stretch";
+import { Staging } from "./staging";
+import { StraightAheadActionAndPoseToPose } from "./straight-ahead-action-and-pose-to-pose";
+import { Timing } from "./timing";
+
+export const Principles = {
+  Anticipation,
+  Appeal,
+  Arcs,
+  Exaggeration,
+  FollowThroughAndOverlappingAction,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  SquashStretch,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+};

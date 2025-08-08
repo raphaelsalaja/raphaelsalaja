@@ -11,6 +11,8 @@
 * {
   scroll-behavior: smooth;
   scroll-padding-top: 128px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 html {
