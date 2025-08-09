@@ -18,6 +18,7 @@ var docs = defineDocs({
       external: z.string().optional(),
       preview: z.string().optional(),
       disabled: z.boolean().optional(),
+      draft: z.boolean().optional(),
       timestamp: z.number().optional(),
       desktop: z.boolean().optional(),
       category: z.enum([

@@ -10,9 +10,9 @@ interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
 }
 
 export const Article = async ({ page }: ArticleProps) => {
-  const { title, date, body: MDX, external } = page.data;
+  const { title, date, body: MDX, external, disabled, draft } = page.data;
 
-  if (external) {
+  if (external || disabled || draft) {
     notFound();
   }
 
