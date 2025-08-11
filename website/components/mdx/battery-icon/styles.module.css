@@ -73,7 +73,7 @@
       width: 6.46397px;
       height: 15.2309px;
       background: #ff4f5c;
-      border-radius: 3.23199;
+      border-radius: 3.23199px;
     }
 
     .ring {
@@ -83,7 +83,7 @@
       z-index: 10;
       width: 6.46397px;
       height: 15.2309px;
-      border-radius: 3.23199;
+      border-radius: 3.23199px;
       box-shadow: 0 0 0 1.5px #ff4f5c;
       opacity: 0;
       transform: translate(-50%, -50%);
