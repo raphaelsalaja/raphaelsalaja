@@ -12,10 +12,10 @@
     "build:turbo": "turbo lint && turbo build && pnpm install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "2.1.4",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.4",
-    "typescript": "5.8.3"
+    "turbo": "^2.5.5",
+    "typescript": "5.9.2"
   },
   "engines": {
     "node": ">=18"

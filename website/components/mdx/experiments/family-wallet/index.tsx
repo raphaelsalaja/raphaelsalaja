@@ -3,10 +3,9 @@
 import { Dialog } from "@base-ui-components/react/dialog";
 import { CopyIcon, EllipsisIcon } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
-import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Toast } from "@/components/icons";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 
 enum WalletState {
   Collapsed = "collapsed",

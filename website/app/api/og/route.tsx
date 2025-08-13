@@ -1,10 +1,17 @@
 import { ImageResponse } from "next/og";
-import { loadGoogleFont } from "@/lib/opengraph";
+
+export const runtime = "edge";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title");
-  const inter600 = await loadGoogleFont("Inter:wght@600");
+
+  const data = await fetch(
+    new URL("/fonts/openrunde/semibold.otf", request.url),
+    {
+      cache: "force-cache",
+    },
+  ).then((r) => r.arrayBuffer());
 
   return new ImageResponse(
     <div
@@ -13,59 +20,22 @@ export async function GET(request: Request) {
         width: "100%",
         height: "100%",
         display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
+        justifyContent: "center",
+        alignItems: "center",
         padding: 64,
       }}
     >
       <div
         style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
+          color: "#343433",
+          fontSize: 64,
+          fontWeight: 600,
+          fontFamily: "OpenRunde",
+          lineHeight: 1.5,
+          letterSpacing: -1.43,
         }}
       >
-        <div
-          style={{
-            color: "#1b1b1b",
-            fontSize: 32,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            letterSpacing: -0.69,
-            whiteSpace: "nowrap",
-          }}
-        >
-          Raphael Salaja
-        </div>
-        {title ? (
-          <div
-            style={{
-              color: "#808080",
-              fontSize: 32,
-              fontWeight: 600,
-              lineHeight: 1.2,
-              letterSpacing: -0.69,
-            }}
-          >
-            {title === "Raphael Salaja" ? "Engineering Feelings" : title}
-          </div>
-        ) : (
-          <div
-            style={{
-              color: "#808080",
-              fontSize: 32,
-              fontWeight: 600,
-              lineHeight: 1.2,
-              letterSpacing: -0.69,
-              whiteSpace: "nowrap",
-            }}
-          >
-            Engineering Feelings
-          </div>
-        )}
+        {title || "Raphael Salaja"}
       </div>
     </div>,
     {
@@ -73,8 +43,8 @@ export async function GET(request: Request) {
       height: 630,
       fonts: [
         {
-          name: "Inter",
-          data: inter600,
+          name: "OpenRunde",
+          data: data,
           style: "normal",
           weight: 600,
         },
