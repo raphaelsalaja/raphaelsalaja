@@ -4,7 +4,7 @@ import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
 import { Providers } from "@/components/providers";
-import { opengraph } from "@/config/site";
+import { opengraph } from "@/lib/site";
 
 import "@/styles/main.css";
 

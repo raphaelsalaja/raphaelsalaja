@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatTimeMMSS } from "@/utils/formatting";
+import { formatTimeMMSS } from "@/lib/formatting";
 
 const WORDS_PER_MINUTE = 200;
 

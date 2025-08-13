@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/components/article";
-import { generateMetadataForPost } from "@/config/site";
 import { source } from "@/lib/fumadocs";
+import { generateMetadataForPost } from "@/lib/site";
 
 const ROOT = "library";
 

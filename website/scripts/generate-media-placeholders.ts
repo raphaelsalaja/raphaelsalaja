@@ -14,7 +14,16 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import chalk from "chalk";
-import { logger } from "./logger.js";
+import { createConsola } from "consola";
+
+const logger = createConsola({
+  formatOptions: {
+    colors: true,
+    compact: true,
+    date: false,
+  },
+  level: 3, // Info level - no debug messages
+});
 
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 const IMAGE_PLACEHOLDERS_FILE = path.join(

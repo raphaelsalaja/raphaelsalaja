@@ -12,7 +12,7 @@ const transitions = {
   },
 };
 
-export const BatteryIcon = () => {
+export const LowBatteryNotification = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLowPowerMode, setIsLowPowerMode] = useState(false);
 

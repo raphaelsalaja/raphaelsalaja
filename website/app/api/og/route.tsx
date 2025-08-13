@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { loadGoogleFont } from "@/utils/opengraph";
+import { loadGoogleFont } from "@/lib/opengraph";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

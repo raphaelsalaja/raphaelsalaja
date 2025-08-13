@@ -1,6 +1,6 @@
 import { Polar } from "@polar-sh/sdk";
-import { VERCEL_ENV } from "@/config/site";
 import { env } from "@/env";
+import { VERCEL_ENV } from "@/lib/site";
 
 export const accessToken = () => {
   switch (VERCEL_ENV) {

@@ -46,7 +46,7 @@ const COLORS = [
   "--family-wallet-black",
 ];
 
-export const FamilyWallet: React.FC = () => {
+export function FamilyWallet() {
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   const [state, setState] = useState<WalletState>(WalletState.Collapsed);
@@ -413,4 +413,4 @@ export const FamilyWallet: React.FC = () => {
       </Dialog.Root>
     </MotionConfig>
   );
-};
+}
