@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -33,10 +33,23 @@
         "noDuplicateProperties": "off"
       },
       "style": {
-        "noDescendingSpecificity": "off"
+        "noDescendingSpecificity": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
       "a11y": {
         "noSvgWithoutTitle": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
       }
     },
     "domains": {

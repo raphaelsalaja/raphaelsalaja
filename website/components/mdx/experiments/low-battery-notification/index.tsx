@@ -107,7 +107,7 @@ export const LowBatteryNotification = () => {
                         filter: {
                           duration: 1.5,
                           repeatDelay: 0.5,
-                          repeat: Infinity,
+                          repeat: Number.POSITIVE_INFINITY,
                           ease: "linear",
                         },
                         default: { duration: 0.2 },
@@ -124,12 +124,12 @@ export const LowBatteryNotification = () => {
                           default: {
                             duration: 1.5,
                             repeatDelay: 0.5,
-                            repeat: Infinity,
+                            repeat: Number.POSITIVE_INFINITY,
                             ease: "linear",
                           },
                           opacity: {
                             duration: 1.5,
-                            repeat: Infinity,
+                            repeat: Number.POSITIVE_INFINITY,
                             repeatDelay: 0.5,
                             ease: "linear",
                             delay: 0.04,

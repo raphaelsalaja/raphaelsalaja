@@ -7,7 +7,7 @@
     "build": "bunchee",
     "dev": "bunchee --watch",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
-    "lint": "biome check --fix --unsafe ."
+    "lint": "biome check --fix --unsafe .  --reporter=summary"
   },
   "keywords": [
     "react",
@@ -22,7 +22,6 @@
     "@base-ui-components/react": "1.0.0-beta.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
     "@rs/configuration": "workspace:*",
     "@rs/styles": "workspace:*",
     "@types/react": "19.1.8",

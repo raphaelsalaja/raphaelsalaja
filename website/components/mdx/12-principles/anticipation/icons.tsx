@@ -28,7 +28,7 @@ export const InProgress = (props: IconProps) => {
         strokeWidth="1.5"
         strokeDasharray="3.14 0"
         strokeDashoffset="-0.7"
-      ></circle>
+      />
       <circle
         cx="7"
         cy="7"
@@ -39,7 +39,7 @@ export const InProgress = (props: IconProps) => {
         strokeDasharray="12.189379495928398 24.378758991856795"
         strokeDashoffset="6.094689747964199"
         transform="rotate(-90 7 7)"
-      ></circle>
+      />
     </svg>
   );
 };

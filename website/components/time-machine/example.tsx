@@ -15,18 +15,9 @@ export function Example() {
           <div className={styles.frameContent}>
             <div className={styles.browserHeader}>
               <div className={styles.browserControls}>
-                <div
-                  className={styles.dot}
-                  style={{ background: "#FE5F57" }}
-                ></div>
-                <div
-                  className={styles.dot}
-                  style={{ background: "#FEBB2E" }}
-                ></div>
-                <div
-                  className={styles.dot}
-                  style={{ background: "#26C941" }}
-                ></div>
+                <div className={styles.dot} style={{ background: "#FE5F57" }} />
+                <div className={styles.dot} style={{ background: "#FEBB2E" }} />
+                <div className={styles.dot} style={{ background: "#26C941" }} />
               </div>
               <div className={styles.addressBar}>example{frameNumber}.com</div>
             </div>

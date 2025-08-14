@@ -46,7 +46,7 @@ export function SolidDrawing() {
               strokeDasharray: !isPlaying ? "2 0" : "2 4.09",
               transition: {
                 rotate: {
-                  repeat: isPlaying ? Infinity : 0,
+                  repeat: isPlaying ? Number.POSITIVE_INFINITY : 0,
                   ease: "linear",
                   duration: 2,
                 },
@@ -96,7 +96,7 @@ export function SolidDrawing() {
                     "translate(-50%, -50%) rotateY(0deg) translateZ(48px) rotateY(360deg)",
                   ],
                   transition: {
-                    repeat: Infinity,
+                    repeat: Number.POSITIVE_INFINITY,
                     ease: "linear",
                     duration: ORBIT_DURATION,
                   },
@@ -110,7 +110,7 @@ export function SolidDrawing() {
             animate={{
               background: !isPlaying ? "var(--purple)" : "var(--orange)",
             }}
-            transformTemplate={() => `translate(-50%, -50%) `}
+            transformTemplate={() => "translate(-50%, -50%) "}
             className={styles.mg}
           />
           <motion.div
@@ -118,7 +118,7 @@ export function SolidDrawing() {
               width: !isPlaying ? 0 : 8,
               height: !isPlaying ? 0 : 8,
             }}
-            transformTemplate={() => `translate(-50%, -50%)`}
+            transformTemplate={() => "translate(-50%, -50%)"}
             className={styles.fg}
             transition={{
               duration: 0.4,

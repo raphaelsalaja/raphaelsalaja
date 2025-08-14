@@ -31,14 +31,7 @@ export function Link({
 
 export function Page({ ...props }: React.ComponentProps<"span">) {
   return (
-    <span
-      role="link"
-      aria-disabled="true"
-      aria-current="page"
-      tabIndex={0}
-      data-rs-breadcrumb-current-page
-      {...props}
-    />
+    <span aria-current="page" data-rs-breadcrumb-current-page {...props} />
   );
 }
 

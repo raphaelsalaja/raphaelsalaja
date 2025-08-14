@@ -105,7 +105,7 @@ const Visualization = ({ ease, name }: VisualizationProps) => {
             transition={{
               duration: 2,
               ease: ease,
-              repeat: Infinity,
+              repeat: Number.POSITIVE_INFINITY,
             }}
           />
         </div>

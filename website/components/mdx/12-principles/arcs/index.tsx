@@ -1,3 +1,3 @@
 export function Arcs() {
-  return <div></div>;
+  return <div />;
 }

@@ -14,7 +14,7 @@ const jacquard = Jacquard_12({
 
 export default function NotFound() {
   useEffect(() => {
-    // @ts-ignore
+    // @ts-expect-error
     import("@/lib/unicornStudio.umd.js")
       .then((module) => {
         const UnicornStudio = module.default ?? module;

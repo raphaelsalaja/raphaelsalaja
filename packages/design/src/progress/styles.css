@@ -63,7 +63,7 @@
 /* Indeterminate state animation */
 [data-shunpo-progress-root][data-indeterminate]
   [data-shunpo-progress-indicator] {
-  width: 40% !important;
+  width: 40%;
   animation: progress-indeterminate 2s infinite ease-in-out;
 }
 

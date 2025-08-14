@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "npm run generate:placeholders && next build",
     "start": "next start",
-    "lint": "biome check --fix --unsafe .",
+    "lint": "biome check --fix --unsafe .  --reporter=summary",
     "postinstall": "fumadocs-mdx",
     "generate:placeholders": "tsx scripts/generate-media-placeholders.ts"
   },

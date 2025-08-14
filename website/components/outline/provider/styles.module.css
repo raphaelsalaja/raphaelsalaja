@@ -42,7 +42,7 @@
     padding: 8px 0;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-color: var(--border-primary) transparent !important;
+    scrollbar-color: var(--border-primary) transparent;
     scrollbar-width: thin;
     background-color: var(--background-primary);
     border: 0.5px solid var(--border-primary);
@@ -103,7 +103,7 @@
 .link {
   height: 24px;
   margin: auto 0px;
-  line-height: 24px !important;
+  line-height: 24px;
   transition: all var(--duration-quick) var(--ease-in-out-cubic);
 
   &[data-selector="#H1"],
