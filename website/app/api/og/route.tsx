@@ -23,20 +23,15 @@ export async function GET(request: Request) {
         justifyContent: "center",
         alignItems: "center",
         padding: 64,
+        color: "#343433",
+        fontSize: 64,
+        fontWeight: 600,
+        fontFamily: "OpenRunde",
+        lineHeight: 1.5,
+        letterSpacing: -1.43,
       }}
     >
-      <div
-        style={{
-          color: "#343433",
-          fontSize: 64,
-          fontWeight: 600,
-          fontFamily: "OpenRunde",
-          lineHeight: 1.5,
-          letterSpacing: -1.43,
-        }}
-      >
-        {title || "Raphael Salaja"}
-      </div>
+      {title || "Raphael Salaja"}
     </div>,
     {
       width: 1200,
