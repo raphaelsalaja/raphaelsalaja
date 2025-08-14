@@ -1,19 +1,20 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title");
 
-  const data = await fetch(
+  const title = searchParams.get("title") ?? "Raphael Salaja";
+
+  const fontData = await fetch(
     new URL("/fonts/openrunde/semibold.otf", request.url),
-    {
-      cache: "force-cache",
-    },
+    { cache: "no-store" },
   ).then((r) => r.arrayBuffer());
 
-  return new ImageResponse(
+  const image = new ImageResponse(
     <div
       style={{
         backgroundColor: "white",
@@ -31,7 +32,7 @@ export async function GET(request: Request) {
         letterSpacing: -1.43,
       }}
     >
-      {title || "Raphael Salaja"}
+      {title}
     </div>,
     {
       width: 1200,
@@ -39,11 +40,15 @@ export async function GET(request: Request) {
       fonts: [
         {
           name: "OpenRunde",
-          data: data,
+          data: fontData,
           style: "normal",
           weight: 600,
         },
       ],
     },
   );
+
+  image.headers.set("Cache-Control", "no-store");
+
+  return image;
 }
