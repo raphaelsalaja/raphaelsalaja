@@ -11,7 +11,7 @@ export default function Icon() {
         display: "flex",
         width: "100%",
         height: "100%",
-        background: "#00C978",
+        background: "linear-gradient(180deg, #F80 0%, #DB5400 100%)",
         borderRadius: "100%",
         padding: "4px",
       }}
