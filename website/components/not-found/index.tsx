@@ -1,16 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { Jacquard_12 } from "next/font/google";
+
 import { Link } from "next-view-transitions";
 import { useEffect } from "react";
-import styles from "./styles.module.scss";
-
-const jacquard = Jacquard_12({
-  subsets: ["latin"],
-  variable: "--font-jacquard",
-  weight: ["400"],
-});
+import styles from "./styles.module.css";
 
 export default function NotFound() {
   useEffect(() => {
@@ -36,7 +30,7 @@ export default function NotFound() {
         data-us-arialabel="404 - Not Found"
       />
 
-      <Link href="/" className={clsx(styles.home, jacquard.className)}>
+      <Link href="/" className={clsx(styles.home)}>
         return home
       </Link>
     </div>

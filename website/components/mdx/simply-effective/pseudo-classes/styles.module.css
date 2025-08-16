@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .heading {
+    font-variation-settings: var(--font-weight-500);
+    letter-spacing: -0.18px;
+  }
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
+
+  &:has(.option:hover) {
+    .option {
+      .media {
+        filter: opacity(0.6);
+        scale: 1;
+      }
+    }
+
+    .option:hover {
+      .media {
+        filter: none;
+        scale: 0.98;
+      }
+    }
+  }
+}
+
+.option {
+  --radius: 24px;
+  --transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  --blue: oklch(0.6371 0.1896 252.18);
+  display: flex;
+  flex-direction: column;
+
+  .media::before {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    content: "";
+    border-radius: var(--radius);
+    box-shadow: inset 0 0 0 2px oklch(0 0 0 / 6%);
+    transition: var(--transition);
+  }
+
+  .media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    aspect-ratio: 1 / 1;
+    transition: var(--transition);
+    /* delay exit  */
+    transition-delay: 100ms;
+    will-change: filter;
+  }
+
+  .media::after {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: oklch(0.2 0.1 0);
+    content: "";
+    background: var(--bg);
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--radius);
+    box-shadow: inset 0 0 0 2px oklch(1 0 0 / 50%);
+
+    scale: 0.99;
+    transition: var(--transition);
+  }
+
+  .icon {
+    z-index: 10;
+    width: 64px;
+    height: 64px;
+    opacity: 0.9;
+    transition: var(--transition);
+  }
+
+  .label {
+    font-size: 14px;
+    font-variation-settings: var(--font-weight-500);
+    color: var(--text-secondary);
+    text-align: center;
+    letter-spacing: -0.09px;
+  }
+
+  &[data-selected="true"] {
+    .media::before {
+      box-shadow: inset 0 0 0 3px var(--bg);
+    }
+
+    .icon {
+      scale: 0.9;
+    }
+
+    .media::after {
+      scale: 0.9;
+    }
+
+    .label {
+      color: var(--text-primary);
+    }
+  }
+}
