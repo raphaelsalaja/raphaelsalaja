@@ -1,7 +1,7 @@
 "use client";
 
+import { Cambio } from "cambio";
 import React from "react";
-import * as Cambio from "@/components/cambio";
 import * as Media from "@/components/media";
 import styles from "./styles.module.css";
 
@@ -15,7 +15,7 @@ export function Image(props: ImageProps) {
   return (
     <React.Fragment>
       <Cambio.Root>
-        <Cambio.Trigger className={styles.trigger}>
+        <Cambio.Trigger data-cambio-trigger className={styles.trigger}>
           <Media.Image
             src={src}
             alt={alt}

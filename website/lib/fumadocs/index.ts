@@ -26,4 +26,12 @@ export const getWorkPages = () => {
     });
 };
 
+export const getPage = (slug: string[]) => {
+  return source.getPage(slug);
+};
+
+export const getAboutPage = () => {
+  return source.getPage(["about"])?.data;
+};
+
 export type Page = ReturnType<typeof source.getPages>[number];

@@ -170,31 +170,18 @@ export const useTransformOrigin = ({
   }, [trigger, popup, drawDebugLines]);
 
   useEffect(() => {
-    // Calculate position for both opening and closing
-    const frameId = requestAnimationFrame(() => {
-      updateTransformOrigin();
-    });
-
-    // Clear debug lines when dialog closes
-    if (!open) {
-      clearDebugLines();
-    }
-
-    return () => {
-      cancelAnimationFrame(frameId);
-    };
-  }, [open, updateTransformOrigin, clearDebugLines]);
-
-  // Also run when open changes to true with a small delay to ensure DOM is ready
-  useEffect(() => {
     if (open) {
-      const timeoutId = setTimeout(() => {
+      // Calculate when dialog opens
+      const frameId = requestAnimationFrame(() => {
         updateTransformOrigin();
-      }, 10); // Small delay to ensure popup is rendered
+      });
 
       return () => {
-        clearTimeout(timeoutId);
+        cancelAnimationFrame(frameId);
       };
     }
-  }, [open, updateTransformOrigin]);
+
+    // Clear debug lines when dialog closes
+    clearDebugLines();
+  }, [open, updateTransformOrigin, clearDebugLines]);
 };

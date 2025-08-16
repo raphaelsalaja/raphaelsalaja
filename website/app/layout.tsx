@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Roboto_Mono } from "next/font/google";
+import { Jacquard_12, Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
 import { Providers } from "@/components/providers";
@@ -12,6 +12,12 @@ export const metadata: Metadata = opengraph;
 
 const inter = localFont({
   src: "./fonts/inter/variable.ttf",
+});
+
+const jacquard = Jacquard_12({
+  subsets: ["latin"],
+  variable: "--font-jacquard",
+  weight: ["400"],
 });
 
 const openrunde = localFont({
@@ -57,7 +63,12 @@ export default async function RootLayout({
     <ViewTransitions>
       <html
         lang="en"
-        className={clsx(inter.className, openrunde.variable, mono.variable)}
+        className={clsx(
+          inter.className,
+          openrunde.variable,
+          mono.variable,
+          jacquard.variable,
+        )}
       >
         <body>
           <main data-animate>

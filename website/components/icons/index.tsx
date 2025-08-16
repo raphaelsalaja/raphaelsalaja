@@ -157,7 +157,7 @@ export function Direction({
   );
 }
 
-export const OpenAI = (props: SVGProps<SVGSVGElement>) => (
+export const OpenAI = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -173,7 +173,7 @@ export const OpenAI = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Meta = (props: SVGProps<SVGSVGElement>) => (
+export const Meta = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -197,7 +197,7 @@ export const Meta = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Anthropic = (props: SVGProps<SVGSVGElement>) => (
+export const Anthropic = (props: IconProps) => (
   <svg
     fill="white"
     fillRule="evenodd"
@@ -216,13 +216,10 @@ export const Anthropic = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Grok = (props: SVGProps<SVGSVGElement>) => (
+export const Grok = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    style={{
-      enableBackground: "new 0 0 841.89 595.28",
-    }}
     viewBox="0 0 841.89 595.28"
     width="1em"
     height="1em"
