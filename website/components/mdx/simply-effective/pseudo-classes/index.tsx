@@ -1,6 +1,5 @@
 "use client";
 
-import { color } from "motion/react";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Anthropic, Grok, Meta, OpenAI } from "@/components/icons";
@@ -10,6 +9,7 @@ const size = {
   width: "48px",
   height: "48px",
 };
+
 const options = [
   {
     id: 1,
