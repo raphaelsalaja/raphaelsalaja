@@ -5,6 +5,16 @@
       "maxDuration": 30
     }
   },
+  "rewrites": [
+    {
+      "source": "/provenance",
+      "destination": "https://provenance-nine-blond.vercel.app/provenance"
+    },
+    {
+      "source": "/provenance/:path*",
+      "destination": "https://provenance-nine-blond.vercel.app/provenance/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
