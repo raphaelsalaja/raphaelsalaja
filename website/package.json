@@ -55,7 +55,6 @@
     "motion": "^12.23.9",
     "nanoid": "^5.1.5",
     "next": "15.4.10",
-    "next-mdx-remote": "^5.0.0",
     "next-view-transitions": "^0.3.4",
     "react": "19.1.0",
     "react-circular-progressbar": "^2.2.0",
