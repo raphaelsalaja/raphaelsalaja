@@ -11,7 +11,20 @@ import "@/styles/main.css";
 export const metadata: Metadata = opengraph;
 
 const inter = localFont({
-  src: "./fonts/inter/variable.ttf",
+  src: [
+    {
+      path: "./fonts/inter/InterVariable.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/inter/InterVariable-Italic.woff2",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 const jacquard = Jacquard_12({
@@ -52,11 +65,9 @@ const mono = Roboto_Mono({
   display: "swap",
 });
 
-export default async function RootLayout({
-  breadcrumb,
+export default function RootLayout({
   children,
 }: Readonly<{
-  breadcrumb: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
@@ -72,10 +83,7 @@ export default async function RootLayout({
       >
         <body>
           <main data-animate>
-            <Providers>
-              {breadcrumb}
-              {children}
-            </Providers>
+            <Providers>{children}</Providers>
           </main>
         </body>
       </html>

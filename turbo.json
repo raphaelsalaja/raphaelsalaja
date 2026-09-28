@@ -6,18 +6,9 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^build"],
       "env": [
-        "SPOTIFY_CLIENT_ID",
-        "SPOTIFY_CLIENT_SECRET",
-        "SPOTIFY_REFRESH_TOKEN",
-        "STEAM_STEAM_ID",
-        "STEAM_API_KEY",
-        "STEAM_DOMAIN_NAME",
-        "POLAR_ACCESS_DEVELOPMENT_TOKEN",
-        "POLAR_ACCESS_PREVIEW_TOKEN",
-        "POLAR_ACCESS_PRODUCTION_TOKEN",
-        "POLAR_SUCCESS_DEVELOPMENT_URL",
-        "POLAR_SUCCESS_PREVIEW_URL",
-        "POLAR_SUCCESS_PRODUCTION_URL"
+        "NEXT_PUBLIC_APP_DEVELOPMENT_URL",
+        "NEXT_PUBLIC_APP_PREVIEW_URL",
+        "NEXT_PUBLIC_APP_PRODUCTION_URL"
       ]
     },
     "lint": {

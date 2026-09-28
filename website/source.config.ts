@@ -15,13 +15,9 @@ export const docs = defineDocs({
   dir: "content",
   docs: {
     schema: frontmatterSchema.extend({
-      date: z.string(),
-      external: z.string().optional(),
+      date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
       preview: z.string().optional(),
-      disabled: z.boolean().optional(),
       draft: z.boolean().optional(),
-      timestamp: z.number().optional(),
-      desktop: z.boolean().optional(),
       category: z
         .enum([
           "Experiments",

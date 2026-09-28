@@ -8,9 +8,14 @@ export const APP_URL = () => {
     case "development":
       return env.NEXT_PUBLIC_APP_DEVELOPMENT_URL;
     case "preview":
-      return env.NEXT_PUBLIC_APP_PREVIEW_URL;
+      return (
+        env.NEXT_PUBLIC_APP_PREVIEW_URL ?? env.NEXT_PUBLIC_APP_DEVELOPMENT_URL
+      );
     case "production":
-      return env.NEXT_PUBLIC_APP_PRODUCTION_URL;
+      return (
+        env.NEXT_PUBLIC_APP_PRODUCTION_URL ??
+        env.NEXT_PUBLIC_APP_DEVELOPMENT_URL
+      );
     default:
       return env.NEXT_PUBLIC_APP_DEVELOPMENT_URL;
   }
@@ -21,7 +26,12 @@ export const APP_DESCRIPTION = "Design Engineer";
 export const APP_NAME = "Raphael Salaja";
 export const KEYWORDS = ["Raphael Salaja", "Design Engineer"];
 
-function createBaseMetadata(title: string, description: string): Metadata {
+function createBaseMetadata(
+  title: string,
+  description: string,
+  path = "/",
+): Metadata {
+  const pageUrl = new URL(path, APP_URL());
   const og = `${APP_OG_ENDPOINT}?title=${encodeURIComponent(title)}`;
 
   return {
@@ -32,8 +42,8 @@ function createBaseMetadata(title: string, description: string): Metadata {
     openGraph: {
       title,
       description,
-      url: APP_URL(),
-      siteName: title,
+      url: pageUrl,
+      siteName: APP_NAME,
       type: "website",
       locale: "en_US",
       images: [{ url: og }],
@@ -70,6 +80,7 @@ export const opengraph: Metadata = {
 export function generateMetadataForPost(
   title: string,
   description: string,
+  path: string,
 ): Metadata {
-  return createBaseMetadata(title, description);
+  return createBaseMetadata(title, description, path);
 }

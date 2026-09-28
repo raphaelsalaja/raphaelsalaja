@@ -4,11 +4,11 @@
   "scripts": {
     "dev": "turbo dev",
     "dev:website": "turbo run dev --filter=website",
-    "dev:design": "turbo run dev --filter=@rs/design --filter=playground",
+    "dev:design": "turbo run dev --filter=@rs/design",
     "lint": "turbo lint",
     "build": "turbo build",
     "build:website": "turbo run build --filter=website",
-    "build:design": "turbo run build --filter=@rs/design --filter=playground",
+    "build:design": "turbo run build --filter=@rs/design",
     "build:turbo": "turbo lint && turbo build && pnpm install"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "typescript": "5.9.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.9.0"
   },
   "packageManager": "pnpm@9.5.0"
 }

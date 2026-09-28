@@ -5,11 +5,7 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
-  experimental: {
-    viewTransition: true,
-  },
-  serverExternalPackages: ["steamapi"],
+  pageExtensions: ["tsx", "ts", "jsx", "js"],
   images: {
     formats: ["image/webp"],
     minimumCacheTTL: 2678400,

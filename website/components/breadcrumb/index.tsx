@@ -35,6 +35,22 @@ export function Root({ page }: { page: string }) {
   );
 }
 
+export function Essay({ title }: { title: string }) {
+  return (
+    <Breadcrumb.Root>
+      <Breadcrumb.List>
+        <Breadcrumb.Item>
+          <Breadcrumb.Link render={<Link href="/">Home</Link>} href="/" />
+        </Breadcrumb.Item>
+        <Breadcrumb.Separator>{Chevron}</Breadcrumb.Separator>
+        <Breadcrumb.Item>
+          <Breadcrumb.Page>{title}</Breadcrumb.Page>
+        </Breadcrumb.Item>
+      </Breadcrumb.List>
+    </Breadcrumb.Root>
+  );
+}
+
 export function Slug({ page, slug }: { page: string; slug: string }) {
   return (
     <Breadcrumb.Root>

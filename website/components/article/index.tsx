@@ -1,18 +1,20 @@
+import type { MDXComponents } from "mdx/types";
 import { notFound } from "next/navigation";
 import type React from "react";
 import { OutlineProvider } from "@/components/outline";
+import { Support } from "@/components/support";
 import type { Page } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
-import { Support } from "../support";
 
 interface ArticleProps extends React.ComponentPropsWithoutRef<"article"> {
   page: Page;
+  components?: MDXComponents;
 }
 
-export const Article = async ({ page }: ArticleProps) => {
-  const { title, date, body: MDX, external, disabled, draft } = page.data;
+export const Article = ({ page, components }: ArticleProps) => {
+  const { title, date, body: MDX, draft } = page.data;
 
-  if (external || disabled || draft) {
+  if (draft) {
     notFound();
   }
 
@@ -23,7 +25,7 @@ export const Article = async ({ page }: ArticleProps) => {
           <h1>{title}</h1>
           <time>{date && <time>{date}</time>}</time>
         </header>
-        <MDX components={getMDXComponents()} />
+        <MDX components={{ ...getMDXComponents(), ...components }} />
         <Support />
       </article>
     </OutlineProvider>

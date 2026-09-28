@@ -1,25 +1,16 @@
-import { id, polar } from "@/lib/polar";
+const SUPPORT_URL = "https://buymeacoffee.com/raphaelsalaja";
 
-export async function Support() {
-  const product = await polar.products.get({
-    id: id(),
-  });
-
-  const href = `/checkout?products=${product.id}`;
-
+export function Support() {
   return (
     <section data-support>
       <p>
-        If you've enjoyed this guide and found it useful, please consider
-        donating to support my work by visiting my donation page. Your
-        contribution helps cover the costs of research, writing and hosting and
-        keeps me motivated to create more in-depth tutorials.
+        If you've enjoyed this and found it useful, you can buy me a coffee.
+        It helps cover the costs of research, writing, and hosting.
       </p>
-
-      <p>Every bit of support makes a meaningful difference.</p>
-
       <p>
-        <a href={href}>→ Consider Supporting</a>
+        <a href={SUPPORT_URL} target="_blank" rel="noreferrer">
+          → Buy me a coffee
+        </a>
       </p>
     </section>
   );

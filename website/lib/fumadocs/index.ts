@@ -1,5 +1,5 @@
 import { loader } from "fumadocs-core/source";
-import { docs } from "@/.source";
+import { docs } from "@/.source/server";
 
 export const source = loader({
   baseUrl: "/",
@@ -7,23 +7,10 @@ export const source = loader({
 });
 
 export const getLibraryPages = () => {
-  const pages = source.getPages();
-  return pages
-    .filter((page) => page.slugs[0] === "library")
-    .sort((a, b) => {
-      const getDate = (post: typeof a) => new Date(post.data.date);
-      return getDate(b).getTime() - getDate(a).getTime();
-    });
-};
-
-export const getWorkPages = () => {
-  const pages = source.getPages();
-  return pages
-    .filter((page) => page.slugs[0] === "work")
-    .sort((a, b) => {
-      const getDate = (post: typeof a) => new Date(post.data.date);
-      return getDate(b).getTime() - getDate(a).getTime();
-    });
+  return source
+    .getPages()
+    .filter((page) => page.slugs[0] === "library" && !page.data.draft)
+    .sort((a, b) => b.data.date.localeCompare(a.data.date));
 };
 
 export const getPage = (slug: string[]) => {

@@ -1,13 +1,17 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/components/article";
-import { source } from "@/lib/fumadocs";
+import * as Breadcrumb from "@/components/breadcrumb";
+import { getLibraryPages, source } from "@/lib/fumadocs";
+import { libraryDemos } from "@/lib/mdx-demos";
 import { generateMetadataForPost } from "@/lib/site";
 
 const ROOT = "library";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return source.generateParams().map(({ slug }) => ({
-    slug: slug.join("/"),
+  return getLibraryPages().map((page) => ({
+    slug: page.slugs[1],
   }));
 }
 
@@ -16,11 +20,12 @@ export async function generateMetadata(props: {
 }) {
   const { slug } = await props.params;
   const page = source.getPage([ROOT, slug]);
-  if (!page) notFound();
+  if (!page || page.data.draft) notFound();
 
   return generateMetadataForPost(
     page.data.title,
     page.data.description ?? "Design Engineer",
+    `/${ROOT}/${slug}`,
   );
 }
 
@@ -29,7 +34,12 @@ export default async function Page(props: {
 }) {
   const { slug } = await props.params;
   const page = source.getPage([ROOT, slug]);
-  if (!page) notFound();
+  if (!page || page.data.draft) notFound();
 
-  return <Article page={page} />;
+  return (
+    <>
+      <Breadcrumb.Essay title={page.data.title} />
+      <Article page={page} components={await libraryDemos(slug)} />
+    </>
+  );
 }

@@ -16,6 +16,8 @@
 }
 
 html {
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 14, "wght" 400;
   color: var(--text-primary);
   caret-color: black;
   scrollbar-color: oklch(0 0 0 / 5%) transparent;
