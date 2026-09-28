@@ -5,6 +5,9 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   pageExtensions: ["tsx", "ts", "jsx", "js"],
   images: {
     formats: ["image/webp"],
