@@ -77,13 +77,6 @@ export const work: WorkItem[] = (
       preview: "/media/work/experiments/contextual-information.mp4",
     },
     {
-      title: "404 - Not Found",
-      date: "2025-05-23",
-      category: "Experiments",
-      href: "/404",
-      preview: "/media/work/experiments/404.mp4",
-    },
-    {
       title: "Family Wallet",
       date: "2025-05-22",
       category: "Experiments",
