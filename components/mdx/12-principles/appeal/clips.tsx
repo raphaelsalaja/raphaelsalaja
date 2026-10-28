@@ -63,7 +63,7 @@ export const TWITTER_CLIPS = [
       avatar: `${AVATAR_FOLDER}lochie.jpg`,
     },
     video: `${VIDEO_FOLDER}lochie.mp4`,
-    link: "https://x.com/lochiexon",
+    link: "https://x.com/lochieaxon",
   },
   {
     user: {

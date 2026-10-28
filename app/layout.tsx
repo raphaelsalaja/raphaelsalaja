@@ -1,10 +1,12 @@
 import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
-import { Inter, Jacquard_12, Roboto_Mono } from "next/font/google";
+import { Inter, Jacquard_12, Newsreader, Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransition } from "react";
+import { Footer } from "@/components/footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { VISITED_KEY } from "@/lib/visited";
 
 import "@/styles/main.css";
 
@@ -17,6 +19,14 @@ const inter = Inter({
 const mono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  preload: false,
+});
+
+const serif = Newsreader({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   preload: false,
 });
 
@@ -61,8 +71,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fdfdfc" },
+    { media: "(prefers-color-scheme: dark)", color: "#111110" },
+  ],
 };
+
+const visitedScript = `try{sessionStorage.getItem("${VISITED_KEY}")&&(document.documentElement.dataset.visited="")}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -71,13 +86,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={clsx(
         inter.className,
         mono.variable,
+        serif.variable,
         jacquard.variable,
         openrunde.variable,
       )}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static script that must run before first paint
+          dangerouslySetInnerHTML={{ __html: visitedScript }}
+        />
+      </head>
       <body>
         <main>
           <ViewTransition default="page">{children}</ViewTransition>
+          <Footer />
         </main>
         <Analytics />
       </body>

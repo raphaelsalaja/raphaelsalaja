@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { Article } from "@/components/article";
-import { Breadcrumb } from "@/components/breadcrumb";
 import { getPost, posts } from "@/data/library";
 import { createMetadata } from "@/lib/site";
 
@@ -15,7 +14,11 @@ export async function generateMetadata(props: PageProps<"/library/[slug]">) {
   const post = getPost(slug);
   if (!post) notFound();
 
-  return createMetadata({ ...post, path: `/library/${slug}` });
+  return createMetadata({
+    ...post,
+    path: `/library/${slug}`,
+    publishedTime: post.date,
+  });
 }
 
 export default async function Page(props: PageProps<"/library/[slug]">) {
@@ -26,11 +29,13 @@ export default async function Page(props: PageProps<"/library/[slug]">) {
   const { default: Content } = await import(`@/content/library/${slug}.mdx`);
 
   return (
-    <>
-      <Breadcrumb
-        items={[{ label: "Home", href: "/" }, { label: post.title }]}
-      />
-      <Article title={post.title} date={post.date} Content={Content} />
-    </>
+    <Article
+      title={post.title}
+      description={post.description}
+      date={post.date}
+      path={`/library/${slug}`}
+      parent={{ label: "Library", href: "/library" }}
+      Content={Content}
+    />
   );
 }

@@ -1,18 +1,47 @@
+import type { CSSProperties } from "react";
+import { JsonLd } from "@/components/json-ld";
 import { Library } from "@/components/library";
 import { Work } from "@/components/work";
 import About from "@/content/about.mdx";
-import { SITE_NAME } from "@/lib/site";
+import {
+  formatDate,
+  LAST_UPDATED,
+  personJsonLd,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+} from "@/lib/site";
 import styles from "./styles.module.css";
+import { Visited } from "./visited";
+
+const step = (index: number) => ({ "--step": index }) as CSSProperties;
 
 export function Home() {
   return (
     <div className={styles.layout}>
-      <section className={styles.about}>
-        <h1 className={styles.name}>{SITE_NAME}</h1>
-        <About />
-      </section>
-      <Work />
-      <Library />
+      <JsonLd data={personJsonLd} />
+      <Visited />
+      <div className={styles.intro}>
+        <header className={styles.header} data-step style={step(0)}>
+          <span className={styles.mark} aria-hidden="true" />
+          <div className={styles.identity}>
+            <h1 className={styles.name}>{SITE_NAME}</h1>
+            <p className={styles.role}>{SITE_DESCRIPTION}</p>
+          </div>
+          <p className={styles.updated}>
+            Updated{" "}
+            <time dateTime={LAST_UPDATED}>{formatDate(LAST_UPDATED)}</time>
+          </p>
+        </header>
+        <section className={`${styles.about} prose`} data-step style={step(1)}>
+          <About />
+        </section>
+      </div>
+      <div data-step style={step(2)}>
+        <Work />
+      </div>
+      <div data-step style={step(3)}>
+        <Library />
+      </div>
     </div>
   );
 }

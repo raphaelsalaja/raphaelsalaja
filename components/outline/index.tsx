@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { motion, type Transition } from "motion/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
@@ -18,7 +19,27 @@ const transition: Transition = {
   opacity: { ease: [0.25, 0.1, 0.25, 1], duration: 0.1 },
 };
 
-export function Outline() {
+function Links({
+  headings,
+  activeId,
+}: {
+  headings: Heading[];
+  activeId?: string;
+}) {
+  return headings.map((heading) => (
+    <li key={heading.id}>
+      <a
+        href={`#${heading.id}`}
+        className={clsx(styles.link, styles[heading.level])}
+        aria-current={heading.id === activeId ? "location" : undefined}
+      >
+        {heading.title}
+      </a>
+    </li>
+  ));
+}
+
+export function Outline({ back }: { back: { href: string; label: string } }) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>();
   const [open, setOpen] = useState(false);
@@ -57,58 +78,61 @@ export function Outline() {
     };
   }, []);
 
-  if (headings.length === 0) return null;
-
   return (
     <>
-      <motion.div
-        aria-hidden="true"
-        className={styles.minimized}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: open ? 0 : 1, scale: 0.8, transition }}
-      >
-        {headings.map((heading) => (
-          <div
-            key={heading.id}
-            className={clsx(styles.line, styles[heading.level])}
-            data-active={heading.id === activeId}
-          />
-        ))}
-      </motion.div>
+      <nav aria-label="On this page" className={styles.rail}>
+        <Link href={back.href} className={styles.back}>
+          <span aria-hidden="true">←</span> {back.label}
+        </Link>
+        {headings.length > 0 && (
+          <ol className={styles.railList}>
+            <Links headings={headings} activeId={activeId} />
+          </ol>
+        )}
+      </nav>
 
-      <motion.nav
-        aria-label="On this page"
-        className={styles.expanded}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{
-          x: open ? 0 : -16,
-          scale: open ? 1 : 0.8,
-          opacity: open ? 1 : 0,
-          transition,
-        }}
-        onPointerEnter={() => setOpen(true)}
-        onPointerLeave={() => setOpen(false)}
-        onFocus={() => setOpen(true)}
-        onBlur={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) {
-            setOpen(false);
-          }
-        }}
-      >
-        <ol className={styles.list}>
-          {headings.map((heading) => (
-            <li key={heading.id}>
-              <a
-                href={`#${heading.id}`}
-                className={clsx(styles.link, styles[heading.level])}
-                aria-current={heading.id === activeId ? "location" : undefined}
-              >
-                {heading.title}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </motion.nav>
+      {headings.length > 0 && (
+        <div className={styles.floating}>
+          <motion.div
+            aria-hidden="true"
+            className={styles.minimized}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: open ? 0 : 1, scale: 0.8, transition }}
+          >
+            {headings.map((heading) => (
+              <div
+                key={heading.id}
+                className={clsx(styles.line, styles[heading.level])}
+                data-active={heading.id === activeId}
+              />
+            ))}
+          </motion.div>
+
+          <motion.nav
+            aria-label="On this page"
+            className={styles.expanded}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              x: open ? 0 : -16,
+              scale: open ? 1 : 0.8,
+              opacity: open ? 1 : 0,
+              transition,
+            }}
+            onPointerEnter={() => setOpen(true)}
+            onPointerLeave={() => setOpen(false)}
+            onFocus={() => setOpen(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setOpen(false);
+              }
+            }}
+          >
+            <ol className={styles.list}>
+              <Links headings={headings} activeId={activeId} />
+            </ol>
+          </motion.nav>
+        </div>
+      )}
     </>
   );
 }

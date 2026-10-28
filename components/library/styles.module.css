@@ -1,48 +1,39 @@
-.library {
+.list {
   display: flex;
   flex-direction: column;
   align-self: stretch;
 }
 
-.heading {
-  padding-bottom: 16px;
-  margin-bottom: 12px;
-  font-variation-settings: var(--font-weight-500);
-  border-bottom: 1px solid var(--border-primary);
+.item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+
+  & + &[data-first-of-year] {
+    border-top: 1px solid var(--border-primary);
+  }
+
+  & + &:not([data-first-of-year]) .row {
+    border-top: 1px solid var(--border-primary);
+  }
+
+  @media (width <= 640px) {
+    grid-template-columns: 48px 1fr;
+  }
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
+.year {
+  padding: 14px 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-tertiary);
 }
 
 .row {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr auto 84px;
-  gap: 32px;
-  align-items: center;
-  padding: 16px 0;
-  isolation: isolate;
-
-  &::before {
-    position: absolute;
-    inset: 0 -24px;
-    z-index: -1;
-    content: "";
-    background: var(--background-secondary);
-    border-radius: 8px;
-    opacity: 0;
-    scale: 0.98;
-    transition:
-      opacity 0.2s ease,
-      scale 0.2s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-    scale: 1;
-  }
+  grid-template-columns: 1fr auto 56px;
+  gap: 24px;
+  align-items: baseline;
+  padding: 14px 0;
+  transition: opacity var(--duration-snappy) ease;
 
   @media (width <= 640px) {
     grid-template-columns: 1fr auto;
@@ -50,6 +41,12 @@
     .meta {
       display: none;
     }
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .list:has(.row:hover) .row:not(:hover) {
+    opacity: 0.3;
   }
 }
 
@@ -64,7 +61,6 @@
 }
 
 .date {
-  font-variant-numeric: tabular-nums;
   text-align: right;
   white-space: nowrap;
 }

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Link from "next/link";
 import { Fragment } from "react";
 import { ChevronRight } from "@/components/icons";
@@ -8,9 +9,15 @@ interface Crumb {
   href?: string;
 }
 
-export function Breadcrumb({ items }: { items: Crumb[] }) {
+export function Breadcrumb({
+  items,
+  className,
+}: {
+  items: Crumb[];
+  className?: string;
+}) {
   return (
-    <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
+    <nav aria-label="Breadcrumb" className={clsx(styles.breadcrumb, className)}>
       <ol className={styles.list}>
         {items.map((item, index) => (
           <Fragment key={item.label}>

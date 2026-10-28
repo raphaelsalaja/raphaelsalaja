@@ -1,0 +1,26 @@
+.block {
+  position: relative;
+}
+
+.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px;
+  background: var(--background-primary);
+  box-shadow: 0 0 0 1px var(--border-primary);
+  opacity: 0;
+  transition:
+    opacity var(--duration-snappy) ease,
+    color var(--duration-snappy) ease,
+    scale var(--duration-quick) var(--ease-out-cubic);
+
+  .block:hover &,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    opacity: 1;
+  }
+}

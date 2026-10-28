@@ -23,8 +23,8 @@
   z-index: 100000;
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px oklch(0 0 0 / 10%);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--border-secondary);
 
   img {
     object-fit: cover;
@@ -35,8 +35,8 @@
   display: block;
   padding: 16px 32px 32px;
   font-size: 12px;
-  font-variation-settings: var(--font-weight-500);
-  line-height: 1.2;
-  color: var(--text-quaternary);
+  font-variation-settings: var(--font-weight-450);
+  line-height: 20px;
+  color: var(--text-tertiary);
   text-align: center;
 }

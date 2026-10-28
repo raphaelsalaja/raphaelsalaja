@@ -14,6 +14,18 @@
   pointer-events: none;
 }
 
+.still {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-jacquard);
+  font-size: clamp(160px, 40vw, 480px);
+  line-height: 1;
+  color: var(--white-a10);
+  background: var(--black);
+}
+
 .home {
   position: fixed;
   bottom: 72px;

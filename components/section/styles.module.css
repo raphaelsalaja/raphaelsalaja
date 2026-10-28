@@ -1,0 +1,28 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.title {
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-tertiary);
+}
+
+.link {
+  color: var(--text-tertiary);
+  transition: color var(--duration-snappy) ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}

@@ -11,17 +11,26 @@ export type WorkItem = {
   date: string;
   category: WorkCategory;
   href: string;
-  preview: string;
+  preview?: string;
   description?: string;
 };
 
 export const work: WorkItem[] = (
   [
     {
+      title: "Provenance",
+      date: "2026-09-23",
+      category: "Projects",
+      href: "/provenance",
+      description:
+        "An open proposal for recording the sources that shape software.",
+    },
+    {
       title: "Cambio",
       date: "2025-08-12",
       category: "Projects",
       href: "https://cambio.raphaelsalaja.com/",
+      description: "A shared animation component for React.",
       preview: "/media/work/projects/cambio.mp4",
     },
     {
@@ -129,6 +138,7 @@ export const work: WorkItem[] = (
       date: "2024-11-07",
       category: "Projects",
       href: "https://toldo.vercel.app/",
+      description: "An elevated dialog component for React.",
       preview: "/media/work/projects/toldo.mp4",
     },
     {
@@ -136,6 +146,7 @@ export const work: WorkItem[] = (
       date: "2024-04-14",
       category: "Projects",
       href: "https://x.com/raphaelsalaja/status/1782542966642315620",
+      description: "A spatial canvas for browsing Are.na blocks and channels.",
       preview: "/media/work/projects/spatial-arena.mp4",
     },
     {
@@ -143,6 +154,7 @@ export const work: WorkItem[] = (
       date: "2023-11-18",
       category: "Projects",
       href: "https://github.com/raphaelsalaja/layers",
+      description: "A SwiftUI modal view library.",
       preview: "/media/work/projects/layers.mp4",
     },
     {
@@ -150,6 +162,7 @@ export const work: WorkItem[] = (
       date: "2023-07-24",
       category: "Projects",
       href: "https://github.com/raphaelsalaja/metallurgy",
+      description: "A SwiftUI Metal shaders library.",
       preview: "/media/work/projects/metallurgy.mp4",
     },
   ] satisfies WorkItem[]
@@ -161,3 +174,9 @@ export const getWorkPage = (slug: string) =>
   workPages.find((item) => item.href === `/work/${slug}`);
 
 export const posterFor = (preview: string) => preview.replace(/\.mp4$/, ".jpg");
+
+export const projects = work.filter((item) => item.category === "Projects");
+
+export const withPreview = work.filter(
+  (item): item is WorkItem & { preview: string } => Boolean(item.preview),
+);

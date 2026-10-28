@@ -1,27 +1,49 @@
 import Link from "next/link";
-import { posts } from "@/data/library";
-import { formatDate } from "@/lib/site";
+import { Section } from "@/components/section";
+import { type Post, posts } from "@/data/library";
+import { formatDayMonth, yearOf } from "@/lib/site";
 import styles from "./styles.module.css";
 
-export function Library() {
+export function PostList({ items }: { items: Post[] }) {
   return (
-    <section className={styles.library} aria-labelledby="library-heading">
-      <h2 id="library-heading" className={styles.heading}>
-        Library
-      </h2>
-      <ul className={styles.list}>
-        {posts.map((post) => (
-          <li key={post.slug}>
+    <ul className={styles.list}>
+      {items.map((post, index) => {
+        const year = yearOf(post.date);
+        const firstOfYear =
+          index === 0 || yearOf(items[index - 1].date) !== year;
+
+        return (
+          <li
+            key={post.slug}
+            className={styles.item}
+            data-first-of-year={firstOfYear || undefined}
+          >
+            <span className={styles.year} aria-hidden="true">
+              {firstOfYear && year}
+            </span>
             <Link href={`/library/${post.slug}`} className={styles.row}>
               <span className={styles.title}>{post.title}</span>
               <span className={styles.meta}>{post.category}</span>
               <time dateTime={post.date} className={styles.date}>
-                {formatDate(post.date)}
+                {formatDayMonth(post.date)}
+                <span className="sr-only"> {year}</span>
               </time>
             </Link>
           </li>
-        ))}
-      </ul>
-    </section>
+        );
+      })}
+    </ul>
+  );
+}
+
+export function Library() {
+  return (
+    <Section
+      id="library"
+      title="Library"
+      link={{ href: "/library", label: "Index" }}
+    >
+      <PostList items={posts} />
+    </Section>
   );
 }
