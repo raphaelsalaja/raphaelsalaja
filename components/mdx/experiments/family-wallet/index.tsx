@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
+import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Copy, Ellipsis, Toast } from "@/components/icons";

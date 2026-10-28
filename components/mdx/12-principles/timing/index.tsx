@@ -1,6 +1,6 @@
 "use client";
 
-import { Popover } from "@base-ui-components/react/popover";
+import { Popover } from "@base-ui/react/popover";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { AphexTwinIcon } from "@/components/icons";
@@ -11,10 +11,10 @@ enum AnimationState {
   Snappy = "snappy",
 }
 
+const Trigger = motion.create(Popover.Trigger);
+
 export function Timing() {
   const [state, setState] = useState<AnimationState>(AnimationState.Snappy);
-
-  const Trigger = motion.create(Popover.Trigger);
 
   const handleAnimationStateChange = () => {
     setState((prev) =>
@@ -26,8 +26,9 @@ export function Timing() {
 
   return (
     <div className={styles.container}>
-      <Popover.Root openOnHover>
+      <Popover.Root>
         <Trigger
+          openOnHover
           data-vinyl
           className={styles.trigger}
           whileHover={{ opacity: 0.9, filter: "brightness(0.9)" }}

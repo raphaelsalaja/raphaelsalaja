@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox } from "@base-ui-components/react/checkbox";
+import { Checkbox } from "@base-ui/react/checkbox";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Avatar, Bolt, Check, HighPriority, InProgress } from "./icons";

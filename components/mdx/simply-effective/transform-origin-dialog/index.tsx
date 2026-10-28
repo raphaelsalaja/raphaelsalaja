@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
+import { Dialog } from "@base-ui/react/dialog";
 import { useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { useTransformOrigin } from "./useTransformOrigin";
