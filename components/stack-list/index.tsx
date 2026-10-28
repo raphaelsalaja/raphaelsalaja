@@ -6,6 +6,8 @@ export type StackListItem = {
   href: string;
   title: string;
   description?: string;
+  icon?: string;
+  meta?: string;
 };
 
 function Row({ href, children }: { href: string; children: ReactNode }) {
@@ -39,10 +41,17 @@ export function StackList({ items }: { items: StackListItem[] }) {
       {items.map((item) => (
         <li key={item.href}>
           <Row href={item.href}>
+            {item.icon && (
+              <span className={styles.icon}>
+                {/* biome-ignore lint/performance/noImgElement: small static logos don't need optimisation */}
+                <img src={item.icon} alt="" width={20} height={20} />
+              </span>
+            )}
             <span className={styles.title}>{item.title}</span>
             {item.description && (
               <span className={styles.description}>{item.description}</span>
             )}
+            {item.meta && <span className={styles.meta}>{item.meta}</span>}
           </Row>
         </li>
       ))}

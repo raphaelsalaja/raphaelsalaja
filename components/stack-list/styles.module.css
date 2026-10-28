@@ -7,11 +7,23 @@
 }
 
 .row {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "title meta"
+    "description meta";
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+  align-items: baseline;
   padding: 10px 12px;
   border-radius: 8px;
   transition: background-color var(--duration-snappy) ease;
+
+  &:has(.icon) {
+    grid-template-areas:
+      "icon title meta"
+      "icon description meta";
+    grid-template-columns: auto 1fr auto;
+  }
 
   @media (hover: hover) {
     &:hover {
@@ -20,10 +32,37 @@
   }
 }
 
+.icon {
+  display: grid;
+  grid-area: icon;
+  place-items: center;
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--border-secondary);
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+}
+
 .title {
+  grid-area: title;
   color: var(--text-primary);
 }
 
 .description {
+  grid-area: description;
+  color: var(--text-tertiary);
+}
+
+.meta {
+  grid-area: meta;
+  align-self: end;
+  font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
 }
