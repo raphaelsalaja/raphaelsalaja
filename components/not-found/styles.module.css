@@ -1,8 +1,39 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 24px;
+  align-items: center;
   align-self: stretch;
+  justify-content: center;
+  min-height: calc(100dvh - 160px);
+  text-align: center;
+}
+
+.window {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 72px;
+  padding-top: 12px;
+  color: var(--text-quaternary);
+  background: var(--background-secondary);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+
+  &::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 12px;
+    content: "";
+    box-shadow: inset 0 -1px 0 0 var(--border-secondary);
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .title {
@@ -12,4 +43,28 @@
 
 .copy {
   color: var(--text-tertiary);
+}
+
+.button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px 0 12px;
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+  background: var(--background-tertiary);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+  transition: background-color var(--duration-snappy) ease;
+
+  svg {
+    color: var(--text-tertiary);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gray-4);
+    }
+  }
 }
