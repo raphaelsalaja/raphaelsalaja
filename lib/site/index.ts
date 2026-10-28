@@ -40,8 +40,6 @@ export const formatLongDate = format({
   year: "numeric",
 });
 
-export const formatDayMonth = format({ day: "numeric", month: "short" });
-
 export const yearOf = (date: string) => date.slice(0, 4);
 
 export const LAST_UPDATED = [...posts, ...work]
