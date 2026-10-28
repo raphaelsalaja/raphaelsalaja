@@ -8,11 +8,17 @@ import {
 } from "@/components/icons";
 import styles from "./styles.module.css";
 
-const SOCIALS: Record<string, (props: IconProps) => JSX.Element> = {
-  "x.com": XLogo,
-  "github.com": GitHubLogo,
-  "www.linkedin.com": LinkedInLogo,
-  "www.instagram.com": InstagramLogo,
+type Social = { Icon: (props: IconProps) => JSX.Element; background: string };
+
+const SOCIALS: Record<string, Social> = {
+  "x.com": { Icon: XLogo, background: "#000" },
+  "github.com": { Icon: GitHubLogo, background: "#24292f" },
+  "www.linkedin.com": { Icon: LinkedInLogo, background: "#0a66c2" },
+  "www.instagram.com": {
+    Icon: InstagramLogo,
+    background:
+      "radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%)",
+  },
 };
 
 type Company = { logos: string[]; preview: string };
@@ -38,13 +44,18 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
   const hostname = href?.startsWith("http") ? new URL(href).hostname : "";
   const company = COMPANIES[hostname];
 
-  const Social = SOCIALS[hostname];
+  const social = SOCIALS[hostname];
 
-  if (Social) {
+  if (social) {
     return (
       <a href={href} {...props}>
         <span className={styles.company}>
-          <Social className={styles.icon} width={14} height={14} />
+          <span
+            className={styles.tile}
+            style={{ background: social.background }}
+          >
+            <social.Icon width={9} height={9} />
+          </span>
           {children}
         </span>
       </a>
