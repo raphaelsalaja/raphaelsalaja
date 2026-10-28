@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
-import { career } from "@/data/career";
+import { career, formatPeriod } from "@/data/career";
 import { getPost, posts } from "@/data/library";
 import { getWorkPage, WORK_CATEGORIES, work, workPages } from "@/data/work";
 import { formatLongDate, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -72,9 +72,13 @@ async function home() {
     about,
     "## Career",
     list(
-      career.map(
-        (item) =>
-          `[${item.company}](${item.href}): ${item.role}, ${item.period}`,
+      career.flatMap((item) =>
+        item.positions.map((position) => {
+          const company = item.href
+            ? `[${item.company}](${item.href})`
+            : item.company;
+          return `${company}: ${position.title}, ${formatPeriod(position)}`;
+        }),
       ),
     ),
     "## Projects",

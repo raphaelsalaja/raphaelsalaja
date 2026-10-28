@@ -7,24 +7,11 @@
 }
 
 .row {
-  display: grid;
-  grid-template-areas:
-    "title meta"
-    "description meta";
-  grid-template-columns: 1fr auto;
-  column-gap: 16px;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
   padding: 10px 12px;
   border-radius: 8px;
   transition: background-color var(--duration-snappy) ease;
-
-  &:has(.icon) {
-    grid-template-areas:
-      "icon title meta"
-      ". description meta";
-    grid-template-columns: 20px 1fr auto;
-    column-gap: 10px;
-  }
 
   @media (hover: hover) {
     &:hover {
@@ -33,47 +20,10 @@
   }
 }
 
-.icon {
-  display: grid;
-  grid-area: icon;
-  place-items: center;
-  align-self: center;
-  width: 20px;
-  height: 20px;
-  overflow: hidden;
-  border-radius: 5px;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  &[data-monochrome] {
-    background-color: #000;
-    box-shadow: inset 0 0 0 1px var(--border-primary);
-
-    img {
-      width: 12px;
-      height: 12px;
-      filter: invert(1);
-    }
-  }
-}
-
 .title {
-  grid-area: title;
   color: var(--text-primary);
 }
 
 .description {
-  grid-area: description;
-  color: var(--text-tertiary);
-}
-
-.meta {
-  grid-area: meta;
-  align-self: end;
-  font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
 }
