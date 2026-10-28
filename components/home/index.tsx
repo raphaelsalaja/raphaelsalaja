@@ -5,6 +5,7 @@ import { Writing } from "@/components/library";
 import { Experiments, Projects } from "@/components/work";
 import About from "@/content/about.mdx";
 import { personJsonLd, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { BioLink } from "./bio-link";
 import styles from "./styles.module.css";
 import { Visited } from "./visited";
 
@@ -23,7 +24,7 @@ export function Home() {
           </div>
         </header>
         <section className={`${styles.about} prose`} data-step style={step(1)}>
-          <About />
+          <About components={{ a: BioLink }} />
         </section>
       </div>
       <div data-step style={step(2)}>
