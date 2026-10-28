@@ -1,52 +1,15 @@
 .container {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-}
-
-.shader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.still {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-jacquard);
-  font-size: clamp(160px, 40vw, 480px);
-  line-height: 1;
-  color: var(--white-a10);
-  background: var(--black);
-}
-
-.home {
-  position: fixed;
-  bottom: 72px;
-  left: 50%;
-  z-index: 99999;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  padding: 12px;
-  font-family: var(--font-jacquard);
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 32px;
-  color: var(--white-a8);
-  background: var(--black-a10);
-  transform: translateX(-50%);
-  transition: all 0.2s ease;
+  gap: 8px;
+  align-self: stretch;
+}
 
-  &:hover {
-    color: var(--white-a12);
-    background: var(--black-a8);
-  }
+.title {
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+}
+
+.copy {
+  color: var(--text-tertiary);
 }

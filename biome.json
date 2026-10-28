@@ -9,7 +9,7 @@
     "ignoreUnknown": true,
     "includes": [
       "**",
-      "!lib/unicornStudio.umd.cjs",
+
       "!public",
       "!.vscode",
       "!pnpm-lock.yaml"

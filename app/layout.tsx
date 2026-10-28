@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
-import { Inter, Jacquard_12, Newsreader, Roboto_Mono } from "next/font/google";
+import { Inter, Newsreader, Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransition } from "react";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -26,13 +26,6 @@ const serif = Newsreader({
   axes: ["opsz"],
   style: ["normal", "italic"],
   variable: "--font-serif",
-  preload: false,
-});
-
-const jacquard = Jacquard_12({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-jacquard",
   preload: false,
 });
 
@@ -86,7 +79,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         inter.className,
         mono.variable,
         serif.variable,
-        jacquard.variable,
         openrunde.variable,
       )}
       suppressHydrationWarning
