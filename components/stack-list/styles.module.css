@@ -48,6 +48,14 @@
     height: 20px;
     object-fit: contain;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--background-tertiary);
+
+    img[data-monochrome] {
+      filter: invert(1);
+    }
+  }
 }
 
 .title {

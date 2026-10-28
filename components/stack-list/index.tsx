@@ -7,6 +7,7 @@ export type StackListItem = {
   title: string;
   description?: string;
   icon?: string;
+  iconMonochrome?: boolean;
   meta?: string;
 };
 
@@ -44,7 +45,13 @@ export function StackList({ items }: { items: StackListItem[] }) {
             {item.icon && (
               <span className={styles.icon}>
                 {/* biome-ignore lint/performance/noImgElement: small static logos don't need optimisation */}
-                <img src={item.icon} alt="" width={20} height={20} />
+                <img
+                  src={item.icon}
+                  alt=""
+                  width={20}
+                  height={20}
+                  data-monochrome={item.iconMonochrome || undefined}
+                />
               </span>
             )}
             <span className={styles.title}>{item.title}</span>

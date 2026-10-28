@@ -4,6 +4,7 @@ export type Role = {
   period: string;
   href: string;
   logo: string;
+  monochrome?: boolean;
 };
 
 export const career: Role[] = [
@@ -20,6 +21,7 @@ export const career: Role[] = [
     period: "2025",
     href: "https://avara.xyz/",
     logo: "/media/career/avara.svg",
+    monochrome: true,
   },
   {
     company: "Daybreak",
@@ -27,6 +29,7 @@ export const career: Role[] = [
     period: "2025",
     href: "https://www.daybreak.studio/",
     logo: "/media/career/daybreak.png",
+    monochrome: true,
   },
   {
     company: "OpenSea",

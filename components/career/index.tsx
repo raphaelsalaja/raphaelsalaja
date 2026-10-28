@@ -11,6 +11,7 @@ export function Career() {
           title: item.company,
           description: item.role,
           icon: item.logo,
+          iconMonochrome: item.monochrome,
           meta: item.period,
         }))}
       />
