@@ -252,12 +252,16 @@ time {
   pointer-events: none;
 }
 
+::view-transition-group(.page) {
+  animation: none;
+}
+
 ::view-transition-old(.page) {
-  animation: fade 0.2s ease both reverse;
+  animation: fade 200ms ease both reverse;
 }
 
 ::view-transition-new(.page) {
-  animation: fade 0.3s ease both;
+  animation: fade 200ms ease both;
 }
 
 @keyframes fade {
