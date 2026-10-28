@@ -12,7 +12,7 @@ export const career: Role[] = [
     role: "Design Engineer",
     period: "Now",
     href: "https://www.warp.dev/",
-    logo: "/media/career/warp.png",
+    logo: "/media/career/warp.svg",
   },
   {
     company: "Avara",
