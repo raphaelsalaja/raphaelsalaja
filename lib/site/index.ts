@@ -34,8 +34,6 @@ export const formatLongDate = format({
   year: "numeric",
 });
 
-export const yearOf = (date: string) => date.slice(0, 4);
-
 export const LAST_UPDATED = [...posts, ...work]
   .map((item) => item.date)
   .toSorted()
