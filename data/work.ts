@@ -147,30 +147,6 @@ export const work: WorkItem[] = (
       description: "An elevated dialog component for React.",
       preview: "/media/work/projects/toldo.mp4",
     },
-    {
-      title: "Spatial Arena",
-      date: "2024-04-14",
-      category: "Projects",
-      href: "https://x.com/raphaelsalaja/status/1782542966642315620",
-      description: "A spatial canvas for browsing Are.na blocks and channels.",
-      preview: "/media/work/projects/spatial-arena.mp4",
-    },
-    {
-      title: "Layers",
-      date: "2023-11-18",
-      category: "Projects",
-      href: "https://github.com/raphaelsalaja/layers",
-      description: "A SwiftUI modal view library.",
-      preview: "/media/work/projects/layers.mp4",
-    },
-    {
-      title: "Metallurgy",
-      date: "2023-07-24",
-      category: "Projects",
-      href: "https://github.com/raphaelsalaja/metallurgy",
-      description: "A SwiftUI Metal shaders library.",
-      preview: "/media/work/projects/metallurgy.mp4",
-    },
   ] satisfies WorkItem[]
 ).sort((a, b) => b.date.localeCompare(a.date));
 
