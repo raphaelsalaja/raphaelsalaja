@@ -25,7 +25,13 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2678400,
     deviceSizes: [640, 828, 1080, 1280],
     imageSizes: [32, 64, 128, 256],
-    remotePatterns: [new URL("https://bronsonshop.com/cdn/shop/**")],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "bronsonshop.com",
+        pathname: "/cdn/shop/**",
+      },
+    ],
   },
 };
 

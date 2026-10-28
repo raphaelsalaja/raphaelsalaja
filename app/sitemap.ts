@@ -7,7 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, lastModified: LAST_UPDATED },
     { url: `${SITE_URL}/work`, lastModified: work[0].date },
-    { url: `${SITE_URL}/library`, lastModified: posts[0].date },
     ...workPages.map((item) => ({
       url: `${SITE_URL}${item.href}`,
       lastModified: item.date,

@@ -11,7 +11,11 @@ interface SectionProps {
 
 export function Section({ id, title, link, children }: SectionProps) {
   return (
-    <section className={styles.section} aria-labelledby={`${id}-heading`}>
+    <section
+      id={id}
+      className={styles.section}
+      aria-labelledby={`${id}-heading`}
+    >
       <div className={styles.header}>
         <h2 id={`${id}-heading`} className={styles.title}>
           {title}

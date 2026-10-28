@@ -16,11 +16,7 @@ export function PostList({ items }: { items: Post[] }) {
 
 export function Writing() {
   return (
-    <Section
-      id="writing"
-      title="Writing"
-      link={{ href: "/library", label: "Index" }}
-    >
+    <Section id="writing" title="Writing">
       <PostList items={posts} />
     </Section>
   );
