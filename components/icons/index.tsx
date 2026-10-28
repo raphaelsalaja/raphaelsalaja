@@ -234,31 +234,6 @@ export function Check(props: IconProps) {
   );
 }
 
-export function Coffee({ color = "currentColor", ...props }: IconProps) {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      stroke={color}
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M4.75 4.75h8.5v6.5c0 1.104-.896 2-2 2h-4.5c-1.104 0-2-.896-2-2v-6.5Z" />
-      <path d="M16 16.25H2" />
-      <path d="M13.25 4.75h2c.552 0 1 .448 1 1v1.5c0 1.105-.895 2-2 2h-1" />
-      <path
-        data-color="color-2"
-        d="M7 2c.127-.04.406-.146.646-.417.295-.333.343-.706.354-.833M10.25 2c.127-.04.406-.146.646-.417.295-.333.343-.706.354-.833"
-      />
-    </svg>
-  );
-}
-
 export function Copy({
   color = "currentColor",
   strokeWidth = 2,
