@@ -1,16 +1,10 @@
 import type { CSSProperties } from "react";
+import { Coffee } from "@/components/coffee";
 import { JsonLd } from "@/components/json-ld";
 import { Writing } from "@/components/library";
-import { Newsletter } from "@/components/newsletter";
 import { Projects } from "@/components/work";
 import About from "@/content/about.mdx";
-import {
-  formatDate,
-  LAST_UPDATED,
-  personJsonLd,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-} from "@/lib/site";
+import { personJsonLd, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import styles from "./styles.module.css";
 import { Visited } from "./visited";
 
@@ -23,15 +17,10 @@ export function Home() {
       <Visited />
       <div className={styles.intro}>
         <header className={styles.header} data-step style={step(0)}>
-          <span className={styles.mark} aria-hidden="true" />
           <div className={styles.identity}>
             <h1 className={styles.name}>{SITE_NAME}</h1>
             <p className={styles.role}>{SITE_DESCRIPTION}</p>
           </div>
-          <p className={styles.updated}>
-            Updated{" "}
-            <time dateTime={LAST_UPDATED}>{formatDate(LAST_UPDATED)}</time>
-          </p>
         </header>
         <section className={`${styles.about} prose`} data-step style={step(1)}>
           <About />
@@ -44,7 +33,7 @@ export function Home() {
         <Writing />
       </div>
       <div data-step style={step(4)}>
-        <Newsletter />
+        <Coffee />
       </div>
     </div>
   );

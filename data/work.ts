@@ -26,6 +26,27 @@ export const work: WorkItem[] = (
         "An open proposal for recording the sources that shape software.",
     },
     {
+      title: "Pond",
+      date: "2026-04-22",
+      category: "Projects",
+      href: "https://pond.raphaelsalaja.com/",
+      description: "Your personal web archiver.",
+    },
+    {
+      title: "Audio",
+      date: "2026-04-04",
+      category: "Projects",
+      href: "https://audio.raphaelsalaja.com/",
+      description: "Declarative audio synthesis for the web.",
+    },
+    {
+      title: "UI Wiki",
+      date: "2025-09-24",
+      category: "Projects",
+      href: "https://www.userinterface.wiki/",
+      description: "A living manual for better interfaces.",
+    },
+    {
       title: "Cambio",
       date: "2025-08-12",
       category: "Projects",

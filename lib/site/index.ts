@@ -28,12 +28,6 @@ const format = (options: Intl.DateTimeFormatOptions) => {
   return (date: string) => formatter.format(new Date(date));
 };
 
-export const formatDate = format({
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-});
-
 export const formatLongDate = format({
   day: "numeric",
   month: "long",

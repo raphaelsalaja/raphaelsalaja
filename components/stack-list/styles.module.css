@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: stretch;
+  margin: 0 -12px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background-color var(--duration-snappy) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--background-tertiary);
+    }
+  }
+}
+
+.title {
+  color: var(--text-primary);
+}
+
+.description {
+  color: var(--text-tertiary);
+}

@@ -9,13 +9,12 @@
   gap: 16px;
   align-items: baseline;
   justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-primary);
+  padding-bottom: 8px;
 }
 
 .title {
   font-variation-settings: var(--font-weight-500);
-  color: var(--text-tertiary);
+  color: var(--text-primary);
 }
 
 .link {

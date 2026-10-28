@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Section } from "@/components/section";
+import { StackList } from "@/components/stack-list";
 import { Video } from "@/components/video";
 import { posterFor, projects, type WorkItem, withPreview } from "@/data/work";
 import { yearOf } from "@/lib/site";
@@ -71,24 +72,13 @@ function Grid({ items }: { items: (WorkItem & { preview: string })[] }) {
 export function Projects({ link }: { link?: { href: string; label: string } }) {
   return (
     <Section id="projects" title="Projects" link={link}>
-      <ul className={styles.projects}>
-        {projects.map((item) => (
-          <li key={item.href}>
-            <WorkLink item={item} className={styles.project}>
-              <span className={styles.tile} aria-hidden="true">
-                {item.title[0]}
-              </span>
-              <span className={styles.details}>
-                <span className={styles.name}>{item.title}</span>
-                <span className={styles.description}>{item.description}</span>
-              </span>
-              <time dateTime={item.date} className={styles.year}>
-                {yearOf(item.date)}
-              </time>
-            </WorkLink>
-          </li>
-        ))}
-      </ul>
+      <StackList
+        items={projects.map((item) => ({
+          href: item.href,
+          title: item.title,
+          description: item.description,
+        }))}
+      />
     </Section>
   );
 }

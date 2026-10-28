@@ -2,6 +2,7 @@ export type Post = {
   slug: string;
   title: string;
   description: string;
+  summary?: string;
   date: string;
   category: "Animation" | "Thoughts" | "Fashion";
 };
@@ -21,6 +22,7 @@ export const posts: Post[] = (
       title: "12 Principles of Animation",
       description:
         "A guide to the foundational principles of animation, from squash and stretch to timing and exaggeration, and how they can be applied to create more engaging and lifelike animations.",
+      summary: "Disney's principles of animation, applied to interfaces.",
       date: "2025-08-04",
       category: "Animation",
     },
@@ -44,6 +46,7 @@ export const posts: Post[] = (
       title: "Building vs. Banking",
       description:
         "How the startup conversation has shifted from creating meaningful work to chasing financial outcomes, and why that shift leaves us emptier than we expect.",
+      summary: "Why chasing exits leaves us emptier than making things.",
       date: "2025-06-21",
       category: "Thoughts",
     },

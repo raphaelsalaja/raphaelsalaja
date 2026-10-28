@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Jacquard_12, Newsreader, Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ViewTransition } from "react";
-import { Footer } from "@/components/footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { VISITED_KEY } from "@/lib/visited";
 
@@ -101,7 +100,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <main>
           <ViewTransition default="page">{children}</ViewTransition>
-          <Footer />
         </main>
         <Analytics />
       </body>

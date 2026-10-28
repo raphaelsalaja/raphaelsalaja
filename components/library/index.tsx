@@ -1,23 +1,16 @@
-import Link from "next/link";
 import { Section } from "@/components/section";
+import { StackList } from "@/components/stack-list";
 import { type Post, posts } from "@/data/library";
-import { formatDate } from "@/lib/site";
-import styles from "./styles.module.css";
 
 export function PostList({ items }: { items: Post[] }) {
   return (
-    <ul className={styles.list}>
-      {items.map((post) => (
-        <li key={post.slug}>
-          <Link href={`/library/${post.slug}`} className={styles.row}>
-            <span className={styles.title}>{post.title}</span>
-            <time dateTime={post.date} className={styles.date}>
-              {formatDate(post.date)}
-            </time>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <StackList
+      items={items.map((post) => ({
+        href: `/library/${post.slug}`,
+        title: post.title,
+        description: post.summary ?? post.description,
+      }))}
+    />
   );
 }
 

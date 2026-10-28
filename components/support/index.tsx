@@ -1,4 +1,4 @@
-const SUPPORT_URL = "https://buymeacoffee.com/raphaelsalaja";
+export const SUPPORT_URL = "https://buymeacoffee.com/raphaelsalaja";
 
 export function Support() {
   return (

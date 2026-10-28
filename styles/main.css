@@ -55,11 +55,6 @@
 
   --accent: #f80;
   --accent-strong: #db5400;
-  --accent-gradient: linear-gradient(
-    to bottom,
-    var(--accent),
-    var(--accent-strong)
-  );
 
   --border-primary: color-mix(in oklab, var(--gray-12) 7%, transparent);
   --border-secondary: color-mix(in oklab, var(--gray-12) 12%, transparent);
