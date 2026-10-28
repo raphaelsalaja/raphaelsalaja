@@ -18,14 +18,6 @@ export type WorkItem = {
 export const work: WorkItem[] = (
   [
     {
-      title: "Provenance",
-      date: "2026-09-23",
-      category: "Projects",
-      href: "/provenance",
-      description:
-        "An open proposal for recording the sources that shape software.",
-    },
-    {
       title: "Pond",
       date: "2026-04-22",
       category: "Projects",
