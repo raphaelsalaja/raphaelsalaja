@@ -19,7 +19,7 @@ export function Select({ animation = "straight-ahead" }) {
           <ChevronDown />
         </BaseSelect.Icon>
       </BaseSelect.Trigger>
-      <BaseSelect.Portal>
+      <BaseSelect.Portal data-light>
         <BaseSelect.Positioner
           alignItemWithTrigger={false}
           sideOffset={8}

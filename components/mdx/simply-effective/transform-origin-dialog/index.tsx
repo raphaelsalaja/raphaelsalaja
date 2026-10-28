@@ -21,7 +21,7 @@ export const TransformOriginDialog = () => {
       <Dialog.Trigger ref={triggerRef} className={styles.button}>
         <span className={styles.text}>New Session</span>
       </Dialog.Trigger>
-      <Dialog.Portal>
+      <Dialog.Portal data-light>
         <Dialog.Backdrop className={styles.Backdrop} />
         <Dialog.Popup ref={popupRef} className={styles.Popup}>
           <Dialog.Title className={styles.Title}>Notifications</Dialog.Title>

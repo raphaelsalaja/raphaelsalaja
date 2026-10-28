@@ -4,6 +4,7 @@ import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Copy, Ellipsis, Toast } from "@/components/icons";
+import "./colors.css";
 import styles from "./styles.module.css";
 
 enum WalletState {
@@ -100,6 +101,7 @@ export function FamilyWallet() {
               className={styles.Button}
               onClick={() => setState(WalletState.Expanded)}
               style={{ cursor: "pointer" }}
+              nativeButton={false}
               render={
                 <motion.div
                   className={styles.wallet}
@@ -209,7 +211,7 @@ export function FamilyWallet() {
           )}
         </AnimatePresence>
 
-        <Dialog.Portal keepMounted>
+        <Dialog.Portal keepMounted data-light>
           <Dialog.Backdrop className={styles.backdrop} />
 
           <AnimatePresence initial={false} mode="wait">

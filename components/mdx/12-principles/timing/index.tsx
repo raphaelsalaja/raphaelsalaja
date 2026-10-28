@@ -38,7 +38,7 @@ export function Timing() {
             <AphexTwinIcon className={styles.icon} width={32} height={32} />
           </div>
         </Trigger>
-        <Popover.Portal>
+        <Popover.Portal data-light>
           <Popover.Positioner sideOffset={16} side="top">
             <Popover.Popup
               className={styles.popup}
