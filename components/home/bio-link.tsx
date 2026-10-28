@@ -1,5 +1,19 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, JSX } from "react";
+import {
+  GitHubLogo,
+  type IconProps,
+  InstagramLogo,
+  LinkedInLogo,
+  XLogo,
+} from "@/components/icons";
 import styles from "./styles.module.css";
+
+const SOCIALS: Record<string, (props: IconProps) => JSX.Element> = {
+  "x.com": XLogo,
+  "github.com": GitHubLogo,
+  "www.linkedin.com": LinkedInLogo,
+  "www.instagram.com": InstagramLogo,
+};
 
 type Company = { logos: string[]; preview: string };
 
@@ -23,6 +37,19 @@ const COMPANIES: Record<string, Company> = {
 export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
   const hostname = href?.startsWith("http") ? new URL(href).hostname : "";
   const company = COMPANIES[hostname];
+
+  const Social = SOCIALS[hostname];
+
+  if (Social) {
+    return (
+      <a href={href} {...props}>
+        <span className={styles.company}>
+          <Social className={styles.icon} width={14} height={14} />
+          {children}
+        </span>
+      </a>
+    );
+  }
 
   if (!company) {
     return (
