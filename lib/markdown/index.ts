@@ -72,13 +72,9 @@ async function home() {
     about,
     "## Career",
     list(
-      career.flatMap((item) =>
-        item.positions.map((position) => {
-          const company = item.href
-            ? `[${item.company}](${item.href})`
-            : item.company;
-          return `${company}: ${position.title}, ${formatPeriod(position)}`;
-        }),
+      career.map(
+        (role) =>
+          `[${role.company}](${role.href}): ${role.description}, ${formatPeriod(role)}`,
       ),
     ),
     "## Projects",

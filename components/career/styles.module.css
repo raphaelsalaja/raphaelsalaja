@@ -1,95 +1,86 @@
 .list {
   display: grid;
-  grid-template-columns: min(33%, 240px) 1fr;
+  grid-template-columns: 160px 1fr auto;
+  column-gap: 16px;
   align-self: stretch;
   margin-top: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px dotted var(--border-secondary);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
 }
 
 .company {
   display: flex;
   gap: 8px;
   align-items: center;
-  align-self: start;
-  padding: 12px 0;
-  color: var(--text-tertiary);
-  border-top: 1px dotted var(--border-secondary);
+  min-width: 0;
+  color: var(--text-primary);
+  transition: opacity var(--duration-snappy) ease;
 
-  a {
-    transition: color var(--duration-snappy) ease;
-
-    @media (hover: hover) {
-      &:hover {
-        color: var(--text-primary);
-      }
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.7;
     }
   }
 }
 
-.logos {
-  display: flex;
-  flex-shrink: 0;
-}
-
 .logo {
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   outline: 1px solid var(--border-primary);
   outline-offset: -1px;
   border-radius: 4px;
-
-  & + & {
-    margin-left: -3px;
-    box-shadow: 0 0 0 1.5px var(--background-primary);
-  }
 }
 
-.roles {
-  padding: 12px 0 6px;
-  border-top: 1px dotted var(--border-secondary);
-}
-
-.company:first-of-type,
-.roles:first-of-type {
-  padding-top: 0;
-  border-top: none;
-}
-
-.positions {
-  display: grid;
-  grid-template-columns: 33% 1fr;
-}
-
-.period,
-.title {
-  padding: 6px 0;
-  border-top: 1px dotted var(--border-primary);
-
-  &:first-of-type {
-    padding-top: 0;
-    border-top: none;
-  }
+.description {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .period {
+  font-size: var(--font-size-small);
   font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
-}
-
-.title {
-  color: var(--text-primary);
+  text-align: right;
 }
 
 @media (width < 560px) {
   .list {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+  }
+
+  .row {
+    row-gap: 2px;
   }
 
   .company {
-    padding-bottom: 4px;
+    grid-row: 1;
+    grid-column: 1;
   }
 
-  .roles {
-    padding-top: 0;
-    border-top: none;
+  .period {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .description {
+    grid-column: 1 / -1;
+    padding-left: 24px;
+    font-size: var(--font-size-small);
   }
 }
