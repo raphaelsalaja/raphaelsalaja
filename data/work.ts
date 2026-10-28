@@ -32,7 +32,7 @@ export const work: WorkItem[] = (
       date: "2025-09-24",
       category: "Projects",
       href: "https://www.userinterface.wiki/",
-      description: "A living manual for better interfaces.",
+      description: "Userinterface Wikipedia.",
     },
     {
       title: "Cambio",
