@@ -3,7 +3,7 @@ import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
 import { career, formatPeriod } from "@/data/career";
 import { getPost, posts } from "@/data/library";
-import { getWorkPage, WORK_CATEGORIES, work, workPages } from "@/data/work";
+import { experiments, getWorkPage, projects, workPages } from "@/data/work";
 import { formatLongDate, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const TALK_URL = "https://www.youtube.com/watch?v=uEMEs499fUs";
@@ -83,12 +83,17 @@ async function home() {
     ),
     "## Projects",
     list(
-      work
-        .filter((item) => item.category === "Projects")
-        .map(
-          (item) =>
-            `[${item.title}](${markdownHref(item.href)}): ${item.description}`,
-        ),
+      projects.map(
+        (item) =>
+          `[${item.title}](${markdownHref(item.href)}): ${item.description}`,
+      ),
+    ),
+    "## Experiments",
+    list(
+      experiments.map((item) => {
+        const description = item.description ? `: ${item.description}` : "";
+        return `[${item.title}](${markdownHref(item.href)})${description}`;
+      }),
     ),
     "## Writing",
     list(
@@ -99,23 +104,6 @@ async function home() {
     ),
     "## Support",
     `If you've enjoyed my work or writing, you can [buy me a coffee](${SUPPORT_URL}).`,
-  ].join("\n\n");
-}
-
-function workIndex() {
-  return [
-    "# Work",
-    ...WORK_CATEGORIES.toReversed().flatMap((category) => [
-      `## ${category}`,
-      list(
-        work
-          .filter((item) => item.category === category)
-          .map((item) => {
-            const description = item.description ? `: ${item.description}` : "";
-            return `[${item.title}](${markdownHref(item.href)})${description}`;
-          }),
-      ),
-    ]),
   ].join("\n\n");
 }
 
@@ -132,15 +120,12 @@ function article(
 
 export const markdownPaths = [
   "/",
-  "/work",
   ...posts.map((post) => `/library/${post.slug}`),
   ...workPages.map((item) => item.href),
 ];
 
 export async function pageMarkdown(pathname: string) {
   if (pathname === "/") return home();
-  if (pathname === "/work") return workIndex();
-
   const [, section, slug] = pathname.split("/");
 
   if (section === "library") {

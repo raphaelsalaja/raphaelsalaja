@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Section } from "@/components/section";
 import { StackList } from "@/components/stack-list";
 import { Video } from "@/components/video";
-import { posterFor, projects, type WorkItem, withPreview } from "@/data/work";
+import { experiments, posterFor, projects, type WorkItem } from "@/data/work";
 import { yearOf } from "@/lib/site";
 import styles from "./styles.module.css";
 
@@ -59,19 +59,9 @@ function Entry({ item }: { item: WorkItem & { preview: string } }) {
   );
 }
 
-function Grid({ items }: { items: (WorkItem & { preview: string })[] }) {
+export function Projects() {
   return (
-    <div className={styles.grid}>
-      {items.map((item) => (
-        <Entry key={item.href} item={item} />
-      ))}
-    </div>
-  );
-}
-
-export function Projects({ link }: { link?: { href: string; label: string } }) {
-  return (
-    <Section id="projects" title="Projects" link={link}>
+    <Section id="projects" title="Projects">
       <StackList
         items={projects.map((item) => ({
           href: item.href,
@@ -83,17 +73,14 @@ export function Projects({ link }: { link?: { href: string; label: string } }) {
   );
 }
 
-export function WorkIndex() {
+export function Experiments() {
   return (
-    <div className={styles.index}>
-      <Projects />
-      {(["Experiments", "Experience"] as const).map((category) => (
-        <Section key={category} id={category.toLowerCase()} title={category}>
-          <Grid
-            items={withPreview.filter((item) => item.category === category)}
-          />
-        </Section>
-      ))}
-    </div>
+    <Section id="experiments" title="Experiments">
+      <div className={styles.grid}>
+        {experiments.map((item) => (
+          <Entry key={item.href} item={item} />
+        ))}
+      </div>
+    </Section>
   );
 }

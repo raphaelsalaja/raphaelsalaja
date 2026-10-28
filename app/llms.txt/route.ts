@@ -13,8 +13,7 @@ Every page is available as Markdown by appending .md to its URL or by requesting
 
 ## Pages
 
-- [Home](${SITE_URL}/index.md): About, career, projects and writing
-- [Work](${SITE_URL}/work.md): Projects, experiments and client work
+- [Home](${SITE_URL}/index.md): About, career, projects, experiments and writing
 
 ## Writing
 

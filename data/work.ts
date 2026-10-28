@@ -1,8 +1,4 @@
-export const WORK_CATEGORIES = [
-  "Experiments",
-  "Experience",
-  "Projects",
-] as const;
+export const WORK_CATEGORIES = ["Experiments", "Projects"] as const;
 
 export type WorkCategory = (typeof WORK_CATEGORIES)[number];
 
@@ -105,20 +101,6 @@ export const work: WorkItem[] = (
       preview: "/media/work/experiments/conversions.mp4",
     },
     {
-      title: "Lens Developer Dashboard",
-      date: "2025-04-04",
-      category: "Experience",
-      href: "https://developer.lens.xyz/",
-      preview: "/media/work/experience/lens-developer-dashboard.mp4",
-    },
-    {
-      title: "Daybreak V5",
-      date: "2025-03-31",
-      category: "Experience",
-      href: "https://www.daybreak.studio/",
-      preview: "/media/work/experience/daybreak-v5.mp4",
-    },
-    {
       title: "Accordion",
       date: "2025-03-01",
       category: "Experiments",
@@ -131,13 +113,6 @@ export const work: WorkItem[] = (
       category: "Experiments",
       href: "https://x.com/raphaelsalaja/status/1897296203102216702/",
       preview: "/media/work/experiments/dynamic-island.mp4",
-    },
-    {
-      title: "Opensea V2",
-      date: "2025-02-13",
-      category: "Experience",
-      href: "https://opensea.io/",
-      preview: "/media/work/experience/opensea-v2.mp4",
     },
     {
       title: "Toldo",
@@ -159,6 +134,7 @@ export const posterFor = (preview: string) => preview.replace(/\.mp4$/, ".jpg");
 
 export const projects = work.filter((item) => item.category === "Projects");
 
-export const withPreview = work.filter(
-  (item): item is WorkItem & { preview: string } => Boolean(item.preview),
+export const experiments = work.filter(
+  (item): item is WorkItem & { preview: string } =>
+    item.category === "Experiments" && Boolean(item.preview),
 );

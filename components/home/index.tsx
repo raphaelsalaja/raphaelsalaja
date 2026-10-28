@@ -3,7 +3,7 @@ import { Career } from "@/components/career";
 import { Coffee } from "@/components/coffee";
 import { JsonLd } from "@/components/json-ld";
 import { Writing } from "@/components/library";
-import { Projects } from "@/components/work";
+import { Experiments, Projects } from "@/components/work";
 import About from "@/content/about.mdx";
 import { personJsonLd, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import styles from "./styles.module.css";
@@ -31,12 +31,15 @@ export function Home() {
         <Career />
       </div>
       <div data-step style={step(3)}>
-        <Projects link={{ href: "/work", label: "All work" }} />
+        <Projects />
       </div>
       <div data-step style={step(4)}>
-        <Writing />
+        <Experiments />
       </div>
       <div data-step style={step(5)}>
+        <Writing />
+      </div>
+      <div data-step style={step(6)}>
         <Coffee />
       </div>
     </div>

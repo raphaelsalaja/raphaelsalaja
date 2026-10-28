@@ -35,7 +35,7 @@ export default async function Page(props: PageProps<"/work/[slug]">) {
       description={item.description ?? item.title}
       date={item.date}
       path={item.href}
-      parent={{ label: "Work", href: "/work" }}
+      parent={{ label: "Experiments", href: "/#experiments" }}
       Content={Content}
     />
   );

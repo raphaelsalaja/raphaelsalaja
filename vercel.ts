@@ -17,6 +17,9 @@ export const config: VercelConfig = {
       "https://provenance-nine-blond.vercel.app/provenance/:path*",
     ),
   ],
+  redirects: [
+    { source: "/work", destination: "/#experiments", permanent: true },
+  ],
   headers: [
     routes.cacheControl("/media/(.*)", immutable),
     routes.cacheControl("/shaders/(.*)", immutable),

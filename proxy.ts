@@ -46,12 +46,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/index.md",
-    "/work",
-    "/work.md",
-    "/work/:slug",
-    "/library/:slug",
-  ],
+  matcher: ["/", "/index.md", "/work/:slug", "/library/:slug"],
 };
