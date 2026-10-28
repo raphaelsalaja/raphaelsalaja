@@ -1,0 +1,12 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  padding-top: 14px;
+}
+
+.copy {
+  line-height: 24px;
+  color: var(--text-secondary);
+}

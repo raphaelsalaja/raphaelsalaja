@@ -2,17 +2,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Section } from "@/components/section";
 import { Video } from "@/components/video";
-import {
-  posterFor,
-  projects,
-  type WorkItem,
-  withPreview,
-  work,
-} from "@/data/work";
+import { posterFor, projects, type WorkItem, withPreview } from "@/data/work";
 import { yearOf } from "@/lib/site";
 import styles from "./styles.module.css";
-
-const HOME_LIMIT = 6;
 
 function WorkLink({
   item,
@@ -76,21 +68,9 @@ function Grid({ items }: { items: (WorkItem & { preview: string })[] }) {
   );
 }
 
-export function Work() {
+export function Projects({ link }: { link?: { href: string; label: string } }) {
   return (
-    <Section
-      id="work"
-      title="Work"
-      link={{ href: "/work", label: `All ${work.length}` }}
-    >
-      <Grid items={withPreview.slice(0, HOME_LIMIT)} />
-    </Section>
-  );
-}
-
-function Projects() {
-  return (
-    <Section id="projects" title="Projects">
+    <Section id="projects" title="Projects" link={link}>
       <ul className={styles.projects}>
         {projects.map((item) => (
           <li key={item.href}>

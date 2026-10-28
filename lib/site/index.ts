@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { posts } from "@/data/library";
-import { work } from "@/data/work";
+import { changelog } from "@/data/changelog";
 
 export const SITE_NAME = "Raphael Salaja";
 export const SITE_DESCRIPTION = "Design Engineer";
@@ -44,10 +43,7 @@ export const formatDayMonth = format({ day: "numeric", month: "short" });
 
 export const yearOf = (date: string) => date.slice(0, 4);
 
-export const LAST_UPDATED = [...posts, ...work]
-  .map((item) => item.date)
-  .toSorted()
-  .at(-1) as string;
+export const LAST_UPDATED = changelog[0].date;
 
 export function createMetadata({
   title,

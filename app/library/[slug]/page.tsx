@@ -34,7 +34,7 @@ export default async function Page(props: PageProps<"/library/[slug]">) {
       description={post.description}
       date={post.date}
       path={`/library/${slug}`}
-      parent={{ label: "Library", href: "/library" }}
+      parent={{ label: "Writing", href: "/library" }}
       Content={Content}
     />
   );

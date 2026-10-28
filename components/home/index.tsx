@@ -1,7 +1,9 @@
 import type { CSSProperties } from "react";
+import { Changelog } from "@/components/changelog";
 import { JsonLd } from "@/components/json-ld";
-import { Library } from "@/components/library";
-import { Work } from "@/components/work";
+import { Writing } from "@/components/library";
+import { Newsletter } from "@/components/newsletter";
+import { Projects } from "@/components/work";
 import About from "@/content/about.mdx";
 import {
   formatDate,
@@ -37,10 +39,16 @@ export function Home() {
         </section>
       </div>
       <div data-step style={step(2)}>
-        <Work />
+        <Projects link={{ href: "/work", label: "All work" }} />
       </div>
       <div data-step style={step(3)}>
-        <Library />
+        <Writing />
+      </div>
+      <div data-step style={step(4)}>
+        <Changelog />
+      </div>
+      <div data-step style={step(5)}>
+        <Newsletter />
       </div>
     </div>
   );
