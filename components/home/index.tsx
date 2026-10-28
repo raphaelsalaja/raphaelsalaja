@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import { Changelog } from "@/components/changelog";
 import { JsonLd } from "@/components/json-ld";
 import { Writing } from "@/components/library";
 import { Newsletter } from "@/components/newsletter";
@@ -45,9 +44,6 @@ export function Home() {
         <Writing />
       </div>
       <div data-step style={step(4)}>
-        <Changelog />
-      </div>
-      <div data-step style={step(5)}>
         <Newsletter />
       </div>
     </div>

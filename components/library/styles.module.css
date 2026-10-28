@@ -35,10 +35,6 @@
   padding: 14px 0;
   transition: opacity var(--duration-snappy) ease;
 
-  &:not(:has(.meta)) {
-    grid-template-columns: 1fr auto;
-  }
-
   @media (width <= 640px) {
     grid-template-columns: 1fr auto;
 
@@ -49,7 +45,7 @@
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .list:has(a.row:hover) .row:not(:hover) {
+  .list:has(.row:hover) .row:not(:hover) {
     opacity: 0.3;
   }
 }
@@ -67,9 +63,4 @@
 .date {
   text-align: right;
   white-space: nowrap;
-}
-
-.verb {
-  font-variation-settings: normal;
-  color: var(--text-tertiary);
 }
