@@ -21,8 +21,9 @@
   &:has(.icon) {
     grid-template-areas:
       "icon title meta"
-      "icon description meta";
-    grid-template-columns: auto 1fr auto;
+      ". description meta";
+    grid-template-columns: 20px 1fr auto;
+    column-gap: 10px;
   }
 
   @media (hover: hover) {
@@ -37,22 +38,24 @@
   grid-area: icon;
   place-items: center;
   align-self: center;
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 1px var(--border-secondary);
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 5px;
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
-  @media (prefers-color-scheme: dark) {
-    background: var(--background-tertiary);
+  &[data-monochrome] {
+    background: #000;
+    box-shadow: inset 0 0 0 1px var(--border-primary);
 
-    img[data-monochrome] {
+    img {
+      width: 12px;
+      height: 12px;
       filter: invert(1);
     }
   }

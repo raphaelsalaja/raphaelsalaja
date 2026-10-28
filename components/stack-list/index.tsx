@@ -43,15 +43,12 @@ export function StackList({ items }: { items: StackListItem[] }) {
         <li key={item.href}>
           <Row href={item.href}>
             {item.icon && (
-              <span className={styles.icon}>
+              <span
+                className={styles.icon}
+                data-monochrome={item.iconMonochrome || undefined}
+              >
                 {/* biome-ignore lint/performance/noImgElement: small static logos don't need optimisation */}
-                <img
-                  src={item.icon}
-                  alt=""
-                  width={20}
-                  height={20}
-                  data-monochrome={item.iconMonochrome || undefined}
-                />
+                <img src={item.icon} alt="" width={20} height={20} />
               </span>
             )}
             <span className={styles.title}>{item.title}</span>
