@@ -21,9 +21,8 @@ const COMPANIES: Record<string, Company> = {
 };
 
 export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
-  const company = href?.startsWith("http")
-    ? COMPANIES[new URL(href).hostname]
-    : undefined;
+  const hostname = href?.startsWith("http") ? new URL(href).hostname : "";
+  const company = COMPANIES[hostname];
 
   if (!company) {
     return (
@@ -49,6 +48,16 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
         ))}
         {children}
         <span className={styles.preview} aria-hidden="true">
+          <span className={styles.toolbar}>
+            <span className={styles.lights}>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className={styles.address}>
+              {hostname.replace(/^www\./, "")}
+            </span>
+          </span>
           {/* biome-ignore lint/performance/noImgElement: static screenshot shown on hover */}
           <img
             src={`/media/companies/previews/${company.preview}`}
