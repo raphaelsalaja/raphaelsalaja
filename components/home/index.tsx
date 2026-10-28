@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import { Career } from "@/components/career";
 import { Coffee } from "@/components/coffee";
 import { JsonLd } from "@/components/json-ld";
 import { Writing } from "@/components/library";
@@ -28,18 +27,15 @@ export function Home() {
         </section>
       </div>
       <div data-step style={step(2)}>
-        <Career />
-      </div>
-      <div data-step style={step(3)}>
         <Projects />
       </div>
-      <div data-step style={step(4)}>
+      <div data-step style={step(3)}>
         <Experiments />
       </div>
-      <div data-step style={step(5)}>
+      <div data-step style={step(4)}>
         <Writing />
       </div>
-      <div data-step style={step(6)}>
+      <div data-step style={step(5)}>
         <Coffee />
       </div>
     </div>
