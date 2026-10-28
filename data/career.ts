@@ -5,6 +5,7 @@ export type Role = {
   href: string;
   logo: string;
   monochrome?: boolean;
+  background?: string;
 };
 
 export const career: Role[] = [
@@ -37,5 +38,6 @@ export const career: Role[] = [
     period: "2025",
     href: "https://opensea.io/",
     logo: "/media/career/opensea.png",
+    background: "#0086ff",
   },
 ];

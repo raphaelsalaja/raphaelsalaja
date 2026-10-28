@@ -8,6 +8,7 @@ export type StackListItem = {
   description?: string;
   icon?: string;
   iconMonochrome?: boolean;
+  iconBackground?: string;
   meta?: string;
 };
 
@@ -46,6 +47,7 @@ export function StackList({ items }: { items: StackListItem[] }) {
               <span
                 className={styles.icon}
                 data-monochrome={item.iconMonochrome || undefined}
+                style={{ backgroundColor: item.iconBackground }}
               >
                 {/* biome-ignore lint/performance/noImgElement: small static logos don't need optimisation */}
                 <img src={item.icon} alt="" width={20} height={20} />
