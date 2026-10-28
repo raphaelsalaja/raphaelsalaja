@@ -9,7 +9,7 @@ const COMPANIES: Record<string, Company> = {
   "lovable.dev": { logos: ["lovable.jpg"], preview: "lovable.jpg" },
   "variant.com": { logos: ["variant.jpg"], preview: "variant.jpg" },
   "avara.xyz": {
-    logos: ["family.png", "lens.png", "aave.png"],
+    logos: ["family.jpg", "lens.png", "aave.png"],
     preview: "avara.jpg",
   },
   "opensea.io": { logos: ["opensea.jpg"], preview: "opensea.jpg" },
