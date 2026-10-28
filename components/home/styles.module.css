@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-self: stretch;
+  font-size: 14px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  line-height: 24px;
+  color: var(--text-tertiary);
+
+  a {
+    color: var(--text-quaternary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentcolor 20%, transparent);
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.name {
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+}

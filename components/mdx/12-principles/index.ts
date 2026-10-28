@@ -1,0 +1,11 @@
+export { Anticipation } from "./anticipation";
+export { Appeal } from "./appeal";
+export { Exaggeration } from "./exaggeration";
+export { FollowThroughAndOverlappingAction } from "./follow-through-and-overlapping-action";
+export { SecondaryAction } from "./secondary-action";
+export { SlowInSlowOut } from "./slow-in-and-slow-out";
+export { SolidDrawing } from "./solid-drawing";
+export { SquashStretch } from "./squash-and-stretch";
+export { Staging } from "./staging";
+export { StraightAheadActionAndPoseToPose } from "./straight-ahead-action-and-pose-to-pose";
+export { Timing } from "./timing";

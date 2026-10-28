@@ -1,0 +1,190 @@
+:root {
+  --white: oklch(1 0 0);
+  --black: oklch(0 0 0);
+  --blue: oklch(0.7031 0.1618 249.75);
+  --green: oklch(0.7038 0.1622 158.75);
+  --orange: oklch(0.7034 0.1619 61.85);
+  --pink: oklch(0.7031 0.1612 0.1);
+  --purple: oklch(0.7024 0.1619 284.22);
+  --red: oklch(0.7025 0.1624 17.61);
+  --red-9: oklch(62.9% 0.2562 26.81);
+
+  --white-a4: oklch(1 0 0 / 20%);
+  --white-a6: oklch(1 0 0 / 40%);
+  --white-a8: oklch(1 0 0 / 60%);
+  --white-a10: oklch(1 0 0 / 80%);
+  --white-a12: oklch(1 0 0 / 95%);
+  --black-a8: oklch(0 0 0 / 60%);
+  --black-a10: oklch(0 0 0 / 80%);
+
+  --border-primary: oklch(0 0 0 / 5%);
+  --border-secondary: oklch(0 0 0 / 10%);
+
+  --text-primary: oklch(0.22213 0 0);
+  --text-secondary: oklch(0.30557 0 0);
+  --text-tertiary: oklch(0.47421 0 0);
+  --text-quaternary: oklch(0.6901 0 0);
+
+  --background-primary: oklch(1 0 0);
+  --background-secondary: oklch(0.9821 0 0);
+
+  --font-size-small: 13px;
+
+  --font-weight-400: "wght" 400, "opsz" 14;
+  --font-weight-450: "wght" 450, "opsz" 14;
+  --font-weight-500: "wght" 500, "opsz" 14;
+  --font-weight-600: "wght" 600, "opsz" 14;
+
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --duration-quick: 0.1s;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-variation-settings: inherit;
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+  background: none;
+}
+
+input {
+  background: none;
+}
+
+html {
+  font-variation-settings: var(--font-weight-400);
+  font-optical-sizing: none;
+  font-feature-settings: "calt", "ccmp", "locl", "kern";
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-primary);
+  scroll-padding-top: 128px;
+  scrollbar-color: oklch(0 0 0 / 5%) transparent;
+  scrollbar-width: thin;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+::selection {
+  color: var(--white);
+  background: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+  width: min(640px, 100% - 48px);
+  padding: 96px 0;
+  isolation: isolate;
+  animation: fade 0.4s ease both;
+
+  @media (width > 640px) {
+    &::before {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      height: 128px;
+      pointer-events: none;
+      content: "";
+      background: linear-gradient(
+        to bottom,
+        oklch(1 0 0) 0%,
+        oklch(1 0 0 / 54%) 34%,
+        oklch(1 0 0 / 19%) 65%,
+        oklch(1 0 0 / 0%) 100%
+      );
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page) {
+  animation: fade 0.2s ease both reverse;
+}
+
+::view-transition-new(.page) {
+  animation: fade 0.3s ease both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

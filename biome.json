@@ -1,34 +1,21 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": false
+    "useIgnoreFile": true
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": [
-      "**",
-      "!**/node_modules",
-      "!**/dist",
-      "!**/.next",
-      "!**/.vercel",
-      "!**/.pnpm",
-      "!**/*.svg",
-      "!**/lib/unicornStudio.umd.js",
-      "!**/.source"
-    ]
+    "includes": ["**", "!lib/unicornStudio.umd.cjs", "!public", "!.vscode"]
   },
   "formatter": {
-    "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2
   },
-
   "linter": {
-    "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "suspicious": {
         "noDuplicateProperties": "off"
       },
@@ -37,7 +24,6 @@
         "noParameterAssign": "error",
         "useAsConstAssertion": "error",
         "useDefaultParameterLast": "error",
-        "useEnumInitializers": "error",
         "useSelfClosingElements": "error",
         "useSingleVarDeclarator": "error",
         "noUnusedTemplateLiteral": "error",
@@ -57,34 +43,12 @@
       "next": "recommended"
     }
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
-    }
-  },
-  "json": {
-    "parser": {
-      "allowComments": true
-    }
-  },
   "assist": {
-    "enabled": true,
     "actions": {
       "source": {
         "organizeImports": "on",
         "useSortedProperties": "on"
       }
-    }
-  },
-  "css": {
-    "formatter": {
-      "enabled": true
-    },
-    "linter": {
-      "enabled": true
-    },
-    "assist": {
-      "enabled": true
     }
   }
 }

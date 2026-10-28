@@ -1,0 +1,42 @@
+.figure {
+  margin-top: 32px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  cursor: zoom-out;
+}
+
+.trigger {
+  position: relative;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.popup {
+  width: 60%;
+}
+
+.popup,
+.trigger {
+  z-index: 100000;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px oklch(0 0 0 / 10%);
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.caption {
+  display: block;
+  padding: 16px 32px 32px;
+  font-size: 12px;
+  font-variation-settings: var(--font-weight-500);
+  line-height: 1.2;
+  color: var(--text-quaternary);
+  text-align: center;
+}

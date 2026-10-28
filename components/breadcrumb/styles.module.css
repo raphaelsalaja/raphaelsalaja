@@ -1,0 +1,23 @@
+.breadcrumb {
+  font-size: 14px;
+  font-variation-settings: var(--font-weight-450);
+}
+
+.list {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.link {
+  color: var(--text-tertiary);
+  transition: color var(--duration-quick) var(--ease-out-cubic);
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.separator {
+  color: var(--text-tertiary);
+}
