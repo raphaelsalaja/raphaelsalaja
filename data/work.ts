@@ -27,11 +27,11 @@ export const work: WorkItem[] = (
       description: "Declarative audio synthesis for the web.",
     },
     {
-      title: "userinterface.wiki",
+      title: "Userinterface Wikipedia",
       date: "2025-09-24",
       category: "Projects",
       href: "https://www.userinterface.wiki/",
-      description: "Userinterface Wikipedia.",
+      description: "A living manual for better interfaces.",
     },
     {
       title: "Cambio",
