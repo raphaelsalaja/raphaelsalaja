@@ -56,7 +56,7 @@ export function Article({
         items={[{ label: "Home", href: "/" }, parent, { label: title }]}
       />
       <Outline back={parent} />
-      <article className="prose">
+      <article className="prose" data-reveal-children>
         <header>
           <h1>{title}</h1>
           <div className={styles.meta}>

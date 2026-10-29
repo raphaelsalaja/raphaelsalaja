@@ -82,6 +82,7 @@
   --font-weight-600: "wght" 600, "opsz" 14;
 
   --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.1);
@@ -271,6 +272,24 @@ time {
 
   to {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-reveals] :is([data-reveal], [data-reveal-children] > *) {
+    transition:
+      opacity 0.6s var(--ease-out-quart),
+      filter 0.7s var(--ease-out-quart);
+    transition-delay: calc(var(--reveal-index, 0) * 90ms);
+
+    &:not([data-shown]) {
+      opacity: 0;
+      filter: blur(6px);
+    }
+
+    &[data-shown="instant"] {
+      transition: none;
+    }
   }
 }
 

@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ViewTransition } from "react";
+import { Reveal } from "@/components/reveal";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { VISITED_KEY } from "@/lib/visited";
 
@@ -42,7 +43,7 @@ export const viewport: Viewport = {
   ],
 };
 
-const visitedScript = `try{sessionStorage.getItem("${VISITED_KEY}")&&(document.documentElement.dataset.visited="")}catch(e){}`;
+const visitedScript = `document.documentElement.dataset.reveals="";try{sessionStorage.getItem("${VISITED_KEY}")&&(document.documentElement.dataset.visited="")}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>
           <ViewTransition default="page">{children}</ViewTransition>
         </main>
+        <Reveal />
         <Analytics />
       </body>
     </html>
