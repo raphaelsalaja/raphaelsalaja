@@ -1,7 +1,12 @@
 "use client";
 
 import { CopyButton } from "@/components/copy-button";
-import { SKILLS_DIRECTORY, SKILLS_GITHUB, SKILLS_INSTALL } from "@/data/skills";
+import {
+  SKILLS_DIRECTORY,
+  SKILLS_GITHUB,
+  SKILLS_INSTALL,
+  SKILLS_REPO,
+} from "@/data/skills";
 import styles from "./styles.module.css";
 
 const LINKS = [
@@ -12,12 +17,20 @@ const LINKS = [
 export function Install() {
   return (
     <div className={styles.install}>
-      <CopyButton
-        label={SKILLS_INSTALL}
-        showLabel
-        className={styles.command}
-        getText={() => SKILLS_INSTALL}
-      />
+      <div className={styles.command}>
+        <code>
+          <span className={styles.sigil} aria-hidden="true">
+            $
+          </span>
+          npx skills add <span className={styles.repo}>{SKILLS_REPO}</span>
+        </code>
+        <CopyButton
+          label="Copy"
+          showLabel
+          className={styles.copy}
+          getText={() => SKILLS_INSTALL}
+        />
+      </div>
       <div className={styles.links}>
         {LINKS.map(({ label, href }) => (
           <a

@@ -1,14 +1,47 @@
 .install {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .command {
-  min-width: 0;
-  text-align: left;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 8px 0 16px;
+  background: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+
+  > code {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+}
+
+.sigil {
+  margin-right: 10px;
+  color: var(--text-quaternary);
+  user-select: none;
+}
+
+.repo {
+  color: var(--text-primary);
+}
+
+.copy {
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  color: var(--text-secondary);
+  background: var(--background-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-raised);
 }
 
 .prompts {
