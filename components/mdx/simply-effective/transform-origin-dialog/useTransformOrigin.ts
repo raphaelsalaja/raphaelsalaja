@@ -113,7 +113,7 @@ export const useTransformOrigin = ({
       color: #00ff00;
       font-family: inherit;
       font-size: 12px;
-      font-weight: bold;
+      font-variation-settings: var(--font-weight-600);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     `;
       triggerLabel.textContent = "Trigger Center";
@@ -126,7 +126,7 @@ export const useTransformOrigin = ({
       color: #ff0000;
       font-family: inherit;
       font-size: 12px;
-      font-weight: bold;
+      font-variation-settings: var(--font-weight-600);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     `;
       originLabel.textContent = `Origin (${originX.toFixed(1)}%, ${originY.toFixed(1)}%)`;

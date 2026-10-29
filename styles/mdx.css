@@ -37,9 +37,7 @@ article {
 
     h1 {
       font-size: 24px;
-      font-variation-settings:
-        "wght" 560,
-        "opsz" 32;
+      font-variation-settings: var(--font-weight-500);
       line-height: 30px;
       letter-spacing: -0.02em;
     }

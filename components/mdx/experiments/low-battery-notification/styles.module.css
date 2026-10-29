@@ -42,13 +42,13 @@
 
     .level {
       font-size: 16px;
-      font-weight: 500;
+      font-variation-settings: var(--font-weight-500);
       color: oklch(1 0 0);
     }
 
     .mode {
       font-size: 13px;
-      font-weight: 400;
+      font-variation-settings: var(--font-weight-400);
       color: #808080;
     }
   }
