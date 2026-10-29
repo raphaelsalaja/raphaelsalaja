@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
 import { IconCircleCheck, IconDots } from "@/components/icons";
+import { firstExample } from "@/data/skills";
 import { Pair } from "../pair";
 import { Deconstruct, Loop } from "./deconstruct";
 import styles from "./styles.module.css";
@@ -198,7 +199,7 @@ function Overlay({ aligned }: { aligned?: boolean }) {
 export const demos: Record<string, ReactNode> = {
   scope: (
     <Pair
-      ask="Make the top bar shorter"
+      ask={firstExample("scope")}
       notes={[
         "Shorter bar, plus a new sidebar and grid",
         "The bar changed and nothing else",
@@ -209,7 +210,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   reuse: (
     <Pair
-      ask="Add sort, filter and view buttons"
+      ask={firstExample("reuse")}
       notes={["Three buttons, three local styles", "The project's own Button"]}
       before={
         <div className={styles.stack}>
@@ -269,7 +270,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   restraint: (
     <Pair
-      ask="Add a list of my boards"
+      ask={firstExample("restraint")}
       notes={["A tip, badges and a toast on top", "The list, nothing else"]}
       before={
         <div className={styles.stack}>
@@ -295,7 +296,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   copy: (
     <Pair
-      ask="Add the sync settings"
+      ask={firstExample("copy")}
       notes={[
         "Sentences, ids, an em dash and an ellipsis",
         "Title Case, short and plain",
@@ -338,7 +339,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   defaults: (
     <Pair
-      ask="Make the sidebar scroll"
+      ask={firstExample("defaults")}
       notes={["Hard cut and clipped shadows", "Faded edges, shadows intact"]}
       before={<Scroller />}
       after={<Scroller faded />}
@@ -346,7 +347,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   verify: (
     <Pair
-      ask="The sync toggle doesn't save"
+      ask={firstExample("verify")}
       notes={["Done without looking", "Checked, and where to see it"]}
       before={
         <Bubble>Fixed the handler. Typecheck passes, so it should work.</Bubble>
@@ -368,7 +369,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   gather: (
     <Pair
-      ask="Find references for the library page"
+      ask={firstExample("gather")}
       notes={["Links pasted in chat", "One board, each part named"]}
       before={
         <Bubble>
@@ -395,7 +396,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   match: (
     <Pair
-      ask="Rebuild this card from the reference"
+      ask={firstExample("match")}
       notes={[
         "Values by eye, off by a few pixels",
         "Values read from the source",
@@ -406,7 +407,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   rule: (
     <Pair
-      ask="Labels take Title Case, I've said it twice"
+      ask={firstExample("rule")}
       notes={["A vague rule, nothing fixed", "The rule, its pair and a sweep"]}
       before={
         <div className={styles.file}>
@@ -431,7 +432,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   ship: (
     <Pair
-      ask="/ship"
+      ask={firstExample("ship")}
       notes={["Steps handed back to you", "Done to the end"]}
       before={
         <Bubble>
@@ -462,7 +463,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   prototype: (
     <Pair
-      ask="/prototype the search"
+      ask={firstExample("prototype")}
       notes={[
         "One built, the rest only described",
         "Three built, named by how they differ",
@@ -489,7 +490,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   lab: (
     <Pair
-      ask="/lab the button"
+      ask={firstExample("lab")}
       notes={["The resting state only", "Every state, open at once"]}
       before={
         <div className={styles.state}>
@@ -513,7 +514,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   deconstruct: (
     <Pair
-      ask="/deconstruct the copy button"
+      ask={firstExample("deconstruct")}
       notes={[
         "A guess from watching it once",
         "Every state, property and timing",
@@ -524,7 +525,7 @@ export const demos: Record<string, ReactNode> = {
   ),
   audit: (
     <Pair
-      ask="/audit the diff"
+      ask={firstExample("audit")}
       notes={["Taste, with no locations", "Numbered, ranked and located"]}
       before={
         <Bubble>Looks good overall, a few small things to tidy up.</Bubble>

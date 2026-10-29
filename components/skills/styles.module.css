@@ -44,6 +44,40 @@
   }
 }
 
+.prompts {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  margin: 16px 0 0;
+  list-style: none;
+  background: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.prompt {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+  padding: 4px 4px 4px 8px;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition:
+    color var(--duration-quick) ease,
+    background-color var(--duration-quick) ease;
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--background-tertiary);
+  }
+
+  > span {
+    min-width: 0;
+  }
+}
+
 .links {
   display: grid;
   grid-template-columns: 1fr 1fr;

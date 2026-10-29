@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { principles, procedures, type Skill } from "@/data/skills";
 import { demos } from "./demos";
 import { Install } from "./install";
+import { Prompts } from "./prompts";
 import styles from "./styles.module.css";
 
 function Entry({ skill }: { skill: Skill }) {
@@ -17,6 +18,7 @@ function Entry({ skill }: { skill: Skill }) {
         {skill.description}
         {skill.userInvoked && " Runs only when you call it."}
       </p>
+      <Prompts examples={skill.examples} />
       {demos[skill.name]}
     </Fragment>
   );
