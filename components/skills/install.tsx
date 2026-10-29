@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
 import { CopyButton } from "@/components/copy-button";
+import { GitHubLogo, VercelLogo } from "@/components/icons";
 import {
   SKILLS_DIRECTORY,
   SKILLS_GITHUB,
@@ -11,8 +11,8 @@ import {
 import styles from "./styles.module.css";
 
 const LINKS = [
-  { label: "GitHub", href: SKILLS_GITHUB },
-  { label: "skills.sh", href: SKILLS_DIRECTORY },
+  { label: "GitHub", href: SKILLS_GITHUB, Logo: GitHubLogo, size: 14 },
+  { label: "skills.sh", href: SKILLS_DIRECTORY, Logo: VercelLogo, size: 12 },
 ];
 
 export function Install() {
@@ -25,22 +25,21 @@ export function Install() {
         npx skills add <span className={styles.repo}>{SKILLS_REPO}</span>
       </code>
       <div className={styles.actions}>
-        {LINKS.map(({ label, href }) => (
+        {LINKS.map(({ label, href, Logo, size }) => (
           <a
             key={label}
             href={href}
             target="_blank"
             rel="noopener"
+            aria-label={`${label} (opens in a new tab)`}
             className={styles.action}
           >
-            {label}
-            <span className="sr-only"> (opens in a new tab)</span>
+            <Logo width={size} height={size} />
           </a>
         ))}
         <CopyButton
-          label="Copy"
-          showLabel
-          className={clsx(styles.action, styles.copy)}
+          label="Copy Command"
+          className={styles.action}
           getText={() => SKILLS_INSTALL}
         />
       </div>

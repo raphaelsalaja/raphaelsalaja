@@ -3,8 +3,8 @@
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
-  padding: 0 8px 0 16px;
+  height: 44px;
+  padding: 0 6px 0 14px;
   margin-top: 14px;
   background: var(--background-secondary);
   border-radius: 12px;
@@ -15,16 +15,6 @@
     text-overflow: ellipsis;
     color: var(--text-secondary);
     white-space: nowrap;
-  }
-
-  @media (width <= 560px) {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 14px 8px 8px;
-
-    > code {
-      padding: 0 8px;
-    }
   }
 }
 
@@ -41,27 +31,18 @@
 .actions {
   display: flex;
   flex-shrink: 0;
-  gap: 6px;
-
-  @media (width <= 560px) {
-    width: 100%;
-
-    > * {
-      flex: 1;
-      justify-content: center;
-    }
-  }
+  gap: 4px;
 }
 
 .action {
   display: inline-flex;
-  gap: 6px;
   align-items: center;
+  justify-content: center;
+  width: 32px;
   height: 32px;
-  padding: 0 12px;
   color: var(--text-secondary);
   background: var(--background-primary);
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: var(--shadow-raised);
   transition:
     color var(--duration-snappy) ease,
@@ -74,10 +55,6 @@
   &:active {
     scale: 0.97;
   }
-}
-
-.copy {
-  padding-left: 10px;
 }
 
 .prompts {
