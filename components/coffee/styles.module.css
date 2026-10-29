@@ -24,6 +24,7 @@
   --mascot-eyes: #fff;
 
   margin-bottom: 16px;
+  overflow: visible;
 }
 
 .title {
