@@ -84,11 +84,29 @@
     height: 100%;
   }
 
+  &:has(+ &),
   & + & {
-    margin-left: -4px;
     box-shadow:
       0 0 0 1.5px var(--background-primary),
       var(--mark-shadow);
+  }
+
+  &:nth-child(1) {
+    z-index: 3;
+  }
+
+  &:nth-child(2) {
+    z-index: 2;
+  }
+
+  & + & {
+    margin-left: -9px;
+    transition: margin-left var(--duration-smooth) var(--ease-out-cubic);
+
+    .company:hover > &,
+    a:focus-visible > .company > & {
+      margin-left: -3px;
+    }
   }
 }
 
