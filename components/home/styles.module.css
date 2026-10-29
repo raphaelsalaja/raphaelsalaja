@@ -70,19 +70,46 @@
   white-space: nowrap;
 }
 
-.logo {
+.mark {
+  --mark-shadow: 0 1px 2px rgb(0 0 0 / 0.24), 0 0 0 0.5px rgb(0 0 0 / 0.12);
+
+  position: relative;
   display: inline-block;
   width: 14px;
   height: 14px;
   margin-right: 5px;
+  overflow: hidden;
   vertical-align: -2px;
-  outline: 1px solid var(--border-primary);
-  outline-offset: -1px;
-  border-radius: 3px;
+  color: white;
+  border-radius: 3.5px;
+  box-shadow: var(--mark-shadow);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 0.5px rgb(255 255 255 / 0.18),
+      inset 0 1px 0 rgb(255 255 255 / 0.28);
+  }
+
+  > * {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+
+  > img {
+    width: 100%;
+    height: 100%;
+  }
 
   & + & {
     margin-left: -4px;
-    box-shadow: 0 0 0 1.5px var(--background-primary);
+    box-shadow:
+      0 0 0 1.5px var(--background-primary),
+      var(--mark-shadow);
   }
 }
 
@@ -174,17 +201,5 @@
   text-align: center;
   background: var(--background-primary);
   border-radius: 999px;
-  box-shadow: inset 0 0 0 1px var(--border-primary);
-}
-
-.tile {
-  display: inline-grid;
-  place-items: center;
-  width: 14px;
-  height: 14px;
-  margin-right: 5px;
-  vertical-align: -2px;
-  color: white;
-  border-radius: 3px;
   box-shadow: inset 0 0 0 1px var(--border-primary);
 }

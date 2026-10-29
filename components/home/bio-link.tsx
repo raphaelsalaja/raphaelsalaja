@@ -51,7 +51,7 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
       <a href={href} {...props}>
         <span className={styles.company}>
           <span
-            className={styles.tile}
+            className={styles.mark}
             style={{ background: social.background }}
           >
             <social.Icon width={9} height={9} />
@@ -74,15 +74,15 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
     <a href={href} {...props}>
       <span className={styles.company}>
         {company.logos.map((logo) => (
-          // biome-ignore lint/performance/noImgElement: small static logos don't need optimisation
-          <img
-            key={logo}
-            className={styles.logo}
-            src={`/media/companies/${logo}`}
-            alt=""
-            width={14}
-            height={14}
-          />
+          <span key={logo} className={styles.mark}>
+            {/* biome-ignore lint/performance/noImgElement: small static logos don't need optimisation */}
+            <img
+              src={`/media/companies/${logo}`}
+              alt=""
+              width={14}
+              height={14}
+            />
+          </span>
         ))}
         {children}
         <span className={styles.preview} aria-hidden="true">
