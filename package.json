@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "biome check .",
     "format": "biome check --write .",
+    "icons": "node scripts/icons.mjs",
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {

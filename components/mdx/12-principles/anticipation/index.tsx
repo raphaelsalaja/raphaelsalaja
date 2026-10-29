@@ -3,7 +3,12 @@
 import { Checkbox } from "@base-ui/react/checkbox";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Avatar, Bolt, Check, HighPriority, InProgress } from "./icons";
+import {
+  IconBoltFill,
+  IconCheck,
+  IconCircleUserFill,
+} from "@/components/icons";
+import { HighPriority, InProgress } from "./icons";
 import styles from "./styles.module.css";
 
 interface Issue {
@@ -106,7 +111,12 @@ export function Anticipation() {
             >
               <Checkbox.Root checked={isSelected} className={styles.checkbox}>
                 <Checkbox.Indicator className={styles.indicator}>
-                  <Check className={styles.check} color="var(--white)" />
+                  <IconCheck
+                    size={14}
+                    strokeWidth={1.75}
+                    className={styles.check}
+                    style={{ color: "var(--white)" }}
+                  />
                 </Checkbox.Indicator>
               </Checkbox.Root>
               <div className={styles.priority}>
@@ -116,7 +126,7 @@ export function Anticipation() {
               <InProgress className={styles.status} />
               <span className={styles.title}>{issue.title}</span>
               <div className={styles.spacer} />
-              <Avatar className={styles.avatar} />
+              <IconCircleUserFill className={styles.avatar} />
               <div className={styles.date}>{issue.date}</div>
             </motion.div>
           )}
@@ -150,7 +160,7 @@ export function Anticipation() {
             }}
             className={styles.popup}
           >
-            <Bolt className={styles.bolt} />
+            <IconBoltFill className={styles.bolt} />
             <span className={styles.selected}>Quick Actions</span>
             <button
               type="button"

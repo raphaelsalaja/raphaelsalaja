@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { Fragment } from "react";
-import { ChevronRight } from "@/components/icons";
+import { IconChevronRight } from "@/components/icons";
 import styles from "./styles.module.css";
 
 interface Crumb {
@@ -23,7 +23,7 @@ export function Breadcrumb({
           <Fragment key={item.label}>
             {index > 0 && (
               <li aria-hidden="true" className={styles.separator}>
-                <ChevronRight width={14} />
+                <IconChevronRight size={14} />
               </li>
             )}
             <li>

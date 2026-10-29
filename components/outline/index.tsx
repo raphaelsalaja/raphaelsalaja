@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { motion, type Transition } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { IconArrowLeft } from "@/components/icons";
 import styles from "./styles.module.css";
 
 interface Heading {
@@ -82,7 +83,8 @@ export function Outline({ back }: { back: { href: string; label: string } }) {
     <>
       <nav aria-label="On this page" className={styles.rail}>
         <Link href={back.href} className={styles.back}>
-          <span aria-hidden="true">←</span> {back.label}
+          <IconArrowLeft size={14} />
+          {back.label}
         </Link>
         {headings.length > 0 && (
           <ol className={styles.railList}>

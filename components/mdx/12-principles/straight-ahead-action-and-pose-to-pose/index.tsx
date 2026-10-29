@@ -1,7 +1,7 @@
 "use client";
 
 import { Select as BaseSelect } from "@base-ui/react/select";
-import { Check, ChevronDown } from "@/components/icons";
+import { IconCheck, IconChevronDown } from "@/components/icons";
 import styles from "./styles.module.css";
 
 const items = [
@@ -16,7 +16,7 @@ export function Select({ animation = "straight-ahead" }) {
       <BaseSelect.Trigger className={styles.trigger}>
         <BaseSelect.Value className={styles.value} />
         <BaseSelect.Icon>
-          <ChevronDown />
+          <IconChevronDown size={15} />
         </BaseSelect.Icon>
       </BaseSelect.Trigger>
       <BaseSelect.Portal data-light>
@@ -34,7 +34,7 @@ export function Select({ animation = "straight-ahead" }) {
               >
                 <BaseSelect.ItemText>{item.label}</BaseSelect.ItemText>
                 <BaseSelect.ItemIndicator>
-                  <Check />
+                  <IconCheck size={15} />
                 </BaseSelect.ItemIndicator>
               </BaseSelect.Item>
             ))}

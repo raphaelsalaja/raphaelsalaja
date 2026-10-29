@@ -1,68 +1,8 @@
-import type * as React from "react";
+import type { SVGProps } from "react";
 
-export interface IconProps extends React.SVGAttributes<SVGElement> {
-  children?: never;
-  color?: string;
-}
+export type BrandProps = SVGProps<SVGSVGElement>;
 
-export function Fire({ color = "currentColor", ...props }: IconProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={color}
-    >
-      <title>Fire icon</title>
-      <path
-        d="M12.0142 1.70807C11.7507 1.50497 11.4036 1.44614 11.088 1.55112C10.7723 1.65611 10.5296 1.91116 10.4403 2.23158C9.90268 4.16083 8.80022 5.22289 7.38331 6.58789C7.1924 6.7718 6.99579 6.96121 6.79407 7.15898L6.79335 7.15969C6.16354 7.77845 5.51349 8.47938 4.97951 9.27371C3.39474 11.6326 3.00524 14.3046 4.19193 16.9909L4.19239 16.992C6.17042 21.456 10.5982 22.7419 14.297 21.6104C18.0101 20.4744 21.0549 16.8981 20.415 11.744C20.2173 10.1386 19.6746 8.47873 18.3334 7.17122C18.1227 6.96584 17.8322 6.86366 17.5394 6.8919C17.2465 6.92014 16.9809 7.07593 16.8133 7.31778C16.6732 7.52011 16.3541 7.91009 15.9715 8.36098C15.9053 7.55854 15.7383 6.78655 15.4546 6.04124C14.8323 4.4062 13.6855 2.99673 12.0142 1.70807Z"
-        fill={color}
-      />
-    </svg>
-  );
-}
-
-export function Crown({ color = "currentColor", ...props }: IconProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <title>Crown icon</title>
-      <path
-        d="M12.8321 3.4453C12.6466 3.1671 12.3344 3 12 3C11.6657 3 11.3534 3.1671 11.168 3.4453L7.65766 8.71078L2.44725 6.10557C2.10435 5.93412 1.69361 5.9738 1.38987 6.20773C1.08613 6.44165 0.942863 6.82864 1.02105 7.20395L3.02353 16.8158C3.40996 18.6707 5.04474 20 6.93945 20H17.0606C18.9553 20 20.5901 18.6707 20.9765 16.8158L22.979 7.20395C23.0572 6.82864 22.9139 6.44165 22.6102 6.20773C22.3065 5.9738 21.8957 5.93412 21.5528 6.10557L16.3424 8.71078L12.8321 3.4453Z"
-        fill={color}
-      />
-    </svg>
-  );
-}
-
-export function Toast({ color = "currentColor", ...props }: IconProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <title>Toast icon</title>
-      <path
-        d="M12 3C9.37749 3 6.95383 3.5884 5.1504 4.59031C3.38084 5.5734 2 7.09122 2 9C2 10.4701 2.82568 11.7132 4 12.6468V17C4 19.2091 5.79086 21 8 21H16C18.2091 21 20 19.2091 20 17V12.6468C21.1743 11.7132 22 10.4701 22 9C22 7.09122 20.6192 5.5734 18.8496 4.59031C17.0462 3.5884 14.6225 3 12 3Z"
-        fill={color}
-      />
-    </svg>
-  );
-}
-
-export function AphexTwinIcon(props: React.SVGProps<SVGSVGElement>) {
+export function AphexTwinIcon(props: BrandProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -81,41 +21,7 @@ export function AphexTwinIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-interface DirectionProps extends React.SVGProps<SVGSVGElement> {
-  direction: "up" | "down" | "left" | "right";
-}
-
-export function Direction({
-  color = "currentColor",
-  direction,
-  ...props
-}: DirectionProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="var(--text-tertiary)"
-      style={{
-        rotate: {
-          up: "0deg",
-          down: "180deg",
-          left: "270deg",
-          right: "90deg",
-        }[direction],
-      }}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 3C12.3978 3 12.7793 3.15803 13.0606 3.43934L18.5607 8.93934C19.1464 9.52512 19.1464 10.4749 18.5607 11.0607C17.9749 11.6464 17.0251 11.6464 16.4393 11.0607L13.5 8.12131V19.5C13.5 20.3284 12.8284 21 12 21C11.1716 21 10.5 20.3284 10.5 19.5V8.12133L7.56066 11.0607C6.97488 11.6464 6.02513 11.6464 5.43934 11.0607C4.85355 10.4749 4.85355 9.52513 5.43934 8.93934L10.9393 3.43934C11.2206 3.15804 11.6022 3 12 3Z"
-        fill="inherit"
-      />
-    </svg>
-  );
-}
-
-export const OpenAI = (props: IconProps) => (
+export const OpenAI = (props: BrandProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -131,7 +37,7 @@ export const OpenAI = (props: IconProps) => (
   </svg>
 );
 
-export const Meta = (props: IconProps) => (
+export const Meta = (props: BrandProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -155,7 +61,7 @@ export const Meta = (props: IconProps) => (
   </svg>
 );
 
-export const Anthropic = (props: IconProps) => (
+export const Anthropic = (props: BrandProps) => (
   <svg
     fill="white"
     fillRule="evenodd"
@@ -174,112 +80,7 @@ export const Anthropic = (props: IconProps) => (
   </svg>
 );
 
-export function ChevronRight(props: IconProps) {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z"
-        fill="currentColor"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-export function ChevronDown(props: IconProps) {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
-        fill="currentColor"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-export function Check(props: IconProps) {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
-        fill="currentColor"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-export function Copy({
-  color = "currentColor",
-  strokeWidth = 2,
-  ...props
-}: IconProps) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-    </svg>
-  );
-}
-
-export function Ellipsis({ color = "currentColor", ...props }: IconProps) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="1" />
-      <circle cx="19" cy="12" r="1" />
-      <circle cx="5" cy="12" r="1" />
-    </svg>
-  );
-}
-
-export const Grok = (props: IconProps) => (
+export const Grok = (props: BrandProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
@@ -297,19 +98,19 @@ export const Grok = (props: IconProps) => (
   </svg>
 );
 
-export const XLogo = (props: IconProps) => (
+export const XLogo = (props: BrandProps) => (
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
     <path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z" />
   </svg>
 );
 
-export const GitHubLogo = (props: IconProps) => (
+export const GitHubLogo = (props: BrandProps) => (
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
     <path d="M16,2.345c7.735,0,14,6.265,14,14-.002,6.015-3.839,11.359-9.537,13.282-.7,.14-.963-.298-.963-.665,0-.473,.018-1.978,.018-3.85,0-1.312-.437-2.152-.945-2.59,3.115-.35,6.388-1.54,6.388-6.912,0-1.540-.543-2.783-1.435-3.762,.14-.35,.63-1.785-.14-3.71,0,0-1.173-.385-3.85,1.435-1.12-.315-2.31-.472-3.5-.472s-2.38,.157-3.5,.472c-2.677-1.802-3.85-1.435-3.850-1.435-.77,1.925-.28,3.36-.14,3.71-.892,.98-1.435,2.24-1.435,3.762,0,5.355,3.255,6.563,6.37,6.913-.403,.35-.77,.963-.893,1.872-.805,.368-2.818,.963-4.077-1.155-.263-.42-1.05-1.452-2.152-1.435-1.173,.018-.472,.665,.017,.927,.595,.332,1.277,1.575,1.435,1.978,.28,.787,1.19,2.293,4.707,1.645,0,1.173,.018,2.275,.018,2.607,0,.368-.263,.787-.963,.665-5.719-1.904-9.576-7.255-9.573-13.283,0-7.735,6.265-14,14-14Z" />
   </svg>
 );
 
-export const LinkedInLogo = (props: IconProps) => (
+export const LinkedInLogo = (props: BrandProps) => (
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
     <path
       fillRule="evenodd"
@@ -318,7 +119,7 @@ export const LinkedInLogo = (props: IconProps) => (
   </svg>
 );
 
-export const InstagramLogo = (props: IconProps) => (
+export const InstagramLogo = (props: BrandProps) => (
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
     <path d="M10.202,2.098c-1.49,.07-2.507,.308-3.396,.657-.92,.359-1.7,.84-2.477,1.619-.776,.779-1.254,1.56-1.61,2.481-.345,.891-.578,1.909-.644,3.4-.066,1.49-.08,1.97-.073,5.771s.024,4.278,.096,5.772c.071,1.489,.308,2.506,.657,3.396,.359,.92,.84,1.7,1.619,2.477,.779,.776,1.559,1.253,2.483,1.61,.89,.344,1.909,.579,3.399,.644,1.49,.065,1.97,.08,5.771,.073,3.801-.007,4.279-.024,5.773-.095s2.505-.309,3.395-.657c.92-.36,1.701-.84,2.477-1.62s1.254-1.561,1.609-2.483c.345-.89,.579-1.909,.644-3.398,.065-1.494,.081-1.971,.073-5.773s-.024-4.278-.095-5.771-.308-2.507-.657-3.397c-.36-.92-.84-1.7-1.619-2.477s-1.561-1.254-2.483-1.609c-.891-.345-1.909-.58-3.399-.644s-1.97-.081-5.772-.074-4.278,.024-5.771,.096m.164,25.309c-1.365-.059-2.106-.286-2.6-.476-.654-.252-1.12-.557-1.612-1.044s-.795-.955-1.05-1.608c-.192-.494-.423-1.234-.487-2.599-.069-1.475-.084-1.918-.092-5.656s.006-4.18,.071-5.656c.058-1.364,.286-2.106,.476-2.6,.252-.655,.556-1.12,1.044-1.612s.955-.795,1.608-1.05c.493-.193,1.234-.422,2.598-.487,1.476-.07,1.919-.084,5.656-.092,3.737-.008,4.181,.006,5.658,.071,1.364,.059,2.106,.285,2.599,.476,.654,.252,1.12,.555,1.612,1.044s.795,.954,1.051,1.609c.193,.492,.422,1.232,.486,2.597,.07,1.476,.086,1.919,.093,5.656,.007,3.737-.006,4.181-.071,5.656-.06,1.365-.286,2.106-.476,2.601-.252,.654-.556,1.12-1.045,1.612s-.955,.795-1.608,1.05c-.493,.192-1.234,.422-2.597,.487-1.476,.069-1.919,.084-5.657,.092s-4.18-.007-5.656-.071M21.779,8.517c.002,.928,.755,1.679,1.683,1.677s1.679-.755,1.677-1.683c-.002-.928-.755-1.679-1.683-1.677,0,0,0,0,0,0-.928,.002-1.678,.755-1.677,1.683m-12.967,7.496c.008,3.97,3.232,7.182,7.202,7.174s7.183-3.232,7.176-7.202c-.008-3.97-3.233-7.183-7.203-7.175s-7.182,3.233-7.174,7.203m2.522-.005c-.005-2.577,2.08-4.671,4.658-4.676,2.577-.005,4.671,2.08,4.676,4.658,.005,2.577-2.08,4.671-4.658,4.676-2.577,.005-4.671-2.079-4.676-4.656h0" />
   </svg>

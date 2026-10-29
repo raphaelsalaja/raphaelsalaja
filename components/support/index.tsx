@@ -1,3 +1,5 @@
+import { IconArrowRight } from "@/components/icons";
+
 export const SUPPORT_URL = "https://buymeacoffee.com/raphaelsalaja";
 
 export function Support() {
@@ -9,7 +11,8 @@ export function Support() {
       </p>
       <p>
         <a href={SUPPORT_URL} target="_blank" rel="noreferrer">
-          → Buy me a coffee
+          <IconArrowRight size={12} />
+          Buy me a coffee
         </a>
       </p>
     </section>

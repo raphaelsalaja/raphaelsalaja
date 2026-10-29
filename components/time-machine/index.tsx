@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Direction } from "../icons";
+import { IconArrowDown, IconArrowUp } from "@/components/icons";
 import styles from "./styles.module.css";
 
 const TIME_MACHINE_CONFIG = {
@@ -244,7 +244,7 @@ export function TimeMachine({
             aria-label="Previous frame"
             disabled={activeIndex === 0}
           >
-            <Direction direction="up" width={16} />
+            <IconArrowUp size={16} />
           </button>
           <span className={styles.indicator}>
             {activeIndex + 1} / {frames.length}
@@ -256,7 +256,7 @@ export function TimeMachine({
             aria-label="Next frame"
             disabled={activeIndex === frames.length - 1}
           >
-            <Direction direction="down" width={16} />
+            <IconArrowDown size={16} />
           </button>
         </div>
       )}

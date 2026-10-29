@@ -3,7 +3,7 @@
 import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Copy, Ellipsis, Toast } from "@/components/icons";
+import { IconCopy, IconDotsFill, IconToastFill } from "@/components/icons";
 import "./colors.css";
 import styles from "./styles.module.css";
 
@@ -118,9 +118,10 @@ export function FamilyWallet() {
                 >
                   <div className={styles.column}>
                     <motion.div layoutId="top-trailing" className={styles.icon}>
-                      <Toast
+                      <IconToastFill
+                        size={24}
                         className={styles.shape}
-                        color="var(--white-a12)"
+                        style={{ color: "var(--white-a12)" }}
                       />
                     </motion.div>
 
@@ -159,7 +160,7 @@ export function FamilyWallet() {
                       className={styles.options}
                       layoutId="top-leading"
                     >
-                      <Ellipsis color="var(--white-a12)" />
+                      <IconDotsFill style={{ color: "var(--white-a12)" }} />
                     </motion.div>
 
                     <motion.div
@@ -288,9 +289,10 @@ export function FamilyWallet() {
                           layoutId="top-trailing"
                           className={styles.icon}
                         >
-                          <Toast
+                          <IconToastFill
+                            size={24}
                             className={styles.shape}
-                            color="var(--white-a12)"
+                            style={{ color: "var(--white-a12)" }}
                           />
                         </motion.div>
 
@@ -355,7 +357,11 @@ export function FamilyWallet() {
                           <p data-text="primary" className={styles.text}>
                             Copy Address
                           </p>
-                          <Copy strokeWidth={3} className={styles.symbol} />
+                          <IconCopy
+                            size={16}
+                            strokeWidth={2}
+                            className={styles.symbol}
+                          />
                         </motion.div>
 
                         <motion.div

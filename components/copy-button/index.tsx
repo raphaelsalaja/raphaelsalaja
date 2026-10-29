@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { Check, Copy } from "@/components/icons";
+import { IconCheck, IconCopy } from "@/components/icons";
 import styles from "./styles.module.css";
 
 interface CopyButtonProps {
@@ -40,8 +40,8 @@ export function CopyButton({
         }}
       >
         <span className={styles.icon} data-copied={copied}>
-          <Copy width={14} height={14} strokeWidth={1.75} />
-          <Check width={15} height={15} />
+          <IconCopy size={14} />
+          <IconCheck size={15} />
         </span>
         {showLabel && <span>{copied ? "Copied" : label}</span>}
       </button>

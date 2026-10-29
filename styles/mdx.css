@@ -9,6 +9,11 @@ article {
     text-wrap: pretty;
   }
 
+  svg,
+  svg * {
+    color: inherit;
+  }
+
   p,
   h1,
   h2,
@@ -222,6 +227,12 @@ article {
 
     a {
       z-index: 2;
+
+      svg {
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: -2px;
+      }
     }
 
     li {

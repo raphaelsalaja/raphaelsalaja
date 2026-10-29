@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IconArrowLeft } from "@/components/icons";
 import styles from "./styles.module.css";
 
 export function NotFound() {
@@ -20,21 +21,7 @@ export function NotFound() {
         <p className={styles.copy}>This page doesn't exist or has moved.</p>
       </div>
       <Link href="/" className={styles.button}>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M16 10H4m5-5-5 5 5 5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <IconArrowLeft size={18} />
         Back
       </Link>
     </div>

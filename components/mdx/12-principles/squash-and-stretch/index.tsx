@@ -2,13 +2,13 @@
 
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Crown, Fire, Toast } from "@/components/icons";
+import { IconCrownFill, IconFireFill, IconToastFill } from "@/components/icons";
 import styles from "./styles.module.css";
 
 const icons = {
-  fire: Fire,
-  crown: Crown,
-  toast: Toast,
+  fire: IconFireFill,
+  crown: IconCrownFill,
+  toast: IconToastFill,
 };
 
 export function SquashStretch() {
@@ -40,7 +40,6 @@ export function SquashStretch() {
             transformOrigin: "center center",
           }}
           className={styles.icon}
-          color="var(--white)"
         />
       </div>
       <div className={styles.picker}>
@@ -70,7 +69,7 @@ export function SquashStretch() {
             >
               <Icon
                 className={styles.icon}
-                color={"var(--white)"}
+                style={{ color: "var(--white)" }}
                 opacity={icon === key ? 1 : 0.5}
               />
             </button>
