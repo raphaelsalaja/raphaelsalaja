@@ -1,22 +1,26 @@
 .card {
-  display: grid;
-  grid-template-columns: 1fr 224px;
+  --shader-base: var(--background-primary);
+  --shader-roast: #ecdccb;
+  --shader-crema: #d4955c;
+  --shader-foam: #fff;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   align-self: stretch;
+  padding: 24px;
   overflow: hidden;
   background: var(--background-primary);
   border-radius: 16px;
   box-shadow: var(--shadow-raised);
+  isolation: isolate;
 
-  @media (width <= 560px) {
-    grid-template-columns: 1fr;
+  @media (prefers-color-scheme: dark) {
+    --shader-roast: #3a2416;
+    --shader-crema: #9a5a2a;
+    --shader-foam: #d9b48c;
   }
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px;
 }
 
 .mascot {
@@ -38,40 +42,6 @@
   text-wrap: pretty;
 }
 
-.action {
-  --shader-base: var(--background-secondary);
-  --shader-roast: #ecdccb;
-  --shader-crema: #d4955c;
-  --shader-foam: #fff;
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: stretch;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  background: linear-gradient(
-    to bottom,
-    var(--background-secondary),
-    var(--background-primary)
-  );
-  border-left: 1px solid var(--border-primary);
-  isolation: isolate;
-
-  @media (prefers-color-scheme: dark) {
-    --shader-roast: #3a2416;
-    --shader-crema: #9a5a2a;
-    --shader-foam: #d9b48c;
-  }
-
-  @media (width <= 560px) {
-    border-top: 1px solid var(--border-primary);
-    border-left: none;
-  }
-}
-
 .shader {
   position: absolute;
   inset: 0;
@@ -87,8 +57,8 @@
 }
 
 .fine {
+  margin-top: 8px;
   color: var(--text-quaternary);
-  text-wrap: balance;
 }
 
 .button {
@@ -99,6 +69,7 @@
   justify-content: center;
   height: 36px;
   padding: 0 14px 0 12px;
+  margin-top: 20px;
   font-variation-settings: var(--font-weight-500);
   color: var(--background-primary);
   background: var(--text-primary);

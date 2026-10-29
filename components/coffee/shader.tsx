@@ -63,9 +63,9 @@ void main() {
   colour = mix(colour, crema, smoothstep(0.5, 0.85, r.x) * 0.85);
   colour = mix(colour, foam, ribbon * smoothstep(0.45, 0.8, q.y) * 0.45);
 
-  vec2 centre = gl_FragCoord.xy / resolution - 0.5;
-  float edge = smoothstep(0.1, 0.7, length(centre * vec2(1.0, 1.4)));
-  colour = mix(base, colour, mix(0.35, 1.0, edge));
+  vec2 position = gl_FragCoord.xy / resolution;
+  float reach = smoothstep(0.35, 1.0, position.x + position.y * 0.15);
+  colour = mix(base, colour, reach);
   colour += (hash(gl_FragCoord.xy + fract(time)) - 0.5) / 64.0;
 
   gl_FragColor = vec4(colour, 1.0);
