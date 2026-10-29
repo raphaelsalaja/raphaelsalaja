@@ -1,5 +1,6 @@
-import { IconCoffee, IconCoffeeSmileFill } from "@/components/icons";
+import { IconCoffee } from "@/components/icons";
 import { SUPPORT_URL } from "@/components/support";
+import { Mascot } from "./mascot";
 import styles from "./styles.module.css";
 
 export function Coffee() {
@@ -10,7 +11,7 @@ export function Coffee() {
       aria-labelledby="support-heading"
     >
       <div className={styles.top}>
-        <IconCoffeeSmileFill size={40} className={styles.mascot} />
+        <Mascot className={styles.mascot} />
         <div className={styles.copy}>
           <h2 id="support-heading" className={styles.title}>
             Support my work
