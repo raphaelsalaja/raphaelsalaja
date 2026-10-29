@@ -5,9 +5,7 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 
 export async function renderOgImage(title: string) {
-  const font = await readFile(
-    join(process.cwd(), "assets/openrunde-semibold.otf"),
-  );
+  const font = await readFile(join(process.cwd(), "assets/inter-semibold.ttf"));
 
   return new ImageResponse(
     <div
@@ -20,7 +18,7 @@ export async function renderOgImage(title: string) {
         padding: 64,
         backgroundColor: "white",
         color: "#343433",
-        fontFamily: "OpenRunde",
+        fontFamily: "Inter",
         fontSize: 64,
         fontWeight: 600,
         letterSpacing: -1.43,
@@ -31,7 +29,7 @@ export async function renderOgImage(title: string) {
     </div>,
     {
       ...ogSize,
-      fonts: [{ name: "OpenRunde", data: font, style: "normal", weight: 600 }],
+      fonts: [{ name: "Inter", data: font, style: "normal", weight: 600 }],
     },
   );
 }

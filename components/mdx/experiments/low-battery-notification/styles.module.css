@@ -34,7 +34,6 @@
 
     .level,
     .mode {
-      font-family: var(--font-openrunde);
       line-height: 12px;
       letter-spacing: -0.2px;
       white-space: nowrap;
@@ -42,7 +41,6 @@
     }
 
     .level {
-      font-family: var(--font-openrunde);
       font-size: 16px;
       font-weight: 500;
       color: oklch(1 0 0);

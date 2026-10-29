@@ -1,8 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
-import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader, Roboto_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import { ViewTransition } from "react";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { VISITED_KEY } from "@/lib/visited";
@@ -13,31 +11,6 @@ const inter = Inter({
   subsets: ["latin"],
   axes: ["opsz"],
   display: "swap",
-});
-
-const mono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  preload: false,
-});
-
-const serif = Newsreader({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  preload: false,
-});
-
-const openrunde = localFont({
-  variable: "--font-openrunde",
-  preload: false,
-  src: [
-    { path: "./fonts/openrunde/regular.woff2", weight: "400" },
-    { path: "./fonts/openrunde/medium.woff2", weight: "500" },
-    { path: "./fonts/openrunde/semibold.woff2", weight: "600" },
-    { path: "./fonts/openrunde/bold.woff2", weight: "700" },
-  ],
 });
 
 export const metadata: Metadata = {
@@ -73,16 +46,7 @@ const visitedScript = `try{sessionStorage.getItem("${VISITED_KEY}")&&(document.d
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={clsx(
-        inter.className,
-        mono.variable,
-        serif.variable,
-        openrunde.variable,
-      )}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <head>
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static script that must run before first paint

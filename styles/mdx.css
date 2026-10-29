@@ -36,13 +36,12 @@ article {
     padding-bottom: 20px;
 
     h1 {
-      font-family: var(--font-serif), serif;
-      font-size: 26px;
+      font-size: 24px;
       font-variation-settings:
-        "wght" 420,
-        "opsz" 36;
-      line-height: 32px;
-      letter-spacing: -0.01em;
+        "wght" 560,
+        "opsz" 32;
+      line-height: 30px;
+      letter-spacing: -0.02em;
     }
 
     time {
@@ -144,11 +143,6 @@ article {
     border-left: 2px solid var(--border-secondary);
 
     p {
-      font-family: var(--font-serif), serif;
-      font-variation-settings:
-        "wght" 400,
-        "opsz" 16;
-      font-style: italic;
       color: var(--text-tertiary);
     }
   }

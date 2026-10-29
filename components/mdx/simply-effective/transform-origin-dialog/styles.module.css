@@ -24,7 +24,6 @@
 
   .text {
     font-family: inherit;
-    font-family: var(--font-openrunde);
     font-size: 1rem;
     font-weight: 600;
     color: var(--white);

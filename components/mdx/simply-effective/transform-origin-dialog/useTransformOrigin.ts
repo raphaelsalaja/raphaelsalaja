@@ -111,7 +111,7 @@ export const useTransformOrigin = ({
       left: ${triggerCenterX + 10}px;
       top: ${triggerCenterY - 10}px;
       color: #00ff00;
-      font-family: monospace;
+      font-family: inherit;
       font-size: 12px;
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
@@ -124,7 +124,7 @@ export const useTransformOrigin = ({
       left: ${originPointX + 10}px;
       top: ${originPointY - 10}px;
       color: #ff0000;
-      font-family: monospace;
+      font-family: inherit;
       font-size: 12px;
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
