@@ -1,31 +1,75 @@
 .install {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  align-items: center;
-  margin-top: 6px;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  margin-top: 20px;
+  background: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
 }
 
 .command {
   display: flex;
   gap: 12px;
   align-items: center;
-  padding: 6px 8px 6px 12px;
-  background: var(--background-secondary);
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--border-primary);
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 6px 0 12px;
 
-  > span {
+  > code {
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--text-secondary);
+    white-space: nowrap;
   }
 }
 
-.link {
+.runner {
   color: var(--text-tertiary);
-  transition: color var(--duration-snappy) ease;
+}
+
+.repo {
+  color: var(--text-primary);
+}
+
+.copy {
+  flex-shrink: 0;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+
+  &:hover {
+    background: var(--background-tertiary);
+  }
+}
+
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  color: var(--text-secondary);
+  background: var(--background-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-raised);
+  transition:
+    color var(--duration-snappy) ease,
+    scale var(--duration-quick) var(--ease-out-cubic);
 
   &:hover {
     color: var(--text-primary);
+  }
+
+  &:active {
+    scale: 0.98;
   }
 }
 
