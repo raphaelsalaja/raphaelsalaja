@@ -3,7 +3,6 @@
   flex-direction: column;
   align-self: stretch;
   overflow: hidden;
-  text-align: center;
   background: var(--background-primary);
   border-radius: 16px;
   box-shadow: var(--shadow-raised);
@@ -11,63 +10,60 @@
 
 .top {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 32px 32px 28px;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 .mascot {
-  margin-bottom: 16px;
+  flex-shrink: 0;
   color: var(--text-primary);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .title {
-  font-size: 20px;
-  font-variation-settings: var(--font-weight-600);
-  line-height: 28px;
+  font-variation-settings: var(--font-weight-500);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
 }
 
 .description {
-  max-width: 320px;
-  margin-top: 6px;
   color: var(--text-tertiary);
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .bottom {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px 16px;
   align-items: center;
-  padding: 24px 32px;
-  background: linear-gradient(
-    to bottom,
-    var(--background-secondary),
-    var(--background-primary)
-  );
+  justify-content: space-between;
+  padding: 12px 12px 12px 20px;
+  background: var(--background-secondary);
   border-top: 1px solid var(--border-primary);
 }
 
-.note {
-  max-width: 280px;
+.fine {
   font-size: var(--font-size-small);
-  color: var(--text-tertiary);
-  text-wrap: balance;
+  color: var(--text-quaternary);
 }
 
 .button {
   display: flex;
+  flex-shrink: 0;
   gap: 8px;
   align-items: center;
   justify-content: center;
-  width: min(100%, 280px);
-  height: 40px;
-  margin-top: 16px;
+  height: 36px;
+  padding: 0 14px 0 12px;
   font-variation-settings: var(--font-weight-500);
   color: var(--background-primary);
   background: var(--text-primary);
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.12),
     0 1px 2px rgb(0 0 0 / 0.16);
@@ -87,13 +83,8 @@
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
-}
 
-.fine {
-  width: min(100%, 280px);
-  padding-top: 16px;
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--text-quaternary);
-  border-top: 1px solid var(--border-primary);
+  @media (width <= 480px) {
+    flex: 1 0 100%;
+  }
 }
