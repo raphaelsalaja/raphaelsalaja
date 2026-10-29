@@ -1,47 +1,14 @@
 .install {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 4px;
-  margin-top: 20px;
-  background: var(--background-secondary);
-  border-radius: 12px;
-  box-shadow: 0 0 0 1px var(--border-primary);
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .command {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-  height: 40px;
-  padding: 0 6px 0 12px;
-
-  > code {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--text-secondary);
-    white-space: nowrap;
-  }
-}
-
-.runner {
-  color: var(--text-tertiary);
-}
-
-.repo {
-  color: var(--text-primary);
-}
-
-.copy {
-  flex-shrink: 0;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-
-  &:hover {
-    background: var(--background-tertiary);
-  }
+  min-width: 0;
+  text-align: left;
 }
 
 .prompts {
@@ -79,31 +46,16 @@
 }
 
 .links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
+  display: flex;
+  gap: 16px;
 }
 
 .link {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  color: var(--text-secondary);
-  background: var(--background-primary);
-  border-radius: 8px;
-  box-shadow: var(--shadow-raised);
-  transition:
-    color var(--duration-snappy) ease,
-    scale var(--duration-quick) var(--ease-out-cubic);
+  color: var(--text-tertiary);
+  transition: color var(--duration-snappy) ease;
 
   &:hover {
     color: var(--text-primary);
-  }
-
-  &:active {
-    scale: 0.98;
   }
 }
 

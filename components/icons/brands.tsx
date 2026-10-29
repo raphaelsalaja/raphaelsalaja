@@ -110,12 +110,6 @@ export const GitHubLogo = (props: BrandProps) => (
   </svg>
 );
 
-export const VercelLogo = (props: BrandProps) => (
-  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
-    <path d="M16 4l13.856 24H2.144z" />
-  </svg>
-);
-
 export const LinkedInLogo = (props: BrandProps) => (
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" {...props}>
     <path
