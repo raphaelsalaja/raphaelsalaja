@@ -10,7 +10,7 @@ interface PairProps {
 
 export function Pair({ before, after, notes }: PairProps) {
   return (
-    <Demo>
+    <Demo light={false}>
       <div className={styles.pair}>
         <figure className={styles.side}>
           <div className={styles.stage}>{before}</div>
