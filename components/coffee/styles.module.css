@@ -23,23 +23,9 @@
   }
 }
 
-.mascot {
-  --mascot-body: var(--gray-9);
-  --mascot-eyes: #fff;
-
-  margin-bottom: 16px;
-  overflow: visible;
-}
-
 .title {
   font-variation-settings: var(--font-weight-500);
   color: var(--text-primary);
-}
-
-.description {
-  margin-top: 2px;
-  color: var(--text-tertiary);
-  text-wrap: pretty;
 }
 
 .shader {
@@ -69,7 +55,7 @@
   justify-content: center;
   height: 36px;
   padding: 0 14px 0 12px;
-  margin-top: 20px;
+  margin-top: 16px;
   font-variation-settings: var(--font-weight-500);
   color: var(--background-primary);
   background: var(--text-primary);
