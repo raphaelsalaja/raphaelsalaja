@@ -89,6 +89,13 @@ export const skills: Skill[] = [
       "Builds a temporary page that shows every variant and state of real components at once, each linked to its source.",
   },
   {
+    name: "deconstruct",
+    kind: "procedure",
+    userInvoked: true,
+    description:
+      "Breaks an animation or interaction into a state machine and a timeline of every property, on a page you can scrub through.",
+  },
+  {
     name: "audit",
     kind: "procedure",
     userInvoked: true,

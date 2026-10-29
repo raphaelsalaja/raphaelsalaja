@@ -1,0 +1,127 @@
+.pair {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 32px;
+
+  @media (width <= 640px) {
+    padding: 32px 16px 24px;
+  }
+}
+
+.ask {
+  max-width: 100%;
+  padding: 6px 12px;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.views {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.view {
+  display: grid;
+  grid-area: 1 / 1;
+  place-items: center;
+  max-width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(4px);
+  scale: 0.98;
+  transition:
+    opacity var(--duration-snappy) var(--ease-out-cubic),
+    filter var(--duration-snappy) var(--ease-out-cubic),
+    scale var(--duration-snappy) var(--ease-out-cubic);
+
+  &[data-active] {
+    pointer-events: auto;
+    opacity: 1;
+    filter: none;
+    scale: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    filter: none;
+    scale: 1;
+  }
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 6px 6px 6px 12px;
+  margin: 0 4px 4px;
+  background: var(--background-secondary);
+  border-radius: 9px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.note {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  color: var(--text-secondary);
+}
+
+.mark {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  color: var(--background-primary);
+  background: var(--text-tertiary);
+  border-radius: 50%;
+
+  &[data-side="after"] {
+    background: var(--green);
+  }
+}
+
+.switch {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2px;
+  padding: 2px;
+  background: var(--background-tertiary);
+  border-radius: 8px;
+}
+
+.option {
+  height: 28px;
+  padding: 0 10px;
+  color: var(--text-tertiary);
+  border-radius: 6px;
+  transition:
+    color var(--duration-snappy) ease,
+    background-color var(--duration-snappy) ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &[aria-pressed="true"] {
+    color: var(--text-primary);
+    background: var(--background-primary);
+    box-shadow: var(--shadow-raised);
+  }
+}
