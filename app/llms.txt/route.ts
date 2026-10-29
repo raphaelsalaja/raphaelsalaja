@@ -14,6 +14,7 @@ Every page is available as Markdown by appending .md to its URL or by requesting
 ## Pages
 
 - [Home](${SITE_URL}/index.md): About, projects, experiments and writing
+- [Skills](${SITE_URL}/skills.md): Agent skills for building interfaces with coding agents
 
 ## Writing
 

@@ -2,6 +2,13 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
 import { getPost, posts } from "@/data/library";
+import {
+  principles,
+  procedures,
+  SKILLS_GITHUB,
+  SKILLS_INSTALL,
+  type Skill,
+} from "@/data/skills";
 import { experiments, getWorkPage, projects, workPages } from "@/data/work";
 import { formatLongDate, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -95,6 +102,28 @@ async function home() {
   ].join("\n\n");
 }
 
+const skillList = (items: Skill[]) =>
+  list(
+    items.map(
+      (skill) =>
+        `\`/${skill.name}\`: ${skill.description}${skill.userInvoked ? " Runs only when you call it." : ""}`,
+    ),
+  );
+
+function skillsPage() {
+  return [
+    "# Skills",
+    "Agent skills for building interfaces with coding agents. Every rule shows the broken line and the line that replaces it.",
+    `Install with \`${SKILLS_INSTALL}\`. The source is on [GitHub](${SKILLS_GITHUB}).`,
+    "## Principles",
+    "Standards the agent holds while it works.",
+    skillList(principles),
+    "## Procedures",
+    "Jobs the agent runs in order, step by step.",
+    skillList(procedures),
+  ].join("\n\n");
+}
+
 function article(
   title: string,
   description: string,
@@ -108,12 +137,14 @@ function article(
 
 export const markdownPaths = [
   "/",
+  "/skills",
   ...posts.map((post) => `/library/${post.slug}`),
   ...workPages.map((item) => item.href),
 ];
 
 export async function pageMarkdown(pathname: string) {
   if (pathname === "/") return home();
+  if (pathname === "/skills") return skillsPage();
   const [, section, slug] = pathname.split("/");
 
   if (section === "library") {
