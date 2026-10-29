@@ -126,22 +126,40 @@ const FINDINGS = [
   { level: "Medium", text: "Local menu radius", at: "menu.tsx:7" },
 ];
 
-function Prototype({ tabs }: { tabs: string[] }) {
+const LAYOUTS = [
+  { layout: "inline", label: "Inline" },
+  { layout: "sidebar", label: "Sidebar" },
+  { layout: "command", label: "Command Bar" },
+] as const;
+
+type Layout = (typeof LAYOUTS)[number]["layout"];
+
+function Lines({ count }: { count: number }) {
+  return Array.from({ length: count }, (_, index) => (
+    // biome-ignore lint/suspicious/noArrayIndexKey: static placeholders
+    <span key={index} className={styles.line} />
+  ));
+}
+
+function Variant({ layout }: { layout: Layout }) {
   return (
-    <div className={styles.window}>
-      <div className={styles.tabs}>
-        {tabs.map((tab, index) => (
-          <span key={tab} data-active={index === 0 || undefined}>
-            {tab}
-          </span>
-        ))}
+    <div className={styles.variant} data-layout={layout}>
+      {layout === "sidebar" && (
+        <div className={styles.rail}>
+          <span className={styles.input} />
+          <Lines count={3} />
+        </div>
+      )}
+      <div className={styles.content}>
+        {layout === "inline" && <span className={styles.input} />}
+        <Lines count={4} />
       </div>
-      <div className={styles.search}>
-        <span className={styles.field}>Search boards</span>
-        <span className={styles.line} />
-        <span className={styles.line} />
-        <span className={styles.line} />
-      </div>
+      {layout === "command" && (
+        <div className={styles.palette}>
+          <span className={styles.input} />
+          <Lines count={2} />
+        </div>
+      )}
     </div>
   );
 }
@@ -445,9 +463,28 @@ export const demos: Record<string, ReactNode> = {
   prototype: (
     <Pair
       ask="/prototype the search"
-      notes={["Numbered variants", "Named by how they differ"]}
-      before={<Prototype tabs={["Variant 1", "Variant 2", "Variant 3"]} />}
-      after={<Prototype tabs={["Inline", "Sidebar", "Command Bar"]} />}
+      notes={[
+        "One built, the rest only described",
+        "Three built, named by how they differ",
+      ]}
+      before={
+        <div className={styles.stack}>
+          <Variant layout="inline" />
+          <Bubble>
+            I could also try it in a sidebar or a command bar. Want me to?
+          </Bubble>
+        </div>
+      }
+      after={
+        <div className={styles.variants}>
+          {LAYOUTS.map((item) => (
+            <div key={item.layout} className={styles.state}>
+              <Variant layout={item.layout} />
+              <span className={styles.muted}>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      }
     />
   ),
   lab: (
