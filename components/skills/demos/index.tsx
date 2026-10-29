@@ -53,7 +53,7 @@ function Row({ children, end }: { children: ReactNode; end?: ReactNode }) {
 }
 
 function Bubble({ children }: { children: ReactNode }) {
-  return <p className={styles.bubble}>{children}</p>;
+  return <div className={styles.bubble}>{children}</div>;
 }
 
 function Checks({ items }: { items: string[] }) {

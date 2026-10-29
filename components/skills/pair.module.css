@@ -91,9 +91,68 @@
   color: var(--background-primary);
   background: var(--text-tertiary);
   border-radius: 50%;
+  transition: background-color var(--duration-snappy) var(--ease-out-cubic);
 
   &[data-side="after"] {
     background: var(--green);
+  }
+}
+
+.glyph,
+.text {
+  grid-area: 1 / 1;
+  opacity: 0;
+  filter: blur(2px);
+  transition:
+    opacity var(--duration-snappy) var(--ease-out-cubic),
+    filter var(--duration-snappy) var(--ease-out-cubic),
+    scale var(--duration-snappy) var(--ease-out-cubic),
+    translate var(--duration-snappy) var(--ease-out-cubic);
+
+  &[data-active] {
+    opacity: 1;
+    filter: none;
+    scale: 1;
+    translate: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    filter: none;
+    scale: 1;
+    translate: 0;
+  }
+}
+
+.glyph {
+  display: grid;
+  place-items: center;
+  scale: 0.5;
+}
+
+.notes {
+  display: grid;
+  min-width: 0;
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  translate: 0 -6px;
+
+  & + &:not([data-active]) {
+    translate: 0 6px;
+  }
+
+  &[data-active] {
+    transition-delay: 40ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    & + & {
+      translate: 0;
+    }
   }
 }
 

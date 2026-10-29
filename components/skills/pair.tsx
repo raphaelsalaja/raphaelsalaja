@@ -30,7 +30,7 @@ export function Pair({ ask, before, after, notes }: PairProps) {
     <Demo light={false}>
       <div className={styles.pair}>
         <div className={styles.stage}>
-          {ask && <p className={styles.ask}>{ask}</p>}
+          {ask && <div className={styles.ask}>{ask}</div>}
           <div className={styles.views}>
             {SIDES.map((key) => (
               <ShownContext.Provider key={key} value={side === key}>
@@ -46,12 +46,34 @@ export function Pair({ ask, before, after, notes }: PairProps) {
           </div>
         </div>
         <div className={styles.toolbar}>
-          <p className={styles.note} aria-live="polite">
-            <span className={styles.mark} data-side={side}>
-              {side === "after" ? <IconCheck size={12} /> : <Cross />}
+          <div className={styles.note}>
+            <span className={styles.mark} data-side={side} aria-hidden="true">
+              <span
+                className={styles.glyph}
+                data-active={side === "before" || undefined}
+              >
+                <Cross />
+              </span>
+              <span
+                className={styles.glyph}
+                data-active={side === "after" || undefined}
+              >
+                <IconCheck size={12} />
+              </span>
             </span>
-            {side === "before" ? notes[0] : notes[1]}
-          </p>
+            <span className={styles.notes} aria-live="polite">
+              {SIDES.map((key, index) => (
+                <span
+                  key={key}
+                  className={styles.text}
+                  data-active={side === key || undefined}
+                  aria-hidden={side !== key}
+                >
+                  {notes[index]}
+                </span>
+              ))}
+            </span>
+          </div>
           <div className={styles.switch}>
             {SIDES.map((key) => (
               <button

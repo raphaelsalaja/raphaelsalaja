@@ -194,9 +194,9 @@ export function Loop() {
   return (
     <div ref={ref} className={styles.loop}>
       <CopyButton time={time} />
-      <p className={styles.bubble}>
+      <div className={styles.bubble}>
         It shrinks, spins, then shows a check. Roughly 300ms.
-      </p>
+      </div>
     </div>
   );
 }
