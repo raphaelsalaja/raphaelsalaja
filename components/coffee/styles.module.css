@@ -24,7 +24,7 @@
 }
 
 .mascot {
-  --mascot-body: #c27a3e;
+  --mascot-body: var(--gray-9);
   --mascot-eyes: #fff;
 
   margin-bottom: 16px;
