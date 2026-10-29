@@ -1,9 +1,14 @@
 "use client";
 
 import clsx from "clsx";
-import { motion, type Transition } from "motion/react";
+import {
+  motion,
+  type Transition,
+  useAnimate,
+  useReducedMotion,
+} from "motion/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconArrowLeft } from "@/components/icons";
 import styles from "./styles.module.css";
 
@@ -40,10 +45,78 @@ function Links({
   ));
 }
 
+function useHop(activeId?: string) {
+  const listRef = useRef<HTMLOListElement>(null);
+  const [dot, animate] = useAnimate<HTMLSpanElement>();
+  const reduceMotion = useReducedMotion();
+  const placed = useRef<number | null>(null);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || !dot.current || !activeId) return;
+
+    const target = () => {
+      const link = list.querySelector<HTMLElement>(
+        `a[href="#${CSS.escape(activeId)}"]`,
+      );
+      if (!link) return null;
+      const box = link.getBoundingClientRect();
+      return (
+        box.top +
+        box.height / 2 -
+        list.getBoundingClientRect().top +
+        list.scrollTop
+      );
+    };
+
+    const y = target();
+    if (y === null) return;
+
+    if (placed.current === null || reduceMotion) {
+      animate(
+        dot.current,
+        { y, opacity: 1 },
+        { duration: placed.current === null ? 0 : 0.2 },
+      );
+    } else {
+      const distance = Math.abs(y - placed.current);
+      animate(
+        dot.current,
+        { y, x: [null, -Math.min(4 + distance * 0.08, 12), 0] },
+        {
+          y: { duration: 0.45, ease: [0.45, 0, 0.25, 1] },
+          x: {
+            duration: 0.45,
+            ease: ["easeOut", "easeIn"],
+            times: [0, 0.5, 1],
+          },
+        },
+      );
+    }
+    placed.current = y;
+
+    let width: number | undefined;
+    const observer = new ResizeObserver(([entry]) => {
+      const previous = width;
+      width = entry.contentRect.width;
+      if (previous === undefined || previous === width) return;
+      const next = target();
+      if (next === null || !dot.current) return;
+      placed.current = next;
+      animate(dot.current, { y: next }, { duration: 0 });
+    });
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [activeId, animate, dot, reduceMotion]);
+
+  return { listRef, dot };
+}
+
 export function Outline({ back }: { back: { href: string; label: string } }) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>();
   const [open, setOpen] = useState(false);
+  const { listRef, dot } = useHop(headings.length > 0 ? activeId : undefined);
 
   useEffect(() => {
     const elements = Array.from(
@@ -87,7 +160,8 @@ export function Outline({ back }: { back: { href: string; label: string } }) {
           {back.label}
         </Link>
         {headings.length > 0 && (
-          <ol className={styles.railList}>
+          <ol ref={listRef} className={styles.railList}>
+            <span ref={dot} aria-hidden="true" className={styles.dot} />
             <Links headings={headings} activeId={activeId} />
           </ol>
         )}

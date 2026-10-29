@@ -29,11 +29,12 @@
 }
 
 .railList {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding-left: 14px;
-  margin-left: -14px;
+  padding-left: 28px;
+  margin-left: -28px;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
@@ -47,29 +48,19 @@
     &.h3 {
       padding-left: 12px;
     }
-
-    &::before {
-      position: absolute;
-      top: 50%;
-      left: -14px;
-      width: 6px;
-      height: 6px;
-      content: "";
-      background: var(--accent);
-      border-radius: 50%;
-      opacity: 0;
-      scale: 0.5;
-      translate: 0 -50%;
-      transition:
-        opacity var(--duration-snappy) ease,
-        scale var(--duration-snappy) var(--ease-snappy);
-    }
-
-    &[aria-current]::before {
-      opacity: 1;
-      scale: 1;
-    }
   }
+}
+
+.dot {
+  position: absolute;
+  top: -3px;
+  left: 14px;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
 }
 
 .floating {
