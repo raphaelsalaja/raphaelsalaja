@@ -1,6 +1,7 @@
 import { IconCoffee } from "@/components/icons";
 import { SUPPORT_URL } from "@/components/support";
 import { Mascot } from "./mascot";
+import { Shader } from "./shader";
 import styles from "./styles.module.css";
 
 export function Coffee() {
@@ -21,6 +22,7 @@ export function Coffee() {
         </p>
       </div>
       <div className={styles.action}>
+        <Shader className={styles.shader} />
         <a
           href={SUPPORT_URL}
           target="_blank"

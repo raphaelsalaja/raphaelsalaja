@@ -39,6 +39,12 @@
 }
 
 .action {
+  --shader-base: var(--background-secondary);
+  --shader-roast: #ecdccb;
+  --shader-crema: #d4955c;
+  --shader-foam: #fff;
+
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -52,10 +58,31 @@
     var(--background-primary)
   );
   border-left: 1px solid var(--border-primary);
+  isolation: isolate;
+
+  @media (prefers-color-scheme: dark) {
+    --shader-roast: #3a2416;
+    --shader-crema: #9a5a2a;
+    --shader-foam: #d9b48c;
+  }
 
   @media (width <= 560px) {
     border-top: 1px solid var(--border-primary);
     border-left: none;
+  }
+}
+
+.shader {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+
+  &[data-ready] {
+    opacity: 1;
   }
 }
 
