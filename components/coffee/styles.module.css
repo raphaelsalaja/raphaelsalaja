@@ -1,32 +1,29 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 224px;
   align-self: stretch;
   overflow: hidden;
   background: var(--background-primary);
   border-radius: 16px;
   box-shadow: var(--shadow-raised);
+
+  @media (width <= 560px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.top {
+.intro {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
+  padding: 24px;
 }
 
 .mascot {
   --mascot-body: #c27a3e;
   --mascot-eyes: #fff;
 
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.copy {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  margin-bottom: 16px;
 }
 
 .title {
@@ -35,23 +32,35 @@
 }
 
 .description {
+  margin-top: 2px;
   color: var(--text-tertiary);
   text-wrap: pretty;
 }
 
-.bottom {
+.action {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 12px 12px 20px;
-  background: var(--background-secondary);
-  border-top: 1px solid var(--border-primary);
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    var(--background-secondary),
+    var(--background-primary)
+  );
+  border-left: 1px solid var(--border-primary);
+
+  @media (width <= 560px) {
+    border-top: 1px solid var(--border-primary);
+    border-left: none;
+  }
 }
 
 .fine {
   color: var(--text-quaternary);
+  text-wrap: balance;
 }
 
 .button {
@@ -84,9 +93,5 @@
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
-  }
-
-  @media (width <= 480px) {
-    flex: 1 0 100%;
   }
 }
