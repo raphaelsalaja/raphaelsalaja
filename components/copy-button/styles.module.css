@@ -2,7 +2,6 @@
   display: inline-flex;
   gap: 6px;
   align-items: center;
-  font-size: var(--font-size-small);
   color: var(--text-tertiary);
   border-radius: 6px;
   transition:

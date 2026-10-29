@@ -34,7 +34,6 @@
 .caption {
   display: block;
   padding: 16px 32px 32px;
-  font-size: 12px;
   font-variation-settings: var(--font-weight-450);
   line-height: 20px;
   color: var(--text-tertiary);

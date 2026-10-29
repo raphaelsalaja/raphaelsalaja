@@ -74,8 +74,6 @@
     0 1px 2px oklch(0 0 0 / calc(4% * var(--shadow-strength))),
     0 4px 12px oklch(0 0 0 / calc(3% * var(--shadow-strength)));
 
-  --font-size-small: 13px;
-
   --font-weight-400: "wght" 400, "opsz" 14;
   --font-weight-450: "wght" 450, "opsz" 14;
   --font-weight-500: "wght" 500, "opsz" 14;

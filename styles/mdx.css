@@ -21,12 +21,10 @@ article {
     line-height: 24px;
   }
 
-  > p,
   > ul > li,
   > ol > li,
   > blockquote p {
-    font-size: 15px;
-    line-height: 26px;
+    line-height: 24px;
   }
 
   > header {
@@ -36,14 +34,10 @@ article {
     padding-bottom: 20px;
 
     h1 {
-      font-size: 24px;
       font-variation-settings: var(--font-weight-500);
-      line-height: 30px;
-      letter-spacing: -0.02em;
     }
 
     time {
-      font-size: var(--font-size-small);
       color: var(--text-tertiary);
     }
   }
@@ -85,7 +79,6 @@ article {
     gap: 16px;
     align-items: center;
     margin-top: 40px;
-    font-size: 15px;
 
     &::after {
       flex: 1;
@@ -93,10 +86,6 @@ article {
       content: "";
       background: var(--border-primary);
     }
-  }
-
-  > h3 {
-    font-size: 15px;
   }
 
   h2,
@@ -159,7 +148,6 @@ article {
     width: 100%;
     padding: 12px 32px 24px;
     margin-top: 0px !important;
-    font-size: 12px;
     font-variation-settings: var(--font-weight-450);
     line-height: 20px;
     color: var(--text-tertiary);
@@ -211,7 +199,6 @@ article {
     h4,
     ol,
     li {
-      font-size: 12px;
       font-variation-settings: var(--font-weight-450);
       line-height: 20px;
       color: var(--text-tertiary);
@@ -228,15 +215,14 @@ article {
     }
 
     li {
-      margin-left: 10px;
+      margin-left: 16px;
       counter-increment: list;
     }
 
     ol li:before {
       position: absolute;
-      top: -2px;
-      left: -12px;
-      font-size: 10px;
+      top: 0;
+      left: -16px;
       font-variation-settings: var(--font-weight-500);
       content: counter(list);
     }
