@@ -5,16 +5,21 @@ import styles from "./styles.module.css";
 export function NotFound() {
   return (
     <div className={styles.container}>
-      <div className={styles.window} aria-hidden="true">
-        <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
+      <div className={styles.ghost} aria-hidden="true">
+        <svg width="56" height="64" viewBox="0 0 48 56" fill="none">
           <path
-            d="M3.25 28a22.75 22.75 0 0 1 45.5 0"
-            stroke="currentColor"
-            strokeWidth="6.5"
+            className={styles.body}
+            d="M4 24a20 20 0 0 1 40 0v26a5 5 0 0 1-10 0a5 5 0 0 1-10 0a5 5 0 0 1-10 0a5 5 0 0 1-10 0Z"
           />
-          <circle cx="19.3" cy="23.5" r="5.1" fill="currentColor" />
-          <circle cx="32.7" cy="23.5" r="5.1" fill="currentColor" />
+          <g className={styles.eyes}>
+            <ellipse cx="17" cy="25" rx="3" ry="4" />
+            <ellipse cx="31" cy="25" rx="3" ry="4" />
+          </g>
+          <ellipse className={styles.mouth} cx="24" cy="34" rx="2" ry="2.5" />
+          <ellipse className={styles.blush} cx="11" cy="32" rx="3" ry="1.75" />
+          <ellipse className={styles.blush} cx="37" cy="32" rx="3" ry="1.75" />
         </svg>
+        <span className={styles.shadow} />
       </div>
       <div className={styles.text}>
         <h1 className={styles.title}>Page not found</h1>
