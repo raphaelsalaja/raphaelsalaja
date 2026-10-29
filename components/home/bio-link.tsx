@@ -1,5 +1,7 @@
 import type { ComponentProps, JSX } from "react";
 import {
+  ArenaLogo,
+  CosmosLogo,
   GitHubLogo,
   type IconProps,
   InstagramLogo,
@@ -8,7 +10,11 @@ import {
 } from "@/components/icons";
 import styles from "./styles.module.css";
 
-type Social = { Icon: (props: IconProps) => JSX.Element; background: string };
+type Social = {
+  Icon: (props: IconProps) => JSX.Element;
+  background: string;
+  color?: string;
+};
 
 const SOCIALS: Record<string, Social> = {
   "x.com": { Icon: XLogo, background: "#000" },
@@ -19,6 +25,8 @@ const SOCIALS: Record<string, Social> = {
     background:
       "radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%)",
   },
+  "www.are.na": { Icon: ArenaLogo, background: "#000" },
+  "www.cosmos.so": { Icon: CosmosLogo, background: "#f5f5f3", color: "#000" },
 };
 
 type Company = { logos: string[]; preview: string };
@@ -52,7 +60,7 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
         <span className={styles.company}>
           <span
             className={styles.mark}
-            style={{ background: social.background }}
+            style={{ background: social.background, color: social.color }}
           >
             <social.Icon width={9} height={9} />
           </span>
