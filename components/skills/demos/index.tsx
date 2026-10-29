@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { IconCircleCheck, IconDots } from "@/components/icons";
 import { firstExample } from "@/data/skills";
 import { Pair } from "../pair";
+import { Alignment, Glance } from "./alignment";
 import { Deconstruct, Loop } from "./deconstruct";
 import styles from "./styles.module.css";
 
@@ -521,6 +522,18 @@ export const demos: Record<string, ReactNode> = {
       ]}
       before={<Loop />}
       after={<Deconstruct />}
+    />
+  ),
+  alignment: (
+    <Pair
+      ask={firstExample("alignment")}
+      notes={["Looks aligned, by eye", "Measured, numbered and located"]}
+      before={
+        <Glance>
+          <Bubble>Everything looks aligned.</Bubble>
+        </Glance>
+      }
+      after={<Alignment />}
     />
   ),
   audit: (

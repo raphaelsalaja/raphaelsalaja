@@ -134,6 +134,14 @@ export const skills: Skill[] = [
     ],
   },
   {
+    name: "alignment",
+    kind: "procedure",
+    userInvoked: true,
+    description:
+      "Measures a running page for edges, gaps, centring and radii that miss by a pixel or two, then judges visual weight and returns a numbered report with proof.",
+    examples: ["/alignment the settings page", "/alignment the pricing cards"],
+  },
+  {
     name: "audit",
     kind: "procedure",
     userInvoked: true,
