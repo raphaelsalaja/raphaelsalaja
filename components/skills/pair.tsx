@@ -58,7 +58,7 @@ export function Pair({ ask, before, after, notes }: PairProps) {
                 className={styles.glyph}
                 data-active={side === "after" || undefined}
               >
-                <IconCheck size={12} />
+                <IconCheck size={12} strokeWidth={2} />
               </span>
             </span>
             <span className={styles.notes} aria-live="polite">
@@ -99,7 +99,7 @@ function Cross() {
       <path
         d="M3.5 3.5l5 5m0-5l-5 5"
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
       />
     </svg>
