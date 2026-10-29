@@ -92,9 +92,7 @@ export function BioLink({ href, children, ...props }: ComponentProps<"a">) {
               <span />
               <span />
             </span>
-            <span className={styles.address}>
-              {hostname.replace(/^www\./, "")}
-            </span>
+            <span className={styles.address} />
           </span>
           {/* biome-ignore lint/performance/noImgElement: static screenshot shown on hover */}
           <img
