@@ -3,16 +3,14 @@ import "@/styles/shiki.css";
 
 import type { MDXComponents } from "mdx/types";
 import { Children, type ComponentType, isValidElement } from "react";
-import { Breadcrumb } from "@/components/breadcrumb";
+import { AgentPrompt } from "@/components/agent-prompt";
+import { agentPrompt, agentSource } from "@/components/agent-prompt/text";
 import { CodeBlock } from "@/components/code-block";
+import { Coffee } from "@/components/coffee";
 import { Demo } from "@/components/demo";
 import { Image } from "@/components/image";
 import { JsonLd } from "@/components/json-ld";
-import { Outline } from "@/components/outline";
-import { Support } from "@/components/support";
-import { articleJsonLd, formatLongDate } from "@/lib/site";
-import { CopyLink } from "./copy-link";
-import styles from "./styles.module.css";
+import { articleJsonLd, formatLongDate, sourceUrl } from "@/lib/site";
 
 const components: MDXComponents = {
   Demo,
@@ -36,7 +34,6 @@ interface ArticleProps {
   description: string;
   date: string;
   path: string;
-  parent: { href: string; label: string };
   Content: ComponentType<{ components?: MDXComponents }>;
 }
 
@@ -45,28 +42,28 @@ export function Article({
   description,
   date,
   path,
-  parent,
   Content,
 }: ArticleProps) {
   return (
     <>
       <JsonLd data={articleJsonLd({ title, description, date, path })} />
-      <Breadcrumb
-        className={styles.breadcrumb}
-        items={[{ label: "Home", href: "/" }, parent, { label: title }]}
-      />
-      <Outline back={parent} />
       <article className="prose" data-reveal-children>
         <header>
-          <h1>{title}</h1>
-          <div className={styles.meta}>
+          <div>
+            <h1>{title}</h1>
             <time dateTime={date}>{formatLongDate(date)}</time>
-            <CopyLink />
           </div>
+          <AgentPrompt
+            text={agentPrompt(path, title)}
+            href={agentSource(path)}
+            source={sourceUrl(path)}
+          />
         </header>
         <Content components={components} />
-        <Support />
       </article>
+      <div data-reveal>
+        <Coffee />
+      </div>
     </>
   );
 }

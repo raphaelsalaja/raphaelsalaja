@@ -1,0 +1,121 @@
+.container {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 48px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 72px;
+  }
+}
+
+.divider {
+  position: relative;
+  width: 4px;
+  height: 100%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.select {
+  &::before {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    font-size: 12px;
+    font-variation-settings: var(--font-weight-500);
+    color: var(--text-quaternary);
+    white-space: nowrap;
+    content: attr(data-caption);
+    transform: translateX(-50%);
+  }
+}
+
+.trigger,
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.trigger {
+  width: 120px;
+  padding: 8px 12px;
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  transition: background 0.18s var(--ease-in-out-cubic);
+
+  &:hover,
+  &[data-popup-open],
+  &[data-pressed] {
+    background: var(--background-secondary);
+  }
+}
+
+.value {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.positioner {
+  min-width: var(--anchor-width, 200px);
+}
+
+.popup {
+  max-height: 300px;
+  padding-block: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  box-shadow:
+    oklch(0 0 0 / 0.02) 0 6px 18px,
+    oklch(0 0 0 / 0.04) 0 3px 9px,
+    oklch(0 0 0 / 0.04) 0 1px 1px;
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity 0.18s var(--ease-in-out-cubic),
+    transform 0.18s var(--ease-in-out-cubic);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.item {
+  padding: 0 10px;
+  margin: 0 4px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &[data-selected],
+  &[data-highlighted] {
+    color: var(--text-primary);
+    outline: none;
+    background: var(--background-secondary);
+  }
+}
+
+.popup[data-animation="pose-to-pose"] {
+  transition: none !important;
+}
+
+.popup[data-animation="blend"] {
+  &[data-starting-style] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

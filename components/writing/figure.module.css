@@ -1,0 +1,117 @@
+.figure {
+  --ink: color-mix(in oklab, var(--gray-12) 35%, var(--gray-11));
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 40px 24px 32px;
+  margin-top: 32px;
+  background: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.axis {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.guide {
+  stroke: var(--border-secondary);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+.faint {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dashed {
+  fill: var(--background-secondary);
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plane {
+  fill: var(--background-secondary);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+}
+
+.dot {
+  fill: var(--ink);
+}
+
+.hollow {
+  fill: var(--background-secondary);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+}
+
+.text {
+  font-size: 10px;
+  font-variation-settings: var(--font-weight-450);
+  fill: var(--text-tertiary);
+}
+
+.quiet {
+  font-size: 10px;
+  font-variation-settings: var(--font-weight-450);
+  fill: var(--text-quaternary);
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 calc(100% * 24 / 480);
+
+  span {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draw {
+    stroke-dasharray: 1;
+    animation: draw var(--duration, 7s) linear infinite;
+  }
+}
+
+@keyframes draw {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+
+  72%,
+  92% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}

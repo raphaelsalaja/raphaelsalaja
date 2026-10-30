@@ -1,0 +1,41 @@
+import { LowBatteryNotification } from "./demos";
+import { IslandFigure } from "./demos/figures";
+
+<Demo>
+  <LowBatteryNotification />
+</Demo>
+
+I saw this animation on Twitter and wanted to rebuild it. Most of what makes it work is small: each element blurs in as it arrives, and every change shares one spring.[^1]
+
+## Building the Battery Icon
+
+The island has three states: closed, expanded, and expanded with low power mode on.
+
+<IslandFigure />
+<sub>Three states, one spring. Every change between them uses the same bounce and duration.</sub>
+
+### Architecture
+
+Content swaps inside `AnimatePresence` with `mode="popLayout"`, so the outgoing element leaves the layout straight away while it animates out.
+
+The island itself uses `layout`, so it resizes to fit whatever is inside it. Each element fades and unblurs as it arrives, and blurs out as it leaves.
+
+```tsx lineNumbers
+const transitions = {
+  blur: {
+    initial: { opacity: 0, filter: "blur(16px)" },
+    animate: { opacity: 1, filter: "blur(0px)" },
+    exit: { opacity: 0, filter: "blur(16px)" },
+  },
+};
+```
+
+### Springs
+
+For the spring, I kept it simple. I was mainly concerned with the duration. Luckily, Motion provides the ability to customize springs based on duration. Using this, I timed the recording and mapped it to the parameters. Then I edited them till it just felt right, and ended up with this:
+
+```tsx lineNumbers
+transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+```
+
+[^1]: Recording was taken from [@BetaProfiles](https://x.com/BetaProfiles/status/1953087677563081211) on Twitter.

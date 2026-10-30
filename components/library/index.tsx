@@ -2,7 +2,7 @@ import { Section } from "@/components/section";
 import { StackList } from "@/components/stack-list";
 import { type Post, posts } from "@/data/library";
 
-export function PostList({ items }: { items: Post[] }) {
+function PostList({ items }: { items: Post[] }) {
   return (
     <StackList
       items={items.map((post) => ({

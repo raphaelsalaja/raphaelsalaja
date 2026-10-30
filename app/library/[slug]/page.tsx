@@ -26,7 +26,9 @@ export default async function Page(props: PageProps<"/library/[slug]">) {
   const post = getPost(slug);
   if (!post) notFound();
 
-  const { default: Content } = await import(`@/content/library/${slug}.mdx`);
+  const { default: Content } = await import(
+    `@/content/library/${slug}/index.mdx`
+  );
 
   return (
     <Article
@@ -34,7 +36,6 @@ export default async function Page(props: PageProps<"/library/[slug]">) {
       description={post.description}
       date={post.date}
       path={`/library/${slug}`}
-      parent={{ label: "Writing", href: "/#writing" }}
       Content={Content}
     />
   );

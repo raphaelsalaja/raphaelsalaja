@@ -1,0 +1,76 @@
+import { CommandMenu } from "./demos";
+import {
+  Anatomy,
+  Flow,
+  Height,
+  Keymap,
+  Springs,
+} from "./demos/figures";
+
+Linear's command menu is one frame. The field stays put, the list changes jobs, and the frame takes the height of what's left. This is a rebuild of it, measured against the real one: same sizes, same springs, same keys.
+
+<Demo variant="transparent">
+  <CommandMenu />
+</Demo>
+
+It opens on an issue, PND-18. Change its status, assign it, copy its branch name. Backspace on the empty field drops the issue and leaves you with the workspace.
+
+## Anatomy
+
+Four parts. A title row that holds the context, a field, a list, and the frame around them. The frame is 720 wide, never wider than the window minus 32, and never taller than 450. Here it's narrower because the column is.
+
+<Anatomy />
+<sub>Rows are 46 tall, and so is the field. The list adds 6 above and below.</sub>
+
+The focus isn't the row. It's a pseudo-element behind it, inset 2 from the top and bottom, with a radius of 8. The list's 6px padding keeps it off the frame, so the bar reads as something sitting inside the list, not a stripe across it.
+
+The type is smaller than you'd guess. The field and the rows are 13px at a weight of 450. Group headers are 12px at 500, keycaps are 11px. The frame itself is set at 15px, and almost nothing inherits it.
+
+## Height
+
+The frame never measures itself. Its height is arithmetic: title, field, padding, rows, padding. Every row type has a fixed height, so the next height is known the moment the list changes, before anything is laid out.
+
+<Height />
+<sub>34 + 46 + 6 + 5 × 46 + 6 = 322. The root runs well past 450 and scrolls.</sub>
+
+Group headers count as 30. Without an issue the title row goes and the frame loses 34.
+
+## Motion
+
+There are two springs and neither overshoots. Height uses a stiffness of 20000 and a damping of 500. That's close to instant, done in about a tenth of a second, and because it never bounces, the row under your cursor never wobbles.
+
+<Springs />
+<sub>Progress over time, to 99%. Opening is the slow one.</sub>
+
+Opening scales up from 0.98. Closing goes down to 0.96 on a stiffer spring, so it leaves faster than it arrived. Opening a page doesn't animate the content at all. The frame dips to 0.98 for 80ms and comes back, and the height spring does the rest.
+
+## Context
+
+Open the menu on an issue and the issue becomes the title. The identifier is dimmed, the title isn't, and a backspace glyph sits after it while the field is empty. Everything in the first group is about that issue, so the group drops its header. The chip already says it.
+
+Backspace with nothing typed takes the issue away. The menu stays open and the list switches to the workspace: create, navigate, search.
+
+<Flow />
+<sub>Enter, Tab or → goes in. ⌫, Shift-Tab or ← comes out. Picking a value closes everything.</sub>
+
+## Pages
+
+"Change status…" doesn't open a submenu. It replaces the list. The placeholder becomes the action's own wording, "Change status…", "Set priority to…", "Assign to…", and the chip stays where it is. Statuses take the number keys 1 to 5 and priorities 0 to 4, but only while the field is empty. Once you type, numbers are text.
+
+Picking a status closes the menu. Labels don't. They're the one page where rows toggle, so the menu waits until you press Escape.
+
+Typing at the root searches inside the pages too. "done" finds Done under "Change status" without opening anything. People and labels wait for three characters before they show up there, so a short query doesn't fill with names.
+
+## Keyboard
+
+<Keymap />
+
+A held arrow stops at the end of the list, a single press wraps. The difference is the repeat flag on the key event, and it's why holding ↓ never throws you back to the top.
+
+Letter shortcuts in the list are labels. Typing S filters for "status", it doesn't run it. Shortcuts with ⌘ do run from inside the field, so ⌘. copies the ID without clearing your search first.
+
+The field keeps focus the whole time. Arrows, Enter, and typing all go to the input, and the list follows along as its active descendant. Clicking a row doesn't blur the field.
+
+## Details
+
+Every placeholder ends in a real ellipsis, not three dots. Empty results say what was missing: "No matching states", "No matching users", "No matching priorities". Escape closes the whole menu from any depth, it doesn't step back. Stepping back is Backspace's job.

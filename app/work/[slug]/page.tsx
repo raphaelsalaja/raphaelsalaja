@@ -27,7 +27,7 @@ export default async function Page(props: PageProps<"/work/[slug]">) {
   const item = getWorkPage(slug);
   if (!item) notFound();
 
-  const { default: Content } = await import(`@/content/work/${slug}.mdx`);
+  const { default: Content } = await import(`@/content/work/${slug}/index.mdx`);
 
   return (
     <Article
@@ -35,7 +35,6 @@ export default async function Page(props: PageProps<"/work/[slug]">) {
       description={item.description ?? item.title}
       date={item.date}
       path={item.href}
-      parent={{ label: "Experiments", href: "/#experiments" }}
       Content={Content}
     />
   );

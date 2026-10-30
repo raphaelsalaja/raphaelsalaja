@@ -1,0 +1,70 @@
+import { Talk } from "./demos";
+import { FloorFigure, GapFigure } from "./demos/figures";
+
+<Talk />
+
+This is an edited version of a talk I gave at MIT Startup Week. A design engineer works in both code and design and treats them as one job. Some teams call this a product design engineer. The point of the role is the gap where quality usually dies, between a static Figma file and what actually ships.
+
+## Where a Design Engineer Fits
+
+Most teams still split the work: people who care how things look, people who care how things work. Between them is a gap, things one side knows that the other doesn't, and neither can fully explain to the other. That gap is where quality dies.
+
+<GapFigure />
+<sub>Most teams split the work and leave a gap in the middle. A design engineer works across it.</sub>
+
+It takes real effort for a designer to hand something to an engineer who doesn't understand type systems. It takes the same effort for an engineer to walk a designer through a new auth flow and say the design has to work like this. A design engineer lives in that gap: fluent in both, refusing to treat them as separate. You look at a Figma file and see the code underneath. You sit with a backend engineer who just shipped a messy API and turn it into something that feels right on screen.
+
+## The Day-to-Day
+
+I'll use myself. At Warp, I spend most of my time on the last mile of development, the same instinct behind our recent rebuild of the Warp UI from scratch. Someone hands me a design, and I fill in the gaps: where it can be more beautiful, where it can go one step further. I add animation and transitions, critique what's already there, and try to leave it better than I found it.
+
+Other design engineers on the team sit closer to systems: component architecture, making sure the codebase is as considered as the product it produces. That consistency matters at scale, in startups and big companies alike. You need a codebase someone can walk into and build almost anything on top of.
+
+We have different strengths and the same obsession, which is how the interface feels. Nobody on the team is happy shipping something that's only good enough.
+
+## How This Differs from Adjacent Roles
+
+A front-end engineer, handed a static design, builds what's on the page. Most Figma files aren't spec'd for motion, so they ship what's there and move on. That's a reasonable call. They're just less likely to treat the file as a floor instead of a ceiling. We both care about shipping. A design engineer won't let the static design be the limit.
+
+<FloorFigure />
+<sub>The static design is where one of them stops and the other starts.</sub>
+
+A full stack engineer's skills are spread across the stack. That usually means less depth at the surface: the tiny interactions people never name but always feel. When you're shipping a whole product, those details get glossed over. Design engineers spend their days on them.
+
+For a designer, the work often ends in Figma. You can't browse a website inside Figma. What a design engineer brings is designing the experience and knowing how to turn it into code, without a handoff in the middle.
+
+## What's Changed
+
+It's never been easier to ship something that works. That's exactly why this role exists now.
+
+**Slop.** AI can generate a website in seconds: purple gradients, generic layouts, the whole thing. People feel when something lacks a human hand, even if they can't say why: scroll-driven animation that fights you, layouts that are slightly off, color and copy that don't sit right, spacing that's almost fine. A design engineer's job is making sure that never ships on our watch. We want products that feel like a person made them, because those are the ones people choose to use.
+
+**Taste.** Taste gets thrown around online until it means nothing. I think it's simpler than that. Rick Rubin is in the room for some of the biggest records ever made, and he's not a trained musician. Artists bring him a track and ask: is this good or bad. People trust his ear. As a design engineer, you have to be willing to be that person. Take a design, push back, say let's rework this, let's try something else. That opinionated taste is what turns something good into something special.
+
+**Speed.** You also have to adapt fast. A few weeks ago I built a small sound lab with the Web Audio API, with zero background in sound design. Historically that would've meant two weeks of research just to understand what a synthesizer is. With AI, I talked through the problem and had something working in hours.
+
+The speed wasn't the point. Once the model gave me something functional but ugly, I could put my own taste on it: different color pops, subtle morphing details, the layer that makes something feel considered instead of generated. Without that layer, going faster just gets you more slop, sooner.
+
+## Can Taste Be Learned?
+
+Yes. Here's how I built mine.
+
+**Study.** I started with no design background. I spent time on X, on Are.na, anywhere I could find good work, inspecting what made the good stuff good and the bad stuff bad, then copying it one-for-one in my own projects. Over time that built a sensitivity. I could look at a layout and see the type was misaligned or the spacing was off.
+
+Recently I was looking at Linear's nav bar and caught something most people wouldn't: during a page transition, the inner content was bleeding slightly outside its container because it wasn't wrapped in a `content-visibility` container. That's not a knock on the Linear team, they ship some of the most considered software out there. Almost nobody would consciously register it. Those small things are exactly what years of studying teach you to see. Once you see them, you know how to fix them.
+
+**Take notes.** Coherency is everything. If one part of an interface uses a different timing or easing curve than another, people feel it even if they can't name it. That's the "something's off" feeling. Training yourself to notice and name it, this transition uses a different curve, this type scale doesn't match, is what lets you fix it instead of just sensing it.
+
+**Build.** There's a book called *Steal Like an Artist*, and that's basically the practice. I've copied more interfaces than I can count, not to publish the copies, but to understand why a decision was made so I could apply the same thinking later. That's how you build the mental archive: when to reach for a spring versus an easing curve, when tighter letter-spacing is doing real work. You can't get any of it from reading. You have to build.
+
+## Making the Jump
+
+If you're a designer, you already have the advantage most engineers don't: the eye. What you need is enough technical fluency to put your own designs into something real. Go build in Claude or Cursor. It doesn't need to be a full app. Start small. Over time you'll start visualizing code the way you already visualize a Figma layout: here's the header, here's the markup, here's the component structure.
+
+If you're an engineer, you already have the harder half. Most of the technical problems you'll hit have been solved by someone else on the team. What you need is the eye. Study your favorite products relentlessly. Ask why they made the choices they made, then try that thinking on what you build. Warp is hiring design engineers, if you want to see what this looks like on a real product team.
+
+## Where This Is Going
+
+I think we're heading into another renaissance. A lot is getting generated from a single prompt right now, and people can tell the difference between something generated and something cared for. Design engineers sit in that middle: we can move at the speed AI allows and still put in the human layer that makes a product worth coming back to.
+
+It's a weird, good moment. You can build the thing you've always wanted to build, quickly, and still take real care over it.

@@ -1,0 +1,63 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 384px;
+  padding: 32px 24px;
+}
+
+.area {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  background-image: radial-gradient(
+    circle,
+    var(--border-secondary) 1px,
+    transparent 1px
+  );
+  background-position: center;
+  background-size: 16px 16px;
+  border-radius: 8px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  font-size: 13px;
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-tertiary);
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  background: var(--gray-1);
+  border-radius: 20px;
+  box-shadow:
+    var(--shadow-raised),
+    0 12px 32px oklch(0 0 0 / calc(5% * var(--shadow-strength)));
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-align: center;
+}

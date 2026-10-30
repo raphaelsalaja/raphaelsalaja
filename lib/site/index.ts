@@ -5,10 +5,15 @@ import { work } from "@/data/work";
 export const SITE_NAME = "Raphael Salaja";
 export const SITE_DESCRIPTION = "Design Engineer";
 
-export const SOCIALS = {
+const SOCIALS = {
   x: "https://x.com/raphaelsalaja",
   github: "https://github.com/raphaelsalaja",
 } as const;
+
+const REPO_URL = `${SOCIALS.github}/raphaelsalaja`;
+
+export const sourceUrl = (path: string) =>
+  `${REPO_URL}/tree/main/content${path}`;
 
 function siteUrl() {
   if (process.env.VERCEL_ENV === "production") {

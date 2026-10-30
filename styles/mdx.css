@@ -29,9 +29,17 @@ article {
 
   > header {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
     padding-bottom: 20px;
+
+    > div:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
 
     h1 {
       font-variation-settings: var(--font-weight-500);
@@ -65,6 +73,13 @@ article {
     background: var(--background-primary);
     border-radius: 12px;
     box-shadow: 0 0 0 1px var(--border-secondary);
+  }
+
+  [data-demo="transparent"] {
+    overflow: visible;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   > video,
@@ -117,6 +132,54 @@ article {
     margin-top: 12px;
   }
 
+  > ul,
+  > ol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+
+    > li {
+      padding-left: 16px;
+      color: var(--text-secondary);
+    }
+  }
+
+  > ul > li::before {
+    position: absolute;
+    top: 10px;
+    left: 4px;
+    width: 4px;
+    height: 4px;
+    content: "";
+    background: var(--text-quaternary);
+    border-radius: 50%;
+  }
+
+  > ol {
+    counter-reset: item;
+
+    > li {
+      counter-increment: item;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        color: var(--text-quaternary);
+        content: counter(item);
+      }
+    }
+  }
+
+  > ul + p,
+  > ol + p {
+    margin-top: 14px;
+  }
+
+  > figure + p {
+    margin-top: 32px;
+  }
+
   hr {
     margin: 24px 0;
     border: none;
@@ -148,10 +211,15 @@ article {
     width: 100%;
     padding: 12px 32px 24px;
     margin-top: 0px !important;
+    font-size: 12px;
     font-variation-settings: var(--font-weight-450);
-    line-height: 20px;
+    line-height: 18px;
     color: var(--text-tertiary);
     text-align: center;
+
+    * {
+      font-size: inherit;
+    }
 
     p {
       font: inherit;
@@ -179,8 +247,7 @@ article {
     }
   }
 
-  [data-footnotes],
-  [data-support] {
+  [data-footnotes] {
     margin-top: 64px;
 
     &::before {

@@ -1,6 +1,6 @@
-export const WORK_CATEGORIES = ["Experiments", "Projects"] as const;
+const WORK_CATEGORIES = ["Experiments", "Projects"] as const;
 
-export type WorkCategory = (typeof WORK_CATEGORIES)[number];
+type WorkCategory = (typeof WORK_CATEGORIES)[number];
 
 export type WorkItem = {
   title: string;
@@ -12,6 +12,13 @@ export type WorkItem = {
 
 export const work: WorkItem[] = (
   [
+    {
+      title: "Skills",
+      date: "2026-10-29",
+      category: "Projects",
+      href: "/skills",
+      description: "Agent skills for building interfaces with coding agents.",
+    },
     {
       title: "Pond",
       date: "2026-04-22",
@@ -25,6 +32,13 @@ export const work: WorkItem[] = (
       category: "Projects",
       href: "https://audio.raphaelsalaja.com/",
       description: "Declarative audio synthesis for the web.",
+    },
+    {
+      title: "Calligraph",
+      date: "2026-02-16",
+      category: "Projects",
+      href: "https://calligraph.raphaelsalaja.com/",
+      description: "Fluid text transitions powered by Motion.",
     },
     {
       title: "Userinterface Wikipedia",
@@ -41,6 +55,27 @@ export const work: WorkItem[] = (
       description: "A shared animation component for React.",
     },
     {
+      title: "Toldo",
+      date: "2024-11-07",
+      category: "Projects",
+      href: "https://toldo.vercel.app/",
+      description: "An elevated dialog component for React.",
+    },
+    {
+      title: "Notifications",
+      date: "2026-10-29",
+      category: "Experiments",
+      href: "/work/notifications",
+      description: "Five notifications, each with its own moving shader.",
+    },
+    {
+      title: "Command Menu",
+      date: "2026-10-29",
+      category: "Experiments",
+      href: "/work/command-menu",
+      description: "Linear's command menu, as one frame.",
+    },
+    {
       title: "Low Battery Notification",
       date: "2025-08-08",
       category: "Experiments",
@@ -53,13 +88,6 @@ export const work: WorkItem[] = (
       category: "Experiments",
       href: "/work/family-wallet",
       description: "A recreation of the Family Wallet customisation flow.",
-    },
-    {
-      title: "Toldo",
-      date: "2024-11-07",
-      category: "Projects",
-      href: "https://toldo.vercel.app/",
-      description: "An elevated dialog component for React.",
     },
   ] satisfies WorkItem[]
 ).sort((a, b) => b.date.localeCompare(a.date));

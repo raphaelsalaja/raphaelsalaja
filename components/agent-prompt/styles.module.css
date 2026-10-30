@@ -1,0 +1,79 @@
+.actions {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  align-items: center;
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-tertiary);
+  border-radius: 6px;
+  transition:
+    color var(--duration-snappy) ease,
+    background-color var(--duration-snappy) ease,
+    scale var(--duration-quick) var(--ease-out-cubic);
+
+  &:hover,
+  &[data-popup-open] {
+    color: var(--text-primary);
+    background: var(--background-tertiary);
+  }
+
+  &:active {
+    scale: 0.97;
+  }
+}
+
+.icon {
+  display: grid;
+  width: 15px;
+  height: 15px;
+
+  > svg {
+    grid-area: 1 / 1;
+    place-self: center;
+    transition:
+      opacity var(--duration-snappy) ease,
+      scale var(--duration-snappy) var(--ease-snappy);
+  }
+
+  > svg:last-child,
+  &[data-copied="true"] > svg:first-child {
+    opacity: 0;
+    scale: 0.6;
+  }
+
+  &[data-copied="true"] > svg:last-child {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.tooltip {
+  padding: 3px 8px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  background: var(--background-secondary);
+  border-radius: 6px;
+  box-shadow: var(--shadow-raised);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--duration-quick) var(--ease-out-cubic),
+    scale var(--duration-quick) var(--ease-out-cubic);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    scale: 0.96;
+  }
+
+  &[data-instant] {
+    transition: none;
+  }
+}

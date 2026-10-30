@@ -1,0 +1,95 @@
+import { Notifications } from "./demos";
+import {
+  Hover,
+  Layers,
+  Patterns,
+  Recipe,
+  Ripple,
+  Types,
+} from "./demos/figures";
+
+Five notifications that share one layout and differ in color and pattern. The pattern on the right is a shader, so it can move: in on arrival, faster under the cursor, and outward when you press Action.
+
+<Demo>
+  <Notifications />
+</Demo>
+
+Hover a card, then press Action. When they're all gone, Replay brings them back.
+
+## Anatomy
+
+Each card is four layers. A white surface, a canvas for the tint, a one-pixel border, and the content on top.
+
+<Layers />
+<sub>The border and the tint are separate. Only the tint is WebGL.</sub>
+
+The content sits on a small grid. A 16px column for the icon, two 20px rows for the title and the description, and the action spanning both rows on the right. The icon lines up with the title, and the description lines up under the title, not under the icon.
+
+The border isn't drawn by the shader. It's a CSS gradient, masked down to a 1px ring, that runs from the normal border color to the card's color at 32% strength. That keeps it sharp at any pixel density, and it means the colored edge on the right is there even before the shader has drawn a frame.
+
+## The Tint
+
+Every card runs one fragment shader over a single triangle that covers the canvas. The tint is three things multiplied together.
+
+<Recipe />
+<sub>Fade, times pattern, times wipe.</sub>
+
+The fade starts at 32% of the width, so the left side stays clean for the text. The pattern is a value between zero and one for every pixel, and each type draws a different one. It sits on a base opacity of 0.03 to 0.12 and adds at most 0.3 on top. That's all the color there is, which is why it reads as a tint and not a fill.
+
+The output is premultiplied, so the white card shows through wherever the tint is thin. A fade this shallow bands easily, so the shader adds half a level of noise per pixel. You can't see the noise, but it hides the steps.
+
+## Five Patterns
+
+Each type gets its own pattern, and its own speed to move it.
+
+<Patterns />
+<sub>Drawn still here. In the cards, every one of them drifts.</sub>
+
+Stripes are the simplest. A diagonal band repeats every 30px along the width, on for half its period, and marches left. They're on the warning card, where they read as hazard tape, and they move fastest, at 0.6 periods a second.
+
+Halftone is a 7px dot grid. Each dot grows from nothing at 20% of the width to a 3.5px radius at the edge, and a wave rolls diagonally through the grid, so the dots swell and shrink by 30% as it passes. It's on the reminder, under the breathing pulse.
+
+Aurora is four layers of value noise at a 90px scale, cut off softly so it forms clouds instead of a haze. On the success card it drifts left and a little up, at about 16px a second.
+
+Contours take a larger, 200px noise field and draw 24 levels of it as lines. Drawn naively, the lines come out thick where the noise is flat and hairline where it's steep. The shader measures how fast the value changes from one pixel to the next and sizes each line by that, so every line is about a pixel wide.
+
+Pixels split the card into 6px cells with a 4px square in each. Every cell gets a random threshold and lights up only once the fade passes it, so the error card's grid dissolves in from the right instead of fading. Each lit cell twinkles on its own phase.
+
+## Hover
+
+Hover isn't a switch in the shader. It's a number that eases toward one while the cursor is over the card and back to zero when it leaves.
+
+<Hover />
+
+That number does two things. It speeds the pattern up, to 2.5× at full hover, and it adds a soft glow around the cursor that falls off over about 70px. Inside the glow the pattern gets brighter, and a faint wash of color spills past the fade.
+
+Speeding up a moving pattern can make it jump, if the speed multiplies the clock. Here each frame adds a small step to the pattern's position instead, and only the size of the step changes. The pattern accelerates without skipping.
+
+## Action
+
+Pressing Action starts a ring at the center of the button. It grows at 560px a second, 16px wide, with a lighter fill trailing behind it, and it's gone by 700ms.
+
+<Ripple />
+<sub>The card waits for the ring before it goes.</sub>
+
+The card waits 260ms. By then the ring has spread about 146px, across half the tint, so the press has visibly gone somewhere before the card does. Then the card fades, drops to 97% and blurs over 200ms. The cards below close the gap with a spring.
+
+The list is pinned to the top of the stage, so only the cards below the one you dismissed move. When it was centered, removing a card moved the cards above it as well, which made it look like everything was reacting to the press.
+
+## Five Types
+
+The colors are kept quiet on purpose. What separates the types is the pattern and how it moves.
+
+<Types />
+
+The reminder's breathing is a slow pulse in the shader's brightness, sharpened so it spends most of its time resting and only briefly swells.
+
+## Details
+
+On dark surfaces the same tint reads weaker, so the shader raises its opacity by 1.4 when the system is in dark mode. It picks up the change without a reload.
+
+The noise behind aurora, contours and pixels hashes pixel coordinates, so the shader asks for high precision wherever the device has it. If a device can't measure how fast a value changes between pixels, the contour lines fall back to a fixed width.
+
+Each card has its own WebGL context, so each one is careful with it. It stops drawing when it scrolls out of view. It renders at no more than twice the screen's resolution. When it unmounts, it frees its program and buffer.
+
+With reduced motion, the shader draws one still frame with the tint fully in. The cards fade instead of springing, and the ripple is skipped.

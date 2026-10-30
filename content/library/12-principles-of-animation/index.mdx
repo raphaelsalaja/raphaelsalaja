@@ -1,0 +1,201 @@
+import {
+  Anticipation,
+  Appeal,
+  Exaggeration,
+  FollowThroughAndOverlappingAction,
+  SecondaryAction,
+  SlowInSlowOut,
+  SolidDrawing,
+  SquashStretch,
+  Staging,
+  StraightAheadActionAndPoseToPose,
+  Timing,
+} from "./demos";
+import { Video } from "@/components/video";
+
+> Some of these examples work best on a desktop.
+
+Most of what we know about motion on a screen started in film. In the 1930s, Disney's animators worked out how to make drawings feel alive, and Frank Thomas and Ollie Johnston later wrote those ideas down as the 12 principles of animation.[^1]
+
+They were written for characters, not interfaces, but most of them carry over. Here's each one, and how I use it in a product.
+
+## The Principles
+
+### Squash and Stretch
+
+Things squash when they land and stretch when they move fast. How much they do it tells you how heavy or soft they are.
+
+In an interface, a little squash and stretch makes an element feel like it's reacting to what you did to it.
+
+<Demo>
+  <SquashStretch />
+</Demo>
+<sub>Family's Wallet Icon Picker[^2]</sub>
+
+Here the wallet icon squashes and stretches as it changes, so it looks like it's turning into the new shape instead of being swapped for it.
+
+Keep it small. Too much and it turns cartoonish. That goes for every principle here.
+
+### Anticipation
+
+Anticipation prepares you for what's about to happen. A small movement before the main one, so the main one doesn't come out of nowhere.
+
+In an interface, that might be a bell that wiggles before a badge appears, or a button that shrinks slightly while you hold it. Select the issue below and hold to delete it.
+
+<Demo>
+  <Anticipation />
+</Demo>
+
+Don't put it on every interaction. Too much anticipation feels like a gimmick and makes everything slower. Save it for actions where a hint helps, like deleting something, and keep it short.
+
+### Staging
+
+Staging is about where the eye goes. Anticipation is the moment before. Staging is the moment during, and making sure the important thing is the thing you notice.
+
+In practice it often means bringing things in one at a time. Open a settings panel and the backdrop fades first, then the panel slides in, then the main control is highlighted.
+
+<Demo>
+  <Staging />
+</Demo>
+
+In this example, the backdrop blurs the page behind it, so there's only one thing left to look at.
+
+If everything animates at once, nobody knows where to look. Simple interactions rarely need staging. Complex ones usually do.
+
+### Straight Ahead Action & Pose to Pose
+
+There are two ways to animate a sequence. Straight ahead means drawing every frame in order, from first to last, which gives you fluid and slightly unpredictable motion. Pose to pose means drawing the key poses first and filling in the frames between them afterwards, which gives you more control.
+
+Interfaces are pose to pose by nature. We define the states, and the browser fills in the frames between them. The real choice is whether to show those in-between frames at all.
+
+<Demo>
+  <StraightAheadActionAndPoseToPose />
+</Demo>
+
+The first menu plays every frame, in and out. The second jumps straight between poses. The third skips the entrance and animates the exit.
+
+How often something is used should decide which one you pick. On the Mac, context menus appear instantly and fade out when you're done. You open them so often that an entrance would start to feel slow.
+
+### Follow Through & Overlapping Action
+
+When something stops, parts of it keep going for a moment. When it starts, not every part moves at once. A coat keeps swinging after the person wearing it stops.
+
+In a list, that might mean each card arrives slightly after the one before it, so the list comes in as a cascade instead of a block.
+
+<Demo>
+  <FollowThroughAndOverlappingAction />
+</Demo>
+<sub>Dia's Split Tabs.[^3]</sub>
+
+This example uses springs, which carry some of their speed past the target and settle back. I wrote about them in [When to Use a Spring](/library/when-to-use-a-spring), and Apple's [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158) talk from WWDC23 is a good place to start.[^4]
+
+Use overlap to soften starts and stops that feel abrupt. Keep the delays short. A long stagger makes a list feel slow to load.
+
+### Slow In & Slow Out
+
+Very little in the real world starts or stops instantly. A car speeds up from rest and slows down before it stops. Slow in and slow out means motion that does the same, easing into its speed and out of it again.
+
+On screen, that's what easing curves are for. Linear motion, the same speed from start to finish, looks mechanical.
+
+<Demo>
+  <SlowInSlowOut />
+</Demo>
+
+These are a few common curves. [easing.dev](https://easing.dev) has many more, and lets you make your own.[^5]
+
+Which curve you pick matters. Use `ease-out` for things entering the screen. They arrive fast and settle, so they feel responsive. Use `ease-in` for things leaving. They start gently and speed up on the way out. `ease-in-out` suits things moving from one place on screen to another.
+
+### Arcs
+
+Living things rarely move in straight lines. An arm swings in an arc, and a thrown ball curves. A gentle curve in an interface makes movement feel less mechanical.
+
+<Video src="/media/library/12-principles-of-animation/arcs.mp4" />
+<sub>Apple's Dynamic Island.[^6]</sub>
+
+Arcs are harder to use in everyday UI, where most things move along one axis. They fit better in bigger moments, like bringing something forward on a landing page. They take a lot of experimenting to get right.
+
+### Secondary Action
+
+A secondary action supports the main one without competing with it.
+
+After a form submits, the checkmark might pop and then sparkle briefly. The checkmark is the message. The sparkle makes it feel good.
+
+<Demo>
+  <SecondaryAction />
+</Demo>
+
+Sound can be a secondary action too. Games do this all the time: a hit lands with a sound and a flash together, and each makes the other feel stronger. A short, quiet click on a toggle does the same job in an interface.
+
+### Timing
+
+Timing is how long an action takes. It decides whether an interface feels quick or slow, deliberate or chaotic.
+
+A tooltip can feel right at 150 milliseconds and annoying at 400. I keep most interactions under 300 milliseconds.
+
+<Demo>
+  <Timing />
+</Demo>
+
+Similar actions should take similar times. Pick a few durations and reuse them across the product. I wrote more about this in [A Note on Timing](/library/a-note-on-timing).
+
+### Exaggeration
+
+Exaggeration pushes a motion past what's realistic so it's hard to miss. In an interface, it's for feedback someone needs to notice.
+
+An invalid form field is a good example. Instead of only turning red, it shakes. Fields don't shake in real life, but you won't miss it.
+
+<Demo>
+  <Exaggeration />
+</Demo>
+
+Use it sparingly, for moments where you want someone to feel something or notice something important. Errors, confirmations, empty states and onboarding are where it tends to fit.
+
+### Solid Drawing
+
+In traditional animation, solid drawing means making things look three-dimensional. They have weight and volume, and they sit in a space.
+
+In an interface, that usually means shadows, layering and a little perspective, used to show what's on top and what you can touch.
+
+<Demo>
+  <SolidDrawing />
+</Demo>
+<sub>Linear Orbit[^7]</sub>
+
+For 3D transforms in CSS, set `perspective`. It controls how far the object is from the viewer, and without it a rotation looks flat. This example uses it.
+
+Keep it consistent. If an icon rotates in 3D, it should keep its depth the whole way round. If it suddenly flattens or flips the wrong way, the illusion breaks.
+
+### Appeal
+
+Appeal is whether people like looking at something and using it. It's the gap between an interface that works and one people choose.
+
+<Demo>
+  <Appeal />
+</Demo>
+<sub>A few people making nice things on the web.[^8]</sub>
+
+Think of the products you keep going back to. It's usually a lot of small things: details someone cared about, interactions that are still fun the tenth time, a product that seems to know what you want next. Most of that is the other eleven principles done well.
+
+## Putting It Together
+
+A lot of software ships fast now, and a lot of it looks the same. Motion someone has thought about is one of the few things that still makes a product feel different.
+
+The principles help you avoid both extremes: motion so sparse the interface feels dead, and motion so heavy it gets in the way. Somewhere between them is enough animation, of the right kind, in the right places.
+
+Done well, most of it goes unnoticed. People just say the app feels nice to use.
+
+[^1]: Frank Thomas and Ollie Johnston, [The Illusion of Life: Disney Animation](https://www.amazon.com/Illusion-Life-Disney-Animation/dp/0786860707), 1981. Every principle here comes from it, and the whole book is worth reading.
+
+[^2]: The icon picker in [Family](https://www.family.co)'s wallet customisation flow. I rebuilt the flow [here](/work/family-wallet).
+
+[^3]: [Dia](https://www.diabrowser.com/) uses follow-through when you split tabs. It's easier to see in the browser itself.
+
+[^4]: [Animate with Springs](https://developer.apple.com/videos/play/wwdc2023/10158), WWDC23. It's about SwiftUI, but the ideas apply to any animation library.
+
+[^5]: [easing.dev](https://easing.dev) by Lochie Axon. You can build springs there too.
+
+[^6]: Rauno recorded this clip for his essay [Invisible Details of Interaction Design](https://rauno.me/craft/interaction-design). Worth the read.
+
+[^7]: Emil Kowalski's recreation of the Linear loading animation, [posted on X](https://x.com/emilkowalski_/status/1937134338816053290/video/1).
+
+[^8]: Some of the people making them: [John Phamous](https://x.com/JohnPhamous), [Gustav Ekerot](https://x.com/designgurra), [Abhijeet Singh](https://x.com/abjt14), [Mint](https://x.com/smintfy), [Xavier (Jack)](https://x.com/KMkota0), [Florian](https://x.com/flornkm), [Lochie Axon](https://x.com/lochieaxon), [Pranathi Peri](https://x.com/pranathiperii), [Jakub Krehel](https://x.com/jakubkrehel) and [Henry Heffernan](https://x.com/henryheffernan).

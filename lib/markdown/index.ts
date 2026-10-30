@@ -10,7 +10,7 @@ import {
   type Skill,
 } from "@/data/skills";
 import { experiments, getWorkPage, projects, workPages } from "@/data/work";
-import { formatLongDate, SITE_NAME, SITE_URL } from "@/lib/site";
+import { formatLongDate, SITE_NAME, SITE_URL, sourceUrl } from "@/lib/site";
 
 const TALK_URL = "https://www.youtube.com/watch?v=uEMEs499fUs";
 
@@ -23,7 +23,7 @@ const markdownHref = (href: string) =>
 const readContent = (file: string) =>
   readFile(path.join(process.cwd(), "content", file), "utf8");
 
-export function mdxToMarkdown(source: string) {
+function mdxToMarkdown(source: string) {
   const out: string[] = [];
   let fenced = false;
   let importing = false;
@@ -46,7 +46,7 @@ export function mdxToMarkdown(source: string) {
       continue;
     }
 
-    const video = line.match(/^\s*<Video\s+src="([^"]+)"/);
+    const video = line.match(/^\s*<(?:Video|Player)\s+src="([^"]+)"/);
     if (video) {
       out.push(`[Video](${absolute(video[1])})`);
       continue;
@@ -76,6 +76,8 @@ async function home() {
     `# ${SITE_NAME}`,
     "Design Engineer",
     about,
+    "## Skills",
+    `[Skills](${markdownHref("/skills")}): Agent skills for building interfaces with coding agents. Every rule shows the broken line and the line that replaces it.`,
     "## Projects",
     list(
       projects.map(
@@ -128,11 +130,15 @@ function article(
   title: string,
   description: string,
   date: string,
+  pathname: string,
   body: string,
 ) {
-  return [`# ${title}`, `${formatLongDate(date)}. ${description}`, body].join(
-    "\n\n",
-  );
+  return [
+    `# ${title}`,
+    `${formatLongDate(date)}. ${description}`,
+    body,
+    `Source: [GitHub](${sourceUrl(pathname)})`,
+  ].join("\n\n");
 }
 
 export const markdownPaths = [
@@ -150,15 +156,21 @@ export async function pageMarkdown(pathname: string) {
   if (section === "library") {
     const post = getPost(slug);
     if (!post) return null;
-    const body = mdxToMarkdown(await readContent(`library/${slug}.mdx`));
-    return article(post.title, post.description, post.date, body);
+    const body = mdxToMarkdown(await readContent(`library/${slug}/index.mdx`));
+    return article(post.title, post.description, post.date, pathname, body);
   }
 
   if (section === "work") {
     const item = getWorkPage(slug);
     if (!item) return null;
-    const body = mdxToMarkdown(await readContent(`work/${slug}.mdx`));
-    return article(item.title, item.description ?? "", item.date, body);
+    const body = mdxToMarkdown(await readContent(`work/${slug}/index.mdx`));
+    return article(
+      item.title,
+      item.description ?? "",
+      item.date,
+      pathname,
+      body,
+    );
   }
 
   return null;

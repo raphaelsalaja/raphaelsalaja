@@ -1,0 +1,23 @@
+@media (prefers-reduced-motion: no-preference) {
+  path.out {
+    animation-name: draw-out;
+  }
+}
+
+@keyframes draw-out {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+
+  43%,
+  92% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,60 @@
+import { MotionFigure, PassDemo, SpacingFigure } from "./demos";
+
+A model can give you a working screen in an afternoon. Layout, components, a plausible color. That's new, and it's useful. It's also where a lot of products now stop.
+
+I use these tools every day. I'm not writing this to warn anyone off them. I'm writing it because the gap between what a model hands you and what's worth shipping has a shape, and once you can see the shape, it's much easier to close.
+
+## What It Gets Right
+
+It's worth being clear about what's actually good. A model is fast at structure. It'll lay out a dashboard, wire up a form, build a settings page with all the right fields. It knows the common components and how they fit together. It rarely forgets a label or a loading state you asked for.
+
+That used to be days of work. Now it's a first draft. I'd rather start from a working screen than an empty file, and I think most people would.
+
+## What It Misses
+
+What it misses is small and repeated. Spacing that doesn't match the rest of the product. A hover state that scales when nothing else does. Copy that sounds helpful and says nothing. Motion that plays every time because nobody told it not to.
+
+<SpacingFigure />
+<sub>Nothing in the first row is wrong on its own. Together, nothing lines up.</sub>
+
+The first result usually has a gap of 12 here, 20 there, 9 somewhere else. Four corner radii on four cards. Heights that are close but not equal. Any one of these would pass review. Together they make a screen that feels slightly unsteady, the way a room feels when one picture frame is crooked.
+
+It's the same with motion. A model will happily add an entrance animation to a card, a scale to a button, a bounce to a menu, each with its own duration and curve. Every one of them looks reasonable alone. None of them were chosen with the others in mind.
+
+<MotionFigure />
+<sub>Three motions, three curves, three durations. After the pass, one is gone and the other two share a curve.</sub>
+
+And copy. Models write in a voice that's confident, friendly and empty. "Unlock powerful insights." "Seamlessly transform your workflow." It sounds like a product and tells you nothing about this one.
+
+You can feel all of this even when you can't point at the line. The page works. You don't want to stay.
+
+## The Pass
+
+Here's a card as it often comes out, and the same card after the pass.
+
+<Demo>
+  <PassDemo />
+</Demo>
+<sub>The second version has fewer things in it. Every remaining thing was chosen.</sub>
+
+Nothing in the first version is broken, and plenty of teams would ship it. It has a gradient, a sparkle icon, title case, a button that grows on hover, an entrance that plays every time you see it, and padding that's different on every side. The words are about nothing in particular.
+
+The second version is the same card. One radius. One padding. An icon that sits on the same line as the title. A sentence that tells you what's actually there. A button that responds to a press instead of a hover. No entrance, because you'll see this card every day.
+
+## How I Do the Pass
+
+This is roughly the order I go in.
+
+1. Delete first. Remove every animation, gradient and icon that isn't doing a job. It's much easier to see what's missing once the extra things are gone.
+2. Check spacing against the scale. Every gap, every padding. If the product uses 8, 12, 16 and 24, a 9 or a 20 is a mistake, not a choice.
+3. One curve per kind of motion. Menus share a timing. Sheets share a timing. Nothing animates that the user will see constantly unless it explains something.
+4. Read the copy out loud. If it could appear on any product's landing page, rewrite it to say what this product does.
+5. Use it. Open the menu ten times. Hover everything. Go through the states. The things that are wrong show up on the third or fourth use, never the first.
+
+The steps are easy. What they take is attention, applied in the same order every time.
+
+## The Same First Result
+
+When everyone has the same tools, the first result is the same for everyone. The same layouts, the same gradients, the same copy. If you ship the first result, you ship something that looks like everything else, because in a real sense it is everything else.
+
+The pass is where your taste gets applied: what to remove, what to retune, what should never have animated. I'm happy to let the model write the first draft. I just don't ship it.

@@ -187,28 +187,6 @@ main {
   @media (width <= 640px) {
     padding-top: 64px;
   }
-
-  &::before {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 10;
-    height: 128px;
-    pointer-events: none;
-    content: "";
-    background: linear-gradient(
-      to bottom,
-      var(--background-primary) 0%,
-      color-mix(in oklab, var(--background-primary) 54%, transparent) 34%,
-      color-mix(in oklab, var(--background-primary) 19%, transparent) 65%,
-      transparent 100%
-    );
-
-    @media (width <= 640px) {
-      height: 40px;
-    }
-  }
 }
 
 h1,
@@ -247,32 +225,6 @@ time {
   clip-path: inset(50%);
 }
 
-::view-transition {
-  pointer-events: none;
-}
-
-::view-transition-group(.page) {
-  animation: none;
-}
-
-::view-transition-old(.page) {
-  animation: fade 200ms ease both reverse;
-}
-
-::view-transition-new(.page) {
-  animation: fade 200ms ease both;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html[data-reveals] :is([data-reveal], [data-reveal-children] > *) {
     transition:
@@ -294,10 +246,7 @@ time {
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
-  *::after,
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
+  *::after {
     transition-duration: 0s !important;
     animation-duration: 0s !important;
     animation-delay: 0s !important;

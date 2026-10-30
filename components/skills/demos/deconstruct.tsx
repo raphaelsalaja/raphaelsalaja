@@ -51,8 +51,12 @@ const TRACKS: { name: string; spans: Span[] }[] = [
 
 const easeOut = (x: number) => 1 - (1 - x) ** 3;
 
-function progress(t: number, [start, end]: Span) {
-  return easeOut(Math.min(Math.max((t - start) / (end - start), 0), 1));
+function elapsed(t: number, [start, end]: Span) {
+  return Math.min(Math.max((t - start) / (end - start), 0), 1);
+}
+
+function progress(t: number, span: Span) {
+  return easeOut(elapsed(t, span));
 }
 
 function mix(from: number, to: number, amount: number) {
@@ -269,12 +273,17 @@ export function Deconstruct() {
           <div key={track.name} className={styles.track}>
             <span className={styles.name}>{track.name}</span>
             <span className={styles.lane}>
-              {track.spans.map(([start, end]) => (
+              {track.spans.map((span) => (
                 <span
-                  key={start}
+                  key={span[0]}
                   className={styles.span}
-                  data-active={(time >= start && time < end) || undefined}
-                  style={{ left: percent(start), width: percent(end - start) }}
+                  style={
+                    {
+                      left: percent(span[0]),
+                      width: percent(span[1] - span[0]),
+                      "--fill": `${elapsed(time, span) * 100}%`,
+                    } as CSSProperties
+                  }
                 />
               ))}
               <span className={styles.head} style={{ left: percent(time) }} />

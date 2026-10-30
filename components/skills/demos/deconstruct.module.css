@@ -227,12 +227,12 @@
   top: 4px;
   bottom: 4px;
   border-radius: 3px;
-  transition: background-color var(--duration-quick) ease;
 }
 
 .state {
   background: var(--gray-4);
   box-shadow: inset -1px 0 0 var(--background-primary);
+  transition: background-color var(--duration-quick) ease;
 
   &[data-active] {
     background: color-mix(in oklab, var(--accent) 40%, transparent);
@@ -240,11 +240,11 @@
 }
 
 .span {
-  background: var(--gray-6);
-
-  &[data-active] {
-    background: var(--accent);
-  }
+  background: linear-gradient(
+    to right,
+    var(--accent) var(--fill),
+    var(--gray-6) var(--fill)
+  );
 }
 
 .head {

@@ -1,15 +1,11 @@
 import type { ReactNode } from "react";
 
 export function Demo({
+  variant,
   children,
-  light = true,
 }: {
+  variant?: "transparent";
   children: ReactNode;
-  light?: boolean;
 }) {
-  return (
-    <div data-demo data-light={light || undefined}>
-      {children}
-    </div>
-  );
+  return <div data-demo={variant ?? ""}>{children}</div>;
 }

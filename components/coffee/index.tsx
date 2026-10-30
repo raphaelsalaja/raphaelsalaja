@@ -1,6 +1,5 @@
-import { IconCoffee } from "@/components/icons";
 import { SUPPORT_URL } from "@/components/support";
-import { Shader } from "./shader";
+import { Mascot } from "./mascot";
 import styles from "./styles.module.css";
 
 export function Coffee() {
@@ -10,20 +9,21 @@ export function Coffee() {
       className={styles.card}
       aria-labelledby="support-heading"
     >
-      <Shader className={styles.shader} />
-      <h2 id="support-heading" className={styles.title}>
-        Support my work
-      </h2>
+      <Mascot className={styles.mascot} />
+      <div className={styles.copy}>
+        <p className={styles.description}>
+          If you've enjoyed my work or writing, you can support me by buying me
+          a coffee. All support is greatly appreciated!
+        </p>
+      </div>
       <a
         href={SUPPORT_URL}
         target="_blank"
         rel="noopener"
         className={styles.button}
       >
-        <IconCoffee size={16} />
         Buy me a coffee
       </a>
-      <p className={styles.fine}>Payments are handled by Buy Me a Coffee.</p>
     </section>
   );
 }

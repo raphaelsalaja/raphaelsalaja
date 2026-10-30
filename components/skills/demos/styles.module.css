@@ -490,7 +490,8 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  width: 280px;
+  width: 320px;
+  max-width: 100%;
   padding: 10px 4px;
   background: var(--background-primary);
   border-radius: 12px;
@@ -609,9 +610,24 @@
   padding: 6px 10px;
 }
 
+.number {
+  min-width: 1ch;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-tertiary);
+}
+
 .detail {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.summary {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
 }
 
 .level {

@@ -1,0 +1,66 @@
+import {
+  AsymmetryFigure,
+  DurationDemo,
+  FrequencyFigure,
+} from "./demos";
+
+People spend a lot of time picking an easing curve and almost no time picking a duration. They'll compare four cubic-beziers side by side, then type 300ms because it's the number everyone types.
+
+The curve is the shape. The duration is whether the motion belongs in the product at all. A perfect curve at the wrong duration still feels wrong. A plain ease-out at the right duration usually feels fine.
+
+## Duration
+
+Try the same menu at three speeds. Open and close it a few times at each one before you decide.
+
+<Demo>
+  <DurationDemo />
+</Demo>
+<sub>Same curve, same distance, same menu. Only the duration changes.</sub>
+
+At 150 milliseconds the menu is just there. You notice that it moved, not how. At 300 it looks nice the first time, and by the fifth time you're waiting for it. At 600 every open is a small pause, and you start to feel the product is slow even though nothing is loading.
+
+Any of these could be right somewhere. For a menu, only the first one is. The same 300 milliseconds is fine for a sheet you open twice a session.
+
+## Frequency
+
+The rule I use most is simple: the more often someone sees a motion, the shorter it should be.
+
+<FrequencyFigure />
+<sub>Rough numbers I start from. The shape matters more than the values.</sub>
+
+A screen you see once, like onboarding, can take its time. It's the only time you'll see it, and a slower entrance gives you a second to take in where you are. A page transition you'll see a few times an hour sits somewhere around 300 to 400 milliseconds. A sheet or a dialog, around 300. A toast, a bit less. A menu you open constantly, 150 to 200. A hover, 100 or so.
+
+At the far end, things you trigger from the keyboard dozens of times an hour often shouldn't animate at all. If someone opens a command menu with a shortcut, they already know where it's going to be. The animation is only in the way.
+
+Treat these as starting points. I tune from there. The values change with the product. The shape of the curve, falling as frequency rises, almost never does.
+
+## In and Out
+
+The second thing people miss is that entrances and exits don't have to match. Most of the time they shouldn't.
+
+<AsymmetryFigure />
+<sub>An entrance shows where something came from. An exit only needs to get out of the way.</sub>
+
+When something arrives, the motion is doing a job. It tells you where the menu came from and what it's attached to. When it leaves, you've already made a choice. You picked an item, or you clicked away. Making you watch it leave at the same speed it arrived feels like being asked to wait for a door to close.
+
+I usually make exits a bit more than half the entrance. If a menu opens in 200 milliseconds, it closes in about 120. Some things don't animate out at all. A context menu that vanishes the moment you pick something feels more responsive, not less.
+
+## Distance
+
+Duration should grow a little with distance, but not in proportion. Something moving across the whole screen needs more time than a tooltip moving four pixels, or it looks like it teleported. But double the distance doesn't need double the time. If it did, a full-screen sheet would take a second.
+
+I think of it as a floor and a ceiling. Nothing in an interface should take less than about 100 milliseconds if you want people to see it move. Very little should take more than 500 unless it's the only thing happening on screen.
+
+## How I Time Things
+
+When I'm matching something that already exists, a system animation or a reference from another product, I time it against a recording. Record the screen, step through it frame by frame, count the frames from first movement to rest. At 60 frames per second, twelve frames is 200 milliseconds.
+
+Then I map that onto a spring by duration and nudge until it stops calling attention to itself. That last part is the real test. I watch it three times. If I still notice the animation the third time through, it's too slow, or too proud of itself.
+
+When there's no reference, I start fast and slow down until it reads, instead of starting slow and speeding up. Starting slow, everything looks smooth and nothing feels too long yet. Starting fast, you find the shortest duration that still explains what happened, and that's usually the right one.
+
+## What It's For
+
+Motion should explain what changed. A row left. A sheet arrived. A value updated. After that, it should disappear.
+
+The interfaces that feel expensive are usually the ones where most actions are shorter than you'd expect. You stop noticing the timing, and you rarely find yourself waiting.

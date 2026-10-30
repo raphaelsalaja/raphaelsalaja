@@ -1,8 +1,9 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { ViewTransition } from "react";
+import { Back } from "@/components/back";
 import { Reveal } from "@/components/reveal";
+import { Sounds } from "@/components/sounds";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { VISITED_KEY } from "@/lib/visited";
 
@@ -56,9 +57,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <main>
-          <ViewTransition default="page">{children}</ViewTransition>
+          <Back />
+          {children}
         </main>
         <Reveal />
+        <Sounds />
         <Analytics />
       </body>
     </html>

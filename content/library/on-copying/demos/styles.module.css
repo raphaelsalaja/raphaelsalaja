@@ -1,0 +1,42 @@
+@media (prefers-reduced-motion: no-preference) {
+  .layer {
+    animation: spread 7s var(--ease-in-out-cubic) infinite;
+  }
+
+  .label {
+    animation: reveal 7s ease infinite;
+  }
+}
+
+@keyframes spread {
+  0%,
+  16% {
+    transform: translateY(var(--collapse));
+  }
+
+  40%,
+  84% {
+    transform: none;
+  }
+
+  100% {
+    transform: translateY(var(--collapse));
+  }
+}
+
+@keyframes reveal {
+  0%,
+  28% {
+    opacity: 0;
+  }
+
+  42%,
+  80% {
+    opacity: 1;
+  }
+
+  90%,
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,29 @@
+@media (prefers-reduced-motion: no-preference) {
+  .drift {
+    animation: drift 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+}
+
+@keyframes drift {
+  0% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+
+  8%,
+  20% {
+    opacity: 1;
+    transform: translate(var(--dx), var(--dy));
+  }
+
+  64%,
+  92% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}

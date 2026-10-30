@@ -16,6 +16,34 @@ export function useShown() {
   return useContext(ShownContext);
 }
 
+interface StageProps {
+  ask?: ReactNode;
+  views: ReactNode[];
+  active: number;
+}
+
+function Stage({ ask, views, active }: StageProps) {
+  return (
+    <div className={styles.stage}>
+      {ask && <div className={styles.ask}>{ask}</div>}
+      <div className={styles.views}>
+        {views.map((view, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: fixed set of views
+          <ShownContext.Provider key={index} value={index === active}>
+            <div
+              className={styles.view}
+              data-active={index === active || undefined}
+              inert={index !== active}
+            >
+              {view}
+            </div>
+          </ShownContext.Provider>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface PairProps {
   ask?: ReactNode;
   before: ReactNode;
@@ -27,24 +55,9 @@ export function Pair({ ask, before, after, notes }: PairProps) {
   const [side, setSide] = useState<Side>("before");
 
   return (
-    <Demo light={false}>
+    <Demo>
       <div className={styles.pair}>
-        <div className={styles.stage}>
-          {ask && <div className={styles.ask}>{ask}</div>}
-          <div className={styles.views}>
-            {SIDES.map((key) => (
-              <ShownContext.Provider key={key} value={side === key}>
-                <div
-                  className={styles.view}
-                  data-active={side === key || undefined}
-                  inert={side !== key}
-                >
-                  {key === "before" ? before : after}
-                </div>
-              </ShownContext.Provider>
-            ))}
-          </div>
-        </div>
+        <Stage ask={ask} views={[before, after]} active={SIDES.indexOf(side)} />
         <div className={styles.toolbar}>
           <div className={styles.note}>
             <span className={styles.mark} data-side={side} aria-hidden="true">

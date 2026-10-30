@@ -1,0 +1,58 @@
+import { AddsUpFigure, ContactFigure, PressDemo } from "./demos";
+
+"Good enough" is a useful phrase and a dangerous one. Useful when you're deciding whether to ship. Dangerous when it becomes the standard for the parts people touch every day.
+
+I hear it in two very different situations, and the same words mean opposite things in each one.
+
+## Where It Works
+
+I don't think everything needs to be perfect. Most decisions in a product are reversible, and waiting on them is how nothing gets finished. Ship the flow. Ship the empty state. Fix the copy later if you have to.
+
+Jeff Bezos has a way of putting this that I think about a lot. Some decisions are one-way doors: once you go through, you can't easily come back, so you should be slow and careful. Most decisions are two-way doors. You can walk back through if it was wrong, so you should make them quickly and move on.[^1]
+
+The wording on a settings page is a two-way door. So is the illustration on an empty state, the order of tabs in a sidebar nobody opens, or the onboarding flow someone will see once. If they're good enough, ship them. You'll learn more from people using them than from another week of polish.
+
+## Where It Doesn't
+
+The line I won't cross is the one people feel on contact. A button that lags. Type that doesn't align with the thing next to it. A transition that eases out when everything else eases in. People treat those as polish to add at the end, but they're most of what the product feels like.
+
+<ContactFigure />
+<sub>Some decisions you can fix next week. Others people feel every time they touch them.</sub>
+
+What separates them is how often someone runs into it, and whether they'll feel it before they can explain it. How important it seems in a planning meeting has little to do with it.
+
+Press both buttons below. They do the same thing.
+
+<Demo>
+  <PressDemo />
+</Demo>
+<sub>Both work. Press each one ten times and see which you'd rather use all day.</sub>
+
+The one on the left is what "good enough" usually looks like in practice. It works. Nothing is broken. The count goes up. It just goes up a little after you press, and the button doesn't react under your finger, so for a moment you're not sure it registered. Nobody would file a bug for it.
+
+The one on the right counts the moment you press and gives slightly as you do. It took two extra lines of CSS and the removal of a delay. Over a day of use, the difference is enormous.
+
+## How to Tell Which Is Which
+
+When someone says something is good enough, I ask a few questions.
+
+**Will people touch it every day?** The main list, the primary button, the menu, the thing between two screens. If yes, good enough isn't.
+
+**Will they feel it before they can name it?** Lag, misalignment, inconsistent motion and type that sits a pixel high are all felt first and understood later, if at all. Those need to be right, because nobody will ever tell you they're wrong.
+
+**Can we change it later without anyone noticing?** Copy, colors on a page nobody visits, the order of options in a rarely used dropdown. Ship it, and change it when you know more.
+
+**Is it holding something else up?** If waiting on this blocks the team, ship it and come back. If it doesn't, there's no reason to rush the part people will touch most.
+
+## It Adds Up
+
+The hardest part is that each "good enough" is defensible on its own. One slow hover doesn't matter. One misaligned icon doesn't matter. One menu that eases differently from the others doesn't matter.
+
+But people don't use one hover. They use the whole product. Forty small compromises become a product that feels slightly heavy, and nobody can point to why, so nobody fixes it. The team that made each call was right every time, and the result is still wrong.
+
+<AddsUpFigure />
+<sub>Each call bends the line so little you can't see it. Forty of them end up somewhere nobody chose.</sub>
+
+Use good enough for the things you can change next week. For the things people touch every day, it's the wrong bar.
+
+[^1]: Jeff Bezos, 2015 Letter to Shareholders, Amazon, published April 2016.

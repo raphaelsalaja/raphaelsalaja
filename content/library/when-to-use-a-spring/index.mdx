@@ -1,0 +1,63 @@
+import { CurvesFigure, InterruptFigure, SpringDemo } from "./demos";
+
+A spring is for things that have weight. A sheet coming up. A toggle settling. A card that was dragged and needs to return. A little overshoot, kept small, is what makes it feel like an object instead of a fade.
+
+An easing curve is a fixed path from one value to another over a set time. A spring is a simulation. It has a target, a stiffness and some friction, and it gets there however the physics says it should. That difference sounds academic until you put your hand on the thing.
+
+<CurvesFigure />
+<sub>An ease-out decelerates into the target and stops. A spring can carry past it and settle back.</sub>
+
+## Where Springs Earn It
+
+The clearest case is anything you can drag. When you let go of something, it's already moving. It has a speed and a direction. A spring picks that up and carries it home. An ease ignores it. It starts from zero on a fixed path, as if your throw never happened.
+
+Drag the card below and let go. Throw it hard, then gently. Try each setting.
+
+<Demo>
+  <SpringDemo />
+</Demo>
+<sub>Same card, same distance home. The ease always takes the same path. The springs take your throw with them.</sub>
+
+With the ease, every release looks identical no matter how you moved. With a spring at zero bounce, a hard throw comes back fast and a gentle one drifts home. At 0.2 it goes slightly past where it started and settles back, which is the part that makes it feel like it has mass. At 0.5 it wobbles, which is fun exactly once.
+
+The second case is interruption. If someone toggles a switch and then changes their mind halfway through, an ease has to restart from wherever it was, usually with a visible hitch. A spring just changes its target. It keeps the speed it already had and turns around, the way a real object would. Anything that can be interrupted, a sheet you can swipe away mid-open, a tab indicator someone clicks across quickly, is better on a spring.
+
+<InterruptFigure />
+<sub>Both change their mind at the same moment. The ease starts over in the other direction. The spring carries its speed into the turn.</sub>
+
+The third is anything pretending to be physical. A switch knob. A sheet that slides up from the bottom. A pill that moves between segments. These are things your brain treats as objects, so they should move like objects.
+
+## When an Ease Is Enough
+
+An easing curve is for things that should arrive and stop. Opacity. A color change. A page transition you don't want to bounce. A blur that clears.
+
+A spring on a fade usually looks like a mistake, because there's nothing there to rebound. Opacity can't go past 1, so the overshoot either gets clipped, which makes the spring pointless, or it shows up as a flash. The same goes for color. Nothing in the real world bounces between two colors.
+
+Eases are also more predictable. When you're coordinating several things, a list that staggers in or a sequence where one thing waits for another, you often want to know exactly when each part ends. A spring's duration is a target, not a promise.
+
+If you're unsure, use a short ease-out. Add a spring only when the thing on screen is pretending to be a thing in your hand.
+
+## A Rough Guide
+
+This is what I reach for first. I change it often, but it's a starting point.
+
+- A sheet or drawer coming up: spring, bounce around 0.15, about 400 milliseconds.
+- A toggle knob or a segmented control pill: spring, bounce around 0.2.
+- A dragged element returning: spring, bounce 0 to 0.2, using the release velocity.
+- A popover or menu: ease-out, 150 to 200 milliseconds. A spring here tends to feel like it's showing off.
+- Opacity, color, blur: ease or ease-out, 150 to 250 milliseconds.
+- A page transition: ease-out or nothing.
+
+## How I Set Them
+
+I set springs by duration and bounce, not by stiffness and damping, unless I already know the feel I want. Stiffness, damping and mass describe the physics. Duration and bounce describe what you'll actually see. Most animation libraries now let you write either one, and the second is far easier to reason about.
+
+Duration tells me whether it belongs in a daily action. Bounce tells me how physical it should be. Bounce 0 is a spring that never overshoots. It still feels softer than an ease because it responds to velocity, but nothing wobbles. That's often all you need.
+
+For interface work I keep bounce low, around 0.15 to 0.25. Higher than that and the control starts performing. It looks great in a recording. You'll feel it the second time you use it, which is one time too many.
+
+## The Test
+
+When I'm deciding, I ask one question: does this thing have weight? If you could pick it up, if it slides, settles, snaps or returns, it gets a spring. If it appears, fades, changes color or swaps content, it gets an ease.
+
+Most things in an interface are the second kind. The few that are the first kind are the ones people touch most, which is why getting them right matters.

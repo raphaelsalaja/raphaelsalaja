@@ -1,0 +1,17 @@
+:global(main:has([data-not-found])) .back {
+  display: none;
+}
+
+.back {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: -24px;
+  font-variation-settings: var(--font-weight-450);
+  color: var(--text-tertiary);
+  transition: color var(--duration-quick) var(--ease-out-cubic);
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}

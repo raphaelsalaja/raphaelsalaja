@@ -4,9 +4,19 @@ import { ImageResponse } from "next/og";
 
 export const ogSize = { width: 1200, height: 630 };
 
-export async function renderOgImage(title: string) {
+export async function ogFonts() {
   const font = await readFile(join(process.cwd(), "assets/inter-semibold.ttf"));
+  return [
+    {
+      name: "Inter",
+      data: font,
+      style: "normal" as const,
+      weight: 600 as const,
+    },
+  ];
+}
 
+export async function renderOgImage(title: string) {
   return new ImageResponse(
     <div
       style={{
@@ -27,9 +37,6 @@ export async function renderOgImage(title: string) {
     >
       {title}
     </div>,
-    {
-      ...ogSize,
-      fonts: [{ name: "Inter", data: font, style: "normal", weight: 600 }],
-    },
+    { ...ogSize, fonts: await ogFonts() },
   );
 }

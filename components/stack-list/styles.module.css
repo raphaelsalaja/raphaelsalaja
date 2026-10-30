@@ -1,9 +1,36 @@
+.root {
+  position: relative;
+  align-self: stretch;
+  margin: 0 -12px;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  perspective: 1400px;
+}
+
+.pill {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--background-tertiary);
+  border-radius: 8px;
+  will-change: transform;
+}
+
 .list {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  align-self: stretch;
-  margin: 0 -12px;
+}
+
+.item {
+  position: relative;
 }
 
 .row {
@@ -18,6 +45,20 @@
       background-color: var(--background-tertiary);
     }
   }
+}
+
+.root[data-shared-hover] .row {
+  transition: none;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
 }
 
 .title {

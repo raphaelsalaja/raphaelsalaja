@@ -1,0 +1,94 @@
+.dot {
+  fill: var(--figure-accent);
+}
+
+.ring {
+  fill: none;
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+}
+
+.stripe {
+  fill: none;
+  stroke: var(--figure-accent);
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.wash {
+  fill: color-mix(in oklab, var(--figure-accent) 22%, transparent);
+}
+
+.fill {
+  fill: color-mix(in oklab, var(--figure-accent) 14%, transparent);
+}
+
+.ringLine {
+  fill: none;
+  stroke: var(--figure-accent);
+  stroke-width: 1.5;
+}
+
+.pressed {
+  fill: color-mix(in oklab, var(--figure-accent) 30%, var(--gray-1));
+  stroke: var(--figure-accent);
+  stroke-width: 0.75;
+}
+
+.leaving {
+  opacity: 0.45;
+  filter: blur(1px);
+  transform: scale(0.97);
+}
+
+.types {
+  display: grid;
+  gap: 14px;
+  padding: 0 4px;
+  margin: 0;
+}
+
+.type {
+  display: grid;
+  grid-template-columns: 140px 150px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.typeName {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  background: var(--swatch);
+  border-radius: 3px;
+}
+
+.typeSpec {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.typeNote {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .type {
+    grid-template-columns: 1fr auto;
+  }
+
+  .typeNote {
+    grid-column: 1 / -1;
+  }
+}

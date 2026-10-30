@@ -1,0 +1,297 @@
+.figure {
+  --figure-line: var(--gray-8);
+  --figure-plate: color-mix(in oklab, var(--gray-1) 82%, transparent);
+  --figure-accent: #5e6ad2;
+
+  padding: 28px 20px 20px;
+  margin-top: 32px;
+  background: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.plate {
+  fill: var(--figure-plate);
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}
+
+.sheet {
+  fill: color-mix(in oklab, var(--gray-1) 40%, transparent);
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+  stroke-dasharray: 2 3;
+}
+
+.ghost {
+  fill: none;
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 3;
+}
+
+.row {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 0.5;
+}
+
+.focus {
+  fill: color-mix(in oklab, var(--figure-accent) 22%, transparent);
+  stroke: var(--figure-accent);
+  stroke-width: 0.75;
+}
+
+.focusLine {
+  fill: none;
+  stroke: var(--figure-accent);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+.chip {
+  fill: color-mix(in oklab, var(--gray-12) 14%, transparent);
+  stroke: var(--figure-line);
+  stroke-width: 0.5;
+}
+
+.ink {
+  fill: color-mix(in oklab, var(--gray-12) 18%, transparent);
+}
+
+.faint {
+  fill: none;
+  stroke: var(--border-secondary);
+  stroke-width: 0.75;
+}
+
+.guide {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 4;
+}
+
+.leader,
+.axis,
+.dimension {
+  fill: none;
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+}
+
+.cut {
+  fill: none;
+  stroke: var(--figure-accent);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.knot {
+  fill: var(--text-primary);
+}
+
+.dashed polygon {
+  fill: none;
+  stroke-dasharray: 2 3;
+}
+
+.lineStrong,
+.lineMuted,
+.lineAccent {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.lineStrong {
+  stroke: var(--text-primary);
+}
+
+.lineMuted {
+  stroke: var(--gray-9);
+  stroke-dasharray: 4 3;
+}
+
+.lineAccent {
+  stroke: var(--figure-accent);
+}
+
+.name,
+.spec,
+.formula,
+.tag {
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  font-size: 10px;
+  font-variation-settings: var(--font-weight-500);
+  fill: var(--text-primary);
+}
+
+.spec {
+  font-size: 9px;
+  fill: var(--text-tertiary);
+}
+
+.tag {
+  font-size: 10px;
+  fill: var(--text-secondary);
+}
+
+.formula {
+  font-size: 11px;
+  fill: var(--text-secondary);
+}
+
+.cover {
+  display: none;
+  fill: var(--background-secondary);
+}
+
+.token {
+  opacity: 0;
+  fill: var(--figure-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .layer {
+    animation: spread 7s var(--ease-in-out-cubic) infinite;
+  }
+
+  .reveal {
+    animation: reveal 7s ease infinite;
+  }
+
+  .cover {
+    display: inline;
+    transform-origin: right;
+    transform-box: fill-box;
+    animation: sweep 6s linear infinite;
+  }
+
+  .trace {
+    animation: settle 6s ease infinite;
+  }
+
+  .token {
+    animation: travel 8s var(--ease-in-out-cubic) infinite;
+    animation-delay: calc(var(--step) * 2s);
+  }
+
+  .figure:not([data-playing]) :is(.layer, .reveal, .cover, .trace, .token) {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes spread {
+  0%,
+  16% {
+    transform: translateY(var(--collapse));
+  }
+
+  40%,
+  84% {
+    transform: none;
+  }
+
+  100% {
+    transform: translateY(var(--collapse));
+  }
+}
+
+@keyframes reveal {
+  0%,
+  28% {
+    opacity: 0;
+  }
+
+  42%,
+  80% {
+    opacity: 1;
+  }
+
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sweep {
+  0%,
+  8% {
+    scale: 1 1;
+  }
+
+  64%,
+  100% {
+    scale: 0 1;
+  }
+}
+
+@keyframes settle {
+  0%,
+  88% {
+    opacity: 1;
+  }
+
+  98%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes travel {
+  0% {
+    opacity: 0;
+    transform: none;
+  }
+
+  3% {
+    opacity: 1;
+    transform: none;
+  }
+
+  12% {
+    opacity: 1;
+    transform: translateX(var(--span));
+  }
+
+  16%,
+  100% {
+    opacity: 0;
+    transform: translateX(var(--span));
+  }
+}
+
+.keymap {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 14px 24px;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.combo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.meaning {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
