@@ -200,6 +200,17 @@ const skills: Skill[] = [
     ],
   },
   {
+    name: "avatar",
+    kind: "procedure",
+    userInvoked: true,
+    description:
+      "Draws any object as a flat character with two capsule eyes, then animates its whole body so it glances, blinks, breathes, follows the pointer and falls asleep.",
+    examples: [
+      "/avatar a coffee cup for the support card",
+      "/avatar a matcha tin that watches the newsletter form",
+    ],
+  },
+  {
     name: "audit",
     kind: "procedure",
     userInvoked: true,
