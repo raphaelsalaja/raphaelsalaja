@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Back } from "@/components/back";
+import { Prompts } from "@/components/prompts";
 import { Reveal } from "@/components/reveal";
 import { Sounds } from "@/components/sounds";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Reveal />
         <Sounds />
+        <Prompts />
         <Analytics />
       </body>
     </html>

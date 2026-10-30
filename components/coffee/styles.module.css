@@ -1,48 +1,98 @@
 .card {
+  --starbucks: #00754a;
+  --starbucks-deep: #1e3932;
+
   display: flex;
-  gap: 16px;
-  align-items: center;
-  align-self: center;
-  padding: 20px 16px;
+  flex-direction: column;
+  padding: 16px;
   overflow: hidden;
   background: var(--background-primary);
   border-radius: 16px;
   box-shadow: var(--shadow-raised);
+}
+
+.main {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 
   @media (width <= 520px) {
-    flex-direction: column;
-    gap: 12px;
     align-items: flex-start;
   }
 }
 
 .mascot {
-  --mascot-body: var(--gray-9);
-  --mascot-eyes: #fff;
+  --mascot-body: #fff;
+  --mascot-eyes: var(--starbucks);
+  --mascot-edge: color-mix(
+    in oklab,
+    var(--gray-12) 18%,
+    var(--background-primary)
+  );
 
   flex-shrink: 0;
   width: 42px;
   height: 51px;
   overflow: visible;
+
+  & > g > path {
+    stroke: var(--mascot-edge);
+    stroke-width: 0.45;
+    stroke-linejoin: round;
+  }
 }
 
 .copy {
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: 4px;
   min-width: 0;
-  margin-right: 16px;
 }
 
 .title {
-  display: hidden;
   font-variation-settings: var(--font-weight-500);
   color: var(--text-primary);
 }
 
 .description {
-  margin-top: 4px;
+  line-height: 24px;
   color: var(--text-tertiary);
+}
+
+.footer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  margin-top: 16px;
+  border-top: 1px dashed var(--border-strong);
+
+  @media (width <= 520px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.follow {
+  min-width: 0;
+  line-height: 20px;
+  color: var(--text-tertiary);
+
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--duration-snappy) ease;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-color: var(--text-tertiary);
+      }
+    }
+  }
 }
 
 .button {
@@ -53,17 +103,16 @@
   height: 32px;
   padding: 0 12px;
   font-variation-settings: var(--font-weight-500);
-  color: var(--text-primary);
-  background: var(--background-tertiary);
+  color: #fff;
+  background: var(--starbucks);
   border-radius: 8px;
-  box-shadow: 0 0 0 1px var(--border-primary);
   transition:
     background-color var(--duration-snappy) ease,
     scale var(--duration-quick) var(--ease-out-cubic);
 
   @media (hover: hover) {
     &:hover {
-      background: var(--gray-4);
+      background: var(--starbucks-deep);
     }
   }
 
@@ -72,7 +121,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--starbucks);
     outline-offset: 2px;
   }
 }

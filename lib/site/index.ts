@@ -5,9 +5,11 @@ import { work } from "@/data/work";
 export const SITE_NAME = "Raphael Salaja";
 export const SITE_DESCRIPTION = "Design Engineer";
 
-const SOCIALS = {
+export const SOCIALS = {
   x: "https://x.com/raphaelsalaja",
   github: "https://github.com/raphaelsalaja",
+  instagram: "https://www.instagram.com/raphaelsalaja/",
+  linkedin: "https://www.linkedin.com/in/raphael-salaja/",
 } as const;
 
 const REPO_URL = `${SOCIALS.github}/raphaelsalaja`;

@@ -53,8 +53,8 @@
   --black-a8: oklch(0 0 0 / 60%);
   --black-a10: oklch(0 0 0 / 80%);
 
-  --accent: #f80;
-  --accent-strong: #db5400;
+  --accent: var(--red-9);
+  --accent-strong: #ce2c31;
 
   --border-primary: color-mix(in oklab, var(--gray-12) 7%, transparent);
   --border-secondary: color-mix(in oklab, var(--gray-12) 12%, transparent);

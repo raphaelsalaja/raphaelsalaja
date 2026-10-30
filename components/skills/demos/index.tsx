@@ -134,6 +134,7 @@ const FINDINGS = [
     text: "Reset has no handler",
     at: "settings.tsx:42",
     rule: "verify-click-new-controls",
+    picked: true,
   },
   {
     level: "High",
@@ -146,6 +147,7 @@ const FINDINGS = [
     text: "Local menu radius",
     at: "menu.tsx:7",
     rule: "reuse-no-local-restyle",
+    picked: true,
   },
 ];
 
@@ -208,13 +210,124 @@ function Overlay({ aligned }: { aligned?: boolean }) {
       </div>
       <div className={styles.values}>
         {VALUES.map((item) => (
-          <span key={item.name}>
-            <span className={styles.muted}>{item.name}</span>{" "}
-            {aligned ? item.value : <Wrong>{item.guess}</Wrong>}
+          <span key={item.name} className={clsx(aligned && styles.check)}>
+            {aligned && <IconCircleCheck size={14} />}
+            <span>
+              <span className={styles.muted}>{item.name}</span>{" "}
+              {aligned ? item.value : <Wrong>{item.guess}</Wrong>}
+            </span>
           </span>
         ))}
       </div>
     </div>
+  );
+}
+
+function Dropdown({ origin }: { origin: "center" | "trigger" }) {
+  return (
+    <div className={styles.dropdown}>
+      <span className={styles.button}>Sort</span>
+      <div className={styles.menu}>
+        <Lines count={3} />
+        <span className={styles.origin} data-at={origin} />
+      </div>
+    </div>
+  );
+}
+
+function Ratio({ value, passes }: { value: string; passes?: boolean }) {
+  return passes ? (
+    <span className={styles.check}>
+      <IconCircleCheck size={14} />
+      {value}
+    </span>
+  ) : (
+    <Wrong>{value}</Wrong>
+  );
+}
+
+function Contrast({ passes }: { passes?: boolean }) {
+  const faint = !passes || undefined;
+
+  return (
+    <Card title="Profile">
+      <Row end={<Ratio value={passes ? "3.5:1" : "1.3:1"} passes={passes} />}>
+        <span className={styles.field} data-faint={faint}>
+          raphael@pond.so
+        </span>
+      </Row>
+      <Row end={<Ratio value={passes ? "4.7:1" : "2.8:1"} passes={passes} />}>
+        <span className={styles.hint} data-faint={faint}>
+          Used to sign in
+        </span>
+      </Row>
+    </Card>
+  );
+}
+
+const SCREENS = [
+  { width: 320, height: 568, spills: true },
+  { width: 375, height: 812 },
+  { width: 768, height: 1024 },
+  { width: 1024, height: 768 },
+  { width: 1440, height: 900 },
+];
+
+function Screen({ width, height, spills }: (typeof SCREENS)[number]) {
+  return (
+    <div className={styles.state}>
+      <div
+        className={styles.screen}
+        data-spills={spills || undefined}
+        style={{ width: width / 14, height: height / 14 }}
+      >
+        <span className={styles.bit} />
+        <span className={styles.bit} />
+        <span className={styles.bit} data-spill={spills || undefined} />
+      </div>
+      <span className={styles.muted}>{width}</span>
+    </div>
+  );
+}
+
+const STOPS = [
+  { role: "Button", name: "Close" },
+  { role: "Textbox", name: "Display Name" },
+  {
+    role: "Switch",
+    name: "Notifications",
+    fails: "Space does nothing",
+  },
+  { role: "Button", name: "Save" },
+];
+
+const TRACES = {
+  before: [
+    16, 17, 16, 33, 50, 16, 17, 48, 16, 33, 16, 17, 16, 50, 33, 16, 17, 16, 33,
+    16, 16, 17, 48, 16,
+  ],
+  after: [
+    16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16, 17, 16, 16,
+    17, 16, 16, 17, 16,
+  ],
+};
+
+const dropped = (frames: number[]) =>
+  `${frames.filter((ms) => ms > 17).length} dropped`;
+
+function Trace({ frames }: { frames: number[] }) {
+  return (
+    <span className={styles.trace}>
+      {frames.map((ms, index) => (
+        <span
+          // biome-ignore lint/suspicious/noArrayIndexKey: fixed recording
+          key={index}
+          className={styles.tick}
+          data-dropped={ms > 17 || undefined}
+          style={{ height: `${(ms / 50) * 100}%` }}
+        />
+      ))}
+    </span>
   );
 }
 
@@ -355,6 +468,43 @@ export const demos: Record<string, Demo> = {
     before: <Scroller />,
     after: <Scroller faded />,
   },
+  motion: {
+    ask: firstExample("motion"),
+    notes: ["Slow, from the centre, from zero", "Quick, from the trigger"],
+    before: (
+      <div className={styles.stack}>
+        <Dropdown origin="center" />
+        <Code
+          lines={[
+            "transition: all 500ms ease-out;",
+            "transform-origin: center;",
+            "scale: 0;",
+          ]}
+        />
+      </div>
+    ),
+    after: (
+      <div className={styles.stack}>
+        <Dropdown origin="trigger" />
+        <Code
+          lines={[
+            "transition: opacity 200ms, transform 200ms;",
+            "transform-origin: top left;",
+            "scale: 0.95;",
+          ]}
+        />
+      </div>
+    ),
+  },
+  color: {
+    ask: firstExample("color"),
+    notes: [
+      "Greys that fail their ratio",
+      "Measured on screen, every ratio clears",
+    ],
+    before: <Contrast />,
+    after: <Contrast passes />,
+  },
   verify: {
     ask: firstExample("verify"),
     notes: ["Done without looking", "Checked, and where to see it"],
@@ -404,7 +554,7 @@ export const demos: Record<string, Demo> = {
     ask: firstExample("match"),
     notes: [
       "Values by eye, off by a few pixels",
-      "Values read from the source",
+      "Values read from the source, each one checked",
     ],
     before: <Overlay />,
     after: <Overlay aligned />,
@@ -428,6 +578,28 @@ export const demos: Record<string, Demo> = {
           </span>
         </div>
         <Checks items={["Fixed 4 existing labels"]} />
+      </div>
+    ),
+  },
+  viewports: {
+    ask: firstExample("viewports"),
+    notes: ["Judged from the media queries", "Every width rendered and named"],
+    before: (
+      <div className={styles.stack}>
+        <Screen {...SCREENS[4]} />
+        <Bubble>The grid collapses at md, so mobile is fine.</Bubble>
+      </div>
+    ),
+    after: (
+      <div className={styles.stack}>
+        <div className={styles.screens}>
+          {SCREENS.map((screen) => (
+            <Screen key={screen.width} {...screen} />
+          ))}
+        </div>
+        <span className={styles.muted}>
+          At 320, the card scrolls sideways by 40px
+        </span>
       </div>
     ),
   },
@@ -462,7 +634,7 @@ export const demos: Record<string, Demo> = {
     ask: firstExample("prototype"),
     notes: [
       "One built, the rest only described",
-      "Three built, named by how they differ",
+      "Three built on one page, ready to pick",
     ],
     before: (
       <div className={styles.stack}>
@@ -473,13 +645,20 @@ export const demos: Record<string, Demo> = {
       </div>
     ),
     after: (
-      <div className={styles.variants}>
-        {LAYOUTS.map((item) => (
-          <div key={item.layout} className={styles.state}>
-            <Variant layout={item.layout} />
-            <span className={styles.muted}>{item.label}</span>
-          </div>
-        ))}
+      <div className={styles.stack}>
+        <Variant layout="sidebar" />
+        <div className={styles.switcher}>
+          {LAYOUTS.map((item) => (
+            <span
+              key={item.layout}
+              className={styles.option}
+              data-active={item.layout === "sidebar" || undefined}
+            >
+              {item.label}
+            </span>
+          ))}
+          <span className={styles.button}>Pick</span>
+        </div>
       </div>
     ),
   },
@@ -524,9 +703,72 @@ export const demos: Record<string, Demo> = {
     ),
     after: <Alignment />,
   },
+  keyboard: {
+    ask: firstExample("keyboard"),
+    notes: ["Reach judged from the markup", "Every stop pressed and numbered"],
+    before: (
+      <Bubble>
+        The dialog uses real buttons, so it works with the keyboard.
+      </Bubble>
+    ),
+    after: (
+      <Card>
+        <Row end={<span className={styles.muted}>Tab, Shift+Tab</span>}>
+          Settings Dialog
+        </Row>
+        {STOPS.map((stop, index) => (
+          <div key={stop.name} className={styles.finding}>
+            <span className={styles.number}>{index + 1}</span>
+            <span className={styles.detail}>
+              <span className={styles.summary}>
+                <span>{stop.name}</span>
+                <span className={styles.muted}>{stop.role}</span>
+              </span>
+              {stop.fails && (
+                <span className={clsx(styles.level, styles.high)}>
+                  {stop.fails}
+                </span>
+              )}
+            </span>
+          </div>
+        ))}
+      </Card>
+    ),
+  },
+  frames: {
+    ask: firstExample("frames"),
+    notes: ["Smooth by feel", "Traced at 4×, before and after"],
+    before: (
+      <Bubble>Opened the palette a few times and it feels smooth.</Bubble>
+    ),
+    after: (
+      <Card>
+        <Row end={<span className={styles.muted}>4× CPU</span>}>
+          Open Command Palette
+        </Row>
+        <Row end={<Wrong>{dropped(TRACES.before)}</Wrong>}>
+          <span className={styles.recording}>
+            <span className={styles.muted}>Before</span>
+            <Trace frames={TRACES.before} />
+          </span>
+        </Row>
+        <Row
+          end={<span className={styles.muted}>{dropped(TRACES.after)}</span>}
+        >
+          <span className={styles.recording}>
+            <span className={styles.muted}>After</span>
+            <Trace frames={TRACES.after} />
+          </span>
+        </Row>
+      </Card>
+    ),
+  },
   audit: {
     ask: firstExample("audit"),
-    notes: ["Taste, with no locations", "Numbered, ranked and located"],
+    notes: [
+      "Taste, with no locations",
+      "Ranked and located, you pick the fixes",
+    ],
     before: <Bubble>Looks good overall, a few small things to tidy up.</Bubble>,
     after: (
       <Card>
@@ -535,7 +777,12 @@ export const demos: Record<string, Demo> = {
         </Row>
         {FINDINGS.map((finding, index) => (
           <div key={finding.text} className={styles.finding}>
-            <span className={styles.number}>{index + 1}</span>
+            <span
+              className={styles.number}
+              data-picked={finding.picked || undefined}
+            >
+              {index + 1}
+            </span>
             <span className={styles.detail}>
               <span className={styles.summary}>
                 <span>{finding.text}</span>
@@ -556,8 +803,10 @@ export const demos: Record<string, Demo> = {
           </div>
         ))}
         <div className={styles.verdict}>
-          <span>Block</span>
-          <span className={styles.muted}>2 high, 1 medium</span>
+          <span>
+            Block <span className={styles.muted}>2 high, 1 medium</span>
+          </span>
+          <span className={styles.button}>Copy Picks</span>
         </div>
       </Card>
     ),

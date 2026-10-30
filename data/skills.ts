@@ -58,10 +58,30 @@ const skills: Skill[] = [
     name: "defaults",
     kind: "principle",
     description:
-      "Applies house defaults for scroll edges, surfaces, type, motion, sound, focus, forms, loading, hotkeys and dialogs.",
+      "Applies house defaults for scroll edges, surfaces, type, sound, focus, forms, loading, hotkeys and dialogs.",
     examples: [
       "/defaults make the sidebar scroll",
       "/defaults add a dialog for deleting a board",
+    ],
+  },
+  {
+    name: "motion",
+    kind: "principle",
+    description:
+      "Applies house motion for what animates, easing, durations, springs, gestures, exits and reduced motion.",
+    examples: [
+      "/motion animate the sort menu",
+      "/motion make the sheet draggable",
+    ],
+  },
+  {
+    name: "color",
+    kind: "principle",
+    description:
+      "Holds text and control contrast to exact ratios, routes colour through role tokens and gives dark mode its own palette.",
+    examples: [
+      "/color the settings form",
+      "/color the dark theme for the library",
     ],
   },
   {
@@ -102,6 +122,16 @@ const skills: Skill[] = [
     examples: [
       "/rule labels take Title Case",
       "/rule no em dashes in the copy",
+    ],
+  },
+  {
+    name: "viewports",
+    kind: "procedure",
+    description:
+      "Renders a page at every width, each breakpoint edge, a short landscape phone and 200% text, then reports what overflows, clips or hides.",
+    examples: [
+      "/viewports the pricing page",
+      "/viewports the settings dialog on a phone",
     ],
   },
   {
@@ -149,6 +179,25 @@ const skills: Skill[] = [
     description:
       "Measures a running page for edges, gaps, centring and radii that miss by a pixel or two, then judges visual weight and returns a numbered report with proof.",
     examples: ["/alignment the pricing cards", "/alignment the settings page"],
+  },
+  {
+    name: "keyboard",
+    kind: "procedure",
+    userInvoked: true,
+    description:
+      "Walks a running page with the keyboard alone, records every focus stop and reports controls it cannot reach, see or operate.",
+    examples: ["/keyboard the settings dialog", "/keyboard the command menu"],
+  },
+  {
+    name: "frames",
+    kind: "procedure",
+    userInvoked: true,
+    description:
+      "Records a performance trace of one interaction on a throttled CPU, names what drops frames or delays input, then proves the fix with a second trace.",
+    examples: [
+      "/frames opening the command palette",
+      "/frames dragging the sheet",
+    ],
   },
   {
     name: "audit",

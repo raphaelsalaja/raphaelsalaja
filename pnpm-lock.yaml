@@ -26,6 +26,9 @@ importers:
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.3(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
+      calligraph:
+        specifier: ^1.4.1
+        version: 1.4.1(motion@14.7.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       cambio:
         specifier: ^1.1.5
         version: 1.1.5(react-dom@19.3.1(react@19.3.1))
@@ -933,6 +936,13 @@ packages:
     resolution: {integrity: sha512-YJs6Pz17RMNv8HoyKREtCY38E3BV1nPkWVmIb+XN1uHC1Vqt3KZCH/uJH9ZKRoiKb/icZ6tvehyee6RZNbFfRA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  calligraph@1.4.1:
+    resolution: {integrity: sha512-3EUt7sqF8vIhPbTrNvn6bvOQiQEbgnl2H8QRfzcFGNI6z4oW1Nr6ENb+8ssXzU5VvZGe7RXFRQVJsJlxn9Ruiw==}
+    peerDependencies:
+      motion: '>=11'
+      react: '>=18'
+      react-dom: '>=18'
 
   cambio@1.1.5:
     resolution: {integrity: sha512-9eWEw9JRjlE14E7w2HDAa9ULKvCr32/hdOY/tvLUmkXzy34bPjYk/olLSuHsCU/WySwyz090oav95xm+9EGQRg==}
@@ -2267,6 +2277,12 @@ snapshots:
   bail@2.0.2: {}
 
   baseline-browser-mapping@2.11.30: {}
+
+  calligraph@1.4.1(motion@14.7.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+    dependencies:
+      motion: 14.7.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
   cambio@1.1.5(react-dom@19.3.1(react@19.3.1)):
     dependencies:

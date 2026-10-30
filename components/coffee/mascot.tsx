@@ -163,7 +163,7 @@ export function Mascot({ className }: { className?: string }) {
   useEffect(() => {
     const node = svg.current;
     const card = node?.closest("section");
-    const button = card?.querySelector("a");
+    const button = card?.querySelector("[data-coffee]");
     if (!node || !card) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -407,9 +407,9 @@ export function Mascot({ className }: { className?: string }) {
           <path d={BODY} />
         </clipPath>
       </defs>
-      <g ref={body} fill="var(--mascot-body)">
-        <path ref={lid} d={LID} />
-        <path d={BODY} />
+      <g ref={body}>
+        <path ref={lid} d={LID} fill="var(--mascot-body)" />
+        <path d={BODY} fill="var(--mascot-body)" />
         <g clipPath={`url(#${id})`} fill="var(--mascot-eyes)">
           {STILL.map((eye, index) => (
             <path
