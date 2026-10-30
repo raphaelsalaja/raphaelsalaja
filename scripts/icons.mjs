@@ -58,7 +58,15 @@ function glyphs() {
 function imported() {
   const files = execFileSync(
     "git",
-    ["ls-files", "-co", "--exclude-standard", "app", "components", "lib"],
+    [
+      "ls-files",
+      "-co",
+      "--exclude-standard",
+      "app",
+      "components",
+      "content",
+      "lib",
+    ],
     { cwd: root, encoding: "utf8" },
   )
     .split("\n")
