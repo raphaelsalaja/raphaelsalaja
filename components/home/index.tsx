@@ -1,3 +1,4 @@
+import { BotsPreview } from "@/components/bots";
 import { Coffee } from "@/components/coffee";
 import { JsonLd } from "@/components/json-ld";
 import { Writing } from "@/components/library";
@@ -24,6 +25,9 @@ export function Home() {
       </div>
       <div data-reveal>
         <Projects />
+      </div>
+      <div data-reveal>
+        <BotsPreview />
       </div>
       <div data-reveal>
         <Experiments />
