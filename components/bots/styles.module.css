@@ -92,19 +92,22 @@
 
 .stage {
   position: relative;
-  height: 248px;
+  height: 300px;
   overflow: hidden;
   touch-action: pan-y;
+
+  @media (width <= 480px) {
+    height: 340px;
+  }
 }
 
 .piece {
   position: absolute;
   top: 0;
   left: 0;
-  width: 52px;
-  height: 52px;
   touch-action: none;
-  transform: translate3d(24px, -160px, 0);
+  transform: translate3d(-999px, -999px, 0);
+  will-change: transform;
 
   .mark {
     width: 100%;
