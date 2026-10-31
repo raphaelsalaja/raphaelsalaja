@@ -76,7 +76,7 @@ export function BotMark({
         const angle = angles[index];
         group.setAttribute(
           "transform",
-          `translate(${(current.tx - base.tx).toFixed(2)} ${(current.ty - base.ty).toFixed(2)}) translate(${sx} ${sy}) rotate(${angle}) scale(1 ${squash.toFixed(3)}) rotate(${-angle}) translate(${-sx} ${-sy})`,
+          `translate(${sx} ${sy}) rotate(${angle}) scale(1 ${squash.toFixed(3)}) rotate(${-angle}) translate(${-sx} ${-sy})`,
         );
         group.setAttribute("opacity", String(eye.opacity));
       });
