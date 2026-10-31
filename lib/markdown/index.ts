@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
-import { botSlug, botsByArea, previewBots } from "@/data/bots";
+import { botSlug, bots, botsByArea } from "@/data/bots";
 import { getPost, posts } from "@/data/library";
 import {
   principles,
@@ -79,19 +79,19 @@ async function home() {
     about,
     "## Skills",
     `[Skills](${markdownHref("/skills")}): Agent skills for building interfaces with coding agents. Every rule shows the broken line and the line that replaces it.`,
+    "## Bots",
+    `[All Bots](${markdownHref("/bots")}): A team of Grok Bots, each with one job.`,
+    list(
+      bots.map(
+        (bot) =>
+          `[${bot.title}](${SITE_URL}/bots#${botSlug(bot.title)}): ${bot.description}`,
+      ),
+    ),
     "## Projects",
     list(
       projects.map(
         (item) =>
           `[${item.title}](${markdownHref(item.href)}): ${item.description}`,
-      ),
-    ),
-    "## Bots",
-    `[All Bots](${markdownHref("/bots")}): A team of Grok Bots, each with one job.`,
-    list(
-      previewBots.map(
-        (bot) =>
-          `[${bot.title}](${SITE_URL}/bots#${botSlug(bot.title)}): ${bot.description}`,
       ),
     ),
     "## Experiments",

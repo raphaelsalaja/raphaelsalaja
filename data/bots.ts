@@ -2,6 +2,35 @@ export const BOT_AREAS = ["Work & Building", "Training", "Life"] as const;
 
 export type BotArea = (typeof BOT_AREAS)[number];
 
+export const BOT_SHAPES = [
+  "blob",
+  "star",
+  "hex",
+  "heart",
+  "square",
+  "tablet",
+  "sparkle",
+  "flower",
+  "wedge",
+  "clover",
+  "teardrop",
+] as const;
+
+export type BotShape = (typeof BOT_SHAPES)[number];
+
+export const BOT_COLORS = [
+  "black",
+  "gray",
+  "blue",
+  "cyan",
+  "green",
+  "yellow",
+  "orange",
+  "magenta",
+] as const;
+
+export type BotColor = (typeof BOT_COLORS)[number];
+
 export type Bot = {
   title: string;
   area: BotArea;
@@ -9,11 +38,13 @@ export type Bot = {
   does: readonly string[];
   routines: readonly string[];
   tools: readonly string[];
+  shape: BotShape;
+  color: BotColor;
   shareUrl?: string;
   video?: string;
 };
 
-export const bots: readonly Bot[] = [
+const roster: readonly Omit<Bot, "shape" | "color">[] = [
   {
     title: "Executive Assistant",
     area: "Work & Building",
@@ -355,17 +386,38 @@ export const bots: readonly Bot[] = [
   },
 ];
 
-const previewTitles = [
-  "Executive Assistant",
-  "Web Developer",
-  "Head Coach",
-  "Culture Curator",
-] as const;
+const marks = {
+  "Executive Assistant": { shape: "blob", color: "black" },
+  "Chief Operating Officer": { shape: "star", color: "black" },
+  "Organisation Designer": { shape: "teardrop", color: "black" },
+  "Software Engineer": { shape: "hex", color: "blue" },
+  "Web Developer": { shape: "tablet", color: "orange" },
+  "Product Designer": { shape: "sparkle", color: "magenta" },
+  "Brand Designer": { shape: "star", color: "yellow" },
+  "Motion Designer": { shape: "tablet", color: "blue" },
+  "Video Editor": { shape: "wedge", color: "green" },
+  "Marketing Manager": { shape: "heart", color: "green" },
+  "Skills Researcher": { shape: "clover", color: "blue" },
+  "Game Developer": { shape: "hex", color: "blue" },
+  "Career Coach": { shape: "clover", color: "orange" },
+  "Head Coach": { shape: "heart", color: "cyan" },
+  "Strength Coach": { shape: "hex", color: "orange" },
+  "Performance Analyst": { shape: "square", color: "blue" },
+  "Sports Psychologist": { shape: "flower", color: "magenta" },
+  "Nutrition Coach": { shape: "teardrop", color: "cyan" },
+  "Sleep Coach": { shape: "blob", color: "blue" },
+  "Culture Curator": { shape: "star", color: "cyan" },
+  "Fashion Stylist": { shape: "flower", color: "yellow" },
+  "Interior Designer": { shape: "blob", color: "yellow" },
+  "Travel Agent": { shape: "wedge", color: "orange" },
+  Accountant: { shape: "square", color: "gray" },
+  "Event Planner": { shape: "sparkle", color: "gray" },
+} as const satisfies Record<string, { shape: BotShape; color: BotColor }>;
 
-export const previewBots = previewTitles.map((title) => {
-  const bot = bots.find((item) => item.title === title);
-  if (!bot) throw new Error(`Missing preview bot: ${title}`);
-  return bot;
+export const bots: readonly Bot[] = roster.map((bot) => {
+  const mark = marks[bot.title as keyof typeof marks];
+  if (!mark) throw new Error(`Missing mark for ${bot.title}`);
+  return { ...bot, shape: mark.shape, color: mark.color };
 });
 
 export const botsByArea = BOT_AREAS.map((area) => ({
