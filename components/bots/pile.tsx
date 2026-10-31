@@ -49,7 +49,6 @@ function plan(width: number, height: number, count: number) {
     const radius = next * 0.46;
     const minX = pad + next / 2;
     const maxX = width - pad - next / 2;
-    const maxY = height - pad - next / 2;
     const cols = Math.max(1, Math.floor((maxX - minX) / (radius * 2 + 3)));
     const rows = Math.ceil(count / cols);
     if (rows * (radius * 2 + 3) <= height - pad * 2) {
