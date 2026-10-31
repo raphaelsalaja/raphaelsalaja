@@ -24,10 +24,10 @@ export function Home() {
         </section>
       </div>
       <div data-reveal>
-        <Projects />
+        <BotsPreview />
       </div>
       <div data-reveal>
-        <BotsPreview />
+        <Projects />
       </div>
       <div data-reveal>
         <Experiments />

@@ -1,21 +1,26 @@
 import "@/styles/mdx.css";
 
+import Link from "next/link";
 import { Section } from "@/components/section";
-import { StackList } from "@/components/stack-list";
-import { areaSlug, botSlug, botsByArea, previewBots } from "@/data/bots";
+import { areaSlug, botSlug, bots, botsByArea } from "@/data/bots";
 import { BotCard } from "./card";
+import { BotMark } from "./mark";
 import styles from "./styles.module.css";
 
 export function BotsPreview() {
   return (
     <Section id="bots" link={{ href: "/bots", label: "All Bots" }} title="Bots">
-      <StackList
-        items={previewBots.map((bot) => ({
-          description: bot.description,
-          href: `/bots#${botSlug(bot.title)}`,
-          title: bot.title,
-        }))}
-      />
+      <ul className={styles.faces}>
+        {bots.map((bot) => (
+          <li key={bot.title}>
+            <Link className={styles.face} href={`/bots#${botSlug(bot.title)}`}>
+              <BotMark color={bot.color} shape={bot.shape} title={bot.title} />
+              <span className={styles.faceTitle}>{bot.title}</span>
+              <span className={styles.faceHint}>{bot.description}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
@@ -29,7 +34,7 @@ export function Bots() {
       <p data-reveal>
         A team of Grok Bots, each with one job. Copy any of them.
       </p>
-      <div className={styles.chart}>
+      <div className={styles.groups}>
         {botsByArea.map((group) => {
           const id = areaSlug(group.area);
 
@@ -37,13 +42,12 @@ export function Bots() {
             <section
               aria-labelledby={`${id}-heading`}
               className={styles.group}
-              id={id}
               key={group.area}
             >
-              <h2 className={styles.area} data-reveal id={`${id}-heading`}>
+              <h2 className={styles.area} id={`${id}-heading`}>
                 {group.area}
               </h2>
-              <div className={styles.cards}>
+              <div className={styles.grid}>
                 {group.bots.map((bot) => (
                   <BotCard bot={bot} key={bot.title} />
                 ))}
