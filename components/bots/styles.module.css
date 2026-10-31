@@ -1,6 +1,6 @@
 .mark {
-  --avatar-body: #2f6bff;
-  --avatar-eyes: #f4f4f2;
+  --avatar-body: #1c60ff;
+  --avatar-eyes: #fff;
 
   display: block;
   width: 64px;
@@ -13,31 +13,63 @@
   }
 
   &[data-color="gray"] {
-    --avatar-body: #8d8d86;
+    --avatar-body: #8e8e8e;
   }
 
   &[data-color="blue"] {
-    --avatar-body: #2f6bff;
+    --avatar-body: #1c60ff;
   }
 
   &[data-color="green"] {
-    --avatar-body: #1faf6a;
+    --avatar-body: #1cff7b;
   }
 
   &[data-color="orange"] {
-    --avatar-body: #ff6700;
+    --avatar-body: #ff781c;
   }
 
   &[data-color="cyan"] {
-    --avatar-body: #00b3d0;
+    --avatar-body: #1cd2ff;
   }
 
   &[data-color="yellow"] {
-    --avatar-body: #e6a100;
+    --avatar-body: #ffd21c;
   }
 
   &[data-color="magenta"] {
-    --avatar-body: #e23cb8;
+    --avatar-body: #ff1cac;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .mark {
+    &[data-color="gray"] {
+      --avatar-body: #808080;
+    }
+
+    &[data-color="blue"] {
+      --avatar-body: #004cff;
+    }
+
+    &[data-color="green"] {
+      --avatar-body: #00ff6a;
+    }
+
+    &[data-color="orange"] {
+      --avatar-body: #ff6700;
+    }
+
+    &[data-color="cyan"] {
+      --avatar-body: #00ccff;
+    }
+
+    &[data-color="yellow"] {
+      --avatar-body: #ffcc00;
+    }
+
+    &[data-color="magenta"] {
+      --avatar-body: #ff00a2;
+    }
   }
 }
 
