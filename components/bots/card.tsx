@@ -17,10 +17,10 @@ export function BotCard({ bot }: { bot: Bot }) {
   }, [slug]);
 
   return (
-    <article className={styles.tile} id={slug}>
+    <article className={styles.tile} data-avatar id={slug}>
       <details className={styles.details} ref={details}>
         <summary className={styles.summary}>
-          <BotMark color={bot.color} shape={bot.shape} title={bot.title} />
+          <BotMark color={bot.color} shape={bot.shape} />
           <h3 className={styles.title}>{bot.title}</h3>
           <p className={styles.description}>{bot.description}</p>
         </summary>
@@ -61,6 +61,7 @@ export function BotCard({ bot }: { bot: Bot }) {
       {bot.shareUrl ? (
         <a
           className={styles.copy}
+          data-avatar-action
           href={bot.shareUrl}
           rel="noopener"
           target="_blank"
@@ -69,7 +70,12 @@ export function BotCard({ bot }: { bot: Bot }) {
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
       ) : (
-        <button className={styles.copy} disabled type="button">
+        <button
+          className={styles.copy}
+          data-avatar-action
+          disabled
+          type="button"
+        >
           Link Coming Soon
         </button>
       )}

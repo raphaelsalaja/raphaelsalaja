@@ -1,28 +1,12 @@
 import "@/styles/mdx.css";
 
-import Link from "next/link";
-import { Section } from "@/components/section";
-import { areaSlug, botSlug, bots, botsByArea } from "@/data/bots";
+import { areaSlug, botsByArea } from "@/data/bots";
 import { BotCard } from "./card";
-import { BotMark } from "./mark";
+import { BotPile } from "./pile";
 import styles from "./styles.module.css";
 
 export function BotsPreview() {
-  return (
-    <Section id="bots" link={{ href: "/bots", label: "All Bots" }} title="Bots">
-      <ul className={styles.faces}>
-        {bots.map((bot) => (
-          <li key={bot.title}>
-            <Link className={styles.face} href={`/bots#${botSlug(bot.title)}`}>
-              <BotMark color={bot.color} shape={bot.shape} title={bot.title} />
-              <span className={styles.faceTitle}>{bot.title}</span>
-              <span className={styles.faceHint}>{bot.description}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
+  return <BotPile />;
 }
 
 export function Bots() {

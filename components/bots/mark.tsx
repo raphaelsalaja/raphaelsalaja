@@ -1,102 +1,169 @@
 "use client";
 
-import { type CSSProperties, type PointerEvent, useId } from "react";
+import { useEffect, useId, useRef } from "react";
 import type { BotColor, BotShape } from "@/data/bots";
+import { createAvatar, type Head, restingEyes } from "./face";
+import { MARKS, markEyes, markViewBox } from "./geometry";
 import styles from "./styles.module.css";
 
-const SHAPES: Record<BotShape, string> = {
-  blob: "M34 8C46 6 56 16 56 28C56 40 52 46 46 52C38 60 24 58 16 50C6 40 8 24 16 16C22 8 26 10 34 8Z",
-  star: "M32 8L38.76 24.7L56.73 25.97L42.94 37.55L47.28 55.03L32 45.5L16.72 55.03L21.06 37.55L7.27 25.97L25.24 24.7Z",
-  hex: "M32 6L54.52 19L54.52 45L32 58L9.48 45L9.48 19Z",
-  heart:
-    "M32 54C20 44 8 36 8 24C8 16 14 10 22 10C26 10 30 13 32 18C34 13 38 10 42 10C50 10 56 16 56 24C56 36 44 44 32 54Z",
-  square: "M18 8H46Q56 8 56 18V46Q56 56 46 56H18Q8 56 8 46V18Q8 8 18 8Z",
-  tablet: "M22 6H42Q52 6 52 16V48Q52 58 42 58H22Q12 58 12 48V16Q12 6 22 6Z",
-  sparkle:
-    "M32 4C33.2 22 22 30.8 4 32C22 33.2 30.8 42 32 60C30.8 42 42 33.2 60 32C42 30.8 33.2 22 32 4Z",
-  flower:
-    "M21 19a11 11 0 1 0 22 0a11 11 0 1 0-22 0M32.26 25.5a11 11 0 1 0 22 0a11 11 0 1 0-22 0M32.26 38.5a11 11 0 1 0 22 0a11 11 0 1 0-22 0M21 45a11 11 0 1 0 22 0a11 11 0 1 0-22 0M9.74 38.5a11 11 0 1 0 22 0a11 11 0 1 0-22 0M9.74 25.5a11 11 0 1 0 22 0a11 11 0 1 0-22 0M24 32a8 8 0 1 0 16 0a8 8 0 1 0-16 0",
-  wedge: "M32 7C34 7 52 44 52 48C52 54 12 54 12 48C12 44 30 7 32 7Z",
-  clover:
-    "M19 16a13 13 0 1 0 26 0a13 13 0 1 0-26 0M35 32a13 13 0 1 0 26 0a13 13 0 1 0-26 0M19 48a13 13 0 1 0 26 0a13 13 0 1 0-26 0M3 32a13 13 0 1 0 26 0a13 13 0 1 0-26 0",
-  teardrop:
-    "M32 6C44 18 54 28 54 40C54 52 44 58 32 58C20 58 10 52 10 40C10 28 20 18 32 6Z",
-};
+const VIEW_BOX = markViewBox();
 
-const EYES: Record<BotShape, { x: number; y: number }> = {
-  blob: { x: 32, y: 32 },
-  star: { x: 32, y: 34 },
-  hex: { x: 32, y: 32 },
-  heart: { x: 32, y: 28 },
-  square: { x: 32, y: 32 },
-  tablet: { x: 32, y: 30 },
-  sparkle: { x: 32, y: 32 },
-  flower: { x: 32, y: 32 },
-  wedge: { x: 32, y: 40 },
-  clover: { x: 32, y: 32 },
-  teardrop: { x: 32, y: 40 },
-};
+function headFor(shape: BotShape): Head {
+  const [left, right] = MARKS[shape].eyes.seat;
+  return {
+    x: (left[0] + right[0]) / 2,
+    y: (left[1] + right[1]) / 2 + 18,
+    rx: 68,
+    ry: 60,
+  };
+}
 
-const clamp = (value: number) => Math.min(1, Math.max(-1, value));
+function matrixOf(transform: string) {
+  const values = transform
+    .slice(transform.indexOf("(") + 1, -1)
+    .split(",")
+    .map(Number);
+  return {
+    tx: values[4] ?? 0,
+    ty: values[5] ?? 0,
+    sy: Math.hypot(values[1] ?? 0, values[3] ?? 0) || 1,
+  };
+}
 
 export function BotMark({
   shape,
   color,
-  title = "",
 }: {
   shape: BotShape;
   color: BotColor;
-  title?: string;
 }) {
-  const eyes = EYES[shape];
   const clipId = useId().replace(/:/g, "");
-  const delay = `${-((title.length * 17) % 52) / 10}s`;
+  const svg = useRef<SVGSVGElement>(null);
+  const body = useRef<SVGGElement>(null);
+  const eyes = useRef<(SVGGElement | null)[]>([]);
+  const paths = markEyes(shape);
 
-  function follow(event: PointerEvent<SVGSVGElement>) {
+  useEffect(() => {
+    const seats = MARKS[shape].eyes.seat;
+    const angles = MARKS[shape].eyes.ang;
+    const node = svg.current;
+    const root = node?.closest<HTMLElement>("[data-avatar]");
+    if (!node || !root) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const box = event.currentTarget.getBoundingClientRect();
-    const dx = (event.clientX - box.left) / box.width - 0.5;
-    const dy = (event.clientY - box.top) / box.height - 0.5;
-    event.currentTarget.style.setProperty("--gaze-x", `${clamp(dx) * 2.4}px`);
-    event.currentTarget.style.setProperty("--gaze-y", `${clamp(dy) * 1.8}px`);
-  }
 
-  function rest(event: PointerEvent<SVGSVGElement>) {
-    event.currentTarget.style.setProperty("--gaze-x", "0px");
-    event.currentTarget.style.setProperty("--gaze-y", "0px");
-  }
+    const head = headFor(shape);
+    const avatar = createAvatar({
+      head,
+      pivot: { x: head.x, y: head.y + 78 },
+    });
+    const rest = restingEyes(head).map((eye) => matrixOf(eye.transform));
+
+    let frame = 0;
+    let last = 0;
+    const loop = (now: number) => {
+      frame = requestAnimationFrame(loop);
+      const pose = avatar.step(last ? Math.min((now - last) / 1000, 0.064) : 0);
+      last = now;
+      body.current?.setAttribute("transform", pose.transform);
+      pose.eyes.forEach((eye, index) => {
+        const group = eyes.current[index];
+        if (!group) return;
+        const current = matrixOf(eye.transform);
+        const base = rest[index];
+        if (!base) return;
+        const [sx, sy] = seats[index];
+        const squash = current.sy / base.sy;
+        const angle = angles[index];
+        group.setAttribute(
+          "transform",
+          `translate(${(current.tx - base.tx).toFixed(2)} ${(current.ty - base.ty).toFixed(2)}) translate(${sx} ${sy}) rotate(${angle}) scale(1 ${squash.toFixed(3)}) rotate(${-angle}) translate(${-sx} ${-sy})`,
+        );
+        group.setAttribute("opacity", String(eye.opacity));
+      });
+    };
+    const start = () => {
+      if (frame) return;
+      last = 0;
+      frame = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) start();
+      else stop();
+    });
+    observer.observe(node);
+
+    const center = () => {
+      const box = node.getBoundingClientRect();
+      return { x: box.left + box.width / 2, y: box.top + box.height / 2 };
+    };
+    const enter = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      avatar.enter();
+    };
+    const move = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const origin = center();
+      avatar.move(event.clientX - origin.x, event.clientY - origin.y);
+    };
+    const leave = () => avatar.leave();
+    const poke = () => avatar.poke();
+    const hover = () => avatar.hover(true);
+    const unhover = () => avatar.hover(false);
+    const action = root.querySelector<HTMLElement>("[data-avatar-action]");
+
+    root.addEventListener("pointerenter", enter);
+    root.addEventListener("pointermove", move);
+    root.addEventListener("pointerleave", leave);
+    node.addEventListener("pointerdown", poke);
+    action?.addEventListener("pointerenter", hover);
+    action?.addEventListener("pointerleave", unhover);
+    action?.addEventListener("pointerdown", poke);
+
+    return () => {
+      stop();
+      observer.disconnect();
+      root.removeEventListener("pointerenter", enter);
+      root.removeEventListener("pointermove", move);
+      root.removeEventListener("pointerleave", leave);
+      node.removeEventListener("pointerdown", poke);
+      action?.removeEventListener("pointerenter", hover);
+      action?.removeEventListener("pointerleave", unhover);
+      action?.removeEventListener("pointerdown", poke);
+    };
+  }, [shape]);
 
   return (
     <svg
       aria-hidden="true"
       className={styles.mark}
       data-color={color}
-      onPointerLeave={rest}
-      onPointerMove={follow}
-      style={{ "--blink-delay": delay } as CSSProperties}
-      viewBox="0 0 64 64"
+      ref={svg}
+      viewBox={VIEW_BOX}
     >
       <defs>
         <clipPath id={clipId}>
-          <path d={SHAPES[shape]} />
+          <path d={MARKS[shape].path} />
         </clipPath>
       </defs>
-      <path d={SHAPES[shape]} />
-      <g className={styles.eyes} clipPath={`url(#${clipId})`}>
-        <rect
-          height="10"
-          rx="1.8"
-          width="3.6"
-          x={eyes.x - 7.2}
-          y={eyes.y - 5}
-        />
-        <rect
-          height="10"
-          rx="1.8"
-          width="3.6"
-          x={eyes.x + 3.6}
-          y={eyes.y - 5}
-        />
+      <g ref={body}>
+        <path className={styles.body} d={MARKS[shape].path} />
+        <g clipPath={`url(#${clipId})`}>
+          {paths.map((d, index) => (
+            <g
+              key={index === 0 ? "left" : "right"}
+              ref={(group) => {
+                eyes.current[index] = group;
+              }}
+            >
+              <path className={styles.eye} d={d} />
+            </g>
+          ))}
+        </g>
       </g>
     </svg>
   );
