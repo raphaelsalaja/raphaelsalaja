@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
+import { Mascot } from "@/components/coffee/mascot";
 import { IconCircleCheck, IconDots } from "@/components/icons";
 import { firstExample } from "@/data/skills";
 import { Alignment, Glance } from "./alignment";
@@ -56,6 +57,14 @@ function Row({ children, end }: { children: ReactNode; end?: ReactNode }) {
     <div className={styles.row}>
       <span>{children}</span>
       {end}
+    </div>
+  );
+}
+
+function Character({ still }: { still?: boolean }) {
+  return (
+    <div className={styles.character}>
+      <Mascot still={still} className={styles.mascot} />
     </div>
   );
 }
@@ -762,6 +771,12 @@ export const demos: Record<string, Demo> = {
         </Row>
       </Card>
     ),
+  },
+  avatar: {
+    ask: firstExample("avatar"),
+    notes: ["A face drawn on, never moves", "Glances, blinks and follows you"],
+    before: <Character still />,
+    after: <Character />,
   },
   audit: {
     ask: firstExample("audit"),

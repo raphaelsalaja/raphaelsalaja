@@ -153,7 +153,13 @@ function hop(since: number) {
 
 const STILL = drawEyes(FACES.idle, REST, 1);
 
-export function Mascot({ className }: { className?: string }) {
+export function Mascot({
+  className,
+  still,
+}: {
+  className?: string;
+  still?: boolean;
+}) {
   const id = useId();
   const svg = useRef<SVGSVGElement>(null);
   const body = useRef<SVGGElement>(null);
@@ -162,9 +168,9 @@ export function Mascot({ className }: { className?: string }) {
 
   useEffect(() => {
     const node = svg.current;
-    const card = node?.closest("section");
+    const card = node?.closest<HTMLElement>("section, [data-demo]");
     const button = card?.querySelector("[data-coffee]");
-    if (!node || !card) return;
+    if (still || !node || !card) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const face: Face = structuredClone(FACES.idle);
@@ -391,7 +397,7 @@ export function Mascot({ className }: { className?: string }) {
       button?.removeEventListener("pointerleave", unhover);
       button?.removeEventListener("pointerdown", celebrate);
     };
-  }, []);
+  }, [still]);
 
   return (
     <svg
