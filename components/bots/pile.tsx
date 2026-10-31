@@ -1,43 +1,18 @@
 "use client";
 
+import {
+  Bodies,
+  Body,
+  Composite,
+  Engine,
+  type IBodyDefinition,
+  Sleeping,
+} from "matter-js";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import { bots } from "@/data/bots";
 import { BotMark } from "./mark";
 import styles from "./styles.module.css";
-
-const PILE = [
-  "Executive Assistant",
-  "Chief Operating Officer",
-  "Product Designer",
-  "Brand Designer",
-  "Marketing Manager",
-  "Head Coach",
-  "Culture Curator",
-  "Fashion Stylist",
-  "Game Developer",
-  "Career Coach",
-  "Nutrition Coach",
-  "Accountant",
-  "Motion Designer",
-  "Video Editor",
-] as const;
-
-const pile = PILE.map((title) => {
-  const bot = bots.find((item) => item.title === title);
-  if (!bot) throw new Error(`Missing pile bot: ${title}`);
-  return bot;
-});
-
-type Body = {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  angle: number;
-  va: number;
-  r: number;
-};
 
 function mulberry32(start: number) {
   let seed = start;
@@ -50,97 +25,55 @@ function mulberry32(start: number) {
   };
 }
 
-function basin(width: number, size: number) {
-  const play = Math.min(width - 24, size * 6.4);
-  const inset = (width - play) / 2;
-  return { inset, right: width - inset };
+function shuffledBots() {
+  const list = [...bots];
+  const rand = mulberry32(11);
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    const current = list[i];
+    const swap = list[j];
+    if (!current || !swap) continue;
+    list[i] = swap;
+    list[j] = current;
+  }
+  return list;
 }
 
-function makeBodies(width: number, size: number): Body[] {
-  const rand = mulberry32(42);
-  const { inset, right } = basin(width, size);
-  return pile.map((_, index) => ({
-    x: inset + (right - inset) * (0.18 + rand() * 0.64),
-    y: -size * 0.2 - index * size * 0.85,
-    vx: (rand() - 0.5) * 70,
-    vy: rand() * 20,
-    angle: (rand() - 0.5) * 0.8,
-    va: (rand() - 0.5) * 1.2,
-    r: size * 0.4,
-  }));
-}
+const pile = shuffledBots();
 
-function step(
-  bodies: Body[],
-  dt: number,
-  width: number,
-  height: number,
-  size: number,
-) {
-  const gravity = 2800;
-  const bounce = 0.45;
-  const { inset, right } = basin(width, size);
-  const floor = height - 8;
-  for (const body of bodies) {
-    body.vy += gravity * dt;
-    body.vx *= 0.996;
-    body.x += body.vx * dt;
-    body.y += body.vy * dt;
-    body.angle += body.va * dt;
-    body.va *= 0.986;
-    if (body.y > floor - body.r) {
-      body.y = floor - body.r;
-      body.vy = Math.abs(body.vy) < 50 ? 0 : -body.vy * bounce;
-      body.vx *= 0.68;
-      body.va += body.vx * 0.004;
-    }
-    if (body.x < inset + body.r) {
-      body.x = inset + body.r;
-      body.vx = Math.abs(body.vx) * bounce;
-    }
-    if (body.x > right - body.r) {
-      body.x = right - body.r;
-      body.vx = -Math.abs(body.vx) * bounce;
+function plan(width: number, height: number, count: number) {
+  const pad = 14;
+  let size = 40;
+  let columns = 1;
+  for (let next = 40; next <= 90; next++) {
+    const radius = next * 0.46;
+    const minX = pad + next / 2;
+    const maxX = width - pad - next / 2;
+    const maxY = height - pad - next / 2;
+    const cols = Math.max(1, Math.floor((maxX - minX) / (radius * 2 + 3)));
+    const rows = Math.ceil(count / cols);
+    if (rows * (radius * 2 + 3) <= height - pad * 2) {
+      size = next;
+      columns = cols;
     }
   }
-
-  for (let i = 0; i < bodies.length; i++) {
-    for (let j = i + 1; j < bodies.length; j++) {
-      const a = bodies[i];
-      const b = bodies[j];
-      if (!a || !b) continue;
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const dist = Math.hypot(dx, dy) || 0.001;
-      const min = a.r + b.r;
-      if (dist >= min) continue;
-      const nx = dx / dist;
-      const ny = dy / dist;
-      const overlap = (min - dist) / 2;
-      a.x -= nx * overlap;
-      a.y -= ny * overlap;
-      b.x += nx * overlap;
-      b.y += ny * overlap;
-      const rel = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny;
-      if (rel < 0) {
-        const impulse = (-(1 + bounce) * rel) / 2;
-        a.vx -= impulse * nx;
-        a.vy -= impulse * ny;
-        b.vx += impulse * nx;
-        b.vy += impulse * ny;
-        const tx = -ny;
-        const ty = nx;
-        const tan = (b.vx - a.vx) * tx + (b.vy - a.vy) * ty;
-        a.va -= tan * 0.012;
-        b.va += tan * 0.012;
-      }
-    }
-  }
+  return {
+    size,
+    columns,
+    radius: size * 0.46,
+    minX: pad + size / 2,
+    maxX: width - pad - size / 2,
+    maxY: height - pad - size / 2,
+  };
 }
 
-function place(node: HTMLElement, body: Body, size: number) {
-  node.style.transform = `translate3d(${(body.x - size / 2).toFixed(2)}px, ${(body.y - size / 2).toFixed(2)}px, 0) rotate(${body.angle.toFixed(3)}rad)`;
-}
+const bodyOptions: IBodyDefinition = {
+  restitution: 0.38,
+  friction: 0.14,
+  frictionAir: 0.018,
+  slop: 0,
+  sleepThreshold: 36,
+};
 
 export function BotPile() {
   const stage = useRef<HTMLDivElement>(null);
@@ -157,72 +90,110 @@ export function BotPile() {
     ).matches;
     const width = root.clientWidth;
     const height = root.clientHeight;
-    const size = 52;
-    const bodies = makeBodies(width, size);
+    const { size, columns, radius, minX, maxX, maxY } = plan(
+      width,
+      height,
+      marks.length,
+    );
+    const rand = mulberry32(42);
 
-    if (reduced) {
-      for (let frame = 0; frame < 360; frame++)
-        step(bodies, 1 / 60, width, height, size);
+    const engine = Engine.create({
+      enableSleeping: true,
+      gravity: { x: 0, y: 1.05, scale: 0.001 },
+      positionIterations: 14,
+      velocityIterations: 8,
+    });
+    const floor = Bodies.rectangle(
+      width / 2,
+      maxY + radius + 40,
+      width + 80,
+      80,
+      {
+        isStatic: true,
+      },
+    );
+    const left = Bodies.rectangle(
+      minX - radius - 40,
+      height / 2,
+      80,
+      height * 4,
+      {
+        isStatic: true,
+      },
+    );
+    const right = Bodies.rectangle(
+      maxX + radius + 40,
+      height / 2,
+      80,
+      height * 4,
+      { isStatic: true },
+    );
+    const bodies = marks.map((_, index) => {
+      const column = index % columns;
+      const row = Math.floor(index / columns);
+      const x =
+        minX + ((column + 0.5) / columns) * (maxX - minX) + (rand() - 0.5) * 3;
+      const y = -radius * 3 - row * (radius * 2 + 8) - rand() * 12;
+      const body = Bodies.circle(Math.min(maxX, Math.max(minX, x)), y, radius, {
+        ...bodyOptions,
+        angle: (rand() - 0.5) * 1.4,
+      });
+      Body.setAngularVelocity(body, (rand() - 0.5) * 0.12);
+      return body;
+    });
+    Composite.add(engine.world, [floor, left, right, ...bodies]);
+
+    const draw = () => {
       marks.forEach((node, index) => {
         const body = bodies[index];
-        if (body) place(node, body, size);
+        if (!body) return;
+        node.style.width = `${size}px`;
+        node.style.height = `${size}px`;
+        node.style.transform = `translate3d(${(body.position.x - size / 2).toFixed(2)}px, ${(body.position.y - size / 2).toFixed(2)}px, 0) rotate(${body.angle.toFixed(4)}rad)`;
       });
-      return;
-    }
+    };
 
-    marks.forEach((node, index) => {
-      const body = bodies[index];
-      if (body) place(node, body, size);
-    });
+    if (reduced) {
+      for (let frame = 0; frame < 720; frame++)
+        Engine.update(engine, 1000 / 60);
+      for (const body of bodies) Sleeping.set(body, true);
+      draw();
+      return () => {
+        Composite.clear(engine.world, false);
+        Engine.clear(engine);
+      };
+    }
 
     let frame = 0;
     let last = 0;
-    let clock = 0;
-    let nextNudge = 3;
     let drag: {
       index: number;
+      pointer: number;
       lastX: number;
       lastY: number;
       lastT: number;
     } | null = null;
 
-    const draw = () => {
-      marks.forEach((node, index) => {
-        const body = bodies[index];
-        if (body) place(node, body, size);
-      });
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
     };
-
     const loop = (now: number) => {
-      frame = requestAnimationFrame(loop);
-      const dt = last ? Math.min((now - last) / 1000, 0.032) : 0;
+      const dt = last ? Math.min(now - last, 32) : 1000 / 60;
       last = now;
-      if (!drag) {
-        step(bodies, dt, width, height, size);
-        clock += dt;
-        const calm = bodies.every(
-          (body) =>
-            Math.hypot(body.vx, body.vy) < 24 && Math.abs(body.va) < 0.4,
-        );
-        if (calm && clock > nextNudge) {
-          const body = bodies[Math.floor(Math.random() * bodies.length)];
-          if (body) {
-            body.vy -= 90 + Math.random() * 70;
-            body.va += (Math.random() - 0.5) * 3;
-          }
-          nextNudge = clock + 2.4 + Math.random() * 2.2;
-        }
-      }
+      if (!drag) Engine.update(engine, dt);
       draw();
+      const awake = bodies.some((body) => !body.isSleeping);
+      if (!awake && !drag) {
+        stop();
+        return;
+      }
+      frame = requestAnimationFrame(loop);
     };
     const start = () => {
       if (frame) return;
       last = 0;
       frame = requestAnimationFrame(loop);
-    };
-    const stop = () => {
-      cancelAnimationFrame(frame);
-      frame = 0;
     };
 
     const point = (event: PointerEvent) => {
@@ -231,36 +202,41 @@ export function BotPile() {
     };
     const down = (index: number) => (event: PointerEvent) => {
       if (event.button !== 0) return;
+      const body = bodies[index];
+      if (!body) return;
       const here = point(event);
       drag = {
         index,
+        pointer: event.pointerId,
         lastX: here.x,
         lastY: here.y,
         lastT: performance.now(),
       };
+      Sleeping.set(body, false);
       (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+      start();
     };
     const move = (event: PointerEvent) => {
-      if (!drag) return;
+      if (!drag || event.pointerId !== drag.pointer) return;
       const body = bodies[drag.index];
       if (!body) return;
       const here = point(event);
       const now = performance.now();
-      const dt = Math.max(0.016, (now - drag.lastT) / 1000);
-      const walls = basin(width, size);
-      body.x = Math.min(
-        walls.right - body.r,
-        Math.max(walls.inset + body.r, here.x),
-      );
-      body.y = Math.min(height - 8 - body.r, Math.max(body.r, here.y));
-      body.vx = (here.x - drag.lastX) / dt;
-      body.vy = (here.y - drag.lastY) / dt;
-      body.va = body.vx * 0.01;
+      const dt = Math.max(16, now - drag.lastT);
+      Body.setPosition(body, {
+        x: Math.min(maxX, Math.max(minX, here.x)),
+        y: Math.min(maxY, Math.max(radius, here.y)),
+      });
+      Body.setVelocity(body, {
+        x: ((here.x - drag.lastX) / dt) * 16,
+        y: ((here.y - drag.lastY) / dt) * 16,
+      });
       drag.lastX = here.x;
       drag.lastY = here.y;
       drag.lastT = now;
     };
-    const up = () => {
+    const up = (event: PointerEvent) => {
+      if (!drag || event.pointerId !== drag.pointer) return;
       drag = null;
     };
 
@@ -271,21 +247,47 @@ export function BotPile() {
     root.addEventListener("pointerup", up);
     root.addEventListener("pointercancel", up);
 
+    let visible = false;
+    const begin = () => {
+      if (!visible || frame) return;
+      const reveal = root.closest<HTMLElement>("[data-reveal]");
+      if (
+        reveal &&
+        Number.parseFloat(getComputedStyle(reveal).opacity) < 0.98
+      ) {
+        return;
+      }
+      start();
+    };
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry?.isIntersecting) start();
-      else stop();
+      visible = Boolean(entry?.isIntersecting);
+      if (!visible) stop();
+      else begin();
     });
     observer.observe(root);
+    const reveal = root.closest<HTMLElement>("[data-reveal]");
+    const onReveal = () => begin();
+    reveal?.addEventListener("transitionend", onReveal);
+    const watching = reveal ? new MutationObserver(onReveal) : null;
+    watching?.observe(reveal as HTMLElement, {
+      attributes: true,
+      attributeFilter: ["data-shown"],
+    });
+    begin();
 
     return () => {
       stop();
       observer.disconnect();
+      watching?.disconnect();
+      reveal?.removeEventListener("transitionend", onReveal);
       marks.forEach((node, index) => {
         node.removeEventListener("pointerdown", down(index));
       });
       root.removeEventListener("pointermove", move);
       root.removeEventListener("pointerup", up);
       root.removeEventListener("pointercancel", up);
+      Composite.clear(engine.world, false);
+      Engine.clear(engine);
     };
   }, []);
 
