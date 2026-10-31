@@ -166,7 +166,7 @@ const skills: Skill[] = [
     kind: "procedure",
     userInvoked: true,
     description:
-      "Breaks an animation or interaction into a state machine and a timeline of every property, on a page you can scrub through.",
+      "Breaks an animation or interaction into a state machine and a timeline of every property, on a page you can scrub and edit.",
     examples: [
       "/deconstruct the copy button",
       "/deconstruct the drawer animation in this recording",

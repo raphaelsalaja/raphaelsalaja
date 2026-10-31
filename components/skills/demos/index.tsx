@@ -527,7 +527,7 @@ export const demos: Record<string, Demo> = {
   },
   gather: {
     ask: firstExample("gather"),
-    notes: ["Links pasted in chat", "One board, each part named"],
+    notes: ["Links pasted in chat", "One board, judged against your taste"],
     before: (
       <Bubble>
         Here are some references: mobbin.com/screens/8f2a,
@@ -688,7 +688,7 @@ export const demos: Record<string, Demo> = {
     ask: firstExample("deconstruct"),
     notes: [
       "A guess from watching it once",
-      "Every state, property and timing",
+      "Every state, property and timing, editable",
     ],
     before: <Loop />,
     after: <Deconstruct />,
