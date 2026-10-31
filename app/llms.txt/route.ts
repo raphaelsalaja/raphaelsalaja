@@ -13,8 +13,9 @@ Every page is available as Markdown by appending .md to its URL or by requesting
 
 ## Pages
 
-- [Home](${SITE_URL}/index.md): About, projects, experiments and writing
+- [Home](${SITE_URL}/index.md): About, projects, bots, experiments and writing
 - [Skills](${SITE_URL}/skills.md): Agent skills for building interfaces with coding agents
+- [Bots](${SITE_URL}/bots.md): A team of Grok Bots, each with one job
 
 ## Writing
 

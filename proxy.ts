@@ -51,6 +51,8 @@ export const config = {
     "/index.md",
     "/skills",
     "/skills.md",
+    "/bots",
+    "/bots.md",
     "/work/:slug",
     "/library/:slug",
   ],

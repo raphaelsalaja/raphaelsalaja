@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
+import { botSlug, botsByArea, previewBots } from "@/data/bots";
 import { getPost, posts } from "@/data/library";
 import {
   principles,
@@ -85,6 +86,14 @@ async function home() {
           `[${item.title}](${markdownHref(item.href)}): ${item.description}`,
       ),
     ),
+    "## Bots",
+    `[All Bots](${markdownHref("/bots")}): A team of Grok Bots, each with one job.`,
+    list(
+      previewBots.map(
+        (bot) =>
+          `[${bot.title}](${SITE_URL}/bots#${botSlug(bot.title)}): ${bot.description}`,
+      ),
+    ),
     "## Experiments",
     list(
       experiments.map((item) => {
@@ -111,6 +120,23 @@ const skillList = (items: Skill[]) =>
         `\`/${skill.name}\`: ${skill.description}${skill.userInvoked ? " Runs only when you call it." : ""}`,
     ),
   );
+
+function botsPage() {
+  return [
+    "# Bots",
+    "A team of Grok Bots, each with one job. Copy any of them.",
+    ...botsByArea.map((group) =>
+      [
+        `## ${group.area}`,
+        ...group.bots.flatMap((bot) => [
+          `### ${bot.title}`,
+          bot.description,
+          list([...bot.does]),
+        ]),
+      ].join("\n\n"),
+    ),
+  ].join("\n\n");
+}
 
 function skillsPage() {
   return [
@@ -144,6 +170,7 @@ function article(
 export const markdownPaths = [
   "/",
   "/skills",
+  "/bots",
   ...posts.map((post) => `/library/${post.slug}`),
   ...workPages.map((item) => item.href),
 ];
@@ -151,6 +178,7 @@ export const markdownPaths = [
 export async function pageMarkdown(pathname: string) {
   if (pathname === "/") return home();
   if (pathname === "/skills") return skillsPage();
+  if (pathname === "/bots") return botsPage();
   const [, section, slug] = pathname.split("/");
 
   if (section === "library") {
