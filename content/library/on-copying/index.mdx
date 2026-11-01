@@ -1,56 +1,56 @@
 import { FramesFigure, LayersFigure, MatchDemo } from "./demos";
 
-I learned more from copying interfaces than from any course. I don't mean posting the copies. I mean rebuilding something until I understood why each decision was made.
+I learned more from copying interfaces than from any course. By copying I don't mean posting the copies, but rebuilding something until I understood why each decision was made.
 
-You open something you admire, Linear, a system menu, a screen from your phone, and you try to match it. The spacing is wrong. The spring is too bouncy. The type sits a pixel high. You fix it, and in the fixing you start to see.
+I'd open something I admired, like Linear, a system menu or a screen from my phone, and try to match it. My version would come out with the spacing wrong, the spring too bouncy and the type sitting a pixel high, and in fixing it I'd start to see.
 
 ## What You're Actually Copying
 
-Copying gets a bad reputation because people stop at the surface. They take the radius and the shadow and call it a style. That's the part you can see in a screenshot, so it's the part that gets taken.
+Copying gets a bad reputation because people stop at the surface, taking the radius and the shadow and calling it a style. That's the part a screenshot shows, so it's the part that gets taken.
 
 <LayersFigure />
-<sub>From the outside it's one surface. Take it apart and it's a stack of decisions.</sub>
+<sub>It starts as one surface labelled radius and shadow, pulls apart to show spacing, type and timing underneath, then closes up again.</sub>
 
-Under the surface there's a spacing scale someone chose and stuck to. A type size and line height that were tuned against each other. A duration for every motion, and a reason one is shorter than the other. None of that is visible in a still. All of it is why the thing feels the way it does.
+Under the surface are three more layers: spacing (a scale someone chose and stuck to), type (a size and line height tuned against each other) and timing (a duration for every motion, and a reason one is shorter than the other). None of that is visible in a still, but all of it is why the thing feels the way it does.
 
-If you copy the radius and shadow, you get something that looks similar in a screenshot and feels nothing like the original in use. If you copy the decisions, it doesn't even need to look the same.
+A copy of the radius and shadow looks similar in a screenshot and feels nothing like the original in use, but a copy of the decisions doesn't even need to look the same.
 
 ## How I Do It
 
-I pick one small thing, like a menu, a toggle or the way a list reorders. Something I can rebuild in an evening.
+I'd pick one small thing I could rebuild in an evening, like a menu, a toggle or the way a list reorders.
 
-Then I record it. A screen recording at full frame rate, played back slowly. Most of what I'm looking for happens in a few frames, and I can't see it at normal speed. Where does it start moving from? Does the shadow come in with the shape or after it? Does the content fade in, or is it there from the first frame? How many frames until it stops?
+Then I'd record the screen at full frame rate and play it back slowly, because most of what I was looking for happened in a few frames that I couldn't see at normal speed. I'd watch where it started moving from and whether the shadow came in with the shape or after it. I'd check whether the content faded in or was there from the first frame, and count the frames until it stopped.
 
 <FramesFigure />
-<sub>At full speed it's one motion. Frame by frame, you can see the order every part arrives in.</sub>
+<sub>Over eight frames, about 117 milliseconds, the menu grows out of the button, the shadow arrives on the fourth frame and the content on the sixth.</sub>
 
-I rebuild it next to the recording, side by side, and adjust until I can't tell which is which. This is the slow part. The first version is always close and always wrong. The spring is a bit too loose. The menu grows from the centre instead of the corner. The text moves with the container when it should have stayed still.
+I'd rebuild it side by side with the recording and adjust until I couldn't tell which was which. That was the slow part, because the first version was always close and always wrong: the spring a bit too loose, the menu growing from the centre instead of the corner or the text moving with the container when it should have stayed still.
 
 ## Matching by Eye
 
-The adjusting is where the learning is. Here's a tiny version of it. The filled square moves on a spring I picked. The outline is yours. Change the duration and bounce until they move as one.
+The adjusting is where the learning was, so here's a tiny version of it. The filled square moves on a spring I picked and the outline is yours, so change the duration and bounce until they move as one.
 
 <Demo>
   <MatchDemo />
 </Demo>
-<sub>When the two move as one, you've found the spring. It takes a few tries even when there are only nine options.</sub>
+<sub>Each change to the duration or bounce sends both squares across the track together, and the status turns from Not yet to Matched when the outline lands on the same spring.</sub>
 
-When there are only nine combinations, you'll get there quickly. In a real interface the values are continuous, there are five things moving at once, and the reference is a video, not a square. But the loop is the same. Change one thing, watch, compare, repeat. Each round you get a little better at seeing what's off before you change anything.
+With only nine combinations it takes a few tries and no more, but in a real interface the values are continuous, there are five things moving at once and the reference is a video, not a square. The loop was the same, though: I'd change one thing, watch, compare and repeat, and each round I got a little better at seeing what was off before I changed anything.
 
-After a while you stop needing the reference. You look at something new and you can tell the bounce is about 0.2, the exit is faster than the entrance, the shadow is two layers. That's what the copying was for.
+After a while I stopped needing the reference, because I could look at something new and tell that the bounce was about 0.2, the exit was faster than the entrance and the shadow was two layers, which is what the copying was for.
 
 ## Where It Goes Wrong
 
-There are two ways copying turns bad.
+There are two ways copying turns bad: stopping at the surface and passing the copy off as your own.
 
-The first is stopping at the surface, which I've already covered. You end up with a collection of borrowed styles that don't agree with each other, because the decisions underneath were never yours.
+Stopping at the surface, which I've already covered, ends in a collection of borrowed styles that don't agree with each other, because the decisions underneath belonged to someone else.
 
-The second is passing the copy off as your own. Rebuilding something to learn from it is how most of us got good. Posting it without saying where it came from is something else. If I share a rebuild, I say what it's a rebuild of. The person who made the original decision deserves the credit for it, and saying so costs nothing.
+Rebuilding something to learn from it is how most of us got good, but posting it without saying where it came from is something else. If I share a rebuild, I say what it's a rebuild of, because the person who made the original decision deserves the credit for it and saying so costs nothing.
 
 ## What You Keep
 
 The point of copying is to take the decision apart, then put it down and use the lesson somewhere else.
 
-When I rebuild a menu, I'm not collecting the menu. I'm collecting that it grows from where you clicked, that it leaves faster than it arrives, that the shadow is softer than I'd have guessed. The next time I build something that opens from a button, in a completely different product, I start from those lessons instead of from zero.
+When I rebuilt a menu, I wasn't collecting the menu but what it taught: that it grows from where the click landed, that it leaves faster than it arrives and that the shadow is softer than I'd have guessed. The next time I built something that opened from a button, in a completely different product, I'd start from those lessons instead of from zero.
 
-You can read about springs for a week and learn less than you would tuning one for an hour.
+For me, an hour of tuning a spring still teaches more than a week of reading about one, so rebuilding things is how I keep learning.

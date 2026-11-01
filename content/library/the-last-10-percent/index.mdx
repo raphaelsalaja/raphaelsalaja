@@ -4,73 +4,73 @@ import {
   OriginFigure,
 } from "./demos";
 
-Most of an interface is decided early. Layout, type, the obvious states. You can get a long way in a week. The screen looks right, the flows connect, the demo goes well. The last 10% is everything after that: the timing on a menu, the way a button settles, the empty state nobody specced, the moment between two screens. It's also where I spend most of my time.
+Most of an interface is decided early: layout, type and the obvious states. It's possible to get a long way in a week, to where the screen looks right, the flows connect and the demo goes well. The last 10% is everything after that: the timing on a menu, the way a button settles, the empty state nobody specced and the moment between two screens. It's also where I spend most of my time.
 
-People feel that part and almost never name it. Nobody says the dropdown scaled from the wrong corner. They say the app feels a bit cheap, or a bit heavy, or they don't say anything and just open the other tool instead.
+People feel that part but almost never name it, so nobody says the dropdown scaled from the wrong corner. They say the app feels a bit cheap or a bit heavy, or they don't say anything and just open the other tool instead.
 
-It's also the part that gets cut, because it doesn't show up in a screenshot and it doesn't move a number you can put in a deck.
+It's also the part that gets cut, because it doesn't show up in a screenshot and it doesn't move a number anyone can put in a deck.
 
 <LastTenPercent />
-<sub>The first 90% climbs fast. The rest is where the time goes.</sub>
+<sub>The line climbs fast through layout, type and states, levels off by the 90% mark and then knots into a dense scribble over the last tenth.</sub>
 
 ## What's in It
 
-When I say the last 10%, I mean specific things you can go through one by one.
+When I say the last 10%, I mean specific things I can go through one by one.
 
-- Where things come from. A menu should grow out of the button that opened it, not out of the middle of the screen.
-- How long things take. Something you open fifty times a day should be faster than something you see once.
-- How things leave. Exits are usually faster than entrances. You already asked for it to go away.
-- How things answer you. A button that gives slightly when pressed, a row that highlights under the pointer, a value that changes the moment you click.
-- The states nobody designed. Empty, loading, error, one item, two hundred items, a name that's forty characters long.
-- The frame between two screens. What happens to the thing you just tapped while the next view arrives.
-- Consistency. Two similar actions using the same curve and the same duration, so the product feels like one thing.
+- Where things come from: a menu should grow out of the button that opened it, not out of the middle of the screen.
+- How long things take: something opened fifty times a day should be faster than something seen once.
+- How things leave: exits are usually faster than entrances, because the person already asked for it to go away.
+- How things answer you: a button that gives slightly when pressed, a row that highlights under the pointer and a value that changes the moment you click.
+- The states nobody designed: empty, loading, error, one item, two hundred items and a name that's forty characters long.
+- The frame between two screens: what happens to the thing that was just tapped while the next view arrives.
+- Consistency: two similar actions using the same curve and the same duration, so the product feels like one thing.
 
-Each of these takes minutes on its own, and that's the trap. They're small enough to skip, and there are hundreds of them.
+Each of these takes minutes on its own, and that's the trap, because they're small enough to skip and there are hundreds of them.
 
 <OriginFigure />
-<sub>Same menu, same size. One appears out of nowhere. The other comes out of what you pressed.</sub>
+<sub>On the left the menu grows outward from its own centre, and on the right the same menu grows down out of the button that opened it.</sub>
 
 ## One Menu, Four Passes
 
-Here's a single menu at four stages. At 90% it works. Every pass after that changes one or two lines of CSS. Open it at each stage, a few times.
+Here's a single menu at four stages: at 90% it works, and every pass after that changes one or two lines of CSS. Open it a few times at each stage.
 
 <Demo>
   <LastTenPercentDemo />
 </Demo>
-<sub>Open it at 90%, then at 100%. The menu is the same. Only the details change.</sub>
+<sub>At 90% the menu just appears and at 94% it scales from its centre over 400ms both ways. At 97% it grows from the button in 180ms and leaves in 120ms, and at 100% the button gives under the press and the chevron turns.</sub>
 
-At 90% nothing is wrong. It opens, it closes, the items are clickable. It would pass review. At 94% it animates, which is where a lot of products stop, but it animates from the centre and takes 400 milliseconds both ways, so it feels like it's floating in from somewhere else. At 97% it grows from the button and leaves faster than it arrived. At 100% the button gives a little under your finger and the chevron turns.
+At 90% nothing is wrong: it opens, it closes and the items are clickable, so it would pass review. At 94% it animates, which is where a lot of products stop, but it animates from the centre and takes 400 milliseconds both ways, so it feels like it's floating in from somewhere else. At 97% it grows from the button and leaves faster than it arrived, and at 100% the button gives a little under the finger and the chevron turns.
 
-If you showed someone the 90% and the 100% versions as screenshots, they couldn't tell them apart. If you let them use both for a day, they'd pick the second one every time, and most of them couldn't tell you why.
+Someone shown the 90% and the 100% versions as screenshots couldn't tell them apart, but given both to use for a day they'd pick the second one every time, and most of them couldn't say why.
 
 ## Why It Gets Cut
 
-Nobody decides to ship something that feels cheap. It happens one ticket at a time.
+Nobody decides to ship something that feels cheap, but it happens anyway, one ticket at a time.
 
-The roadmap is made of features. A feature has a name, an owner and a date. "The menu feels off" has none of those. When the sprint is tight, the thing without a name is the first to go, and the sprint is always tight.
+The roadmap is made of features, and a feature has a name, an owner and a date, but "The menu feels off" has none of those. When the sprint is tight, the thing without a name is the first to go, and the sprint is always tight.
 
-It also doesn't show up where decisions are made. A deck has screenshots. A review has a Figma file. A metric has a number. The last 10% lives in motion, in sequence, in how something feels the fortieth time you use it. You can't paste that into a slide.
+It also doesn't show up where decisions are made: a deck has screenshots, a review has a Figma file and a metric has a number. The last 10% lives in motion, in sequence and in how something feels the fortieth time it's used, so it can't be pasted into a slide.
 
-And each detail is small enough to defend skipping. Nobody will churn because a dropdown scales from the centre. That's true. But nobody uses one dropdown. They use the whole product, all day, and the small things add up into a feeling they can't name.
+And each detail is small enough to defend skipping. It's true that nobody will churn because a dropdown scales from the centre, but nobody uses one dropdown either: they use the whole product, all day, and the small things add up into a feeling they can't name.
 
 ## How I Look for It
 
-Someone hands me a design and I look for the gaps. I have a few habits that help me find them.
+When someone handed me a design, I'd look for the gaps, and a few habits helped me find them.
 
-**Use it at real speed, many times.** Open the menu twenty times in a row. Things that look fine once start to drag by the fifth.
+**Use it at real speed, many times.** I'd open the menu twenty times in a row, because things that look fine once start to drag by the fifth.
 
-**Record the screen and scrub it.** Most motion problems are invisible at full speed and obvious frame by frame. You'll see the element that jumps a pixel, the shadow that pops in late, the text that reflows mid-transition.
+**Record the screen and scrub it.** I'd step through the recording, because most motion problems are invisible at full speed but obvious frame by frame: the element that jumps a pixel, the shadow that pops in late and the text that reflows mid-transition.
 
-**Line up similar things.** Put every dialog side by side. Every toast. Every hover. If two of them use different curves, one is wrong, or both are.
+**Line up similar things.** I'd put every dialog, every toast and every hover side by side, and if two of them used different curves, one was wrong, or both were.
 
-**Go through the states.** Empty, loading, error, the long name, the slow network. The happy path was designed. The rest usually wasn't.
+**Go through the states.** I'd try empty, loading, error, the long name and the slow network, because the happy path was designed but the rest usually wasn't.
 
-**Change the setting.** Dark mode, reduced motion, a smaller window, a keyboard instead of a mouse. Each one finds something new.
+**Change the setting.** I'd switch to dark mode, reduced motion, a smaller window and a keyboard instead of a mouse, and each one found something new.
 
 ## What It Costs
 
-The honest answer is that the last 10% takes about as long as the first 90%. That's what the graph is saying. Progress you can see slows down, and the work doesn't.
+The honest answer is that the last 10% takes about as long as the first 90%, which is what the graph is saying: visible progress slows down, but the work doesn't.
 
-You don't have to do all of it everywhere. I'd rather spend the time on the five things people touch every day than polish a settings page they'll open twice. The menu, the main list, the primary button, the thing between two screens. Start where use is highest.
+I don't do all of it everywhere. I'd rather spend the time on the five things people touch every day (the menu, the main list, the primary button and the thing between two screens) than polish a settings page they'll open twice, so I start where use is highest.
 
-A product can be correct and still feel cheap. People read care in the parts they can see as a sign of care in the parts they can't, and a lot of whether they stay comes down to that.
+A product can be correct and still feel cheap, because people read care in the parts they can see as a sign of care in the parts they can't, and a lot of whether they stay comes down to that. It's why the last 10% is still where most of my time goes.

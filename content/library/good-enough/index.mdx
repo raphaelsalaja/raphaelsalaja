@@ -1,58 +1,58 @@
 import { AddsUpFigure, ContactFigure, PressDemo } from "./demos";
 
-"Good enough" is a useful phrase and a dangerous one. Useful when you're deciding whether to ship. Dangerous when it becomes the standard for the parts people touch every day.
+"Good enough" is a useful phrase and a dangerous one: useful when deciding whether to ship, but dangerous when it becomes the standard for the parts people touch every day.
 
 I hear it in two very different situations, and the same words mean opposite things in each one.
 
 ## Where It Works
 
-I don't think everything needs to be perfect. Most decisions in a product are reversible, and waiting on them is how nothing gets finished. Ship the flow. Ship the empty state. Fix the copy later if you have to.
+I don't think everything needs to be perfect. Most decisions in a product are reversible, and waiting on them is how nothing gets finished, so the flow and the empty state can ship and the copy can be fixed later if it has to be.
 
-Jeff Bezos has a way of putting this that I think about a lot. Some decisions are one-way doors: once you go through, you can't easily come back, so you should be slow and careful. Most decisions are two-way doors. You can walk back through if it was wrong, so you should make them quickly and move on.[^1]
+Jeff Bezos has a way of putting this that I think about a lot. Some decisions are one-way doors: once you go through, you can't easily come back, so you should be slow and careful. Most decisions are two-way doors, and because you can walk back through if it was wrong, you should make them quickly and move on.[^1]
 
-The wording on a settings page is a two-way door. So is the illustration on an empty state, the order of tabs in a sidebar nobody opens, or the onboarding flow someone will see once. If they're good enough, ship them. You'll learn more from people using them than from another week of polish.
+The wording on a settings page is a two-way door, and so are the illustration on an empty state, the order of tabs in a sidebar nobody opens and the onboarding flow someone will see once. If they're good enough they should ship, because there's more to learn from people using them than from another week of polish.
 
 ## Where It Doesn't
 
-The line I won't cross is the one people feel on contact. A button that lags. Type that doesn't align with the thing next to it. A transition that eases out when everything else eases in. People treat those as polish to add at the end, but they're most of what the product feels like.
+The line I won't cross is the one people feel on contact: a button that lags, type that doesn't align with the thing next to it or a transition that eases out when everything else eases in. People treat those as polish to add at the end, but they're most of what the product feels like.
 
 <ContactFigure />
-<sub>Some decisions you can fix next week. Others people feel every time they touch them.</sub>
+<sub>Settings copy, the empty state and onboarding sit on the reversible side of the line where good enough stops, and menu timing, the button press and type alignment sit on the side people feel on every use.</sub>
 
-What separates them is how often someone runs into it, and whether they'll feel it before they can explain it. How important it seems in a planning meeting has little to do with it.
+What separates them is how often someone runs into it and whether they'll feel it before they can explain it, which has little to do with how important it seems in a planning meeting.
 
-Press both buttons below. They do the same thing.
+Press both buttons below ten times each. They do the same thing, so the only question is which one you'd rather use all day.
 
 <Demo>
   <PressDemo />
 </Demo>
-<sub>Both work. Press each one ten times and see which you'd rather use all day.</sub>
+<sub>On the left the count goes up 180ms after the press and the button doesn't move. On the right it counts on the press and the button gives slightly under your finger.</sub>
 
-The one on the left is what "good enough" usually looks like in practice. It works. Nothing is broken. The count goes up. It just goes up a little after you press, and the button doesn't react under your finger, so for a moment you're not sure it registered. Nobody would file a bug for it.
+The one on the left is what "good enough" usually looks like in practice. It works and nothing is broken, but the count goes up a little after the press and the button doesn't react under the finger, so for a moment it's not clear the press registered. Nobody would file a bug for it.
 
-The one on the right counts the moment you press and gives slightly as you do. It took two extra lines of CSS and the removal of a delay. Over a day of use, the difference is enormous.
+The one on the right counts on the press and gives slightly as it does. It took two extra lines of CSS and the removal of a delay, but over a day of use the difference is enormous.
 
 ## How to Tell Which Is Which
 
-When someone says something is good enough, I ask a few questions.
+When someone said something was good enough, I'd ask a few questions.
 
-**Will people touch it every day?** The main list, the primary button, the menu, the thing between two screens. If yes, good enough isn't.
+**Will people touch it every day?** That covers the main list, the primary button, the menu and the thing between two screens, and if the answer is yes, good enough isn't.
 
-**Will they feel it before they can name it?** Lag, misalignment, inconsistent motion and type that sits a pixel high are all felt first and understood later, if at all. Those need to be right, because nobody will ever tell you they're wrong.
+**Will they feel it before they can name it?** Lag, misalignment, inconsistent motion and type that sits a pixel high are all felt first and understood later, if at all. Those need to be right, because nobody will ever say they're wrong.
 
-**Can we change it later without anyone noticing?** Copy, colours on a page nobody visits, the order of options in a rarely used dropdown. Ship it, and change it when you know more.
+**Can we change it later without anyone noticing?** Copy, colours on a page nobody visits and the order of options in a rarely used dropdown all qualify, so those can ship and change once we know more.
 
-**Is it holding something else up?** If waiting on this blocks the team, ship it and come back. If it doesn't, there's no reason to rush the part people will touch most.
+**Is it holding something else up?** If waiting on this blocks the team, it should ship and we come back to it, but if it doesn't, there's no reason to rush the part people will touch most.
 
 ## It Adds Up
 
-The hardest part is that each "good enough" is defensible on its own. One slow hover doesn't matter. One misaligned icon doesn't matter. One menu that eases differently from the others doesn't matter.
+The hardest part is that each "good enough" is defensible on its own: one slow hover, one misaligned icon or one menu that eases differently from the others doesn't matter.
 
-But people don't use one hover. They use the whole product. Forty small compromises become a product that feels slightly heavy, and nobody can point to why, so nobody fixes it. The team that made each call was right every time, and the result is still wrong.
+But people use the whole product rather than one hover, so forty small compromises become a product that feels slightly heavy, and nobody can point to why, so nobody fixes it. The team that made each call was right every time, but the result is still wrong.
 
 <AddsUpFigure />
-<sub>Each call bends the line so little you can't see it. Forty of them end up somewhere nobody chose.</sub>
+<sub>Forty short segments start on the dashed line and each bends a little further down than the last, so by the fortieth the line ends well below where it meant to go.</sub>
 
-Use good enough for the things you can change next week. For the things people touch every day, it's the wrong bar.
+I still use good enough for the things that can change next week, but for the things people touch every day I don't think it's the right bar.
 
 [^1]: Jeff Bezos, 2015 Letter to Shareholders, Amazon, published April 2016.

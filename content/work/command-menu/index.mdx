@@ -7,121 +7,121 @@ import {
   Springs,
 } from "./demos/figures";
 
-Linear is known for its speed and precision, and in my opinion the command menu is the best example of both. It's woven through the whole app. You can open it from anywhere, and what it offers changes with what you're looking at.
+Linear is known for its speed and precision, and in my opinion the command menu is the best example of both, because it's woven through the whole app: it opens from anywhere, and what it offers changes with what you're looking at.
 
-Because of this, I thought I'd try my hand at building it from scratch. Not all of it, but enough to understand how it works. I did it as practice and to learn, and I'm sharing what I found here so you can learn from it too.
+So I thought I'd try my hand at building it from scratch, not all of it but enough to understand how it works. I did it as practice and to learn, and I'm sharing what I found here so you can learn from it too.
 
 <Demo variant="transparent">
   <CommandMenu />
 </Demo>
 
-This is my version. It opens on an issue, PND-18, the way Linear's does when you press ⌘K on one. Try changing its status, assigning it or copying its branch name. Press Backspace on the empty field and the issue drops away, leaving you with the rest of the workspace.
+This is my version, and it opens on an issue, PND-18, the way Linear's does when you press ⌘K on one. Try changing its status, assigning it or copying its branch name, then press Backspace on the empty field and the issue drops away, leaving you with the rest of the workspace.
 
-I've never worked at Linear, so I can't tell you what they were thinking. What I can do is show you what I found, and why I think they made each choice.
+I've never worked at Linear, so I can't tell you what they were thinking, but I can show what I found and why I think they made each choice.
 
 ## How I looked at it
 
-I started with inspect element. Open the menu, right-click a row, and the Elements panel shows you most of what you need: the row's height, the highlight behind it, the padding around the list, the font size and weight.
+I started with inspect element. I opened the menu and right-clicked a row, and the Elements panel showed most of what I needed: the row's height, the highlight behind it, the padding around the list and the font size and weight.
 
-Motion and the keyboard were harder, because you can't see a spring in the Elements panel. For those I went to the Sources tab. Linear ships its web client like any other site, so the springs and keyboard rules are sitting in the JavaScript, minified but readable.
+Motion and the keyboard were harder, because a spring doesn't show up in the Elements panel, so for those I went to the Sources tab. Linear ships its web client like any other site, so the springs and keyboard rules are sitting in the JavaScript, minified but readable.
 
 ## Anatomy
 
-It isn't just a list in a box. It's four parts, each with one job: a title row that holds the context, a field, a list, and the frame around them. The frame is 720 wide, never wider than the window minus 32, and never taller than 450. (Mine is narrower, because this column is.)
+It isn't just a list in a box but four parts, each with one job: a title row that holds the context, a field, a list and the frame around them. The frame is 720 wide, never wider than the window minus 32 and never taller than 450. (Mine is narrower, because this column is.)
 
 <Anatomy />
-<sub>Rows are 46 tall, and so is the field. The list adds 6 above and below.</sub>
+<sub>The menu lifts apart into frame, list, focus, field and context, each labelled with its sizes, then stacks back together. Rows are 46 tall, and so is the field, while the list adds 6 above and below.</sub>
 
-The detail that stood out to me most was the focus. You'd expect the highlighted row to just be the row with a different background. Inspect it, though, and the row has no background at all. The highlight is a pseudo-element behind it, inset 2 from the top and bottom with a radius of 8, and the list's 6px padding keeps it off the frame.
+The detail that stood out to me most was the focus. The highlighted row looks like the row with a different background, but when I inspected it the row had no background at all. The highlight is a pseudo-element behind it, inset 2 from the top and bottom with a radius of 8, and the list's 6px padding keeps it off the frame.
 
-I think they did this so the highlight feels like something you're holding. A full-width stripe makes a menu read like a table. An inset pill reads like something you move with the arrow keys.
+I think they did this so the highlight feels like something you're holding. A full-width stripe makes a menu read like a table, but an inset pill reads like something you move with the arrow keys.
 
-The type is small, too. The field and the rows are 13px at a weight of 450. Group headers are 12px at 500, keycaps are 11px. The frame itself is set at 15px, and almost nothing inherits it. My guess is that's because you glance at a command menu rather than read it. Smaller type fits more rows into 450px, so what you're after is more likely to be on screen before you need to scroll.
+The type is small too: the field and the rows are 13px at a weight of 450, group headers are 12px at 500 and keycaps are 11px. The frame itself is set at 15px, but almost nothing inherits it. My guess is that's because you glance at a command menu rather than read it. Smaller type fits more rows into 450px, so what you're after is more likely to be on screen before you need to scroll.
 
 ## Styles
 
-While I was in the Elements panel, I noticed the class names. Instead of something readable like `.row` or `.menu`, they're short hashes, each holding one property. That's StyleX, Meta's styling library, and Linear only recently moved to it.
+While I was in the Elements panel, I noticed the class names: instead of something readable like `.row` or `.menu`, they're short hashes, each holding one property. That's StyleX, Meta's styling library, and Linear only recently moved to it.
 
-They used styled-components for years. In August they finished moving to StyleX after more than 1,000 pull requests.[^1] Kenneth Skovhus, who led the migration, explained why: runtime CSS-in-JS means "users pay for style generation and rule injection while the client renders."[^2] StyleX does that work at build time instead. By their own measurement, navigating between pages went from injecting hundreds of CSS rules to zero, and on a mid-tier machine it's around 30% faster.[^1]
+They used styled-components for years, and in August they finished moving to StyleX after more than 1,000 pull requests.[^1] Kenneth Skovhus, who led the migration, explained why: runtime CSS-in-JS means "users pay for style generation and rule injection while the client renders."[^2] StyleX does that work at build time instead. By their own measurement, navigating between pages went from injecting hundreds of CSS rules to zero, and on a mid-tier machine it's around 30% faster.[^1]
 
-This was an app-wide change, not something they did for the menu. But the more I thought about it, the more sense it made for a menu in particular. It changes what it shows on every keystroke and every page, while a spring is animating its height. With styled-components, a page of rows the menu hadn't shown yet could mean new styles being generated and injected mid-animation. With StyleX, every style the menu needs is already in the stylesheet before you press ⌘K.
+This was an app-wide change, not something they did for the menu. But the more I thought about it, the more sense it made for a menu in particular, because it changes what it shows on every keystroke and every page while a spring is animating its height. With styled-components, a page of rows the menu hadn't shown yet could mean new styles being generated and injected mid-animation, but with StyleX every style the menu needs is already in the stylesheet before you press ⌘K.
 
-That made me curious about the height. How does the frame know how tall to be?
+That made me curious about the height, and how the frame knows how tall to be.
 
 ## Height
 
-The usual way to animate a menu's height is to measure it: render the list, read its size, then animate the frame to match. The catch is that the size is always a frame behind whatever you just typed.
+The usual way to animate a menu's height is to measure it: render the list, read its size and animate the frame to match. The catch is that the size is always a frame behind whatever you just typed.
 
-Linear's frame never measures itself. Its height is arithmetic: title, field, padding, rows, padding. Every row type has a fixed height, so the next height is known the moment the list changes, before anything is laid out.
+Linear's frame never measures itself, because its height is arithmetic: title, field, padding, rows, padding. Every row type has a fixed height, so the next height is known the moment the list changes, before anything is laid out.
 
 <Height />
-<sub>34 + 46 + 6 + 5 × 46 + 6 = 322. The root runs well past 450 and scrolls.</sub>
+<sub>The root, Change status… and Labels frames empty down to their title and field, then grow back to fit their rows. Change status works out to 34 + 46 + 6 + 5 × 46 + 6 = 322, while the root runs well past 450, so it's capped and scrolls.</sub>
 
-Group headers count as 30. Without an issue the title row goes and the frame loses 34.
+Group headers count as 30, and without an issue the title row goes, so the frame loses 34.
 
-I think they did this for the same reason as the styles: nothing should happen after you type that could have happened before. The height starts moving on the same keystroke that changed the list, not one frame later.
+I think they did this for the same reason as the styles: nothing should happen after you type that could have happened before, so the height starts moving on the same keystroke that changed the list, not one frame later.
 
-Of everything here, this is the idea I'd most want to take into my own work. Give every row a fixed height and work the frame out instead of measuring it. It costs almost nothing, and it's a big part of why the menu feels instant.
+Of everything here, this is the idea I'd most want to take into my own work: give every row a fixed height and work the frame out instead of measuring it. It costs almost nothing, and it's a big part of why the menu feels instant.
 
 ## Motion
 
-There are two springs, and neither overshoots. Height uses a stiffness of 20000 and a damping of 500. That's close to instant, done in about a tenth of a second.
+There are two springs, and neither overshoots. Height uses a stiffness of 20000 and a damping of 500, which is close to instant, done in about a tenth of a second.
 
 <Springs />
-<sub>Progress over time, to 99%. Opening is the slow one.</sub>
+<sub>The height, close and open springs trace their progress over 300ms, each marked where it reaches 99%, and opening is the slow one.</sub>
 
-Why no bounce at all? Think about where your pointer is. It's usually resting on a row. If the frame overshot, the row under it would slide past and come back, and the highlight would flicker between two rows. You wouldn't just see a bounce like that, you'd feel it under your hand.
+Why no bounce at all? The pointer is usually resting on a row, so if the frame overshot, the row under it would slide past and come back and the highlight would flicker between two rows. You wouldn't just see a bounce like that, you'd feel it under your hand.
 
-Opening scales up from 0.98. Closing goes down to 0.96 on a stiffer spring, so it leaves faster than it arrived. The way I read it, arriving deserves a moment and leaving doesn't. Once you've picked something, the menu's job is done, and it gets out of the way.
+Opening scales up from 0.98, while closing goes down to 0.96 on a stiffer spring, so it leaves faster than it arrived. The way I read it, arriving deserves a moment and leaving doesn't, because once you've picked something the menu's job is done and it gets out of the way.
 
-Opening a page doesn't animate the content at all. The frame dips to 0.98 for 80ms and comes back, and the height spring does the rest. My guess is that a slide or a crossfade would make you wait to read the new list. A dip says "something changed" in 80ms, and the rows are already there.
+Opening a page doesn't animate the content at all: the frame dips to 0.98 for 80ms and comes back, and the height spring does the rest. My guess is that a slide or a crossfade would make you wait to read the new list, but a dip says "something changed" in 80ms and the rows are already there.
 
 ## Context
 
-Most command menus start from nothing: an empty field and every command in the app. Linear's starts from where you are.
+Most command menus start from nothing, with an empty field and every command in the app, but Linear's starts from where you are.
 
-Open the menu on an issue and the issue becomes the title. The identifier is dimmed and the title isn't. Everything in the first group is about that issue, so the group drops its header. The title already says it.
+Opened on an issue, the menu makes the issue its title, with the identifier dimmed but not the title. Everything in the first group is about that issue, so the group drops its header and lets the title say it.
 
 In my opinion, this is the smartest part of the menu. The most likely thing you want is to do something to the issue in front of you, so those commands come first and the menu never asks which issue you meant.
 
-Backspace with nothing typed takes the issue away. The menu stays open and the list switches to the workspace: create, navigate, search. In Linear, a small backspace glyph sits after the title while the field is empty, so you know what Backspace will do before you press it.
+Backspace with nothing typed takes the issue away, but the menu stays open and the list switches to the workspace: create, navigate and search. In Linear (though not in mine), a small backspace glyph sits after the title while the field is empty, so you know what Backspace will do before you press it.
 
 <Flow />
-<sub>Enter, Tab or → goes in. ⌫, Shift-Tab or ← comes out. Picking a value closes everything.</sub>
+<sub>Enter, Tab or → goes into Change status… and picking a value closes everything, while ⌫, Shift-Tab or ← comes back out. Below, ⌫ on the empty field drops the issue and leaves the workspace.</sub>
 
 ## Pages
 
-"Change status…" doesn't open a submenu. It replaces the list. The placeholder becomes the action's own wording, "Change status…", "Set priority to…", "Assign to…", and the title stays where it is.
+"Change status…" replaces the list instead of opening a submenu. The placeholder becomes the action's own wording ("Change status…", "Set priority to…", "Assign to…"), and the title stays where it is.
 
-I think this is about keeping your eyes still. A submenu would put a second box beside the first and pull you sideways. Replacing the list keeps the field, the title and your hands exactly where they were. Only the rows change.
+I think this is about keeping your eyes still. A submenu would put a second box beside the first and pull you sideways, but replacing the list keeps the field, the title and your hands exactly where they were, so only the rows change.
 
-Statuses take the number keys 1 to 5 and priorities 0 to 4, but only while the field is empty. Once you type, numbers are text. I like this one a lot. A number key is a shortcut right up until it can't be, so you never have to think about which mode you're in.
+Statuses take the number keys 1 to 5 and priorities 0 to 4, but only while the field is empty, because once you type, numbers are text. I like this one a lot: a number key is a shortcut right up until it can't be, so you never have to think about which mode you're in.
 
-Picking a status closes the menu. Labels don't. They're the one page where rows toggle, so the menu waits until you press Escape. It's an exception that follows the rule: the menu closes when you're done, and with labels, only you know when that is.
+Picking a status closes the menu, but labels don't: they're the one page where rows toggle, so the menu waits until you press Escape. It's an exception that follows the rule: the menu closes when you're done, and with labels, only you know when that is.
 
-Typing at the root searches inside the pages too. "done" finds Done under "Change status" without opening anything. People and labels wait for three characters before they show up there, so a short query doesn't fill with names. My guess is that a workspace has far more people and labels than statuses, and without the wait, typing "d" would bury Done under every Dan and David.
+Typing at the root searches inside the pages too, so "done" finds Done under "Change status" without opening anything. People and labels wait for three characters before they show up there, so a short query doesn't fill with names. My guess is that a workspace has far more people and labels than statuses, and without the wait, typing "d" would bury Done under every Dan and David.
 
 ## Keyboard
 
 <Keymap />
 
-A held arrow stops at the end of the list, a single press wraps. The difference is the repeat flag on the key event, and it's why holding ↓ never throws you back to the top. Most menus I've used pick one behaviour, always wrap or never. Linear reads intent: one press at the bottom means "take me to the top", a held key means "go as far as you can".
+A held arrow stops at the end of the list, but a single press wraps. The difference is the repeat flag on the key event, and it's why holding ↓ never throws you back to the top. Most menus I've used pick one behaviour (always wrap, or never), but Linear reads intent: one press at the bottom means "take me to the top", while a held key means "go as far as you can".
 
-Letter shortcuts in the list are labels. Typing S filters for "status", it doesn't run it. Shortcuts with ⌘ do run from inside the field, so ⌘. copies the ID without clearing your search first. The way I think about it, anything you could type is text, and anything with ⌘ is a command.
+Letter shortcuts in the list are labels, so typing S filters for "status" rather than running it. Shortcuts with ⌘ do run from inside the field, so ⌘. copies the ID without clearing your search first. The way I think about it, anything you could type is text, and anything with ⌘ is a command.
 
-The field keeps focus the whole time. Arrows, Enter, and typing all go to the input, and the list follows along as its active descendant. Clicking a row doesn't blur the field. If I had to sum up the whole menu in one rule, it would be this one: focus never leaves what you're typing.
+The field keeps focus the whole time. Arrows, Enter and typing all go to the input while the list follows along as its active descendant, and clicking a row doesn't blur the field. If I had to sum up the whole menu in one rule, it would be this one: focus never leaves what you're typing.
 
 ## Details
 
-Every placeholder ends in a real ellipsis, not three dots. Empty results say what was missing: "No matching states", "No matching users", "No matching priorities". Escape closes the whole menu from any depth, it doesn't step back. Stepping back is Backspace's job.
+Every placeholder ends in a real ellipsis, not three dots. Empty results say what was missing: "No matching states", "No matching users" and "No matching priorities". Escape closes the whole menu from any depth rather than stepping back, because stepping back is Backspace's job.
 
 None of these are hard to build. My guess is they come from people using their own menu all day and fixing whatever bugs them.
 
 ## What I took from it
 
-There isn't one clever trick. It's a stack of small decisions that all point the same way. Heights are worked out instead of measured. Styling happens at build time, so nothing is injected while the menu animates. The springs settle without overshoot, because a pointer is resting on a row. The menu starts from where you are, not from every command in the app. Pages replace the list instead of opening submenus. And focus stays in the field, always.
+There isn't one clever trick, just a stack of small decisions that all point the same way. Heights are worked out instead of measured, and styling happens at build time, so nothing is injected while the menu animates. The springs settle without overshoot because a pointer is resting on a row, and the menu starts from where you are rather than from every command in the app. Pages replace the list instead of opening submenus, and focus stays in the field the whole time.
 
-Each one is small. Together they're why a menu you open a hundred times a day never once makes you wait. I hope some of them help when you build your own.
+Each one is small, but together they're why a menu you open a hundred times a day never once makes you wait. My version only covers part of it, but it was enough to understand how it works. I hope some of these decisions help when you build your own.
 
 [^1]: Kenneth Skovhus, [Styling Linear for the future with StyleX](https://linear.app/now/styling-linear-for-the-future-stylex), Linear, August 2026. Announced by [@linear](https://x.com/linear) on X: "Over 1000 PRs later, Linear migrated from styled-components to @stylexjs."
 

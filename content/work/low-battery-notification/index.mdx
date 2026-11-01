@@ -9,16 +9,16 @@ I saw this animation on Twitter and wanted to rebuild it. Most of what makes it 
 
 ## Building the Battery Icon
 
-The island has three states: closed, expanded, and expanded with low power mode on.
+The island has three states: closed, expanded and expanded with low power mode on.
 
 <IslandFigure />
-<sub>Three states, one spring. Every change between them uses the same bounce and duration.</sub>
+<sub>A tap expands the closed island and another turns on low power mode, so the battery goes yellow. A third tap turns it back off, and a tap outside closes the island from either state, every change on the same bounce and duration.</sub>
 
 ### Architecture
 
 Content swaps inside `AnimatePresence` with `mode="popLayout"`, so the outgoing element leaves the layout straight away while it animates out.
 
-The island itself uses `layout`, so it resizes to fit whatever is inside it. Each element fades and unblurs as it arrives, and blurs out as it leaves.
+The island itself uses `layout`, so it resizes to fit whatever is inside it. Each element fades and unblurs as it arrives and blurs out as it leaves.
 
 ```tsx lineNumbers
 const transitions = {
@@ -32,10 +32,12 @@ const transitions = {
 
 ### Springs
 
-For the spring, I kept it simple. I was mainly concerned with the duration. Luckily, Motion provides the ability to customise springs based on duration. Using this, I timed the recording and mapped it to the parameters. Then I edited them till it just felt right, and ended up with this:
+For the spring I kept it simple, because I was mainly concerned with the duration. Luckily, Motion can customise springs based on duration, so I timed the recording and mapped it to the parameters. Then I edited them till it just felt right, and ended up with this:
 
 ```tsx lineNumbers
 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
 ```
+
+It's tuned by feel rather than matched to the recording exactly, and for now that one spring runs every change between the three states.
 
 [^1]: Recording was taken from [@BetaProfiles](https://x.com/BetaProfiles/status/1953087677563081211) on Twitter.

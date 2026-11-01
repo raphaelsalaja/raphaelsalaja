@@ -1,13 +1,13 @@
 import { FamilyWallet } from "./demos";
 import { StatesFigure } from "./demos/figures";
 
-This is my rebuild of the wallet customisation flow from [Family](https://www.family.co). Multi-stage components like this one aren’t hard to build, but they are easy to get wrong if you don’t plan ahead. You need to understand what changes, when it changes, and how to keep it predictable across states.
+This is my rebuild of the wallet customisation flow from [Family](https://www.family.co). Multi-stage components like this one aren’t hard to build, but they are easy to get wrong without a plan for what changes, when it changes and how to keep it predictable across states.
 
 <Demo>
   <FamilyWallet />
 </Demo>
 
-Always try to keep the state of your components as simple as possible. This is a good example of a component that has a lot of different states, but it’s still easy to understand.
+I kept the state as simple as possible, so even though the component has a lot of different states, it’s still easy to understand.
 
 <StatesFigure />
-<sub>Four states, one card. Each step changes one thing, and save always leads back to the start.</sub>
+<sub>A tap expands the card, Customize brings up the colour picker, Edit Nickname focuses the name and Done returns to the picker, then Save closes it back to the start.</sub>
