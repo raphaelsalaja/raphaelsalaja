@@ -17,9 +17,6 @@ export function BotsPreview() {
 export function Bots() {
   return (
     <article className="prose">
-      <header data-reveal>
-        <h1>Bots</h1>
-      </header>
       <div className={styles.chart}>
         {leadBot ? (
           <section aria-labelledby="lead-heading" className={styles.lead}>
