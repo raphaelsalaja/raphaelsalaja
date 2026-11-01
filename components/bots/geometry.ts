@@ -255,6 +255,30 @@ export const MARKS = {
       l: [1.27, 1.26],
     },
   },
+  pebble: {
+    path: "M0.22 126.81L0.46 116.65L1.57 106.34L3.75 96.12L7.82 83.18L11.96 73.72L16.6 64.97L23.81 54.1L29.78 46.72L37.99 38.15L44.72 32.26L53.17 25.99L62.31 20.41L73.78 14.94L83.86 11.31L91.81 9.15L102.86 7.12L111.67 6.25L124.15 6.09L137.14 7.3L146.89 9.17L156.82 11.88L166.27 15.45L175.73 19.88L184.64 25.2L195.59 33.33L203.19 40.37L209.95 48.13L217.73 59.12L222.59 68.09L226.42 77.51L229.24 87.05L231.14 96.97L231.83 107.09L231.2 120.46L229.39 130.52L226.58 140.36L222.75 149.92L218.03 159.13L210.47 170.63L204.04 178.61L195.09 187.87L185.63 196.05L178.05 201.58L167.46 208.07L160.81 211.48L154.01 214.52L144.01 218.15L133.24 221.12L120.92 223.36L108.1 224.49L97.86 224.51L84.16 223.18L74 221.1L64.18 218.05L57.85 215.53L51.64 212.59L42.97 207.31L34.9 201.32L29.86 196.8L23.03 189.36L15.26 178.55L10.34 169.66L6.43 160.22L2.7 147.3L0.91 137.16Z",
+    eyes: {
+      seat: [
+        [138.39, 84.32],
+        [190.07, 70.32],
+      ],
+      ang: [-18.72, -24.45],
+      w: [1.28, 1.39],
+      l: [1.39, 1.37],
+    },
+  },
+  cloud: {
+    path: "M245.23 114.27L245.19 119.41L244.25 126.21L242.05 136.23L239.91 142.7L237.53 147.3L231.04 157.36L228.03 161.39L225.68 163.87L212.87 174.7L208.7 177.38L192.89 185.07L183.98 187.73L179.58 192.79L176.62 195.53L168.39 202.57L162.8 206.52L157.97 209.06L146.71 214.1L138.81 216.46L123.81 218.21L115.64 218.3L111.55 217.89L104.87 216.6L93.32 212.85L87.05 215.84L83.84 216.98L79 218.17L70.69 219.51L63.96 219.77L58.96 219.4L54.06 218.54L47.71 216.78L40.11 213.58L32.97 209.46L26.41 204.48L20.47 198.72L15.3 192.3L10.97 185.27L7.64 177.71L5.77 171.35L4.86 166.47L3.97 156.61L4.38 148.39L4.98 145.1L6.39 140.18L11.45 127.8L11.7 126.41L8.91 118.42L7.4 111.47L6.73 101.53L6.61 89.91L8.01 81.28L11.31 70.03L13.29 64.48L16.7 57.93L24.94 45.73L29.86 40.23L41.07 30.81L44.6 28.23L51.02 24.76L61.54 20.12L69.65 17.48L86.32 15.18L94.51 14.94L102.63 15.93L115.52 18.71L116.79 18.39L123.36 15.39L127.44 14.16L138.77 12.22L146.05 11.88L151.84 12.42L160.32 14.4L167.06 17.04L172.22 19.7L177.1 22.85L181.7 26.39L187.95 32.44L193.31 39.26L195.61 42.93L199.52 50.61L200.53 51.6L206.7 54.24L209.63 55.83L215.15 59.5L225.25 68.3L230.94 74.67L235.74 81.72L240.09 90.96L241.63 95.8L244.09 105.76Z",
+    eyes: {
+      seat: [
+        [130.1, 87.59],
+        [180.2, 74.02],
+      ],
+      ang: [-32.28, -31.67],
+      w: [1.23, 1.79],
+      l: [1.3, 1.29],
+    },
+  },
 } as const satisfies Record<string, MarkShape>;
 
 function centroid(points: readonly (readonly [number, number])[]) {
@@ -295,6 +319,71 @@ function eyePath(eyes: MarkEyes, index: 0 | 1) {
 export function markEyes(shape: keyof typeof MARKS) {
   const eyes = MARKS[shape].eyes;
   return [eyePath(eyes, 0), eyePath(eyes, 1)] as const;
+}
+
+type Point = readonly [number, number];
+
+const hulls = new Map<keyof typeof MARKS, readonly Point[]>();
+
+function cross(o: Point, a: Point, b: Point) {
+  return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+}
+
+function convexHull(points: Point[]) {
+  const sorted = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const half = (list: Point[]) => {
+    const chain: Point[] = [];
+    for (const point of list) {
+      while (chain.length >= 2) {
+        const a = chain[chain.length - 2];
+        const b = chain[chain.length - 1];
+        if (!a || !b || cross(a, b, point) > 0) break;
+        chain.pop();
+      }
+      chain.push(point);
+    }
+    chain.pop();
+    return chain;
+  };
+  return [...half(sorted), ...half(sorted.reverse())];
+}
+
+// Visvalingam: drop the vertex that adds the least area until few enough remain,
+// so the tips of stars and sparkles survive while flat runs collapse.
+function simplify(hull: Point[], limit: number) {
+  const points = [...hull];
+  while (points.length > limit) {
+    let weakest = 0;
+    let least = Number.POSITIVE_INFINITY;
+    points.forEach((point, index) => {
+      const before = points[(index - 1 + points.length) % points.length];
+      const after = points[(index + 1) % points.length];
+      if (!before || !after) return;
+      const area = Math.abs(cross(before, point, after));
+      if (area < least) {
+        least = area;
+        weakest = index;
+      }
+    });
+    points.splice(weakest, 1);
+  }
+  return points;
+}
+
+/** Convex outline of a mark in viewBox units, for collision bodies. */
+export function markHull(shape: keyof typeof MARKS, limit = 20) {
+  const cached = hulls.get(shape);
+  if (cached) return cached;
+  const values = MARKS[shape].path.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
+  const points: Point[] = [];
+  for (let i = 0; i + 1 < values.length; i += 2) {
+    const x = values[i];
+    const y = values[i + 1];
+    if (x !== undefined && y !== undefined) points.push([x, y]);
+  }
+  const hull = simplify(convexHull(points), limit);
+  hulls.set(shape, hull);
+  return hull;
 }
 
 export function markViewBox() {

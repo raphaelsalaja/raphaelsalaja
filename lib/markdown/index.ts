@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { SUPPORT_URL } from "@/components/support";
-import { botsByArea } from "@/data/bots";
+import { type Bot, botsByArea, leadBot } from "@/data/bots";
 import { getPost, posts } from "@/data/library";
 import {
   principles,
@@ -79,8 +79,8 @@ async function home() {
     about,
     "## Skills",
     `[Skills](${markdownHref("/skills")}): Agent skills for building interfaces with coding agents. Every rule shows the broken line and the line that replaces it.`,
-    "## Bots",
-    `[See All Bots](${markdownHref("/bots")}): A team of Grok Bots, each with one job.`,
+    "## Grok Bots",
+    `[View Bots](${markdownHref("/bots")}): A team of Grok Bots, each with one job.`,
     "## Projects",
     list(
       projects.map(
@@ -115,18 +115,23 @@ const skillList = (items: Skill[]) =>
     ),
   );
 
+const botEntry = (bot: Bot, heading: string) =>
+  [
+    `${heading} ${bot.title}`,
+    bot.description,
+    list([...bot.does]),
+    ...(bot.shareUrl ? [`[Copy This Bot](${bot.shareUrl})`] : []),
+  ].join("\n\n");
+
 function botsPage() {
   return [
     "# Bots",
     "A team of Grok Bots, each with one job. Copy any of them.",
+    ...(leadBot ? [botEntry(leadBot, "##")] : []),
     ...botsByArea.map((group) =>
       [
         `## ${group.area}`,
-        ...group.bots.flatMap((bot) => [
-          `### ${bot.title}`,
-          bot.description,
-          list([...bot.does]),
-        ]),
+        ...group.bots.map((bot) => botEntry(bot, "###")),
       ].join("\n\n"),
     ),
   ].join("\n\n");
