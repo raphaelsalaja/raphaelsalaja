@@ -264,6 +264,11 @@ export function createAvatar({
     poke() {
       if (t - hopAt > 1.2) press();
     },
+    bump(hard: boolean) {
+      blinkAt = t;
+      quiet = 0;
+      if (hard && t - spinAt > TIMING.spin) spinAt = t;
+    },
     step(seconds: number): AvatarPose {
       const dt = Math.min(seconds, TIMING.maxStep);
       t += dt;

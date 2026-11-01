@@ -69,16 +69,7 @@ export function BotCard({ bot }: { bot: Bot }) {
           Copy This Bot
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
-      ) : (
-        <button
-          className={styles.copy}
-          data-avatar-action
-          disabled
-          type="button"
-        >
-          Link Coming Soon
-        </button>
-      )}
+      ) : null}
     </article>
   );
 }

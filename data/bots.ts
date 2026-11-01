@@ -1,4 +1,11 @@
-export const BOT_AREAS = ["Work & Building", "Training", "Life"] as const;
+export const BOT_AREAS = [
+  "Staff",
+  "Training",
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Shopping",
+] as const;
 
 export type BotArea = (typeof BOT_AREAS)[number];
 
@@ -14,6 +21,8 @@ export const BOT_SHAPES = [
   "wedge",
   "clover",
   "teardrop",
+  "pebble",
+  "cloud",
 ] as const;
 
 export type BotShape = (typeof BOT_SHAPES)[number];
@@ -27,6 +36,7 @@ export const BOT_COLORS = [
   "yellow",
   "orange",
   "magenta",
+  "violet",
 ] as const;
 
 export type BotColor = (typeof BOT_COLORS)[number];
@@ -40,390 +50,254 @@ export type Bot = {
   tools: readonly string[];
   shape: BotShape;
   color: BotColor;
+  lead?: true;
   shareUrl?: string;
   video?: string;
 };
 
-const roster: readonly Omit<Bot, "shape" | "color">[] = [
+export const bots: readonly Bot[] = [
   {
     title: "Executive Assistant",
-    area: "Work & Building",
+    area: "Staff",
     description:
-      "Runs the day, from the morning brief to the small jobs that still need a home.",
+      "Runs the day, from the morning brief to calendar defence and travel.",
     does: [
-      "Sends the morning brief",
-      "Triages the inbox and calendar",
-      "Handles odds and ends",
-      "Routes work to the right bot",
+      "Sends a weekday morning brief",
+      "Triages the inbox with draft replies",
+      "Preps meetings and defends the calendar",
+      "Handles travel and occasions",
+      "Never sends or books without an OK",
     ],
-    routines: [],
-    tools: [],
+    routines: ["Morning brief, weekdays", "Weekly review, Fridays"],
+    tools: ["Gmail", "Google Calendar"],
+    shape: "blob",
+    color: "black",
+    lead: true,
+    shareUrl: "https://x.ai/bot/HtVc-uG8RjAgiTPk15reT",
   },
   {
     title: "Chief Operating Officer",
-    area: "Work & Building",
-    description: "Keeps the bot team healthy, consistent, and easy to run.",
+    area: "Staff",
+    description: "Runs the team of Grok Bots end to end.",
     does: [
-      "Audits bots for drift",
-      "Watches how the team is used",
-      "Tidies routines that have gone stale",
-      "Flags bots that need another pass",
+      "Designs new bots",
+      "Audits the team for drift",
+      "Upgrades each bot to its field's top standards",
+      "Watches usage pace",
+      "Cleans up after retired bots",
     ],
     routines: [],
     tools: [],
+    shape: "star",
+    color: "gray",
+    shareUrl: "https://x.ai/bot/LIDb8mpgAwoqIXttg7A0s",
   },
   {
-    title: "Organisation Designer",
-    area: "Work & Building",
+    title: "Financial Advisor",
+    area: "Staff",
     description:
-      "Designs and creates new Grok Bots after a few preference questions.",
+      "A calm, numbers-first money admin that watches email for receipts and bills.",
     does: [
-      "Asks a few preference questions",
-      "Shapes a bot around one job",
-      "Writes the role so it is easy to copy",
-      "Hands over a bot ready to run",
+      "Tracks receipts, bills and subscriptions",
+      "Watches tax deadlines",
+      "Flags upcoming charges",
+      "Spots wasted subscriptions",
+      "Never pays or moves money without an OK",
     ],
     routines: [],
     tools: [],
-  },
-  {
-    title: "Software Engineer",
-    area: "Work & Building",
-    description: "Keeps Pond, a Firefox add-on, and Koi healthy and moving.",
-    does: [
-      "Checks that each project is healthy",
-      "Fixes bugs and small regressions",
-      "Keeps the work moving",
-      "Notes what should be built next",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Web Developer",
-    area: "Work & Building",
-    description:
-      "Builds, fixes, and polishes this portfolio, then ships after checking a preview.",
-    does: [
-      "Builds and fixes pages on this site",
-      "Polishes layout, type, and motion",
-      "Checks a preview before shipping",
-      "Keeps the site consistent",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Product Designer",
-    area: "Work & Building",
-    description: "Designs products and new app concepts in Figma.",
-    does: [
-      "Designs product flows and screens",
-      "Explores new app concepts",
-      "Works in Figma",
-      "Hands off work that can be built",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Brand Designer",
-    area: "Work & Building",
-    description:
-      "Designs logos and wordmarks, with a few distinct directions to choose from.",
-    does: [
-      "Explores several concept directions",
-      "Designs logos and wordmarks",
-      "Keeps each mark simple and distinct",
-      "Presents the options side by side",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Motion Designer",
-    area: "Work & Building",
-    description:
-      "Makes custom animated Discord emotes, stickers, and characters.",
-    does: [
-      "Animates custom Discord emotes",
-      "Designs stickers and characters",
-      "Keeps the motion short and loopable",
-      "Exports files ready to use",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Video Editor",
-    area: "Work & Building",
-    description: "Clips streams, podcasts, videos, and X Spaces.",
-    does: [
-      "Clips streams and podcasts",
-      "Cuts longer videos down",
-      "Pulls moments from X Spaces",
-      "Prepares the cuts for posting",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Marketing Manager",
-    area: "Work & Building",
-    description: "Gets eyes on projects, mainly Pond, with posts and launches.",
-    does: [
-      "Drafts posts for X",
-      "Plans launches",
-      "Puts the focus on Pond",
-      "Keeps the message plain and specific",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Skills Researcher",
-    area: "Work & Building",
-    description: "Pitches new skill ideas for the open skills collection.",
-    does: [
-      "Looks for gaps in the collection",
-      "Pitches new skill ideas",
-      "Writes a clear job for each skill",
-      "Points at the public skills repository",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Game Developer",
-    area: "Work & Building",
-    description: "Mods games, starting with the skateboarding game re:skate.",
-    does: [
-      "Mods re:skate",
-      "Tries small gameplay changes",
-      "Keeps a list of ideas to test",
-      "Notes what is worth keeping",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Career Coach",
-    area: "Work & Building",
-    description: "Supports growth in design-engineer and frontend-craft work.",
-    does: [
-      "Looks at design-engineer craft",
-      "Suggests what to practise next",
-      "Reviews frontend work for clarity",
-      "Keeps the focus on the craft",
-    ],
-    routines: [],
-    tools: [],
+    shape: "square",
+    color: "gray",
+    shareUrl: "https://x.ai/bot/_Ztu0D6hN88W-nc_4ETqk",
   },
   {
     title: "Head Coach",
     area: "Training",
-    description: "Runs the whole sprint training plan.",
+    description:
+      "A sprint coach that sends tomorrow's session every night from the posted plan.",
     does: [
-      "Sets the weekly sprint plan",
-      "Balances speed, strength, and rest",
-      "Adjusts the plan when the week changes",
-      "Keeps sessions pointed at the next race",
+      "Sends tomorrow's session each night",
+      "Follows the coach's posted plan",
+      "Logs results in a weekly training page",
     ],
-    routines: [],
+    routines: ["Session plan, 9pm nightly"],
     tools: [],
+    shape: "heart",
+    color: "green",
+    shareUrl: "https://x.ai/bot/qbnwqllDzMQ7Yvbybzh2a",
   },
   {
-    title: "Strength Coach",
+    title: "Strength & Conditioning Coach",
     area: "Training",
     description:
-      "Writes gym strength, power, and plyometric programmes for sprinting.",
+      "An evidence-based gym coach for sprinters, built around track sessions.",
     does: [
-      "Plans strength sessions for sprinting",
-      "Adds power and plyometric work",
-      "Matches the gym to the sprint plan",
-      "Keeps each session simple to follow",
+      "Writes strength and power programmes",
+      "Adds plyometric work",
+      "Gives technique cues",
+      "Fits the gym around track sessions",
     ],
     routines: [],
     tools: [],
+    shape: "cloud",
+    color: "green",
+    shareUrl: "https://x.ai/bot/briQ14jd3-taJjZ02jqTf",
   },
   {
-    title: "Performance Analyst",
+    title: "Physical Therapist",
     area: "Training",
     description:
-      "Logs splits and race times, tracks personal bests, and reviews race footage.",
+      "Keeps a sprinter's body healthy with evidence-based prehab and recovery.",
     does: [
-      "Logs splits and race times",
-      "Tracks personal bests",
-      "Reviews race footage",
-      "Notes what changed between races",
+      "Tracks niggles and injuries",
+      "Plans hamstring, hip and ankle prehab",
+      "Guides a criteria-based return to run",
+      "Sends anything serious to a real physio",
     ],
     routines: [],
     tools: [],
+    shape: "cloud",
+    color: "green",
+    shareUrl: "https://x.ai/bot/F5AncQ85KMiawIgliPmPO",
   },
   {
-    title: "Sports Psychologist",
+    title: "Performance Dietitian",
     area: "Training",
     description:
-      "Helps with race nerves, pre-race routines, focus, and confidence.",
+      "A dietitian for sprinters, fuelling around training, races and recovery.",
     does: [
-      "Works through race nerves",
-      "Builds a pre-race routine",
-      "Sharpens focus for the race",
-      "Supports confidence before the start",
+      "Plans fuelling around training and races",
+      "Writes meal plans and shopping lists",
+      "Helps with eating out",
+      "Tracks drinks and nudges on water",
     ],
-    routines: [],
+    routines: ["Water check, every 2 hours"],
     tools: [],
+    shape: "teardrop",
+    color: "green",
+    shareUrl: "https://x.ai/bot/2Eqi-S5xSBqr2LjwjDKLF",
   },
   {
-    title: "Nutrition Coach",
-    area: "Training",
+    title: "Software Engineer",
+    area: "Engineering",
     description:
-      "Plans meals, simple recipes, and shopping lists around training.",
+      "Keeps web apps, extensions and open-source contributions healthy.",
     does: [
-      "Writes meal plans around training",
-      "Suggests simple recipes",
-      "Builds a shopping list",
-      "Keeps food practical on hard days",
+      "Finds the cause of failed deploys",
+      "Fixes bugs with a failing test first",
+      "Prepares clean PRs",
+      "Never ships without an OK",
     ],
     routines: [],
     tools: [],
+    shape: "hex",
+    color: "blue",
+    shareUrl: "https://x.ai/bot/ppWwc5XQAuFO8kQOJ74Ik",
   },
   {
-    title: "Sleep Coach",
-    area: "Training",
-    description:
-      "Looks after sleep habits, wind-down, and bed and wake times around training.",
+    title: "Web Developer",
+    area: "Engineering",
+    description: "Builds, fixes and polishes this website.",
     does: [
-      "Sets bed and wake times",
-      "Builds a wind-down routine",
-      "Protects sleep around hard sessions",
-      "Keeps the schedule steady",
+      "Builds and fixes pages",
+      "Polishes the site",
+      "Checks every change in preview and production",
+      "Ships when told to",
     ],
     routines: [],
     tools: [],
+    shape: "pebble",
+    color: "blue",
+    shareUrl: "https://x.ai/bot/fO8qADaV47FW-chDEjlZ4",
   },
   {
-    title: "Culture Curator",
-    area: "Life",
+    title: "Product Designer",
+    area: "Design",
     description:
-      "Makes taste picks across music, books, film, art, design, fashion, food, and places.",
+      "An opinionated product designer for apps and new app concepts.",
     does: [
-      "Picks music, books, and film",
-      "Suggests art, design, and fashion",
-      "Notes food and places worth a visit",
-      "Keeps the list specific",
+      "Gathers real-world UI references",
+      "Builds screen directions in Figma",
+      "Gives critique backed by named design principles",
+    ],
+    routines: [],
+    tools: ["Figma"],
+    shape: "sparkle",
+    color: "violet",
+    shareUrl: "https://x.ai/bot/IPCuZ4NoYuCGwFTVjvNb5",
+  },
+  {
+    title: "Brand Designer",
+    area: "Design",
+    description: "Designs logos and wordmarks in a few distinct directions.",
+    does: [
+      "Gives a few distinct directions per ask",
+      "Tests each one small and in one colour",
+      "Refines the one picked",
     ],
     routines: [],
     tools: [],
+    shape: "tablet",
+    color: "violet",
+    shareUrl: "https://x.ai/bot/eif6WEVw7MzOe53QZP2oD",
+  },
+  {
+    title: "Marketing Manager",
+    area: "Marketing",
+    description: "Gets eyes on projects and launches, then tracks what lands.",
+    does: [
+      "Drafts hook-first X posts",
+      "Writes Reddit and community posts",
+      "Plans Product Hunt and Show HN launches",
+      "Tracks what lands",
+      "Never posts without an OK",
+    ],
+    routines: [],
+    tools: [],
+    shape: "heart",
+    color: "orange",
+    shareUrl: "https://x.ai/bot/pryEyer7SSOx-KBiE0zJ0",
+  },
+  {
+    title: "Video Editor",
+    area: "Marketing",
+    description:
+      "Cuts streams, podcasts, videos and X Spaces into vertical clips.",
+    does: [
+      "Saves full segments",
+      "Cuts the best moments into 9:16 clips",
+      "Adds captions, hooks and titles",
+    ],
+    routines: [],
+    tools: [],
+    shape: "wedge",
+    color: "orange",
+    shareUrl: "https://x.ai/bot/lB9M6GHvWM2ebQWotA9Lw",
   },
   {
     title: "Fashion Stylist",
-    area: "Life",
-    description: "Helps with wardrobe, fit, and outfit ideas.",
+    area: "Shopping",
+    description: "A candid personal stylist for a leaner, better wardrobe.",
     does: [
-      "Reviews the wardrobe",
-      "Checks fit",
-      "Suggests outfit ideas",
-      "Keeps combinations easy to repeat",
+      "Makes fit calls from real measurements",
+      "Suggests outfits",
+      "Finds pieces worth buying, new or secondhand",
+      "Never buys without an OK",
     ],
     routines: [],
     tools: [],
-  },
-  {
-    title: "Interior Designer",
-    area: "Life",
-    description:
-      "Plans flat and workspace layouts, furniture, lighting, and the desk.",
-    does: [
-      "Plans flat and workspace layouts",
-      "Suggests furniture and lighting",
-      "Sets up the desk",
-      "Keeps the room calm and workable",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Travel Agent",
-    area: "Life",
-    description: "Finds and compares flights and hotels, and tracks bookings.",
-    does: [
-      "Searches flights and hotels",
-      "Compares the options",
-      "Tracks bookings",
-      "Keeps trip details in one place",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Accountant",
-    area: "Life",
-    description:
-      "Handles personal money admin, from receipts to subscriptions and renewals.",
-    does: [
-      "Files receipts",
-      "Tracks subscriptions",
-      "Watches renewal dates",
-      "Keeps the admin in one place",
-    ],
-    routines: [],
-    tools: [],
-  },
-  {
-    title: "Event Planner",
-    area: "Life",
-    description:
-      "Plans birthdays, anniversaries, and other occasions, with gifts and cards ahead of time.",
-    does: [
-      "Tracks birthdays and anniversaries",
-      "Plans gifts and cards early",
-      "Keeps a list of upcoming occasions",
-      "Leaves enough time to prepare",
-    ],
-    routines: [],
-    tools: [],
+    shape: "flower",
+    color: "magenta",
+    shareUrl: "https://x.ai/bot/fZ8I5t-Maz1OSR7oKf7CR",
   },
 ];
 
-const marks = {
-  "Executive Assistant": { shape: "blob", color: "black" },
-  "Chief Operating Officer": { shape: "star", color: "black" },
-  "Organisation Designer": { shape: "teardrop", color: "black" },
-  "Software Engineer": { shape: "hex", color: "blue" },
-  "Web Developer": { shape: "tablet", color: "orange" },
-  "Product Designer": { shape: "sparkle", color: "magenta" },
-  "Brand Designer": { shape: "star", color: "yellow" },
-  "Motion Designer": { shape: "tablet", color: "blue" },
-  "Video Editor": { shape: "wedge", color: "green" },
-  "Marketing Manager": { shape: "heart", color: "green" },
-  "Skills Researcher": { shape: "clover", color: "blue" },
-  "Game Developer": { shape: "hex", color: "blue" },
-  "Career Coach": { shape: "clover", color: "orange" },
-  "Head Coach": { shape: "heart", color: "cyan" },
-  "Strength Coach": { shape: "hex", color: "orange" },
-  "Performance Analyst": { shape: "square", color: "blue" },
-  "Sports Psychologist": { shape: "flower", color: "magenta" },
-  "Nutrition Coach": { shape: "teardrop", color: "cyan" },
-  "Sleep Coach": { shape: "blob", color: "blue" },
-  "Culture Curator": { shape: "star", color: "cyan" },
-  "Fashion Stylist": { shape: "flower", color: "yellow" },
-  "Interior Designer": { shape: "blob", color: "yellow" },
-  "Travel Agent": { shape: "wedge", color: "orange" },
-  Accountant: { shape: "square", color: "gray" },
-  "Event Planner": { shape: "sparkle", color: "gray" },
-} as const satisfies Record<string, { shape: BotShape; color: BotColor }>;
-
-export const bots: readonly Bot[] = roster.map((bot) => {
-  const mark = marks[bot.title as keyof typeof marks];
-  if (!mark) throw new Error(`Missing mark for ${bot.title}`);
-  return { ...bot, shape: mark.shape, color: mark.color };
-});
+export const leadBot = bots.find((bot) => bot.lead);
 
 export const botsByArea = BOT_AREAS.map((area) => ({
   area,
-  bots: bots.filter((bot) => bot.area === area),
-}));
+  bots: bots.filter((bot) => bot.area === area && !bot.lead),
+})).filter((group) => group.bots.length > 0);
 
 export function botSlug(title: string) {
   return title

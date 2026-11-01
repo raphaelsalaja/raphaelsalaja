@@ -8,6 +8,9 @@ import styles from "./styles.module.css";
 
 const VIEW_BOX = markViewBox();
 
+export const BUMP = "bot-bump";
+export type BumpDetail = { hard: boolean };
+
 function headFor(shape: BotShape): Head {
   const [left, right] = MARKS[shape].eyes.seat;
   return {
@@ -112,6 +115,8 @@ export function BotMark({
     };
     const leave = () => avatar.leave();
     const poke = () => avatar.poke();
+    const bump = (event: Event) =>
+      avatar.bump((event as CustomEvent<BumpDetail>).detail.hard);
     const hover = () => avatar.hover(true);
     const unhover = () => avatar.hover(false);
     const action = root.querySelector<HTMLElement>("[data-avatar-action]");
@@ -120,6 +125,7 @@ export function BotMark({
     root.addEventListener("pointermove", move);
     root.addEventListener("pointerleave", leave);
     node.addEventListener("pointerdown", poke);
+    node.addEventListener(BUMP, bump);
     action?.addEventListener("pointerenter", hover);
     action?.addEventListener("pointerleave", unhover);
     action?.addEventListener("pointerdown", poke);
@@ -131,6 +137,7 @@ export function BotMark({
       root.removeEventListener("pointermove", move);
       root.removeEventListener("pointerleave", leave);
       node.removeEventListener("pointerdown", poke);
+      node.removeEventListener(BUMP, bump);
       action?.removeEventListener("pointerenter", hover);
       action?.removeEventListener("pointerleave", unhover);
       action?.removeEventListener("pointerdown", poke);

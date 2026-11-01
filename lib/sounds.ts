@@ -46,6 +46,25 @@ export function play(kind: Sound) {
   }
 }
 
+/** Starts audio from inside a gesture so later, gesture-less sounds can play. */
+export function unlockAudio() {
+  audio();
+}
+
+/** A soft thud scaled by `strength` (0 to 1). Silent until audio is unlocked. */
+export function playBump(strength: number) {
+  if (context?.state !== "running") return;
+  try {
+    const dest = destination(context);
+    const drift = spread();
+    const peak = Math.min(1, Math.max(0, strength));
+    tone(context, dest, 150 * drift, 64, 0.1 * peak, 0.07, "sine");
+    burst(context, dest, 520 * drift, "lowpass", 0.05 * peak, 0.03);
+  } catch {
+    // A failed sound should never interrupt the motion that triggered it.
+  }
+}
+
 function audio() {
   const Audio = window.AudioContext;
   if (!Audio) return null;

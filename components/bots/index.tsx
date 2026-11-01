@@ -1,12 +1,17 @@
 import "@/styles/mdx.css";
 
-import { areaSlug, botsByArea } from "@/data/bots";
+import { Section } from "@/components/section";
+import { areaSlug, botsByArea, leadBot } from "@/data/bots";
 import { BotCard } from "./card";
 import { BotPile } from "./pile";
 import styles from "./styles.module.css";
 
 export function BotsPreview() {
-  return <BotPile />;
+  return (
+    <Section id="bots" title="Grok Bots">
+      <BotPile />
+    </Section>
+  );
 }
 
 export function Bots() {
@@ -18,14 +23,19 @@ export function Bots() {
       <p data-reveal>
         A team of Grok Bots, each with one job. Copy any of them.
       </p>
-      <div className={styles.groups}>
+      <div className={styles.chart}>
+        {leadBot ? (
+          <div className={styles.lead}>
+            <BotCard bot={leadBot} />
+          </div>
+        ) : null}
         {botsByArea.map((group) => {
           const id = areaSlug(group.area);
 
           return (
             <section
               aria-labelledby={`${id}-heading`}
-              className={styles.group}
+              className={styles.branch}
               key={group.area}
             >
               <h2 className={styles.area} id={`${id}-heading`}>
