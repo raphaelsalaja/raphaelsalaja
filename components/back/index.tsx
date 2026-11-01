@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconArrowLeft } from "@/components/icons";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import styles from "./styles.module.css";
 
 export function Back() {
@@ -11,8 +11,8 @@ export function Back() {
 
   return (
     <Link href="/" className={styles.back}>
-      <IconArrowLeft size={14} />
-      Back
+      <span className={styles.name}>{SITE_NAME}</span>
+      <span className={styles.role}>{SITE_DESCRIPTION}</span>
     </Link>
   );
 }
