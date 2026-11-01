@@ -1,5 +1,4 @@
 import { Figure, figure } from "@/components/writing/figure";
-import styles from "./styles.module.css";
 
 export { LastTenPercentDemo } from "./demo";
 
@@ -40,28 +39,22 @@ const path = knot();
 
 export function LastTenPercent() {
   return (
-    <figure
-      className={styles.figure}
-      aria-label="A line climbs quickly and levels off across most of the width, then breaks into a dense scribble over the last tenth."
+    <Figure
+      label="A line climbs quickly and levels off across most of the width, then breaks into a dense scribble over the last tenth."
+      viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+      labels={["Layout, type, states", "The last 10%"]}
     >
-      <svg
-        className={styles.svg}
-        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-        fill="none"
-        aria-hidden="true"
-      >
-        <path className={styles.guide} d={`M${SPLIT} ${AXIS}V${TOP - 32}`} />
-        <path className={styles.axis} d={`M${START} ${AXIS}H${END}`} />
-        {[START, SPLIT, END].map((x) => (
-          <path key={x} className={styles.axis} d={`M${x} ${AXIS - 3}v6`} />
-        ))}
-        <path className={styles.line} d={path} pathLength={1} />
-      </svg>
-      <div className={styles.labels} aria-hidden="true">
-        <span>Layout, type, states</span>
-        <span>The last 10%</span>
-      </div>
-    </figure>
+      <path className={figure.guide} d={`M${SPLIT} ${AXIS}V${TOP - 32}`} />
+      <path className={figure.axis} d={`M${START} ${AXIS}H${END}`} />
+      {[START, SPLIT, END].map((x) => (
+        <path key={x} className={figure.axis} d={`M${x} ${AXIS - 3}v6`} />
+      ))}
+      <path
+        className={`${figure.line} ${figure.draw}`}
+        d={path}
+        pathLength={1}
+      />
+    </Figure>
   );
 }
 

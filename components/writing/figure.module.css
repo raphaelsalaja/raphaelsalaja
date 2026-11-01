@@ -1,36 +1,70 @@
 .figure {
   --ink: color-mix(in oklab, var(--gray-12) 35%, var(--gray-11));
+  --canvas: 480;
+  --label-size: 10;
+  /* One step down the gray ramp: 3.17:1 light, 3.40:1 dark on this ground. */
+  --support: var(--gray-9);
+  /* Quieter than tertiary text, still at least 4.5:1 in both themes. */
+  --quiet: color-mix(in oklab, var(--gray-11) 55%, var(--gray-10));
 
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 40px 24px 32px;
+  padding: 40px 24px 20px;
   margin-top: 32px;
   background: var(--background-secondary);
   border-radius: 12px;
   box-shadow: 0 0 0 1px var(--border-primary);
 }
 
+.scroll {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--border-secondary) transparent;
+  scrollbar-width: thin;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* 12px holds glyphs that sit just outside the viewBox; figure padding makes up the rest. */
+  min-width: calc(var(--canvas) * 11px / var(--label-size));
+  padding-bottom: 12px;
+}
+
+.figure:has(> .svg) {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--border-secondary) transparent;
+  scrollbar-width: thin;
+}
+
 .svg {
   width: 100%;
+  min-width: calc(var(--canvas) * 11px / var(--label-size));
   height: auto;
   overflow: visible;
 }
 
 .axis {
-  stroke: var(--border-strong);
+  stroke: var(--support);
   stroke-width: 1;
 }
 
 .guide {
-  stroke: var(--border-secondary);
+  stroke: var(--support);
   stroke-width: 1;
   stroke-dasharray: 2 4;
 }
 
 .faint {
   fill: none;
-  stroke: var(--border-strong);
+  stroke: var(--support);
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -38,7 +72,7 @@
 
 .dashed {
   fill: var(--background-secondary);
-  stroke: var(--border-strong);
+  stroke: var(--support);
   stroke-width: 1;
   stroke-dasharray: 3 3;
 }
@@ -68,16 +102,25 @@
   stroke-width: 1.25;
 }
 
-.text {
+.text,
+.quiet {
   font-size: 10px;
   font-variation-settings: var(--font-weight-450);
+  letter-spacing: 0;
+  text-wrap: nowrap;
+  stroke: var(--background-secondary);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.text {
   fill: var(--text-tertiary);
 }
 
 .quiet {
-  font-size: 10px;
-  font-variation-settings: var(--font-weight-450);
-  fill: var(--text-quaternary);
+  fill: var(--quiet);
 }
 
 .labels {
