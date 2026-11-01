@@ -126,8 +126,7 @@ const botEntry = (bot: Bot, heading: string) =>
 function botsPage() {
   return [
     "# Bots",
-    "A team of Grok Bots, each with one job. Copy any of them.",
-    ...(leadBot ? [botEntry(leadBot, "##")] : []),
+    ...(leadBot ? [`## Lead\n\n${botEntry(leadBot, "###")}`] : []),
     ...botsByArea.map((group) =>
       [
         `## ${group.area}`,

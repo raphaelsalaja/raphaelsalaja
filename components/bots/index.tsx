@@ -20,14 +20,14 @@ export function Bots() {
       <header data-reveal>
         <h1>Bots</h1>
       </header>
-      <p data-reveal>
-        A team of Grok Bots, each with one job. Copy any of them.
-      </p>
       <div className={styles.chart}>
         {leadBot ? (
-          <div className={styles.lead}>
+          <section aria-labelledby="lead-heading" className={styles.lead}>
+            <h2 className={styles.area} id="lead-heading">
+              Lead
+            </h2>
             <BotCard bot={leadBot} />
-          </div>
+          </section>
         ) : null}
         {botsByArea.map((group) => {
           const id = areaSlug(group.area);

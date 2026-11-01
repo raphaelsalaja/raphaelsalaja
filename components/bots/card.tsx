@@ -17,12 +17,21 @@ export function BotCard({ bot }: { bot: Bot }) {
   }, [slug]);
 
   return (
-    <article className={styles.tile} data-avatar id={slug}>
+    <article
+      className={styles.tile}
+      data-avatar
+      data-color={bot.color}
+      id={slug}
+    >
       <details className={styles.details} ref={details}>
         <summary className={styles.summary}>
-          <BotMark color={bot.color} shape={bot.shape} />
-          <h3 className={styles.title}>{bot.title}</h3>
-          <p className={styles.description}>{bot.description}</p>
+          <span className={styles.wash}>
+            <BotMark color={bot.color} shape={bot.shape} />
+          </span>
+          <span className={styles.heading}>
+            <h3 className={styles.title}>{bot.title}</h3>
+            <p className={styles.description}>{bot.description}</p>
+          </span>
         </summary>
         <div className={styles.more}>
           {bot.video ? (
