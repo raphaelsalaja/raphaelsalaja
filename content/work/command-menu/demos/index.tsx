@@ -14,7 +14,6 @@ import {
   Avatar,
   Dot,
   Icons,
-  Keycap,
   Keys,
   LABELS,
   ME,
@@ -865,21 +864,6 @@ export function CommandMenu() {
                 <div className={styles.chip}>
                   <span className={styles.chipId}>{issue.id}</span>{" "}
                   {issue.title}
-                  {!nested && frame.query.length === 0 ? (
-                    <>
-                      {" "}
-                      <button
-                        type="button"
-                        className={styles.clear}
-                        title="Clear context"
-                        tabIndex={-1}
-                        onMouseDown={(event) => event.preventDefault()}
-                        onClick={clearContext}
-                      >
-                        <Keycap borderless>⌫</Keycap>
-                      </button>
-                    </>
-                  ) : null}
                 </div>
               </div>
             ) : null}

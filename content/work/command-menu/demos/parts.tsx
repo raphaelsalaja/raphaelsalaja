@@ -100,21 +100,15 @@ function pressName(glyph: string) {
   return PRESS[glyph] ?? glyph.toLowerCase();
 }
 
-export function Keycap({
+function Keycap({
   children,
   pressed,
-  borderless,
 }: {
   children: string;
   pressed?: boolean;
-  borderless?: boolean;
 }) {
   return (
-    <kbd
-      className={styles.key}
-      data-pressed={pressed ? "true" : undefined}
-      data-borderless={borderless ? "true" : undefined}
-    >
+    <kbd className={styles.key} data-pressed={pressed ? "true" : undefined}>
       {children}
     </kbd>
   );

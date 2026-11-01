@@ -66,7 +66,7 @@
 .chip {
   display: inline-block;
   max-width: 100%;
-  padding: 2px 6px;
+  padding: 4px 6px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
@@ -81,14 +81,6 @@
 .chipId {
   font-size: inherit;
   color: var(--cm-muted, var(--gray-11));
-}
-
-.clear {
-  display: inline-flex;
-  font-size: inherit;
-  vertical-align: baseline;
-  color: var(--cm-muted, var(--gray-11));
-  cursor: default;
 }
 
 .field {
@@ -316,13 +308,6 @@
 .key[data-pressed="true"] {
   background: color-mix(in oklab, var(--gray-12) 10%, transparent);
   transition: none;
-}
-
-.key[data-borderless="true"] {
-  min-width: 0;
-  padding: 0;
-  font-variation-settings: var(--font-weight-500);
-  border: 0;
 }
 
 .avatar {
