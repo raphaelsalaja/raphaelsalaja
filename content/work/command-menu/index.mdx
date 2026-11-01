@@ -23,7 +23,7 @@ I've never worked at Linear, so I can't tell you what they were thinking, but I 
 
 I started with inspect element. I opened the menu and right-clicked a row, and the Elements panel showed most of what I needed: the row's height, the highlight behind it, the padding around the list and the font size and weight.
 
-Motion and the keyboard were harder, because a spring doesn't show up in the Elements panel, so for those I went to the Sources tab. Linear ships its web client like any other site, so the springs and keyboard rules are sitting in the JavaScript, minified but readable.
+Motion and the keyboard were harder, and the springs were the hardest part of the whole rebuild to pin down. A spring doesn't show up in the Elements panel, so for those I went to the Sources tab. Linear ships its web client like any other site, so the springs and keyboard rules are sitting in the JavaScript, minified but readable.
 
 ## Anatomy
 
@@ -73,6 +73,8 @@ There are two springs, and neither overshoots. Height uses a stiffness of 20000 
 Why no bounce at all? The pointer is usually resting on a row, so if the frame overshot, the row under it would slide past and come back and the highlight would flicker between two rows. You wouldn't just see a bounce like that, you'd feel it under your hand.
 
 Opening scales up from 0.98, while closing goes down to 0.96 on a stiffer spring, so it leaves faster than it arrived. The way I read it, arriving deserves a moment and leaving doesn't, because once you've picked something the menu's job is done and it gets out of the way.
+
+Closing took me a second try. Motion's exit reuses the transition from the last render, and the last render was the open one, so my menu closed on the opening spring until I gave the exit its own.
 
 Opening a page doesn't animate the content at all: the frame dips to 0.98 for 80ms and comes back, and the height spring does the rest. My guess is that a slide or a crossfade would make you wait to read the new list, but a dip says "something changed" in 80ms and the rows are already there.
 

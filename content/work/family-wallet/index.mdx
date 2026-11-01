@@ -11,3 +11,11 @@ I kept the state as simple as possible, so even though the component has a lot o
 
 <StatesFigure />
 <sub>A tap expands the card, Customize brings up the colour picker, Edit Nickname focuses the name and Done returns to the picker, then Save closes it back to the start.</sub>
+
+## Keeping the Text Still
+
+The hardest part was stopping the text from moving around as the card switched between states.
+
+The first problem was the name and balance. The small card sits inside the article, so it picked up the page’s 14px type, but the open card renders outside it and kept its 16px at weight 600, so the text changed size and weight as one card replaced the other. One rule that makes everything inside the card take its type from the card fixed it.
+
+The second was the label in the pill. The pill changed size through Motion’s `layout` animation, which fakes a resize with a scale transform and counter-scales the label inside, so any re-render mid-animation knocked the label off centre and squished it. Now the pill animates its real `width`, measured from a hidden copy of the label, and both labels are centred with flex, so the text stays put while the pill grows and shrinks around it.
