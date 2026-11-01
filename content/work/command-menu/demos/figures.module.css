@@ -1,5 +1,7 @@
 .figure {
-  --figure-line: var(--gray-8);
+  --canvas: 560;
+  --label-size: 11;
+  --figure-line: var(--gray-9);
   --figure-plate: color-mix(in oklab, var(--gray-1) 82%, transparent);
   --figure-accent: #5e6ad2;
 
@@ -10,9 +12,18 @@
   box-shadow: 0 0 0 1px var(--border-primary);
 }
 
+.figure:has(> .svg) {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--border-secondary) transparent;
+  scrollbar-width: thin;
+}
+
 .svg {
   display: block;
   width: 100%;
+  min-width: calc(var(--canvas) * 11px / var(--label-size));
   height: auto;
   overflow: visible;
 }
@@ -41,7 +52,7 @@
 
 .row {
   fill: none;
-  stroke: var(--border-strong);
+  stroke: var(--figure-line);
   stroke-width: 0.5;
 }
 
@@ -70,13 +81,13 @@
 
 .faint {
   fill: none;
-  stroke: var(--border-secondary);
+  stroke: var(--figure-line);
   stroke-width: 0.75;
 }
 
 .guide {
   fill: none;
-  stroke: var(--border-strong);
+  stroke: var(--figure-line);
   stroke-width: 0.75;
   stroke-dasharray: 2 4;
 }
@@ -131,21 +142,28 @@
 .formula,
 .tag {
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  text-wrap: nowrap;
+  stroke: var(--background-secondary);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
 }
 
 .name {
-  font-size: 10px;
+  font-size: 11px;
   font-variation-settings: var(--font-weight-500);
   fill: var(--text-primary);
 }
 
 .spec {
-  font-size: 9px;
+  font-size: 11px;
   fill: var(--text-tertiary);
 }
 
 .tag {
-  font-size: 10px;
+  font-size: 11px;
   fill: var(--text-secondary);
 }
 

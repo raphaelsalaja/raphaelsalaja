@@ -16,21 +16,25 @@ export function Figure({
 }) {
   return (
     <figure className={styles.figure} aria-label={label}>
-      <svg
-        className={styles.svg}
-        viewBox={viewBox}
-        fill="none"
-        aria-hidden="true"
-      >
-        {children}
-      </svg>
-      {labels && (
-        <div className={styles.labels} aria-hidden="true">
-          {labels.map((text) => (
-            <span key={text}>{text}</span>
-          ))}
+      <div className={styles.scroll}>
+        <div className={styles.canvas}>
+          <svg
+            className={styles.svg}
+            viewBox={viewBox}
+            fill="none"
+            aria-hidden="true"
+          >
+            {children}
+          </svg>
+          {labels && (
+            <div className={styles.labels} aria-hidden="true">
+              {labels.map((text) => (
+                <span key={text}>{text}</span>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </figure>
   );
 }
