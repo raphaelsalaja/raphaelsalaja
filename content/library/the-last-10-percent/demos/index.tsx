@@ -91,7 +91,7 @@ const origins = [
 export function OriginFigure() {
   return (
     <Figure
-      label="The same button and menu twice. On the left, the menu grows outward from its own center. On the right, it grows down out of the button that opened it."
+      label="The same button and menu twice. On the left, the menu grows outward from its own centre. On the right, it grows down out of the button that opened it."
       viewBox="0 0 480 144"
     >
       {origins.map(({ name, x: px, at }, i) => {

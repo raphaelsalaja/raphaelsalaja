@@ -29,9 +29,9 @@ The third is anything pretending to be physical. A switch knob. A sheet that sli
 
 ## When an Ease Is Enough
 
-An easing curve is for things that should arrive and stop. Opacity. A color change. A page transition you don't want to bounce. A blur that clears.
+An easing curve is for things that should arrive and stop. Opacity. A colour change. A page transition you don't want to bounce. A blur that clears.
 
-A spring on a fade usually looks like a mistake, because there's nothing there to rebound. Opacity can't go past 1, so the overshoot either gets clipped, which makes the spring pointless, or it shows up as a flash. The same goes for color. Nothing in the real world bounces between two colors.
+A spring on a fade usually looks like a mistake, because there's nothing there to rebound. Opacity can't go past 1, so the overshoot either gets clipped, which makes the spring pointless, or it shows up as a flash. The same goes for colour. Nothing in the real world bounces between two colours.
 
 Eases are also more predictable. When you're coordinating several things, a list that staggers in or a sequence where one thing waits for another, you often want to know exactly when each part ends. A spring's duration is a target, not a promise.
 
@@ -45,7 +45,7 @@ This is what I reach for first. I change it often, but it's a starting point.
 - A toggle knob or a segmented control pill: spring, bounce around 0.2.
 - A dragged element returning: spring, bounce 0 to 0.2, using the release velocity.
 - A popover or menu: ease-out, 150 to 200 milliseconds. A spring here tends to feel like it's showing off.
-- Opacity, color, blur: ease or ease-out, 150 to 250 milliseconds.
+- Opacity, colour, blur: ease or ease-out, 150 to 250 milliseconds.
 - A page transition: ease-out or nothing.
 
 ## How I Set Them
@@ -58,6 +58,6 @@ For interface work I keep bounce low, around 0.15 to 0.25. Higher than that and 
 
 ## The Test
 
-When I'm deciding, I ask one question: does this thing have weight? If you could pick it up, if it slides, settles, snaps or returns, it gets a spring. If it appears, fades, changes color or swaps content, it gets an ease.
+When I'm deciding, I ask one question: does this thing have weight? If you could pick it up, if it slides, settles, snaps or returns, it gets a spring. If it appears, fades, changes colour or swaps content, it gets an ease.
 
 Most things in an interface are the second kind. The few that are the first kind are the ones people touch most, which is why getting them right matters.

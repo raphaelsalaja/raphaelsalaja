@@ -8,7 +8,7 @@ import {
   Types,
 } from "./demos/figures";
 
-Five notifications that share one layout and differ in color and pattern. The pattern on the right is a shader, so it can move: in on arrival, faster under the cursor, and outward when you press Action.
+Five notifications that share one layout and differ in colour and pattern. The pattern on the right is a shader, so it can move: in on arrival, faster under the cursor, and outward when you press Action.
 
 <Demo>
   <Notifications />
@@ -25,7 +25,7 @@ Each card is four layers. A white surface, a canvas for the tint, a one-pixel bo
 
 The content sits on a small grid. A 16px column for the icon, two 20px rows for the title and the description, and the action spanning both rows on the right. The icon lines up with the title, and the description lines up under the title, not under the icon.
 
-The border isn't drawn by the shader. It's a CSS gradient, masked down to a 1px ring, that runs from the normal border color to the card's color at 32% strength. That keeps it sharp at any pixel density, and it means the colored edge on the right is there even before the shader has drawn a frame.
+The border isn't drawn by the shader. It's a CSS gradient, masked down to a 1px ring, that runs from the normal border colour to the card's colour at 32% strength. That keeps it sharp at any pixel density, and it means the coloured edge on the right is there even before the shader has drawn a frame.
 
 ## The Tint
 
@@ -34,7 +34,7 @@ Every card runs one fragment shader over a single triangle that covers the canva
 <Recipe />
 <sub>Fade, times pattern, times wipe.</sub>
 
-The fade starts at 32% of the width, so the left side stays clean for the text. The pattern is a value between zero and one for every pixel, and each type draws a different one. It sits on a base opacity of 0.03 to 0.12 and adds at most 0.3 on top. That's all the color there is, which is why it reads as a tint and not a fill.
+The fade starts at 32% of the width, so the left side stays clean for the text. The pattern is a value between zero and one for every pixel, and each type draws a different one. It sits on a base opacity of 0.03 to 0.12 and adds at most 0.3 on top. That's all the colour there is, which is why it reads as a tint and not a fill.
 
 The output is premultiplied, so the white card shows through wherever the tint is thin. A fade this shallow bands easily, so the shader adds half a level of noise per pixel. You can't see the noise, but it hides the steps.
 
@@ -61,24 +61,24 @@ Hover isn't a switch in the shader. It's a number that eases toward one while th
 
 <Hover />
 
-That number does two things. It speeds the pattern up, to 2.5× at full hover, and it adds a soft glow around the cursor that falls off over about 70px. Inside the glow the pattern gets brighter, and a faint wash of color spills past the fade.
+That number does two things. It speeds the pattern up, to 2.5× at full hover, and it adds a soft glow around the cursor that falls off over about 70px. Inside the glow the pattern gets brighter, and a faint wash of colour spills past the fade.
 
 Speeding up a moving pattern can make it jump, if the speed multiplies the clock. Here each frame adds a small step to the pattern's position instead, and only the size of the step changes. The pattern accelerates without skipping.
 
 ## Action
 
-Pressing Action starts a ring at the center of the button. It grows at 560px a second, 16px wide, with a lighter fill trailing behind it, and it's gone by 700ms.
+Pressing Action starts a ring at the centre of the button. It grows at 560px a second, 16px wide, with a lighter fill trailing behind it, and it's gone by 700ms.
 
 <Ripple />
 <sub>The card waits for the ring before it goes.</sub>
 
 The card waits 260ms. By then the ring has spread about 146px, across half the tint, so the press has visibly gone somewhere before the card does. Then the card fades, drops to 97% and blurs over 200ms. The cards below close the gap with a spring.
 
-The list is pinned to the top of the stage, so only the cards below the one you dismissed move. When it was centered, removing a card moved the cards above it as well, which made it look like everything was reacting to the press.
+The list is pinned to the top of the stage, so only the cards below the one you dismissed move.[^1]
 
 ## Five Types
 
-The colors are kept quiet on purpose. What separates the types is the pattern and how it moves.
+The colours are kept quiet on purpose. What separates the types is the pattern and how it moves.
 
 <Types />
 
@@ -93,3 +93,5 @@ The noise behind aurora, contours and pixels hashes pixel coordinates, so the sh
 Each card has its own WebGL context, so each one is careful with it. It stops drawing when it scrolls out of view. It renders at no more than twice the screen's resolution. When it unmounts, it frees its program and buffer.
 
 With reduced motion, the shader draws one still frame with the tint fully in. The cards fade instead of springing, and the ripple is skipped.
+
+[^1]: I had the list centred at first. Removing a card moved the cards above it as well, which made it look like everything was reacting to the press.

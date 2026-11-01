@@ -197,7 +197,7 @@ export function StatesFigure() {
   return (
     <figure
       className={base.figure}
-      aria-label="Four states of the wallet in a row: collapsed, expanded, customize and edit nickname. Tap opens it, customize shows the color picker, edit focuses the name and done returns to customize. Save closes it back to collapsed."
+      aria-label="Four states of the wallet in a row: collapsed, expanded, customize and edit nickname. Tap opens it, customize shows the colour picker, edit focuses the name and done returns to customize. Save closes it back to collapsed."
     >
       <svg className={base.svg} viewBox="0 0 560 180" aria-hidden="true">
         {cards.map((card) => (
