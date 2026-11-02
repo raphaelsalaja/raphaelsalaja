@@ -3,7 +3,9 @@ html {
   li code {
     padding: 1px 5px;
     font-family: var(--font-mono), monospace;
+    font-size: 12px;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     background-color: var(--background-secondary);
     border: 1px solid var(--border-primary);
     border-radius: 6px;
@@ -17,6 +19,10 @@ html {
     font-family: var(--font-mono), monospace;
     font-size: 12px;
     line-height: 18px;
+
+    * {
+      font-size: inherit;
+    }
 
     .line {
       span {
