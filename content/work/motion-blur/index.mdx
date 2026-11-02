@@ -425,13 +425,13 @@ const blur = useMotionBlur({ shutter: 180 / rate });
 
 The blur is drawn from the surface inside the popup, and the dialogs only set the technique and the shutter, plus a callback with each frame's streak for the readout.
 
-### Where I'd Leave It Off
-
-Anything the reader follows to read: scrolling, paging through content, a list sliding into place. The eye is already tracking those, so the screen blurs them once, and added blur stacks on top of that, turning text into grey bars at the moment someone is trying to read it.
-
 ## What I'd Use
 
-I'd use the package, and its defaults are what this page landed on. It draws with Echo at a 180° shutter, because Echo is the only technique shaped like a camera's blur and the only one that follows a curve, and it takes Squeeze, SVG or Smear through the `technique` option where sixteen copies would cost too much. It works out everything else itself, so the one decision left is which elements get it: whatever the eye can't follow, and nothing the reader is about to read.
+I'd use the package, and its defaults are what this page landed on. It draws with Echo at a 180° shutter, because Echo is the only technique shaped like a camera's blur and the only one that follows a curve, and it takes Squeeze, SVG or Smear through the `technique` option where sixteen copies would cost too much. It works out everything else itself, so the one decision left is which elements get it.
+
+I'd leave it off anything the reader follows to read: scrolling, paging through content, a list sliding into place. The eye is already tracking those, so the screen blurs them once, and added blur stacks on top of that, turning text into grey bars at the moment someone is trying to read it.
+
+Even where it fits, I'd use it sparingly. A streak is something people notice, and noticing is what wears it out, so on every popover and every tab it stops reading as speed and becomes the way the interface looks. Benji Taylor calls this the Delight-Impact Curve, where "the potential for delight increases as the frequency of feature usage decreases",[^11] which is why I'd keep it for the moves that happen rarely and travel far, like a throw or a sheet rising from the edge of the screen. That leaves a short list: whatever the eye can't follow, nothing the reader is about to read, and not much else.
 
 [^1]: [Motion blur and temporal sampling](https://people.csail.mit.edu/fredo/comp-photo-book/12-video-01-motion-blur-and-temporal-sampling.html), Computational Photography, MIT CSAIL.
 
@@ -452,3 +452,5 @@ I'd use the package, and its defaults are what this page landed on. It draws wit
 [^9]: Natalia Markoborodova, [HTML-in-Canvas in Chrome 157](https://developer.chrome.com/blog/html-in-canvas), Chrome for Developers, October 2026.
 
 [^10]: repalash, [three-html-render](https://github.com/repalash/three-html-render), April 2026.
+
+[^11]: Benji Taylor, [Family Values](https://benji.org/family-values), July 2024.
