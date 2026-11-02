@@ -23,6 +23,32 @@ Browsers have no motion blur property, so I built one: `@web-kits/motion-blur`, 
 </Demo>
 <sub>Examples of motion blur, made with the package.</sub>
 
+## Getting Started
+
+```sh title="Terminal"
+npm i @web-kits/motion-blur
+```
+
+That adds the package the examples above and the dialogs further down are built on. Then wrap something that moves too fast to follow:
+
+```tsx title="sheet.tsx"
+import { MotionBlur } from "@web-kits/motion-blur/react";
+
+<MotionBlur className="sheet">
+  <div className="surface">…</div>
+</MotionBlur>;
+```
+
+The element you animate has to stay transparent, so the background and shadow go on what's inside it. CSS transitions, CSS animations, the Web Animations API and Motion are all picked up on their own, and the blur clears once the element stops. Without React it's one call:
+
+```ts title="sheet.ts"
+import { motionBlur } from "@web-kits/motion-blur";
+
+motionBlur(document.querySelector(".sheet"));
+```
+
+It draws with Echo at a 180° shutter unless you pick otherwise, and it turns itself off for anyone who prefers reduced motion. The other techniques, the provider for setting options across a tree and how to write your own technique are in the [README](https://github.com/raphaelsalaja/motion-blur/tree/main/packages/motion-blur#readme).
+
 <Demo variant="transparent">
 <BaseUI>
 
@@ -174,32 +200,6 @@ export function Toasts() {
 </BaseUI>
 </Demo>
 <sub>Base UI components with and without motion blur.</sub>
-
-## Getting Started
-
-```sh title="Terminal"
-npm i @web-kits/motion-blur
-```
-
-That adds the package the examples above and the dialogs further down are built on. Then wrap something that moves too fast to follow:
-
-```tsx title="sheet.tsx"
-import { MotionBlur } from "@web-kits/motion-blur/react";
-
-<MotionBlur className="sheet">
-  <div className="surface">…</div>
-</MotionBlur>;
-```
-
-The element you animate has to stay transparent, so the background and shadow go on what's inside it. CSS transitions, CSS animations, the Web Animations API and Motion are all picked up on their own, and the blur clears once the element stops. Without React it's one call:
-
-```ts title="sheet.ts"
-import { motionBlur } from "@web-kits/motion-blur";
-
-motionBlur(document.querySelector(".sheet"));
-```
-
-It draws with Echo at a 180° shutter unless you pick otherwise, and it turns itself off for anyone who prefers reduced motion. The other techniques, the provider for setting options across a tree and how to write your own technique are in the [README](https://github.com/raphaelsalaja/motion-blur/tree/main/packages/motion-blur#readme).
 
 ## What Motion Blur Is
 
