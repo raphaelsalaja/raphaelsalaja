@@ -48,12 +48,12 @@ export function ToastExample() {
       <div className={styles.host}>
         <div className={styles.toast}>
           <span className={styles.icon}>
-            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M20 6 9 17l-5-5"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="3"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />

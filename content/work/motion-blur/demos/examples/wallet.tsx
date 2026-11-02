@@ -1,7 +1,7 @@
 "use client";
 
 import { echo, motionBlur } from "@web-kits/motion-blur";
-import { useRef } from "react";
+import { type CSSProperties, useRef } from "react";
 import {
   clamp01,
   inOutCubic,
@@ -17,9 +17,9 @@ import styles from "./wallet.module.css";
 // The copies trace the arc it swings through, and nothing blurs at rest.
 
 const CARDS = [
-  { name: "Everyday", last: "4821", tone: "#21201c" },
-  { name: "Travel", last: "0937", tone: "var(--blue)" },
-  { name: "Savings", last: "5160", tone: "var(--red)" },
+  { name: "Everyday", last: "4821", tone: "oklch(0.27 0.005 90)" },
+  { name: "Travel", last: "0937", tone: "oklch(0.52 0.15 258)" },
+  { name: "Savings", last: "5160", tone: "oklch(0.6 0.15 32)" },
 ];
 
 const PERIOD = 2.4;
@@ -91,7 +91,10 @@ export function WalletExample() {
       <div className={styles.stack}>
         {CARDS.map(({ name, last, tone }) => (
           <div key={name} className={styles.host}>
-            <div className={styles.card} style={{ background: tone }}>
+            <div
+              className={styles.card}
+              style={{ "--tone": tone } as CSSProperties}
+            >
               <span className={styles.name}>{name}</span>
               <span className={styles.chip} />
               <span className={styles.number}>•••• {last}</span>
