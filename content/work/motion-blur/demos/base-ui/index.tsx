@@ -1,7 +1,12 @@
 "use client";
 
 import type { MotionBlurDefaults } from "@web-kits/motion-blur/react";
-import { useInView, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "motion/react";
 import {
   Children,
   type ComponentType,
@@ -51,20 +56,52 @@ const EXAMPLES: Record<Component, ComponentType<ExampleProps>> = {
 
 const BEAT = 1000;
 
+const EASE = [0.23, 1, 0.32, 1] as const;
+
+function swap(reduced: boolean | null, enter: number, exit: number) {
+  const hidden = reduced ? { opacity: 0 } : { opacity: 0, filter: "blur(2px)" };
+  return {
+    initial: hidden,
+    animate: {
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: { duration: enter, ease: EASE },
+      transitionEnd: { filter: "none" },
+    },
+    exit: { ...hidden, transition: { duration: exit, ease: EASE } },
+  };
+}
+
+type PaneProps = Omit<ExampleProps, "container"> & {
+  Example: ComponentType<ExampleProps>;
+};
+
+function Layer({ Example, ...props }: PaneProps) {
+  const reduced = useReducedMotion();
+  const [container, setContainer] = useState<HTMLDivElement | null>(null);
+  return (
+    <motion.div
+      ref={setContainer}
+      className={styles.layer}
+      {...swap(reduced, 0.2, 0.15)}
+    >
+      {container && <Example {...props} container={container} />}
+    </motion.div>
+  );
+}
+
 function Pane({
   label,
-  Example,
+  component,
   ...props
-}: Omit<ExampleProps, "container"> & {
-  label: string;
-  Example: ComponentType<ExampleProps>;
-}) {
-  const [container, setContainer] = useState<HTMLDivElement | null>(null);
+}: PaneProps & { label: string; component: Component }) {
   return (
     <div className={styles.pane}>
       <span className={styles.label}>{label}</span>
-      <div ref={setContainer} className={styles.stage} inert>
-        {container && <Example {...props} container={container} />}
+      <div className={styles.stage} inert>
+        <AnimatePresence initial={false}>
+          <Layer key={component} {...props} />
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -112,8 +149,8 @@ export function BaseUI({ children }: { children: ReactNode }) {
           aria-label={`A Base UI ${component.toLowerCase()} playing twice on a loop, on the left with motion blur and on the right without.`}
         >
           <Pane
-            key={`${component}-blur`}
             label="Motion Blur"
+            component={component}
             blur
             options={options}
             rate={rate}
@@ -121,8 +158,8 @@ export function BaseUI({ children }: { children: ReactNode }) {
             Example={Example}
           />
           <Pane
-            key={`${component}-none`}
             label="No Motion Blur"
+            component={component}
             blur={false}
             options={options}
             rate={rate}
@@ -160,7 +197,11 @@ export function BaseUI({ children }: { children: ReactNode }) {
           />
         </Controls>
       </div>
-      {code}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div key={component} {...swap(reduced, 0.12, 0.08)}>
+          {code}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
