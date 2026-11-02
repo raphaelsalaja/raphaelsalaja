@@ -9,8 +9,8 @@ const TABS = ["Day", "Week", "Month", "Year"];
 
 const TARGETS = [0, 3, 1, 3];
 
-export function TabsExample({ blur, step }: ExampleProps) {
-  const motion = useMotionBlur();
+export function TabsExample({ blur, options, step }: ExampleProps) {
+  const motion = useMotionBlur(options);
   const value = TABS[TARGETS[step % TARGETS.length]];
 
   return (

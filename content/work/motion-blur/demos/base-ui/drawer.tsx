@@ -8,8 +8,13 @@ import shared from "./styles.module.css";
 
 const ROWS = ["Copy Link", "Messages", "Mail"];
 
-export function DrawerExample({ blur, step, container }: ExampleProps) {
-  const motion = useMotionBlur();
+export function DrawerExample({
+  blur,
+  options,
+  step,
+  container,
+}: ExampleProps) {
+  const motion = useMotionBlur(options);
   const open = step % 3 !== 2;
 
   return (

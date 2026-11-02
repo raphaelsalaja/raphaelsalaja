@@ -8,8 +8,8 @@ import shared from "./styles.module.css";
 
 const ITEMS = ["Rename", "Duplicate", "Move To", "Archive", "Delete"];
 
-export function MenuExample({ blur, step, container }: ExampleProps) {
-  const motion = useMotionBlur();
+export function MenuExample({ blur, options, step, container }: ExampleProps) {
+  const motion = useMotionBlur(options);
   const open = step % 2 === 0;
 
   return (

@@ -13,7 +13,13 @@ const MESSAGES = [
   { title: "Uploaded", description: "Three files were added." },
 ];
 
-export function ToastExample({ blur, step, container }: ExampleProps) {
+export function ToastExample({
+  blur,
+  options,
+  rate,
+  step,
+  container,
+}: ExampleProps) {
   const [manager] = useState(Toast.createToastManager);
 
   useEffect(() => {
@@ -22,31 +28,31 @@ export function ToastExample({ blur, step, container }: ExampleProps) {
   }, [manager, step]);
 
   return (
-    <Toast.Provider toastManager={manager} limit={1} timeout={1400}>
+    <Toast.Provider toastManager={manager} limit={1} timeout={1400 / rate}>
       <Toast.Portal container={container} className={shared.portal}>
         <Toast.Viewport className={styles.viewport}>
-          <List blur={blur} />
+          <List blur={blur} options={options} />
         </Toast.Viewport>
       </Toast.Portal>
     </Toast.Provider>
   );
 }
 
-function List({ blur }: { blur: boolean }) {
+type Blur = Pick<ExampleProps, "blur" | "options">;
+
+function List(props: Blur) {
   const { toasts } = Toast.useToastManager();
   return toasts.map((toast) => (
-    <Item key={toast.id} toast={toast} blur={blur} />
+    <Item key={toast.id} toast={toast} {...props} />
   ));
 }
 
 function Item({
   toast,
   blur,
-}: {
-  toast: Toast.Root.ToastObject;
-  blur: boolean;
-}) {
-  const motion = useMotionBlur();
+  options,
+}: Blur & { toast: Toast.Root.ToastObject }) {
+  const motion = useMotionBlur(options);
   return (
     <Toast.Root
       ref={blur ? motion.ref : undefined}

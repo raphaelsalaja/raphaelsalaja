@@ -1,9 +1,11 @@
 "use client";
 
+import type { MotionBlurDefaults } from "@web-kits/motion-blur/react";
 import { useInView, useReducedMotion } from "motion/react";
 import {
   Children,
   type ComponentType,
+  type CSSProperties,
   isValidElement,
   type ReactNode,
   useEffect,
@@ -11,6 +13,15 @@ import {
   useState,
 } from "react";
 import { Control, Controls } from "../controls";
+import {
+  SHUTTERS,
+  type Shutter,
+  SPEED,
+  SPEEDS,
+  type Speed,
+  shutterFraction,
+} from "../motion";
+import { PAINTS, TECHNIQUES, type Technique } from "../streak";
 import { DrawerExample } from "./drawer";
 import { MenuExample } from "./menu";
 import { SelectExample } from "./select";
@@ -20,6 +31,8 @@ import { ToastExample } from "./toast";
 
 export type ExampleProps = {
   blur: boolean;
+  options: MotionBlurDefaults;
+  rate: number;
   step: number;
   container: HTMLDivElement;
 };
@@ -40,13 +53,10 @@ const BEAT = 1000;
 
 function Pane({
   label,
-  blur,
-  step,
   Example,
-}: {
+  ...props
+}: Omit<ExampleProps, "container"> & {
   label: string;
-  blur: boolean;
-  step: number;
   Example: ComponentType<ExampleProps>;
 }) {
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
@@ -54,7 +64,7 @@ function Pane({
     <div className={styles.pane}>
       <span className={styles.label}>{label}</span>
       <div ref={setContainer} className={styles.stage} inert>
-        {container && <Example blur={blur} step={step} container={container} />}
+        {container && <Example {...props} container={container} />}
       </div>
     </div>
   );
@@ -65,14 +75,23 @@ export function BaseUI({ children }: { children: ReactNode }) {
   const inView = useInView(frame, { amount: 0.4 });
   const reduced = useReducedMotion();
   const [component, setComponent] = useState<Component>("Drawer");
+  const [technique, setTechnique] = useState<Technique>("Echo");
+  const [shutter, setShutter] = useState<Shutter>("180°");
+  const [speed, setSpeed] = useState<Speed>("1×");
   const [step, setStep] = useState(0);
+  const rate = SPEED[speed];
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: a new component restarts the clock
   useEffect(() => {
     if (!inView || reduced) return;
-    const timer = setInterval(() => setStep((s) => s + 1), BEAT);
+    const timer = setInterval(() => setStep((s) => s + 1), BEAT / rate);
     return () => clearInterval(timer);
-  }, [inView, reduced, component]);
+  }, [inView, reduced, component, rate]);
+
+  const options: MotionBlurDefaults = {
+    technique: PAINTS[technique],
+    shutter: technique === "None" ? 0 : (shutterFraction(shutter) / rate) * 360,
+  };
 
   const Example = EXAMPLES[component];
   const code =
@@ -85,14 +104,19 @@ export function BaseUI({ children }: { children: ReactNode }) {
       <div
         ref={frame}
         className={styles.frame}
-        role="img"
-        aria-label={`A Base UI ${component.toLowerCase()} playing twice on a loop, on the left with motion blur and on the right without.`}
+        style={{ "--rate": rate } as CSSProperties}
       >
-        <div className={styles.panes}>
+        <div
+          className={styles.panes}
+          role="img"
+          aria-label={`A Base UI ${component.toLowerCase()} playing twice on a loop, on the left with motion blur and on the right without.`}
+        >
           <Pane
             key={`${component}-blur`}
             label="Motion Blur"
             blur
+            options={options}
+            rate={rate}
             step={step}
             Example={Example}
           />
@@ -100,6 +124,8 @@ export function BaseUI({ children }: { children: ReactNode }) {
             key={`${component}-none`}
             label="No Motion Blur"
             blur={false}
+            options={options}
+            rate={rate}
             step={step}
             Example={Example}
           />
@@ -113,6 +139,24 @@ export function BaseUI({ children }: { children: ReactNode }) {
               setComponent(next);
               setStep(0);
             }}
+          />
+          <Control
+            label="Technique"
+            options={TECHNIQUES}
+            value={technique}
+            onChange={setTechnique}
+          />
+          <Control
+            label="Shutter"
+            options={SHUTTERS}
+            value={shutter}
+            onChange={setShutter}
+          />
+          <Control
+            label="Speed"
+            options={SPEEDS}
+            value={speed}
+            onChange={setSpeed}
           />
         </Controls>
       </div>

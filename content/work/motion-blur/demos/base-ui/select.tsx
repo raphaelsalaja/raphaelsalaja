@@ -14,8 +14,13 @@ const ITEMS = [
   { value: "yearly", label: "Yearly" },
 ];
 
-export function SelectExample({ blur, step, container }: ExampleProps) {
-  const motion = useMotionBlur();
+export function SelectExample({
+  blur,
+  options,
+  step,
+  container,
+}: ExampleProps) {
+  const motion = useMotionBlur(options);
   const open = step % 3 === 0;
   const value = ITEMS[Math.floor((step + 2) / 3) % ITEMS.length].value;
 
