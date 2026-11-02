@@ -1,0 +1,36 @@
+.viewport {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1;
+  outline: none;
+}
+
+.toast {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  outline: none;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &[data-starting-style] {
+    transform: translateY(150%);
+  }
+
+  &[data-ending-style] {
+    transform: translateX(calc(100% + 24px));
+  }
+
+  &[data-limited] {
+    visibility: hidden;
+  }
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+}

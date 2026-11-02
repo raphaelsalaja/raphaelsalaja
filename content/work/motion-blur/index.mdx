@@ -1,4 +1,5 @@
 import { Lab, Orbit, Snap, Throw } from "./demos";
+import { BaseUI } from "./demos/base-ui";
 import { Dialogs } from "./demos/dialogs";
 import { Examples } from "./demos/examples";
 import {
@@ -21,6 +22,158 @@ Browsers have no motion blur property, so I built one: `@web-kits/motion-blur`, 
   <Examples />
 </Demo>
 <sub>Examples of motion blur, made with the package.</sub>
+
+<Demo variant="transparent">
+<BaseUI>
+
+```tsx title="drawer.tsx"
+import { Drawer } from "@base-ui/react/drawer";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+export function ShareDrawer() {
+  const blur = useMotionBlur();
+
+  return (
+    <Drawer.Root>
+      <Drawer.Trigger>Share</Drawer.Trigger>
+      <Drawer.Portal>
+        <Drawer.Backdrop className="backdrop" />
+        <Drawer.Viewport className="viewport">
+          {/* The popup slides on transform, the surface is what you see */}
+          <Drawer.Popup ref={blur.ref} className="popup">
+            <div className="surface">…</div>
+          </Drawer.Popup>
+        </Drawer.Viewport>
+      </Drawer.Portal>
+    </Drawer.Root>
+  );
+}
+```
+
+```tsx title="tabs.tsx"
+import { Tabs } from "@base-ui/react/tabs";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+export function RangeTabs() {
+  const blur = useMotionBlur();
+
+  return (
+    <Tabs.Root defaultValue="day">
+      <Tabs.List className="list">
+        <Tabs.Tab value="day">Day</Tabs.Tab>
+        <Tabs.Tab value="week">Week</Tabs.Tab>
+        <Tabs.Tab value="month">Month</Tabs.Tab>
+        <Tabs.Tab value="year">Year</Tabs.Tab>
+        {/* Moves with translate: var(--active-tab-left), so keep tabs one width */}
+        <Tabs.Indicator ref={blur.ref} className="indicator">
+          <span className="pill" />
+        </Tabs.Indicator>
+      </Tabs.List>
+    </Tabs.Root>
+  );
+}
+```
+
+```tsx title="menu.tsx"
+import { Menu } from "@base-ui/react/menu";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+export function OptionsMenu() {
+  const blur = useMotionBlur();
+
+  return (
+    <Menu.Root>
+      <Menu.Trigger>Options</Menu.Trigger>
+      <Menu.Portal>
+        <Menu.Positioner sideOffset={6}>
+          <Menu.Popup ref={blur.ref} className="popup">
+            <div className="surface">
+              <Menu.Item>Rename</Menu.Item>
+              <Menu.Item>Duplicate</Menu.Item>
+              <Menu.Item>Archive</Menu.Item>
+            </div>
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
+    </Menu.Root>
+  );
+}
+```
+
+```tsx title="select.tsx"
+import { Select } from "@base-ui/react/select";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+const items = [
+  { value: "daily", label: "Daily" },
+  { value: "weekly", label: "Weekly" },
+  { value: "monthly", label: "Monthly" },
+];
+
+export function FrequencySelect() {
+  const blur = useMotionBlur();
+
+  return (
+    <Select.Root items={items} defaultValue="daily">
+      <Select.Trigger>
+        <Select.Value />
+      </Select.Trigger>
+      <Select.Portal>
+        <Select.Positioner sideOffset={6} alignItemWithTrigger={false}>
+          <Select.Popup ref={blur.ref} className="popup">
+            <Select.List className="surface">
+              {items.map((item) => (
+                <Select.Item key={item.value} value={item.value}>
+                  <Select.ItemText>{item.label}</Select.ItemText>
+                </Select.Item>
+              ))}
+            </Select.List>
+          </Select.Popup>
+        </Select.Positioner>
+      </Select.Portal>
+    </Select.Root>
+  );
+}
+```
+
+```tsx title="toast.tsx"
+import { Toast } from "@base-ui/react/toast";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+function Item({ toast }: { toast: Toast.Root.ToastObject }) {
+  const blur = useMotionBlur();
+
+  return (
+    <Toast.Root ref={blur.ref} toast={toast} className="toast">
+      <Toast.Content className="surface">
+        <Toast.Title />
+        <Toast.Description />
+      </Toast.Content>
+    </Toast.Root>
+  );
+}
+
+function List() {
+  const { toasts } = Toast.useToastManager();
+  return toasts.map((toast) => <Item key={toast.id} toast={toast} />);
+}
+
+export function Toasts() {
+  return (
+    <Toast.Provider>
+      <Toast.Portal>
+        <Toast.Viewport className="viewport">
+          <List />
+        </Toast.Viewport>
+      </Toast.Portal>
+    </Toast.Provider>
+  );
+}
+```
+
+</BaseUI>
+</Demo>
+<sub>Base UI components with and without motion blur.</sub>
 
 ## Getting Started
 

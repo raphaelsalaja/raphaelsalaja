@@ -1,0 +1,39 @@
+.trigger {
+  justify-content: space-between;
+  width: 160px;
+}
+
+.icon {
+  display: flex;
+}
+
+.popup {
+  outline: none;
+  transform-origin: var(--transform-origin);
+  transition:
+    transform 320ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 160ms ease;
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.92);
+  }
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  width: var(--anchor-width);
+  padding: 4px;
+  outline: none;
+}
+
+.item {
+  justify-content: space-between;
+}
+
+.check {
+  display: flex;
+  color: var(--text-primary);
+}
