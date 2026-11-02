@@ -72,10 +72,12 @@ The eye only adds that blur to what it's following. Something too fast to follow
 
 ### Games
 
-A game renders every frame sharp, at one instant, so it has to add the blur back. The older way is the accumulation buffer: render the scene several times at moments inside the shutter and average the results, which Haeberli and Akeley showed in 1990 with an example built from 23 images.[^3] Most games now use a velocity buffer instead, where each pixel stores how far it moved since the last frame and a pass afterwards samples the frame along that vector and averages the samples.[^4]
+A game renders every frame sharp, at one instant, so it has to add the blur back. The older way is the accumulation buffer: render the scene several times at moments inside the shutter and average the results, which Haeberli and Akeley showed in 1990 with an example built from 23 images.[^3]
 
 <Accumulation />
 <sub>The accumulation buffer, averaging four renders.</sub>
+
+That's a camera's shutter taken in steps, and every step is a full render, so four steps make each frame four times the work. Most games now use a velocity buffer instead. They render the scene once, store how far each pixel moved since the last frame, then run a pass that samples the frame along that motion and averages what it finds.[^4] It costs one render rather than four, but it only knows where each pixel went, so it has to guess at whatever a moving edge uncovers.
 
 <Velocity />
 <sub>The velocity buffer, blurring each pixel along its motion.</sub>
