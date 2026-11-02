@@ -464,20 +464,60 @@ function Profile({
   );
 }
 
-const HOLD_X = 88;
-const HOLD_STEP = 120;
-const HOLD_W = 48;
-const HOLD_ROW = 36;
-const HOLD_Y = 40;
-const HOLD_FRAMES = [0, 1, 2];
-const holdStarts = (i: number) => 0.05 + 0.25 * i;
+const SCREEN = { x: 120, width: 432, height: 32 };
+const HOLD_SQ = 20;
+const HOLD_STEP = 48;
+const HOLD_X = SCREEN.x + 16;
+const HOLD_FRAMES = Array.from({ length: 8 }, (_, k) => k);
+const HOLD_ROWS = [
+  { y: 48, label: "Eye follows", spec: "smears 40 px", follows: true },
+  { y: 152, label: "Eye still", spec: "strobes, 40 px apart", follows: false },
+];
+const holdStarts = (k: number) => 0.05 + 0.1 * k;
+
+function Eye({ x, y, to }: { x: number; y: number; to: number }) {
+  return (
+    <>
+      <path className={base.guide} d={`M${x} ${y + 6}V${to}`} />
+      <path
+        className={styles.eye}
+        d={`M${x - 10} ${y}Q${x} ${y - 8} ${x + 10} ${y}Q${x} ${y + 8} ${x - 10} ${y}Z`}
+      />
+      <circle className={base.knot} cx={x} cy={y} r={2.5} />
+    </>
+  );
+}
 
 export function Hold() {
   const { ref, play, playing } = useLoop();
-  const eye = HOLD_X + HOLD_W / 2;
-  const end = HOLD_Y + HOLD_ROW * HOLD_FRAMES.length;
-  const last = eye + HOLD_STEP * (HOLD_FRAMES.length - 1);
-  const smear = HOLD_W + HOLD_STEP;
+  const frames = HOLD_FRAMES.length;
+  const last = HOLD_STEP * (frames - 1);
+  const travel = last + HOLD_STEP / 2;
+  const hop = track(
+    play,
+    last,
+    [
+      0,
+      ...HOLD_FRAMES.flatMap((k) =>
+        k === 0 ? [0] : [HOLD_STEP * (k - 1), HOLD_STEP * k],
+      ),
+      last,
+    ],
+    [
+      0,
+      ...HOLD_FRAMES.flatMap((k) =>
+        k === 0 ? [holdStarts(0)] : [holdStarts(k) - 0.001, holdStarts(k)],
+      ),
+      1,
+    ],
+  );
+  const glide = track(
+    play,
+    travel,
+    [0, 0, travel, travel],
+    [0, holdStarts(0), holdStarts(frames - 0.5), 1],
+  );
+  const gaze = HOLD_X + (HOLD_SQ - HOLD_STEP) / 2;
 
   return (
     <figure
@@ -485,162 +525,115 @@ export function Hold() {
       data-playing={playing}
       className={base.figure}
       style={accent}
-      aria-label="Three frames on a 60 Hz screen, each held in place for 16.7 milliseconds while the shape moves 40 pixels a frame. The eye follows the motion in a straight line, so by the end of each frame it is 40 pixels ahead of the held image. Below, with the eye following, the image smears 40 pixels across the retina. With the eye still, the frames land as three sharp shapes 40 pixels apart."
+      aria-label="Two copies of a 60 Hz screen showing a square that jumps 40 pixels every frame and holds still in between. In the first, the eye follows the square smoothly, so while each frame holds, the square slides 40 pixels across the retina and is seen as a 40 pixel smear. In the second, the eye stays still, so each held frame lands as a separate sharp square, 40 pixels apart, and it strobes."
     >
-      <svg className={base.svg} viewBox="0 0 560 266" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 246" aria-hidden="true">
         <defs>
-          <Profile id="motion-blur-hold" width={HOLD_W} length={HOLD_STEP} />
-          <clipPath id="motion-blur-retina">
-            <motion.rect
-              x={HOLD_X}
-              y={203}
-              width={smear}
-              height={24}
-              {...animated({
-                width: track(
-                  play,
-                  smear,
-                  [0, 0, HOLD_W, smear, smear],
-                  [0, holdStarts(0), holdStarts(0) + 0.002, holdStarts(1), 1],
-                ),
-              })}
-            />
+          <Profile id="motion-blur-hold" width={HOLD_SQ} length={HOLD_STEP} />
+          <clipPath id="motion-blur-seen">
+            <rect x={SCREEN.x} y={0} width={SCREEN.width} height={246} />
           </clipPath>
         </defs>
-        <text className={base.formula} x={HOLD_X} y={18}>
+        <text className={base.formula} x={8} y={18}>
           smear = speed × how long each frame is held
         </text>
-        {HOLD_FRAMES.map((i) => {
-          const y = HOLD_Y + HOLD_ROW * i;
-          const shown = holdStarts(i);
-          const replaced = holdStarts(i + 1);
-          const done = holdStarts(HOLD_FRAMES.length);
+        <text className={base.spec} x={8} y={34}>
+          2,400 px/s at 60 Hz, each frame held 16.7 ms
+        </text>
+        <path className={base.guide} d="M8 146H552" />
+        {HOLD_ROWS.map(({ y, label, spec, follows }) => {
+          const eyeY = y + 6;
+          const screen = y + 24;
+          const seen = y + 66;
           return (
-            <g key={i}>
-              <text className={styles.caps} x={8} y={y + HOLD_ROW / 2 + 3.5}>
-                {`frame ${i + 1}`}
+            <g key={label}>
+              <text className={base.name} x={8} y={eyeY + 4}>
+                {label}
               </text>
+              <text className={base.spec} x={8} y={eyeY + 18}>
+                {spec}
+              </text>
+              <text
+                className={styles.caps}
+                x={8}
+                y={screen + SCREEN.height / 2 + 3.5}
+              >
+                screen
+              </text>
+              <text className={styles.caps} x={8} y={seen + HOLD_SQ / 2 + 3.5}>
+                you see
+              </text>
+              <rect
+                className={base.plate}
+                x={SCREEN.x}
+                y={screen}
+                width={SCREEN.width}
+                height={SCREEN.height}
+                rx={6}
+              />
               <motion.rect
                 fill="currentColor"
                 fillOpacity={INK}
-                x={HOLD_X + HOLD_STEP * i}
-                y={y + 2}
-                width={HOLD_W}
-                height={HOLD_ROW - 4}
-                rx={4}
-                {...(replaced < done
-                  ? animated({
-                      opacity: track(
-                        play,
-                        1,
-                        [0, 0, 1, 1, 0.35, 0.35, 1, 1, 0],
-                        [
-                          0,
-                          shown,
-                          shown + 0.01,
-                          replaced,
-                          replaced + 0.01,
-                          done,
-                          done + 0.02,
-                          CLEAR,
-                          1,
-                        ],
-                      ),
-                    })
-                  : reveal(play, shown))}
+                x={HOLD_X}
+                y={screen + (SCREEN.height - HOLD_SQ) / 2}
+                width={HOLD_SQ}
+                height={HOLD_SQ}
+                rx={3}
+                {...animated({ x: hop })}
               />
+              {follows ? (
+                <>
+                  <motion.g {...animated({ x: glide })}>
+                    <Eye x={gaze} y={eyeY} to={screen} />
+                  </motion.g>
+                  <g clipPath="url(#motion-blur-seen)">
+                    <motion.rect
+                      x={gaze - (HOLD_SQ + HOLD_STEP) / 2}
+                      y={seen}
+                      width={HOLD_SQ + HOLD_STEP}
+                      height={HOLD_SQ}
+                      rx={3}
+                      fill="url(#motion-blur-hold)"
+                      {...animated({
+                        x: glide,
+                        opacity: track(
+                          play,
+                          1,
+                          [0, 0, 1, 1, 0, 0],
+                          [
+                            0,
+                            holdStarts(0),
+                            holdStarts(0) + 0.02,
+                            CLEAR,
+                            CLEAR + 0.04,
+                            1,
+                          ],
+                        ),
+                      })}
+                    />
+                  </g>
+                </>
+              ) : (
+                <>
+                  <Eye x={SCREEN.x + SCREEN.width / 2} y={eyeY} to={screen} />
+                  {HOLD_FRAMES.map((k) => (
+                    <motion.rect
+                      key={k}
+                      fill="currentColor"
+                      fillOpacity={INK}
+                      x={HOLD_X + HOLD_STEP * k}
+                      y={seen}
+                      width={HOLD_SQ}
+                      height={HOLD_SQ}
+                      rx={3}
+                      {...reveal(play, holdStarts(k))}
+                    />
+                  ))}
+                </>
+              )}
             </g>
           );
         })}
-        <path
-          className={base.focusLine}
-          d={`M${eye} ${HOLD_Y}L${last + HOLD_STEP} ${end}`}
-          strokeDasharray="3 3"
-        />
-        <motion.circle
-          className={base.knot}
-          r={3}
-          cx={eye}
-          cy={HOLD_Y}
-          {...animated({
-            cx: track(
-              play,
-              eye,
-              [eye, eye, last + HOLD_STEP, last + HOLD_STEP],
-              [0, holdStarts(0), holdStarts(3), 1],
-            ),
-            cy: track(
-              play,
-              HOLD_Y,
-              [HOLD_Y, HOLD_Y, end, end],
-              [0, holdStarts(0), holdStarts(3), 1],
-            ),
-            opacity: track(
-              play,
-              0,
-              [0, 0, 1, 1, 0, 0],
-              [
-                0,
-                holdStarts(0) - 0.02,
-                holdStarts(0),
-                holdStarts(3) + 0.02,
-                holdStarts(3) + 0.06,
-                1,
-              ],
-            ),
-          })}
-        />
-        <text className={base.spec} x={last + HOLD_STEP + 6} y={end + 3}>
-          eye
-        </text>
-        <path
-          className={base.dimension}
-          d={`M${last} ${end + 8}h${HOLD_STEP}`}
-        />
-        <text
-          className={base.spec}
-          x={last + HOLD_STEP / 2}
-          y={end + 20}
-          textAnchor="middle"
-        >
-          eye moves 40 px while the frame holds
-        </text>
-        <path className={base.guide} d={`M8 ${end + 36}H552`} />
-        <text className={base.name} x={8} y={215.5}>
-          eye follows
-        </text>
-        <motion.rect
-          x={HOLD_X}
-          y={203}
-          width={smear}
-          height={24}
-          rx={4}
-          fill="url(#motion-blur-hold)"
-          clipPath="url(#motion-blur-retina)"
-          {...fade(play)}
-        />
-        <text className={base.spec} x={HOLD_X + smear + 8} y={218}>
-          smears 40 px
-        </text>
-        <text className={base.name} x={8} y={249.5}>
-          eye still
-        </text>
-        {HOLD_FRAMES.map((i) => (
-          <motion.rect
-            key={i}
-            fill="currentColor"
-            fillOpacity={INK}
-            x={HOLD_X + HOLD_STEP * i}
-            y={237}
-            width={HOLD_W}
-            height={24}
-            rx={4}
-            {...reveal(play, holdStarts(i))}
-          />
-        ))}
-        <text className={base.spec} x={last + HOLD_W / 2 + 8} y={252}>
-          strobes, 40 px apart
-        </text>
       </svg>
     </figure>
   );

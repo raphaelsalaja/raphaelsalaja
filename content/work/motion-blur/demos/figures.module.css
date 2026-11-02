@@ -154,6 +154,13 @@
   stroke-linejoin: round;
 }
 
+.eye {
+  fill: var(--background-secondary);
+  stroke: var(--text-primary);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
 .film {
   fill: color-mix(in oklab, var(--gray-12) 6%, transparent);
   stroke: var(--figure-line);
