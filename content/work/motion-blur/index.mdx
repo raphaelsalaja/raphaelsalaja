@@ -57,7 +57,7 @@ Motion blur is what an image records when something moves while the image is bei
 A camera's shutter is open for part of every frame, and anything that moves while it's open is recorded at every position it passed through, averaged together. The length of the smear is the speed on screen times how long the shutter was open, and film usually opens it for half of each frame, which is called a 180° shutter.[^1]
 
 <Shutter />
-<sub>Three frames at 60 Hz, 16.7ms apart. The shutter is open for the first 8.3ms of each, and the shape, moving 40px a frame, is recorded across the 20px it covers while it's open, fading in at the back and out at the front.</sub>
+<sub>A 180° shutter, open for half of each frame.</sub>
 
 Averaging every position is the same as convolving the image with a box as long as the streak, laid along the direction of motion.[^1] With the shutter closed for more of the frame, the streak gets shorter and fast motion starts to look like a row of separate, sharp images, which film calls strobing.
 
@@ -68,41 +68,41 @@ A screen already blurs anything the eye follows. An LCD or OLED holds each frame
 The eye only adds that blur to what it's following. Something too fast to follow gets no help from the eye, so on screen it's drawn in separate places with gaps between them, and it strobes.
 
 <Hold />
-<sub>At 2,400px/s on a 60Hz screen, each frame holds still for 16.7ms while the eye keeps moving, so by the end of the frame the eye is 40px past the image. Following it, the image smears 40px across the retina. Holding the eye still, the same frames land as sharp shapes 40px apart.</sub>
+<sub>Held frames smear when the eye follows them and strobe when it doesn't.</sub>
 
 ### Games
 
 A game renders every frame sharp, at one instant, so it has to add the blur back. The older way is the accumulation buffer: render the scene several times at moments inside the shutter and average the results, which Haeberli and Akeley showed in 1990 with an example built from 23 images.[^3] Most games now use a velocity buffer instead, where each pixel stores how far it moved since the last frame and a pass afterwards samples the frame along that vector and averages the samples.[^4]
 
 <Accumulation />
-<sub>The accumulation buffer renders the square four times inside the shutter and averages them. Each render adds a quarter, so the smear comes out in steps of a quarter.</sub>
+<sub>The accumulation buffer, averaging four renders.</sub>
 
 <Velocity />
-<sub>The velocity buffer renders the square once. A pixel near the edge averages five samples along its arrow, and three of them land on the square, so it comes out at three fifths.</sub>
+<sub>The velocity buffer, blurring each pixel along its motion.</sub>
 
 ### Animation
 
 Hand-drawn animation has no shutter either, so animators drew speed. A smear is a single stretched drawing between two poses, multiples are several copies of a limb in one frame, and dry brush is streaks dragged behind the motion.[^5] Chuck Jones's *The Dover Boys* (1942) is usually credited with making smears famous, with more than three dozen of them.[^6]
 
 <Drawn />
-<sub>One move between two poses, drawn three ways: one shape stretched across the gap, several copies along it, and the shape at its end pose with streaks dragged behind.</sub>
+<sub>One move drawn three ways: a smear, multiples and dry brush.</sub>
 
 ## Translating It to the Web
 
 A browser is closer to a game than a camera: every frame is a sharp sample of one instant, and nothing integrates over time. So I looked for the browser version of each source. The camera's shutter and the accumulation buffer become copies drawn along the path and added together, the velocity buffer becomes a blur laid along the direction of motion, and the smear becomes a stretch.
 
 <Mapping />
-<sub>Each source and the browser version I built from it. The shutter and the accumulation buffer both become copies added together, the velocity buffer becomes a blur along one axis, and the drawn smear becomes a stretch.</sub>
+<sub>Each source of motion blur and its browser version.</sub>
 
 Every version needs the same two numbers: how long the streak is and which way it points. I worked them out the way a camera would, from the shape's speed, times the display's frame time, times the shutter angle over 360. Where a technique wants a Gaussian instead of a box, I use σ = length ÷ √12, the Gaussian with the same spread.
 
 <Edge />
-<sub>One edge of a moving shape across a streak of length L. The camera's box rises in a straight line from one end of the streak to the other, and the Gaussian with the same spread starts before it and finishes after it, on a curve.</sub>
+<sub>A camera's box blur against a Gaussian of the same spread.</sub>
 
 I tied the exposure to the frame time rather than to a fixed 1/120s, so at 120Hz the streak is half as long. The blur is there to fill the gap between where the shape was drawn last frame and where it is now, and at 120Hz that gap is half as wide.
 
 <Refresh />
-<sub>The same shape at 2,400px/s with a 180° shutter. At 60Hz the frames land 40px apart and each streak covers 20px, half the gap. At 120Hz they land 20px apart and the streak is 10px, still half.</sub>
+<sub>At 60Hz or 120Hz, a 180° streak covers half the gap.</sub>
 
 The browser gives four tools to build with: `filter: blur()`, SVG filters, transforms and `mix-blend-mode`.
 
@@ -140,7 +140,7 @@ It only knows x and y, but rotating a wrapper to the angle of motion, and the co
 I wanted to know if plain CSS could do the same. CSS applies a filter in the element's own coordinates, before its transform, so squeezing the content to a sixteenth of its width, blurring it by 0.75px and stretching the result back 16 times turns a round blur into one 12px long and 0.75px tall.
 
 <Squeeze />
-<sub>The square squeezes to a sixteenth of its width, blurs by 0.75px in every direction, then stretches back to full width, where the blur is 12px sideways and still 0.75px up and down.</sub>
+<sub>A 0.75px blur, stretched 16 times into 12px sideways.</sub>
 
 ```tsx
 lens.style.transform = `rotate(${angle}deg) scaleX(16)`;
@@ -155,7 +155,7 @@ The rotation gives it any angle, with no SVG at all. Content squeezed to a sixte
 SVG and Squeeze both give a Gaussian, and a camera gives a box, so next I tried the accumulation buffer: draw the shape at several points along the streak, each at a fraction of its opacity, and add them up. Normal blending doesn't add, though. Twelve copies at 1/12 opacity only reach 1 − (11/12)¹², about 65%, so the shape faded as it moved, whereas `mix-blend-mode: plus-lighter` adds them, and inside an isolated group the overlap sums back to the full shape.[^8]
 
 <Stacking />
-<sub>Twelve copies of a square at 1/12 opacity, spread across 32px. With normal blending the stack stops at about 65% and looks washed out, while with plus-lighter the middle adds up to the full square and both ends fade.</sub>
+<sub>Twelve copies with normal blending, then with plus-lighter.</sub>
 
 ```tsx
 // The parent sets isolation: isolate.
