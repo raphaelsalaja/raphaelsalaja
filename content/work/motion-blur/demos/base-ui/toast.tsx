@@ -60,11 +60,8 @@ function Item({
       className={styles.toast}
     >
       <Toast.Content className={`${shared.surface} ${styles.surface}`}>
-        <div className={styles.copy}>
-          <Toast.Title className={shared.title} />
-          <Toast.Description className={shared.text} />
-        </div>
-        <span className={styles.action}>Undo</span>
+        <Toast.Title className={shared.title} />
+        <Toast.Description className={shared.text} />
       </Toast.Content>
     </Toast.Root>
   );

@@ -17,12 +17,9 @@
   outline: none;
   transition: transform calc(500ms / var(--rate)) cubic-bezier(0.22, 1, 0.36, 1);
 
-  &[data-starting-style] {
-    transform: translateY(150%);
-  }
-
+  &[data-starting-style],
   &[data-ending-style] {
-    transform: translateX(calc(100% + 24px));
+    transform: translateY(calc(100% + 40px));
   }
 
   &[data-limited] {
@@ -32,32 +29,7 @@
 
 .surface {
   display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 12px 12px 14px;
-}
-
-.copy {
-  display: flex;
-  flex: 1;
   flex-direction: column;
-  min-width: 0;
-}
-
-.action {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  height: 28px;
-  padding: 0 10px;
-  font-size: 13px;
-  font-variation-settings: var(--font-weight-500);
-  color: var(--text-primary);
-  user-select: none;
-  background: var(--gray-3);
-  border-radius: 7px;
-
-  @media (prefers-color-scheme: dark) {
-    background: var(--gray-5);
-  }
+  gap: 2px;
+  padding: 12px 14px;
 }
