@@ -6,6 +6,12 @@
   border-radius: 11px;
 }
 
+@container (width < 320px) {
+  .control {
+    scale: 0.85;
+  }
+}
+
 .host {
   position: absolute;
   top: 3px;

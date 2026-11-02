@@ -8,6 +8,12 @@
   font-variant-numeric: tabular-nums;
 }
 
+@container (width < 320px) {
+  .picker {
+    scale: 0.85;
+  }
+}
+
 .column > span,
 .period > span {
   font-size: 32px;

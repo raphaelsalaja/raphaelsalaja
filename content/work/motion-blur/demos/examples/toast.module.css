@@ -6,7 +6,7 @@
 }
 
 .host {
-  width: 264px;
+  width: min(264px, 100cqi - 32px);
 }
 
 .toast {
