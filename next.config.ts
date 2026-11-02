@@ -1,11 +1,15 @@
+import { join } from "node:path";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+
+const plugin = (file: string) => join(process.cwd(), "lib/mdx", file);
 
 const withMDX = createMDX({
   options: {
     remarkPlugins: ["remark-gfm"],
     rehypePlugins: [
       "rehype-slug",
+      plugin("code-meta-wrap.mjs"),
       [
         "@shikijs/rehype",
         {
@@ -13,6 +17,7 @@ const withMDX = createMDX({
           defaultColor: false,
         },
       ],
+      plugin("code-meta-unwrap.mjs"),
     ],
   },
 });

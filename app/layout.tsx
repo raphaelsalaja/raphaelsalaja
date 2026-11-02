@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font/google";
 import { Back } from "@/components/back";
 import { Prompts } from "@/components/prompts";
 import { Reveal } from "@/components/reveal";
@@ -14,6 +14,12 @@ const inter = Inter({
   subsets: ["latin"],
   axes: ["opsz"],
   display: "swap",
+});
+
+const mono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -49,7 +55,11 @@ const visitedScript = `document.documentElement.dataset.reveals="";try{sessionSt
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.className} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static script that must run before first paint

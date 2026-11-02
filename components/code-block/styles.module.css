@@ -1,26 +1,37 @@
 .block {
   position: relative;
+  overflow: hidden;
+  background-color: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 36px;
+  padding: 0 8px 0 14px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
 }
 
 .copy {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+  flex-shrink: 0;
   padding: 6px;
-  background: var(--background-primary);
-  box-shadow: 0 0 0 1px var(--border-primary);
-  opacity: 0;
-  transition:
-    opacity var(--duration-snappy) ease,
-    color var(--duration-snappy) ease,
-    scale var(--duration-quick) var(--ease-out-cubic);
-
-  .block:hover &,
-  &:focus-visible {
-    opacity: 1;
-  }
-
-  @media (hover: none) {
-    opacity: 1;
-  }
 }

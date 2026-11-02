@@ -2,6 +2,7 @@ html {
   p code,
   li code {
     padding: 1px 5px;
+    font-family: var(--font-mono), monospace;
     font-variant-numeric: tabular-nums;
     background-color: var(--background-secondary);
     border: 1px solid var(--border-primary);
@@ -11,12 +12,10 @@ html {
   .shiki {
     position: relative;
     width: 100%;
-    padding: 12px 16px;
+    padding: 10px 16px;
     overflow-x: auto;
+    font-family: var(--font-mono), monospace;
     counter-reset: line;
-    background-color: var(--background-secondary);
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px var(--border-primary);
 
     .line {
       span {
@@ -32,7 +31,7 @@ html {
 
     .line::before {
       display: inline-block;
-      width: 12px;
+      width: 2ch;
       margin-right: 16px;
       font-variant-numeric: tabular-nums;
       line-height: 22px;
@@ -44,6 +43,7 @@ html {
   }
 
   p + div:has(> .shiki),
+  div:has(> .shiki) + div:has(> .shiki),
   h2 + div:has(> .shiki),
   h3 + div:has(> .shiki) {
     margin-block-start: 12px;
