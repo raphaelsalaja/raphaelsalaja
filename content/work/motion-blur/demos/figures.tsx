@@ -23,8 +23,7 @@ const CLEAR = 0.9;
 const MOVE = cubicBezier(0.77, 0, 0.175, 1);
 /**
  * How long a figure shows its finished diagram after it scrolls into view
- * before the loop clears it. Longer than the page's reveal, which can take
- * 1.2s with its stagger.
+ * before the loop clears it.
  */
 const SETTLE = 1500;
 

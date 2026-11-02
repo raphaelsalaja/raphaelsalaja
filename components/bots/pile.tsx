@@ -580,15 +580,8 @@ export function BotPile() {
     listen(root, "pointerup", up);
     listen(root, "pointercancel", up);
 
-    const reveal = root.closest<HTMLElement>("[data-reveal]");
     const begin = () => {
       if (!visible || frame) return;
-      if (
-        reveal &&
-        Number.parseFloat(getComputedStyle(reveal).opacity) < 0.98
-      ) {
-        return;
-      }
       start();
     };
     const observer = new IntersectionObserver(([entry]) => {
@@ -598,15 +591,6 @@ export function BotPile() {
     });
     observer.observe(root);
     cleanup.push(() => observer.disconnect());
-    if (reveal) {
-      listen(reveal, "transitionend", begin);
-      const watching = new MutationObserver(begin);
-      watching.observe(reveal, {
-        attributes: true,
-        attributeFilter: ["data-shown"],
-      });
-      cleanup.push(() => watching.disconnect());
-    }
     begin();
 
     return teardown;

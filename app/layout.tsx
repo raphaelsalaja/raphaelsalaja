@@ -3,10 +3,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { Back } from "@/components/back";
 import { Prompts } from "@/components/prompts";
-import { Reveal } from "@/components/reveal";
 import { Sounds } from "@/components/sounds";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
-import { VISITED_KEY } from "@/lib/visited";
 
 import "@/styles/main.css";
 
@@ -51,8 +49,6 @@ export const viewport: Viewport = {
   ],
 };
 
-const visitedScript = `document.documentElement.dataset.reveals="";try{sessionStorage.getItem("${VISITED_KEY}")&&(document.documentElement.dataset.visited="")}catch(e){}`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -60,18 +56,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.className} ${mono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: static script that must run before first paint
-          dangerouslySetInnerHTML={{ __html: visitedScript }}
-        />
-      </head>
       <body>
         <main>
           <Back />
           {children}
         </main>
-        <Reveal />
         <Sounds />
         <Prompts />
         <Analytics />

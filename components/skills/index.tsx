@@ -37,7 +37,7 @@ function Entry({ skill }: { skill: Skill }) {
 export function Skills() {
   return (
     <>
-      <article className="prose" data-reveal-children>
+      <article className="prose">
         <header className={styles.header}>
           <h1>Skills</h1>
           <Install />
@@ -58,9 +58,7 @@ export function Skills() {
           <Entry key={skill.name} skill={skill} />
         ))}
       </article>
-      <div data-reveal>
-        <Coffee />
-      </div>
+      <Coffee />
     </>
   );
 }

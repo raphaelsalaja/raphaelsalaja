@@ -47,7 +47,7 @@ export function Article({
   return (
     <>
       <JsonLd data={articleJsonLd({ title, description, date, path })} />
-      <article className="prose" data-reveal-children>
+      <article className="prose">
         <header>
           <div>
             <h1>{title}</h1>
@@ -61,9 +61,7 @@ export function Article({
         </header>
         <Content components={components} />
       </article>
-      <div data-reveal>
-        <Coffee />
-      </div>
+      <Coffee />
     </>
   );
 }

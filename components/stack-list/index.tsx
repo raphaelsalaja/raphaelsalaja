@@ -8,6 +8,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 import styles from "./styles.module.css";
 
@@ -16,6 +17,8 @@ export type StackListItem = {
   title: string;
   description?: string;
 };
+
+const subscribe = () => () => {};
 
 type Rect = { top: number; left: number; width: number; height: number };
 
@@ -89,7 +92,13 @@ function Row({ href, children }: { href: string; children: ReactNode }) {
 
 export function StackList({ items }: { items: StackListItem[] }) {
   const reduceMotion = useReducedMotion();
-  const shared = reduceMotion === false;
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+  // useReducedMotion is null on the server, so the hover layer waits for hydration.
+  const shared = hydrated && reduceMotion === false;
   const rows = useRef<(HTMLLIElement | null)[]>([]);
   const hideTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [active, setActive] = useState<number | null>(null);
