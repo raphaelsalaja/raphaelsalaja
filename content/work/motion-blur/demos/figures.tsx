@@ -230,23 +230,39 @@ function Leader({
   );
 }
 
-const X0 = 64;
-const SLOT = 148;
-const OPEN = SLOT / 2;
-const CARD = 88;
-const AXIS_Y = 58;
-const ROW_Y = [96, 132, 168];
-const ROW_H = 24;
 const accent = { "--figure-accent": "var(--gray-12)" } as CSSProperties;
 
-const PLAYHEAD = [0.05, 0.8];
-const shutterOpens = (i: number) =>
-  PLAYHEAD[0] + ((PLAYHEAD[1] - PLAYHEAD[0]) * i) / 3;
-const SHUTTER_OPEN = (PLAYHEAD[1] - PLAYHEAD[0]) / 6;
+const DISC = { x: 448, y: 120, r: 92 };
+const GATE = { x: 360, y: 100, width: 80, height: 40 };
+const FILM_Y = 88;
+const FILM_H = 64;
+const PITCH = 88;
+const SUBJECT = 14;
+/** 40px on screen, of which a 180° shutter records half. */
+const TRAVEL = 24;
+const STREAK = TRAVEL / 2;
+const TURNS = [0, 1, 2];
+const TURN = 0.25;
+const turnStarts = (i: number) => 0.05 + TURN * i;
+/** The film is pulled on while the closed half covers the whole gate. */
+const PULL = [0.625, 0.875];
+const FRAMES = Array.from({ length: 11 }, (_, m) => GATE.x + PITCH * (m - 5));
+const SPROCKETS = Array.from({ length: 84 }, (_, n) => -88 + 12 * n);
 
 export function Shutter() {
   const { ref, play, playing } = useLoop();
-  const sweep = CARD + OPEN;
+  const smear = SUBJECT + STREAK;
+  const subjectY = GATE.y + (GATE.height - SUBJECT) / 2;
+  const end = -PITCH * TURNS.length;
+  const last = GATE.x + end + PITCH * (TURNS.length - 1);
+  const streakX = last + TRAVEL * (TURNS.length - 1) + 4 + SUBJECT;
+  const pull = track(
+    play,
+    end,
+    [0, ...TURNS.flatMap((i) => [-PITCH * i, -PITCH * (i + 1)]), end],
+    [0, ...TURNS.flatMap((i) => PULL.map((p) => turnStarts(i) + TURN * p)), 1],
+    ["linear", ...TURNS.flatMap((): Easing[] => [MOVE, "linear"])],
+  );
 
   return (
     <figure
@@ -254,39 +270,29 @@ export function Shutter() {
       data-playing={playing}
       className={base.figure}
       style={accent}
-      aria-label="Three frames at 60 Hz, 16.7 milliseconds apart. The shutter is open for the first 8.3 milliseconds of each. The shape moves 40 pixels a frame, so each frame records it smeared across the 20 pixels it covered while the shutter was open, fading in and out at either end."
+      aria-label="A film camera's rotary shutter: a disc with half of it cut away, turning once a frame in front of the film gate. While the open half passes the gate, the film records the shape smeared across the distance it moves in that time. While the closed half covers the gate, the film is pulled on to the next frame. The shape moves 40 pixels a frame, so each frame holds a 20 pixel streak."
     >
-      <svg className={base.svg} viewBox="0 0 560 220" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 228" aria-hidden="true">
         <defs>
-          <linearGradient id="motion-blur-profile">
-            <stop offset="0" stopColor="currentColor" stopOpacity="0" />
-            <stop
-              offset={OPEN / sweep}
-              stopColor="currentColor"
-              stopOpacity="0.55"
-            />
-            <stop
-              offset={CARD / sweep}
-              stopColor="currentColor"
-              stopOpacity="0.55"
-            />
-            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
-          </linearGradient>
-          {ROW_Y.map((y, i) => {
-            const opens = shutterOpens(i);
+          <Profile id="motion-blur-film" width={SUBJECT} length={STREAK} />
+          <clipPath id="motion-blur-film-window">
+            <rect x={8} y={FILM_Y} width={544} height={FILM_H} />
+          </clipPath>
+          {TURNS.map((i) => {
+            const opens = turnStarts(i);
             return (
-              <clipPath key={y} id={`motion-blur-exposure-${i}`}>
+              <clipPath key={i} id={`motion-blur-exposure-${i}`}>
                 <motion.rect
-                  x={X0 + SLOT * i}
-                  y={y}
-                  width={sweep}
-                  height={ROW_H}
+                  x={GATE.x + PITCH * i + 4 + TRAVEL * i}
+                  y={subjectY}
+                  width={smear}
+                  height={SUBJECT}
                   {...animated({
                     width: track(
                       play,
-                      sweep,
-                      [0, 0, CARD, sweep, sweep],
-                      [0, opens, opens + 0.002, opens + SHUTTER_OPEN, 1],
+                      smear,
+                      [0, 0, SUBJECT, smear, smear],
+                      [0, opens, opens + 0.002, opens + TURN / 2, 1],
                     ),
                   })}
                 />
@@ -294,155 +300,143 @@ export function Shutter() {
             );
           })}
         </defs>
-        <text className={base.formula} x={X0} y={18}>
+        <text className={base.formula} x={8} y={18}>
           streak = speed × shutter ÷ 360° × frame time
         </text>
-        <path className={base.axis} d={`M${X0} ${AXIS_Y}H${X0 + SLOT * 3}`} />
-        {[0, 1, 2, 3].map((i) => (
-          <g key={i}>
-            <path
-              className={base.axis}
-              d={`M${X0 + SLOT * i} ${AXIS_Y - 4}V${AXIS_Y + 4}`}
+        <text className={base.spec} x={8} y={34}>
+          40 px a frame at 60 Hz
+        </text>
+        <text className={styles.caps} x={8} y={FILM_Y - 8}>
+          film
+        </text>
+        <g clipPath="url(#motion-blur-film-window)">
+          <motion.g {...animated({ x: pull })}>
+            <rect
+              className={styles.film}
+              x={-88}
+              y={FILM_Y}
+              width={1000}
+              height={FILM_H}
             />
-            <text
-              className={base.spec}
-              x={X0 + SLOT * i}
-              y={AXIS_Y + 16}
-              textAnchor="middle"
-            >
-              {["0", "16.7", "33.3", "50 ms"][i]}
-            </text>
-          </g>
-        ))}
-        {[0, 1, 2].map((i) => (
-          <rect
-            key={i}
-            className={base.focus}
-            x={X0 + SLOT * i}
-            y={AXIS_Y - 12}
-            width={OPEN}
-            height={8}
-            rx={2}
-          />
-        ))}
-        <text
-          className={styles.caps}
-          x={X0 + OPEN / 2}
-          y={AXIS_Y - 18}
-          textAnchor="middle"
-        >
-          open 8.3 ms
-        </text>
-        <text
-          className={styles.caps}
-          x={X0 + OPEN + OPEN / 2}
-          y={AXIS_Y - 18}
-          textAnchor="middle"
-        >
-          closed
-        </text>
-        {ROW_Y.map((y, i) => {
-          const start = X0 + SLOT * i;
-          const opens = shutterOpens(i);
-          const closes = opens + SHUTTER_OPEN;
-          return (
-            <g key={y}>
-              <text className={styles.caps} x={8} y={y + ROW_H / 2 + 3.5}>
-                {`frame ${i + 1}`}
-              </text>
-              <path
-                className={base.guide}
-                d={`M${start} ${AXIS_Y + 22}V${y}`}
-              />
+            {SPROCKETS.map((x) => (
+              <g key={x}>
+                <rect
+                  className={styles.frame}
+                  x={x}
+                  y={FILM_Y + 3}
+                  width={5}
+                  height={3}
+                  rx={1}
+                />
+                <rect
+                  className={styles.frame}
+                  x={x}
+                  y={FILM_Y + FILM_H - 6}
+                  width={5}
+                  height={3}
+                  rx={1}
+                />
+              </g>
+            ))}
+            {FRAMES.map((x) => (
               <rect
-                className={base.ghost}
-                x={start}
-                y={y}
-                width={CARD}
-                height={ROW_H}
-                rx={4}
+                key={x}
+                className={styles.frame}
+                x={x}
+                y={GATE.y}
+                width={GATE.width}
+                height={GATE.height}
+                rx={2}
               />
-              <motion.rect
-                x={start}
-                y={y}
-                width={sweep}
-                height={ROW_H}
-                rx={4}
-                fill="url(#motion-blur-profile)"
-                clipPath={`url(#motion-blur-exposure-${i})`}
-                {...fade(play)}
-              />
-              <motion.rect
-                fill="currentColor"
-                fillOpacity={INK}
-                x={start}
-                y={y}
-                width={CARD}
-                height={ROW_H}
-                rx={4}
-                {...animated({
-                  x: track(
-                    play,
-                    OPEN,
-                    [0, 0, OPEN, OPEN],
-                    [0, opens, closes, 1],
-                  ),
-                  opacity: track(
-                    play,
-                    0,
-                    [0, 0, 1, 1, 0, 0],
-                    [0, opens, opens + 0.01, closes, closes + 0.04, 1],
-                  ),
-                })}
-              />
-            </g>
-          );
-        })}
-        <motion.path
-          className={base.focusLine}
-          d={`M${X0} ${AXIS_Y - 14}V${ROW_Y[2] + ROW_H + 4}`}
+            ))}
+            {TURNS.map((i) => {
+              const x = GATE.x + PITCH * i + 4 + TRAVEL * i;
+              const opens = turnStarts(i);
+              const closes = opens + TURN / 2;
+              return (
+                <g key={i}>
+                  <motion.rect
+                    x={x}
+                    y={subjectY}
+                    width={smear}
+                    height={SUBJECT}
+                    rx={3}
+                    fill="url(#motion-blur-film)"
+                    clipPath={`url(#motion-blur-exposure-${i})`}
+                    {...fade(play)}
+                  />
+                  <motion.rect
+                    fill="currentColor"
+                    fillOpacity={INK}
+                    x={x}
+                    y={subjectY}
+                    width={SUBJECT}
+                    height={SUBJECT}
+                    rx={3}
+                    {...animated({
+                      x: track(
+                        play,
+                        STREAK,
+                        [0, 0, STREAK, STREAK],
+                        [0, opens, closes, 1],
+                      ),
+                      opacity: track(
+                        play,
+                        0,
+                        [0, 0, 1, 1, 0, 0],
+                        [0, opens, opens + 0.01, closes, closes + 0.04, 1],
+                      ),
+                    })}
+                  />
+                </g>
+              );
+            })}
+          </motion.g>
+        </g>
+        <motion.g
           {...animated({
-            x: track(
+            rotate: track(
               play,
               0,
-              [0, 0, SLOT * 3, SLOT * 3],
-              [0, PLAYHEAD[0], PLAYHEAD[1], 1],
-            ),
-            opacity: track(
-              play,
-              0,
-              [0, 0, 1, 1, 0, 0],
-              [
-                0,
-                PLAYHEAD[0] - 0.02,
-                PLAYHEAD[0],
-                PLAYHEAD[1],
-                PLAYHEAD[1] + 0.04,
-                1,
-              ],
+              [0, 0, 360 * TURNS.length, 360 * TURNS.length],
+              [0, turnStarts(0), turnStarts(TURNS.length), 1],
             ),
           })}
+        >
+          <circle className={base.ghost} cx={DISC.x} cy={DISC.y} r={DISC.r} />
+          <path
+            className={styles.blade}
+            d={`M${DISC.x - DISC.r} ${DISC.y}A${DISC.r} ${DISC.r} 0 0 1 ${DISC.x + DISC.r} ${DISC.y}Z`}
+          />
+        </motion.g>
+        <circle className={base.plate} cx={DISC.x} cy={DISC.y} r={6} />
+        <rect className={base.ghost} {...GATE} rx={2} />
+        <text
+          className={styles.caps}
+          x={GATE.x - 6}
+          y={FILM_Y - 8}
+          textAnchor="end"
+        >
+          gate
+        </text>
+        <Leader
+          from={[DISC.x - 46, DISC.y + 80]}
+          to={340}
+          label="Shutter"
+          detail="half open, one turn a frame"
+          strong
         />
         <path
           className={base.dimension}
-          d={`M${X0 + SLOT * 2 + CARD} ${ROW_Y[2] + ROW_H + 8}h${OPEN}`}
+          d={`M${streakX} ${FILM_Y + FILM_H + 8}h${STREAK}`}
         />
         <text
           className={base.spec}
-          x={X0 + SLOT * 2 + CARD + OPEN / 2}
-          y={ROW_Y[2] + ROW_H + 20}
+          x={streakX + STREAK / 2}
+          y={FILM_Y + FILM_H + 22}
           textAnchor="middle"
         >
           20 px streak
-        </text>
-        <path className={base.dimension} d={`M${X0} ${ROW_Y[0] - 6}h${SLOT}`} />
-        <text
-          className={base.spec}
-          x={X0 + SLOT / 2}
-          y={ROW_Y[0] - 10}
-          textAnchor="middle"
-        >
-          40 px a frame
         </text>
       </svg>
     </figure>

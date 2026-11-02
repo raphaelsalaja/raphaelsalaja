@@ -147,6 +147,25 @@
   fill: var(--background-secondary);
 }
 
+.blade {
+  fill: color-mix(in oklab, var(--gray-12) 8%, var(--background-secondary));
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}
+
+.film {
+  fill: color-mix(in oklab, var(--gray-12) 6%, transparent);
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+}
+
+.frame {
+  fill: var(--background-secondary);
+  stroke: var(--figure-line);
+  stroke-width: 0.5;
+}
+
 .grid {
   fill: none;
   stroke: var(--border-primary);
