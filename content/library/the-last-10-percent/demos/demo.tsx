@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { Segmented } from "@/components/writing/segmented";
+import { Control, Controls } from "@/components/controls";
 import { useDismiss } from "@/components/writing/use-dismiss";
 import styles from "./demo.module.css";
 
@@ -27,54 +27,56 @@ export function LastTenPercentDemo() {
   useDismiss(ref, open, close);
 
   return (
-    <div className={styles.stage} data-pass={pass}>
-      <div className={styles.anchor} ref={ref}>
-        <button
-          type="button"
-          className={styles.trigger}
-          aria-expanded={open}
-          aria-haspopup="menu"
-          onClick={() => setOpen((value) => !value)}
-        >
-          Options
-          <svg
-            className={styles.chevron}
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            aria-hidden="true"
+    <div className={styles.demo}>
+      <div className={styles.stage} data-pass={pass}>
+        <div className={styles.anchor} ref={ref}>
+          <button
+            type="button"
+            className={styles.trigger}
+            aria-expanded={open}
+            aria-haspopup="menu"
+            onClick={() => setOpen((value) => !value)}
           >
-            <path d="M2.5 4l2.5 2.5L7.5 4" />
-          </svg>
-        </button>
-        <div
-          className={styles.menu}
-          role="menu"
-          data-open={open || undefined}
-          inert={!open}
-        >
-          {items.map((item) => (
-            <button
-              key={item}
-              type="button"
-              role="menuitem"
-              className={styles.item}
-              onClick={close}
+            Options
+            <svg
+              className={styles.chevron}
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              aria-hidden="true"
             >
-              {item}
-            </button>
-          ))}
+              <path d="M2.5 4l2.5 2.5L7.5 4" />
+            </svg>
+          </button>
+          <div
+            className={styles.menu}
+            role="menu"
+            data-open={open || undefined}
+            inert={!open}
+          >
+            {items.map((item) => (
+              <button
+                key={item}
+                type="button"
+                role="menuitem"
+                className={styles.item}
+                onClick={close}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
+        <p className={styles.note}>{notes[pass]}</p>
       </div>
-      <div className={styles.controls}>
-        <Segmented
+      <Controls>
+        <Control
           label="Pass"
           options={passes}
           value={pass}
           onChange={setPass}
         />
-        <p className={styles.note}>{notes[pass]}</p>
-      </div>
+      </Controls>
     </div>
   );
 }

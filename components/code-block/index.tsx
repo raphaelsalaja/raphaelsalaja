@@ -18,7 +18,7 @@ export function CodeBlock({
   const ref = useRef<HTMLPreElement>(null);
 
   return (
-    <div className={styles.block}>
+    <div className={styles.block} data-code-block>
       <div className={styles.header}>
         <IconFileContent size={16} className={styles.icon} />
         <span className={styles.title}>{title ?? language}</span>

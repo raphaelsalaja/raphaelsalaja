@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { Segmented } from "@/components/writing/segmented";
+import { Control, Controls } from "@/components/controls";
 import { useLater } from "@/components/writing/use-later";
 import styles from "./demo.module.css";
 
@@ -45,97 +45,94 @@ export function QuietDemo() {
   };
 
   return (
-    <div className={styles.stage} data-mode={mode}>
-      <div className={styles.list}>
-        {tasks.map((task) => {
-          const checked = Boolean(done[task]);
-          const bursting = burst?.task === task;
-          return (
-            <motion.label
-              key={task}
-              className={styles.row}
-              data-flash={(loud && bursting) || undefined}
-              animate={loud && bursting ? { x: [0, -4, 4, -2, 0] } : { x: 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              <input
-                type="checkbox"
-                className={styles.input}
-                checked={checked}
-                onChange={() => toggle(task)}
-              />
-              <span className={styles.box}>
-                <motion.span
-                  className={styles.fill}
-                  animate={
-                    loud && bursting
-                      ? { scale: [1, 1.45, 0.9, 1] }
-                      : { scale: 1 }
-                  }
-                  transition={{ duration: 0.5 }}
-                >
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    aria-hidden="true"
+    <div className={styles.demo}>
+      <div className={styles.stage} data-mode={mode}>
+        <div className={styles.list}>
+          {tasks.map((task) => {
+            const checked = Boolean(done[task]);
+            const bursting = burst?.task === task;
+            return (
+              <motion.label
+                key={task}
+                className={styles.row}
+                data-flash={(loud && bursting) || undefined}
+                animate={loud && bursting ? { x: [0, -4, 4, -2, 0] } : { x: 0 }}
+                transition={{ duration: 0.35 }}
+              >
+                <input
+                  type="checkbox"
+                  className={styles.input}
+                  checked={checked}
+                  onChange={() => toggle(task)}
+                />
+                <span className={styles.box}>
+                  <motion.span
+                    className={styles.fill}
+                    animate={
+                      loud && bursting
+                        ? { scale: [1, 1.45, 0.9, 1] }
+                        : { scale: 1 }
+                    }
+                    transition={{ duration: 0.5 }}
                   >
-                    <path d="M2 5.2l2 2L8 3" />
-                  </svg>
-                </motion.span>
-                {loud && burst && bursting && (
-                  <span className={styles.particles} key={burst.id}>
-                    {particles.map(({ angle, distance }) => (
-                      <motion.span
-                        key={angle}
-                        className={styles.particle}
-                        initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
-                        animate={{
-                          x: Math.cos(angle) * distance,
-                          y: Math.sin(angle) * distance - 6,
-                          opacity: 0,
-                          scale: 0.4,
-                        }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
-                      />
-                    ))}
-                  </span>
-                )}
-              </span>
-              <span className={styles.label}>{task}</span>
-            </motion.label>
-          );
-        })}
-      </div>
-      <div className={styles.toastArea}>
-        <AnimatePresence>
-          {loud && toast && (
-            <motion.div
-              key={toast.id}
-              className={styles.toast}
-              initial={{ y: 24, opacity: 0, scale: 0.85 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: 12, opacity: 0, scale: 0.95 }}
-              transition={{ type: "spring", bounce: 0.55, duration: 0.6 }}
-            >
-              {toast.text}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-      <div className={styles.controls}>
-        <Segmented
-          label="Mode"
-          options={modes}
-          value={mode}
-          onChange={setMode}
-        />
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 10 10"
+                      aria-hidden="true"
+                    >
+                      <path d="M2 5.2l2 2L8 3" />
+                    </svg>
+                  </motion.span>
+                  {loud && burst && bursting && (
+                    <span className={styles.particles} key={burst.id}>
+                      {particles.map(({ angle, distance }) => (
+                        <motion.span
+                          key={angle}
+                          className={styles.particle}
+                          initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                          animate={{
+                            x: Math.cos(angle) * distance,
+                            y: Math.sin(angle) * distance - 6,
+                            opacity: 0,
+                            scale: 0.4,
+                          }}
+                          transition={{ duration: 0.7, ease: "easeOut" }}
+                        />
+                      ))}
+                    </span>
+                  )}
+                </span>
+                <span className={styles.label}>{task}</span>
+              </motion.label>
+            );
+          })}
+        </div>
+        <div className={styles.toastArea}>
+          <AnimatePresence>
+            {loud && toast && (
+              <motion.div
+                key={toast.id}
+                className={styles.toast}
+                initial={{ y: 24, opacity: 0, scale: 0.85 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                exit={{ y: 12, opacity: 0, scale: 0.95 }}
+                transition={{ type: "spring", bounce: 0.55, duration: 0.6 }}
+              >
+                {toast.text}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <p className={styles.note}>
           {loud
             ? "Tick a task. Then tick another."
             : "Tick a task. It's done, and you can see that it's done."}
         </p>
       </div>
+      <Controls>
+        <Control label="Mode" options={modes} value={mode} onChange={setMode} />
+      </Controls>
     </div>
   );
 }

@@ -1,12 +1,18 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+}
+
 .stage {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 16px;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  min-height: 384px;
-  padding: 48px 24px 32px;
+  padding: 48px 24px 24px;
 }
 
 .list {
@@ -165,13 +171,6 @@
   background: linear-gradient(135deg, var(--purple), var(--pink));
   border-radius: 999px;
   box-shadow: 0 8px 24px color-mix(in oklab, var(--purple) 40%, transparent);
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
 }
 
 .note {

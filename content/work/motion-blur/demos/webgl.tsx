@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Control, Controls } from "./controls";
+import { Control, Controls } from "@/components/controls";
 import {
   PEAK,
   RATES,

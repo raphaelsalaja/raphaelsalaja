@@ -1,0 +1,32 @@
+.showcase {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 4px;
+  background-color: color-mix(in oklab, var(--gray-12) 3%, transparent);
+  border-radius: 12px;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: color-mix(in oklab, var(--gray-12) 6%, transparent);
+  }
+
+  > [data-code-block] {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+}
+
+.panel {
+  overflow: hidden;
+  background-color: var(--background-primary);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 3px oklch(0 0 0 / calc(8% * var(--shadow-strength))),
+    0 0 0 1px oklch(0 0 0 / calc(2% * var(--shadow-strength)));
+
+  > [data-demo] {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

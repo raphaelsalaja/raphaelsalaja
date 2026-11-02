@@ -2,7 +2,7 @@
 
 import { useMotionBlur } from "@web-kits/motion-blur/react";
 import { type PointerEvent, useCallback, useRef, useState } from "react";
-import { Control, Controls } from "./controls";
+import { Control, ControlButton, Controls } from "@/components/controls";
 import {
   cubicBezier,
   PEAK,
@@ -264,9 +264,7 @@ export function Throw() {
           value={speed}
           onChange={setSpeed}
         />
-        <button type="button" className={styles.throw} onClick={toss}>
-          Throw
-        </button>
+        <ControlButton onClick={toss}>Throw</ControlButton>
       </Controls>
     </div>
   );

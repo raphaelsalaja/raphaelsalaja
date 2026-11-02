@@ -1,12 +1,18 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+}
+
 .stage {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 40px;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  min-height: 384px;
-  padding: 48px 24px 32px;
+  padding: 48px 24px 24px;
 }
 
 .anchor {
@@ -75,13 +81,6 @@
     color: var(--text-primary);
     background: var(--gray-3);
   }
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
 }
 
 .note {

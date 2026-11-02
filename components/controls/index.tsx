@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import clsx from "clsx";
+import type { ComponentProps, ReactNode } from "react";
 import { Segmented } from "@/components/writing/segmented";
 import styles from "./styles.module.css";
 
@@ -11,17 +12,24 @@ export function Control<T extends string>({
   options,
   value,
   onChange,
+  children,
 }: {
   label: string;
   options: readonly T[];
   value: T;
   onChange: (value: T) => void;
+  /** Shown in place of the label, and truncated before the options are. */
+  children?: ReactNode;
 }) {
   return (
     <div className={styles.control}>
-      <span className={styles.controlLabel} aria-hidden>
-        {label}
-      </span>
+      {children ? (
+        <div className={styles.custom}>{children}</div>
+      ) : (
+        <span className={styles.label} aria-hidden>
+          {label}
+        </span>
+      )}
       <div className={styles.scroll}>
         <Segmented
           label={label}
@@ -31,5 +39,18 @@ export function Control<T extends string>({
         />
       </div>
     </div>
+  );
+}
+
+export function ControlButton({
+  className,
+  ...props
+}: ComponentProps<"button">) {
+  return (
+    <button
+      type="button"
+      className={clsx(styles.button, className)}
+      {...props}
+    />
   );
 }

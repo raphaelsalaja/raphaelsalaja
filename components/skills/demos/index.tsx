@@ -1,5 +1,7 @@
 import clsx from "clsx";
-import type { ReactNode } from "react";
+import { type CSSProperties, Fragment, type ReactNode } from "react";
+import { codeToTokens } from "shiki";
+import { CodeBlock } from "@/components/code-block";
 import { Mascot } from "@/components/coffee/mascot";
 import { IconCircleCheck, IconDots } from "@/components/icons";
 import { firstExample } from "@/data/skills";
@@ -90,13 +92,37 @@ function Toggle({ on }: { on?: boolean }) {
   return <span className={styles.toggle} data-on={on || undefined} />;
 }
 
-function Code({ lines }: { lines: string[] }) {
+async function Code({ lang, lines }: { lang: "tsx" | "css"; lines: string[] }) {
+  const { tokens } = await codeToTokens(lines.join("\n"), {
+    lang,
+    themes: { light: "github-light", dark: "github-dark" },
+    defaultColor: false,
+  });
+
   return (
-    <pre className={styles.code}>
-      {lines.map((line) => (
-        <span key={line}>{line}</span>
-      ))}
-    </pre>
+    <div className={styles.code}>
+      <CodeBlock data-language={lang} className="shiki">
+        <code>
+          {tokens.map((line, row) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: fixed snippet
+            <Fragment key={row}>
+              {row > 0 && "\n"}
+              <span className="line">
+                {line.map((token, column) => (
+                  <span
+                    // biome-ignore lint/suspicious/noArrayIndexKey: fixed snippet
+                    key={column}
+                    style={token.htmlStyle as CSSProperties}
+                  >
+                    {token.content}
+                  </span>
+                ))}
+              </span>
+            </Fragment>
+          ))}
+        </code>
+      </CodeBlock>
+    </div>
   );
 }
 
@@ -375,6 +401,7 @@ export const demos: Record<string, Demo> = {
           </Row>
         </Card>
         <Code
+          lang="tsx"
           lines={[
             '<button className="sort">',
             '<div className="pill" onClick>',
@@ -399,6 +426,7 @@ export const demos: Record<string, Demo> = {
           </Row>
         </Card>
         <Code
+          lang="tsx"
           lines={[
             "<Button>Sort</Button>",
             "<Button>Filter</Button>",
@@ -484,10 +512,13 @@ export const demos: Record<string, Demo> = {
       <div className={styles.stack}>
         <Dropdown origin="center" />
         <Code
+          lang="css"
           lines={[
-            "transition: all 500ms ease-out;",
-            "transform-origin: center;",
-            "scale: 0;",
+            ".menu {",
+            "  transition: all 500ms ease-out;",
+            "  transform-origin: center;",
+            "  scale: 0;",
+            "}",
           ]}
         />
       </div>
@@ -496,10 +527,13 @@ export const demos: Record<string, Demo> = {
       <div className={styles.stack}>
         <Dropdown origin="trigger" />
         <Code
+          lang="css"
           lines={[
-            "transition: opacity 200ms, transform 200ms;",
-            "transform-origin: top left;",
-            "scale: 0.95;",
+            ".menu {",
+            "  transition: opacity 200ms, transform 200ms;",
+            "  transform-origin: top left;",
+            "  scale: 0.95;",
+            "}",
           ]}
         />
       </div>

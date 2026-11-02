@@ -12,7 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { Control, Controls } from "./controls";
+import { Control, Controls } from "@/components/controls";
 import styles from "./dialogs.module.css";
 import { SHUTTERS, type Shutter, shutterFraction } from "./motion";
 import { PAINTS, TECHNIQUES, type Technique } from "./streak";

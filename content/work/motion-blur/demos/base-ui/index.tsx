@@ -18,7 +18,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { Control, Controls } from "../controls";
+import { Control, Controls } from "@/components/controls";
+import { Showcase } from "@/components/showcase";
 import {
   SHUTTERS,
   type Shutter,
@@ -176,7 +177,26 @@ export function BaseUI({ children }: { children: ReactNode }) {
   )[COMPONENTS.indexOf(component)];
 
   return (
-    <div className={styles.root}>
+    <Showcase
+      code={
+        code &&
+        cloneElement(
+          code,
+          { key: "code" },
+          <Height>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={component}
+                className={styles.code}
+                {...swap(reduced, 0.2, 0.15)}
+              >
+                {code.props.children}
+              </motion.span>
+            </AnimatePresence>
+          </Height>,
+        )
+      }
+    >
       <div
         ref={frame}
         className={styles.frame}
@@ -236,22 +256,6 @@ export function BaseUI({ children }: { children: ReactNode }) {
           />
         </Controls>
       </div>
-      {code &&
-        cloneElement(
-          code,
-          { key: "code" },
-          <Height>
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.span
-                key={component}
-                className={styles.code}
-                {...swap(reduced, 0.2, 0.15)}
-              >
-                {code.props.children}
-              </motion.span>
-            </AnimatePresence>
-          </Height>,
-        )}
-    </div>
+    </Showcase>
   );
 }

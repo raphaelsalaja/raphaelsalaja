@@ -1,12 +1,18 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+}
+
 .stage {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 32px;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  min-height: 384px;
-  padding: 48px 24px 32px;
+  padding: 48px 24px 24px;
 }
 
 .card {
@@ -165,13 +171,6 @@
     opacity: 0;
     transform: translateY(24px) scale(0.85) rotate(-3deg);
   }
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
 }
 
 .note {

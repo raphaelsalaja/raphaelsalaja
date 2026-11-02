@@ -2,7 +2,7 @@
 
 import { animate, motion, type Transition, useMotionValue } from "motion/react";
 import { useState } from "react";
-import { Segmented } from "@/components/writing/segmented";
+import { Control, Controls } from "@/components/controls";
 import styles from "./demo.module.css";
 
 const modes = ["Ease", "Bounce 0", "Bounce 0.2", "Bounce 0.5"] as const;
@@ -34,28 +34,30 @@ export function SpringDemo() {
   };
 
   return (
-    <div className={styles.stage}>
-      <div className={styles.area}>
-        <motion.div
-          className={styles.card}
-          drag
-          dragMomentum={false}
-          style={{ x, y }}
-          whileDrag={{ scale: 1.04 }}
-          onDragEnd={release}
-        >
-          Drag
-        </motion.div>
+    <div className={styles.demo}>
+      <div className={styles.stage}>
+        <div className={styles.area}>
+          <motion.div
+            className={styles.card}
+            drag
+            dragMomentum={false}
+            style={{ x, y }}
+            whileDrag={{ scale: 1.04 }}
+            onDragEnd={release}
+          >
+            Drag
+          </motion.div>
+        </div>
+        <p className={styles.note}>{notes[mode]}</p>
       </div>
-      <div className={styles.controls}>
-        <Segmented
+      <Controls>
+        <Control
           label="Release"
           options={modes}
           value={mode}
           onChange={setMode}
         />
-        <p className={styles.note}>{notes[mode]}</p>
-      </div>
+      </Controls>
     </div>
   );
 }

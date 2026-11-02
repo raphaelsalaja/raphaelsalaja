@@ -61,22 +61,11 @@
   }
 }
 
-.toolbar {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 48px;
-  padding: 8px 8px 8px 16px;
-  border-top: 1px solid var(--border-secondary);
-}
-
 .note {
   display: flex;
   gap: 8px;
   align-items: center;
   min-width: 0;
-  color: var(--text-secondary);
 }
 
 .mark {
@@ -89,7 +78,7 @@
   border-radius: 50%;
   transition: background-color var(--duration-snappy) var(--ease-out-cubic);
 
-  &[data-side="after"] {
+  &[data-side="After"] {
     background: var(--green);
   }
 }
@@ -150,34 +139,5 @@
     & + & {
       translate: 0;
     }
-  }
-}
-
-.switch {
-  display: flex;
-  flex-shrink: 0;
-  gap: 2px;
-  padding: 2px;
-  background: var(--background-tertiary);
-  border-radius: 8px;
-}
-
-.option {
-  height: 28px;
-  padding: 0 10px;
-  color: var(--text-tertiary);
-  border-radius: 6px;
-  transition:
-    color var(--duration-snappy) ease,
-    background-color var(--duration-snappy) ease;
-
-  &:hover {
-    color: var(--text-primary);
-  }
-
-  &[aria-pressed="true"] {
-    color: var(--text-primary);
-    background: var(--background-primary);
-    box-shadow: var(--shadow-raised);
   }
 }

@@ -1,12 +1,17 @@
-.stage {
+.demo {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  align-items: center;
-  justify-content: space-between;
+  align-self: stretch;
   width: 100%;
-  min-height: 384px;
-  padding: 32px 24px;
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 24px 24px 16px;
 }
 
 .area {
@@ -47,13 +52,6 @@
   &:active {
     cursor: grabbing;
   }
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
 }
 
 .note {

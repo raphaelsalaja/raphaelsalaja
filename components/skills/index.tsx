@@ -1,4 +1,5 @@
 import "@/styles/mdx.css";
+import "@/styles/shiki.css";
 
 import { Fragment } from "react";
 import { Coffee } from "@/components/coffee";

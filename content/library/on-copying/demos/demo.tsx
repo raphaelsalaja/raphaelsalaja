@@ -2,7 +2,7 @@
 
 import { animate, motion, useMotionValue } from "motion/react";
 import { useRef, useState } from "react";
-import { Segmented } from "@/components/writing/segmented";
+import { Control, ControlButton, Controls } from "@/components/controls";
 import styles from "./demo.module.css";
 
 const DISTANCE = 256;
@@ -40,8 +40,8 @@ export function MatchDemo() {
     Number.parseFloat(bounce) === REFERENCE.bounce;
 
   return (
-    <div className={styles.stage}>
-      <div className={styles.top}>
+    <div className={styles.demo}>
+      <div className={styles.stage}>
         <div className={styles.track}>
           <motion.span className={styles.reference} style={{ x: reference }} />
           <motion.span className={styles.copy} style={{ x: copy }} />
@@ -60,39 +60,29 @@ export function MatchDemo() {
           </span>
         </div>
       </div>
-      <div className={styles.controls}>
-        <div className={styles.row}>
-          <span className={styles.name}>Duration</span>
-          <Segmented
-            label="Duration"
-            options={durations}
-            value={duration}
-            onChange={(value) => {
-              setDuration(value);
-              play(value, bounce);
-            }}
-          />
-        </div>
-        <div className={styles.row}>
-          <span className={styles.name}>Bounce</span>
-          <Segmented
-            label="Bounce"
-            options={bounces}
-            value={bounce}
-            onChange={(value) => {
-              setBounce(value);
-              play(duration, value);
-            }}
-          />
-        </div>
-        <button
-          type="button"
-          className={styles.play}
-          onClick={() => play(duration, bounce)}
-        >
+      <Controls>
+        <Control
+          label="Duration"
+          options={durations}
+          value={duration}
+          onChange={(value) => {
+            setDuration(value);
+            play(value, bounce);
+          }}
+        />
+        <Control
+          label="Bounce"
+          options={bounces}
+          value={bounce}
+          onChange={(value) => {
+            setBounce(value);
+            play(duration, value);
+          }}
+        />
+        <ControlButton onClick={() => play(duration, bounce)}>
           Play
-        </button>
-      </div>
+        </ControlButton>
+      </Controls>
     </div>
   );
 }

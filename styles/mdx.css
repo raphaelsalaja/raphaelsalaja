@@ -84,13 +84,17 @@ article {
 
   > video,
   > [data-demo],
+  > [data-showcase],
   > [data-demo] + p,
+  > [data-showcase] + p,
   > video + p {
     margin-top: 40px;
   }
 
   > h2 + [data-demo],
-  > h3 + [data-demo] {
+  > h3 + [data-demo],
+  > h2 + [data-showcase],
+  > h3 + [data-showcase] {
     margin-top: 16px;
   }
 
