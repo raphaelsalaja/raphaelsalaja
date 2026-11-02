@@ -120,8 +120,6 @@ The square crosses the stage in 450ms on `cubic-bezier(0.77, 0, 0.175, 1)` and r
 
 I started with `filter: blur()`, the only blur CSS has. It spreads in every direction, so a square moving sideways goes soft at the top and bottom too, which a camera never does. I think that's why it reads as out of focus rather than fast.
 
-A blur's cost grows with its radius and the area it covers, and when Chrome's team animated one, it blew the 16ms frame budget on a Moto G4.[^11] None of the demos here keep a filter on while the shape is still, so the cost only lands during the motion itself.
-
 ### SVG
 
 What I needed was a blur along one axis. An SVG `feGaussianBlur` takes a standard deviation for each axis, so `stdDeviation="6 0"` blurs only sideways, and Codrops showed in 2015 how to reference it from CSS and set it from the element's speed every frame.[^7]
@@ -298,5 +296,3 @@ WebGL isn't in it, because I've only seen it run through the polyfill, and I hav
 [^9]: Natalia Markoborodova, [HTML-in-Canvas in Chrome 157](https://developer.chrome.com/blog/html-in-canvas), Chrome for Developers, October 2026.
 
 [^10]: repalash, [three-html-render](https://github.com/repalash/three-html-render), April 2026.
-
-[^11]: [Animating a blur](https://developer.chrome.com/blog/animated-blur), Chrome for Developers.
