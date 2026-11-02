@@ -1,70 +1,84 @@
-.frame {
+.toasts {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
 }
 
 .host {
-  width: min(264px, 100cqi - 32px);
+  position: absolute;
+  left: 28px;
+  width: 336px;
+}
+
+/* Newest at the bottom; the oldest fades off the top as the column makes room */
+.column {
+  top: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.new {
+  top: 206px;
+  z-index: 1;
 }
 
 .toast {
+  box-sizing: border-box;
   display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 14px 12px 12px;
-  background: var(--white);
-  border-radius: 14px;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 72px;
+  padding: 16px;
+  color: var(--text-primary);
+  background: var(--example-surface);
+  border-radius: 12px;
   box-shadow:
     0 0 0 1px var(--border-primary),
-    0 1px 2px oklch(0 0 0 / calc(4% * var(--shadow-strength))),
-    0 8px 24px -6px oklch(0 0 0 / calc(12% * var(--shadow-strength)));
-
-  @media (prefers-color-scheme: dark) {
-    background: var(--example-surface);
-  }
-}
-
-.icon {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  color: color-mix(in oklab, var(--green), var(--black) 35%);
-  background: color-mix(in oklab, var(--green) 18%, transparent);
-  border-radius: 9px;
-
-  @media (prefers-color-scheme: dark) {
-    color: var(--green);
-  }
+    0 1px 1px oklch(0 0 0 / calc(2% * var(--shadow-strength))),
+    0 4px 8px -4px oklch(0 0 0 / calc(4% * var(--shadow-strength))),
+    0 16px 24px -8px oklch(0 0 0 / calc(6% * var(--shadow-strength)));
 }
 
 .text {
   display: flex;
-  flex: 1;
   flex-direction: column;
   min-width: 0;
 }
 
 .title {
-  font-size: 13px;
+  font-size: 15px;
   font-variation-settings: var(--font-weight-600);
-  line-height: 18px;
-  color: var(--text-primary);
+  line-height: 20px;
 }
 
-.body {
-  font-size: 13px;
+.description {
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
-  line-height: 18px;
+  line-height: 20px;
   color: var(--text-tertiary);
 }
 
-.time {
-  align-self: flex-start;
-  font-size: 12px;
-  line-height: 18px;
+.close {
+  flex: none;
+  margin-top: 2px;
   color: var(--text-quaternary);
+}
+
+/* Geist's success toast */
+.toast[data-success] {
+  color: #fff;
+  background: #0072f5;
+  box-shadow:
+    0 1px 1px oklch(0 0 0 / 2%),
+    0 4px 8px -4px oklch(0 0 0 / 8%),
+    0 16px 24px -8px oklch(0.45 0.18 255 / 22%);
+
+  & .description {
+    color: oklch(1 0 0 / 82%);
+  }
+
+  & .close {
+    color: #fff;
+  }
 }

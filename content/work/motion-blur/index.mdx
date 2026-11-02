@@ -76,6 +76,33 @@ export function ShareDrawer() {
 }
 ```
 
+```tsx title="dialog.tsx"
+import { Dialog } from "@base-ui/react/dialog";
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+export function DeleteDialog() {
+  const blur = useMotionBlur();
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger>Delete Project</Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Backdrop className="backdrop" />
+        {/* The popup grows out of the trigger on transform */}
+        <Dialog.Popup ref={blur.ref} className="popup">
+          <div className="surface">
+            <Dialog.Title>Delete Project</Dialog.Title>
+            <Dialog.Description>…</Dialog.Description>
+            <Dialog.Close>Cancel</Dialog.Close>
+            <Dialog.Close>Delete</Dialog.Close>
+          </div>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
 ```tsx title="tabs.tsx"
 import { Tabs } from "@base-ui/react/tabs";
 import { useMotionBlur } from "@web-kits/motion-blur/react";

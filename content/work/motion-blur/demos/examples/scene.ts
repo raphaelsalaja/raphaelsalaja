@@ -9,9 +9,13 @@ export type Scene = {
   destroy?: () => void;
 };
 
+/** The moment the first scene drew, shared so every scene is at the same time. */
+let origin = 0;
+
 /**
  * Runs a scene that is a pure function of time, so its loop has no seam. It
- * plays only while on screen, and under reduced motion draws `still` once.
+ * draws only while on screen, on a clock shared with every other scene, and
+ * under reduced motion draws `still` once.
  */
 export function useScene(
   ref: RefObject<HTMLElement | null>,
@@ -28,17 +32,16 @@ export function useScene(
       return scene.destroy;
     }
 
-    let time = still;
     let frame = 1 / 60;
     let last = 0;
     let raf = 0;
     const loop = (now: number) => {
+      origin ||= now;
       const dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
       last = now;
       if (dt)
         frame = Math.min(1 / 30, Math.max(1 / 240, frame * 0.9 + dt * 0.1));
-      time += dt;
-      scene.tick(time, frame);
+      scene.tick((now - origin) / 1000, frame);
       raf = requestAnimationFrame(loop);
     };
     const run = () => {

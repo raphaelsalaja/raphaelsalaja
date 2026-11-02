@@ -28,6 +28,7 @@ import {
   shutterFraction,
 } from "../motion";
 import { PAINTS, TECHNIQUES, type Technique } from "../streak";
+import { DialogExample } from "./dialog";
 import { DrawerExample } from "./drawer";
 import { MenuExample } from "./menu";
 import { SelectExample } from "./select";
@@ -43,12 +44,20 @@ export type ExampleProps = {
   container: HTMLDivElement;
 };
 
-const COMPONENTS = ["Drawer", "Tabs", "Menu", "Select", "Toast"] as const;
+const COMPONENTS = [
+  "Drawer",
+  "Dialog",
+  "Tabs",
+  "Menu",
+  "Select",
+  "Toast",
+] as const;
 
 type Component = (typeof COMPONENTS)[number];
 
 const EXAMPLES: Record<Component, ComponentType<ExampleProps>> = {
   Drawer: DrawerExample,
+  Dialog: DialogExample,
   Tabs: TabsExample,
   Menu: MenuExample,
   Select: SelectExample,

@@ -1,0 +1,111 @@
+.trigger {
+  transition: scale calc(100ms / var(--rate)) ease;
+
+  &[data-pressed] {
+    scale: 0.97;
+  }
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: color-mix(in oklab, var(--gray-12) 6%, transparent);
+  transition: opacity calc(320ms / var(--rate)) cubic-bezier(0.23, 1, 0.32, 1);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
+}
+
+/* Grows out of the trigger: its centre sits 48px down the 248px stage,
+   76px above the stage's middle, where the popup centres */
+.popup {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: min(280px, 100% - 32px);
+  height: fit-content;
+  margin: auto;
+  outline: none;
+  transition:
+    transform calc(320ms / var(--rate)) cubic-bezier(0.23, 1, 0.32, 1),
+    opacity calc(100ms / var(--rate)) ease;
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+    transform: translateY(-76px) scale(0.4);
+  }
+
+  &[data-ending-style] {
+    transition-duration: calc(200ms / var(--rate)), calc(140ms / var(--rate));
+  }
+}
+
+.popup > .surface {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+  user-select: none;
+  background: var(--gray-1);
+  border-radius: 8px;
+  box-shadow: var(--shadow-raised);
+  transition: scale calc(100ms / var(--rate)) ease;
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--gray-3);
+  }
+
+  &[data-pressed] {
+    scale: 0.96;
+  }
+
+  &[data-primary] {
+    color: var(--gray-1);
+    background: var(--gray-12);
+  }
+}
+
+/* The tip of the arrow is its hotspot */
+.pointer {
+  position: absolute;
+  top: -5.25px;
+  left: -7.5px;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px oklch(0 0 0 / 25%));
+  transition: translate calc(400ms / var(--rate))
+    cubic-bezier(0.77, 0, 0.175, 1);
+
+  & svg {
+    display: block;
+    transform-origin: 7.5px 5.25px;
+    transition: scale calc(100ms / var(--rate)) ease;
+  }
+
+  &[data-pressed] svg {
+    scale: 0.9;
+  }
+}

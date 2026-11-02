@@ -3,42 +3,45 @@
 import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
 import styles from "./kanban.module.css";
-import { clamp01, drive, outCubic, phase, useScene } from "./scene";
+import { clamp01, drive, outCubic, useScene } from "./scene";
+import { BEATS, loopAt } from "./timeline";
 
-// A task dropped from To Do into Done and back. It lifts, flies across on a
+// A task thrown from To Do into Done and back. It lifts, flies across on a
 // shallow arc, faster than the eye follows, and lands as the cards around it
 // make room. The cards making room move slowly enough to follow and stay sharp.
 
-const PASS = 2.2;
-const LIFT = 0.7;
-const FLY = 0.85;
 const FLIGHT = 0.3;
-const SHIFT = 0.35;
-const ACROSS = 148;
-const PITCH = 54;
+const SHIFT = 0.36;
+const LIFT = 0.15;
+const ACROSS = 174;
+const PITCH = 60;
 
-const progress = (time: number) => {
-  const { pass, at } = phase(time, PASS);
-  const forward = pass % 2 === 0;
-  const fly = outCubic(clamp01((at - FLY) / FLIGHT));
-  const shift = outCubic(clamp01((at - FLY) / SHIFT));
+function throwAt(time: number) {
+  const at = loopAt(time);
+  const started = BEATS.throws.filter((t) => at >= t - LIFT).length;
+  if (!started) return { forward: true, fly: 0, lift: 0, across: 0, done: 0 };
+  const j = started - 1;
+  const t0 = BEATS.throws[j];
+  const forward = j % 2 === 0;
+  const fly = outCubic(clamp01((at - t0) / FLIGHT));
+  const shift = outCubic(clamp01((at - t0) / SHIFT));
   const lift =
-    clamp01((at - LIFT) / 0.15) - clamp01((at - FLY - FLIGHT) / 0.15);
+    clamp01((at - t0 + LIFT) / LIFT) - clamp01((at - t0 - FLIGHT) / LIFT);
   return {
     forward,
     fly,
     lift,
+    across: forward ? fly : 1 - fly,
     // 0 with the task in To Do, 1 with it in Done
     done: forward ? shift : 1 - shift,
-    across: forward ? fly : 1 - fly,
   };
-};
+}
 
 const poseAt = (time: number) => {
-  const { forward, fly, lift, across } = progress(time);
+  const { forward, fly, lift, across } = throwAt(time);
   const arc = Math.sin(Math.PI * fly);
   return new DOMMatrix()
-    .translate(ACROSS * across, -26 * arc - 2 * lift)
+    .translate(ACROSS * across, -30 * arc - 2 * lift)
     .rotate((forward ? 6 : -6) * arc)
     .scale(1 + 0.04 * lift);
 };
@@ -55,7 +58,7 @@ export function KanbanExample() {
     return {
       tick(time, frame) {
         drive(host, blur, poseAt, time, frame);
-        const { done: d } = progress(time);
+        const { done: d } = throwAt(time);
         todo.style.transform = `translateY(${(1 - d) * PITCH}px)`;
         done.style.transform = `translateY(${d * PITCH}px)`;
         const landed = Math.round(d);
@@ -87,7 +90,7 @@ export function KanbanExample() {
           // biome-ignore lint/suspicious/noArrayIndexKey: static placeholders
           <span key={i} className={styles.card}>
             <span className={styles.bar} style={{ width: w }} />
-            <span className={styles.bar} data-faint style={{ width: w - 28 }} />
+            <span className={styles.bar} data-faint style={{ width: w - 30 }} />
           </span>
         ))}
       </div>
@@ -96,11 +99,10 @@ export function KanbanExample() {
 
   return (
     <div ref={root} className={styles.board}>
-      {column("To Do", 3, [88, 72], true)}
-      {column("Done", 2, [80, 92], false)}
+      {column("To Do", 3, [96, 78, 88], true)}
+      {column("Done", 2, [84, 100, 70], false)}
       <div className={styles.host}>
         <div className={styles.task}>
-          <span className={styles.tag}>Launch</span>
           <span className={styles.title}>Write the post</span>
         </div>
       </div>

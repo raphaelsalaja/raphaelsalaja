@@ -1,32 +1,47 @@
-import type { ComponentType } from "react";
+"use client";
+
+import { type ComponentType, useEffect, useRef } from "react";
+import { DialogExample } from "./dialog";
+import { DrawerExample } from "./drawer";
 import { KanbanExample } from "./kanban";
-import { PickerExample } from "./picker";
-import { SegmentedExample } from "./segmented";
 import styles from "./styles.module.css";
+import { TabsExample } from "./tabs";
+import { TimeMachineExample } from "./time-machine";
 import { ToastExample } from "./toast";
-import { WalletExample } from "./wallet";
 
-type Size = "big" | "wide";
+/** Every example is drawn on a canvas this wide, scaled to its tile. */
+const CANVAS = 392;
 
-const EXAMPLES: { label: string; Example: ComponentType; size: Size }[] = [
-  { label: "Kanban", Example: KanbanExample, size: "big" },
-  { label: "Time Picker", Example: PickerExample, size: "big" },
-  { label: "Wallet", Example: WalletExample, size: "big" },
-  { label: "Segmented Control", Example: SegmentedExample, size: "wide" },
-  { label: "Toast", Example: ToastExample, size: "wide" },
+const EXAMPLES: { label: string; Example: ComponentType }[] = [
+  { label: "Time Machine", Example: TimeMachineExample },
+  { label: "Drawer", Example: DrawerExample },
+  { label: "Tabs", Example: TabsExample },
+  { label: "Dialog", Example: DialogExample },
+  { label: "Kanban", Example: KanbanExample },
+  { label: "Toast", Example: ToastExample },
 ];
 
 export function Examples() {
+  const bento = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const root = bento.current;
+    const tile = root?.firstElementChild;
+    if (!root || !tile) return;
+    const observer = new ResizeObserver(() => {
+      root.style.setProperty("--scale", String(tile.clientWidth / CANVAS));
+    });
+    observer.observe(tile);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className={styles.bento} aria-label="Examples">
-      {EXAMPLES.map(({ label, Example, size }) => (
-        <figure
-          key={label}
-          className={styles.tile}
-          data-size={size}
-          aria-label={label}
-        >
-          <Example />
+    <section ref={bento} className={styles.bento} aria-label="Examples">
+      {EXAMPLES.map(({ label, Example }) => (
+        <figure key={label} className={styles.tile} aria-label={label}>
+          <div className={styles.canvas}>
+            <Example />
+          </div>
         </figure>
       ))}
     </section>

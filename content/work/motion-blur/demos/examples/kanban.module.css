@@ -1,15 +1,13 @@
+/* The columns run off the bottom of the tile, so the cards making room
+   slide under its edge */
 .board {
-  position: relative;
+  position: absolute;
+  top: 28px;
+  left: 28px;
   display: flex;
-  gap: 16px;
-  width: 280px;
-  height: 240px;
-}
-
-@container (width < 320px) {
-  .board {
-    scale: 0.85;
-  }
+  gap: 12px;
+  width: 336px;
+  height: 320px;
 }
 
 .column {
@@ -24,15 +22,14 @@
   display: flex;
   gap: 6px;
   align-items: center;
-  height: 36px;
+  height: 32px;
   padding-left: 4px;
-  font-size: 12px;
+  font-size: 13px;
   font-variation-settings: var(--font-weight-600);
   color: var(--text-primary);
 }
 
 .count {
-  font-size: 12px;
   font-variation-settings: var(--font-weight-500);
   font-variant-numeric: tabular-nums;
   color: var(--text-quaternary);
@@ -46,12 +43,13 @@
 
 .card,
 .task {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   justify-content: center;
-  height: 46px;
-  padding: 0 10px;
+  height: 52px;
+  padding: 0 12px;
   background: var(--example-surface);
   border-radius: 10px;
   box-shadow: var(--example-shadow);
@@ -61,38 +59,27 @@
   height: 6px;
   background: var(--example-bar);
   border-radius: 3px;
-}
 
-.bar[data-faint] {
-  background: var(--example-bar-faint);
+  &[data-faint] {
+    height: 5px;
+    background: var(--example-bar-faint);
+  }
 }
 
 .host {
   position: absolute;
-  top: 36px;
+  top: 32px;
   left: 8px;
-  width: 116px;
+  width: 146px;
 }
 
 .task {
-  gap: 3px;
   box-shadow: var(--example-lift);
 }
 
-.tag {
-  align-self: flex-start;
-  padding: 0 6px;
-  font-size: 10px;
-  font-variation-settings: var(--font-weight-600);
-  line-height: 15px;
-  color: color-mix(in oklab, var(--blue), var(--gray-12) 35%);
-  background: color-mix(in oklab, var(--blue) 18%, transparent);
-  border-radius: 4px;
-}
-
 .title {
-  font-size: 12px;
+  font-size: 14px;
   font-variation-settings: var(--font-weight-500);
-  line-height: 16px;
+  line-height: 18px;
   color: var(--text-primary);
 }
