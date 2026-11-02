@@ -82,12 +82,9 @@ export function drive(
 
 export const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 export const outCubic = (t: number) => 1 - (1 - t) ** 3;
-export const outQuart = (t: number) => 1 - (1 - t) ** 4;
 export const outQuint = (t: number) => 1 - (1 - t) ** 5;
 export const inOutCubic = (t: number) =>
   t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2;
-export const outBack = (t: number, s = 1.2) =>
-  1 + (s + 1) * (t - 1) ** 3 + s * (t - 1) ** 2;
 
 /** An underdamped spring from 0 to 1, `t` in seconds. */
 export function spring(t: number, omega = 18, zeta = 0.62) {

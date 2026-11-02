@@ -5,7 +5,7 @@ const TAU = Math.PI * 2;
 const AXES = ["yaw", "pitch", "roll"] as const;
 const EYE = ["w", "h", "tilt", "open"] as const;
 
-export const REST = { yaw: 24, pitch: 24, roll: -12 };
+const REST = { yaw: 24, pitch: 24, roll: -12 };
 
 type Gaze = { yaw: number; pitch: number; roll: number };
 type Eye = { w: number; h: number; tilt: number; open: number };
@@ -16,7 +16,7 @@ const pair = (w: number, h: number, tilt = 0, open = 1): [Eye, Eye] => [
   { w, h, tilt: -tilt, open },
 ];
 
-export const FACES = {
+const FACES = {
   idle: {
     gaze: { yaw: 0, pitch: 0, roll: 0 },
     split: 15.5,
@@ -49,7 +49,7 @@ export const FACES = {
   },
 } as const satisfies Record<string, Face>;
 
-export const TIMING = {
+const TIMING = {
   blink: 0.18,
   blinkClose: 0.45,
   blinkGap: [1.9, 4.6],
@@ -85,7 +85,7 @@ const degrees = (value: number) => (value * 180) / Math.PI;
 const easeOutQuint = (t: number) => 1 - (1 - t) ** 5;
 const round = (value: number) => Math.round(value * 1000) / 1000;
 
-export function wave(t: number, period: number, phase: number) {
+function wave(t: number, period: number, phase: number) {
   const r = (t / period) * TAU;
   return (
     0.55 * Math.sin(r + phase) +
@@ -103,7 +103,7 @@ function turn(a: Vector, b: Vector, angle: number): [Vector, Vector] {
   ];
 }
 
-export function capsule(w: number, h: number) {
+function capsule(w: number, h: number) {
   const r = Math.min(w, h) / 2;
   if (h >= w) {
     const y = h / 2 - r;
@@ -113,7 +113,7 @@ export function capsule(w: number, h: number) {
   return `M${round(-x)} ${round(r)}a${round(r)} ${round(r)} 0 0 1 0 ${round(-2 * r)}h${round(2 * x)}a${round(r)} ${round(r)} 0 0 1 0 ${round(2 * r)}z`;
 }
 
-export function drawEyes(
+function drawEyes(
   face: Face,
   gaze: Gaze,
   lid: number,
@@ -154,14 +154,14 @@ export function drawEyes(
 
 export const restingEyes = (head: Head) => drawEyes(FACES.idle, REST, 1, head);
 
-export function blinkLid(since: number) {
+function blinkLid(since: number) {
   const r = since / TIMING.blink;
   if (r < 0 || r > 1) return 1;
   const close = TIMING.blinkClose;
   return r < close ? 1 - r / close : (r - close) / (1 - close);
 }
 
-export function hop(since: number) {
+function hop(since: number) {
   if (since < 0 || since > TIMING.hop) return { y: 0, sx: 1, sy: 1 };
   if (since < 0.08) {
     const k = Math.sin((since / 0.08) * (Math.PI / 2));

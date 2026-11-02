@@ -22,7 +22,6 @@ export const config: VercelConfig = {
   ],
   headers: [
     routes.cacheControl("/media/(.*)", immutable),
-    routes.cacheControl("/shaders/(.*)", immutable),
     routes.header("/(.*)", [
       { key: "X-Content-Type-Options", value: "nosniff" },
       { key: "X-Frame-Options", value: "DENY" },

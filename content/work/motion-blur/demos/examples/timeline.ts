@@ -18,7 +18,7 @@ import { phase } from "./scene";
 //   8.40  Drawer   up again, half a loop on; away at 10.4
 //   8.90  Tabs     home to Day
 
-export const LOOP = 11.6;
+const LOOP = 11.6;
 
 export const BEATS = {
   travel: [

@@ -1,4 +1,4 @@
-export const BOT_AREAS = [
+const BOT_AREAS = [
   "Staff",
   "Training",
   "Engineering",
@@ -7,9 +7,9 @@ export const BOT_AREAS = [
   "Shopping",
 ] as const;
 
-export type BotArea = (typeof BOT_AREAS)[number];
+type BotArea = (typeof BOT_AREAS)[number];
 
-export const BOT_SHAPES = [
+const BOT_SHAPES = [
   "blob",
   "star",
   "hex",
@@ -27,7 +27,7 @@ export const BOT_SHAPES = [
 
 export type BotShape = (typeof BOT_SHAPES)[number];
 
-export const BOT_COLORS = [
+const BOT_COLORS = [
   "black",
   "gray",
   "blue",
