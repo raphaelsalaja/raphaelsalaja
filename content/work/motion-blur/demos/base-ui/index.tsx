@@ -11,6 +11,7 @@ import {
   Children,
   type ComponentType,
   type CSSProperties,
+  cloneElement,
   isValidElement,
   type ReactNode,
   useEffect,
@@ -58,6 +59,8 @@ const BEAT = 1000;
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
+const MOVE = [0.77, 0, 0.175, 1] as const;
+
 function swap(reduced: boolean | null, enter: number, exit: number) {
   const hidden = reduced ? { opacity: 0 } : { opacity: 0, filter: "blur(2px)" };
   return {
@@ -70,6 +73,34 @@ function swap(reduced: boolean | null, enter: number, exit: number) {
     },
     exit: { ...hidden, transition: { duration: exit, ease: EASE } },
   };
+}
+
+function Height({ children }: { children: ReactNode }) {
+  const reduced = useReducedMotion();
+  const inner = useRef<HTMLSpanElement>(null);
+  const [height, setHeight] = useState<number | "auto">("auto");
+
+  useEffect(() => {
+    if (!inner.current) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setHeight(entry.borderBoxSize[0].blockSize);
+    });
+    observer.observe(inner.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.span
+      className={styles.height}
+      initial={false}
+      animate={{ height }}
+      transition={{ duration: reduced ? 0 : 0.25, ease: MOVE }}
+    >
+      <span ref={inner} className={styles.measure}>
+        {children}
+      </span>
+    </motion.span>
+  );
 }
 
 type PaneProps = Omit<ExampleProps, "container"> & {
@@ -131,10 +162,9 @@ export function BaseUI({ children }: { children: ReactNode }) {
   };
 
   const Example = EXAMPLES[component];
-  const code =
-    Children.toArray(children).filter(isValidElement)[
-      COMPONENTS.indexOf(component)
-    ];
+  const code = Children.toArray(children).filter(
+    isValidElement<{ children?: ReactNode }>,
+  )[COMPONENTS.indexOf(component)];
 
   return (
     <div className={styles.root}>
@@ -197,11 +227,22 @@ export function BaseUI({ children }: { children: ReactNode }) {
           />
         </Controls>
       </div>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div key={component} {...swap(reduced, 0.12, 0.08)}>
-          {code}
-        </motion.div>
-      </AnimatePresence>
+      {code &&
+        cloneElement(
+          code,
+          { key: "code" },
+          <Height>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={component}
+                className={styles.code}
+                {...swap(reduced, 0.2, 0.15)}
+              >
+                {code.props.children}
+              </motion.span>
+            </AnimatePresence>
+          </Height>,
+        )}
     </div>
   );
 }

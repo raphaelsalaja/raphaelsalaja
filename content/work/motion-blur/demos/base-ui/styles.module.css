@@ -58,6 +58,22 @@
   padding-top: 32px;
 }
 
+.height {
+  display: block;
+  overflow-y: clip;
+}
+
+.measure {
+  position: relative;
+  display: block;
+  width: max-content;
+  min-width: 100%;
+}
+
+.code {
+  display: block;
+}
+
 .portal {
   position: absolute;
   inset: 0;
