@@ -17,8 +17,6 @@ import {
   useRef,
 } from "react";
 import styles from "./styles.module.css";
-import { webgl } from "./webgl-technique";
-
 export const TECHNIQUES = [
   "None",
   "Blur",
@@ -26,7 +24,6 @@ export const TECHNIQUES = [
   "Squeeze",
   "Echo",
   "Smear",
-  "WebGL",
 ] as const;
 
 export type Technique = (typeof TECHNIQUES)[number];
@@ -49,7 +46,6 @@ export const PAINTS: Record<Technique, Paint> = {
   Squeeze: squeeze(),
   Echo: echo(),
   Smear: smear({ limit: Number.POSITIVE_INFINITY }),
-  WebGL: webgl(),
 };
 
 export function Streak({
