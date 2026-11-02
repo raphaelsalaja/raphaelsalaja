@@ -8,9 +8,9 @@ import shared from "./styles.module.css";
 import styles from "./toast.module.css";
 
 const MESSAGES = [
-  { title: "Saved", description: "Your changes are live." },
-  { title: "Copied", description: "The link is on your clipboard." },
-  { title: "Uploaded", description: "Three files were added." },
+  { title: "Archived", description: "Q3 Report is in Archive." },
+  { title: "Deleted", description: "Two drafts were removed." },
+  { title: "Moved", description: "Brand Kit is in Shared." },
 ];
 
 export function ToastExample({
@@ -60,8 +60,11 @@ function Item({
       className={styles.toast}
     >
       <Toast.Content className={`${shared.surface} ${styles.surface}`}>
-        <Toast.Title className={shared.title} />
-        <Toast.Description className={shared.text} />
+        <div className={styles.copy}>
+          <Toast.Title className={shared.title} />
+          <Toast.Description className={shared.text} />
+        </div>
+        <span className={styles.action}>Undo</span>
       </Toast.Content>
     </Toast.Root>
   );

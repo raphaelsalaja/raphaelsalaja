@@ -117,6 +117,8 @@ export function OptionsMenu() {
               <Menu.Item>Rename</Menu.Item>
               <Menu.Item>Duplicate</Menu.Item>
               <Menu.Item>Archive</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item>Delete</Menu.Item>
             </div>
           </Menu.Popup>
         </Menu.Positioner>
@@ -172,8 +174,11 @@ function Item({ toast }: { toast: Toast.Root.ToastObject }) {
   return (
     <Toast.Root ref={blur.ref} toast={toast} className="toast">
       <Toast.Content className="surface">
-        <Toast.Title />
-        <Toast.Description />
+        <div>
+          <Toast.Title />
+          <Toast.Description />
+        </div>
+        <button type="button">Undo</button>
       </Toast.Content>
     </Toast.Root>
   );

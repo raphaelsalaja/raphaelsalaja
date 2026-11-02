@@ -6,7 +6,7 @@ import type { ExampleProps } from "./index";
 import styles from "./menu.module.css";
 import shared from "./styles.module.css";
 
-const ITEMS = ["Rename", "Duplicate", "Move To", "Archive", "Delete"];
+const ITEMS = ["Rename", "Duplicate", "Archive"];
 
 export function MenuExample({ blur, options, step, container }: ExampleProps) {
   const motion = useMotionBlur(options);
@@ -31,6 +31,10 @@ export function MenuExample({ blur, options, step, container }: ExampleProps) {
                   {item}
                 </Menu.Item>
               ))}
+              <Menu.Separator className={shared.separator} />
+              <Menu.Item className={`${shared.item} ${shared.danger}`}>
+                Delete
+              </Menu.Item>
             </div>
           </Menu.Popup>
         </Menu.Positioner>

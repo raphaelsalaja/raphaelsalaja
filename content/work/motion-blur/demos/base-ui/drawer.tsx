@@ -38,7 +38,7 @@ export function DrawerExample({
                 </Drawer.Description>
                 <div className={styles.rows}>
                   {ROWS.map((row) => (
-                    <span key={row} className={shared.item}>
+                    <span key={row} className={styles.row}>
                       {row}
                     </span>
                   ))}
