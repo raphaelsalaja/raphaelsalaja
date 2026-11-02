@@ -33,11 +33,9 @@ type Exposure = (typeof EXPOSURES)[number];
 const OPEN: Record<Exposure, number> = { Off: 0, "180°": 0.5, "360°": 1 };
 
 const LAB_SHAPE = { width: 64, height: 64 };
-const LANE_SHAPE = { width: 40, height: 40 };
 const BALL = { width: 56, height: 56 };
 const PANEL = { width: 72, height: 72 };
 const INSET = 24;
-const LANE_INSET = 12;
 
 const FRICTION = 2.6;
 const RESTITUTION = 0.75;
@@ -52,8 +50,6 @@ const SNAP_WAIT = 0.4;
 const SNAP_IN = 0.22;
 const SNAP_HOLD = 1;
 const SNAP_OUT = 0.16;
-
-const LANES = TECHNIQUES.filter((technique) => technique !== "None");
 
 const enterEase = cubicBezier(0.23, 1, 0.32, 1);
 
@@ -111,71 +107,6 @@ export function Lab() {
           value={technique}
           onChange={setTechnique}
         />
-        <Control
-          label="Speed"
-          options={RATES}
-          value={rate}
-          onChange={setRate}
-        />
-        <Control
-          label="Shutter"
-          options={SHUTTERS}
-          value={shutter}
-          onChange={setShutter}
-        />
-      </Controls>
-    </div>
-  );
-}
-
-export function Lanes() {
-  const stage = useRef<HTMLDivElement>(null);
-  const lanes = useRef<(HTMLDivElement | null)[]>([]);
-  const streaks = useRef<(StreakHandle | null)[]>([]);
-  const [rate, setRate] = useRate();
-  const [shutter, setShutter] = useState<Shutter>("180°");
-  const time = useRef(0);
-
-  useFrameLoop(stage, (delta, frame) => {
-    time.current = rate === "Still" ? PEAK : time.current + delta * SPEED[rate];
-    const [position, velocity] = sample(time.current);
-
-    LANES.forEach((_, i) => {
-      const lane = lanes.current[i];
-      const width = lane?.clientWidth ?? 0;
-      const travel = Math.max(0, width - LANE_SHAPE.width - LANE_INSET * 2);
-      const top = ((lane?.clientHeight ?? 0) - LANE_SHAPE.height) / 2;
-      const length = velocity * travel * frame * shutterFraction(shutter);
-      streaks.current[i]?.set(LANE_INSET + position * travel, top, length, 0);
-    });
-  });
-
-  return (
-    <div className={styles.lab}>
-      <div ref={stage} className={`${styles.body} ${styles.lanes}`}>
-        {LANES.map((technique, i) => (
-          <div key={technique} className={styles.lane}>
-            <span className={styles.laneName}>{technique}</span>
-            <div
-              ref={(node) => {
-                lanes.current[i] = node;
-              }}
-              className={styles.laneTrack}
-            >
-              <Streak
-                ref={(handle) => {
-                  streaks.current[i] = handle;
-                }}
-                technique={technique}
-                {...LANE_SHAPE}
-              >
-                <Shape />
-              </Streak>
-            </div>
-          </div>
-        ))}
-      </div>
-      <Controls>
         <Control
           label="Speed"
           options={RATES}

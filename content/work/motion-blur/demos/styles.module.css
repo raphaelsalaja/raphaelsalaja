@@ -42,34 +42,6 @@
   background-size: 16px 16px;
 }
 
-.lanes {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.lane {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  align-items: center;
-
-  & + & {
-    box-shadow: inset 0 1px 0 var(--border-secondary);
-  }
-}
-
-.laneName {
-  font-size: 13px;
-  line-height: 18px;
-  color: var(--text-secondary);
-}
-
-.laneTrack {
-  position: relative;
-  height: 64px;
-  overflow: clip;
-}
-
 .shader {
   position: relative;
   width: 100%;
