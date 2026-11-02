@@ -1,0 +1,65 @@
+.picker {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  width: 272px;
+  height: 240px;
+  font-variant-numeric: tabular-nums;
+}
+
+.column > span,
+.period > span {
+  font-size: 32px;
+  font-variation-settings: var(--font-weight-500);
+}
+
+.band {
+  position: absolute;
+  top: 96px;
+  right: 0;
+  left: 0;
+  height: 48px;
+  background: var(--example-well);
+  border-radius: 12px;
+}
+
+.wheel {
+  position: relative;
+  width: 88px;
+  height: 240px;
+  overflow: hidden;
+  mask-image: linear-gradient(transparent, #000 30%, #000 70%, transparent);
+}
+
+.host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.column > span {
+  height: 48px;
+  line-height: 48px;
+}
+
+.period {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 88px;
+  padding-top: 96px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.period [data-faint] {
+  color: var(--text-quaternary);
+}

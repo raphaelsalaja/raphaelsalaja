@@ -1,0 +1,302 @@
+.lab {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+}
+
+.body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  padding: 24px;
+}
+
+.track,
+.field {
+  width: 100%;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--border-primary) 0 1px,
+    transparent 1px 48px
+  );
+  background-position: center;
+  border-radius: 8px;
+}
+
+.track {
+  height: 160px;
+}
+
+.field {
+  height: 300px;
+  background-image: radial-gradient(
+    circle,
+    var(--border-secondary) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+}
+
+.lanes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lane {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: center;
+
+  & + & {
+    box-shadow: inset 0 1px 0 var(--border-secondary);
+  }
+}
+
+.laneName {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.laneTrack {
+  position: relative;
+  height: 64px;
+  overflow: clip;
+}
+
+.shader {
+  position: relative;
+  width: 100%;
+}
+
+.shaderTrack {
+  position: relative;
+  height: 112px;
+  overflow: clip;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.drawable {
+  width: 64px;
+  height: 64px;
+}
+
+.unsupported {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: color-mix(in oklab, var(--gray-1) 80%, transparent);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.unsupportedTitle,
+.unsupportedText {
+  margin: 0;
+}
+
+.unsupportedTitle {
+  font-size: 14px;
+  font-variation-settings: var(--font-weight-600);
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.unsupportedText {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.mover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  isolation: isolate;
+  will-change: transform;
+}
+
+.lens,
+.inner {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  width: 100%;
+  height: 100%;
+  background: var(--gray-12);
+  border-radius: 14px;
+
+  &[data-kind="circle"] {
+    border-radius: 50%;
+  }
+}
+
+.handle {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.orbit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 260px;
+}
+
+.ring {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+}
+
+.dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 16px;
+}
+
+.control {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  height: 40px;
+  padding: 3px 3px 3px 12px;
+  background: var(--gray-2);
+  border-radius: 10px;
+
+  [role="group"] {
+    padding: 0;
+    background: none;
+  }
+}
+
+.controlLabel {
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.scroll {
+  min-width: 0;
+  padding: 3px;
+  margin: -3px -3px -3px auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: 10px;
+}
+
+@property --fade-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black var(--fade-start),
+      black calc(100% - var(--fade-end)),
+      transparent
+    );
+    animation: scroll-fade linear both;
+    animation-timeline: scroll(self inline);
+  }
+}
+
+@keyframes scroll-fade {
+  0% {
+    --fade-start: 0px;
+    --fade-end: 24px;
+  }
+
+  10% {
+    --fade-start: 24px;
+  }
+
+  90% {
+    --fade-end: 24px;
+  }
+
+  100% {
+    --fade-start: 24px;
+    --fade-end: 0px;
+  }
+}
+
+.readout {
+  min-height: 18px;
+  margin: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 18px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.throw {
+  flex: 1 1 auto;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--gray-2);
+  border-radius: 10px;
+  transition: transform 150ms var(--ease-out-quart);
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+  }
+}

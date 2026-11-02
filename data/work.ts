@@ -62,6 +62,13 @@ export const work: WorkItem[] = (
       description: "An elevated dialog component for React.",
     },
     {
+      title: "Motion Blur on the Web",
+      date: "2026-11-01",
+      category: "Experiments",
+      href: "/work/motion-blur",
+      description: "A motion blur package for the web, and how I got there.",
+    },
+    {
       title: "Notifications",
       date: "2026-10-29",
       category: "Experiments",

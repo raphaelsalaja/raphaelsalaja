@@ -1,0 +1,58 @@
+.frame {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.host {
+  width: 236px;
+}
+
+.toast {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--example-surface);
+  border-radius: 16px;
+  box-shadow: var(--example-lift);
+}
+
+.icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--white);
+  background: color-mix(in oklab, var(--green), var(--black) 20%);
+  border-radius: 50%;
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.title {
+  font-size: 13px;
+  font-variation-settings: var(--font-weight-600);
+  line-height: 18px;
+  color: var(--text-primary);
+}
+
+.body {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-tertiary);
+}
+
+.time {
+  align-self: flex-start;
+  font-size: 11px;
+  line-height: 18px;
+  color: var(--text-quaternary);
+}

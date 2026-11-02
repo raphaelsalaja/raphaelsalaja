@@ -1,0 +1,308 @@
+import { Lab, Lanes, Orbit, Snap, Throw } from "./demos";
+import { Dialogs } from "./demos/dialogs";
+import { Examples } from "./demos/examples";
+import {
+  Accumulation,
+  Drawn,
+  Edge,
+  Hold,
+  Mapping,
+  Refresh,
+  Shutter,
+  Squeeze,
+  Stacking,
+  Velocity,
+} from "./demos/figures";
+import { Shader } from "./demos/webgl";
+
+Browsers have no motion blur property, so I built one: `@web-kits/motion-blur`, a package that blurs an element only while it moves too fast to follow, with the streak sized the way a camera sizes it, from the speed, the display's frame time and a shutter angle. Motion blur can make something fast look fast or turn it into a smudge, and getting the first every time meant working out what motion blur is, where it comes from and how to draw it in a browser at all. This page is that work, from the six ways I built it to where I'd use it, and the package is where it ended up.
+
+<Demo variant="transparent">
+  <Examples />
+</Demo>
+<sub>Made with the package. A task drops into another column, a time picker is flicked to a new hour, a card is flicked to the back of a wallet, a segmented control jumps three tabs and a toast is flicked away. Each blurs only while it moves too fast to follow, and the cards making room and the tab labels stay sharp.</sub>
+
+## Getting Started
+
+```sh title="Terminal"
+npm i @web-kits/motion-blur
+```
+
+That adds the package the examples above and the dialogs further down are built on. Then wrap something that moves too fast to follow:
+
+```tsx title="sheet.tsx"
+import { MotionBlur } from "@web-kits/motion-blur/react";
+
+<MotionBlur className="sheet">
+  <div className="surface">…</div>
+</MotionBlur>;
+```
+
+The element you animate has to stay transparent, so the background and shadow go on what's inside it. CSS transitions, CSS animations, the Web Animations API and Motion are all picked up on their own, and the blur clears once the element stops. Without React it's one call:
+
+```ts title="sheet.ts"
+import { motionBlur } from "@web-kits/motion-blur";
+
+motionBlur(document.querySelector(".sheet"));
+```
+
+It draws with Echo at a 180° shutter unless you pick otherwise, and it turns itself off for anyone who prefers reduced motion. The other techniques, the provider for setting options across a tree and how to write your own technique are in the [README](https://github.com/raphaelsalaja/motion-blur/tree/main/packages/motion-blur#readme).
+
+## What Motion Blur Is
+
+Motion blur is what an image records when something moves while the image is being made. Each medium gets it a different way, and each way turned out to have a web version.
+
+### Cameras
+
+A camera's shutter is open for part of every frame, and anything that moves while it's open is recorded at every position it passed through, averaged together. The length of the smear is the speed on screen times how long the shutter was open, and film usually opens it for half of each frame, which is called a 180° shutter.[^1]
+
+<Shutter />
+<sub>Three frames at 60 Hz, 16.7ms apart. The shutter is open for the first 8.3ms of each, and the shape, moving 40px a frame, is recorded across the 20px it covers while it's open, fading in at the back and out at the front.</sub>
+
+Averaging every position is the same as convolving the image with a box as long as the streak, laid along the direction of motion.[^1] With the shutter closed for more of the frame, the streak gets shorter and fast motion starts to look like a row of separate, sharp images, which film calls strobing.
+
+### Eyes and Screens
+
+A screen already blurs anything the eye follows. An LCD or OLED holds each frame for the whole refresh, and while it holds, the eye keeps moving with the object, so the frame smears across the retina. Blur Busters puts it at 1px of blur per 1,000px/s for every millisecond a frame stays up,[^2] so a shape moving at 2,400px/s on a 60Hz screen already smears about 40px when you track it, before anything is added.
+
+The eye only adds that blur to what it's following. Something too fast to follow gets no help from the eye, so on screen it's drawn in separate places with gaps between them, and it strobes.
+
+<Hold />
+<sub>At 2,400px/s on a 60Hz screen, each frame holds still for 16.7ms while the eye keeps moving, so by the end of the frame the eye is 40px past the image. Following it, the image smears 40px across the retina. Holding the eye still, the same frames land as sharp shapes 40px apart.</sub>
+
+### Games
+
+A game renders every frame sharp, at one instant, so it has to add the blur back. The older way is the accumulation buffer: render the scene several times at moments inside the shutter and average the results, which Haeberli and Akeley showed in 1990 with an example built from 23 images.[^3] Most games now use a velocity buffer instead, where each pixel stores how far it moved since the last frame and a pass afterwards samples the frame along that vector and averages the samples.[^4]
+
+<Accumulation />
+<sub>The accumulation buffer renders the square four times inside the shutter and averages them. Each render adds a quarter, so the smear comes out in steps of a quarter.</sub>
+
+<Velocity />
+<sub>The velocity buffer renders the square once. A pixel near the edge averages five samples along its arrow, and three of them land on the square, so it comes out at three fifths.</sub>
+
+### Animation
+
+Hand-drawn animation has no shutter either, so animators drew speed. A smear is a single stretched drawing between two poses, multiples are several copies of a limb in one frame, and dry brush is streaks dragged behind the motion.[^5] Chuck Jones's *The Dover Boys* (1942) is usually credited with making smears famous, with more than three dozen of them.[^6]
+
+<Drawn />
+<sub>One move between two poses, drawn three ways: one shape stretched across the gap, several copies along it, and the shape at its end pose with streaks dragged behind.</sub>
+
+## Translating It to the Web
+
+A browser is closer to a game than a camera: every frame is a sharp sample of one instant, and nothing integrates over time. So I looked for the browser version of each source. The camera's shutter and the accumulation buffer become copies drawn along the path and added together, the velocity buffer becomes a blur laid along the direction of motion, and the smear becomes a stretch.
+
+<Mapping />
+<sub>Each source and the browser version I built from it. The shutter and the accumulation buffer both become copies added together, the velocity buffer becomes a blur along one axis, and the drawn smear becomes a stretch.</sub>
+
+Every version needs the same two numbers: how long the streak is and which way it points. I worked them out the way a camera would, from the shape's speed, times the display's frame time, times the shutter angle over 360. Where a technique wants a Gaussian instead of a box, I use σ = length ÷ √12, the Gaussian with the same spread.
+
+<Edge />
+<sub>One edge of a moving shape across a streak of length L. The camera's box rises in a straight line from one end of the streak to the other, and the Gaussian with the same spread starts before it and finishes after it, on a curve.</sub>
+
+I tied the exposure to the frame time rather than to a fixed 1/120s, so at 120Hz the streak is half as long. The blur is there to fill the gap between where the shape was drawn last frame and where it is now, and at 120Hz that gap is half as wide.
+
+<Refresh />
+<sub>The same shape at 2,400px/s with a 180° shutter. At 60Hz the frames land 40px apart and each streak covers 20px, half the gap. At 120Hz they land 20px apart and the streak is 10px, still half.</sub>
+
+The browser gives four tools to build with: `filter: blur()`, SVG filters, transforms and `mix-blend-mode`.
+
+## How I Got Here
+
+<Demo>
+  <Lab />
+</Demo>
+
+The square crosses the stage in 450ms on `cubic-bezier(0.77, 0, 0.175, 1)` and rests for 600ms at each end. Pick a technique, then slow it to ½× or ¼×, or press Still to stop it at its fastest point, where the shape of each blur is easiest to see.
+
+### Blur
+
+I started with `filter: blur()`, the only blur CSS has. It spreads in every direction, so a square moving sideways goes soft at the top and bottom too, which a camera never does. I think that's why it reads as out of focus rather than fast.
+
+### SVG
+
+What I needed was a blur along one axis. An SVG `feGaussianBlur` takes a standard deviation for each axis, so `stdDeviation="6 0"` blurs only sideways, and Codrops showed in 2015 how to reference it from CSS and set it from the element's speed every frame.[^7]
+
+```tsx
+<svg width="0" height="0">
+  <filter id="motion" x="-150%" y="-50%" width="400%" height="200%">
+    <feGaussianBlur stdDeviation="0 0" />
+  </filter>
+</svg>
+
+lens.style.filter = "url(#motion)";
+kernel.setAttribute("stdDeviation", `${length / Math.sqrt(12)} 0`);
+```
+
+It only knows x and y, but rotating a wrapper to the angle of motion, and the content back by the same angle, lines its x axis up with any direction. The filter region needed widening too, because by default it runs only 10% past the element and cut the streak off at both ends, so I give it one and a half widths on either side along the motion.
+
+### Squeeze
+
+I wanted to know if plain CSS could do the same. CSS applies a filter in the element's own coordinates, before its transform, so squeezing the content to a sixteenth of its width, blurring it by 0.75px and stretching the result back 16 times turns a round blur into one 12px long and 0.75px tall.
+
+<Squeeze />
+<sub>The square squeezes to a sixteenth of its width, blurs by 0.75px in every direction, then stretches back to full width, where the blur is 12px sideways and still 0.75px up and down.</sub>
+
+```tsx
+lens.style.transform = `rotate(${angle}deg) scaleX(16)`;
+lens.style.filter = `blur(${sigma / 16}px)`;
+inner.style.transform = `scaleX(${1 / 16}) rotate(${-angle}deg)`;
+```
+
+The rotation gives it any angle, with no SVG at all. Content squeezed to a sixteenth could come out smeared even at rest, but in Chromium text stays sharp, which I checked with the blur at 0px and at 0.05px. I haven't checked Safari or Firefox yet.
+
+### Echo
+
+SVG and Squeeze both give a Gaussian, and a camera gives a box, so next I tried the accumulation buffer: draw the shape at several points along the streak, each at a fraction of its opacity, and add them up. Normal blending doesn't add, though. Twelve copies at 1/12 opacity only reach 1 − (11/12)¹², about 65%, so the shape faded as it moved, whereas `mix-blend-mode: plus-lighter` adds them, and inside an isolated group the overlap sums back to the full shape.[^8]
+
+<Stacking />
+<sub>Twelve copies of a square at 1/12 opacity, spread across 32px. With normal blending the stack stops at about 65% and looks washed out, while with plus-lighter the middle adds up to the full square and both ends fade.</sub>
+
+```tsx
+// The parent sets isolation: isolate.
+copies.forEach((copy, i) => {
+  const f = i / (count - 1) - 0.5;
+  copy.style.mixBlendMode = "plus-lighter";
+  copy.style.opacity = String(1 / count);
+  copy.style.transform = `translate(${f * dx}px, ${f * dy}px)`;
+});
+```
+
+It's the only one here with the box shape a camera gives, it works at any angle, and placing the copies along a curve blurs a curved path too, which the orbit below does. I use one copy per 1.5px of streak, up to 16, so past 24px the copies start to show as steps. The cost is the copies themselves: fine for one shape, but I wouldn't do it to every row of a list.
+
+### Smear
+
+The cheapest is the animator's smear: stretch the shape along its motion by the length of the streak. It's only a transform, so nothing is filtered, but it stretches whatever is inside instead of blurring it, and in the lab at 120Hz the 19px streak on a 64px square is already a 1.3× stretch, well past the 0.95 to 1.05 I normally keep squash and stretch within.
+
+### WebGL
+
+Everything so far blurs a whole element by one amount, but a square that turns while it moves has edges going at different speeds. Chrome 157 shipped HTML-in-Canvas in October, which can upload live DOM into a WebGL texture,[^9] so I tried it the way a renderer would: for every pixel, the shader works out where the square was at 32 moments inside the shutter and averages what it finds there. It's the accumulation buffer again, done per pixel in one draw.
+
+<Demo>
+  <Shader />
+</Demo>
+
+The square turns a full circle on the way across, clockwise, so its top edge moves with the travel and its bottom edge against it. The shader streaks the top further than the bottom, while `blur()` underneath softens every edge by the same amount.
+
+The square is still a normal element. Each time the browser paints it, the canvas gets a `paint` event and copies the element into the texture:
+
+```tsx
+canvas.addEventListener("paint", () => {
+  gl.texElementSubImage2D(gl.TEXTURE_2D, 0, 0, 0, square, {
+    width,
+    height,
+  });
+});
+```
+
+The fragment shader then walks through the shutter in 32 steps. At each step it finds where the square was and how far it had turned, works out where this pixel lands on the square at that moment, and adds the colour there if it lands inside:
+
+```glsl
+for (int i = 0; i < 32; i++) {
+  float t = (float(i) + 0.5) / 32.0;
+  vec2 offset = pixel - mix(from, to, t);
+  float a = mix(angle.x, angle.y, t);
+  mat2 turn = mat2(cos(a), -sin(a), sin(a), cos(a));
+  vec2 uv = turn * offset / size + 0.5;
+  if (uv == clamp(uv, 0.0, 1.0)) sum += texture(shape, uv);
+}
+color = sum / 32.0;
+```
+
+I wrote it against Chrome's documentation, but the browser I test in runs Chrome 148, so what I've seen running is three-html-render, a polyfill that copies the element into an SVG `foreignObject` and uploads that as the texture.[^10] Chrome 157 should skip the polyfill and upload the element itself, which I haven't been able to check.
+
+### Side by Side
+
+<Demo>
+  <Lanes />
+</Demo>
+
+Every technique on one clock, at the same speed and shutter. Blur softens every edge, SVG and Squeeze only the leading and trailing ones, Echo fades in a straight ramp where the others curve, and Smear only gets longer.
+
+A blur's cost grows with its radius and the area it covers, and when Chrome's team animated one, it blew the 16ms frame budget on a Moto G4.[^11] None of these demos keep a filter on while the shape is still, so the cost only lands during the motion itself.
+
+## Where It Helps
+
+Going back to eyes and screens, the rule I'm working with is to blur what the eye can't follow and keep anything the reader is about to read sharp. Each example below uses Echo, with the blur off, at 180° or at 360°, and plays at 1×, ½× or ¼×.
+
+### Throwing
+
+<Demo>
+  <Throw />
+</Demo>
+
+Drag the ball and let go, or press Throw. A thrown object moves too fast to follow, and the blur only shows while it's moving, so it fades out on its own as the ball slows down.
+
+### Orbiting
+
+<Demo>
+  <Orbit />
+</Demo>
+
+The dot goes round three and a half times a second, about 1,900px/s, so at 120Hz it jumps 16px a frame while it's only 12px wide. With the blur off, the gaps between frames show, which is the strobing from earlier. At 180° the copies fill half of each gap, and at 360° they fill all of it, so the dot becomes a smooth arc, and because the copies follow the circle rather than a straight line, the arc bends with it.
+
+Watching the transform only gives two positions a frame apart, which would put the copies on the chord. The orbit sets its own position each frame, so it hands over the path instead, as the angle at any moment inside the frame:
+
+```tsx
+dot.style.transform = at(angle).toString();
+blur.render((t) => at(angle + t * omega * frame));
+```
+
+### Snapping In
+
+<Demo>
+  <Snap />
+</Demo>
+
+The panel comes in over 220ms on `cubic-bezier(0.23, 1, 0.32, 1)`, holds for a second and leaves in 160ms. An ease-out is fastest at its very start, so the blur is strongest on the first frames of each move and gone by the time the panel settles, which is when you'd start reading it.
+
+<Demo>
+  <Dialogs />
+</Demo>
+
+The same goes for real dialogs. Each popup draws its copies with `useMotionBlur` from the package, and slowing them down opens the shutter to match, so ¼× shows the streak a 1× frame would have. At 120Hz with a 180° shutter, the modal peaks at about 2px because it only scales up from 95%, the sheet at 12px rising from below the screen, and the tile at 19px as it grows into a card. The modal barely needs it. The further a surface travels in the same time, the more there is for the blur to fill.
+
+The dialogs' own animations are plain CSS transitions, and the hook watches the popup's transform while they run, so wiring it up is a ref and nothing else:
+
+```tsx
+import { useMotionBlur } from "@web-kits/motion-blur/react";
+
+const blur = useMotionBlur({ shutter: 180 / rate });
+
+<Dialog.Popup ref={blur.ref}>
+  <div className={styles.surface}>{children}</div>
+</Dialog.Popup>
+```
+
+The copies are drawn from the surface inside the popup, and the dialogs only set the shutter, plus a callback with each frame's streak for the readout.
+
+### Where I'd Leave It Off
+
+Anything the reader follows to read: scrolling, paging through content, a list sliding into place. The eye is already tracking those, so the screen blurs them once, and added blur stacks on top of that, turning text into grey bars at the moment someone is trying to read it.
+
+## What I'd Use
+
+I'd use the package, and its defaults are what this page landed on. It draws with Echo at a 180° shutter, because Echo is the only technique shaped like a camera's blur and the only one that follows a curve, and it takes Squeeze, SVG or Smear through the `technique` option where sixteen copies would cost too much. It works out everything else itself, so the one decision left is which elements get it: whatever the eye can't follow, and nothing the reader is about to read.
+
+WebGL isn't in it, because I've only seen it run through the polyfill, and I haven't checked Squeeze in Safari or Firefox yet. Next I want to turn the same rule into one for the motion skill, so an agent reaches for the package and sizes the blur from the speed instead of picking a number.
+
+[^1]: [Motion blur and temporal sampling](https://people.csail.mit.edu/fredo/comp-photo-book/12-video-01-motion-blur-and-temporal-sampling.html), Computational Photography, MIT CSAIL.
+
+[^2]: Blur Busters, [Blur Busters Law](https://testufo.com/blurbusterslaw) and [GtG versus MPRT](https://blurbusters.com/gtg-versus-mprt-frequently-asked-questions-about-display-pixel-response/).
+
+[^3]: Paul Haeberli and Kurt Akeley, [The Accumulation Buffer: Hardware Support for High-Quality Rendering](https://graphics.stanford.edu/courses/cs248-02/haeberli-akeley-accumulation-buffer-sig90.pdf), SIGGRAPH 1990.
+
+[^4]: Gilberto Rosado, [Motion Blur as a Post-Processing Effect](https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-27-motion-blur-post-processing-effect), GPU Gems 3, NVIDIA.
+
+[^5]: [Smear, Speed & Motion Blur Effects in Animation](https://www.traditionalanimation.com/2017/smear-speed-motion-blur-effects-in-animation/), Traditional Animation, 2017.
+
+[^6]: [The Art of Smear Frames](https://www.bloopanimation.com/the-art-of-smear-frames/), Bloop Animation.
+
+[^7]: [Motion Blur Effect with SVG](https://tympanus.net/codrops/2015/04/08/motion-blur-effect-svg/), Codrops, April 2015.
+
+[^8]: I sampled the middle of the plus-lighter stack and it came out within two levels of the original colour, out of 255.
+
+[^9]: Natalia Markoborodova, [HTML-in-Canvas in Chrome 157](https://developer.chrome.com/blog/html-in-canvas), Chrome for Developers, October 2026.
+
+[^10]: repalash, [three-html-render](https://github.com/repalash/three-html-render), April 2026.
+
+[^11]: [Animating a blur](https://developer.chrome.com/blog/animated-blur), Chrome for Developers.

@@ -6,7 +6,7 @@ article {
     font-size: 14px;
     font-variation-settings: var(--font-weight-450);
     color: var(--text-primary);
-    text-wrap: pretty;
+    text-wrap-style: pretty;
   }
 
   svg,
@@ -87,6 +87,11 @@ article {
   > [data-demo] + p,
   > video + p {
     margin-top: 40px;
+  }
+
+  > h2 + [data-demo],
+  > h3 + [data-demo] {
+    margin-top: 16px;
   }
 
   > h2 {
@@ -291,7 +296,16 @@ article {
       top: 0;
       left: -16px;
       font-variation-settings: var(--font-weight-500);
+      font-variant-numeric: tabular-nums;
       content: counter(list);
+    }
+
+    ol:has(> li:nth-child(10)) li {
+      margin-left: 24px;
+
+      &:before {
+        left: -24px;
+      }
     }
 
     [data-footnote-backref] {

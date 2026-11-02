@@ -17,6 +17,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "16.4.3",
+    "@web-kits/motion-blur": "link:../Motion Blur/packages/motion-blur",
     "@shikijs/rehype": "^4.5.0",
     "@vercel/analytics": "^2.0.1",
     "calligraph": "^1.4.1",
@@ -29,7 +30,8 @@
     "react-dom": "19.3.1",
     "react-use-measure": "^2.1.7",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "three-html-render": "0.1.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",

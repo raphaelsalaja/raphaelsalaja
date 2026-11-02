@@ -26,6 +26,9 @@ importers:
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.3(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
+      '@web-kits/motion-blur':
+        specifier: link:../Motion Blur/packages/motion-blur
+        version: link:../Motion Blur/packages/motion-blur
       calligraph:
         specifier: ^1.4.1
         version: 1.4.1(motion@14.7.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -59,6 +62,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      three-html-render:
+        specifier: 0.1.2
+        version: 0.1.2
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.6.3
@@ -87,6 +93,12 @@ importers:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
+
+  packages/motion-blur:
+    dependencies:
+      react:
+        specifier: '>=19'
+        version: 19.3.1
 
 packages:
 
@@ -1568,6 +1580,14 @@ packages:
 
   tabbable@6.5.0:
     resolution: {integrity: sha512-wieBHXygIm7OyQOu5hQlkk62/WyCFYGlWg7L6/ZCUZwx0o398Zkn4pVmMyfYhfMG8kGrj/Krt8eIk6UKC6VzwA==}
+
+  three-html-render@0.1.2:
+    resolution: {integrity: sha512-JHx6x006LuLcHMRg+X3DyrrbPVsXklhFJGBtpTULFhbnpK7DidgGr6dJ6aTEaN9sc6uFgwI0VHExEYo4qwVSug==}
+    peerDependencies:
+      three: '>=0.150.0'
+    peerDependenciesMeta:
+      three:
+        optional: true
 
   timestring@6.0.0:
     resolution: {integrity: sha512-wMctrWD2HZZLuIlchlkE2dfXJh7J2KDI9Dwl+2abPYg0mswQHfOAyQW3jJg1pY5VfttSINZuKcXoB3FGypVklA==}
@@ -3326,6 +3346,8 @@ snapshots:
       react: 19.3.1
 
   tabbable@6.5.0: {}
+
+  three-html-render@0.1.2: {}
 
   timestring@6.0.0: {}
 
