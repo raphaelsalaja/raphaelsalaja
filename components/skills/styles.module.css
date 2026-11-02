@@ -22,6 +22,10 @@
   }
 }
 
+.command + p {
+  margin-top: 24px;
+}
+
 .sigil {
   margin-right: 10px;
   color: var(--text-quaternary);

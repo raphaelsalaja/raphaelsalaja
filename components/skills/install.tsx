@@ -15,7 +15,9 @@ const LINKS = [
   { label: "skills.sh", href: SKILLS_DIRECTORY, Logo: VercelLogo, size: 12 },
 ];
 
-export function Install() {
+export function Install({ skill }: { skill?: string }) {
+  const command = skill ? `${SKILLS_INSTALL} --skill ${skill}` : SKILLS_INSTALL;
+
   return (
     <div className={styles.command}>
       <code>
@@ -23,6 +25,12 @@ export function Install() {
           $
         </span>
         npx skills add <span className={styles.repo}>{SKILLS_REPO}</span>
+        {skill && (
+          <>
+            {" "}
+            --skill <span className={styles.repo}>{skill}</span>
+          </>
+        )}
       </code>
       <div className={styles.actions}>
         {LINKS.map(({ label, href, Logo, size }) => (
@@ -40,7 +48,7 @@ export function Install() {
         <CopyButton
           label="Copy Command"
           className={styles.action}
-          getText={() => SKILLS_INSTALL}
+          getText={() => command}
         />
       </div>
     </div>

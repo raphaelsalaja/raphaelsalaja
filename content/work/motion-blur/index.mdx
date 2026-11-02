@@ -15,6 +15,9 @@ import {
   Velocity,
 } from "./demos/figures";
 import { Shader } from "./demos/webgl";
+import { Install } from "@/components/skills/install";
+
+<Install skill="motion" />
 
 Browsers have no motion blur property, so I built one: `@web-kits/motion-blur`, a package that blurs an element only while it moves too fast to follow, with the streak sized the way a camera sizes it, from the speed, the display's frame time and a shutter angle. Done well, motion blur makes something fast look fast. Done badly, it turns it into a smudge. To get it right, I had to work out what motion blur is, where it comes from and how to draw it in a browser at all. This page is that work, from the six ways I built it to where I'd use it, and the package is where it ended up.
 

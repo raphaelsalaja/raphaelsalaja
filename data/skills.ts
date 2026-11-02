@@ -68,7 +68,7 @@ const skills: Skill[] = [
     name: "motion",
     kind: "principle",
     description:
-      "Applies house motion for what animates, easing, durations, springs, gestures, exits and reduced motion.",
+      "Applies house motion for what animates, easing, durations, springs, gestures, exits, motion blur and reduced motion.",
     examples: [
       "/motion animate the sort menu",
       "/motion make the sheet draggable",
