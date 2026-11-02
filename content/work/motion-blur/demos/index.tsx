@@ -127,7 +127,8 @@ export function Lab() {
 export function Throw() {
   const stage = useRef<HTMLDivElement>(null);
   const streak = useRef<StreakHandle>(null);
-  const [exposure, setExposure] = useState<Exposure>("180°");
+  const [technique, setTechnique] = useState<Technique>("Echo");
+  const [shutter, setShutter] = useState<Shutter>("180°");
   const [speed, setSpeed] = useState<Speed>("1×");
   const body = useRef({ x: -1, y: -1, vx: 0, vy: 0 });
   const drag = useRef<{
@@ -180,7 +181,7 @@ export function Throw() {
       }
     }
 
-    const open = frame * OPEN[exposure];
+    const open = frame * shutterFraction(shutter);
     streak.current?.set(b.x, b.y, b.vx * open, b.vy * open);
   });
 
@@ -242,11 +243,7 @@ export function Throw() {
           onPointerUp={up}
           onPointerCancel={up}
         >
-          <Streak
-            ref={streak}
-            technique={exposure === "Off" ? "None" : "Echo"}
-            {...BALL}
-          >
+          <Streak ref={streak} technique={technique} {...BALL}>
             <div className={styles.handle}>
               <Shape kind="circle" />
             </div>
@@ -255,10 +252,16 @@ export function Throw() {
       </div>
       <Controls>
         <Control
-          label="Blur"
-          options={EXPOSURES}
-          value={exposure}
-          onChange={setExposure}
+          label="Technique"
+          options={TECHNIQUES}
+          value={technique}
+          onChange={setTechnique}
+        />
+        <Control
+          label="Shutter"
+          options={SHUTTERS}
+          value={shutter}
+          onChange={setShutter}
         />
         <Control
           label="Speed"
