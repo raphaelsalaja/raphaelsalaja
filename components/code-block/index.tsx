@@ -20,7 +20,7 @@ export function CodeBlock({
   return (
     <div className={styles.block}>
       <div className={styles.header}>
-        <IconFileContent size={14} className={styles.icon} />
+        <IconFileContent size={16} className={styles.icon} />
         <span className={styles.title}>{title ?? language}</span>
         <CopyButton
           label="Copy code"

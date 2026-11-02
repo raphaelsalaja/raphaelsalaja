@@ -12,33 +12,22 @@ html {
   .shiki {
     position: relative;
     width: 100%;
-    padding: 10px 16px;
+    padding: 12px;
     overflow-x: auto;
     font-family: var(--font-mono), monospace;
-    counter-reset: line;
+    font-size: 12px;
+    line-height: 18px;
 
     .line {
       span {
         font-variant-numeric: tabular-nums;
-        line-height: 22px;
+        line-height: 18px;
         color: var(--shiki-light);
 
         @media (prefers-color-scheme: dark) {
           color: var(--shiki-dark);
         }
       }
-    }
-
-    .line::before {
-      display: inline-block;
-      width: 2ch;
-      margin-right: 16px;
-      font-variant-numeric: tabular-nums;
-      line-height: 22px;
-      color: var(--text-quaternary);
-      text-align: right;
-      content: counter(line);
-      counter-increment: line;
     }
   }
 
