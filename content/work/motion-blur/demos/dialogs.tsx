@@ -14,15 +14,14 @@ import {
 } from "react";
 import { Control, Controls } from "./controls";
 import styles from "./dialogs.module.css";
+import { SHUTTERS, type Shutter, shutterFraction } from "./motion";
+import { PAINTS, TECHNIQUES, type Technique } from "./streak";
 import base from "./styles.module.css";
 
-const BLURS = ["Off", "180°", "360°"] as const;
 const SPEEDS = ["1×", "½×", "¼×"] as const;
 
-type Blur = (typeof BLURS)[number];
 type Speed = (typeof SPEEDS)[number];
 
-const OPEN: Record<Blur, number> = { Off: 0, "180°": 0.5, "360°": 1 };
 const RATE: Record<Speed, number> = { "1×": 1, "½×": 0.5, "¼×": 0.25 };
 
 const EXPAND = { width: 360, height: 240 };
@@ -30,14 +29,17 @@ const EXPAND = { width: 360, height: 240 };
 const number = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 0 });
 
 export function Dialogs() {
-  const [blur, setBlur] = useState<Blur>("180°");
+  const [technique, setTechnique] = useState<Technique>("Echo");
+  const [shutter, setShutter] = useState<Shutter>("180°");
   const [speed, setSpeed] = useState<Speed>("1×");
   const readout = useRef<HTMLParagraphElement>(null);
   const peak = useRef(0);
+  const off = technique === "None";
 
   const rate = { "--rate": RATE[speed] } as CSSProperties;
   const motion = useMotionBlur({
-    shutter: (OPEN[blur] / RATE[speed]) * 360,
+    technique: PAINTS[technique],
+    shutter: off ? 0 : (shutterFraction(shutter) / RATE[speed]) * 360,
     onFrame: (streak) => {
       if (streak <= peak.current || !readout.current) return;
       peak.current = streak;
@@ -48,8 +50,7 @@ export function Dialogs() {
   const reset = () => {
     peak.current = 0;
     if (readout.current) {
-      readout.current.textContent =
-        blur === "Off" ? "Blur off" : "Peak streak 0px";
+      readout.current.textContent = off ? "Blur off" : "Peak streak 0px";
     }
   };
 
@@ -68,7 +69,18 @@ export function Dialogs() {
         </p>
       </div>
       <Controls>
-        <Control label="Blur" options={BLURS} value={blur} onChange={setBlur} />
+        <Control
+          label="Technique"
+          options={TECHNIQUES}
+          value={technique}
+          onChange={setTechnique}
+        />
+        <Control
+          label="Shutter"
+          options={SHUTTERS}
+          value={shutter}
+          onChange={setShutter}
+        />
         <Control
           label="Speed"
           options={SPEEDS}

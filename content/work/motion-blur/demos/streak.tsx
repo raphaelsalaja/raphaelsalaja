@@ -40,7 +40,7 @@ const blur: Paint = ({ layer }) => ({
   clear: () => layer.style.removeProperty("filter"),
 });
 
-const PAINTS: Record<Technique, Paint> = {
+export const PAINTS: Record<Technique, Paint> = {
   None: echo(),
   Blur: blur,
   SVG: svg(),

@@ -19,18 +19,13 @@ import {
 } from "./motion";
 import { Shape } from "./shape";
 import {
+  PAINTS,
   Streak,
   type StreakHandle,
   TECHNIQUES,
   type Technique,
 } from "./streak";
 import styles from "./styles.module.css";
-
-const EXPOSURES = ["Off", "180°", "360°"] as const;
-
-type Exposure = (typeof EXPOSURES)[number];
-
-const OPEN: Record<Exposure, number> = { Off: 0, "180°": 0.5, "360°": 1 };
 
 const LAB_SHAPE = { width: 64, height: 64 };
 const BALL = { width: 56, height: 56 };
@@ -280,11 +275,13 @@ export function Throw() {
 export function Orbit() {
   const stage = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
-  const [exposure, setExposure] = useState<Exposure>("180°");
+  const [technique, setTechnique] = useState<Technique>("Echo");
+  const [shutter, setShutter] = useState<Shutter>("180°");
   const [speed, setSpeed] = useState<Speed>("1×");
   const angle = useRef(0);
   const blur = useMotionBlur({
-    shutter: OPEN[exposure] * 360,
+    technique: PAINTS[technique],
+    shutter: technique === "None" ? 0 : shutterFraction(shutter) * 360,
     reducedMotion: "never",
   });
   const host = useCallback(
@@ -331,10 +328,16 @@ export function Orbit() {
       </div>
       <Controls>
         <Control
-          label="Blur"
-          options={EXPOSURES}
-          value={exposure}
-          onChange={setExposure}
+          label="Technique"
+          options={TECHNIQUES}
+          value={technique}
+          onChange={setTechnique}
+        />
+        <Control
+          label="Shutter"
+          options={SHUTTERS}
+          value={shutter}
+          onChange={setShutter}
         />
         <Control
           label="Speed"
@@ -375,7 +378,8 @@ function snap(time: number, width: number): [number, number] {
 export function Snap() {
   const stage = useRef<HTMLDivElement>(null);
   const streak = useRef<StreakHandle>(null);
-  const [exposure, setExposure] = useState<Exposure>("180°");
+  const [technique, setTechnique] = useState<Technique>("Echo");
+  const [shutter, setShutter] = useState<Shutter>("180°");
   const [speed, setSpeed] = useState<Speed>("1×");
   const time = useRef(0);
 
@@ -384,28 +388,31 @@ export function Snap() {
     const width = stage.current?.clientWidth ?? 0;
     const top = ((stage.current?.clientHeight ?? 0) - PANEL.height) / 2;
     const [x, velocity] = snap(time.current, width);
-    streak.current?.set(x, top, velocity * frame * OPEN[exposure], 0);
+    const open = frame * shutterFraction(shutter);
+    streak.current?.set(x, top, velocity * open, 0);
   });
 
   return (
     <div className={styles.lab}>
       <div className={styles.body}>
         <div ref={stage} className={styles.track}>
-          <Streak
-            ref={streak}
-            technique={exposure === "Off" ? "None" : "Echo"}
-            {...PANEL}
-          >
+          <Streak ref={streak} technique={technique} {...PANEL}>
             <Shape />
           </Streak>
         </div>
       </div>
       <Controls>
         <Control
-          label="Blur"
-          options={EXPOSURES}
-          value={exposure}
-          onChange={setExposure}
+          label="Technique"
+          options={TECHNIQUES}
+          value={technique}
+          onChange={setTechnique}
+        />
+        <Control
+          label="Shutter"
+          options={SHUTTERS}
+          value={shutter}
+          onChange={setShutter}
         />
         <Control
           label="Speed"

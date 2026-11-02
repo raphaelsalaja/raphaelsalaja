@@ -214,7 +214,7 @@ I wrote it against Chrome's documentation, but the browser I test in runs Chrome
 
 ## Where It Helps
 
-Going back to eyes and screens, the rule I'm working with is to blur what the eye can't follow and keep anything the reader is about to read sharp. The throw takes any technique at 90°, 180° or 360°, the other two use Echo with the blur off, at 180° or at 360°, and all three play at 1×, ½× or ¼×.
+Going back to eyes and screens, the rule I'm working with is to blur what the eye can't follow and keep anything the reader is about to read sharp. Each example starts on Echo at 180°, takes any technique at 90°, 180° or 360°, and plays at 1×, ½× or ¼×.
 
 ### Throwing
 
@@ -230,7 +230,7 @@ Drag the ball and let go, or press Throw, then switch technique to see each one 
   <Orbit />
 </Demo>
 
-The dot goes round three and a half times a second, about 1,900px/s, so at 120Hz it jumps 16px a frame while it's only 12px wide. With the blur off, the gaps between frames show, which is the strobing from earlier. At 180° the copies fill half of each gap, and at 360° they fill all of it, so the dot becomes a smooth arc, and because the copies follow the circle rather than a straight line, the arc bends with it.
+The dot goes round three and a half times a second, about 1,900px/s, so at 120Hz it jumps 16px a frame while it's only 12px wide. With no blur, the gaps between frames show, which is the strobing from earlier. With Echo at 180° the copies fill half of each gap, and at 360° they fill all of it, so the dot becomes a smooth arc, and because the copies follow the circle rather than a straight line, the arc bends with it. The other techniques blur along a straight line, so their streaks stay straight where the path bends.
 
 Watching the transform only gives two positions a frame apart, which would put the copies on the chord. The orbit sets its own position each frame, so it hands over the path instead, as the angle at any moment inside the frame:
 
@@ -251,7 +251,7 @@ The panel comes in over 220ms on `cubic-bezier(0.23, 1, 0.32, 1)`, holds for a s
   <Dialogs />
 </Demo>
 
-The same goes for real dialogs. Each popup draws its copies with `useMotionBlur` from the package, and slowing them down opens the shutter to match, so ¼× shows the streak a 1× frame would have. At 120Hz with a 180° shutter, the modal peaks at about 2px because it only scales up from 95%, the sheet at 12px rising from below the screen, and the tile at 19px as it grows into a card. The modal barely needs it. The further a surface travels in the same time, the more there is for the blur to fill.
+The same goes for real dialogs. Each popup draws its blur with `useMotionBlur` from the package, and slowing them down opens the shutter to match, so ¼× shows the streak a 1× frame would have. At 120Hz with a 180° shutter, the modal peaks at about 2px because it only scales up from 95%, the sheet at 12px rising from below the screen, and the tile at 19px as it grows into a card. The modal barely needs it. The further a surface travels in the same time, the more there is for the blur to fill.
 
 The dialogs' own animations are plain CSS transitions, and the hook watches the popup's transform while they run, so wiring it up is a ref and nothing else:
 
@@ -265,7 +265,7 @@ const blur = useMotionBlur({ shutter: 180 / rate });
 </Dialog.Popup>
 ```
 
-The copies are drawn from the surface inside the popup, and the dialogs only set the shutter, plus a callback with each frame's streak for the readout.
+The blur is drawn from the surface inside the popup, and the dialogs only set the technique and the shutter, plus a callback with each frame's streak for the readout.
 
 ### Where I'd Leave It Off
 
