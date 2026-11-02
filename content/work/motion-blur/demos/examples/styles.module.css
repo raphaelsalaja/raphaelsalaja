@@ -25,8 +25,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
-  overflow: hidden;
   container-type: inline-size;
+  overflow: hidden;
   user-select: none;
   background: var(--example-tile);
   border-radius: 12px;
