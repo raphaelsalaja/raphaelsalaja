@@ -25,14 +25,6 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "mdx"],
-  transpilePackages: ["@web-kits/motion-blur"],
-  experimental: {
-    turbopackAdditionalRoots: {
-      "motion-blur": {
-        path: join(process.cwd(), "../Motion Blur/packages/motion-blur"),
-      },
-    },
-  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400,

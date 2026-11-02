@@ -17,7 +17,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "16.4.3",
-    "@web-kits/motion-blur": "link:../Motion Blur/packages/motion-blur",
+    "@web-kits/motion-blur": "^0.1.0",
     "@shikijs/rehype": "^4.5.0",
     "@vercel/analytics": "^2.0.1",
     "calligraph": "^1.4.1",
