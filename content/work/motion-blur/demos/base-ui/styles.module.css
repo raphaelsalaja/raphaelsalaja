@@ -68,6 +68,12 @@
   inset: 0;
 }
 
+/* SVG and Squeeze turn this to the angle of motion and its one child back
+   upright, so it stays transparent and the surface goes inside it */
+.lens {
+  display: block;
+}
+
 .surface {
   background: var(--gray-1);
   border-radius: 12px;

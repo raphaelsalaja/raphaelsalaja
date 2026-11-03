@@ -25,16 +25,18 @@ export function MenuExample({ blur, options, step, container }: ExampleProps) {
             className={styles.popup}
             finalFocus={false}
           >
-            <div className={`${shared.surface} ${styles.surface}`}>
-              {ITEMS.map((item) => (
-                <Menu.Item key={item} className={shared.item}>
-                  {item}
+            <div className={shared.lens}>
+              <div className={`${shared.surface} ${styles.surface}`}>
+                {ITEMS.map((item) => (
+                  <Menu.Item key={item} className={shared.item}>
+                    {item}
+                  </Menu.Item>
+                ))}
+                <Menu.Separator className={shared.separator} />
+                <Menu.Item className={`${shared.item} ${shared.danger}`}>
+                  Delete
                 </Menu.Item>
-              ))}
-              <Menu.Separator className={shared.separator} />
-              <Menu.Item className={`${shared.item} ${shared.danger}`}>
-                Delete
-              </Menu.Item>
+              </div>
             </div>
           </Menu.Popup>
         </Menu.Positioner>

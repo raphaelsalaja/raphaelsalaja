@@ -65,6 +65,12 @@
   outline: none;
 }
 
+/* SVG and Squeeze turn this to the angle of motion and its one child back
+   upright, so it stays transparent and the surface goes inside it */
+.lens {
+  height: 100%;
+}
+
 .surface {
   display: flex;
   flex-direction: column;

@@ -82,23 +82,27 @@ export function DialogExample({
           initialFocus={false}
           finalFocus={false}
         >
-          <div className={`${shared.surface} ${styles.surface}`}>
-            <Dialog.Title className={shared.title}>Delete Project</Dialog.Title>
-            <Dialog.Description className={shared.text}>
-              This removes the project and its 14 deployments. You can't undo
-              it.
-            </Dialog.Description>
-            <div className={styles.actions}>
-              <span
-                ref={cancel}
-                className={styles.button}
-                data-pressed={pressed === "cancel" || undefined}
-              >
-                Cancel
-              </span>
-              <span className={styles.button} data-primary="">
-                Delete
-              </span>
+          <div className={shared.lens}>
+            <div className={`${shared.surface} ${styles.surface}`}>
+              <Dialog.Title className={shared.title}>
+                Delete Project
+              </Dialog.Title>
+              <Dialog.Description className={shared.text}>
+                This removes the project and its 14 deployments. You can't undo
+                it.
+              </Dialog.Description>
+              <div className={styles.actions}>
+                <span
+                  ref={cancel}
+                  className={styles.button}
+                  data-pressed={pressed === "cancel" || undefined}
+                >
+                  Cancel
+                </span>
+                <span className={styles.button} data-primary="">
+                  Delete
+                </span>
+              </div>
             </div>
           </div>
         </Dialog.Popup>

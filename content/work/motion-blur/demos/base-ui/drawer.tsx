@@ -29,21 +29,23 @@ export function DrawerExample({
             initialFocus={false}
             finalFocus={false}
           >
-            <div className={`${shared.surface} ${styles.surface}`}>
-              <span className={styles.handle} />
-              <Drawer.Content className={styles.content}>
-                <Drawer.Title className={shared.title}>Share</Drawer.Title>
-                <Drawer.Description className={shared.text}>
-                  Anyone with the link can view.
-                </Drawer.Description>
-                <div className={styles.rows}>
-                  {ROWS.map((row) => (
-                    <span key={row} className={styles.row}>
-                      {row}
-                    </span>
-                  ))}
-                </div>
-              </Drawer.Content>
+            <div className={shared.lens}>
+              <div className={`${shared.surface} ${styles.surface}`}>
+                <span className={styles.handle} />
+                <Drawer.Content className={styles.content}>
+                  <Drawer.Title className={shared.title}>Share</Drawer.Title>
+                  <Drawer.Description className={shared.text}>
+                    Anyone with the link can view.
+                  </Drawer.Description>
+                  <div className={styles.rows}>
+                    {ROWS.map((row) => (
+                      <span key={row} className={styles.row}>
+                        {row}
+                      </span>
+                    ))}
+                  </div>
+                </Drawer.Content>
+              </div>
             </div>
           </Drawer.Popup>
         </Drawer.Viewport>

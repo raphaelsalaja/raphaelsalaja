@@ -39,20 +39,22 @@ export function SelectExample({
             className={styles.popup}
             finalFocus={false}
           >
-            <Select.List className={`${shared.surface} ${styles.surface}`}>
-              {ITEMS.map((item) => (
-                <Select.Item
-                  key={item.value}
-                  value={item.value}
-                  className={`${shared.item} ${styles.item}`}
-                >
-                  <Select.ItemText>{item.label}</Select.ItemText>
-                  <Select.ItemIndicator className={styles.check}>
-                    <Check />
-                  </Select.ItemIndicator>
-                </Select.Item>
-              ))}
-            </Select.List>
+            <div className={shared.lens}>
+              <Select.List className={`${shared.surface} ${styles.surface}`}>
+                {ITEMS.map((item) => (
+                  <Select.Item
+                    key={item.value}
+                    value={item.value}
+                    className={`${shared.item} ${styles.item}`}
+                  >
+                    <Select.ItemText>{item.label}</Select.ItemText>
+                    <Select.ItemIndicator className={styles.check}>
+                      <Check />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+              </Select.List>
+            </div>
           </Select.Popup>
         </Select.Positioner>
       </Select.Portal>

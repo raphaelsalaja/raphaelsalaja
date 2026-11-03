@@ -33,7 +33,7 @@
   }
 }
 
-.popup > .surface {
+.popup .surface {
   display: flex;
   flex-direction: column;
   padding: 8px 16px 8px;

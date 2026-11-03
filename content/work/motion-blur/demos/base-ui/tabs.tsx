@@ -26,7 +26,9 @@ export function TabsExample({ blur, options, step }: ExampleProps) {
           className={styles.indicator}
           renderBeforeHydration
         >
-          <span className={styles.pill} />
+          <span className={styles.lens}>
+            <span className={styles.pill} />
+          </span>
         </Tabs.Indicator>
       </Tabs.List>
       {TABS.map((tab) => (

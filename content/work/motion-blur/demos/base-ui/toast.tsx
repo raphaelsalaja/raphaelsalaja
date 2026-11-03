@@ -59,10 +59,12 @@ function Item({
       toast={toast}
       className={styles.toast}
     >
-      <Toast.Content className={`${shared.surface} ${styles.surface}`}>
-        <Toast.Title className={shared.title} />
-        <Toast.Description className={shared.text} />
-      </Toast.Content>
+      <div className={shared.lens}>
+        <Toast.Content className={`${shared.surface} ${styles.surface}`}>
+          <Toast.Title className={shared.title} />
+          <Toast.Description className={shared.text} />
+        </Toast.Content>
+      </div>
     </Toast.Root>
   );
 }

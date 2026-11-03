@@ -128,7 +128,9 @@ function Frame({
           className={popup}
           style={{ ...rate, ...style }}
         >
-          <div className={styles.surface}>{children}</div>
+          <div className={styles.lens}>
+            <div className={styles.surface}>{children}</div>
+          </div>
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
