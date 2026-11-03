@@ -1,14 +1,9 @@
 import { ImageResponse } from "next/og";
-import type { CSSProperties } from "react";
 import { ogFonts, ogSize } from "@/lib/og";
 
 export const alt = "Skills";
 export const size = ogSize;
 export const contentType = "image/png";
-
-const FRAME = 340;
-const ARM = 28;
-const MARK = "1.5px solid #cfceca";
 
 const BASE = 200;
 const HEIGHT = 70;
@@ -65,12 +60,6 @@ function hull(points: Point[]) {
 const svgPoints = (points: Point[]) =>
   points.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
 
-function corner(style: CSSProperties) {
-  return (
-    <div style={{ position: "absolute", width: ARM, height: ARM, ...style }} />
-  );
-}
-
 export default async function Image() {
   const top = BASE - TAPER * 2;
   const bounds = [
@@ -122,21 +111,6 @@ export default async function Image() {
         fontWeight: 600,
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          position: "absolute",
-          left: (ogSize.width - FRAME) / 2,
-          top: (ogSize.height - FRAME) / 2,
-          width: FRAME,
-          height: FRAME,
-        }}
-      >
-        {corner({ left: 0, top: 0, borderLeft: MARK, borderTop: MARK })}
-        {corner({ right: 0, top: 0, borderRight: MARK, borderTop: MARK })}
-        {corner({ left: 0, bottom: 0, borderLeft: MARK, borderBottom: MARK })}
-        {corner({ right: 0, bottom: 0, borderRight: MARK, borderBottom: MARK })}
-      </div>
       <svg
         width={ogSize.width}
         height={ogSize.height}
