@@ -62,6 +62,14 @@ export const work: WorkItem[] = (
       description: "An elevated dialog component for React.",
     },
     {
+      title: "Apple's Open Animations",
+      date: "2026-11-03",
+      category: "Experiments",
+      href: "/work/apple-open-animations",
+      description:
+        "How iOS and macOS open things, and how to build each one on the web.",
+    },
+    {
       title: "Motion Blur on the Web",
       date: "2026-11-01",
       category: "Experiments",
