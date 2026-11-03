@@ -78,7 +78,7 @@ export function Interrupt() {
         const parent = stage.getBoundingClientRect();
         samples[index].push({
           t: elapsed,
-          y: (box.top - parent.top) / parent.height,
+          y: box.height / Math.max(parent.height, 1),
         });
         paths.current[index]?.setAttribute("d", trace(samples[index]));
       }
@@ -177,7 +177,7 @@ function trace(points: Sample[]) {
   return points
     .map((point, index) => {
       const x = (point.t / WINDOW) * 100;
-      const y = 4 + Math.min(Math.max(point.y, 0), 1) * 28;
+      const y = 32 - Math.min(Math.max(point.y, 0), 1) * 28;
       return `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
     })
     .join(" ");

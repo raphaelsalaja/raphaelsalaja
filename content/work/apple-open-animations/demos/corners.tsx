@@ -116,7 +116,7 @@ export function Corners() {
             type="range"
             min={0}
             max={1}
-            step={0.001}
+            step={0.01}
             value={progress}
             aria-valuetext={`${Math.round(progress * 100)} percent`}
             onChange={(event) => {
