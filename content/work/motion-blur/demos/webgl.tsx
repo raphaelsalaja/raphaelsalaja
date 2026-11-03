@@ -194,7 +194,13 @@ function createRenderer(canvas: DrawableCanvas, element: HTMLElement) {
   });
 
   canvas.addEventListener("paint", paint);
-  observer.observe(canvas, { box: "device-pixel-content-box" });
+  try {
+    // Chrome reports device pixels. WebKit throws on this box and the
+    // exception replaces the whole page, so fall back to contentRect.
+    observer.observe(canvas, { box: "device-pixel-content-box" });
+  } catch {
+    observer.observe(canvas);
+  }
   canvas.requestPaint();
 
   return {
