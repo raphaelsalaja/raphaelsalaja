@@ -1,9 +1,8 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
 import styles from "./drawer.module.css";
-import { clamp01, drive, outQuint, useScene } from "./scene";
+import { clamp01, drive, echoBlur, outQuint, useScene } from "./scene";
 import { BEATS, loopAt } from "./timeline";
 
 // A share sheet that slides up from below, sits long enough to read and
@@ -34,7 +33,7 @@ export function DrawerExample() {
     (el) => {
       const host = el.querySelector<HTMLElement>(`.${styles.host}`)!;
       const backdrop = el.querySelector<HTMLElement>(`.${styles.backdrop}`)!;
-      const blur = motionBlur(host, { technique: echo() });
+      const blur = echoBlur(host);
       return {
         tick(time, frame) {
           drive(

@@ -1,7 +1,16 @@
 "use client";
 
-import type { MotionBlur } from "@web-kits/motion-blur";
+import { echo, type MotionBlur, motionBlur } from "@web-kits/motion-blur";
 import { type RefObject, useEffect } from "react";
+
+/**
+ * Echo with half its copies on touch screens. Every copy is a deep clone with
+ * its own layer, and phones running several tiles at once run out of memory.
+ */
+export function echoBlur(host: HTMLElement) {
+  const copies = matchMedia("(pointer: coarse)").matches ? 8 : 16;
+  return motionBlur(host, { technique: echo({ copies }) });
+}
 
 export type Scene = {
   /** Draws the scene at `time` seconds. `frame` is the frame time in seconds, 0 for a still. */

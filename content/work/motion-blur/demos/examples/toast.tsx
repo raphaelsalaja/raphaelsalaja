@@ -1,8 +1,7 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
-import { clamp01, drive, outCubic, spring, useScene } from "./scene";
+import { clamp01, drive, echoBlur, outCubic, spring, useScene } from "./scene";
 import { BEATS, loopAt } from "./timeline";
 import styles from "./toast.module.css";
 
@@ -51,7 +50,7 @@ export function ToastExample() {
       const column = el.querySelector<HTMLElement>(`.${styles.column}`)!;
       const fresh = el.querySelector<HTMLElement>(`.${styles.new}`)!;
       const oldest = column.firstElementChild as HTMLElement;
-      const blur = motionBlur(fresh, { technique: echo() });
+      const blur = echoBlur(fresh);
       return {
         tick(time, frame) {
           const shown = inAt(time);

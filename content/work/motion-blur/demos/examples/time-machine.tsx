@@ -1,8 +1,7 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
-import { clamp01, drive, spring, useScene } from "./scene";
+import { clamp01, drive, echoBlur, spring, useScene } from "./scene";
 import styles from "./time-machine.module.css";
 import { BEATS, loopAt } from "./timeline";
 
@@ -46,7 +45,7 @@ export function TimeMachineExample() {
 
   useScene(root, (el) => {
     const hosts = [...el.querySelectorAll<HTMLElement>(`.${styles.host}`)];
-    const blurs = hosts.map((host) => motionBlur(host, { technique: echo() }));
+    const blurs = hosts.map((host) => echoBlur(host));
     return {
       tick(time, frame) {
         const travelled = travelAt(time);

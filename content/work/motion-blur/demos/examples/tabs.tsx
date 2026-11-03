@@ -1,8 +1,7 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
-import { clamp01, drive, spring, useScene } from "./scene";
+import { clamp01, drive, echoBlur, spring, useScene } from "./scene";
 import styles from "./tabs.module.css";
 import { BEATS, loopAt } from "./timeline";
 
@@ -29,7 +28,7 @@ export function TabsExample() {
   useScene(root, (el) => {
     const host = el.querySelector<HTMLElement>(`.${styles.host}`)!;
     const labels = [...el.querySelectorAll<HTMLElement>(`.${styles.tab}`)];
-    const blur = motionBlur(host, { technique: echo() });
+    const blur = echoBlur(host);
     return {
       tick(time, frame) {
         drive(

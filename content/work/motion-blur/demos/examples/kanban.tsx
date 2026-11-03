@@ -1,9 +1,8 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
 import styles from "./kanban.module.css";
-import { clamp01, drive, outCubic, useScene } from "./scene";
+import { clamp01, drive, echoBlur, outCubic, useScene } from "./scene";
 import { BEATS, loopAt } from "./timeline";
 
 // A task thrown from To Do into Done and back. It lifts, flies across on a
@@ -53,7 +52,7 @@ export function KanbanExample() {
     const host = el.querySelector<HTMLElement>(`.${styles.host}`)!;
     const [todo, done] = el.querySelectorAll<HTMLElement>(`.${styles.stack}`);
     const counts = el.querySelectorAll<HTMLElement>(`.${styles.count}`);
-    const blur = motionBlur(host, { technique: echo() });
+    const blur = echoBlur(host);
     let shown = -1;
     return {
       tick(time, frame) {

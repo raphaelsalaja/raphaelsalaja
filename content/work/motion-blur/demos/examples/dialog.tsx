@@ -1,12 +1,12 @@
 "use client";
 
-import { echo, motionBlur } from "@web-kits/motion-blur";
 import { useRef } from "react";
 import { Pointer } from "../base-ui/dialog";
 import styles from "./dialog.module.css";
 import {
   clamp01,
   drive,
+  echoBlur,
   inOutCubic,
   outCubic,
   spring,
@@ -105,7 +105,7 @@ export function DialogExample() {
       const trigger = find("trigger");
       const dim = find("dim");
       const cancel = el.querySelector<HTMLElement>("[data-cancel]")!;
-      const blur = motionBlur(modal, { technique: echo() });
+      const blur = echoBlur(modal);
       return {
         tick(time, frame) {
           const at = loopAt(time);
