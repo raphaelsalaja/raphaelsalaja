@@ -7,9 +7,9 @@ import {
   Springs,
 } from "./demos/figures";
 
-Linear is known for its speed and precision, and in my opinion the command menu is the best example of both, because it's woven through the whole app: it opens from anywhere, and what it offers changes with what you're looking at.
+I rebuilt Linear's command menu from scratch, not all of it but enough to understand how it works. Linear is known for its speed and precision, and in my opinion the command menu is the best example of both, because it's woven through the whole app: it opens from anywhere, what it offers changes with what you're looking at, and it changes on every keystroke without making you wait.
 
-So I thought I'd try my hand at building it from scratch, not all of it but enough to understand how it works. I did it as practice and to learn, and I'm sharing what I found here so you can learn from it too.
+I thought I'd try my hand at it as practice and to learn. This isn't a tutorial, it's what I found taking it apart.
 
 <Demo variant="transparent">
   <CommandMenu />
@@ -19,7 +19,7 @@ This is my version, and it opens on an issue, PND-18, the way Linear's does when
 
 I've never worked at Linear, so I can't tell you what they were thinking, but I can show what I found and why I think they made each choice.
 
-## How I looked at it
+## How I Looked at It
 
 I started with inspect element. I opened the menu and right-clicked a row, and the Elements panel showed most of what I needed: the row's height, the highlight behind it, the padding around the list and the font size and weight.
 
@@ -27,7 +27,7 @@ Motion and the keyboard were harder, and the springs were the hardest part of th
 
 ## Anatomy
 
-It isn't just a list in a box but four parts, each with one job: a title row that holds the context, a field, a list and the frame around them. The frame is 720 wide, never wider than the window minus 32 and never taller than 450. (Mine is narrower, because this column is.)
+The menu is four parts, each with one job: a title row that holds the context, a field, a list and the frame around them. The frame is 720 wide, never wider than the window minus 32 and never taller than 450. (Mine is narrower, because this column is.)
 
 <Anatomy />
 <sub>The menu lifts apart into frame, list, focus, field and context, each labelled with its sizes, then stacks back together. Rows are 46 tall, and so is the field, while the list adds 6 above and below.</sub>
@@ -61,20 +61,18 @@ Group headers count as 30, and without an issue the title row goes, so the frame
 
 I think they did this for the same reason as the styles: nothing should happen after you type that could have happened before, so the height starts moving on the same keystroke that changed the list, not one frame later.
 
-Of everything here, this is the idea I'd most want to take into my own work: give every row a fixed height and work the frame out instead of measuring it. It costs almost nothing, and it's a big part of why the menu feels instant.
+Of everything here, this is the idea I'd most want to take into my own work: give every row a fixed height and work the frame out instead of measuring it. It costs almost nothing, and it's why the frame is never a frame behind the list.
 
 ## Motion
 
-There are two springs, and neither overshoots. Height uses a stiffness of 20000 and a damping of 500, which is close to instant, done in about a tenth of a second.
+There are three springs in their JavaScript, and none of them overshoots. Height uses a stiffness of 20000 and a damping of 500, which is close to instant, done in about a tenth of a second. Opening uses 1500 and 100, and closing 2500 and 100.
 
 <Springs />
 <sub>The height, close and open springs trace their progress over 300ms, each marked where it reaches 99%, and opening is the slow one.</sub>
 
-Why no bounce at all? The pointer is usually resting on a row, so if the frame overshot, the row under it would slide past and come back and the highlight would flicker between two rows. You wouldn't just see a bounce like that, you'd feel it under your hand.
+Why no bounce at all? I think it's because the pointer is usually resting on a row, so if the frame overshot, the row under it would slide past and come back, and the highlight would flicker between two rows under a hand that hadn't moved.
 
-Opening scales up from 0.98, while closing goes down to 0.96 on a stiffer spring, so it leaves faster than it arrived. The way I read it, arriving deserves a moment and leaving doesn't, because once you've picked something the menu's job is done and it gets out of the way.
-
-Closing took me a second try. Motion's exit reuses the transition from the last render, and the last render was the open one, so my menu closed on the opening spring until I gave the exit its own.
+Opening scales up from 0.98, while closing goes down to 0.96 on the stiffer spring, so it leaves faster than it arrived.[^3] The way I read it, arriving deserves a moment and leaving doesn't, because once you've picked something the menu's job is done and it gets out of the way.
 
 Opening a page doesn't animate the content at all: the frame dips to 0.98 for 80ms and comes back, and the height spring does the rest. My guess is that a slide or a crossfade would make you wait to read the new list, but a dip says "something changed" in 80ms and the rows are already there.
 
@@ -99,7 +97,7 @@ I think this is about keeping your eyes still. A submenu would put a second box 
 
 Statuses take the number keys 1 to 5 and priorities 0 to 4, but only while the field is empty, because once you type, numbers are text. I like this one a lot: a number key is a shortcut right up until it can't be, so you never have to think about which mode you're in.
 
-Picking a status closes the menu, but labels don't: they're the one page where rows toggle, so the menu waits until you press Escape. It's an exception that follows the rule: the menu closes when you're done, and with labels, only you know when that is.
+Picking a status closes the menu, but labels don't: they're the one page where rows toggle, so the menu waits until you press Escape. It's an exception that follows the rule, because the menu closes when you're done and with labels only you know when that is.
 
 Typing at the root searches inside the pages too, so "done" finds Done under "Change status" without opening anything. People and labels wait for three characters before they show up there, so a short query doesn't fill with names. My guess is that a workspace has far more people and labels than statuses, and without the wait, typing "d" would bury Done under every Dan and David.
 
@@ -119,12 +117,14 @@ Every placeholder ends in a real ellipsis, not three dots. Empty results say wha
 
 None of these are hard to build. My guess is they come from people using their own menu all day and fixing whatever bugs them.
 
-## What I took from it
+## What I'd Take
 
-There isn't one clever trick, just a stack of small decisions that all point the same way. Heights are worked out instead of measured, and styling happens at build time, so nothing is injected while the menu animates. The springs settle without overshoot because a pointer is resting on a row, and the menu starts from where you are rather than from every command in the app. Pages replace the list instead of opening submenus, and focus stays in the field the whole time.
+The way I read it, most of the menu follows the rule from the height: nothing should happen after you type that could have happened before. The frame's height is a sum worked out before layout, the styles are in the stylesheet before the menu opens, and the first group is already about the issue you opened it on, so the menu never has to ask.
 
-Each one is small, but together they're why a menu you open a hundred times a day never once makes you wait. My version only covers part of it, but it was enough to understand how it works. I hope some of these decisions help when you build your own.
+My version only covers part of it, but it was enough to understand how it works. I hope some of these decisions help when you build your own.
 
 [^1]: Kenneth Skovhus, [Styling Linear for the future with StyleX](https://linear.app/now/styling-linear-for-the-future-stylex), Linear, August 2026. Announced by [@linear](https://x.com/linear) on X: "Over 1000 PRs later, Linear migrated from styled-components to @stylexjs."
 
 [^2]: Kenneth Skovhus, [Moving Linear from styled-components to StyleX](https://www.skovhus.dev/blog/moving-linear-from-styled-components-to-stylex), June 2026. On X, [@kenneth_skovhus](https://x.com/kenneth_skovhus) wrote: "After 1.000 PRs: @linear is now styled with @stylexjs. In-app navigation is up to ~30% faster."
+
+[^3]: Closing took me a second try. Motion's exit reuses the transition from the last render, and the last render was the open one, so my menu closed on the opening spring until I gave the exit its own.
