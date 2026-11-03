@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  gap: 2px;
+}
+
+.link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  border-radius: 8px;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--text-primary);
+  }
+}
+
+.pill {
+  position: absolute;
+  inset: 0;
+  background: var(--background-tertiary);
+  border-radius: inherit;
+}
+
+.label {
+  position: relative;
+}

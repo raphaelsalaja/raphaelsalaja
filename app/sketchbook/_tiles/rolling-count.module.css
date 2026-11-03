@@ -1,0 +1,63 @@
+.counter {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+  min-width: 88px;
+}
+
+.digits {
+  display: flex;
+  font-size: 40px;
+  font-variation-settings: var(--font-weight-500);
+  font-variant-numeric: tabular-nums;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+}
+
+.column {
+  display: block;
+  height: 48px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  background: var(--background-tertiary);
+  border-radius: 999px;
+  transition: transform 150ms var(--ease-out-quart);
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+}
