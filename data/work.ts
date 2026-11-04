@@ -62,6 +62,13 @@ export const work: WorkItem[] = (
       description: "An elevated dialog component for React.",
     },
     {
+      title: "The Genie Effect",
+      date: "2026-11-03",
+      category: "Experiments",
+      href: "/work/genie",
+      description: "The macOS minimise, rebuilt from the Dock's own code.",
+    },
+    {
       title: "Motion Blur on the Web",
       date: "2026-11-01",
       category: "Experiments",

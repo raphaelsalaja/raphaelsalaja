@@ -1,0 +1,213 @@
+import {
+  Fills,
+  Genie,
+  GenieDebug,
+  Linear,
+  MeshRows,
+  Phases,
+  Recorded,
+} from "./demos";
+
+I rebuilt the macOS Genie minimise for the web from the Dock's own code. The shape comes from the function the Dock uses to work it out, ported line by line, and it matches a screen recording of a real minimise to within 3 pixels on every frame. This page is how I found that function, what it does, and the two ways I found to draw it in a browser.
+
+<Demo variant="transparent">
+  <Genie />
+</Demo>
+<sub>Tap a window to minimise it, and its Dock icon brings it back. Drag it first to minimise from somewhere else. The sides bend towards the icon, then the window slides down the funnel and under the Dock, linearly over half a second.</sub>
+
+## What Genie Is
+
+macOS has two minimise effects, Genie and Scale, chosen under System Settings > Desktop & Dock > Minimized windows animation.[^1] Scale shrinks the window into its spot in the Dock. Genie pours it in.
+
+Harshil Shah's breakdown is the best description I found: "the bottom edge of the window shears, shrinking in width and shifting towards its eventual final position, while the top edge remains fixed," then the window "follows the path created by the two sides. It's almost like a liquid flowing through a funnel."[^2] Restoring plays it the other way, out of the same spot, which is what Apple's 2018 talk on fluid interfaces calls spatial consistency: "if something disappears one way, we expect it to emerge from where it came."[^3]
+
+A transform can't do this, because every row of the window has its own width. It needs a mesh: a grid of points on the window, each moved to its own place on the screen, with the image stretched between them.
+
+<MeshRows />
+<sub>The Dock's mesh for an 800 × 500 window at four points of a minimise.</sub>
+
+## The Ones That Guessed
+
+Four rebuilds came up when I looked, and each one draws the funnel by eye.
+
+- Shah's, for his app Pause, warps a SpriteKit grid, and he's open that it's "perhaps not pixel perfect" but aims to match "the general vibe of the built in animation."[^2]
+- Bartosz Ciechanowski's BCGenieEffect does it on iOS with Core Animation, and its README says it only works where there's "a clear and logical path which animated view will follow."[^4] Its examples run for 0.7 seconds.
+- genie-web, a WebGL port of Chad Etzel's MeshWarpEffect, defaults to 680 ms on a 20 × 48 grid. The sides finish bending at 0.5 of the way through, the slide starts at 0.38, and the mesh fades from 0.88.[^5]
+- usagimaru's, which I saw on X, draws the sides as Bézier curves from the window's top corners to the target's and puts every phase on a slider. In his video it runs for a second, the sides finish narrowing at 0.54 and the slide runs from 0.15 to the end. He wrote that he "didn't know the original parameters, so it feels slightly off."[^6]
+
+My first version guessed too, so for this one I went looking for the real numbers instead.
+
+## Finding It in the Dock
+
+The window server draws the minimise, but it doesn't decide the shape. The Dock works out the mesh for each frame and hands it over through `SLSTransactionSetWindowWarp`, a private SkyLight call that takes the window, the mesh's columns and rows, and the mesh itself. Each point in the mesh is four numbers: a spot on the window and the spot on the screen it should be drawn at.
+
+I opened the Dock from macOS 27.0.1 in Ghidra[^7] and followed the callers of that function back to the one that builds the mesh. It reads one record describing the animation (the window's rectangle, the slot's rectangle, which edge of the screen the Dock is on and how far along it is) and calls a recursive helper to trace the funnel's sides.
+
+Reading disassembly tells you what the code says, not what it does with real numbers, so I ran it. I loaded the Dock's own machine code into Unicorn, a CPU emulator,[^8] and answered each of its maths library calls from the host. Given a record, it hands back exactly the mesh the Dock would send.
+
+Then I checked that against the screen. I minimised and restored a magenta 800 × 500 window on an 1800 × 1169 point display while ScreenCaptureKit recorded at 120 fps,[^9] and read the window's silhouette out of every frame. For each frame I found the progress whose emulated mesh matched that silhouette best, fitting the slot's rectangle at the same time (35 × 55 points). What was left over was 1 to 3 pixels on every frame.
+
+<Recorded />
+<sub>Five recorded frames, with the port's outline drawn over the real window's.</sub>
+
+## What the Function Does
+
+In order:
+
+- It splits the move into two phases, each eased by half a cosine: the sides bend towards the slot, then the window slides down between them.
+- Each phase gets a length from the logarithm of how far it has to go, `trunc(ln(d / 2 + 1)) * 50`: the sideways distance for the bend, the distance to the slot for the slide.
+- It schedules them so that the sides finish bending at the moment the window's leading edge reaches the slot. If the bend would finish earlier, it's stretched, and if it would finish later, the slide waits.
+- It traces each side of the funnel as a cosine from the window's edge to the slot's, halving it until every piece is within 0.6 points of a straight line. No piece gets shorter than 8 points, the straightness check only starts below 128, and it gives up after 64 splits.
+- It clamps rows that have passed into the slot to the slot's near edge, and adds one last row once the window has gone further than the gap it started with.
+- It sends the result as a mesh two columns wide (two rows tall with the Dock on the left or right) and as many rows as the sides needed. In the recorded minimise that peaked at 16 rows, or 15 quads, about halfway through.
+
+The scheduling is the part none of the guesses had. Simplified from the port, which keeps the Dock's rounding:
+
+```ts title="mesh.ts"
+const ease = (t: number) => 0.5 - 0.5 * Math.cos(Math.PI * t);
+const clamp = (t: number) => Math.min(Math.max(t, 0), 1);
+
+// sideways is the larger of how far the sides move (summed, over 8) and twice
+// any overlap with the Dock. travel is how far the window moves.
+const bendLength = Math.trunc(Math.log(sideways / 2 + 1)) * 50;
+const slideLength = Math.trunc(Math.log(travel / 2 + 1)) * 50;
+
+// How far into the slide the window's leading edge reaches the slot.
+const reach = slideLength * (Math.acos(1 - (2 * gap) / travel) / Math.PI);
+
+const narrow = Math.max(bendLength, reach);
+const lead = Math.max(bendLength - reach, 0);
+
+const along = (slideLength + lead) * progress;
+const bent = ease(clamp(along / narrow));
+const slid = ease(clamp((along - lead) / slideLength));
+```
+
+The `acos` solves the slide's cosine for the moment it has covered the gap between the window and the slot, which is where the bend has to be done.
+
+<Phases />
+<sub>Both phases for the recorded window. The bend is done at 0.5, as the slide covers the gap.</sub>
+
+Progress itself is linear. A straight line fitted the recorded progress over 495 ms to minimise and 497 ms to restore, with an RMS error of 0.21% and 0.50% of the whole move. Restoring is the same mesh with progress running from 1 back to 0, so I use half a second for both.
+
+<Linear />
+<sub>Progress in every recorded frame, against the straight line fitted through it.</sub>
+
+## Porting It
+
+I ported the function and its helper to TypeScript line by line, rounding to 32-bit floats wherever the Dock stores one. Some of its comparisons pick between two values in ways that differ from `Math.min` and `Math.max` for `NaN` and −0, so those stay as written. I compared it with the emulator on 7,200 random windows, with the Dock on all four sides and some windows already overlapping it, and every vertex matched bit for bit.
+
+```ts title="genie.ts"
+import { genieMesh } from "./mesh";
+
+// progress 0 is the open window, 1 is the window inside the slot.
+// Four floats per vertex: window x, window y, screen x, screen y.
+const { columns, rows, points } = genieMesh(progress, window, slot, "bottom");
+```
+
+## Filling the Quads
+
+The mesh says where the corners of each quad go, not how the window is stretched in between. To see that, I filled the window with a gradient where every pixel's colour is its own position (red for x, green for y), recorded it minimising, and read the positions back out of the frames.
+
+I scored four ways of filling a quad against what came back. Splitting each quad into two triangles was off by a median of 4.33 pixels along one diagonal and 3.96 along the other. A bilinear fill was off by 1.97, and a projective one by the same, because at these sizes the two are indistinguishable. So either of those is what the window server does, near enough, and the triangles are out.
+
+<Fills />
+<sub>A grid across one quad, exaggerated. Split into triangles, every line bends at the diagonal.</sub>
+
+## Drawing It on the Web
+
+The browser has no mesh warp for elements, so the demos draw a copy of the window for every quad. Each copy is clipped to its strip and projected onto the quad with `matrix3d`, using Heckbert's square-to-quad mapping,[^10] and padded by half a pixel so the seams don't show. That's the projective fill, which scored the same as bilinear against the recording. It's plain DOM, so it starts on the first frame and the text stays as sharp as the browser draws it. The cost is a copy of the window per row: 15 at the busiest frame of the recorded minimise.
+
+The copies never matched the real window exactly. Each one is drawn into its strip a fraction of a pixel off the grid, so swapping them in on one frame made the edges visibly jump. Now they fade in over the real window for the first 4% of the run, about 20 milliseconds, and the window only hides once they're opaque. The corners have bent a few points by then, too little to show the window behind.
+
+I also built a WebGL version that drew one image of the window through the mesh. Getting that image meant rasterising the window through an SVG `foreignObject`, which came out softer than the copies even after I fixed its layout, so I dropped it.
+
+The Dock's thresholds are in points (the 0.6-point tolerance, the 8-point minimum, the 50-point steps), so a small desktop on a web page can't feed its own pixel sizes in, or the funnel comes out a different shape. The desktop at the top runs the maths as if on a 1280-point screen and scales the mesh down to fit. The debug view further down uses the 1800 points the recording was made on.
+
+## On Base UI
+
+Driving it is one number from 0 to 1, played at a constant rate, so restoring halfway through a minimise plays the same mesh back from wherever it is. I haven't checked whether macOS lets you do that.
+
+That fits a Base UI Dialog's own exit. Base UI keeps a closing popup mounted until it can see the popup's animations finish,[^11] so `GeniePopup` puts one on the popup that does both jobs: a linear animation of `visibility: hidden`, which hides the real popup while the mesh draws a copy of it, and which is also the clock the mesh reads its progress from.
+
+```ts title="popup.tsx"
+const clock = popup.animate(
+  { visibility: ["hidden", "hidden"] },
+  { duration: 500, easing: "linear", fill: "forwards" },
+);
+```
+
+When the popup closes it minimises into its target, and when it opens it comes back out of it. The target is any element, like the Dock icon that opens it:
+
+```tsx title="notes.tsx"
+import { Dialog } from "@base-ui/react/dialog";
+import { useRef } from "react";
+import { GeniePopup } from "@/components/genie";
+
+export function Notes() {
+  const icon = useRef<HTMLButtonElement>(null);
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger ref={icon} aria-label="Notes" />
+      <Dialog.Portal>
+        <GeniePopup target={icon}>
+          <Dialog.Title>Notes</Dialog.Title>
+          <Dialog.Close aria-label="Minimise Notes" />
+        </GeniePopup>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+The desktop at the top of the page is two of these, one for each window. The Dock is shared, so each icon is a `Dialog.Trigger` outside its dialog, tied to it with `Dialog.createHandle()`.
+
+## Debugging
+
+This is one window and a target on the 1800-point screen the recording was made on, with what the desktop at the top hides: the funnel, the mesh, a scrubber and a readout of what the function is doing. The funnel's sides are the cosines from the window's top corners to the target's, which every row of the mesh is drawn along. The layout is borrowed from usagimaru's demo, with the Dock's curves in place of his Béziers.[^6]
+
+<Demo wide>
+  <GenieDebug />
+</Demo>
+<sub>Drag the window or the target to turn the funnel, tap either to minimise or restore, and switch off Fade and Blur, my own additions, to see what the Dock really does.</sub>
+
+## Usage
+
+Genie shows where something went, so I'd use it when a surface is put away somewhere it comes back from, and that place is on screen. Restoring plays out of the same spot, which is the spatial consistency from Apple's talk.[^3]
+
+These are the places I'd reach for it:
+
+- A chat or support panel that minimises into its launcher button in a corner. The button is the target, so the panel pours into the thing that opens it again.
+- A compose window that collapses into a tray of drafts along the bottom of the screen, the way a mail client parks them.
+- A web desktop, or a portfolio dressed as one, where there's already a Dock on the page.
+
+And where I wouldn't:
+
+- Anything that closes for good, like a confirmation dialog or a toast. With nowhere to come back from, the funnel points at nothing, and a 200 ms fade is over in less than half the time.
+- Anything live inside, like a video or a spinner, because the copies are made when the window starts to move and freeze it for the half second. I haven't checked whether macOS keeps it live.
+- Anything done many times a minute. I think half a second is too long to wait on something you meant to do.
+
+In code it's `GeniePopup` in place of `Dialog.Popup`, with `target` pointing at whatever brings the popup back. `bounds` clips the funnel to a container instead of the viewport, `scale` sets how many pixels make a point so a small container bends like a full screen, and `edge` turns the funnel when the target sits on the left, right or top. Those three edges match the emulator, but I've only checked the bottom against a recording.
+
+[^1]: [Change Desktop & Dock settings on Mac](https://support.apple.com/guide/mac-help/change-desktop-dock-settings-mchlp1119/mac), Apple Support.
+
+[^2]: Harshil Shah, [Recreating the macOS Genie Effect](https://harshil.net/blog/recreating-the-mac-genie-effect/).
+
+[^3]: Chan Karunamuni, Nathan de Vries and Marcos Alonso, [Designing Fluid Interfaces](https://developer.apple.com/videos/play/wwdc2018/803/), WWDC 2018.
+
+[^4]: Bartosz Ciechanowski, [BCGenieEffect](https://github.com/Ciechan/BCGenieEffect).
+
+[^5]: [genie-web](https://github.com/fenxer/genie-web), from Chad Etzel's [MeshWarpEffect](https://github.com/jazzychad/MeshWarpEffect).
+
+[^6]: usagimaru, [post on X](https://x.com/usagimaruma/status/2035221271706050870), 21 March 2026. The quote is my translation of "パラメーターはオリジナルのものがわからなかったので微妙に違和感がある".
+
+[^7]: [Ghidra](https://github.com/NationalSecurityAgency/ghidra), National Security Agency.
+
+[^8]: [Unicorn](https://www.unicorn-engine.org/).
+
+[^9]: [ScreenCaptureKit](https://developer.apple.com/documentation/screencapturekit), Apple.
+
+[^10]: Paul Heckbert, [Fundamentals of Texture Mapping and Image Warping](https://www2.eecs.berkeley.edu/Pubs/TechRpts/1989/Archive/CSD-89-516.pdf), UC Berkeley, 1989.
+
+[^11]: [Animation](https://base-ui.com/react/handbook/animation), Base UI.
