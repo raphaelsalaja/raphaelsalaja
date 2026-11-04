@@ -1,0 +1,63 @@
+.caps {
+  font-size: 9.5px;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-wrap: nowrap;
+  fill: var(--text-tertiary);
+  stroke: var(--background-secondary);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.body {
+  fill: color-mix(in oklab, var(--gray-12) 8%, var(--background-secondary));
+  stroke: var(--text-primary);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.rows {
+  fill: none;
+  stroke: var(--figure-line);
+  stroke-width: 0.5;
+}
+
+.port {
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.recorded {
+  fill: color-mix(in oklab, var(--figure-accent) 16%, transparent);
+  stroke: var(--figure-accent);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.sample {
+  fill: var(--text-primary);
+}
+
+.texture {
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-width: 0.75;
+}
+
+.edge {
+  fill: color-mix(in oklab, var(--gray-12) 4%, transparent);
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}
+
+.side {
+  fill: color-mix(in oklab, var(--gray-12) 5%, transparent);
+  stroke: var(--figure-line);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}

@@ -7,6 +7,11 @@
   container-type: inline-size;
 }
 
+/* The desktop sets its own height, so a phone has no empty frame below it. */
+:global([data-demo="transparent"]):has(> .demo[data-demo-id="genie"]) {
+  min-height: 0;
+}
+
 .stage {
   position: relative;
   width: 100%;
@@ -547,64 +552,6 @@
   &:disabled {
     cursor: default;
   }
-}
-
-.desktop {
-  position: relative;
-  height: 300px;
-  margin: 16px 16px 8px;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      color-mix(in oklab, var(--blue) 28%, transparent),
-      transparent 42%
-    ),
-    var(--gray-2);
-  border-radius: 12px;
-}
-
-.canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.desktopDock {
-  position: absolute;
-  right: 16px;
-  bottom: 12px;
-  left: 16px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  background: color-mix(in oklab, var(--gray-1) 72%, transparent);
-  border-radius: 12px;
-  box-shadow: inset 0 0 0 1px var(--border-primary);
-}
-
-.desktopTile {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
-}
-
-.desktopWindow {
-  position: absolute;
-  top: 28px;
-  right: 0;
-  left: 0;
-  width: min(220px, 70%);
-  height: 140px;
-  padding: 12px;
-  margin-inline: auto;
-  background: var(--gray-1);
-  border-radius: 12px;
-  box-shadow: var(--shadow-raised);
 }
 
 .scrubRow {

@@ -112,6 +112,11 @@
     color: var(--text-primary);
   }
 
+  &[aria-pressed="true"] {
+    color: var(--text-primary);
+    background: var(--background-tertiary);
+  }
+
   &:active {
     transform: scale(0.98);
   }
