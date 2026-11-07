@@ -1,0 +1,179 @@
+.page {
+  width: min(960px, 100%);
+  padding: 24px 16px 48px;
+  color: #eeeeec;
+  background: #10100e;
+  border-radius: 12px;
+}
+
+.hint {
+  display: none;
+  margin-bottom: 16px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: #a8a49a;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+@media (pointer: coarse) {
+  .hint {
+    display: block;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (width >= 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .page {
+    padding-inline: 24px;
+  }
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1;
+  background: #10100e;
+  box-shadow: inset 0 0 0 1px #161613;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.chrome {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.tileName,
+.gesture,
+.model,
+.readout,
+.choices {
+  position: absolute;
+  pointer-events: none;
+}
+
+.tileName {
+  top: 7%;
+  left: 7%;
+  font-size: 12px;
+  color: #2b8cff;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.gesture {
+  top: 7%;
+  right: 7%;
+  font-size: 11px;
+  color: #a8a49a;
+  letter-spacing: 0.06em;
+}
+
+.model,
+.readout,
+.choices {
+  bottom: 6%;
+  font-size: 11px;
+}
+
+.model {
+  left: 7%;
+  color: #b9b4a8;
+}
+
+.readout {
+  right: 7%;
+  color: #a8a49a;
+}
+
+.choices {
+  right: 7%;
+  bottom: 12%;
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.choices button {
+  min-height: 28px;
+  padding: 0 8px;
+  color: #b9b4a8;
+  pointer-events: auto;
+}
+
+.choices button[aria-pressed="true"],
+.choices button:hover,
+.choices button:focus-visible {
+  color: #2b8cff;
+}
+
+.press,
+.lift,
+.weight,
+.rule,
+.step {
+  color: #eeeeec;
+}
+
+.press:active,
+.tile:active .press {
+  scale: 0.96;
+}
+
+.tile:hover .lift {
+  translate: 0 -4px;
+}
+
+.weight[data-on] {
+  font-variation-settings: "wght" 600;
+}
+
+.rule {
+  border-bottom: 1px solid #2b8cff;
+  transform-origin: left;
+  scale: 1 1;
+}
+
+.tile:hover .rule {
+  scale: 1 1;
+}
+
+.dot {
+  position: absolute;
+  top: 46%;
+  width: 16px;
+  height: 16px;
+  background: #2b8cff;
+  border-radius: 999px;
+}
+
+.summary {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #b9b4a8;
+}
+
+.page[data-reduced] .press:active,
+.page[data-reduced] .tile:hover .lift {
+  scale: 1;
+  translate: none;
+}

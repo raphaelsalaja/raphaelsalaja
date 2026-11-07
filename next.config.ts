@@ -22,9 +22,24 @@ const withMDX = createMDX({
   },
 });
 
+// `next build` sets NODE_ENV to production before this file loads.
+// `page.dev.tsx` is a page only while that extension is listed, so the
+// development skills lab is not a route in the production build.
+const production = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  pageExtensions: ["ts", "tsx", "mdx"],
+  pageExtensions: production
+    ? ["ts", "tsx", "mdx"]
+    : ["ts", "tsx", "mdx", "dev.tsx"],
+  webpack: (config, { dev, webpack }) => {
+    if (!dev) {
+      config.plugins.push(
+        new webpack.IgnorePlugin({ resourceRegExp: /skills-at-work/ }),
+      );
+    }
+    return config;
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2678400,
