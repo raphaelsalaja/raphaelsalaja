@@ -1,0 +1,41 @@
+.order {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 520px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.clip {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.name,
+.spec {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.name {
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+}
+
+.spec {
+  color: var(--text-tertiary);
+}

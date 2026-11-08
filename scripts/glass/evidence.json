@@ -1,0 +1,270 @@
+{
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "65d767ee670863ed03c6b1827fe70859486f2669fa6fef60a92ce4a6e0606300"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [{ "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }],
+  "records": [
+    {
+      "analysis_profile": {
+        "digest": "c7a6c7bc15526ebdca86113c0894ffc92b2440c6e3377321a361c25691320fb8",
+        "parameters": {
+          "analysis_options": {
+            "disabled_analyzers": [
+              "Decompiler Parameter ID",
+              "Decompiler Switch Analysis"
+            ]
+          },
+          "analyzer_preset": "ghidra-default+disabled:Decompiler Parameter ID,Decompiler Switch Analysis",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "architecture": "arm64",
+          "available_architectures": ["arm64"],
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "compiler_spec_id": "auto-default",
+          "decompiler_jump_loads": true,
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "import_mode": "ephemeral-source-immutable",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-without-synthetic-entry-v2",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "language_id": "auto-from-header",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "loader": "auto-from-header",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_f1b739c231b5813e3c17a48a67d4ec6ea08f642a21201134330cd6cd9262441e",
+      "evidence_links": [],
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Only Ghidra-defined string Data is observed; packed or undefined string bytes may be absent. Completeness applies to that inventory, and an empty search does not establish that text is absent from the artifact. If an address is known, use read_bytes and xrefs to inspect bytes and references.",
+        "Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.",
+        "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+      ],
+      "locations": [],
+      "normalized_result": [
+        { "address": "0x1de445210", "value": "Kick ejectee" },
+        { "address": "0x1de445220", "value": "Unkick ejectee" },
+        { "address": "0x1de445230", "value": "Kick source" },
+        { "address": "0x1de445240", "value": "Unkick source" },
+        { "address": "0x1de445270", "value": "Unkick" },
+        { "address": "0x1de4452c0", "value": "Lens on" },
+        { "address": "0x1de4452d0", "value": "Lens off" },
+        { "address": "0x1de4463fd", "value": "LensingSDFLayer" },
+        {
+          "address": "0x1de44e730",
+          "value": "$__lazy_storage_$_lensingSDFLayer"
+        },
+        { "address": "0x1de44e780", "value": "$__lazy_storage_$_lensingLayer" },
+        {
+          "address": "0x1de44e7a0",
+          "value": "$__lazy_storage_$_lensingPortalContainer"
+        },
+        {
+          "address": "0x1de44e7d0",
+          "value": "$__lazy_storage_$_lensingPortals"
+        },
+        { "address": "0x1de44e800", "value": "minLensingDimension" },
+        { "address": "0x1de44e9e0", "value": "didSetUpKickTransformer" },
+        {
+          "address": "0x1de44ea00",
+          "value": "$__lazy_storage_$_kickAmountProperty"
+        },
+        {
+          "address": "0x1de44ea30",
+          "value": "$__lazy_storage_$_kickScaleProperty"
+        },
+        { "address": "0x1de44f408", "value": "secondStepDelay" },
+        { "address": "0x1de44f420", "value": "growingIntermediateShapeRatio" },
+        { "address": "0x1de44f4d1", "value": "mainEjectSpring" },
+        { "address": "0x1de44f4f0", "value": "mainAbsorbSpring" },
+        { "address": "0x1de44f57d", "value": "lensingEnabled" },
+        { "address": "0x1de456960", "value": "Change lensing dimension" },
+        {
+          "address": "0x1de456ac0",
+          "value": "LiquidMorphAnimation.LensingLayer"
+        },
+        {
+          "address": "0x1de456af0",
+          "value": "LiquidMorphAnimation.LensingPortalContainer"
+        },
+        {
+          "address": "0x1de456b20",
+          "value": "LiquidMorphAnimation.LensingSDFLayer"
+        },
+        { "address": "0x1de456d50", "value": "MagicMorphAnimation.kickScale" },
+        { "address": "0x1de456d70", "value": "MagicMorphAnimation.kickAmount" },
+        { "address": "0x1de457280", "value": "growingIntermediateShapeRatio" },
+        { "address": "0x1de457340", "value": "mainAbsorbSpring" },
+        { "address": "0x1de4573c0", "value": "Morph v2 Lensing" },
+        { "address": "0x2252ed6d0", "value": "gaussianRadius" },
+        { "address": "0x2252f1cd8", "value": "gaussianRadius" },
+        {
+          "address": "0x26b01d61b",
+          "value": "__INSTANCE_METHODS__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b029087",
+          "value": "_symbolic _____Sg 12AnimationKit15LensingSDFLayerC"
+        },
+        {
+          "address": "0x26b02b26a",
+          "value": "_symbolic _____ 12AnimationKit15LensingSDFLayerC"
+        },
+        {
+          "address": "0x26b02efd2",
+          "value": "__METACLASS_DATA__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02f007",
+          "value": "__IVARS__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02fa7f",
+          "value": "__DATA__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02faaa",
+          "value": "_OBJC_CLASS_$__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02ff82",
+          "value": "_OBJC_METACLASS_$__TtC12AnimationKit15LensingSDFLayer"
+        }
+      ],
+      "operation": "search_strings",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "^(Kick|Unkick|Lens on|Lens off|mainEjectSpring|mainAbsorbSpring|growingIntermediateShapeRatio|lensingEnabled|gaussianRadius|secondStepDelay)$|kick|lens"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+      "raw_result": [
+        { "address": "0x1de445210", "value": "Kick ejectee" },
+        { "address": "0x1de445220", "value": "Unkick ejectee" },
+        { "address": "0x1de445230", "value": "Kick source" },
+        { "address": "0x1de445240", "value": "Unkick source" },
+        { "address": "0x1de445270", "value": "Unkick" },
+        { "address": "0x1de4452c0", "value": "Lens on" },
+        { "address": "0x1de4452d0", "value": "Lens off" },
+        { "address": "0x1de4463fd", "value": "LensingSDFLayer" },
+        {
+          "address": "0x1de44e730",
+          "value": "$__lazy_storage_$_lensingSDFLayer"
+        },
+        { "address": "0x1de44e780", "value": "$__lazy_storage_$_lensingLayer" },
+        {
+          "address": "0x1de44e7a0",
+          "value": "$__lazy_storage_$_lensingPortalContainer"
+        },
+        {
+          "address": "0x1de44e7d0",
+          "value": "$__lazy_storage_$_lensingPortals"
+        },
+        { "address": "0x1de44e800", "value": "minLensingDimension" },
+        { "address": "0x1de44e9e0", "value": "didSetUpKickTransformer" },
+        {
+          "address": "0x1de44ea00",
+          "value": "$__lazy_storage_$_kickAmountProperty"
+        },
+        {
+          "address": "0x1de44ea30",
+          "value": "$__lazy_storage_$_kickScaleProperty"
+        },
+        { "address": "0x1de44f408", "value": "secondStepDelay" },
+        { "address": "0x1de44f420", "value": "growingIntermediateShapeRatio" },
+        { "address": "0x1de44f4d1", "value": "mainEjectSpring" },
+        { "address": "0x1de44f4f0", "value": "mainAbsorbSpring" },
+        { "address": "0x1de44f57d", "value": "lensingEnabled" },
+        { "address": "0x1de456960", "value": "Change lensing dimension" },
+        {
+          "address": "0x1de456ac0",
+          "value": "LiquidMorphAnimation.LensingLayer"
+        },
+        {
+          "address": "0x1de456af0",
+          "value": "LiquidMorphAnimation.LensingPortalContainer"
+        },
+        {
+          "address": "0x1de456b20",
+          "value": "LiquidMorphAnimation.LensingSDFLayer"
+        },
+        { "address": "0x1de456d50", "value": "MagicMorphAnimation.kickScale" },
+        { "address": "0x1de456d70", "value": "MagicMorphAnimation.kickAmount" },
+        { "address": "0x1de457280", "value": "growingIntermediateShapeRatio" },
+        { "address": "0x1de457340", "value": "mainAbsorbSpring" },
+        { "address": "0x1de4573c0", "value": "Morph v2 Lensing" },
+        { "address": "0x2252ed6d0", "value": "gaussianRadius" },
+        { "address": "0x2252f1cd8", "value": "gaussianRadius" },
+        {
+          "address": "0x26b01d61b",
+          "value": "__INSTANCE_METHODS__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b029087",
+          "value": "_symbolic _____Sg 12AnimationKit15LensingSDFLayerC"
+        },
+        {
+          "address": "0x26b02b26a",
+          "value": "_symbolic _____ 12AnimationKit15LensingSDFLayerC"
+        },
+        {
+          "address": "0x26b02efd2",
+          "value": "__METACLASS_DATA__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02f007",
+          "value": "__IVARS__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02fa7f",
+          "value": "__DATA__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02faaa",
+          "value": "_OBJC_CLASS_$__TtC12AnimationKit15LensingSDFLayer"
+        },
+        {
+          "address": "0x26b02ff82",
+          "value": "_OBJC_METACLASS_$__TtC12AnimationKit15LensingSDFLayer"
+        }
+      ],
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "65d767ee670863ed03c6b1827fe70859486f2669fa6fef60a92ce4a6e0606300"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/dsc/System/Library/PrivateFrameworks/AnimationKit.framework/AnimationKit",
+        "name": "AnimationKit"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": []
+}
