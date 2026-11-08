@@ -161,10 +161,16 @@ html {
   background: color-mix(in oklab, var(--accent) 28%, transparent);
 }
 
+/* The halo is an outline so it survives components that set their own shadow;
+   those keep their own edge in place of the darker one. A dark surface sets
+   --focus-ink for what's inside it. */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 4px solid
+    color-mix(in oklab, var(--focus-ink, var(--text-primary)) 8%, transparent);
+  outline-offset: 0;
   border-radius: 4px;
+  box-shadow: 0 0 0 1px
+    color-mix(in oklab, var(--focus-ink, var(--text-primary)) 30%, transparent);
 }
 
 body {
@@ -213,6 +219,13 @@ time {
 
   &:hover {
     text-decoration-color: var(--text-tertiary);
+  }
+
+  /* The ring would touch the first and last letters, so it gets room that the
+     margin hands back to the line. */
+  &:focus-visible {
+    padding-inline: 2px;
+    margin-inline: -2px;
   }
 }
 

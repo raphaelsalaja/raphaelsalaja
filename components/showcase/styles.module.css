@@ -117,11 +117,6 @@
   &:active {
     transform: scale(0.96);
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--text-primary);
-    outline-offset: 2px;
-  }
 }
 
 .lab {
