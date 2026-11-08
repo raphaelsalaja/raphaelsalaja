@@ -20,7 +20,7 @@ const COLUMNS = 5;
 const SETTLE_STEPS = 900;
 
 const FILLS: Record<BotColor, string> = {
-  black: "#21201c",
+  black: "#080808",
   gray: "#777777",
   blue: "#1084fe",
   cyan: "#00bca6",
@@ -141,11 +141,7 @@ export default async function Image() {
             <path d={MARKS[bot.shape].path} fill={FILLS[bot.color]} />
             <g clipPath={`url(#mark-${index})`}>
               {markEyes(bot.shape).map((d) => (
-                <path
-                  d={d}
-                  fill={bot.color === "black" ? "#fdfdfc" : "#ffffff"}
-                  key={d}
-                />
+                <path d={d} fill="#ffffff" key={d} />
               ))}
             </g>
           </g>

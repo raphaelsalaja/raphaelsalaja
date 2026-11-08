@@ -51,6 +51,21 @@ export function unlockAudio() {
   audio();
 }
 
+/**
+ * Creates the context ahead of the first press. Making one blocks the main
+ * thread for tens of milliseconds, which would otherwise land on that press.
+ * It stays suspended until a gesture resumes it.
+ */
+export function prepareAudio() {
+  const Audio = window.AudioContext;
+  if (!Audio || context) return;
+  try {
+    context = new Audio({ latencyHint: "interactive" });
+  } catch {
+    // Without a context the first press makes one, as before.
+  }
+}
+
 /** A soft thud scaled by `strength` (0 to 1). Silent until audio is unlocked. */
 export function playBump(strength: number) {
   if (context?.state !== "running") return;

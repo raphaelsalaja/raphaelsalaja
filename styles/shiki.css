@@ -1,6 +1,7 @@
 html {
   p code,
-  li code {
+  li code,
+  td code {
     padding: 1px 5px;
     font-family: var(--font-mono), monospace;
     font-size: 12px;
