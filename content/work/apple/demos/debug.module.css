@@ -1,0 +1,215 @@
+/* The stage draws in the iPhone's own points and is scaled down to fit. */
+.stage {
+  --scale: 0.6;
+
+  display: grid;
+  place-items: center;
+  height: calc(874px * var(--scale) + 48px);
+  overflow: hidden;
+  background: var(--background-primary);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.phoneBox {
+  position: relative;
+  width: calc(402px * var(--scale));
+  height: calc(874px * var(--scale));
+}
+
+.phone,
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 402px;
+  height: 874px;
+  transform: scale(var(--scale));
+  transform-origin: 0 0;
+}
+
+.phone {
+  --stage-width: 402px;
+  --stage-height: 874px;
+
+  overflow: hidden;
+  background: var(--gray-1);
+  border-radius: 62px;
+  box-shadow: 0 0 0 1.5px var(--border-primary);
+}
+
+.home {
+  position: absolute;
+  inset: 0;
+}
+
+.icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 16.64px;
+
+  &:focus-visible {
+    outline: 3px solid var(--text-primary);
+    outline-offset: 4px;
+  }
+}
+
+button.icon {
+  cursor: pointer;
+}
+
+.dock {
+  position: absolute;
+  top: 757px;
+  right: 12px;
+  left: 12px;
+  height: 96px;
+  background: color-mix(in oklab, var(--gray-12) 6%, transparent);
+  border-radius: 38px;
+}
+
+.meshTile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+}
+
+.cardLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--stage-width);
+  height: var(--card-height);
+  overflow: hidden;
+  background: var(--card-color);
+  clip-path: var(--card-clip);
+}
+
+.cardContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-end;
+  width: 100%;
+  height: var(--stage-height);
+  padding: 48px;
+  translate: 0 var(--card-shift);
+}
+
+.bar {
+  flex-shrink: 0;
+  height: 16px;
+  background: color-mix(in oklab, var(--gray-1) 55%, transparent);
+  border-radius: 8px;
+}
+
+.barShort {
+  width: 62%;
+}
+
+.overlay {
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+
+  path,
+  rect {
+    fill: none;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  [data-kind="Frame"] {
+    stroke: var(--gray-9);
+    stroke-width: 1;
+    stroke-dasharray: 4 3;
+  }
+
+  [data-kind="Surface"] {
+    stroke: color-mix(in oklab, var(--blue) 55%, transparent);
+    stroke-width: 0.75;
+  }
+
+  [data-kind="Net"] {
+    stroke: var(--orange);
+    stroke-width: 1;
+    stroke-dasharray: 3 2;
+  }
+
+  [data-kind="Vertex"] {
+    fill: var(--orange);
+    stroke: var(--gray-1);
+    stroke-width: 1;
+  }
+
+  [data-kind="RecordedNet"] {
+    stroke: var(--red);
+    stroke-width: 0.75;
+  }
+
+  [data-kind="Recorded"] {
+    stroke: var(--red);
+    stroke-width: 1.25;
+  }
+
+  [data-kind="Matched"] {
+    fill: var(--red);
+  }
+}
+
+/* Screens for the push, the sheet and the zoom */
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  > * {
+    flex: 1 1 auto;
+  }
+}
+
+.chart {
+  [data-kind="Guide"] {
+    stroke: var(--gray-5);
+    stroke-width: 1;
+  }
+
+  [data-kind="Dots"] {
+    stroke: var(--red);
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+
+  [data-kind="Playhead"] {
+    stroke: var(--gray-7);
+    stroke-width: 1;
+  }
+}
+
+.stat {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.swatch {
+  width: 10px;
+  height: 2px;
+  border-radius: 1px;
+}

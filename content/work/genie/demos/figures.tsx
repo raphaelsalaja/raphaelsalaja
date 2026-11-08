@@ -1,11 +1,6 @@
-import type { CSSProperties } from "react";
-import {
-  genieMesh,
-  geniePhases,
-  type Mesh,
-  type Rect,
-} from "@/components/genie/mesh";
-import base from "@/content/work/command-menu/demos/figures.module.css";
+import type { Rect } from "@web-kits/springboard";
+import { genieMesh, geniePhases, type Mesh } from "@web-kits/springboard";
+import { marks as base, Chart } from "@/components/chart";
 import styles from "./figures.module.css";
 import { GENIE_RECORDING } from "./recording";
 
@@ -20,7 +15,6 @@ const SCREEN_H = GENIE_RECORDING.screen[1];
 /** The part of the recorded screen the window passes through, in points. */
 const CROP = { x: 270, y: 120, width: 860, height: 1060 };
 
-const accent = { "--figure-accent": "var(--orange)" } as CSSProperties;
 const round = (n: number) => Math.round(n * 10) / 10;
 const range = (n: number) => Array.from({ length: n }, (_, i) => i);
 const line = (points: Point[]) =>
@@ -90,8 +84,8 @@ const STAGE_GAP = (560 - STAGE_W * STAGES.length) / (STAGES.length - 1);
 
 export function MeshRows() {
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Mesh Rows by Progress"
       aria-label="The Dock's mesh for the recorded window at four points of a minimise. At the start it's a rectangle cut into 5 rows. A quarter of the way through, the sides have started to bend towards the Dock slot and it has 8 rows. Halfway, the window has narrowed into a funnel over the slot with 16 rows. Three quarters of the way, most of it has gone into the slot and 10 rows are left."
     >
       <svg className={base.svg} viewBox="0 0 560 186" aria-hidden="true">
@@ -138,7 +132,7 @@ export function MeshRows() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -149,31 +143,19 @@ const FRAMES = [0.12, 0.27, 0.42, 0.57, 0.72].map((target) =>
 );
 const FRAME_W = 96;
 const FRAME_GAP = (560 - FRAME_W * FRAMES.length) / (FRAMES.length - 1);
-const FRAME_TOP = 32;
+const FRAME_TOP = 0;
 
 export function Recorded() {
   return (
-    <figure
-      className={base.figure}
-      style={accent}
-      aria-label="Five frames from a screen recording of a real minimise, each with the window's recorded outline filled in orange and the ported mesh's outline drawn over it in black. The two lines sit on top of each other in every frame."
+    <Chart
+      title="Port Against Recording"
+      legend={[
+        { label: "Port", kind: "ink" },
+        { label: "Recorded frame", kind: "fill" },
+      ]}
+      aria-label="Five frames from a screen recording of a real minimise, each with the window's recorded outline filled in blue and the ported mesh's outline drawn over it in black. The two lines sit on top of each other in every frame."
     >
-      <svg className={base.svg} viewBox="0 0 560 172" aria-hidden="true">
-        <path className={base.lineStrong} d="M0 10h20" />
-        <text className={base.tag} x={26} y={13.5}>
-          the port
-        </text>
-        <rect
-          className={styles.recorded}
-          x={120}
-          y={4}
-          width={20}
-          height={12}
-          rx={2}
-        />
-        <text className={base.tag} x={146} y={13.5}>
-          the recorded frame
-        </text>
+      <svg className={base.svg} viewBox="0 0 560 140" aria-hidden="true">
         {FRAMES.map(([progress, path], i) => {
           const left = i * (FRAME_W + FRAME_GAP);
           const { at, height } = panel(left, FRAME_TOP, FRAME_W);
@@ -195,11 +177,11 @@ export function Recorded() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
-const PLOT = { x0: 72, x1: 488, top: 44, base: 132 };
+const PLOT = { x0: 72, x1: 488, top: 24, base: 112 };
 const px = (t: number) => PLOT.x0 + t * (PLOT.x1 - PLOT.x0);
 const py = (v: number) => PLOT.base - v * (PLOT.base - PLOT.top);
 
@@ -212,19 +194,15 @@ export function Phases() {
   const x = round(px(settled));
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Bend and Slide Phases"
+      legend={[
+        { label: "Sides bend", kind: "ink" },
+        { label: "Window slides", kind: "muted" },
+      ]}
       aria-label="How far along each phase is across a minimise of the recorded window. The sides bend on an eased curve that finishes 0.5 of the way through. The slide starts at the same time on a longer eased curve, and it has covered the gap between the window and the slot at the moment the sides finish."
     >
-      <svg className={base.svg} viewBox="0 0 560 168" aria-hidden="true">
-        <path className={base.lineStrong} d={`M${PLOT.x0} 10h20`} />
-        <text className={base.tag} x={PLOT.x0 + 26} y={13.5}>
-          sides bend
-        </text>
-        <path className={base.lineMuted} d={`M${PLOT.x0 + 120} 10h20`} />
-        <text className={base.tag} x={PLOT.x0 + 146} y={13.5}>
-          window slides
-        </text>
+      <svg className={base.svg} viewBox="0 0 560 148" aria-hidden="true">
         {[0, 1].map((v) => (
           <g key={v}>
             <path
@@ -265,7 +243,7 @@ export function Phases() {
           progress
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -328,8 +306,8 @@ function Timing({ label, track, x }: (typeof TIMES)[number]) {
 
 export function Linear() {
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Progress Over Time"
       aria-label="Progress against time for the recorded minimise and restore, one dot per frame at 120 frames a second, with a straight line fitted through them. Minimising takes 495 milliseconds and restoring 497, and the dots sit on the line."
     >
       <svg className={base.svg} viewBox="0 0 560 150" aria-hidden="true">
@@ -337,7 +315,7 @@ export function Linear() {
           <Timing key={time.label} {...time} />
         ))}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -396,9 +374,8 @@ const FILLS = [
 
 export function Fills() {
   return (
-    <figure
-      className={base.figure}
-      style={accent}
+    <Chart
+      title="Triangles Against Bilinear"
       aria-label="A grid stretched across one quad of the funnel two ways. Split into two triangles, each grid line bends where it crosses the diagonal. With a bilinear fill, the lines stay smooth across the whole quad. Against the recording, the triangles were off by a median of 4.33 and 3.96 pixels and the bilinear fill by 1.97."
     >
       <svg className={base.svg} viewBox="0 0 560 160" aria-hidden="true">
@@ -442,6 +419,6 @@ export function Fills() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }

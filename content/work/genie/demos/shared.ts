@@ -24,36 +24,6 @@ export const TILES = [
 export type Tile = (typeof TILES)[number];
 
 export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-export const clamp = (t: number) => Math.min(Math.max(t, 0), 1);
-export const smooth = (t: number) => t * t * (3 - 2 * t);
-
-export function appleSpring(response: number, dampingRatio = 1) {
-  return {
-    type: "spring" as const,
-    mass: 1,
-    stiffness: ((2 * Math.PI) / response) ** 2,
-    damping: (4 * Math.PI * dampingRatio) / response,
-  };
-}
-
-export function scaledSpring(
-  response: number,
-  dampingRatio: number,
-  speed: number,
-) {
-  return appleSpring(response / speed, dampingRatio);
-}
-
-// Distance travelled after decelerating to zero at a constant rate.
-// 0.998 is the value commonly given for UIScrollView's .normal rate.
-export function project(velocity: number, decelerationRate = 0.998) {
-  return ((velocity / 1000) * decelerationRate) / (1 - decelerationRate);
-}
-
-export function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
 
 /**
  * False during SSR and the hydration render, then the real setting.
@@ -76,22 +46,6 @@ export function usePrefersReducedMotion() {
 
 export function useOnScreen(ref: RefObject<HTMLElement | null>, amount = 0.2) {
   return useInView(ref, { amount });
-}
-
-export function supportsSquircle() {
-  try {
-    return CSS.supports("corner-shape", "squircle");
-  } catch {
-    return false;
-  }
-}
-
-export function supportsViewTransition() {
-  try {
-    return typeof document.startViewTransition === "function";
-  } catch {
-    return false;
-  }
 }
 
 /**

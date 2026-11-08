@@ -1,3 +1,4 @@
+import { Install } from "@/components/install";
 import {
   Fills,
   Genie,
@@ -10,10 +11,10 @@ import {
 
 I rebuilt the macOS Genie minimise for the web from the Dock's own code. The shape comes from the function the Dock uses to work it out, ported line by line, and it matches a screen recording of a real minimise to within 3 pixels on every frame. This page is how I found that function, what it does, and the two ways I found to draw it in a browser.
 
-<Demo variant="transparent">
+<Demo>
   <Genie />
 </Demo>
-<sub>Tap a window to minimise it, and its Dock icon brings it back. Drag it first to minimise from somewhere else. The sides bend towards the icon, then the window slides down the funnel and under the Dock, linearly over half a second.</sub>
+<sub>Tap a window to minimise it and its Dock icon to bring it back, or drag it first to minimise from somewhere else. The sides bend towards the icon, then the window slides down the funnel and under the Dock, linearly over half a second.</sub>
 
 ## What Genie Is
 
@@ -98,7 +99,7 @@ Progress itself is linear. A straight line fitted the recorded progress over 495
 I ported the function and its helper to TypeScript line by line, rounding to 32-bit floats wherever the Dock stores one. Some of its comparisons pick between two values in ways that differ from `Math.min` and `Math.max` for `NaN` and −0, so those stay as written. I compared it with the emulator on 7,200 random windows, with the Dock on all four sides and some windows already overlapping it, and every vertex matched bit for bit.
 
 ```ts title="genie.ts"
-import { genieMesh } from "./mesh";
+import { genieMesh } from "@web-kits/springboard";
 
 // progress 0 is the open window, 1 is the window inside the slot.
 // Four floats per vertex: window x, window y, screen x, screen y.
@@ -128,7 +129,7 @@ The Dock's thresholds are in points (the 0.6-point tolerance, the 8-point minimu
 
 Driving it is one number from 0 to 1, played at a constant rate, so restoring halfway through a minimise plays the same mesh back from wherever it is. I haven't checked whether macOS lets you do that.
 
-That fits a Base UI Dialog's own exit. Base UI keeps a closing popup mounted until it can see the popup's animations finish,[^11] so `GeniePopup` puts one on the popup that does both jobs: a linear animation of `visibility: hidden`, which hides the real popup while the mesh draws a copy of it, and which is also the clock the mesh reads its progress from.
+That fits a Base UI Dialog's own exit. Base UI keeps a closing popup mounted until it can see the popup's animations finish,[^11] so the hook puts one on the popup that does both jobs: a linear animation of `visibility: hidden`, which hides the real popup while the mesh draws a copy of it, and which is also the clock the mesh reads its progress from.
 
 ```ts title="popup.tsx"
 const clock = popup.animate(
@@ -137,24 +138,28 @@ const clock = popup.animate(
 );
 ```
 
-When the popup closes it minimises into its target, and when it opens it comes back out of it. The target is any element, like the Dock icon that opens it:
+When the popup closes it minimises into its target, and when it opens it comes back out of it. The target is any element, like the Dock icon that opens it. It's in the same package as [the iOS motion](/work/apple):
+
+<Install package="@web-kits/springboard" />
 
 ```tsx title="notes.tsx"
 import { Dialog } from "@base-ui/react/dialog";
+import { genie } from "@web-kits/springboard";
+import { useOrigin } from "@web-kits/springboard/react";
 import { useRef } from "react";
-import { GeniePopup } from "@/components/genie";
 
 export function Notes() {
   const icon = useRef<HTMLButtonElement>(null);
+  const minimise = useOrigin({ from: icon, effect: genie() });
 
   return (
     <Dialog.Root>
       <Dialog.Trigger ref={icon} aria-label="Notes" />
       <Dialog.Portal>
-        <GeniePopup target={icon}>
+        <Dialog.Popup ref={minimise}>
           <Dialog.Title>Notes</Dialog.Title>
           <Dialog.Close aria-label="Minimise Notes" />
-        </GeniePopup>
+        </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
   );
@@ -188,7 +193,7 @@ And where I wouldn't:
 - Anything live inside, like a video or a spinner, because the copies are made when the window starts to move and freeze it for the half second. I haven't checked whether macOS keeps it live.
 - Anything done many times a minute. I think half a second is too long to wait on something you meant to do.
 
-In code it's `GeniePopup` in place of `Dialog.Popup`, with `target` pointing at whatever brings the popup back. `bounds` clips the funnel to a container instead of the viewport, `scale` sets how many pixels make a point so a small container bends like a full screen, and `edge` turns the funnel when the target sits on the left, right or top. Those three edges match the emulator, but I've only checked the bottom against a recording.
+In code it's `useOrigin` on the popup's ref with `effect: genie()`, and `from` pointing at whatever brings the popup back. `bounds` clips the funnel to a container instead of the viewport, `genie({ scale })` sets how many pixels make a point so a small container bends like a full screen, and `edge` turns the funnel when the target sits on the left, right or top. Those three edges match the emulator, but I've only checked the bottom against a recording.
 
 [^1]: [Change Desktop & Dock settings on Mac](https://support.apple.com/guide/mac-help/change-desktop-dock-settings-mchlp1119/mac), Apple Support.
 
