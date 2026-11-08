@@ -25,8 +25,9 @@ const rows = [
 export function SpacingFigure() {
   return (
     <Figure
+      title="Spacing Before and After"
       label="Two rows of four boxes. In the first result the gaps are 12, 20 and 9, and every box has a different height and radius. After the pass every gap is 16 and every box matches."
-      viewBox="0 0 480 196"
+      viewBox="0 0 480 208"
     >
       {rows.map(({ name, y, gaps, heights, radii }) => {
         const top = y + 12;
@@ -115,6 +116,7 @@ const passes: { name: string; base: number; motions: Motion[] }[] = [
 export function MotionFigure() {
   return (
     <Figure
+      title="Motion Before and After"
       label="Three motions in two rows. In the first result, the card entrance eases in and out over 600 milliseconds, the button hover overshoots over 300, and the menu bounces over 500. After the pass, the card has no entrance and the button and menu share one ease-out at 160 milliseconds."
       viewBox="0 0 480 164"
     >
@@ -149,7 +151,7 @@ export function MotionFigure() {
                       pathLength={1}
                     />
                     <text className={figure.quiet} x={x} y={base + 14}>
-                      {motion.ms}ms
+                      {motion.ms} ms
                     </text>
                   </>
                 ) : (

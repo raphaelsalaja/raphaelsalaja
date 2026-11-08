@@ -19,8 +19,9 @@ export function TrendFigure() {
 
   return (
     <Figure
+      title="Trend Versus Sauce"
       label="Eight years along the bottom. A faint line jumps up and down every year, and the well-dressed product sits on it each time. A second line, the one with sauce, stays at nearly the same height the whole way across."
-      viewBox="0 0 480 152"
+      viewBox="0 29 480 123"
     >
       <path className={figure.faint} d={curve(onTrend)} />
       {onTrend.map(([x, y]) => (
@@ -86,8 +87,9 @@ const screenRows = [
 export function RepeatFigure() {
   return (
     <Figure
+      title="Screen Decisions"
       label="Two rows of six small screens. In the first, every screen has a different corner radius, a different title position and a different button. In the second, every screen uses the same radius, the same title position and the same button, with different content."
-      viewBox="0 0 480 164"
+      viewBox="0 6 480 158"
     >
       {screenRows.map(({ name, y, screens }, row) => (
         <g key={name}>
@@ -154,8 +156,9 @@ export function AverageFigure() {
 
   return (
     <Figure
+      title="The Average Interface"
       label="A bell curve of every interface a model has seen. A dot at the peak is what the model gives you. Another dot, far out near the edge of the curve, is a point of view."
-      viewBox="0 0 480 144"
+      viewBox="0 8 480 136"
     >
       <path className={figure.axis} d={`M24 ${CURVE.base}H456`} />
       <path

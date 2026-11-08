@@ -40,8 +40,9 @@ const path = knot();
 export function LastTenPercent() {
   return (
     <Figure
+      title="Effort to Finish"
       label="A line climbs quickly and levels off across most of the width, then breaks into a dense scribble over the last tenth."
-      viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+      viewBox={`0 8 ${WIDTH} ${HEIGHT - 8}`}
       labels={["Layout, type, states", "The last 10%"]}
     >
       <path className={figure.guide} d={`M${SPLIT} ${AXIS}V${TOP - 32}`} />
@@ -84,8 +85,9 @@ const origins = [
 export function OriginFigure() {
   return (
     <Figure
+      title="Menu Origin"
       label="The same button and menu twice. On the left, the menu grows outward from its own centre. On the right, it grows down out of the button that opened it."
-      viewBox="0 0 480 144"
+      viewBox="0 12 480 132"
     >
       {origins.map(({ name, x: px, at }, i) => {
         const origin = at(px);

@@ -17,8 +17,9 @@ const moments = [
 export function FrequencyFigure() {
   return (
     <Figure
+      title="Duration by Frequency"
       label="Durations fall as frequency rises: onboarding at 600 milliseconds, a page at 400, a sheet at 300, a toast at 240, a menu at 180 and a hover at 100."
-      viewBox="0 0 480 184"
+      viewBox="0 22 480 162"
       labels={["Seen once", "Seen all day"]}
     >
       <path className={figure.axis} d={`M24 ${AXIS}H456`} />
@@ -37,7 +38,7 @@ export function FrequencyFigure() {
             {name}
           </text>
           <text className={figure.quiet} x={x} y={y - 9} textAnchor="middle">
-            {ms}ms
+            {ms} ms
           </text>
         </g>
       ))}
@@ -55,6 +56,7 @@ const rows = [
 export function AsymmetryFigure() {
   return (
     <Figure
+      title="Open and Close"
       label="Two timelines. The menu takes 200 milliseconds to open and 120 to close."
       viewBox="0 0 480 116"
     >
@@ -71,7 +73,7 @@ export function AsymmetryFigure() {
             {name}
           </text>
           <text className={figure.quiet} x={x(ms) + 10} y={y + 3.5}>
-            {ms}ms
+            {ms} ms
           </text>
         </g>
       ))}
@@ -85,7 +87,7 @@ export function AsymmetryFigure() {
             y={110}
             textAnchor={ms === 0 ? "start" : ms === 300 ? "end" : "middle"}
           >
-            {ms === 300 ? "300ms" : ms}
+            {ms === 300 ? "300 ms" : ms}
           </text>
         </g>
       ))}

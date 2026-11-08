@@ -1,26 +1,7 @@
-.figure {
+.svg {
   --canvas: 560;
   --label-size: 11;
-  --figure-line: var(--gray-9);
-  --figure-plate: color-mix(in oklab, var(--gray-1) 82%, transparent);
-  --figure-accent: #5e6ad2;
 
-  padding: 28px 20px 20px;
-  margin-top: 32px;
-  background: var(--background-secondary);
-  border-radius: 12px;
-  box-shadow: 0 0 0 1px var(--border-primary);
-}
-
-.figure:has(> .svg) {
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scrollbar-color: var(--border-secondary) transparent;
-  scrollbar-width: thin;
-}
-
-.svg {
   display: block;
   width: 100%;
   min-width: calc(var(--canvas) * 11px / var(--label-size));
@@ -82,13 +63,13 @@
 .faint {
   fill: none;
   stroke: var(--figure-line);
-  stroke-width: 0.75;
+  stroke-width: 1;
 }
 
 .guide {
   fill: none;
   stroke: var(--figure-line);
-  stroke-width: 0.75;
+  stroke-width: 1;
   stroke-dasharray: 2 4;
 }
 
@@ -97,7 +78,7 @@
 .dimension {
   fill: none;
   stroke: var(--figure-line);
-  stroke-width: 0.75;
+  stroke-width: 1;
 }
 
 .cut {
@@ -144,7 +125,7 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
   text-wrap: nowrap;
-  stroke: var(--background-secondary);
+  stroke: var(--figure-surface);
   stroke-width: 8px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -174,7 +155,7 @@
 
 .cover {
   display: none;
-  fill: var(--background-secondary);
+  fill: var(--figure-surface);
 }
 
 .token {
@@ -207,7 +188,8 @@
     animation-delay: calc(var(--step) * 2s);
   }
 
-  .figure:not([data-playing]) :is(.layer, .reveal, .cover, .trace, .token) {
+  [data-chart]:not([data-playing])
+    :is(.layer, .reveal, .cover, .trace, .token) {
     animation-play-state: paused;
   }
 }

@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import styles from "./figures.module.css";
+import { Chart, marks as styles } from "@/components/chart";
 import { Keys, type Shortcut, SIZE } from "./parts";
 
 const COS = Math.cos(Math.PI / 6);
@@ -119,13 +119,13 @@ export function Anatomy() {
   const viewport = useViewport();
 
   return (
-    <figure
+    <Chart
+      title="Exploded Layers"
       ref={viewport.ref}
       data-playing={viewport.playing}
-      className={styles.figure}
       aria-label="An exploded view of the command menu: frame, list, focus bar, field and context chip, stacked from bottom to top."
     >
-      <svg className={styles.svg} viewBox="0 0 560 420" aria-hidden="true">
+      <svg className={styles.svg} viewBox="0 20 560 396" aria-hidden="true">
         <g className={styles.reveal}>
           {corners.map(([cx, cy]) => {
             const [x, y] = iso(cx, cy, 0);
@@ -185,7 +185,7 @@ export function Anatomy() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -210,9 +210,9 @@ export function Height() {
   const play = viewport.inView && !reduced;
 
   return (
-    <figure
+    <Chart
+      title="Height by Page"
       ref={viewport.ref}
-      className={styles.figure}
       aria-label="Three frames drawn to scale. The root list is taller than 450 and is capped. Change status is 322 tall. Labels is 230."
     >
       <svg className={styles.svg} viewBox="0 0 560 320" aria-hidden="true">
@@ -376,7 +376,7 @@ export function Height() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -413,6 +413,7 @@ export function Springs() {
       stiffness: 20000,
       damping: 500,
       tone: styles.lineStrong,
+      kind: "ink" as const,
     },
     {
       name: "Close",
@@ -420,6 +421,7 @@ export function Springs() {
       stiffness: 2500,
       damping: 100,
       tone: styles.lineMuted,
+      kind: "muted" as const,
     },
     {
       name: "Open",
@@ -427,6 +429,7 @@ export function Springs() {
       stiffness: 1500,
       damping: 100,
       tone: styles.lineAccent,
+      kind: "accent" as const,
     },
   ].map((curve) => {
     const { samples, settle } = simulate(
@@ -445,15 +448,19 @@ export function Springs() {
   const viewport = useViewport();
 
   return (
-    <figure
+    <Chart
+      title="Spring Progress"
+      legend={curves.map((curve) => ({
+        label: `${curve.name} · ${curve.spec} · ${curve.settle} ms`,
+        kind: curve.kind,
+      }))}
       ref={viewport.ref}
       data-playing={viewport.playing}
-      className={styles.figure}
       aria-label={`Spring progress over 300 milliseconds. ${curves
         .map((c) => `${c.name} settles in ${c.settle} milliseconds`)
         .join(". ")}.`}
     >
-      <svg className={styles.svg} viewBox="0 0 560 230" aria-hidden="true">
+      <svg className={styles.svg} viewBox="0 0 560 216" aria-hidden="true">
         <g className={styles.trace}>
           {curves.map((curve) => (
             <g key={curve.name}>
@@ -485,31 +492,16 @@ export function Springs() {
               y={bottom + 18}
               textAnchor="middle"
             >
-              {ms}ms
+              {ms} ms
             </text>
           </g>
         ))}
         <path className={styles.guide} d={`M${sx(80)} ${top - 8}V${bottom}`} />
         <text className={styles.spec} x={sx(80) + 6} y={top - 2}>
-          Dip · 80ms
+          Dip · 80 ms
         </text>
-        {curves.map((curve, index) => (
-          <g key={`${curve.name}-label`}>
-            <path
-              className={curve.tone}
-              d={`M${right - 190} ${bottom - 47 + index * 14}h18`}
-            />
-            <text
-              className={styles.name}
-              x={right - 164}
-              y={bottom - 44 + index * 14}
-            >
-              {`${curve.name} · ${curve.spec} · ${curve.settle}ms`}
-            </text>
-          </g>
-        ))}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -668,13 +660,13 @@ export function Flow() {
   const viewport = useViewport();
 
   return (
-    <figure
+    <Chart
+      title="Page Flow"
       ref={viewport.ref}
       data-playing={viewport.playing}
-      className={styles.figure}
       aria-label="Enter or right arrow opens a page. Backspace or left arrow returns. Picking a value closes the menu. Backspace on an empty root clears the issue and leaves the workspace commands."
     >
-      <svg className={styles.svg} viewBox="0 0 560 324" aria-hidden="true">
+      <svg className={styles.svg} viewBox="0 20 560 276" aria-hidden="true">
         <Card x={60} y={58} stack={3} chip lines={3} />
         <Tag x={60} y={60} lift={20} text="issue context" />
         <Arrow from={128} to={212} y={92} label="↵ · Tab · →" step={0} />
@@ -704,7 +696,7 @@ export function Flow() {
           Create · navigate · search
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -813,7 +805,7 @@ function usePressed() {
 export function Keymap() {
   const pressed = usePressed();
   return (
-    <figure className={styles.figure} aria-label="Keyboard map">
+    <Chart title="Keyboard Map" aria-label="Keyboard map">
       <dl className={styles.keymap}>
         {KEYMAP.map((entry) => (
           <Fragment key={entry.text}>
@@ -830,6 +822,6 @@ export function Keymap() {
           </Fragment>
         ))}
       </dl>
-    </figure>
+    </Chart>
   );
 }

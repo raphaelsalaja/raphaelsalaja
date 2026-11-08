@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import base from "@/content/work/command-menu/demos/figures.module.css";
+import { marks as base, Chart } from "@/components/chart";
 
 const MIDDLE = 76;
 const NAMES_Y = 124;
@@ -107,11 +107,11 @@ export function IslandFigure() {
   const away = low.x + low.width / 2;
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Island States"
       aria-label="Three states of the island. Closed is a small pill. A tap expands it to show the battery level and a prompt. Another tap turns on low power mode and the battery turns yellow. A tap turns it back off, and a tap outside closes it. Every change uses the same spring, bounce 0.2 over 0.6 seconds."
     >
-      <svg className={base.svg} viewBox="0 0 560 172" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 162" aria-hidden="true">
         <text className={base.formula} x={28} y={20}>
           {"spring({ bounce: 0.2, duration: 0.6 })"}
         </text>
@@ -172,6 +172,6 @@ export function IslandFigure() {
           tap outside, from either
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }

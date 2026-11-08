@@ -21,7 +21,7 @@ import { Install } from "@/components/skills/install";
 
 Browsers have no motion blur property, so I built one: `@web-kits/motion-blur`, a package that blurs an element only while it moves too fast to follow, with the streak sized the way a camera sizes it, from the speed, the display's frame time and a shutter angle. Done well, motion blur makes something fast look fast. Done badly, it turns it into a smudge. To get it right, I had to work out what motion blur is, where it comes from and how to draw it in a browser at all. This page is that work, from the six ways I built it to where I'd use it, and the package is where it ended up.
 
-<Demo variant="transparent">
+<Demo>
   <Examples />
 </Demo>
 <sub>Examples of motion blur, made with the package.</sub>
@@ -52,7 +52,6 @@ motionBlur(document.querySelector(".sheet"));
 
 It draws with Echo at a 180° shutter unless you pick otherwise, and it turns itself off for anyone who prefers reduced motion. The other techniques, the provider for setting options across a tree and how to write your own technique are in the [README](https://github.com/raphaelsalaja/motion-blur/tree/main/packages/motion-blur#readme).
 
-<Demo variant="transparent">
 <BaseUI>
 
 ```tsx title="drawer.tsx"
@@ -230,7 +229,6 @@ export function Toasts() {
 ```
 
 </BaseUI>
-</Demo>
 <sub>Base UI components with and without motion blur.</sub>
 
 ## What Motion Blur Is
