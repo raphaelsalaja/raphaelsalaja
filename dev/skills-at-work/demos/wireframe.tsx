@@ -15,7 +15,7 @@ type Shape = {
   kind: "text" | "box";
 };
 
-type Badge = { text: string; x: number; y: number };
+type Badge = { id?: string; text: string; x: number; y: number };
 
 function lineRects(node: HTMLElement, origin: DOMRect) {
   const shapes: Shape[] = [];
@@ -115,16 +115,30 @@ export function WireframeDemo() {
     const node = fixture.current;
     if (!node || !on) return;
     const origin = node.getBoundingClientRect();
+    const x = event.clientX - origin.left;
+    const y = event.clientY - origin.top;
+    const hit = [...shapes]
+      .reverse()
+      .find(
+        (shape) =>
+          x >= shape.x &&
+          x <= shape.x + shape.width &&
+          y >= shape.y &&
+          y <= shape.y + shape.height,
+      );
     const style = getComputedStyle(node);
     const pad = Math.round(Number.parseFloat(style.paddingTop));
     const row = node.querySelector("[data-row]");
     const gap = row
       ? Math.round(Number.parseFloat(getComputedStyle(row).gap || "0"))
       : 0;
+    const width = Math.round(hit?.width ?? origin.width);
+    const height = Math.round(hit?.height ?? origin.height);
     setBadge({
-      text: `Padding ${pad}, gap ${gap}`,
-      x: event.clientX - origin.left + 8,
-      y: event.clientY - origin.top + 8,
+      id: hit?.id,
+      text: `Padding ${pad}, gap ${gap}, ${width}×${height}`,
+      x: x + 12,
+      y: y + 12,
     });
   };
 
@@ -181,7 +195,16 @@ export function WireframeDemo() {
                     width: shape.width,
                     height: shape.height,
                     borderRadius: shape.radius,
-                    background: shape.kind === "text" ? "#c7c6c9" : "#e4e4e7",
+                    background:
+                      badge?.id === shape.id
+                        ? "rgba(20, 131, 244, 0.16)"
+                        : shape.kind === "text"
+                          ? "#c7c6c9"
+                          : "#e4e4e7",
+                    boxShadow:
+                      badge?.id === shape.id
+                        ? "inset 0 0 0 1px #1483f4"
+                        : undefined,
                   }}
                 />
               ))}

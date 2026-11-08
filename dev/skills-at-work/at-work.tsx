@@ -54,8 +54,9 @@ export function SkillsAtWork() {
           marked as an illustrative example.
         </p>
         <p className={styles.note}>
-          This route is development only. A production build does not include
-          the page or these demos.
+          This route is development only. A production build, including a Vercel
+          preview, does not include the page or these demos. From a checkout of
+          this branch, run pnpm dev and open /dev/skills.
         </p>
       </header>
 
@@ -121,7 +122,11 @@ function SkillSection({ entry }: { entry: SkillEntry }) {
   const label = Demo ? LABEL_TEXT[entry.label] : LABEL_TEXT.unavailable;
 
   return (
-    <section className={styles.skill} aria-labelledby={`${entry.name}-title`}>
+    <section
+      id={entry.name}
+      className={styles.skill}
+      aria-labelledby={`${entry.name}-title`}
+    >
       <div className={styles.head}>
         <h3 id={`${entry.name}-title`} tabIndex={-1} className={styles.name}>
           /{entry.name}

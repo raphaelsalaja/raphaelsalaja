@@ -63,7 +63,7 @@ export const skills: SkillEntry[] = [
     name: "prose",
     group: "Principles",
     description:
-      "Writes posts that open on where the author stands, show the options that lost, give exact numbers and mark every guess as a guess.",
+      "Writes posts and breakdowns that open on where the author stands, show the options that lost, give exact numbers and mark every guess as a guess.",
     label: "illustrative",
     sources: [onMain("prose")],
   },
@@ -79,7 +79,7 @@ export const skills: SkillEntry[] = [
     name: "motion",
     group: "Principles",
     description:
-      "Applies house motion for what animates, easing, durations, springs, gestures, exits and reduced motion.",
+      "Applies house motion for what animates, easing, durations, springs, gestures, exits, motion blur and reduced motion.",
     label: "working",
     sources: [onMain("motion")],
   },
@@ -127,7 +127,7 @@ export const skills: SkillEntry[] = [
     name: "viewports",
     group: "Procedures",
     description:
-      "Renders a page at every width, then reports what overflows, clips or hides.",
+      "Renders a page at every width, each breakpoint edge, a short landscape phone and 200% text, then reports what overflows, clips or hides.",
     label: "working",
     sources: [onMain("viewports")],
     note: "The frames below are measured here. They are not separate browser windows.",
@@ -332,7 +332,16 @@ export const skills: SkillEntry[] = [
       "Covers a running layout with filled shapes measured from the live boxes, on a hard left-to-right wipe.",
     label: "working",
     sources: [pull(15)],
-    note: "The cover measures this fixture. It draws its own shapes and does not clone the document. Cross-origin frames, canvas pixels and pseudo-elements are out of view.",
+    note: "The cover measures this fixture, one grey bar per text line, and wipes left to right both ways. Hover reads padding, gap and size from the live boxes. Cross-origin frames, canvas pixels and pseudo-elements are out of view.",
+  },
+  {
+    name: "consistency",
+    group: "Open Pull Requests",
+    description:
+      "Compares peer controls that share a component and a variant, across related screens, and grades each miss Observed, Inferred or DOM-confirmed.",
+    label: "working",
+    sources: [pull(16)],
+    note: "Library and Settings are fixtures. Primary is compared with primary. Ghost stays its own variant. The numbers are read from computed style.",
   },
 ];
 

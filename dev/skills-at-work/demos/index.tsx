@@ -13,6 +13,7 @@ import {
   VerifyDemo,
   ViewportsDemo,
 } from "./checks";
+import { ConsistencyDemo } from "./consistency";
 import { EclipseDemo } from "./eclipse";
 import { IslandDemo } from "./island";
 import { PaletteDemo } from "./palette";
@@ -79,4 +80,5 @@ export const demos: Record<string, ComponentType> = {
   charts: ChartsDemo,
   preview: PreviewDemo,
   wireframe: WireframeDemo,
+  consistency: ConsistencyDemo,
 };
