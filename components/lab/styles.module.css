@@ -1,0 +1,102 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+
+  section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chart {
+    flex: none;
+    height: 64px;
+  }
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Holds three rows open, so the panel and the stage beside it keep their
+   height as animations come and go. */
+.running {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  height: 82px;
+  padding: 0 12px 10px;
+  margin: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 4px 0 6px;
+  }
+}
+
+.idle {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-tertiary);
+}
+
+.name,
+.timing {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.name {
+  flex: none;
+  max-width: 50%;
+  color: var(--text-primary);
+}
+
+.timing {
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-tertiary);
+}
+
+.progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 1px;
+  transform-origin: left;
+}
+
+.root[data-lab-outlines="All"]
+  :global(*):not(
+    :global([data-lab-ui]),
+    :global([data-lab-ui] *),
+    :global([data-controls]),
+    :global([data-controls] *)
+  ) {
+  outline: 1px solid color-mix(in oklab, var(--gray-12) 18%, transparent);
+  outline-offset: -1px;
+}
+
+.root:is([data-lab-outlines="Moving"], [data-lab-outlines="All"])
+  :global([data-lab-moving]):not(
+    :global([data-lab-ui] *),
+    :global([data-controls] *)
+  ) {
+  outline: 1px solid var(--blue);
+  outline-offset: -1px;
+}

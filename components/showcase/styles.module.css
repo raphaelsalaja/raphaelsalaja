@@ -1,32 +1,276 @@
 .showcase {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 4px;
-  background-color: color-mix(in oklab, var(--gray-12) 3%, transparent);
-  border-radius: 12px;
+  --ease: var(--ease-out-quart);
+  --duration: 400ms;
 
-  @media (prefers-color-scheme: dark) {
-    background-color: color-mix(in oklab, var(--gray-12) 6%, transparent);
-  }
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, auto);
+  grid-template-columns: minmax(0, 1fr) 0px;
+  column-gap: 0;
+  /* Height tweens clip the frame, and the stage's hairline sits outside it. */
+  overflow-clip-margin: 8px;
+  transition:
+    grid-template-columns var(--duration) var(--ease),
+    column-gap var(--duration) var(--ease),
+    margin-inline var(--duration) var(--ease);
 
   > [data-code-block] {
+    grid-column: 1 / -1;
     padding: 0;
+    margin-top: 8px;
     background: none;
     border-radius: 0;
   }
 }
 
 .panel {
+  grid-row: 1;
+  grid-column: 1;
+  min-width: 0;
+}
+
+/* Without editable values: one small card. */
+.showcase:not([data-editable]) .panel,
+.showcase:not([data-editable]) [data-panels] > * {
   overflow: hidden;
-  background-color: var(--background-primary);
-  border-radius: 8px;
+  background: var(--background-primary);
+  border-radius: 12px;
   box-shadow:
     0 1px 3px oklch(0 0 0 / calc(8% * var(--shadow-strength))),
-    0 0 0 1px oklch(0 0 0 / calc(2% * var(--shadow-strength)));
+    0 0 0 1px oklch(0 0 0 / calc(4% * var(--shadow-strength)));
+}
 
-  > [data-demo] {
-    border-radius: 0;
-    box-shadow: none;
+.showcase:not([data-editable]) .panel:has(> [data-demo] > [data-panels]) {
+  overflow: visible;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.panel:has(> [data-demo] > [data-panels]) > [data-demo] {
+  display: contents;
+}
+
+.showcase [data-panels] {
+  gap: 8px;
+}
+
+.panel > [data-demo] {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* With editable values: a stage, with its controls in the lab beside it. */
+.showcase[data-editable] .panel {
+  /* The debug button places itself against the showcase open or closed, so
+     the panel can't become its containing block. */
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Every box between the panel and the controls steps aside, so the stage and
+   the controls stack directly in the panel. */
+.panel:has(> * > [data-controls]) > :not(.debug),
+.panel:has(> * > * > [data-controls]) > :not(.debug),
+.panel:has(> * > * > [data-controls]) > :not(.debug) > * {
+  display: contents;
+}
+
+.panel:has(> [data-controls]) > :not([data-controls], .debug),
+.panel:has(> * > [data-controls]) > * > :not([data-controls]),
+.panel:has(> * > * > [data-controls]) > * > * > :not([data-controls]) {
+  flex: 1 1 auto;
+  min-height: 320px;
+  overflow: hidden;
+  background: var(--background-primary);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.debug {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--gray-10);
+  background: var(--background-primary);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px var(--border-primary),
+    0 1px 2px oklch(0 0 0 / calc(3% * var(--shadow-strength)));
+  transition:
+    color 150ms var(--ease-out-quart),
+    transform 150ms var(--ease-out-quart),
+    right var(--duration) var(--ease);
+
+  &:hover,
+  &[aria-pressed="true"] {
+    color: var(--gray-12);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+  }
+}
+
+.lab {
+  grid-row: 1;
+  grid-column: 2;
+  min-width: 0;
+  max-height: 0;
+  overflow: visible clip;
+  opacity: 0;
+  transition:
+    opacity 120ms var(--ease),
+    max-height 0s linear var(--duration);
+
+  > * {
+    width: 264px;
+  }
+}
+
+.showcase[data-lab-open] {
+  grid-template-columns: minmax(0, 1fr) 264px;
+  column-gap: 16px;
+  margin-inline: calc((100% - min(960px, 100vw - 48px)) / 2);
+
+  .lab {
+    max-height: 2000px;
+    opacity: 1;
+    /* Waits for the column to reach nearly full width, since the panel is
+       never squeezed into it. */
+    transition: opacity 200ms var(--ease) 250ms;
+  }
+}
+
+/* The demo's own controls belong to the lab's panel, so they only show open. */
+.showcase[data-editable]:not([data-lab-open]) [data-controls] {
+  display: none;
+}
+
+.showcase[data-lab-open] {
+  /* Rows give way to the height tween, so the stage ends at the frame's edge
+     instead of being cut by it. */
+  grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+  row-gap: 16px;
+
+  .panel {
+    display: contents;
+  }
+
+  [data-controls] {
+    flex-direction: column;
+    grid-row: 2;
+    grid-column: 2;
+    align-self: start;
+    animation: enter 200ms var(--ease) 250ms both;
+
+    &::before {
+      padding: 0 4px;
+      font-size: 12px;
+      font-variation-settings: var(--font-weight-500);
+      line-height: 16px;
+      color: var(--text-tertiary);
+      content: "Demo";
+    }
+  }
+
+  > [data-code-block] {
+    grid-row: 3;
+  }
+}
+
+.showcase[data-lab-open]
+  .panel:has(> [data-controls])
+  > :not([data-controls], .debug),
+.showcase[data-lab-open]
+  .panel:has(> * > [data-controls])
+  > *
+  > :not([data-controls]),
+.showcase[data-lab-open]
+  .panel:has(> * > * > [data-controls])
+  > *
+  > *
+  > :not([data-controls]) {
+  grid-row: 1;
+  grid-column: 1;
+  /* The stage's hairline already frames it, so the lab's outlines skip it. */
+  outline: none;
+}
+
+/* Beside the lab, the stage takes the full height of the lab and controls. */
+@media (min-width: 801px) {
+  .showcase[data-lab-open] .debug {
+    right: 288px;
+  }
+
+  .showcase[data-lab-open]
+    .panel:has(> [data-controls])
+    > :not([data-controls], .debug),
+  .showcase[data-lab-open]
+    .panel:has(> * > [data-controls])
+    > *
+    > :not([data-controls]),
+  .showcase[data-lab-open]
+    .panel:has(> * > * > [data-controls])
+    > *
+    > *
+    > :not([data-controls]) {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    height: auto;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .showcase[data-lab-open] {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: minmax(0, 1fr) 0px;
+    column-gap: 0;
+
+    [data-controls] {
+      grid-row: 3;
+      grid-column: 1;
+    }
+
+    > [data-code-block] {
+      grid-row: 4;
+    }
+  }
+
+  .lab {
+    grid-row: 2;
+    grid-column: 1;
+
+    > * {
+      width: auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase,
+  .lab,
+  .debug,
+  .showcase [data-controls] {
+    transition: none;
+    animation: none;
   }
 }

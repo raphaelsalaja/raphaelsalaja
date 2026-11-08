@@ -4,6 +4,10 @@
   gap: 8px;
   align-self: stretch;
   padding: 0 16px 16px;
+
+  :global([data-showcase]) & {
+    padding: 0;
+  }
 }
 
 .control {
