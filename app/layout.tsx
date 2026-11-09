@@ -56,6 +56,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.className} ${mono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          src="https://cdn.visitors.now/v.js"
+          data-token="f44417d3-95bf-4b02-9ee5-f8b5bce8ec2d"
+        />
+      </head>
       <body>
         <main>
           <Back />
