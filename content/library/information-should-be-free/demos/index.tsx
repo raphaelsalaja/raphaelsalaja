@@ -18,8 +18,9 @@ const stage = [styles.a, styles.b, styles.c, styles.d];
 export function CopiesFigure() {
   return (
     <Figure
+      title="Copies Spreading"
       label="One dot on the left branches into two, then four, eight and sixteen. A single copy of an idea, passed on until it reaches everyone after."
-      viewBox="0 0 480 176"
+      viewBox="0 6 480 170"
       labels={["One person learns it", "Everyone after them"]}
     >
       <g className={styles.tree}>
@@ -71,8 +72,9 @@ const READERS = [0, 1, 2, 3, 4, 5, 6, 7];
 export function GateFigure() {
   return (
     <Figure
+      title="Paywall and Free"
       label="Two streams of readers moving right. Behind a paywall, most stop at the wall and only a few get through. Free to read, every one of them passes."
-      viewBox="0 0 480 128"
+      viewBox="0 6 480 122"
     >
       {ROWS.map(({ name, y, gated }) => (
         <g key={name}>

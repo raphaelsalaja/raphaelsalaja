@@ -62,6 +62,27 @@ export const work: WorkItem[] = (
       description: "An elevated dialog component for React.",
     },
     {
+      title: "Progressive Blur",
+      date: "2026-11-08",
+      category: "Experiments",
+      href: "/work/progressive-blur",
+      description: "iOS 27's soft scroll edge, measured and ported.",
+    },
+    {
+      title: "The Glass Menu",
+      date: "2026-11-07",
+      category: "Experiments",
+      href: "/work/glass-menu",
+      description: "iOS 27's glass menu morph, measured and ported.",
+    },
+    {
+      title: "The Apple Doesn't Fall Far From the Tree",
+      date: "2026-11-04",
+      category: "Experiments",
+      href: "/work/apple",
+      description: "Apple's springs, curves and app open, measured and ported.",
+    },
+    {
       title: "The Genie Effect",
       date: "2026-11-03",
       category: "Experiments",

@@ -1,8 +1,9 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { useEffect, useRef, useState } from "react";
-import { GeniePopup } from "@/components/genie";
+import { genie } from "@web-kits/springboard";
+import { useOrigin } from "@web-kits/springboard/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AppWindow,
   DOCK,
@@ -33,7 +34,7 @@ const START: Record<Id, Placement> = {
 const windowed = (app: string): app is Id => IDS.includes(app as Id);
 
 // Each window is a non-modal Base UI Dialog. Its Dock icon is the trigger and
-// the yellow light is Dialog.Close, so GeniePopup does all of the animating.
+// the yellow light is Dialog.Close, so useOrigin does all of the animating.
 export function Genie() {
   const [screen, setScreen] = useState<HTMLDivElement | null>(null);
   const [layer, setLayer] = useState<HTMLDivElement | null>(null);
@@ -153,6 +154,22 @@ function Window({
   const popup = useRef<HTMLDivElement | null>(null);
   const [at, setAt] = useState({ x: START[id].x, y: START[id].y });
   const onDrag = useDrag(screen, popup, setAt);
+  const minimise = useOrigin({
+    from: icon,
+    bounds: screen,
+    effect: genie({ scale }),
+  });
+  const ref = useCallback(
+    (node: HTMLDivElement) => {
+      popup.current = node;
+      const release = minimise(node);
+      return () => {
+        popup.current = null;
+        release();
+      };
+    },
+    [minimise],
+  );
 
   return (
     <Dialog.Root
@@ -166,11 +183,8 @@ function Window({
       modal={false}
     >
       <Dialog.Portal container={layer}>
-        <GeniePopup
-          ref={popup}
-          target={icon}
-          bounds={screen}
-          scale={scale}
+        <Dialog.Popup
+          ref={ref}
           className={desktop.window}
           style={{
             ...place({ ...START[id], ...at }),
@@ -197,7 +211,7 @@ function Window({
               />
             }
           />
-        </GeniePopup>
+        </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
   );

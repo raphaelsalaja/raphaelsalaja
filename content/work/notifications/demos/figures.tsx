@@ -1,12 +1,13 @@
 "use client";
 
 import { type CSSProperties, useId } from "react";
-import base from "@/content/work/command-menu/demos/figures.module.css";
+import { marks as base, Chart } from "@/components/chart";
 import styles from "./figures.module.css";
 
 const COS = Math.cos(Math.PI / 6);
 const BLUE = "#3d6df2";
 const ORANGE = "#ef7d1c";
+const WARNING = [{ label: "Warning", kind: "fill" as const, color: ORANGE }];
 
 function points(list: [number, number][]) {
   return list.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
@@ -62,7 +63,7 @@ export function Layers() {
     },
     {
       name: "Border",
-      spec: "1px · CSS mask · neutral → tone",
+      spec: "1 px · CSS mask · neutral → tone",
       draw: (z: number) => (
         <polygon
           className={styles.ring}
@@ -107,8 +108,9 @@ export function Layers() {
   const tintZ = layers[2].z;
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Card Layers"
+      legend={WARNING}
       style={tone(ORANGE)}
       aria-label="An exploded view of the warning notification: the surface, the shader tint, the border, and the content, stacked from bottom to top."
     >
@@ -163,7 +165,7 @@ export function Layers() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -171,11 +173,11 @@ export function Recipe() {
   const id = useId();
   const width = 116;
   const height = 44;
-  const top = 34;
+  const top = 20;
   const panels = [
     { name: "Fade", spec: "smoothstep 0.32 → 1" },
     { name: "Pattern", spec: "one per type · 0 → 1" },
-    { name: "Wipe", spec: "right → left · 0.9s" },
+    { name: "Wipe", spec: "right → left · 0.9 s" },
     { name: "Tint", spec: "base + pattern × gain" },
   ].map((panel, index) => ({ ...panel, x: 2 + index * 148 }));
 
@@ -185,12 +187,13 @@ export function Recipe() {
   });
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Tint Recipe"
+      legend={WARNING}
       style={tone(ORANGE)}
       aria-label="The tint is a horizontal fade, multiplied by a pattern, multiplied by a wipe that runs from right to left when the card arrives. The warning card's stripes stand in for the pattern."
     >
-      <svg className={base.svg} viewBox="0 0 560 120" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 86" aria-hidden="true">
         <defs>
           <linearGradient id={`${id}-fade`}>
             {fade.map(({ offset, value }) => (
@@ -326,12 +329,12 @@ export function Recipe() {
           </g>
         ))}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
 export function Hover() {
-  const plot = { top: 30, bottom: 140 };
+  const plot = { top: 20, bottom: 130 };
   const height = plot.bottom - plot.top;
 
   const ease = { left: 40, right: 250, end: 0.4 };
@@ -353,12 +356,11 @@ export function Hover() {
   });
 
   return (
-    <figure
-      className={base.figure}
-      style={tone(BLUE)}
+    <Chart
+      title="Hover Easing and Glow"
       aria-label="Left: hover eases toward one, reaching 63 percent after 100 milliseconds. Right: the glow around the cursor falls off as a gaussian with a 70 pixel radius."
     >
-      <svg className={base.svg} viewBox="0 0 560 200" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 184" aria-hidden="true">
         <path
           className={base.axis}
           d={`M${ease.left} ${plot.bottom}H${ease.right}`}
@@ -374,7 +376,7 @@ export function Hover() {
         />
         <circle className={base.knot} cx={ex(0.1)} cy={ey(0.632)} r="2" />
         <text className={base.spec} x={ex(0.1) + 6} y={ey(0.632) + 12}>
-          63% at 100ms
+          63% at 100 ms
         </text>
         {[0, 0.1, 0.2, 0.3, 0.4].map((t) => (
           <text
@@ -384,7 +386,7 @@ export function Hover() {
             y={plot.bottom + 14}
             textAnchor="middle"
           >
-            {Math.round(t * 1000)}ms
+            {Math.round(t * 1000)} ms
           </text>
         ))}
         <text className={base.name} x={ease.left} y={plot.top - 12}>
@@ -413,7 +415,7 @@ export function Hover() {
           y={ey(Math.exp(-0.5)) - 6}
           textAnchor="middle"
         >
-          ±70px
+          ±70 px
         </text>
         {[-200, -100, 0, 100, 200].map((d) => (
           <text
@@ -430,11 +432,11 @@ export function Hover() {
           Glow · distance from cursor
         </text>
 
-        <text className={base.formula} x="280" y="190" textAnchor="middle">
+        <text className={base.formula} x="280" y="178" textAnchor="middle">
           drift = speed × (1 + 1.5 × hover)
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -447,16 +449,15 @@ export function Ripple() {
     { ms: 260, label: "Leaves", state: "leaving" },
     { ms: 700, label: "Gap closed", state: "gone" },
   ].map((frame, index) => ({ ...frame, x: 8 + index * 140 }));
-  const top = 40;
+  const top = 24;
   const height = 34;
 
   return (
-    <figure
-      className={base.figure}
-      style={tone(BLUE)}
+    <Chart
+      title="Dismiss Sequence"
       aria-label="Four frames: Action is pressed, a ring spreads from the button, the card leaves at 260 milliseconds, and by 700 milliseconds the card below has moved up."
     >
-      <svg className={base.svg} viewBox="0 0 560 170" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 128" aria-hidden="true">
         {frames.map((frame) => {
           const t = frame.ms / 1000;
           const radius = 560 * t * scale;
@@ -572,7 +573,7 @@ export function Ripple() {
               )}
 
               <text className={base.name} x={frame.x} y={top - 14}>
-                {`${frame.ms}ms`}
+                {`${frame.ms} ms`}
               </text>
               <text className={base.spec} x={frame.x} y={top + height * 2 + 30}>
                 {frame.label}
@@ -581,7 +582,7 @@ export function Ripple() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -627,13 +628,13 @@ export function Patterns() {
   const id = useId();
   const width = 100;
   const height = 44;
-  const top = 30;
+  const top = 20;
   const panels = [
-    { pattern: "Stripes", type: "Warning", spec: "30px · 0.6/s" },
-    { pattern: "Halftone", type: "Reminder", spec: "7px grid · r ≤ 3.5" },
-    { pattern: "Aurora", type: "Success", spec: "noise · 90px" },
-    { pattern: "Contours", type: "Information", spec: "24 levels · 1px" },
-    { pattern: "Pixels", type: "Error", spec: "6px cells · twinkle" },
+    { pattern: "Stripes", type: "Warning", spec: "30 px · 0.6/s" },
+    { pattern: "Halftone", type: "Reminder", spec: "7 px grid · r ≤ 3.5" },
+    { pattern: "Aurora", type: "Success", spec: "noise · 90 px" },
+    { pattern: "Contours", type: "Information", spec: "24 levels · 1 px" },
+    { pattern: "Pixels", type: "Error", spec: "6 px cells · twinkle" },
   ].map((panel, index) => ({
     ...panel,
     x: 2 + index * 114.5,
@@ -750,11 +751,11 @@ export function Patterns() {
   };
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Pattern per Type"
       aria-label="The five patterns: stripes on warning, halftone on reminder, aurora on success, contours on information, and pixels on error."
     >
-      <svg className={base.svg} viewBox="0 0 560 110" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 0 560 98" aria-hidden="true">
         <defs>
           <linearGradient id={`${id}-bright`}>
             {fade.map(({ offset, value }) => (
@@ -817,13 +818,13 @@ export function Patterns() {
           </g>
         ))}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
 export function Types() {
   return (
-    <figure className={base.figure} aria-label="The five types">
+    <Chart title="Type Palette" aria-label="The five types">
       <dl className={styles.types}>
         {TYPES.map((type) => (
           <div key={type.name} className={styles.type}>
@@ -841,6 +842,6 @@ export function Types() {
           </div>
         ))}
       </dl>
-    </figure>
+    </Chart>
   );
 }

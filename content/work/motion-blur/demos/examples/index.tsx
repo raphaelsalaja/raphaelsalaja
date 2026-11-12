@@ -36,7 +36,12 @@ export function Examples() {
   }, []);
 
   return (
-    <section ref={bento} className={styles.bento} aria-label="Examples">
+    <section
+      ref={bento}
+      className={styles.bento}
+      aria-label="Examples"
+      data-panels
+    >
       {EXAMPLES.map(({ label, Example }) => (
         <figure key={label} className={styles.tile} aria-label={label}>
           <div className={styles.canvas}>

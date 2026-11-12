@@ -101,6 +101,7 @@ export function StatesFigure() {
 
   return (
     <Figure
+      title="List States"
       label="Six states of the same list: empty, loading, error, one item, three items and forty items. Only the three item state is framed, as the one that gets posted."
       viewBox="0 0 480 136"
     >
@@ -175,8 +176,9 @@ export function SlideFigure() {
 
   return (
     <Figure
+      title="The Slide"
       label="A line that steps down five times: share what you made, pick what will post well, build what posted well, stretch it for the clip, and finally the feed is the client."
-      viewBox="0 0 480 172"
+      viewBox="0 12 480 160"
     >
       <path
         className={`${figure.line} ${figure.draw}`}
@@ -206,15 +208,16 @@ const BLOCK = 36;
 const PITCH = (456 - 24 - BLOCK) / (USES - 1);
 
 const speeds = [
-  { name: "600ms, because it reads well in a clip", ms: 600, y: 44 },
-  { name: "200ms, because someone waits for it", ms: 200, y: 108 },
+  { name: "600 ms, because it reads well in a clip", ms: 600, y: 44 },
+  { name: "200 ms, because someone waits for it", ms: 200, y: 108 },
 ];
 
 export function LoopFigure() {
   return (
     <Figure
+      title="Waiting Across a Day"
       label="Two rows of ten uses across a day. Each use is a block as wide as the animation. At 600 milliseconds, the blocks add up to six seconds of waiting. At 200 milliseconds, two seconds."
-      viewBox="0 0 480 128"
+      viewBox="0 14 480 114"
       labels={["First use", "Tenth use"]}
     >
       {speeds.map(({ name, ms, y }) => (
@@ -223,7 +226,7 @@ export function LoopFigure() {
             {name}
           </text>
           <text className={figure.quiet} x={456} y={y - 16} textAnchor="end">
-            {(ms * USES) / 1000}s waiting
+            {(ms * USES) / 1000} s waiting
           </text>
           <path className={figure.guide} d={`M24 ${y}H456`} />
           {Array.from({ length: USES }, (_, i) => 24 + i * PITCH).map((x) => (

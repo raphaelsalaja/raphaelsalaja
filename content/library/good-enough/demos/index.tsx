@@ -17,8 +17,9 @@ const decisions = [
 export function ContactFigure() {
   return (
     <Figure
+      title="Where Care Matters"
       label="A line of decisions. Settings copy, the empty state and onboarding sit on the reversible side. Menu timing, the button press and type alignment sit on the side people feel on every use."
-      viewBox="0 0 480 128"
+      viewBox="0 6 480 122"
       labels={["Reversible, rarely felt", "Felt on every use"]}
     >
       <path
@@ -73,8 +74,9 @@ export function AddsUpFigure() {
 
   return (
     <Figure
+      title="Small Errors Compound"
       label="A dashed straight line shows where you meant to go. A solid line made of forty short segments starts on it, and each segment bends a tiny bit further down, until the end sits well below the dashed line."
-      viewBox="0 0 480 132"
+      viewBox="0 16 480 116"
       labels={["One call", "Forty calls"]}
     >
       <path className={figure.guide} d={`M24 ${LEVEL}H456`} />

@@ -13,7 +13,7 @@ import {
   useTransform,
 } from "motion/react";
 import { type CSSProperties, useEffect, useRef, useState } from "react";
-import base from "@/content/work/command-menu/demos/figures.module.css";
+import { marks as base, Chart } from "@/components/chart";
 import styles from "./figures.module.css";
 import { Shape } from "./shape";
 
@@ -229,8 +229,6 @@ function Leader({
   );
 }
 
-const accent = { "--figure-accent": "var(--gray-12)" } as CSSProperties;
-
 const DISC = { x: 448, y: 120, r: 92 };
 const GATE = { x: 360, y: 100, width: 80, height: 40 };
 const FILM_Y = 88;
@@ -264,11 +262,10 @@ export function Shutter() {
   );
 
   return (
-    <figure
+    <Chart
+      title="Rotary Shutter"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="A film camera's rotary shutter: a disc with half of it cut away, turning once a frame in front of the film gate. While the open half passes the gate, the film records the shape smeared across the distance it moves in that time. While the closed half covers the gate, the film is pulled on to the next frame. The shape moves 40 pixels a frame, so each frame holds a 20 pixel streak."
     >
       <svg className={base.svg} viewBox="0 0 560 228" aria-hidden="true">
@@ -438,7 +435,7 @@ export function Shutter() {
           20 px streak
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -519,11 +516,10 @@ export function Hold() {
   const gaze = HOLD_X + (HOLD_SQ - HOLD_STEP) / 2;
 
   return (
-    <figure
+    <Chart
+      title="Sample and Hold"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="Two copies of a 60 Hz screen showing a square that jumps 40 pixels every frame and holds still in between. In the first, the eye follows the square smoothly, so while each frame holds, the square slides 40 pixels across the retina and is seen as a 40 pixel smear. In the second, the eye stays still, so each held frame lands as a separate sharp square, 40 pixels apart, and it strobes."
     >
       <svg className={base.svg} viewBox="0 0 560 246" aria-hidden="true">
@@ -634,7 +630,7 @@ export function Hold() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -671,11 +667,10 @@ export function Accumulation() {
   ];
 
   return (
-    <figure
+    <Chart
+      title="Renders in One Shutter"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="The accumulation buffer renders the square four times at even moments inside the shutter, each a little further along, and averages them. Each render adds a quarter to the average, so it comes out as a smear in steps of a quarter."
     >
       <svg className={base.svg} viewBox="0 0 560 276" aria-hidden="true">
@@ -773,7 +768,7 @@ export function Accumulation() {
           one shutter
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -818,11 +813,10 @@ export function Velocity() {
   const swatchY = pixel[1] - VEL_SWATCH.size / 2;
 
   return (
-    <figure
+    <Chart
+      title="Colour and Velocity"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="The velocity buffer renders the square once, and every pixel stores an arrow for how far it moved. One pixel near the edge takes five samples along its arrow. Three land on the square and two miss, so the pixel comes out at three fifths."
     >
       <svg className={base.svg} viewBox="0 0 560 222" aria-hidden="true">
@@ -940,7 +934,7 @@ export function Velocity() {
           3 of 5 on the square
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -967,11 +961,10 @@ export function Drawn() {
   const ease: Easing[] = ["linear", MOVE, "linear"];
 
   return (
-    <figure
+    <Chart
+      title="Hand-Drawn Blur"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="One move between two poses, drawn three ways. A smear is a single shape stretched across the gap between the poses. Multiples are several copies of the shape along the gap. Dry brush is the shape at its end pose with streaks dragged behind it."
     >
       <svg className={base.svg} viewBox="0 0 560 104" aria-hidden="true">
@@ -1081,7 +1074,7 @@ export function Drawn() {
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -1176,11 +1169,10 @@ export function Mapping() {
   const mid = (y: number) => y + MAP_H / 2;
 
   return (
-    <figure
+    <Chart
+      title="Source to Technique"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="Each source of motion blur and the browser version built from it. The camera shutter and the accumulation buffer both become Echo, built from copies added with plus-lighter. The velocity buffer becomes SVG and Squeeze, built from a blur along one axis. The animator's smear becomes Smear, built from a stretch along the motion."
     >
       <svg className={base.svg} viewBox="0 0 560 170" aria-hidden="true">
@@ -1217,14 +1209,14 @@ export function Mapping() {
           </g>
         ))}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
 const EDGE_X0 = 64;
 const EDGE_X1 = 496;
-const EDGE_TOP = 38;
-const EDGE_BASE = 118;
+const EDGE_TOP = 10;
+const EDGE_BASE = 90;
 const EDGE_LENGTH = 160;
 const EDGE_SHORT = 24;
 const EDGE_MIDDLE = 280;
@@ -1303,22 +1295,17 @@ export function Edge() {
   }, [play, length]);
 
   return (
-    <figure
+    <Chart
+      title="Edge Profile"
+      legend={[
+        { label: "Box", kind: "ink" },
+        { label: "Gaussian", kind: "muted" },
+      ]}
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="One edge of a moving shape, from clear to opaque, across a streak of length L. The box blur a camera records rises in a straight line from the start of the streak to its end. A Gaussian with sigma equal to L divided by the square root of 12 has the same spread, but starts rising before the streak begins and finishes after it ends, on a curve."
     >
-      <svg className={base.svg} viewBox="0 0 560 152" aria-hidden="true">
-        <path className={base.lineStrong} d={`M${EDGE_X0} 14h20`} />
-        <text className={base.tag} x={EDGE_X0 + 26} y={17.5}>
-          box, what a camera and Echo give
-        </text>
-        <path className={base.lineMuted} d={"M300 14h20"} />
-        <text className={base.tag} x={326} y={17.5}>
-          Gaussian, σ = L ÷ √12
-        </text>
+      <svg className={base.svg} viewBox="0 0 560 124" aria-hidden="true">
         {[0.25, 0.5, 0.75, 1].map((coverage) => (
           <path
             key={coverage}
@@ -1360,7 +1347,7 @@ export function Edge() {
           L, the streak
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -1376,11 +1363,10 @@ export function Refresh() {
   const { ref, playing } = useLoop();
 
   return (
-    <figure
+    <Chart
+      title="Streak by Refresh Rate"
       ref={ref}
       data-playing={playing}
-      className={base.figure}
-      style={accent}
       aria-label="The same shape moving at 2,400 pixels a second with a 180 degree shutter, at two refresh rates. At 60 Hz the frames land 40 pixels apart and each streak covers 20 pixels, half the gap. At 120 Hz they land 20 pixels apart and each streak covers 10 pixels, still half the gap."
     >
       <svg className={base.svg} viewBox="0 0 560 128" aria-hidden="true">
@@ -1437,17 +1423,17 @@ export function Refresh() {
                   d={`M${middle - streak / 2} ${y + 12}h${streak}`}
                 />
               </g>
-              <text className={base.spec} x={448} y={y + 9}>
+              <text className={base.spec} x={448} y={y + 7}>
                 {note[0]}
               </text>
-              <text className={base.spec} x={448} y={y + 21}>
+              <text className={base.spec} x={448} y={y + 22}>
                 {note[1]}
               </text>
             </g>
           );
         })}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -1481,23 +1467,22 @@ export function Stacking() {
   const { ref, playing } = useLoop();
 
   return (
-    <figure
+    <Chart
+      title="Blend Modes"
       ref={ref}
       data-playing={playing}
-      className={styles.figure}
+      panelClassName={styles.panels}
       aria-label="Two stacks of twelve copies of a square, each copy at one twelfth opacity, spread across 32 pixels. With normal blending the stack only reaches about 65 percent and looks washed out. With plus-lighter the copies add up to the full square in the middle and fade at both ends."
     >
-      <div className={styles.panels}>
-        <div className={styles.panel}>
-          <Stack blend="normal" />
-          <span className={styles.label}>normal, about 65%</span>
-        </div>
-        <div className={styles.panel}>
-          <Stack blend="plus-lighter" />
-          <span className={styles.label}>plus-lighter, 100%</span>
-        </div>
+      <div className={styles.panel}>
+        <Stack blend="normal" />
+        <span className={styles.label}>normal, about 65%</span>
       </div>
-    </figure>
+      <div className={styles.panel}>
+        <Stack blend="plus-lighter" />
+        <span className={styles.label}>plus-lighter, 100%</span>
+      </div>
+    </Chart>
   );
 }
 
@@ -1510,81 +1495,80 @@ export function Squeeze() {
   const narrow = 1 / SQUEEZE;
 
   return (
-    <figure
+    <Chart
+      title="Squeeze Steps"
       ref={ref}
       data-playing={playing}
-      className={styles.figure}
+      panelClassName={styles.panels}
       aria-label="The squeeze in three steps. The square is squeezed to a sixteenth of its width, then blurred by 0.75 pixels in every direction, then stretched back to full width, which turns the blur into 12 pixels sideways and 0.75 pixels up and down."
     >
-      <div className={styles.panels}>
-        <div className={styles.panel}>
-          <div className={styles.slot}>
-            <motion.div
-              style={{ scaleX: narrow }}
-              {...animated({
-                scaleX: track(
-                  play,
-                  narrow,
-                  [1, 1, narrow, narrow, 1],
-                  [0, 0.05, 0.25, CLEAR, 1],
-                  MOVE,
-                ),
-              })}
-            >
-              <Shape />
-            </motion.div>
-          </div>
-          <span className={styles.label}>scaleX(1/16)</span>
+      <div className={styles.panel}>
+        <div className={styles.slot}>
+          <motion.div
+            style={{ scaleX: narrow }}
+            {...animated({
+              scaleX: track(
+                play,
+                narrow,
+                [1, 1, narrow, narrow, 1],
+                [0, 0.05, 0.25, CLEAR, 1],
+                MOVE,
+              ),
+            })}
+          >
+            <Shape />
+          </motion.div>
         </div>
-        <div className={styles.panel}>
-          <div className={styles.slot}>
-            <motion.div
-              style={{ filter: blur(STRETCH_BLUR) }}
-              {...animated({
-                filter: track(
-                  play,
-                  blur(STRETCH_BLUR),
-                  [
-                    blur(0),
-                    blur(0),
-                    blur(STRETCH_BLUR),
-                    blur(STRETCH_BLUR),
-                    blur(0),
-                  ],
-                  [0, 0.3, 0.45, CLEAR, 1],
-                  MOVE,
-                ),
-              })}
-            >
-              <div style={{ transform: `scaleX(${narrow})` }}>
-                <Shape />
-              </div>
-            </motion.div>
-          </div>
-          <span className={styles.label}>blur(0.75px)</span>
-        </div>
-        <div className={styles.panel}>
-          <div className={styles.slot}>
-            <motion.div
-              style={{ scaleX: SQUEEZE, filter: blur(STRETCH_BLUR) }}
-              {...animated({
-                scaleX: track(
-                  play,
-                  SQUEEZE,
-                  [1, 1, SQUEEZE, SQUEEZE, 1],
-                  [0, 0.5, 0.7, CLEAR, 1],
-                  MOVE,
-                ),
-              })}
-            >
-              <div style={{ transform: `scaleX(${narrow})` }}>
-                <Shape />
-              </div>
-            </motion.div>
-          </div>
-          <span className={styles.label}>scaleX(16)</span>
-        </div>
+        <span className={styles.label}>scaleX(1/16)</span>
       </div>
-    </figure>
+      <div className={styles.panel}>
+        <div className={styles.slot}>
+          <motion.div
+            style={{ filter: blur(STRETCH_BLUR) }}
+            {...animated({
+              filter: track(
+                play,
+                blur(STRETCH_BLUR),
+                [
+                  blur(0),
+                  blur(0),
+                  blur(STRETCH_BLUR),
+                  blur(STRETCH_BLUR),
+                  blur(0),
+                ],
+                [0, 0.3, 0.45, CLEAR, 1],
+                MOVE,
+              ),
+            })}
+          >
+            <div style={{ transform: `scaleX(${narrow})` }}>
+              <Shape />
+            </div>
+          </motion.div>
+        </div>
+        <span className={styles.label}>blur(0.75px)</span>
+      </div>
+      <div className={styles.panel}>
+        <div className={styles.slot}>
+          <motion.div
+            style={{ scaleX: SQUEEZE, filter: blur(STRETCH_BLUR) }}
+            {...animated({
+              scaleX: track(
+                play,
+                SQUEEZE,
+                [1, 1, SQUEEZE, SQUEEZE, 1],
+                [0, 0.5, 0.7, CLEAR, 1],
+                MOVE,
+              ),
+            })}
+          >
+            <div style={{ transform: `scaleX(${narrow})` }}>
+              <Shape />
+            </div>
+          </motion.div>
+        </div>
+        <span className={styles.label}>scaleX(16)</span>
+      </div>
+    </Chart>
   );
 }

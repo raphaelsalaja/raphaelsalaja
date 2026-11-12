@@ -41,8 +41,9 @@ const hill = ({ x, width, height }: (typeof hills)[number]) => {
 export function CycleFigure() {
   return (
     <Figure
+      title="Shrinking Cycles"
       label="A line rising and falling in hills. Baroque is a long, slow hill. Modernism is shorter, postmodernism shorter again, and the feed is a row of tiny spikes, each gone almost as soon as it starts."
-      viewBox="0 0 480 136"
+      viewBox="0 36 480 100"
       labels={["Then", "Now"]}
     >
       <path className={figure.axis} d={`M${START} ${BASE}H${END}`} />
@@ -81,8 +82,9 @@ export function HierarchyFigure() {
 
   return (
     <Figure
+      title="Card Hierarchy"
       label="Two cards with the same content. In the first, six lines of equal weight sit evenly spaced. In the second, a short heavy heading comes first, then three lighter lines, then a button, with space between each group."
-      viewBox="0 0 480 144"
+      viewBox="0 12 480 132"
     >
       {cards.map(({ name, x }) => (
         <g key={name}>
@@ -174,8 +176,9 @@ function placement({ x, y }: { x: number; y: number }) {
 export function ConnectFigure() {
   return (
     <Figure
+      title="Sources of Taste"
       label="Your work sits in the middle, connected to six sources around it: hardware, film, music, print, architecture and fashion. Some of the sources are connected to each other too."
-      viewBox="0 0 480 152"
+      viewBox="0 7 480 145"
     >
       {crossings.map(([a, b]) => (
         <path

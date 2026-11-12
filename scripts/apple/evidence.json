@@ -1,0 +1,2224 @@
+{
+  "artifacts": [
+    {
+      "architecture": null,
+      "digest": {
+        "sha256": "5cefe8cfb213b0dfcb378feb86ddd9062fda37fb4f331b3ceb782070a20292a4"
+      },
+      "format": "unknown"
+    },
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [
+    { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+    {
+      "id": "rea-unknown-registry",
+      "name": "REA residual unknown registry",
+      "version": "1"
+    },
+    { "id": "rizin", "name": "Rizin", "version": null }
+  ],
+  "records": [
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_1020c928a3dc1e6b3027138773c114b0843e5f796e165232ea2e1678a12f5c00",
+      "evidence_links": [],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "How does SwiftUI compute Spring.settlingDuration? Sampled values (0.8 for .smooth, 0.8768 for .snappy, 1.0447 for .bouncy, 1.4 for duration 0.5 bounce -0.3) do not follow a fixed-threshold envelope, and Spring(settlingDuration: 1, dampingRatio: 0.7) reports 1.3028.",
+        "required_authority": "shipped-artifact",
+        "required_confidence": "derived"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "swiftui-spring",
+        "question": "How does SwiftUI compute Spring.settlingDuration? Sampled values (0.8 for .smooth, 0.8768 for .snappy, 1.0447 for .bouncy, 1.4 for duration 0.5 bounce -0.3) do not follow a fixed-threshold envelope, and Spring(settlingDuration: 1, dampingRatio: 0.7) reports 1.3028.",
+        "recommended_probes": [
+          {
+            "operation": "procedure_pseudo_code",
+            "rationale": "Decompile Spring.settlingDuration's getter in SwiftUICore."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "shipped-artifact",
+        "required_confidence": "derived",
+        "required_environment": null,
+        "severity": "low",
+        "supporting_evidence_ids": []
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c7a6c7bc15526ebdca86113c0894ffc92b2440c6e3377321a361c25691320fb8",
+        "parameters": {
+          "analysis_options": {
+            "disabled_analyzers": [
+              "Decompiler Parameter ID",
+              "Decompiler Switch Analysis"
+            ]
+          },
+          "analyzer_preset": "ghidra-default+disabled:Decompiler Parameter ID,Decompiler Switch Analysis",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "architecture": "arm64",
+          "available_architectures": ["arm64"],
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "compiler_spec_id": "auto-default",
+          "decompiler_jump_loads": true,
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "import_mode": "ephemeral-source-immutable",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-without-synthetic-entry-v2",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "language_id": "auto-from-header",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "loader": "auto-from-header",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_158776557750476d1385ad7ab557943877cd169779cf7ce3163ea0b63573b93c",
+      "evidence_links": [],
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.",
+        "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+      ],
+      "locations": [],
+      "normalized_result": [],
+      "operation": "search_procedures",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "literal",
+        "pattern": "IconZoomSwitcherModifier cornerRadii"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+      "raw_result": [],
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_51ca2faae6f2185acb2422ba513ab4bf86e5d4a8e8c8d3f1a2a6e87f765972b6",
+      "evidence_links": [],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "Which spring drives the iOS 18 zoom transition's receding background? _UIZoomTransitionAnimationSpec reads 0.4/1, but the running push fits 0.35/1 with an initial velocity of 7.5 per second, and the pop fits 0.342/0.92.",
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "uikit-zoom-transition",
+        "question": "Which spring drives the iOS 18 zoom transition's receding background? _UIZoomTransitionAnimationSpec reads 0.4/1, but the running push fits 0.35/1 with an initial velocity of 7.5 per second, and the pop fits 0.342/0.92.",
+        "recommended_probes": [
+          {
+            "operation": "capture_native_ui_scenario",
+            "rationale": "Sample _UIMorphAnimationContainerView.TransformView, which carries the morph, instead of the portalled view controller."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed",
+        "required_environment": null,
+        "severity": "medium",
+        "supporting_evidence_ids": []
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c7a6c7bc15526ebdca86113c0894ffc92b2440c6e3377321a361c25691320fb8",
+        "parameters": {
+          "analysis_options": {
+            "disabled_analyzers": [
+              "Decompiler Parameter ID",
+              "Decompiler Switch Analysis"
+            ]
+          },
+          "analyzer_preset": "ghidra-default+disabled:Decompiler Parameter ID,Decompiler Switch Analysis",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "architecture": "arm64",
+          "available_architectures": ["arm64"],
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "compiler_spec_id": "auto-default",
+          "decompiler_jump_loads": true,
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "import_mode": "ephemeral-source-immutable",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-without-synthetic-entry-v2",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "language_id": "auto-from-header",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "loader": "auto-from-header",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_7170fac6bc05c2a5b8b33b78e7827cd2114f704b0ae48a690524bcd8976e5cc1",
+      "evidence_links": [],
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+        "Ghidra Listing reports a terminal call at 0x2fbd60 to 0xc954a0 _objc_autoreleaseReturnValue (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation.",
+        "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+      ],
+      "locations": [],
+      "normalized_result": "\n/* WARNING: Function: _objc_retain_x2 replaced with injection: _objc_retain_fixup */\n/* WARNING: Function: _objc_claimAutoreleasedReturnValue replaced with injection: _objc_retain_fixup\n    */\n/* WARNING: Function: _objc_release_x22 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x19 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_autoreleaseReturnValue replaced with injection: _objc_retain_fixup */\n/* WARNING: Function: _objc_release_x23 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x20 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x21 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x24 replaced with injection: _objc_release_fixup */\n/* Function Stack Size: 0x18 bytes */\n\nID SBFullScreenToHomeIconZoomSwitcherModifier::handleTimerEvent_(ID param_1,SEL param_2,ID param_3)\n\n{\n  int iVar1;\n  ID IVar2;\n  ID IVar3;\n  ID self;\n  undefined8 uVar4;\n  objc_super local_50;\n  \n  local_50.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n  local_50.receiver = param_1;\n  IVar2 = _objc_msgSendSuper2(&local_50,\"handleTimerEvent:\",param_1);\n  IVar3 = objc_stub::reason(param_1);\n  IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBIconZoomDisallowAcceleratedHomeButtonPressReason)\n  ;\n  iVar1 = _shouldAcceleratedHomeButtonPressBegin;\n  if ((int)IVar3 == 0) {\n    IVar3 = objc_stub::reason(param_1);\n    IVar3 = objc_stub::isEqualToString_\n                      (IVar3,&cf_kSBIconZoomSwitcherModifierTakeDockWindowLevelAssertionReason);\n    if ((int)IVar3 != 0) {\n      *(undefined1 *)(param_1 + (long)_wantsDockWindowLevelAssertion) = 1;\n      return IVar2;\n    }\n    IVar3 = objc_stub::reason(param_1);\n    IVar3 = objc_stub::isEqualToString_\n                      (IVar3,&cf_kSBIconZoomSwitcherModifierRelinquishDockWindowLevelAssertionReason\n                      );\n    iVar1 = _wantsDockWindowLevelAssertion;\n    if ((int)IVar3 == 0) {\n      IVar3 = objc_stub::reason(param_1);\n      IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBHomeToStageIconFadeInDelay);\n      if ((int)IVar3 == 0) {\n        IVar3 = objc_stub::reason(param_1);\n        IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBFullScreenToHomeCornerRadiusDelayReason);\n        if ((int)IVar3 == 0) {\n          IVar3 = objc_stub::reason(param_1);\n          IVar3 = objc_stub::isEqualToString_\n                            (IVar3,&cf_kSBFullScreenToHomeGlassHighlightDelayReason);\n          if ((int)IVar3 == 0) {\n            return IVar2;\n          }\n          *(undefined1 *)(param_1 + (long)_isWaitingForGlassHighlightDelay) = 0;\n          IVar3 = _objc_alloc(PTR_SBUpdateLayoutSwitcherEventResponse_0113b018);\n          uVar4 = 0;\n        }\n        else {\n          *(undefined1 *)(param_1 + (long)_hasResetCornerRadius) = 1;\n          IVar3 = _objc_alloc(PTR_SBUpdateLayoutSwitcherEventResponse_0113b018);\n          uVar4 = 3;\n        }\n        IVar3 = objc_stub::initWithOptions_updateMode_(IVar3,4,uVar4);\n        IVar2 = _SBAppendSwitcherModifierResponse(IVar3,IVar2);\n        return IVar2;\n      }\n      if (*(char *)(param_1 + (long)_isHidingDockIcon) != '\\x01') {\n        return IVar2;\n      }\n      *(undefined1 *)(param_1 + (long)_isHidingDockIcon) = 0;\n      IVar3 = objc_stub::switcherSettings(param_1);\n      IVar3 = objc_stub::animationSettings(IVar3);\n      IVar3 = objc_stub::floatingDockIconFadeSettings(IVar3);\n      self = _objc_alloc(PTR_SBIconViewVisibilitySwitcherEventResponse_01138b50);\n      IVar3 = objc_stub::initWithAppLayout_visible_animationSettings_excludedIconLocations_\n                        (self,*(undefined8 *)(param_1 + (long)_appLayout),1,IVar3,0);\n      IVar2 = _SBAppendSwitcherModifierResponse(IVar3,IVar2);\n      return IVar2;\n    }\n  }\n  *(undefined1 *)(param_1 + (long)iVar1) = 0;\n  return IVar2;\n}\n\n",
+      "operation": "procedure_pseudo_code",
+      "parameters": { "procedure": "0x2fbad8" },
+      "predicate_type": "rea.analysis",
+      "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+      "raw_result": {
+        "limitations": [
+          "Ghidra Listing reports a terminal call at 0x2fbd60 to 0xc954a0 _objc_autoreleaseReturnValue (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+        ],
+        "value": "\n/* WARNING: Function: _objc_retain_x2 replaced with injection: _objc_retain_fixup */\n/* WARNING: Function: _objc_claimAutoreleasedReturnValue replaced with injection: _objc_retain_fixup\n    */\n/* WARNING: Function: _objc_release_x22 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x19 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_autoreleaseReturnValue replaced with injection: _objc_retain_fixup */\n/* WARNING: Function: _objc_release_x23 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x20 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x21 replaced with injection: _objc_release_fixup */\n/* WARNING: Function: _objc_release_x24 replaced with injection: _objc_release_fixup */\n/* Function Stack Size: 0x18 bytes */\n\nID SBFullScreenToHomeIconZoomSwitcherModifier::handleTimerEvent_(ID param_1,SEL param_2,ID param_3)\n\n{\n  int iVar1;\n  ID IVar2;\n  ID IVar3;\n  ID self;\n  undefined8 uVar4;\n  objc_super local_50;\n  \n  local_50.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n  local_50.receiver = param_1;\n  IVar2 = _objc_msgSendSuper2(&local_50,\"handleTimerEvent:\",param_1);\n  IVar3 = objc_stub::reason(param_1);\n  IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBIconZoomDisallowAcceleratedHomeButtonPressReason)\n  ;\n  iVar1 = _shouldAcceleratedHomeButtonPressBegin;\n  if ((int)IVar3 == 0) {\n    IVar3 = objc_stub::reason(param_1);\n    IVar3 = objc_stub::isEqualToString_\n                      (IVar3,&cf_kSBIconZoomSwitcherModifierTakeDockWindowLevelAssertionReason);\n    if ((int)IVar3 != 0) {\n      *(undefined1 *)(param_1 + (long)_wantsDockWindowLevelAssertion) = 1;\n      return IVar2;\n    }\n    IVar3 = objc_stub::reason(param_1);\n    IVar3 = objc_stub::isEqualToString_\n                      (IVar3,&cf_kSBIconZoomSwitcherModifierRelinquishDockWindowLevelAssertionReason\n                      );\n    iVar1 = _wantsDockWindowLevelAssertion;\n    if ((int)IVar3 == 0) {\n      IVar3 = objc_stub::reason(param_1);\n      IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBHomeToStageIconFadeInDelay);\n      if ((int)IVar3 == 0) {\n        IVar3 = objc_stub::reason(param_1);\n        IVar3 = objc_stub::isEqualToString_(IVar3,&cf_kSBFullScreenToHomeCornerRadiusDelayReason);\n        if ((int)IVar3 == 0) {\n          IVar3 = objc_stub::reason(param_1);\n          IVar3 = objc_stub::isEqualToString_\n                            (IVar3,&cf_kSBFullScreenToHomeGlassHighlightDelayReason);\n          if ((int)IVar3 == 0) {\n            return IVar2;\n          }\n          *(undefined1 *)(param_1 + (long)_isWaitingForGlassHighlightDelay) = 0;\n          IVar3 = _objc_alloc(PTR_SBUpdateLayoutSwitcherEventResponse_0113b018);\n          uVar4 = 0;\n        }\n        else {\n          *(undefined1 *)(param_1 + (long)_hasResetCornerRadius) = 1;\n          IVar3 = _objc_alloc(PTR_SBUpdateLayoutSwitcherEventResponse_0113b018);\n          uVar4 = 3;\n        }\n        IVar3 = objc_stub::initWithOptions_updateMode_(IVar3,4,uVar4);\n        IVar2 = _SBAppendSwitcherModifierResponse(IVar3,IVar2);\n        return IVar2;\n      }\n      if (*(char *)(param_1 + (long)_isHidingDockIcon) != '\\x01') {\n        return IVar2;\n      }\n      *(undefined1 *)(param_1 + (long)_isHidingDockIcon) = 0;\n      IVar3 = objc_stub::switcherSettings(param_1);\n      IVar3 = objc_stub::animationSettings(IVar3);\n      IVar3 = objc_stub::floatingDockIconFadeSettings(IVar3);\n      self = _objc_alloc(PTR_SBIconViewVisibilitySwitcherEventResponse_01138b50);\n      IVar3 = objc_stub::initWithAppLayout_visible_animationSettings_excludedIconLocations_\n                        (self,*(undefined8 *)(param_1 + (long)_appLayout),1,IVar3,0);\n      IVar2 = _SBAppendSwitcherModifierResponse(IVar3,IVar2);\n      return IVar2;\n    }\n  }\n  *(undefined1 *)(param_1 + (long)iVar1) = 0;\n  return IVar2;\n}\n\n"
+      },
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_72170a45b28a7cadd535ce1c426b45d8a5519c34980bacc65a4f76630b54efaa",
+      "evidence_links": [],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "What are the Dock's launch bounce timings? They are Swift ivars behind the bounce-secondary-duration and bounce-secondary-interval defaults, with no static defaults and no xrefs to the keys, and System Integrity Protection blocks reading the live Dock.",
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "macos-dock-bounce",
+        "question": "What are the Dock's launch bounce timings? They are Swift ivars behind the bounce-secondary-duration and bounce-secondary-interval defaults, with no static defaults and no xrefs to the keys, and System Integrity Protection blocks reading the live Dock.",
+        "recommended_probes": [
+          {
+            "operation": "instrument_with_frida",
+            "rationale": "Read the ivars from the live Dock on a machine with System Integrity Protection relaxed."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed",
+        "required_environment": null,
+        "severity": "medium",
+        "supporting_evidence_ids": []
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_79570ff0cd780df89157f8ae9dc216c06681ab26bcf28ecbd99cb0db91823be8",
+      "evidence_links": [
+        "ev_d437b376fa265e6ff97816be60518b4e992a51c4ab07c6d6e2287fc0d91331de",
+        "ev_7170fac6bc05c2a5b8b33b78e7827cd2114f704b0ae48a690524bcd8976e5cc1"
+      ],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "Why does the app open's corner radius reset about 10 ms after the card starts moving when genieCornerRadiusToAppResetDelay is 0.06 s? The card's first rendered frame lags the transition start by about 0.05 s in the Simulator, which would account for it if the timer starts at transitionWillBegin.",
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "springboard-app-open",
+        "question": "Why does the app open's corner radius reset about 10 ms after the card starts moving when genieCornerRadiusToAppResetDelay is 0.06 s? The card's first rendered frame lags the transition start by about 0.05 s in the Simulator, which would account for it if the timer starts at transitionWillBegin.",
+        "recommended_probes": [
+          {
+            "operation": "observe_native_calls",
+            "rationale": "Log the timestamps of transitionWillBegin and handleTimerEvent: with kSBFullScreenToHomeCornerRadiusDelayReason against the first presentation-layer change."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed",
+        "required_environment": null,
+        "severity": "low",
+        "supporting_evidence_ids": [
+          "ev_d437b376fa265e6ff97816be60518b4e992a51c4ab07c6d6e2287fc0d91331de",
+          "ev_7170fac6bc05c2a5b8b33b78e7827cd2114f704b0ae48a690524bcd8976e5cc1"
+        ]
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_8d79bda274863025bad2005cc9a73ac0e03019ffa11c566a4a8736a6e5b464f3",
+      "evidence_links": [],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "What do the folder open and close look like running? SBFolderSettings' values were read from the live settings tree but no folder was opened while sampling.",
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "springboard-folder",
+        "question": "What do the folder open and close look like running? SBFolderSettings' values were read from the live settings tree but no folder was opened while sampling.",
+        "recommended_probes": [
+          {
+            "operation": "capture_native_ui_scenario",
+            "rationale": "Open and close a folder in the Simulator while sampling presentation layers."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed",
+        "required_environment": null,
+        "severity": "low",
+        "supporting_evidence_ids": []
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_bedcdc14edb69bfb6e43b5b5cd6abe681aa9b2673c04a6f4c4814e184edee434",
+      "evidence_links": [],
+      "limitations": [
+        "The executable version and supported formats are reported as unknown because no reliable version probe was performed.",
+        "A non-zero process exit is preserved as an observed command result.",
+        "Rizin commands and retained plugins may read files or access network resources outside the selected artifact; those external inputs are not bound to Evidence.",
+        "When both are available, pre-run and post-run digests detect artifact changes across the provider call but cannot prove the exact bytes consumed during the call."
+      ],
+      "locations": [
+        {
+          "kind": "artifact-path",
+          "path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/dsc/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore"
+        }
+      ],
+      "normalized_result": {
+        "artifact_changed": false,
+        "artifact_sha256_after": "5cefe8cfb213b0dfcb378feb86ddd9062fda37fb4f331b3ceb782070a20292a4",
+        "completion_status": "complete",
+        "exit_code": 0,
+        "output_truncated": false,
+        "signal": null,
+        "stderr": "WARNING: Found duplicated class: UIKit.NavigationBarPlatterContainer_v1\nWARNING: Found duplicated class: UIKit.UIDirectionalLightEffectView\nWARNING: Found duplicated class: UIKit._UILatencyLightView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit.NavigationBarContentView\nWARNING: Found duplicated class: UIKit.NavigationBarContentView\nWARNING: Found duplicated class: UIKit._UIMorphAnimationContainerView\nWARNING: Found duplicated class: UIKit._UITabBarVisualProvider_Floating\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationClientSession\nWARNING: Found duplicated class: UIKit._UITabBarPlatterView\nWARNING: Found duplicated class: UIKit._UITabBarPlatterView\nWARNING: Found duplicated class: UIKit._IntelligenceLightSourceFillProvider\nWARNING: Found duplicated class: UIKit.GlassGroupLayerView\nWARNING: Found duplicated class: UIKit._UIIntelligenceCommandManager\nWARNING: Found duplicated class: UIKit.NavigationBarTransitionContainer\nWARNING: Found duplicated class: UIKit.NavigationBarTransitionContainer\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.UITextEffectView\nWARNING: Found duplicated class: UIKit.UIOTestTranscriptCanvasView\nWARNING: Found duplicated class: UIKit.PocketElectionState\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit._UILightEffectTransitionController\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ToolbarModel\nWARNING: Found duplicated class: UIKit.ToolbarModel\nWARNING: Found duplicated class: UIKit.ButtonWrapper\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.UITextEffectView\nWARNING: Found duplicated class: UIKit._UIIntelligenceButton\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.NavigationBarLayout\nWARNING: Found duplicated class: UIKit.NavigationBarLargeTitleReparentingHelper\nWARNING: Found duplicated class: UIKit.LuminanceAggregatorBridge\nWARNING: Found duplicated class: UIKit.StandardSourceFencedAnimation\nWARNING: Found duplicated class: UIKit.TextLineWaveAnimator\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit._UITabButton\nWARNING: Found duplicated class: UIKit.UIRBDirectionalLightEffectView\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: bin_file_strings: search interval size (0x237326d) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x143e000) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x1934bd0) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x237326d) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x143e000) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x1934bd0) exceeds max region size (0xa00000), skipping it.\n",
+        "stdout": "            ;-- -[UIScrollView _getStandardDecelerationOffset:forTimeInterval:min:max:decelerationFactor:decelerationLnFactor:velocity:]:\n            0x1c4e37c0c      stp   d11, d10, [sp, -0x50]!\n            0x1c4e37c10      stp   d9, d8, [sp, 0x10]\n            0x1c4e37c14      stp   x22, x21, [sp, 0x20]\n            0x1c4e37c18      stp   x20, x19, [sp, 0x30]\n            0x1c4e37c1c      stp   x29, x30, [sp, 0x40]\n            0x1c4e37c20      add   x29, sp, 0x40\n            0x1c4e37c24      mov   x19, x3\n            0x1c4e37c28      mov   v9.16b, v3.16b\n            0x1c4e37c2c      mov   v8.16b, v1.16b\n            0x1c4e37c30      mov   x20, x2\n            0x1c4e37c34      mov   x21, x0\n            0x1c4e37c38      fcmp  d1, d2\n            0x1c4e37c3c      fcsel d10, d2, d1, mi\n            0x1c4e37c40      fmul  d0, d0, d4\n            0x1c4e37c44      fmov  d1, -0.50000000\n            0x1c4e37c48      fcmp  d0, d1\n        ,=< 0x1c4e37c4c      b.pl  0x1c4e37c58\n        |   0x1c4e37c50      bl    sym.imp.exp\n       ,==< 0x1c4e37c54      b     0x1c4e37c70\n       |`-> 0x1c4e37c58      fmov  d1, 0.50000000\n       |    0x1c4e37c5c      fmul  d1, d0, d1\n       |    0x1c4e37c60      fmov  d2, 1.00000000\n       |    0x1c4e37c64      fadd  d1, d1, d2\n       |    0x1c4e37c68      fmul  d0, d0, d1\n       |    0x1c4e37c6c      fadd  d0, d0, d2\n       `--> 0x1c4e37c70      fmov  d1, 1.00000000\n            0x1c4e37c74      fsub  d2, d1, d0\n            0x1c4e37c78      fsub  d1, d1, d9\n            0x1c4e37c7c      fdiv  d1, d2, d1\n            0x1c4e37c80      fmul  d1, d9, d1\n            0x1c4e37c84      ldr   d2, [x19]\n            0x1c4e37c88      fmul  d1, d2, d1\n            0x1c4e37c8c      adrp  x8, 0x22e810000\n            0x1c4e37c90      ldrsw x8, main\n            0x1c4e37c94      ldr   d2, [x21, x8]\n            0x1c4e37c98      fmul  d1, d2, d1\n            0x1c4e37c9c      ldr   d2, [x20]\n            0x1c4e37ca0      fadd  d1, d2, d1\n            0x1c4e37ca4      str   d1, [x20]\n            0x1c4e37ca8      ldr   d1, [x19]\n            0x1c4e37cac      fmul  d0, d0, d1\n            0x1c4e37cb0      str   d0, [x19]\n            0x1c4e37cb4      ldr   d0, [x20]\n            0x1c4e37cb8      fcmp  d0, d8\n        ,=< 0x1c4e37cbc      b.mi  0x1c4e37ccc\n        |   0x1c4e37cc0      fcmp  d0, d10\n        |   0x1c4e37cc4      mov   v8.16b, v10.16b\n       ,==< 0x1c4e37cc8      b.le  0x1c4e37cd4\n       |`-> 0x1c4e37ccc      str   d8, [x20]\n       |    0x1c4e37cd0      str   xzr, [x19]\n       `--> 0x1c4e37cd4      ldp   x29, x30, [sp, 0x40]\n            0x1c4e37cd8      ldp   x20, x19, [sp, 0x30]\n            0x1c4e37cdc      ldp   x22, x21, [sp, 0x20]\n            0x1c4e37ce0      ldp   d9, d8, [sp, 0x10]\n            0x1c4e37ce4      ldp   d11, d10, [sp], 0x50\n            0x1c4e37ce8      ret\n            ;-- -[UIScrollView _smoothScrollApplyPendingAsyncCompletionResultWithUpdateTime:outFinishedDecelerating:]:\n            0x1c4e37cec      stp   x26, x25, [sp, -0x50]!\n            0x1c4e37cf0      stp   x24, x23, [sp, 0x10]\n            0x1c4e37cf4      stp   x22, x21, [sp, 0x20]\n            0x1c4e37cf8      stp   x20, x19, [sp, 0x30]\n            0x1c4e37cfc      stp   x29, x30, [sp, 0x40]\n            0x1c4e37d00      add   x29, sp, 0x40\n        ,=< 0x1c4e37d04      cbz   x0, 0x1c4e37df8\n        |   0x1c4e37d08      mov   x24, x1\n        |   0x1c4e37d0c      mov   x21, x0\n        |   0x1c4e37d10      cbz   x1, 0x1c4e37d18\n        |   0x1c4e37d14      strb  wzr, [x24]\n        |   0x1c4e37d18      adrp  x26, 0x22e810000\n        |   0x1c4e37d1c      ldrsw x8, main\n        |   0x1c4e37d20      ldr   x8, [x21, x8]\n        |   0x1c4e37d24      bl    sym.imp.objc_retain_x8\n        |   0x1c4e37d28      mov   x20, x0\n        |   0x1c4e37d2c      cmp   x0, 0\n        |   0x1c4e37d30      cset  w19, ne\n        |   0x1c4e37d34      cbz   x0, 0x1c4e37dd8\n        |   0x1c4e37d38      ldr   x8, [x20, 0x28]\n        |   0x1c4e37d3c      bl    sym.imp.objc_retain_x8\n        |   0x1c4e37d40      mov   x22, x0\n        |   0x1c4e37d44      bl    sym._objc_msgSend_firstObject\n        |   0x1c4e37d48      bl    sym.imp.objc_claimAutoreleasedReturnValue\n        |   0x1c4e37d4c      mov   x23, x0\n        |   0x1c4e37d50      cbz   x0, 0x1c4e37dd0\n        |   0x1c4e37d54      mov   x0, x22\n        |   0x1c4e37d58      mov   x2, 0\n        |   0x1c4e37d5c      bl    sym._objc_msgSend_removeObjectAtIndex:\n        |   0x1c4e37d60      mov   x0, x23\n        |   0x1c4e37d64      bl    sym._objc_msgSend_finishedDecelerating\n        |   0x1c4e37d68      mov   x25, x0\n        |   0x1c4e37d6c      cbz   w0, 0x1c4e37d8c\n        |   0x1c4e37d70      ldrsw x8, main\n        |   0x1c4e37d74      ldr   x9, [x21, x8]\n        |   0x1c4e37d78      str   xzr, [x21, x8]\n        |   0x1c4e37d7c      bl    sym.imp.objc_release_x9\n        |   0x1c4e37d80      cbz   x24, 0x1c4e37d8c\n        |   0x1c4e37d84      mov   w8, 1\n        |   0x1c4e37d88      strb  w8, [x24]\n        |   0x1c4e37d8c      mov   x0, x23\n        |   0x1c4e37d90      bl    sym._objc_msgSend_handled\n        |   0x1c4e37d94      mov   x24, x0\n        |   0x1c4e37d98      mov   x0, x23\n        |   0x1c4e37d9c      bl    sym._objc_msgSend_updateTime\n        |   0x1c4e37da0      cbz   w24, 0x1c4e37dc8\n        |   0x1c4e37da4      adrp  x8, 0x22e810000\n        |   0x1c4e37da8      ldrsw x8, main\n        |   0x1c4e37dac      str   d0, [x21, x8]\n        |   0x1c4e37db0      cbz   w25, 0x1c4e37dd0\n        |   0x1c4e37db4      mov   x0, x21\n        |   0x1c4e37db8      mov   w2, 1\n        |   0x1c4e37dbc      mov   w3, 1\n        |   0x1c4e37dc0      bl    sym._objc_msgSend__stopScrollingNotify:pin:\n"
+      },
+      "operation": "execute_rizin_command",
+      "parameters": {
+        "command": "e scr.color=0; e asm.bytes=false; e asm.comments=false; pd 110 @ 0x1c4e37c0c",
+        "command_arguments": [
+          "-N",
+          "-q",
+          "-c",
+          "e scr.color=0; e asm.bytes=false; e asm.comments=false; pd 110 @ 0x1c4e37c0c",
+          "/Users/raphaelsalaja/Developer/apple-animations-research/ios/dsc/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore"
+        ],
+        "path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/dsc/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+        "provider_executable": "rizin"
+      },
+      "predicate_type": "rea.reverse-engineering.command-observation",
+      "provider": { "id": "rizin", "name": "Rizin", "version": null },
+      "raw_result": {
+        "artifact_changed": false,
+        "artifact_sha256_after": "5cefe8cfb213b0dfcb378feb86ddd9062fda37fb4f331b3ceb782070a20292a4",
+        "completion_status": "complete",
+        "exit_code": 0,
+        "output_truncated": false,
+        "signal": null,
+        "stderr": "WARNING: Found duplicated class: UIKit.NavigationBarPlatterContainer_v1\nWARNING: Found duplicated class: UIKit.UIDirectionalLightEffectView\nWARNING: Found duplicated class: UIKit._UILatencyLightView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit._UIOrbitalColorView\nWARNING: Found duplicated class: UIKit.NavigationBarContentView\nWARNING: Found duplicated class: UIKit.NavigationBarContentView\nWARNING: Found duplicated class: UIKit._UIMorphAnimationContainerView\nWARNING: Found duplicated class: UIKit._UITabBarVisualProvider_Floating\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationClientSession\nWARNING: Found duplicated class: UIKit._UITabBarPlatterView\nWARNING: Found duplicated class: UIKit._UITabBarPlatterView\nWARNING: Found duplicated class: UIKit._IntelligenceLightSourceFillProvider\nWARNING: Found duplicated class: UIKit.GlassGroupLayerView\nWARNING: Found duplicated class: UIKit._UIIntelligenceCommandManager\nWARNING: Found duplicated class: UIKit.NavigationBarTransitionContainer\nWARNING: Found duplicated class: UIKit.NavigationBarTransitionContainer\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.UITextEffectView\nWARNING: Found duplicated class: UIKit.UIOTestTranscriptCanvasView\nWARNING: Found duplicated class: UIKit.PocketElectionState\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit._UILightEffectTransitionController\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.CrossSceneMorphAnimationMessage\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.NavigationButtonBar\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ButtonBarButtonVisualProvider\nWARNING: Found duplicated class: UIKit.ToolbarModel\nWARNING: Found duplicated class: UIKit.ToolbarModel\nWARNING: Found duplicated class: UIKit.ButtonWrapper\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit.UITextEffectView\nWARNING: Found duplicated class: UIKit._UIIntelligenceButton\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: Found duplicated class: UIKit.NavigationBarLayout\nWARNING: Found duplicated class: UIKit.NavigationBarLargeTitleReparentingHelper\nWARNING: Found duplicated class: UIKit.LuminanceAggregatorBridge\nWARNING: Found duplicated class: UIKit.StandardSourceFencedAnimation\nWARNING: Found duplicated class: UIKit.TextLineWaveAnimator\nWARNING: Found duplicated class: UIKit.ScrollEdgeEffectView\nWARNING: Found duplicated class: UIKit._UITabButton\nWARNING: Found duplicated class: UIKit.UIRBDirectionalLightEffectView\nWARNING: Found duplicated class: UIKit.IntelligenceUI\nWARNING: bin_file_strings: search interval size (0x237326d) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x143e000) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x1934bd0) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x237326d) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x143e000) exceeds max region size (0xa00000), skipping it.\nWARNING: bin_file_strings: search interval size (0x1934bd0) exceeds max region size (0xa00000), skipping it.\n",
+        "stdout": "            ;-- -[UIScrollView _getStandardDecelerationOffset:forTimeInterval:min:max:decelerationFactor:decelerationLnFactor:velocity:]:\n            0x1c4e37c0c      stp   d11, d10, [sp, -0x50]!\n            0x1c4e37c10      stp   d9, d8, [sp, 0x10]\n            0x1c4e37c14      stp   x22, x21, [sp, 0x20]\n            0x1c4e37c18      stp   x20, x19, [sp, 0x30]\n            0x1c4e37c1c      stp   x29, x30, [sp, 0x40]\n            0x1c4e37c20      add   x29, sp, 0x40\n            0x1c4e37c24      mov   x19, x3\n            0x1c4e37c28      mov   v9.16b, v3.16b\n            0x1c4e37c2c      mov   v8.16b, v1.16b\n            0x1c4e37c30      mov   x20, x2\n            0x1c4e37c34      mov   x21, x0\n            0x1c4e37c38      fcmp  d1, d2\n            0x1c4e37c3c      fcsel d10, d2, d1, mi\n            0x1c4e37c40      fmul  d0, d0, d4\n            0x1c4e37c44      fmov  d1, -0.50000000\n            0x1c4e37c48      fcmp  d0, d1\n        ,=< 0x1c4e37c4c      b.pl  0x1c4e37c58\n        |   0x1c4e37c50      bl    sym.imp.exp\n       ,==< 0x1c4e37c54      b     0x1c4e37c70\n       |`-> 0x1c4e37c58      fmov  d1, 0.50000000\n       |    0x1c4e37c5c      fmul  d1, d0, d1\n       |    0x1c4e37c60      fmov  d2, 1.00000000\n       |    0x1c4e37c64      fadd  d1, d1, d2\n       |    0x1c4e37c68      fmul  d0, d0, d1\n       |    0x1c4e37c6c      fadd  d0, d0, d2\n       `--> 0x1c4e37c70      fmov  d1, 1.00000000\n            0x1c4e37c74      fsub  d2, d1, d0\n            0x1c4e37c78      fsub  d1, d1, d9\n            0x1c4e37c7c      fdiv  d1, d2, d1\n            0x1c4e37c80      fmul  d1, d9, d1\n            0x1c4e37c84      ldr   d2, [x19]\n            0x1c4e37c88      fmul  d1, d2, d1\n            0x1c4e37c8c      adrp  x8, 0x22e810000\n            0x1c4e37c90      ldrsw x8, main\n            0x1c4e37c94      ldr   d2, [x21, x8]\n            0x1c4e37c98      fmul  d1, d2, d1\n            0x1c4e37c9c      ldr   d2, [x20]\n            0x1c4e37ca0      fadd  d1, d2, d1\n            0x1c4e37ca4      str   d1, [x20]\n            0x1c4e37ca8      ldr   d1, [x19]\n            0x1c4e37cac      fmul  d0, d0, d1\n            0x1c4e37cb0      str   d0, [x19]\n            0x1c4e37cb4      ldr   d0, [x20]\n            0x1c4e37cb8      fcmp  d0, d8\n        ,=< 0x1c4e37cbc      b.mi  0x1c4e37ccc\n        |   0x1c4e37cc0      fcmp  d0, d10\n        |   0x1c4e37cc4      mov   v8.16b, v10.16b\n       ,==< 0x1c4e37cc8      b.le  0x1c4e37cd4\n       |`-> 0x1c4e37ccc      str   d8, [x20]\n       |    0x1c4e37cd0      str   xzr, [x19]\n       `--> 0x1c4e37cd4      ldp   x29, x30, [sp, 0x40]\n            0x1c4e37cd8      ldp   x20, x19, [sp, 0x30]\n            0x1c4e37cdc      ldp   x22, x21, [sp, 0x20]\n            0x1c4e37ce0      ldp   d9, d8, [sp, 0x10]\n            0x1c4e37ce4      ldp   d11, d10, [sp], 0x50\n            0x1c4e37ce8      ret\n            ;-- -[UIScrollView _smoothScrollApplyPendingAsyncCompletionResultWithUpdateTime:outFinishedDecelerating:]:\n            0x1c4e37cec      stp   x26, x25, [sp, -0x50]!\n            0x1c4e37cf0      stp   x24, x23, [sp, 0x10]\n            0x1c4e37cf4      stp   x22, x21, [sp, 0x20]\n            0x1c4e37cf8      stp   x20, x19, [sp, 0x30]\n            0x1c4e37cfc      stp   x29, x30, [sp, 0x40]\n            0x1c4e37d00      add   x29, sp, 0x40\n        ,=< 0x1c4e37d04      cbz   x0, 0x1c4e37df8\n        |   0x1c4e37d08      mov   x24, x1\n        |   0x1c4e37d0c      mov   x21, x0\n        |   0x1c4e37d10      cbz   x1, 0x1c4e37d18\n        |   0x1c4e37d14      strb  wzr, [x24]\n        |   0x1c4e37d18      adrp  x26, 0x22e810000\n        |   0x1c4e37d1c      ldrsw x8, main\n        |   0x1c4e37d20      ldr   x8, [x21, x8]\n        |   0x1c4e37d24      bl    sym.imp.objc_retain_x8\n        |   0x1c4e37d28      mov   x20, x0\n        |   0x1c4e37d2c      cmp   x0, 0\n        |   0x1c4e37d30      cset  w19, ne\n        |   0x1c4e37d34      cbz   x0, 0x1c4e37dd8\n        |   0x1c4e37d38      ldr   x8, [x20, 0x28]\n        |   0x1c4e37d3c      bl    sym.imp.objc_retain_x8\n        |   0x1c4e37d40      mov   x22, x0\n        |   0x1c4e37d44      bl    sym._objc_msgSend_firstObject\n        |   0x1c4e37d48      bl    sym.imp.objc_claimAutoreleasedReturnValue\n        |   0x1c4e37d4c      mov   x23, x0\n        |   0x1c4e37d50      cbz   x0, 0x1c4e37dd0\n        |   0x1c4e37d54      mov   x0, x22\n        |   0x1c4e37d58      mov   x2, 0\n        |   0x1c4e37d5c      bl    sym._objc_msgSend_removeObjectAtIndex:\n        |   0x1c4e37d60      mov   x0, x23\n        |   0x1c4e37d64      bl    sym._objc_msgSend_finishedDecelerating\n        |   0x1c4e37d68      mov   x25, x0\n        |   0x1c4e37d6c      cbz   w0, 0x1c4e37d8c\n        |   0x1c4e37d70      ldrsw x8, main\n        |   0x1c4e37d74      ldr   x9, [x21, x8]\n        |   0x1c4e37d78      str   xzr, [x21, x8]\n        |   0x1c4e37d7c      bl    sym.imp.objc_release_x9\n        |   0x1c4e37d80      cbz   x24, 0x1c4e37d8c\n        |   0x1c4e37d84      mov   w8, 1\n        |   0x1c4e37d88      strb  w8, [x24]\n        |   0x1c4e37d8c      mov   x0, x23\n        |   0x1c4e37d90      bl    sym._objc_msgSend_handled\n        |   0x1c4e37d94      mov   x24, x0\n        |   0x1c4e37d98      mov   x0, x23\n        |   0x1c4e37d9c      bl    sym._objc_msgSend_updateTime\n        |   0x1c4e37da0      cbz   w24, 0x1c4e37dc8\n        |   0x1c4e37da4      adrp  x8, 0x22e810000\n        |   0x1c4e37da8      ldrsw x8, main\n        |   0x1c4e37dac      str   d0, [x21, x8]\n        |   0x1c4e37db0      cbz   w25, 0x1c4e37dd0\n        |   0x1c4e37db4      mov   x0, x21\n        |   0x1c4e37db8      mov   w2, 1\n        |   0x1c4e37dbc      mov   w3, 1\n        |   0x1c4e37dc0      bl    sym._objc_msgSend__stopScrollingNotify:pin:\n"
+      },
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": null,
+        "digest": {
+          "sha256": "5cefe8cfb213b0dfcb378feb86ddd9062fda37fb4f331b3ceb782070a20292a4"
+        },
+        "format": "unknown",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/dsc/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore",
+        "name": "UIKitCore"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c7a6c7bc15526ebdca86113c0894ffc92b2440c6e3377321a361c25691320fb8",
+        "parameters": {
+          "analysis_options": {
+            "disabled_analyzers": [
+              "Decompiler Parameter ID",
+              "Decompiler Switch Analysis"
+            ]
+          },
+          "analyzer_preset": "ghidra-default+disabled:Decompiler Parameter ID,Decompiler Switch Analysis",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "architecture": "arm64",
+          "available_architectures": ["arm64"],
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "compiler_spec_id": "auto-default",
+          "decompiler_jump_loads": true,
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "import_mode": "ephemeral-source-immutable",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-without-synthetic-entry-v2",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "language_id": "auto-from-header",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "loader": "auto-from-header",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_d437b376fa265e6ff97816be60518b4e992a51c4ab07c6d6e2287fc0d91331de",
+      "evidence_links": [],
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+        "Ghidra Listing reports a terminal call at 0x2fdc38 to 0xc941c8 _SBRectCornerRadiiForRadius (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation.",
+        "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+      ],
+      "locations": [],
+      "normalized_result": "\n/* WARNING: Function: _objc_claimAutoreleasedReturnValue replaced with injection: _objc_retain_fixup\n    */\n/* WARNING: Function: _objc_release_x20 replaced with injection: _objc_release_fixup */\n/* Function Stack Size: 0x18 bytes */\n\nUIRectCornerRadii\nSBFullScreenToHomeIconZoomSwitcherModifier::cornerRadiiForIndex_\n          (ID param_1,SEL param_2,unsigned_long_long param_3)\n\n{\n  ID IVar1;\n  objc_super *super;\n  double extraout_d0;\n  double dVar2;\n  undefined8 uVar3;\n  double extraout_d0_00;\n  undefined8 extraout_d0_01;\n  double in_d1;\n  undefined8 in_d2;\n  undefined8 in_d3;\n  double dVar4;\n  UIRectCornerRadii UVar5;\n  UIRectCornerRadii UVar6;\n  objc_super local_60;\n  objc_super local_50;\n  \n  super = &local_60;\n  IVar1 = objc_stub::_isIndexZoomAppLayout_(param_1);\n  if ((int)IVar1 == 0) {\n    local_60.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n    local_60.receiver = param_1;\n  }\n  else {\n    if ((((*(char *)(param_1 + (long)_genieEnabled) == '\\x01') &&\n         ((*(byte *)(param_1 + (long)_hasResetCornerRadius) & 1) == 0)) &&\n        ((*(byte *)(param_1 + (long)_homeScreenIconIsWidget) & 1) == 0)) &&\n       (IVar1 = objc_stub::transitionPhase(param_1), 2 < IVar1)) {\n      IVar1 = objc_stub::genieAttributesForAppLayout_\n                        (param_1,*(undefined8 *)(param_1 + (long)_appLayout));\n      objc_stub::windowSize(IVar1);\n      objc_stub::windowSize(IVar1);\n      dVar2 = extraout_d0;\n      if (in_d1 <= extraout_d0) {\n        dVar2 = in_d1;\n      }\n      in_d1 = 0.5;\n      dVar2 = dVar2 * 0.5;\n      if (*(long *)(param_1 + (long)_direction) == 1) {\n        in_d1 = *(double *)(param_1 + (long)_homeScreenIconScale);\n        dVar2 = dVar2 * in_d1;\n      }\n      uVar3 = _SBRectCornerRadiiForRadius(dVar2);\n      goto LAB_002fdc5c;\n    }\n    IVar1 = objc_stub::_isEffectivelyHome(param_1);\n    if ((int)IVar1 != 0) {\n      dVar4 = *(double *)(param_1 + (long)_homeScreenIconCornerRadius);\n      objc_stub::scaleForIndex_(param_1,param_3);\n      dVar2 = *(double *)(param_1 + (long)_homeScreenIconScale);\n      UVar5.field0_0x0 = _SBRectCornerRadiiForRadius((dVar4 / extraout_d0_00) * dVar2);\n      UVar5.field1_0x8 = dVar2;\n      UVar5.field3_0x18 = (double)in_d3;\n      UVar5.field2_0x10 = (double)in_d2;\n      return UVar5;\n    }\n    local_50.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n    super = &local_50;\n    local_50.receiver = param_1;\n  }\n  _objc_msgSendSuper2(super,\"cornerRadiiForIndex:\",param_3);\n  uVar3 = extraout_d0_01;\nLAB_002fdc5c:\n  UVar6.field1_0x8 = in_d1;\n  UVar6.field0_0x0 = (double)uVar3;\n  UVar6.field3_0x18 = (double)in_d3;\n  UVar6.field2_0x10 = (double)in_d2;\n  return UVar6;\n}\n\n",
+      "operation": "procedure_pseudo_code",
+      "parameters": { "procedure": "0x2fdad8" },
+      "predicate_type": "rea.analysis",
+      "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+      "raw_result": {
+        "limitations": [
+          "Ghidra Listing reports a terminal call at 0x2fdc38 to 0xc941c8 _SBRectCornerRadiiForRadius (external=false, thunk=true, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+        ],
+        "value": "\n/* WARNING: Function: _objc_claimAutoreleasedReturnValue replaced with injection: _objc_retain_fixup\n    */\n/* WARNING: Function: _objc_release_x20 replaced with injection: _objc_release_fixup */\n/* Function Stack Size: 0x18 bytes */\n\nUIRectCornerRadii\nSBFullScreenToHomeIconZoomSwitcherModifier::cornerRadiiForIndex_\n          (ID param_1,SEL param_2,unsigned_long_long param_3)\n\n{\n  ID IVar1;\n  objc_super *super;\n  double extraout_d0;\n  double dVar2;\n  undefined8 uVar3;\n  double extraout_d0_00;\n  undefined8 extraout_d0_01;\n  double in_d1;\n  undefined8 in_d2;\n  undefined8 in_d3;\n  double dVar4;\n  UIRectCornerRadii UVar5;\n  UIRectCornerRadii UVar6;\n  objc_super local_60;\n  objc_super local_50;\n  \n  super = &local_60;\n  IVar1 = objc_stub::_isIndexZoomAppLayout_(param_1);\n  if ((int)IVar1 == 0) {\n    local_60.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n    local_60.receiver = param_1;\n  }\n  else {\n    if ((((*(char *)(param_1 + (long)_genieEnabled) == '\\x01') &&\n         ((*(byte *)(param_1 + (long)_hasResetCornerRadius) & 1) == 0)) &&\n        ((*(byte *)(param_1 + (long)_homeScreenIconIsWidget) & 1) == 0)) &&\n       (IVar1 = objc_stub::transitionPhase(param_1), 2 < IVar1)) {\n      IVar1 = objc_stub::genieAttributesForAppLayout_\n                        (param_1,*(undefined8 *)(param_1 + (long)_appLayout));\n      objc_stub::windowSize(IVar1);\n      objc_stub::windowSize(IVar1);\n      dVar2 = extraout_d0;\n      if (in_d1 <= extraout_d0) {\n        dVar2 = in_d1;\n      }\n      in_d1 = 0.5;\n      dVar2 = dVar2 * 0.5;\n      if (*(long *)(param_1 + (long)_direction) == 1) {\n        in_d1 = *(double *)(param_1 + (long)_homeScreenIconScale);\n        dVar2 = dVar2 * in_d1;\n      }\n      uVar3 = _SBRectCornerRadiiForRadius(dVar2);\n      goto LAB_002fdc5c;\n    }\n    IVar1 = objc_stub::_isEffectivelyHome(param_1);\n    if ((int)IVar1 != 0) {\n      dVar4 = *(double *)(param_1 + (long)_homeScreenIconCornerRadius);\n      objc_stub::scaleForIndex_(param_1,param_3);\n      dVar2 = *(double *)(param_1 + (long)_homeScreenIconScale);\n      UVar5.field0_0x0 = _SBRectCornerRadiiForRadius((dVar4 / extraout_d0_00) * dVar2);\n      UVar5.field1_0x8 = dVar2;\n      UVar5.field3_0x18 = (double)in_d3;\n      UVar5.field2_0x10 = (double)in_d2;\n      return UVar5;\n    }\n    local_50.super_class = &objc::class_t::SBFullScreenToHomeIconZoomSwitcherModifier;\n    super = &local_50;\n    local_50.receiver = param_1;\n  }\n  _objc_msgSendSuper2(super,\"cornerRadiiForIndex:\",param_3);\n  uVar3 = extraout_d0_01;\nLAB_002fdc5c:\n  UVar6.field1_0x8 = in_d1;\n  UVar6.field0_0x0 = (double)uVar3;\n  UVar6.field3_0x18 = (double)in_d3;\n  UVar6.field2_0x10 = (double)in_d2;\n  return UVar6;\n}\n\n"
+      },
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c7a6c7bc15526ebdca86113c0894ffc92b2440c6e3377321a361c25691320fb8",
+        "parameters": {
+          "analysis_options": {
+            "disabled_analyzers": [
+              "Decompiler Parameter ID",
+              "Decompiler Switch Analysis"
+            ]
+          },
+          "analyzer_preset": "ghidra-default+disabled:Decompiler Parameter ID,Decompiler Switch Analysis",
+          "annotation_policy": "atomic-function-entry-metadata-v1",
+          "architecture": "arm64",
+          "available_architectures": ["arm64"],
+          "call_relationship_coverage": "function-body-call-coverage-v5",
+          "compiler_spec_id": "auto-default",
+          "decompiler_jump_loads": true,
+          "function_body_evidence": "complete-inclusive-ranges-v1",
+          "function_boundary_observations": "ghidra-function-boundary-limitations-v4",
+          "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+          "function_references": "complete-body-and-entry-reference-manager-v2",
+          "import_mode": "ephemeral-source-immutable",
+          "instruction_flow_evidence": "decoded-return-pcode-v1",
+          "instruction_references": "exact-address-incoming-without-synthetic-entry-v2",
+          "jump_table_evidence": "typed-case-default-blocks-v1",
+          "language_id": "auto-from-header",
+          "load_image_observations": "source-mappings-entry-context-v2",
+          "loader": "auto-from-header",
+          "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+          "no_return_repair": "returning-imports-decoded-return-v2",
+          "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+          "process_launch": "inspected-jvm-launch-support-v1",
+          "string_inventory_evidence": "defined-data-coverage-v1",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_db7b4e76804ab2722270748d566df7942143d346415ce161810f8d2b7d7967da",
+      "evidence_links": [],
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Regex mode uses Java Pattern semantics. Matcher or compiler stack exhaustion returns a resource constraint without closing the session; literal mode avoids regex recursion and returns complete matching values.",
+        "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+      ],
+      "locations": [],
+      "normalized_result": [
+        {
+          "address": "0x20a1c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::initWithTransitionID:toAppLayout:"
+        },
+        {
+          "address": "0x20ac4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldAsyncRenderUntilDelay:"
+        },
+        {
+          "address": "0x20b4c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x20cf4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionWillUpdate"
+        },
+        {
+          "address": "0x20e70",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x20f10",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::handleResizeProgressEvent:"
+        },
+        {
+          "address": "0x21018",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x21124",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x211e0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::anchorPointForIndex:"
+        },
+        {
+          "address": "0x21254",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x212c8",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldUseAnchorPointToPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2133c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::perspectiveAngleForIndex:"
+        },
+        {
+          "address": "0x21404",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::adjustedSpaceAccessoryViewFrame:forAppLayout:"
+        },
+        {
+          "address": "0x21514",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::adjustedSpaceAccessoryViewAnchorPoint:forAppLayout:"
+        },
+        {
+          "address": "0x215c8",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x21630",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x216d0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_layoutSettings"
+        },
+        {
+          "address": "0x21720",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_opacitySettings"
+        },
+        {
+          "address": "0x21770",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::resizeProgressNotificationsForLayoutRole:inAppLayout:"
+        },
+        {
+          "address": "0x218b0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x219a0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldAllowGroupOpacityForAppLayout:"
+        },
+        {
+          "address": "0x219d0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::cornerRadiiForIndex:"
+        },
+        {
+          "address": "0x219e4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x21a24",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x21a9c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x21aa4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x21aac",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x21ab4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenScale"
+        },
+        {
+          "address": "0x21b28",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isSwitcherWindowVisible"
+        },
+        {
+          "address": "0x21b30",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isSwitcherWindowUserInteractionEnabled"
+        },
+        {
+          "address": "0x21b34",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x21ba0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::appLayoutsToCacheSnapshots"
+        },
+        {
+          "address": "0x21ba4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_isToAppLayoutAtIndex:"
+        },
+        {
+          "address": "0x21c0c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldForceDefaultAnchorPointForTransition"
+        },
+        {
+          "address": "0x21c1c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::setShouldForceDefaultAnchorPointForTransition:"
+        },
+        {
+          "address": "0x21c2c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x2fa574",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::initWithTransitionID:targetFrame:appLayout:direction:"
+        },
+        {
+          "address": "0x2fa5c0",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::initWithTransitionID:appLayout:direction:"
+        },
+        {
+          "address": "0x2fa6ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::descriptionBuilderWithMultilinePrefix:"
+        },
+        {
+          "address": "0x2fa79c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::didMoveToParentModifier:"
+        },
+        {
+          "address": "0x2faa30",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::handleTransitionEvent:"
+        },
+        {
+          "address": "0x2fab48",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::asyncRenderingDisabled"
+        },
+        {
+          "address": "0x2fab58",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldAsyncRenderUntilDelay:"
+        },
+        {
+          "address": "0x2fac14",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x2fb62c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke"
+        },
+        {
+          "address": "0x2fb66c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_2"
+        },
+        {
+          "address": "0x2fb6ac",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_3"
+        },
+        {
+          "address": "0x2fb6ec",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_4"
+        },
+        {
+          "address": "0x2fb72c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_5"
+        },
+        {
+          "address": "0x2fb76c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_6"
+        },
+        {
+          "address": "0x2fb7ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionWillUpdate"
+        },
+        {
+          "address": "0x2fb8c8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x2fbad8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::handleTimerEvent:"
+        },
+        {
+          "address": "0x2fbd64",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayoutsForContinuousExposeIdentifier:"
+        },
+        {
+          "address": "0x2fbe70",
+          "value": "___86-[SBFullScreenToHomeIconZoomSwitcherModifier_appLayoutsForContinuousExposeIdentifier:]_block_invoke"
+        },
+        {
+          "address": "0x2fbedc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x2fc0bc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_homeScreenFrameForZoomingIndex:ignoringGenie:"
+        },
+        {
+          "address": "0x2fc234",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::anchorPointForIndex:"
+        },
+        {
+          "address": "0x2fc2a8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2fc31c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldUseAnchorPointToPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2fc390",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::perspectiveAngleForIndex:"
+        },
+        {
+          "address": "0x2fc458",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::perspectiveAngleForLayoutRole:inAppLayout:withPerspectiveAngle:"
+        },
+        {
+          "address": "0x2fc56c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewFrame:forAppLayout:"
+        },
+        {
+          "address": "0x2fc67c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewScale:forAppLayout:"
+        },
+        {
+          "address": "0x2fc710",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewAnchorPoint:forAppLayout:"
+        },
+        {
+          "address": "0x2fc7c4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewPerspectiveAngle:forAppLayout:"
+        },
+        {
+          "address": "0x2fc878",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::fullyPresentedFrameForIndex:frame:"
+        },
+        {
+          "address": "0x2fcb94",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::containerLeafAppLayoutForShelf:"
+        },
+        {
+          "address": "0x2fcb9c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::presentationAttributesForShelf:"
+        },
+        {
+          "address": "0x2fcbf4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x2fce90",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x2fcf54",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x2fd108",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_layoutSettings"
+        },
+        {
+          "address": "0x2fd15c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::layoutSettingsForTargetCenter:"
+        },
+        {
+          "address": "0x2fd31c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::frameForLayoutRole:inAppLayout:withBounds:"
+        },
+        {
+          "address": "0x2fd554",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_numberOfPeekingItemsAboveDisplayItem:zOrderedItems:"
+        },
+        {
+          "address": "0x2fd5f4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::genieAttributesForAppLayout:"
+        },
+        {
+          "address": "0x2fda74",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::maskedCornersForIndex:"
+        },
+        {
+          "address": "0x2fdad8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::cornerRadiiForIndex:"
+        },
+        {
+          "address": "0x2fdc74",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldScaleOverlayToFillBoundsAtIndex:"
+        },
+        {
+          "address": "0x2fdd24",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::homeScreenAlpha"
+        },
+        {
+          "address": "0x2fdd98",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x2fdf40",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shadowOpacityForLayoutRole:atIndex:"
+        },
+        {
+          "address": "0x2fdfe8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x2fe008",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x2fe010",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x2fe018",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x2fe020",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wallpaperScale"
+        },
+        {
+          "address": "0x2fe06c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isSwitcherWindowVisible"
+        },
+        {
+          "address": "0x2fe074",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isSwitcherWindowUserInteractionEnabled"
+        },
+        {
+          "address": "0x2fe08c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::fadeInDelayForSplitViewHandles"
+        },
+        {
+          "address": "0x2fe10c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayoutsToCacheSnapshots"
+        },
+        {
+          "address": "0x2fe110",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x2fe190",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldAcceleratedHomeButtonPressBegin"
+        },
+        {
+          "address": "0x2fe1dc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldFireTransitionCompletionInDefaultRunLoopMode"
+        },
+        {
+          "address": "0x2fe1f4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wantsDockBehaviorAssertion"
+        },
+        {
+          "address": "0x2fe22c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockProgress"
+        },
+        {
+          "address": "0x2fe234",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockUpdateMode"
+        },
+        {
+          "address": "0x2fe23c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wantsDockWindowLevelAssertion"
+        },
+        {
+          "address": "0x2fe288",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockWindowLevelPriority"
+        },
+        {
+          "address": "0x2fe2d4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockWindowLevel"
+        },
+        {
+          "address": "0x2fe32c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_flexibleAutoLayoutSpaceForZoomingAppLayout"
+        },
+        {
+          "address": "0x2fe488",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_genieCounterScaleIfNeeded"
+        },
+        {
+          "address": "0x2fe4f8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_isEffectivelyHome"
+        },
+        {
+          "address": "0x2fe56c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_isIndexZoomAppLayout:"
+        },
+        {
+          "address": "0x2fe5d4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_settingsByInterpolatingBetween:and:progress:"
+        },
+        {
+          "address": "0x2fe6f0",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom:"
+        },
+        {
+          "address": "0x2fe748",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge:"
+        },
+        {
+          "address": "0x2fe76c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldUpdateIconViewVisibility"
+        },
+        {
+          "address": "0x2fe77c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldUpdateIconViewVisibility:"
+        },
+        {
+          "address": "0x2fe78c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldMatchMoveToIconView"
+        },
+        {
+          "address": "0x2fe79c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldMatchMoveToIconView:"
+        },
+        {
+          "address": "0x2fe7ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::canAddVelocityKickToHurdleDock"
+        },
+        {
+          "address": "0x2fe7bc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setCanAddVelocityKickToHurdleDock:"
+        },
+        {
+          "address": "0x2fe7cc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldForceDefaultAnchorPointForTransition"
+        },
+        {
+          "address": "0x2fe7dc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldForceDefaultAnchorPointForTransition:"
+        },
+        {
+          "address": "0x2fe7ec",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldDockOrderFrontDuringTransition"
+        },
+        {
+          "address": "0x2fe7fc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldDockOrderFrontDuringTransition:"
+        },
+        {
+          "address": "0x2fe80c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldDisableAsyncRendering"
+        },
+        {
+          "address": "0x2fe81c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldDisableAsyncRendering:"
+        },
+        {
+          "address": "0x2fe82c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isGenieDisabled"
+        },
+        {
+          "address": "0x2fe83c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setGenieDisabled:"
+        },
+        {
+          "address": "0x2fe84c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::supportsGlassHighlight"
+        },
+        {
+          "address": "0x2fe85c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setSupportsGlassHighlight:"
+        },
+        {
+          "address": "0x2fe86c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayout"
+        },
+        {
+          "address": "0x2fe87c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x73d4fc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:"
+        },
+        {
+          "address": "0x73d680",
+          "value": "SBCaptureDropletZoomSwitcherModifier::completesWhenChildrenComplete"
+        },
+        {
+          "address": "0x73d688",
+          "value": "SBCaptureDropletZoomSwitcherModifier::didMoveToParentModifier:"
+        },
+        {
+          "address": "0x73d774",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleAnimatablePropertyChangedEvent:"
+        },
+        {
+          "address": "0x73d8a0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleHardwareButtonDropletAnimationEvent:"
+        },
+        {
+          "address": "0x73d9b0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleTimerEvent:"
+        },
+        {
+          "address": "0x73da88",
+          "value": "SBCaptureDropletZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x73dc0c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x73dd2c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x73de7c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x73df58",
+          "value": "SBCaptureDropletZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x73dfc0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::isDropletEffectRequiredBehindAppLayout:"
+        },
+        {
+          "address": "0x73e03c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x73e188",
+          "value": "___61-[SBCaptureDropletZoomSwitcherModifier_topMostLayoutElements]_block_invoke"
+        },
+        {
+          "address": "0x73e1fc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::wantsBezelEffectsLayoutElement"
+        },
+        {
+          "address": "0x73e204",
+          "value": "SBCaptureDropletZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x73e3bc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x73e458",
+          "value": "SBCaptureDropletZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x73e4a4",
+          "value": "SBCaptureDropletZoomSwitcherModifier::wantsSwitcherDimmingView"
+        },
+        {
+          "address": "0x73e4ac",
+          "value": "SBCaptureDropletZoomSwitcherModifier::switcherDimmingAlpha"
+        },
+        {
+          "address": "0x73e508",
+          "value": "SBCaptureDropletZoomSwitcherModifier::animatablePropertyIdentifiers"
+        },
+        {
+          "address": "0x73e588",
+          "value": "SBCaptureDropletZoomSwitcherModifier::updateModeForAnimatableProperty:"
+        },
+        {
+          "address": "0x73e5f8",
+          "value": "SBCaptureDropletZoomSwitcherModifier::settingsForAnimatableProperty:"
+        },
+        {
+          "address": "0x73e67c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::modelValueForAnimatableProperty:currentValue:creating:"
+        },
+        {
+          "address": "0x73e718",
+          "value": "SBCaptureDropletZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x752dd0",
+          "value": "SBHomeScreenZoomSwitcherModifier::initWithTransitionID:direction:"
+        },
+        {
+          "address": "0x752e20",
+          "value": "SBHomeScreenZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x752f0c",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenAlpha"
+        },
+        {
+          "address": "0x752f90",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x753014",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x753034",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenDimmingAlpha"
+        },
+        {
+          "address": "0x7530b8",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenScale"
+        },
+        {
+          "address": "0x75313c",
+          "value": "SBHomeScreenZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x753144",
+          "value": "SBHomeScreenZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x75314c",
+          "value": "SBHomeScreenZoomSwitcherModifier::wallpaperScale"
+        },
+        {
+          "address": "0x7531d0",
+          "value": "SBHomeScreenZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x7531d8",
+          "value": "SBHomeScreenZoomSwitcherModifier::_isEffectivelyHome"
+        },
+        {
+          "address": "0x91e8c4",
+          "value": "-[SBHomeToFullScreenCenterZoomSwitcherModifier_initWithTransitionID:toAppLayout:].cold.1"
+        },
+        {
+          "address": "0x992810",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.1"
+        },
+        {
+          "address": "0x99284c",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.2"
+        },
+        {
+          "address": "0x992888",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.3"
+        }
+      ],
+      "operation": "search_procedures",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "literal",
+        "pattern": "ZoomSwitcherModifier"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": { "id": "ghidra", "name": "Ghidra", "version": "12.1.4" },
+      "raw_result": [
+        {
+          "address": "0x20a1c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::initWithTransitionID:toAppLayout:"
+        },
+        {
+          "address": "0x20ac4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldAsyncRenderUntilDelay:"
+        },
+        {
+          "address": "0x20b4c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x20cf4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionWillUpdate"
+        },
+        {
+          "address": "0x20e70",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x20f10",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::handleResizeProgressEvent:"
+        },
+        {
+          "address": "0x21018",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x21124",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x211e0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::anchorPointForIndex:"
+        },
+        {
+          "address": "0x21254",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x212c8",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldUseAnchorPointToPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2133c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::perspectiveAngleForIndex:"
+        },
+        {
+          "address": "0x21404",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::adjustedSpaceAccessoryViewFrame:forAppLayout:"
+        },
+        {
+          "address": "0x21514",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::adjustedSpaceAccessoryViewAnchorPoint:forAppLayout:"
+        },
+        {
+          "address": "0x215c8",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x21630",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x216d0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_layoutSettings"
+        },
+        {
+          "address": "0x21720",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_opacitySettings"
+        },
+        {
+          "address": "0x21770",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::resizeProgressNotificationsForLayoutRole:inAppLayout:"
+        },
+        {
+          "address": "0x218b0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x219a0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldAllowGroupOpacityForAppLayout:"
+        },
+        {
+          "address": "0x219d0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::cornerRadiiForIndex:"
+        },
+        {
+          "address": "0x219e4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x21a24",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x21a9c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x21aa4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x21aac",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x21ab4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::homeScreenScale"
+        },
+        {
+          "address": "0x21b28",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isSwitcherWindowVisible"
+        },
+        {
+          "address": "0x21b30",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::isSwitcherWindowUserInteractionEnabled"
+        },
+        {
+          "address": "0x21b34",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x21ba0",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::appLayoutsToCacheSnapshots"
+        },
+        {
+          "address": "0x21ba4",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::_isToAppLayoutAtIndex:"
+        },
+        {
+          "address": "0x21c0c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::shouldForceDefaultAnchorPointForTransition"
+        },
+        {
+          "address": "0x21c1c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::setShouldForceDefaultAnchorPointForTransition:"
+        },
+        {
+          "address": "0x21c2c",
+          "value": "SBHomeToFullScreenCenterZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x2fa574",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::initWithTransitionID:targetFrame:appLayout:direction:"
+        },
+        {
+          "address": "0x2fa5c0",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::initWithTransitionID:appLayout:direction:"
+        },
+        {
+          "address": "0x2fa6ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::descriptionBuilderWithMultilinePrefix:"
+        },
+        {
+          "address": "0x2fa79c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::didMoveToParentModifier:"
+        },
+        {
+          "address": "0x2faa30",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::handleTransitionEvent:"
+        },
+        {
+          "address": "0x2fab48",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::asyncRenderingDisabled"
+        },
+        {
+          "address": "0x2fab58",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldAsyncRenderUntilDelay:"
+        },
+        {
+          "address": "0x2fac14",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x2fb62c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke"
+        },
+        {
+          "address": "0x2fb66c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_2"
+        },
+        {
+          "address": "0x2fb6ac",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_3"
+        },
+        {
+          "address": "0x2fb6ec",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_4"
+        },
+        {
+          "address": "0x2fb72c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_5"
+        },
+        {
+          "address": "0x2fb76c",
+          "value": "___65-[SBFullScreenToHomeIconZoomSwitcherModifier_transitionWillBegin]_block_invoke_6"
+        },
+        {
+          "address": "0x2fb7ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionWillUpdate"
+        },
+        {
+          "address": "0x2fb8c8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x2fbad8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::handleTimerEvent:"
+        },
+        {
+          "address": "0x2fbd64",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayoutsForContinuousExposeIdentifier:"
+        },
+        {
+          "address": "0x2fbe70",
+          "value": "___86-[SBFullScreenToHomeIconZoomSwitcherModifier_appLayoutsForContinuousExposeIdentifier:]_block_invoke"
+        },
+        {
+          "address": "0x2fbedc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x2fc0bc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_homeScreenFrameForZoomingIndex:ignoringGenie:"
+        },
+        {
+          "address": "0x2fc234",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::anchorPointForIndex:"
+        },
+        {
+          "address": "0x2fc2a8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2fc31c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldUseAnchorPointToPinLayoutRolesToSpace:"
+        },
+        {
+          "address": "0x2fc390",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::perspectiveAngleForIndex:"
+        },
+        {
+          "address": "0x2fc458",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::perspectiveAngleForLayoutRole:inAppLayout:withPerspectiveAngle:"
+        },
+        {
+          "address": "0x2fc56c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewFrame:forAppLayout:"
+        },
+        {
+          "address": "0x2fc67c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewScale:forAppLayout:"
+        },
+        {
+          "address": "0x2fc710",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewAnchorPoint:forAppLayout:"
+        },
+        {
+          "address": "0x2fc7c4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::adjustedSpaceAccessoryViewPerspectiveAngle:forAppLayout:"
+        },
+        {
+          "address": "0x2fc878",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::fullyPresentedFrameForIndex:frame:"
+        },
+        {
+          "address": "0x2fcb94",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::containerLeafAppLayoutForShelf:"
+        },
+        {
+          "address": "0x2fcb9c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::presentationAttributesForShelf:"
+        },
+        {
+          "address": "0x2fcbf4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x2fce90",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x2fcf54",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x2fd108",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_layoutSettings"
+        },
+        {
+          "address": "0x2fd15c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::layoutSettingsForTargetCenter:"
+        },
+        {
+          "address": "0x2fd31c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::frameForLayoutRole:inAppLayout:withBounds:"
+        },
+        {
+          "address": "0x2fd554",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_numberOfPeekingItemsAboveDisplayItem:zOrderedItems:"
+        },
+        {
+          "address": "0x2fd5f4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::genieAttributesForAppLayout:"
+        },
+        {
+          "address": "0x2fda74",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::maskedCornersForIndex:"
+        },
+        {
+          "address": "0x2fdad8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::cornerRadiiForIndex:"
+        },
+        {
+          "address": "0x2fdc74",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldScaleOverlayToFillBoundsAtIndex:"
+        },
+        {
+          "address": "0x2fdd24",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::homeScreenAlpha"
+        },
+        {
+          "address": "0x2fdd98",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x2fdf40",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shadowOpacityForLayoutRole:atIndex:"
+        },
+        {
+          "address": "0x2fdfe8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x2fe008",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x2fe010",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x2fe018",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x2fe020",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wallpaperScale"
+        },
+        {
+          "address": "0x2fe06c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isSwitcherWindowVisible"
+        },
+        {
+          "address": "0x2fe074",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isSwitcherWindowUserInteractionEnabled"
+        },
+        {
+          "address": "0x2fe08c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::fadeInDelayForSplitViewHandles"
+        },
+        {
+          "address": "0x2fe10c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayoutsToCacheSnapshots"
+        },
+        {
+          "address": "0x2fe110",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x2fe190",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldAcceleratedHomeButtonPressBegin"
+        },
+        {
+          "address": "0x2fe1dc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldFireTransitionCompletionInDefaultRunLoopMode"
+        },
+        {
+          "address": "0x2fe1f4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wantsDockBehaviorAssertion"
+        },
+        {
+          "address": "0x2fe22c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockProgress"
+        },
+        {
+          "address": "0x2fe234",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockUpdateMode"
+        },
+        {
+          "address": "0x2fe23c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::wantsDockWindowLevelAssertion"
+        },
+        {
+          "address": "0x2fe288",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockWindowLevelPriority"
+        },
+        {
+          "address": "0x2fe2d4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::dockWindowLevel"
+        },
+        {
+          "address": "0x2fe32c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_flexibleAutoLayoutSpaceForZoomingAppLayout"
+        },
+        {
+          "address": "0x2fe488",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_genieCounterScaleIfNeeded"
+        },
+        {
+          "address": "0x2fe4f8",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_isEffectivelyHome"
+        },
+        {
+          "address": "0x2fe56c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_isIndexZoomAppLayout:"
+        },
+        {
+          "address": "0x2fe5d4",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_settingsByInterpolatingBetween:and:progress:"
+        },
+        {
+          "address": "0x2fe6f0",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom:"
+        },
+        {
+          "address": "0x2fe748",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge:"
+        },
+        {
+          "address": "0x2fe76c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldUpdateIconViewVisibility"
+        },
+        {
+          "address": "0x2fe77c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldUpdateIconViewVisibility:"
+        },
+        {
+          "address": "0x2fe78c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldMatchMoveToIconView"
+        },
+        {
+          "address": "0x2fe79c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldMatchMoveToIconView:"
+        },
+        {
+          "address": "0x2fe7ac",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::canAddVelocityKickToHurdleDock"
+        },
+        {
+          "address": "0x2fe7bc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setCanAddVelocityKickToHurdleDock:"
+        },
+        {
+          "address": "0x2fe7cc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldForceDefaultAnchorPointForTransition"
+        },
+        {
+          "address": "0x2fe7dc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldForceDefaultAnchorPointForTransition:"
+        },
+        {
+          "address": "0x2fe7ec",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldDockOrderFrontDuringTransition"
+        },
+        {
+          "address": "0x2fe7fc",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldDockOrderFrontDuringTransition:"
+        },
+        {
+          "address": "0x2fe80c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::shouldDisableAsyncRendering"
+        },
+        {
+          "address": "0x2fe81c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setShouldDisableAsyncRendering:"
+        },
+        {
+          "address": "0x2fe82c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::isGenieDisabled"
+        },
+        {
+          "address": "0x2fe83c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setGenieDisabled:"
+        },
+        {
+          "address": "0x2fe84c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::supportsGlassHighlight"
+        },
+        {
+          "address": "0x2fe85c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::setSupportsGlassHighlight:"
+        },
+        {
+          "address": "0x2fe86c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::appLayout"
+        },
+        {
+          "address": "0x2fe87c",
+          "value": "SBFullScreenToHomeIconZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x73d4fc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:"
+        },
+        {
+          "address": "0x73d680",
+          "value": "SBCaptureDropletZoomSwitcherModifier::completesWhenChildrenComplete"
+        },
+        {
+          "address": "0x73d688",
+          "value": "SBCaptureDropletZoomSwitcherModifier::didMoveToParentModifier:"
+        },
+        {
+          "address": "0x73d774",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleAnimatablePropertyChangedEvent:"
+        },
+        {
+          "address": "0x73d8a0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleHardwareButtonDropletAnimationEvent:"
+        },
+        {
+          "address": "0x73d9b0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::handleTimerEvent:"
+        },
+        {
+          "address": "0x73da88",
+          "value": "SBCaptureDropletZoomSwitcherModifier::transitionWillBegin"
+        },
+        {
+          "address": "0x73dc0c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::transitionDidEnd"
+        },
+        {
+          "address": "0x73dd2c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::frameForIndex:"
+        },
+        {
+          "address": "0x73de7c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::scaleForIndex:"
+        },
+        {
+          "address": "0x73df58",
+          "value": "SBCaptureDropletZoomSwitcherModifier::visibleAppLayouts"
+        },
+        {
+          "address": "0x73dfc0",
+          "value": "SBCaptureDropletZoomSwitcherModifier::isDropletEffectRequiredBehindAppLayout:"
+        },
+        {
+          "address": "0x73e03c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::topMostLayoutElements"
+        },
+        {
+          "address": "0x73e188",
+          "value": "___61-[SBCaptureDropletZoomSwitcherModifier_topMostLayoutElements]_block_invoke"
+        },
+        {
+          "address": "0x73e1fc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::wantsBezelEffectsLayoutElement"
+        },
+        {
+          "address": "0x73e204",
+          "value": "SBCaptureDropletZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x73e3bc",
+          "value": "SBCaptureDropletZoomSwitcherModifier::opacityForLayoutRole:inAppLayout:atIndex:"
+        },
+        {
+          "address": "0x73e458",
+          "value": "SBCaptureDropletZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x73e4a4",
+          "value": "SBCaptureDropletZoomSwitcherModifier::wantsSwitcherDimmingView"
+        },
+        {
+          "address": "0x73e4ac",
+          "value": "SBCaptureDropletZoomSwitcherModifier::switcherDimmingAlpha"
+        },
+        {
+          "address": "0x73e508",
+          "value": "SBCaptureDropletZoomSwitcherModifier::animatablePropertyIdentifiers"
+        },
+        {
+          "address": "0x73e588",
+          "value": "SBCaptureDropletZoomSwitcherModifier::updateModeForAnimatableProperty:"
+        },
+        {
+          "address": "0x73e5f8",
+          "value": "SBCaptureDropletZoomSwitcherModifier::settingsForAnimatableProperty:"
+        },
+        {
+          "address": "0x73e67c",
+          "value": "SBCaptureDropletZoomSwitcherModifier::modelValueForAnimatableProperty:currentValue:creating:"
+        },
+        {
+          "address": "0x73e718",
+          "value": "SBCaptureDropletZoomSwitcherModifier::.cxx_destruct"
+        },
+        {
+          "address": "0x752dd0",
+          "value": "SBHomeScreenZoomSwitcherModifier::initWithTransitionID:direction:"
+        },
+        {
+          "address": "0x752e20",
+          "value": "SBHomeScreenZoomSwitcherModifier::animationAttributesForLayoutElement:"
+        },
+        {
+          "address": "0x752f0c",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenAlpha"
+        },
+        {
+          "address": "0x752f90",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenBackdropBlurProgress"
+        },
+        {
+          "address": "0x753014",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenBackdropBlurType"
+        },
+        {
+          "address": "0x753034",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenDimmingAlpha"
+        },
+        {
+          "address": "0x7530b8",
+          "value": "SBHomeScreenZoomSwitcherModifier::homeScreenScale"
+        },
+        {
+          "address": "0x75313c",
+          "value": "SBHomeScreenZoomSwitcherModifier::isHomeScreenContentRequired"
+        },
+        {
+          "address": "0x753144",
+          "value": "SBHomeScreenZoomSwitcherModifier::isWallpaperRequiredForSwitcher"
+        },
+        {
+          "address": "0x75314c",
+          "value": "SBHomeScreenZoomSwitcherModifier::wallpaperScale"
+        },
+        {
+          "address": "0x7531d0",
+          "value": "SBHomeScreenZoomSwitcherModifier::wallpaperStyle"
+        },
+        {
+          "address": "0x7531d8",
+          "value": "SBHomeScreenZoomSwitcherModifier::_isEffectivelyHome"
+        },
+        {
+          "address": "0x91e8c4",
+          "value": "-[SBHomeToFullScreenCenterZoomSwitcherModifier_initWithTransitionID:toAppLayout:].cold.1"
+        },
+        {
+          "address": "0x992810",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.1"
+        },
+        {
+          "address": "0x99284c",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.2"
+        },
+        {
+          "address": "0x992888",
+          "value": "-[SBCaptureDropletZoomSwitcherModifier_initWithTransitionID:zoomModifier:appLayout:launchPreludeAnimationToken:].cold.3"
+        }
+      ],
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    },
+    {
+      "analysis_profile": null,
+      "authority": "analyst-inference",
+      "confidence": "derived",
+      "environment": null,
+      "evidence_id": "ev_e67804ff39eb174b27cd37f6f9521bb87fc58255498fc716bb3b1d2013269a6d",
+      "evidence_links": [],
+      "limitations": [
+        "Registry mutation evidence records analyst intent, not proof of the answer."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "action": "record",
+        "question": "Why does the navigation pop fit _UIFluidParallaxTransitionSettings' 0.3/1 spring less tightly than the push (RMS error 0.4 to 0.8 percent against 0.03 percent)?",
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed"
+      },
+      "operation": "record_unknown",
+      "parameters": {
+        "contradicting_evidence_ids": [],
+        "domain": "uikit-navigation-transition",
+        "question": "Why does the navigation pop fit _UIFluidParallaxTransitionSettings' 0.3/1 spring less tightly than the push (RMS error 0.4 to 0.8 percent against 0.03 percent)?",
+        "recommended_probes": [
+          {
+            "operation": "observe_native_calls",
+            "rationale": "Log the fluid spring's retarget and initial velocity when the pop begins."
+          }
+        ],
+        "relationships": [],
+        "required_authority": "controlled-replay",
+        "required_confidence": "observed",
+        "required_environment": null,
+        "severity": "low",
+        "supporting_evidence_ids": []
+      },
+      "predicate_type": "rea.residual-unknown-mutation",
+      "provider": {
+        "id": "rea-unknown-registry",
+        "name": "REA residual unknown registry",
+        "version": "1"
+      },
+      "raw_result": null,
+      "relationship_coverage": null,
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7"
+        },
+        "format": "mach-o",
+        "local_path": "/Users/raphaelsalaja/Developer/apple-animations-research/ios/SpringBoard",
+        "name": "SpringBoard"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": [
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "springboard-app-open",
+      "mutation_evidence_ids": [
+        "ev_79570ff0cd780df89157f8ae9dc216c06681ab26bcf28ecbd99cb0db91823be8"
+      ],
+      "previous_revision_digest": null,
+      "question": "Why does the app open's corner radius reset about 10 ms after the card starts moving when genieCornerRadiusToAppResetDelay is 0.06 s? The card's first rendered frame lags the transition start by about 0.05 s in the Simulator, which would account for it if the timer starts at transitionWillBegin.",
+      "recommended_probes": [
+        {
+          "operation": "observe_native_calls",
+          "rationale": "Log the timestamps of transitionWillBegin and handleTimerEvent: with kSBFullScreenToHomeCornerRadiusDelayReason against the first presentation-layer change."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "controlled-replay",
+      "required_confidence": "observed",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "900fc076803f5f3bf1de09060d02632f87a1bd38e24c2df17af6dc24202ad288",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "low",
+      "status": "open",
+      "supporting_evidence_ids": [
+        "ev_7170fac6bc05c2a5b8b33b78e7827cd2114f704b0ae48a690524bcd8976e5cc1",
+        "ev_d437b376fa265e6ff97816be60518b4e992a51c4ab07c6d6e2287fc0d91331de"
+      ],
+      "unknown_id": "unk_288a19491b339b126ea849b79004f36ae5e59e4697c4ae8ff5004a13488462a6"
+    },
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "macos-dock-bounce",
+      "mutation_evidence_ids": [
+        "ev_72170a45b28a7cadd535ce1c426b45d8a5519c34980bacc65a4f76630b54efaa"
+      ],
+      "previous_revision_digest": null,
+      "question": "What are the Dock's launch bounce timings? They are Swift ivars behind the bounce-secondary-duration and bounce-secondary-interval defaults, with no static defaults and no xrefs to the keys, and System Integrity Protection blocks reading the live Dock.",
+      "recommended_probes": [
+        {
+          "operation": "instrument_with_frida",
+          "rationale": "Read the ivars from the live Dock on a machine with System Integrity Protection relaxed."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "controlled-replay",
+      "required_confidence": "observed",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "797c5ce956bb760201d316862572c06631ddb381ebf193d63fa2436b5ebad182",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "medium",
+      "status": "open",
+      "supporting_evidence_ids": [],
+      "unknown_id": "unk_93cc1d7e899a7b8314868c6f99be3ea87bf7213a3ddd1bebc5457b14b3265013"
+    },
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "uikit-navigation-transition",
+      "mutation_evidence_ids": [
+        "ev_e67804ff39eb174b27cd37f6f9521bb87fc58255498fc716bb3b1d2013269a6d"
+      ],
+      "previous_revision_digest": null,
+      "question": "Why does the navigation pop fit _UIFluidParallaxTransitionSettings' 0.3/1 spring less tightly than the push (RMS error 0.4 to 0.8 percent against 0.03 percent)?",
+      "recommended_probes": [
+        {
+          "operation": "observe_native_calls",
+          "rationale": "Log the fluid spring's retarget and initial velocity when the pop begins."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "controlled-replay",
+      "required_confidence": "observed",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "e65d499efc0463b9d8bece260464bfc9f010044852a8fd7eb5a727571235d0af",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "low",
+      "status": "open",
+      "supporting_evidence_ids": [],
+      "unknown_id": "unk_ac6591bdf4482372df4412df3245364db7e3be99d6e8528c48349b81cf166bf8"
+    },
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "springboard-folder",
+      "mutation_evidence_ids": [
+        "ev_8d79bda274863025bad2005cc9a73ac0e03019ffa11c566a4a8736a6e5b464f3"
+      ],
+      "previous_revision_digest": null,
+      "question": "What do the folder open and close look like running? SBFolderSettings' values were read from the live settings tree but no folder was opened while sampling.",
+      "recommended_probes": [
+        {
+          "operation": "capture_native_ui_scenario",
+          "rationale": "Open and close a folder in the Simulator while sampling presentation layers."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "controlled-replay",
+      "required_confidence": "observed",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "021acb43082ec219c7b6a208268937d35c7c1bceac854c965ba06fe1680b9172",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "low",
+      "status": "open",
+      "supporting_evidence_ids": [],
+      "unknown_id": "unk_c8635bea47c8937ab0814e09f14b4d45237d38c271778a4557818148003b25f6"
+    },
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "uikit-zoom-transition",
+      "mutation_evidence_ids": [
+        "ev_51ca2faae6f2185acb2422ba513ab4bf86e5d4a8e8c8d3f1a2a6e87f765972b6"
+      ],
+      "previous_revision_digest": null,
+      "question": "Which spring drives the iOS 18 zoom transition's receding background? _UIZoomTransitionAnimationSpec reads 0.4/1, but the running push fits 0.35/1 with an initial velocity of 7.5 per second, and the pop fits 0.342/0.92.",
+      "recommended_probes": [
+        {
+          "operation": "capture_native_ui_scenario",
+          "rationale": "Sample _UIMorphAnimationContainerView.TransformView, which carries the morph, instead of the portalled view controller."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "controlled-replay",
+      "required_confidence": "observed",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "80f830cb7362f41c74d9b1f5ffc20ee0710cf4c5bbe3777030bd245f4c2b383f",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "medium",
+      "status": "open",
+      "supporting_evidence_ids": [],
+      "unknown_id": "unk_c93d53fe75ef1e24ea34635d86efa2532a97d54ba8cc49ea8ee9c0ec3fd53682"
+    },
+    {
+      "contradicting_evidence_ids": [],
+      "domain": "swiftui-spring",
+      "mutation_evidence_ids": [
+        "ev_1020c928a3dc1e6b3027138773c114b0843e5f796e165232ea2e1678a12f5c00"
+      ],
+      "previous_revision_digest": null,
+      "question": "How does SwiftUI compute Spring.settlingDuration? Sampled values (0.8 for .smooth, 0.8768 for .snappy, 1.0447 for .bouncy, 1.4 for duration 0.5 bounce -0.3) do not follow a fixed-threshold envelope, and Spring(settlingDuration: 1, dampingRatio: 0.7) reports 1.3028.",
+      "recommended_probes": [
+        {
+          "operation": "procedure_pseudo_code",
+          "rationale": "Decompile Spring.settlingDuration's getter in SwiftUICore."
+        }
+      ],
+      "relationships": [],
+      "required_authority": "shipped-artifact",
+      "required_confidence": "derived",
+      "required_environment": null,
+      "resolution": null,
+      "revision": 1,
+      "revision_digest": "81bde696d698cd356a51656e5e738f895f2d37349bc5cc4637b628de6979491e",
+      "scope_digest": "7fdfe20b9b178bf853d46d776ff87ec9e722c36dee7820d79c285722eca9c5d7",
+      "severity": "low",
+      "status": "open",
+      "supporting_evidence_ids": [],
+      "unknown_id": "unk_c94bacf0eb516118589989793054e5ba11d1f07f30cd9fb67ff866f7e18ee550"
+    }
+  ]
+}

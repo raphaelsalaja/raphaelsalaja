@@ -1,0 +1,1856 @@
+{
+  "filterMethods": [
+    "dealloc",
+    "copyWithZone:",
+    "description",
+    "mutableCopyWithZone:",
+    "name",
+    "enabled",
+    "encodeWithCoder:",
+    "initWithCoder:",
+    "initWithName:",
+    "setEnabled:",
+    "setName:",
+    "type",
+    "isEnabled",
+    "setValue:forKey:",
+    "valueForKey:",
+    "CA_copyRenderValue",
+    "CAMLTypeForKey:",
+    "CAMLParser:setValue:forKey:",
+    "isAccessibility",
+    "cachesInputImage",
+    "encodeWithCAMLWriter:",
+    "initWithType:",
+    "setAccessibility:",
+    "setCachesInputImage:",
+    "setDefaults"
+  ],
+  "filterTypes": [
+    "alphaThreshold",
+    "alphaSmoothThreshold",
+    "multiplyColor",
+    "colorAdd",
+    "colorSubtract",
+    "colorMonochrome",
+    "colorMatrix",
+    "colorHueRotate",
+    "colorSaturate",
+    "colorBrightness",
+    "colorContrast",
+    "colorInvert",
+    "colorInvertDisplayAware",
+    "compressLuminance",
+    "opacityPair",
+    "meteor",
+    "srl",
+    "edrGain",
+    "edrGainMultiply",
+    "luminanceToAlpha",
+    "bias",
+    "distanceField",
+    "gaussianBlur",
+    "variableBlur",
+    "glassBackground",
+    "glassForeground",
+    "chromaticAberration",
+    "chromaticAberrationMap",
+    "displacementMap",
+    "luminanceMap",
+    "luminanceCurveMap",
+    "curves",
+    "averageColor",
+    "lanczosResize",
+    "pageCurl",
+    "sdrNormalize",
+    "vibrantDark",
+    "vibrantLight",
+    "vibrantColorMatrix",
+    "limitAveragePixelLuminance",
+    "lut",
+    "vibrantColorMatrixSourceOver"
+  ],
+  "windows": [
+    {
+      "layers": [
+        {
+          "depth": 0,
+          "frame": [0, 0, 402, 874],
+          "name": "UIWindow\/UIWindowLayer#UIWindow (com.raphaelsalaja.blur)",
+          "opacity": 1
+        },
+        {
+          "depth": 1,
+          "frame": [0, 0, 402, 874],
+          "name": "_UITouchFallbackView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 1,
+          "frame": [0, 0, 402, 874],
+          "name": "UITransitionView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 2,
+          "frame": [0, 0, 402, 874],
+          "name": "UIDropShadowView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 3,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__\/CALayer#_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__ (_TtGC7SwiftUI19UIHostingControllerGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__)",
+          "opacity": 1
+        },
+        {
+          "depth": 4,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$1ca65618c21UIKitAdaptableTabView__\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 5,
+          "frame": [0, 0, 402, 874],
+          "name": "UILayoutContainerView\/CALayer#UILayoutContainerView (SwiftUI.UIKitTabBarController)",
+          "opacity": 1
+        },
+        {
+          "depth": 6,
+          "frame": [0, 0, 402, 874],
+          "name": "UITransitionView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 7,
+          "frame": [0, 0, 402, 874],
+          "name": "UIViewControllerWrapperView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 8,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI14_UIHostingViewVVS_7TabItem8RootView_\/CALayer#_TtGC7SwiftUI14_UIHostingViewVVS_7TabItem8RootView_ (SwiftUI.TabHostingController)",
+          "opacity": 1
+        },
+        {
+          "depth": 9,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI21UIKitPlatformViewHostGVS_42PlatformViewControllerRepresentableAdaptorVS_P10$1ca66e2a828NavigationStackRepresentable__\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 10,
+          "frame": [0, 0, 402, 874],
+          "name": "UILayoutContainerView\/CALayer#UILayoutContainerView (SwiftUI.UIKitNavigationController)",
+          "opacity": 1
+        },
+        {
+          "depth": 11,
+          "frame": [0, 0, 402, 874],
+          "name": "UINavigationTransitionView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 0, 402, 874],
+          "name": "UIViewControllerWrapperView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 13,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$1ca66e02c11HostingView\/CALayer#_TtCGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_P10$1ca66e02c11HostingView (_TtGC7SwiftUI32NavigationStackHostingControllerVS_7AnyView_)",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "frame": [-9, 0, 420, 874],
+          "name": "_TtCC7SwiftUI17HostingScrollView17PlatformContainer\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 15,
+          "frame": [-9, 0, 420, 874],
+          "name": "SwiftUI.HostingScrollView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 16,
+          "frame": [-9, 0, 420, 874],
+          "name": "_UITouchPassthroughView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 17,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputNormalizeEdges": true,
+              "inputRadius": 16,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [-9, 0, 420, 156],
+          "name": "_TtCC5UIKit20ScrollEdgeEffectView12BackdropView\/CABackdropLayer",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": true,
+            "delegate": "<_TtCC5UIKit20ScrollEdgeEffectView12BackdropView: 0x1043ac380; identifier = 'Background source for 0x000000010713a800'; frame = (0 0; 420 156); userInteractionEnabled = NO; layer = <CABackdropLayer: 0x106c292c0>>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "backgroundGroup-0x000000010713a800",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.25,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 17,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputNormalizeEdges": true,
+              "inputRadius": 16,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [-9, 741, 420, 133],
+          "name": "_TtCC5UIKit20ScrollEdgeEffectView12BackdropView\/CABackdropLayer",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": true,
+            "delegate": "<_TtCC5UIKit20ScrollEdgeEffectView12BackdropView: 0x1043ac540; identifier = 'Background source for 0x000000010713aa80'; frame = (0 741; 420 133); userInteractionEnabled = NO; layer = <CABackdropLayer: 0x106c29400>>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "backgroundGroup-0x000000010713aa80",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.25,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 16,
+          "frame": [-9, -1046.6666666666667, 420, 3000],
+          "name": "_TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0, 0, 1],
+          "depth": 17,
+          "frame": [-9, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1, 1, 1],
+          "depth": 17,
+          "frame": [51, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0, 0, 1],
+          "depth": 17,
+          "frame": [111, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1, 1, 1],
+          "depth": 17,
+          "frame": [171, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0, 0, 1],
+          "depth": 17,
+          "frame": [231, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1, 1, 1],
+          "depth": 17,
+          "frame": [291, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0, 0, 1],
+          "depth": 17,
+          "frame": [351, -1046.6666666666667, 60, 3000],
+          "name": "_SwiftUILayerDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 16,
+          "frame": [0, -1098.6666666666667, 402, 52],
+          "name": "_UINavigationBarLargeTitleView\/CALayer",
+          "opacity": 0
+        },
+        {
+          "contents": "<CABackingStore 0x104327600 (buffer [335 122] A8)>",
+          "depth": 17,
+          "frame": [
+            15.999999999999993, -1095, 111.66666666666666, 40.666666666666742
+          ],
+          "name": "UILabel\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 16,
+          "frame": [-9, 0, 420, 874],
+          "name": "_UITouchPassthroughView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 17,
+          "frame": [-9, 0, 420, 156],
+          "name": "UIKit.ScrollEdgeEffectView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 18,
+          "frame": [-9, 0, 420, 156],
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CALayer#v8: soft",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputNormalizeEdges": true,
+              "inputRadius": 16,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [-9, 0, 420, 156],
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CABackdropLayer#Replay",
+          "opacity": 0.5,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<_UIScrollEdgeEffectLayerDelegate: 0x1041e72c0>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "backgroundGroup-0x000000010713a800",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.25,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "compositingFilter": "destIn",
+          "depth": 20,
+          "frame": [-9, 0, 420, 156],
+          "gradient": {
+            "colors": [[1, 0, 1, 1], [1, 0, 1, 0]],
+            "end": [0.5, 1],
+            "locations": null,
+            "start": [0.5, 0.34065934065934067],
+            "type": "axial"
+          },
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CAGradientLayer#ReplayMask",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputMaskImage": {
+                "image": "mask-00.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "blur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 0, 420, 156],
+          "name": "_TtCCOC5UIKit20ScrollEdgeEffectView2v812ScrollPocket11LumaTracker\/CABackdropLayer#Pocket",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": true,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<_TtCCOC5UIKit20ScrollEdgeEffectView2v812ScrollPocket11LumaTracker: 0x106dad7d0>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 17,
+          "frame": [-9, 741, 420, 133],
+          "name": "UIKit.ScrollEdgeEffectView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 18,
+          "frame": [-9, 741, 420, 133],
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CALayer#v8: soft",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputNormalizeEdges": true,
+              "inputRadius": 16,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [-9, 754, 420, 120],
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CABackdropLayer#Replay",
+          "opacity": 0.5,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<_UIScrollEdgeEffectLayerDelegate: 0x1041e72c0>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "backgroundGroup-0x000000010713aa80",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.25,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "compositingFilter": "destIn",
+          "depth": 20,
+          "frame": [-9, 754, 420, 120],
+          "gradient": {
+            "colors": [[1, 0, 1, 1], [1, 0, 1, 0]],
+            "end": [0.5, 0],
+            "locations": null,
+            "start": [0.5, 1],
+            "type": "axial"
+          },
+          "name": "_UIScrollEdgeEffectLayerDelegate\/CAGradientLayer#ReplayMask",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputDither": true,
+              "inputMaskImage": {
+                "image": "mask-01.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "blur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 754, 420, 120],
+          "name": "_TtCCOC5UIKit20ScrollEdgeEffectView2v812ScrollPocket11LumaTracker\/CABackdropLayer#Pocket",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": true,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<_TtCCOC5UIKit20ScrollEdgeEffectView2v812ScrollPocket11LumaTracker: 0x106dada10>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 16,
+          "frame": [405, 362.33333333333326, 3, 182.66666666666663],
+          "name": "_UIScrollViewScrollIndicator\/CALayer",
+          "opacity": 0
+        },
+        {
+          "background": [0, 0.34999999999999998],
+          "depth": 17,
+          "frame": [405, 362.33333333333326, 3, 182.66666666666674],
+          "name": "UIView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 11,
+          "frame": [0, 62, 402, 54],
+          "name": "SwiftUI.UIKitNavigationBar\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 0, 402, 116],
+          "name": "_UIBarBackground\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 116, 402, 0],
+          "name": "UIKit.NavigationBarLargeTitleView\/CALayer",
+          "opacity": 0
+        },
+        {
+          "depth": 12,
+          "frame": [0, 62, 402, 54],
+          "name": "UIKit.NavigationBarContentView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [0, 62, 402, 54],
+          "name": "UIKit.NavigationBarTransitionContainer\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 14,
+          "frame": [0, 62, 402, 54],
+          "name": "_UINavigationBarHostedViewContainer\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputRadius": 0,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [
+            172.66666666666666, 73.666666666666657, 56.666666666666686,
+            20.666666666666671
+          ],
+          "name": "_UINavigationBarHostedViewWrapper\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 16,
+          "frame": [
+            172.66666666666666, 73.666666666666657, 56.666666666666686,
+            20.666666666666671
+          ],
+          "name": "_UINavigationBarTitleControl\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 17,
+          "frame": [
+            172.66666666666666, 73.666666666666657, 56.666666666666657,
+            20.666666666666671
+          ],
+          "name": "_UIIntrinsicContentSizeInvalidationForwardingWrapperView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "contents": "<CABackingStore 0x104327400 (buffer [169 62] A8)>",
+          "depth": 18,
+          "frame": [
+            172.66666666666666, 73.666666666666657, 56.333333333333343,
+            20.666666666666671
+          ],
+          "name": "UILabel\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "frame": [0, 62, 402, 54],
+          "name": "UIView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "frame": [0, 62, 402, 54],
+          "name": "UIKit.NavigationBarPlatterContainer_v2\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 15,
+          "frame": [0, 62, 402, 54],
+          "name": "_TtGC5UIKitP10$1c5763a3c27PlatterContainerHostingViewVS_P10$1c5763c1027NavigationBarPlatterContent_\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 16,
+          "frame": [0, 62, 402, 54],
+          "name": "SwiftUI._UIInheritedView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 17,
+          "frame": [0, 62, 402, 54],
+          "name": "SwiftUI._UIInheritedView\/SwiftUI.SDFLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 18,
+          "frame": [0, 62, 0, 0],
+          "name": "SwiftUI._UIInheritedView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "frame": [342, 62, 44, 44],
+          "name": "_TtC5UIKitP33_F83AB3ECBB2C378B4FCEB681A4D7DB7430UIPlatformGlassInteractionView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 20,
+          "frame": [342, 62, 44, 44],
+          "name": "SwiftUI._UIInheritedView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 21,
+          "frame": [346, 66, 36, 36],
+          "name": "_TtGC5UIKit22UICorePlatformViewHostGVS_32PlatformViewRepresentableAdaptorVS_P10$1c5763d6033NavigationBarPlatterRepresentable__\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 22,
+          "frame": [346, 66, 36, 36],
+          "name": "_TtCC5UIKit19NavigationButtonBar15ItemWrapperView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 23,
+          "frame": [346, 66, 36, 36],
+          "name": "_UIButtonBarButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 24,
+          "frame": [348, 73.333333333333329, 32, 22],
+          "name": "_UIModernBarButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 25,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [
+            352.33333333333331, 73.333333333333329, 23.333333333333314, 22
+          ],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-02.png"
+          },
+          "depth": 26,
+          "frame": [
+            352.33333333333331, 73.333333333333329, 23.333333333333314, 22
+          ],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 18,
+          "frame": [342, 62, 44, 44],
+          "name": "_NoAnimationDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "DLCAFilter",
+              "description": "glassBackground",
+              "enabled": true,
+              "inputBlurRadius": 5,
+              "inputSourceSublayerName": "@0",
+              "name": "glassBackground",
+              "type": "glassBackground"
+            }
+          ],
+          "frame": [342, 62, 44, 44],
+          "name": "SwiftUI.SDFLayer\/CABackdropLayer#@0",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": true,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<SwiftUI.SDFLayer: 0x1072e4600>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "UINavigationBar-0x10434c8c0",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 16,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": true,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 20,
+          "frame": [342, 62, 44, 44],
+          "name": "_NoAnimationDelegate\/CASDFLayer#@0",
+          "opacity": 1,
+          "props": {
+            "effect": "<CASDFOutputEffect: 0x10735a080>",
+            "effectOffset": 0,
+            "gaussianRadius": 0,
+            "mergeElements": false,
+            "smoothness": 12
+          }
+        },
+        {
+          "depth": 21,
+          "frame": [0, 62, 0, 0],
+          "name": "_NoAnimationDelegate\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 22,
+          "frame": [342, 62, 44, 44],
+          "name": "_SwiftUISDFLayerDelegate\/CASDFElementLayer",
+          "opacity": 1,
+          "props": {
+            "contentsOneValueDistance": 1,
+            "contentsZeroValueDistance": 0,
+            "gradientOvalization": 0,
+            "hitTestsAsFill": true,
+            "mode": "bounds",
+            "operation": "union"
+          }
+        },
+        {
+          "depth": 19,
+          "frame": [342, 62, 44, 44],
+          "name": "_NoAnimationDelegate\/_TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer#@1",
+          "opacity": 1,
+          "props": {
+            "allowedInContextTransform": false,
+            "allowsBackdropGroups": true,
+            "crossDisplay": false,
+            "excludeSeparated": false,
+            "hidesSourceLayer": true,
+            "hidesSourceLayerInOtherPortals": false,
+            "matchesOpacity": false,
+            "matchesPosition": false,
+            "matchesTransform": false,
+            "overrides": null,
+            "sourceContextId": 4076895837,
+            "sourceLayer": "<CALayer: 0x106dac150>",
+            "sourceLayerOpacityScale": 1,
+            "sourceLayerRenderId": 8079422501331854571
+          }
+        },
+        {
+          "depth": 19,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                1.1201999187469482, -0.18940000236034393, -0.018999999389052391,
+                0, 0.14710000157356262, -0.056299999356269836,
+                0.98709994554519653, -0.019099999219179153, 0,
+                0.14710000157356262, -0.056299999356269836,
+                -0.18930000066757202, 1.1574000120162964, 0,
+                0.14710000157356262, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [342, 62, 44, 44],
+          "name": "_NoAnimationDelegate\/CASDFLayer#@2",
+          "opacity": 1,
+          "props": {
+            "effect": "<CASDFKeyFillHighlightEffect: 0x1072e46c0>",
+            "effectOffset": 0,
+            "gaussianRadius": 0,
+            "mergeElements": false,
+            "smoothness": 12
+          }
+        },
+        {
+          "depth": 20,
+          "frame": [0, 62, 0, 0],
+          "name": "_NoAnimationDelegate\/_TtC7SwiftUIP33_05C1F5BE6EE7940FED05100EA822F7B314SDFPortalLayer",
+          "opacity": 1,
+          "props": {
+            "allowedInContextTransform": false,
+            "allowsBackdropGroups": false,
+            "crossDisplay": false,
+            "excludeSeparated": false,
+            "hidesSourceLayer": false,
+            "hidesSourceLayerInOtherPortals": false,
+            "matchesOpacity": false,
+            "matchesPosition": false,
+            "matchesTransform": false,
+            "overrides": null,
+            "sourceContextId": 4076895837,
+            "sourceLayer": "<CALayer: 0x106dac240>",
+            "sourceLayerOpacityScale": 1,
+            "sourceLayerRenderId": 8079422501331855851
+          }
+        },
+        {
+          "depth": 15,
+          "frame": [0, 62, 0, 0],
+          "name": "_UIPointerInteractionAssistantEffectContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 62, 0, 0],
+          "name": "_UIPointerInteractionAssistantEffectContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 11,
+          "frame": [0, 0, 402, 874],
+          "name": "_UIFloatingBarContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC5UIKitP10$1c5774cd822FloatingBarHostingViewVS_20FloatingBarContainer_\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [0, 0, 0, 0],
+          "name": "_UIPointerInteractionAssistantEffectContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 6,
+          "frame": [0, 0, 402, 874],
+          "name": "_UITabContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 7,
+          "frame": [0, 791, 402, 83],
+          "name": "_UIBottomTabBarGroupView\/_UIMultiLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 8,
+          "frame": [0, 791, 402, 83],
+          "name": "_UIBottomTabBarGroupView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 9,
+          "frame": [0, 0, 402, 874],
+          "name": "_UITouchPassthroughView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 10,
+          "frame": [0, 791, 402, 83],
+          "name": "UITabBar\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 11,
+          "frame": [64, 791, 274, 62],
+          "name": "UIKit._UITabBarItemPlatterView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [64, 791, 274, 62],
+          "name": "_TtCC5UIKit32_UITabBarVisualProvider_FloatingP33_3C6E5A7AE2316B749C88F887559DAAB619SelectedContentView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [68, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [98.333333333333329, 801, 33.333333333333329, 28],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-03.png"
+          },
+          "depth": 15,
+          "frame": [98.333333333333329, 801, 33.333333333333329, 28],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [68, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [100.33333333333334, 830, 29.333333333333343, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104327200 (buffer [88 36] A8)>",
+          "depth": 16,
+          "frame": [100.33333333333334, 830, 29.333333333333343, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [154, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [
+            187.33333333333334, 801.66666666666663, 27.666666666666657,
+            26.666666666666629
+          ],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-04.png"
+          },
+          "depth": 15,
+          "frame": [
+            187.33333333333334, 801.66666666666663, 27.666666666666657,
+            26.666666666666629
+          ],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [154, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [183.66666666666669, 830, 35, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104327000 (buffer [105 36] A8)>",
+          "depth": 16,
+          "frame": [183.66666666666669, 830, 35, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [240, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [274, 799.66666666666663, 26, 32.333333333333371],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-05.png"
+          },
+          "depth": 15,
+          "frame": [274, 799.66666666666663, 26, 32.333333333333371],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [240, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.12317518889904022, 0.057481750845909119, 0, 0,
+                -0.18065695464611053, 0.18886861205101013, 0.088138677179813385,
+                0, 0, 0.25632604956626892, 0.24635037779808044,
+                0.11496350169181824, 0, 0, 0.63868606090545654, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [269.33333333333337, 830, 35.666666666666686, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104326e00 (buffer [107 36] A8)>",
+          "depth": 16,
+          "frame": [269.33333333333337, 830, 35.666666666666686, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "opacityPair",
+              "enabled": true,
+              "name": "opacityPair",
+              "type": "opacityPair"
+            }
+          ],
+          "frame": [68, 795, 94, 54],
+          "name": "_UILiquidLensView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 13,
+          "frame": [68, 795, 94, 54],
+          "name": "UIView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "inputNormalizeEdges": true,
+              "inputRadius": 2,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            },
+            {
+              "class": "CAFilter",
+              "description": "colorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                1.1850999593734741, -0.050200000405311584,
+                -0.004999999888241291, 0, -0.19999998807907104,
+                -0.014899999834597111, 1.149899959564209,
+                -0.0050999997183680534, 0, -0.19999998807907104,
+                -0.014899999834597111, -0.049999997019767761,
+                1.1948999166488647, 0, -0.19999998807907104, 0, 0, 0, 1, 0
+              ],
+              "name": "colorMatrix",
+              "type": "colorMatrix"
+            }
+          ],
+          "frame": [68, 795, 94, 54],
+          "name": "_UITabSelectionView\/CABackdropLayer",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<_UITabSelectionView: 0x1042b0e00; frame = (0 0; 94 54); autoresize = W+H; layer = <CABackdropLayer: 0x106caab40>>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "<UITabSelectionView: 0x1042b0e00>",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.25,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 14,
+          "frame": [68, 795, 94, 54],
+          "name": "_TtCE5UIKitCSo17_UILiquidLensViewP33_4C400BD973F5E4E0B779D1A21A7AEB2714ClearGlassView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "displacementMap",
+              "enabled": true,
+              "inputAmount": 0,
+              "inputSourceSublayerName": "warpSDF",
+              "name": "displacementMap",
+              "type": "displacementMap"
+            }
+          ],
+          "frame": [68, 795, 94, 54],
+          "name": "UIView\/CALayer#_UILiquidLensView.ClearGlassView.liftedContentWarpWrapper",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 16,
+          "frame": [68, 795, 94, 54],
+          "name": "_TtCE5UIKitCSo17_UILiquidLensViewP33_4C400BD973F5E4E0B779D1A21A7AEB277SDFView\/CASDFLayer#warpSDF",
+          "opacity": 1,
+          "props": {
+            "effect": "<CASDFGlassDisplacementEffect: 0x106e7bcc0>",
+            "effectOffset": 0,
+            "gaussianRadius": 0,
+            "mergeElements": false,
+            "smoothness": 0
+          }
+        },
+        {
+          "depth": 17,
+          "frame": [68, 795, 94, 54],
+          "name": "_TtCE5UIKitCSo17_UILiquidLensViewP33_4C400BD973F5E4E0B779D1A21A7AEB2714SDFElementView\/CASDFElementLayer",
+          "opacity": 1,
+          "props": {
+            "contentsOneValueDistance": 1,
+            "contentsZeroValueDistance": 0,
+            "gradientOvalization": 0.5,
+            "hitTestsAsFill": false,
+            "mode": "bounds",
+            "operation": "union"
+          }
+        },
+        {
+          "depth": 16,
+          "frame": [68, 795, 94, 54],
+          "name": "_UIPortalView\/CAPortalLayer",
+          "opacity": 1,
+          "props": {
+            "allowedInContextTransform": false,
+            "allowsBackdropGroups": false,
+            "crossDisplay": false,
+            "excludeSeparated": false,
+            "hidesSourceLayer": true,
+            "hidesSourceLayerInOtherPortals": false,
+            "matchesOpacity": true,
+            "matchesPosition": true,
+            "matchesTransform": true,
+            "overrides": null,
+            "sourceContextId": 0,
+            "sourceLayer": "<CALayer: 0x106e7bc00>",
+            "sourceLayerOpacityScale": 1,
+            "sourceLayerRenderId": 0
+          }
+        },
+        {
+          "depth": 15,
+          "frame": [68, 795, 94, 54],
+          "name": "UIView\/CALayer#_UILiquidLensView.ClearGlassView.innerShadowView",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [64, 791, 274, 62],
+          "name": "_TtCC5UIKit20_UITabBarPlatterViewP33_022AA364308030F4627162921FD6D31A11ContentView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [68, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [98.333333333333329, 801, 33.333333333333329, 28],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-06.png"
+          },
+          "depth": 15,
+          "frame": [98.333333333333329, 801, 33.333333333333329, 28],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [68, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [100.66666666666666, 830, 29, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104326c00 (buffer [87 36] A8)>",
+          "depth": 16,
+          "frame": [100.66666666666666, 830, 29, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [154, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [
+            187.33333333333334, 801.66666666666663, 27.666666666666657,
+            26.666666666666629
+          ],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-07.png"
+          },
+          "depth": 15,
+          "frame": [
+            187.33333333333334, 801.66666666666663, 27.666666666666657,
+            26.666666666666629
+          ],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [154, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [184, 830, 34.333333333333343, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104326a00 (buffer [103 36] A8)>",
+          "depth": 16,
+          "frame": [184, 830, 34.333333333333343, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "depth": 13,
+          "frame": [240, 795, 94, 54],
+          "name": "_UITabButton\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [274, 799.66666666666663, 26, 32.333333333333371],
+          "name": "UIImageView\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": {
+            "image": "mask-08.png"
+          },
+          "depth": 15,
+          "frame": [274, 799.66666666666663, 26, 32.333333333333371],
+          "name": "UIImageView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "gaussianBlur",
+              "enabled": true,
+              "name": "gaussianBlur",
+              "type": "gaussianBlur"
+            }
+          ],
+          "frame": [240, 795, 94, 54],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D16TitleWrapperView\/CALayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "depth": 15,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                0.3125, 0, 0, 0, -0.25, 0, 0.3125, 0, 0, -0.25, 0, 0, 0.3125, 0,
+                -0.25, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [269.66666666666669, 830, 35, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UIMultiLayer",
+          "opacity": 1,
+          "props": {}
+        },
+        {
+          "contents": "<CABackingStore 0x104326800 (buffer [105 36] A8)>",
+          "depth": 16,
+          "frame": [269.66666666666669, 830, 35, 12],
+          "name": "_TtCC5UIKit12_UITabButtonP33_4EA307C86E0356016F55ED2F1518661D5Label\/_UILabelLayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 1],
+          "compositingFilter": "destOut",
+          "depth": 12,
+          "frame": [64, 791, 94, 54],
+          "name": "_TtCE5UIKitCSo17_UILiquidLensViewP33_4C400BD973F5E4E0B779D1A21A7AEB2711DestOutView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 12,
+          "frame": [64, 791, 274, 62],
+          "name": "_TtCC5UIKit20_UITabBarPlatterViewP33_022AA364308030F4627162921FD6D31A18BadgeContainerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 8,
+          "frame": [0, 791, 402, 83],
+          "name": "UIKit._GlassGroupView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 9,
+          "frame": [0, 791, 402, 83],
+          "name": "_TtC5UIKitP33_0A8B4DB961B57EBA158E8356A5AC0B1F19GlassGroupLayerView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0],
+          "compositingFilter": "normalBlendMode",
+          "depth": 10,
+          "frame": [0, 791, 402, 83],
+          "name": "UIKit._UIMaterialDefinitionView\/CALayer#MaterialProvider",
+          "opacity": 1
+        },
+        {
+          "background": [0, 0],
+          "compositingFilter": "normalBlendMode",
+          "depth": 11,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "glassBackground",
+              "enabled": true,
+              "inputBlurRadius": 5,
+              "inputSourceSublayerName": "@0",
+              "name": "glassBackground",
+              "type": "glassBackground"
+            }
+          ],
+          "frame": [0, 791, 402, 83],
+          "name": "UIKit.UISDFBackdropView\/CABackdropLayer",
+          "opacity": 1,
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": "<UIKit.UISDFBackdropView: 0x1042b3b80; frame = (0 0; 402 83); autoresize = W+H; backgroundColor = UIExtendedGrayColorSpace 0 0; layer = <CABackdropLayer: 0x10422f140>>",
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": "_GlassGroup-0x00000001043b2800",
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 16,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": true,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "background": [0, 0],
+          "compositingFilter": "normalBlendMode",
+          "depth": 12,
+          "frame": [0, 791, 402, 83],
+          "name": "UIKit.UISDFView\/CASDFLayer#@0",
+          "opacity": 1,
+          "props": {
+            "effect": "<CASDFOutputEffect: 0x10709b1e0>",
+            "effectOffset": 0,
+            "gaussianRadius": 0,
+            "mergeElements": false,
+            "smoothness": 6
+          }
+        },
+        {
+          "depth": 13,
+          "frame": [0, 791, 402, 83],
+          "name": "UIView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 14,
+          "frame": [0, 791, 0, 0],
+          "name": "_TtC5UIKitP33_ACD4A08F4BE9D00246F2A9C24A80CA8816UISDFElementView\/CASDFElementLayer",
+          "opacity": 1,
+          "props": {
+            "contentsOneValueDistance": 1,
+            "contentsZeroValueDistance": 0,
+            "gradientOvalization": 0,
+            "hitTestsAsFill": true,
+            "mode": "bounds",
+            "operation": "union"
+          }
+        },
+        {
+          "background": [0, 0],
+          "compositingFilter": "normalBlendMode",
+          "depth": 11,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "vibrantColorMatrix",
+              "enabled": true,
+              "inputColorMatrix": [
+                1.1201999187469482, -0.18940000236034393, -0.018999999389052391,
+                0, 0.14710000157356262, -0.056299999356269836,
+                0.98709994554519653, -0.019099999219179153, 0,
+                0.14710000157356262, -0.056299999356269836,
+                -0.18930000066757202, 1.1574000120162964, 0,
+                0.14710000157356262, 0, 0, 0, 1, 0
+              ],
+              "name": "vibrantColorMatrix",
+              "type": "vibrantColorMatrix"
+            }
+          ],
+          "frame": [0, 791, 402, 83],
+          "name": "UIKit.UISDFView\/CASDFLayer#SDF",
+          "opacity": 1,
+          "props": {
+            "effect": "<CASDFKeyFillHighlightEffect: 0x104207900>",
+            "effectOffset": 0,
+            "gaussianRadius": 0,
+            "mergeElements": false,
+            "smoothness": 6
+          }
+        },
+        {
+          "depth": 12,
+          "frame": [0, 791, 402, 83],
+          "name": "_UIPortalView\/CAPortalLayer",
+          "opacity": 1,
+          "props": {
+            "allowedInContextTransform": false,
+            "allowsBackdropGroups": false,
+            "crossDisplay": false,
+            "excludeSeparated": false,
+            "hidesSourceLayer": false,
+            "hidesSourceLayerInOtherPortals": false,
+            "matchesOpacity": false,
+            "matchesPosition": false,
+            "matchesTransform": false,
+            "overrides": null,
+            "sourceContextId": 0,
+            "sourceLayer": "<CALayer: 0x106d4c9c0>",
+            "sourceLayerOpacityScale": 1,
+            "sourceLayerRenderId": 0
+          }
+        }
+      ],
+      "window": "UIWindow"
+    }
+  ]
+}

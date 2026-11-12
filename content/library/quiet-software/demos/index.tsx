@@ -36,8 +36,9 @@ const quiet = line((x) => QUIET - 10 * bump(x, MOMENT, 9));
 export function NoiseFigure() {
   return (
     <Figure
+      title="Noise and Quiet"
       label="Two lines. The first jitters and spikes the whole way across. The second stays flat, with one small rise where the thing you came for happens."
-      viewBox="0 0 480 140"
+      viewBox="0 0 480 124"
     >
       <text className={figure.text} x={START} y={14}>
         Built to be noticed
@@ -81,6 +82,7 @@ const products = [
 export function LastsFigure() {
   return (
     <Figure
+      title="Appeal Over Time"
       label="Two lines over time. The loud product starts high and falls away. The quiet product starts lower and keeps rising, crossing above the loud one early and staying there."
       viewBox="0 0 480 140"
       labels={["First five minutes", "Five hundredth minute"]}

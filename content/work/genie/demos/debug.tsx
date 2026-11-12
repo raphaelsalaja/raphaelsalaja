@@ -1,16 +1,7 @@
 "use client";
 
 import { Slider } from "@base-ui/react/slider";
-import {
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
-import { Control, ControlButton } from "@/components/controls";
+import type { Rect } from "@web-kits/springboard";
 import {
   createDriver,
   type Edge,
@@ -21,8 +12,17 @@ import {
   geniePhases,
   HANDOFF,
   type Mesh,
-  type Rect,
-} from "@/components/genie";
+} from "@web-kits/springboard";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { Control, ControlButton } from "@/components/controls";
 import styles from "./debug.module.css";
 import {
   AppWindow,

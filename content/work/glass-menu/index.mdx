@@ -1,0 +1,71 @@
+import { GlassMenu, MorphDebug, Order, Phases } from "./demos";
+
+How does iOS 27 grow a menu out of a glass button? Kavsoft found it comes down to where one modifier goes.[^1] I rebuilt his screen in the Simulator, measured the morph and ported it to the web as a Base UI Menu.
+
+<Demo>
+  <GlassMenu />
+</Demo>
+
+## Put the Source Inside the Glass
+
+Kavsoft's screen is a glass button with a popover, tied together by a zoom transition. `matchedTransitionSource` marks the view the popover grows from and `navigationTransition(.zoom)` points the popover at it. What matters is which view gets the mark.
+
+```swift title="menu.swift"
+Button { showPopover.toggle() } label: {
+  label.matchedTransitionSource(id: "plus", in: namespace)
+}
+.buttonStyle(.glass)
+.popover(isPresented: $showPopover) {
+  content.navigationTransition(.zoom(sourceID: "plus", in: namespace))
+}
+```
+
+SwiftUI applies modifiers from the inside out, so this marks the label, inside the glass.[^2] On the button, the popover zooms out of it as one shape. On the label, the two come apart like drops of water, the way a native `Menu` does.
+
+<Order />
+<sub>All three at half speed in the iOS 27 Simulator.</sub>
+
+## Two Shapes and a Field
+
+The layer trees showed why. The native menu and the label version run the same animation, `_UILiquidMorphAnimation`: two shapes (the popover and the button), a lens that bends the content near the edge and a field that joins the shapes into one. The button version morphs a single shape and has no field. My guess is that a source inside the glass tells UIKit the glass is a separate shape it can pull the popover out of.
+
+## The Numbers
+
+I recorded each version at 120 Hz with a library injected into the app, and read the springs from iOS's own settings.[^3] One spring drives the whole morph:
+
+| Run | Response | Damping | Starts |
+| --- | ---: | ---: | ---: |
+| Opening | 0.35 s | 0.75 | 76 ms |
+| Closing | 0.49 s | 0.8 | 32 ms |
+
+As it runs, the popover grows from the label's size to its own and the button shrinks to a quarter under it. Four short pulses ride on top: the popover kicks up about 24 points, the lens bends the content by up to 30 and blurs it by 3, and the field blurs by up to 20, which rounds the gap between the shapes into a neck.
+
+<Phases />
+<sub>Opening, the field holds its 20-point cap from 119 to 315 ms and the lens peaks at 195 ms. Closing, the cap lasts 38 ms and the lens peaks at 134 ms.</sub>
+
+## On the Web
+
+The browser has no signed distance fields, so the field is an SVG filter: the two shapes blurred together, cut at half alpha and filled with the popup's own background and shadow. The lens is an `feDisplacementMap` on a copy of the content. A `backdrop-filter` would have bent the page behind the popup too, and only Chromium draws an SVG filter there.[^4]
+
+Against the recording, the shapes stay within 0.24 points opening and 0.72 closing. The lens map's shape and how far the popover kicks at other distances are guesses, and the ledger marks them.
+
+## Debugging
+
+The debugger plays the same model with what the menu hides drawn in: both outlines, the field and the springs.
+
+<Demo wide>
+  <MorphDebug />
+</Demo>
+<sub>Drag the playhead or press Play. Switch off Field to see the two shapes it joins.</sub>
+
+## When to Use It
+
+I'd use it where a glass button opens a few actions and the menu covers it, like a floating plus or a toolbar's overflow button, and skip it for text links, long menus and anything opened many times a minute, where three quarters of a second is long.
+
+[^1]: Kavsoft, [post on X](https://x.com/_Kavsoft/status/2119138933477151227), 7 November 2026.
+
+[^2]: [Configuring views](https://developer.apple.com/documentation/swiftui/configuring-views) and [`matchedTransitionSource(id:in:)`](https://developer.apple.com/documentation/swiftui/view/matchedtransitionsource(id:in:)), Apple.
+
+[^3]: Every value and its source is in `scripts/glass/ledger.md` in this site's source, with the guesses marked.
+
+[^4]: [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter), MDN.

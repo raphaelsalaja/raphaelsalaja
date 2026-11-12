@@ -12,6 +12,7 @@ const BRIDGE = { x: 112, width: 256, y: 96 };
 export function GapFigure() {
   return (
     <Figure
+      title="The Handoff Gap"
       label="Two bars on a line from how it looks to how it works. The designer covers the left, the engineer covers the right, and a dashed gap sits between them, where quality dies. A third bar, the design engineer, spans the gap."
       viewBox="0 0 480 128"
       labels={["How it looks", "How it works"]}
@@ -80,6 +81,7 @@ export function FloorFigure() {
 
   return (
     <Figure
+      title="Past the Static Design"
       label="A vertical line marks the static design. The front-end engineer's bar stops exactly at it. The design engineer's bar reaches the same line and keeps going, dashed, into motion, states and feel."
       viewBox="0 0 480 128"
     >

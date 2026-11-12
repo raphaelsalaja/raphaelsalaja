@@ -1,0 +1,56 @@
+/* Spaced like the code blocks around it */
+.root {
+  margin-block-start: 12px;
+
+  & + :is(p, h2, h3, ul) {
+    margin-block-start: 24px;
+  }
+
+  & + [data-code-block] {
+    margin-block-start: 12px;
+  }
+}
+
+.list {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+  margin-left: -4px;
+}
+
+.tab {
+  height: 28px;
+  padding: 0 8px;
+  font-size: 14px;
+  font-variation-settings: var(--font-weight-500);
+  line-height: 20px;
+  color: var(--text-quaternary);
+  border-radius: 8px;
+  transition:
+    color var(--duration-snappy) ease,
+    background-color var(--duration-snappy) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--text-secondary);
+    }
+  }
+
+  &[data-active] {
+    color: var(--text-primary);
+    background-color: var(--background-primary);
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / calc(6% * var(--shadow-strength))),
+      0 0 0 1px oklch(0 0 0 / calc(3% * var(--shadow-strength)));
+  }
+}
+
+/* The block styles its own `pre`, which sits a level down in a panel */
+.panel > pre {
+  background-color: var(--background-primary);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 3px oklch(0 0 0 / calc(8% * var(--shadow-strength))),
+    0 0 0 1px oklch(0 0 0 / calc(2% * var(--shadow-strength)));
+}

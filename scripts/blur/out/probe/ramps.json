@@ -1,0 +1,32 @@
+{
+  "mask-00.png": {
+    "horizontal": [1],
+    "label": "CABackdropLayer inputMaskImage",
+    "size": [1, 4],
+    "vertical": [1, 1, 1, 1]
+  },
+  "mask-01.png": {
+    "horizontal": [1],
+    "label": "CABackdropLayer inputMaskImage",
+    "size": [1, 4],
+    "vertical": [1, 1, 1, 1]
+  },
+  "mask-02.png": {
+    "horizontal": [1],
+    "label": "CABackdropLayer inputMaskImage",
+    "size": [1, 4],
+    "vertical": [1, 1, 1, 1]
+  },
+  "mask-03.png": {
+    "horizontal": [1],
+    "label": "CABackdropLayer inputMaskImage",
+    "size": [1, 4],
+    "vertical": [1, 1, 1, 1]
+  },
+  "mask-04.png": {
+    "horizontal": [1],
+    "label": "CABackdropLayer inputMaskImage",
+    "size": [1, 4],
+    "vertical": [1, 1, 1, 1]
+  }
+}

@@ -1,5 +1,6 @@
 article {
   align-self: stretch;
+  counter-reset: figure;
 
   * {
     position: relative;
@@ -75,12 +76,11 @@ article {
     box-shadow: 0 0 0 1px var(--border-secondary);
   }
 
+  /* Wide demos are labs: the stage carries its own frame, as in a showcase. */
   [data-demo][data-wide] {
     width: auto;
+    min-height: 0;
     margin-inline: calc((100% - min(960px, 100vw - 48px)) / 2);
-  }
-
-  [data-demo="transparent"] {
     overflow: visible;
     background: none;
     border-radius: 0;
@@ -188,6 +188,44 @@ article {
   > ul + p,
   > ol + p {
     margin-top: 14px;
+  }
+
+  > table {
+    width: 100%;
+    margin-top: 20px;
+    font-variant-numeric: tabular-nums;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 8px 16px 8px 0;
+      line-height: 24px;
+      vertical-align: top;
+      text-align: left;
+      border-bottom: 1px solid var(--border-primary);
+
+      &:first-child {
+        width: 32%;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    th {
+      padding-top: 0;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  > table + p {
+    margin-top: 20px;
   }
 
   > figure + p {

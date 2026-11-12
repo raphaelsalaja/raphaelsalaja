@@ -19,8 +19,9 @@ export function PayoffFigure() {
 
   return (
     <Figure
+      title="Payoff Over Time"
       label="Two lines covering the same years of work. Building for the work, every day along the line is filled in. Building for the exit, every day is empty except the last one, which might never come."
-      viewBox="0 0 480 136"
+      viewBox="0 14 480 122"
       labels={["Day one", "Years later"]}
     >
       {rows.map(({ name, note, y }) => (
@@ -84,8 +85,9 @@ function chevron(degrees: number) {
 export function ThreadFigure() {
   return (
     <Figure
+      title="Loop and Line"
       label="Two shapes. Building is a loop: make it, someone loves it, make more, and back to the start. Banking is a straight line from raise to grow to exit, and then it stops."
-      viewBox="0 0 480 160"
+      viewBox="0 6 480 154"
     >
       <circle
         className={`${figure.line} ${figure.draw}`}

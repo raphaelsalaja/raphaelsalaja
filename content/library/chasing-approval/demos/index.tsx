@@ -38,8 +38,9 @@ const dots = spread.map(([x, y], i) => {
 export function DriftFigure() {
   return (
     <Figure
+      title="Drift Toward Attention"
       label="Two fields of the same fourteen dots. On the left, each one sits somewhere different. On the right, they have all drifted toward a single point that already has attention, leaving the rest of the field empty."
-      viewBox="0 0 480 160"
+      viewBox="0 25 480 135"
     >
       {dots.map(({ from: [x, y] }) => (
         <circle
@@ -107,8 +108,9 @@ const branches = [
 export function ForkFigure() {
   return (
     <Figure
+      title="Two Motives"
       label="A question, why am I making this, splits into two paths. Because I care about it leads to richer ideas. Because it might get noticed leads to more posturing."
-      viewBox="0 0 480 152"
+      viewBox="0 16 480 136"
     >
       <text className={figure.text} x={24} y={ROOT.y + 3}>
         Why make this?

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { controlFor, play } from "@/lib/sounds";
+import { controlFor, play, prepareAudio } from "@/lib/sounds";
 
 const CLICK_WINDOW = 400;
 
@@ -35,7 +35,17 @@ export function Sounds() {
     document.addEventListener("pointerdown", onPointerDown, true);
     document.addEventListener("click", onClick, true);
 
+    const prepare = () => {
+      if (!motion.matches) prepareAudio();
+    };
+    const idle = "requestIdleCallback" in window;
+    const handle = idle
+      ? requestIdleCallback(prepare)
+      : window.setTimeout(prepare);
+
     return () => {
+      if (idle) cancelIdleCallback(handle);
+      else window.clearTimeout(handle);
       document.removeEventListener("pointerdown", onPointerDown, true);
       document.removeEventListener("click", onClick, true);
     };

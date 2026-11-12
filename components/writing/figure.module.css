@@ -1,4 +1,5 @@
-.figure {
+.canvas,
+.svg {
   --ink: color-mix(in oklab, var(--gray-12) 35%, var(--gray-11));
   --canvas: 480;
   --label-size: 10;
@@ -6,42 +7,15 @@
   --support: var(--gray-9);
   /* Quieter than tertiary text, still at least 4.5:1 in both themes. */
   --quiet: color-mix(in oklab, var(--gray-11) 55%, var(--gray-10));
-
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 40px 24px 20px;
-  margin-top: 32px;
-  background: var(--background-secondary);
-  border-radius: 12px;
-  box-shadow: 0 0 0 1px var(--border-primary);
-}
-
-.scroll {
-  width: 100%;
-  min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scrollbar-color: var(--border-secondary) transparent;
-  scrollbar-width: thin;
 }
 
 .canvas {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  /* 12px holds glyphs that sit just outside the viewBox; figure padding makes up the rest. */
+  /* 12px holds glyphs that sit just outside the viewBox; the panel's padding makes up the rest. */
   min-width: calc(var(--canvas) * 11px / var(--label-size));
-  padding-bottom: 12px;
-}
-
-.figure:has(> .svg) {
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scrollbar-color: var(--border-secondary) transparent;
-  scrollbar-width: thin;
+  padding: 16px 4px 12px;
 }
 
 .svg {
@@ -71,7 +45,7 @@
 }
 
 .dashed {
-  fill: var(--background-secondary);
+  fill: var(--figure-surface);
   stroke: var(--support);
   stroke-width: 1;
   stroke-dasharray: 3 3;
@@ -86,7 +60,7 @@
 }
 
 .plane {
-  fill: var(--background-secondary);
+  fill: var(--figure-surface);
   stroke: var(--ink);
   stroke-width: 1.25;
   stroke-linejoin: round;
@@ -97,7 +71,7 @@
 }
 
 .hollow {
-  fill: var(--background-secondary);
+  fill: var(--figure-surface);
   stroke: var(--ink);
   stroke-width: 1.25;
 }
@@ -108,7 +82,7 @@
   font-variation-settings: var(--font-weight-450);
   letter-spacing: 0;
   text-wrap: nowrap;
-  stroke: var(--background-secondary);
+  stroke: var(--figure-surface);
   stroke-width: 8px;
   stroke-linecap: round;
   stroke-linejoin: round;

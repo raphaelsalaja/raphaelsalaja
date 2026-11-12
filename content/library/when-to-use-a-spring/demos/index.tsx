@@ -18,8 +18,9 @@ const panels = [
 export function CurvesFigure() {
   return (
     <Figure
+      title="Ease and Spring"
       label="Two curves. The ease-out rises to the target and stops. The spring rises past the target, comes back and settles."
-      viewBox="0 0 480 184"
+      viewBox="0 22 480 162"
     >
       {panels.map(({ name, x, fn, note }) => (
         <g key={name}>
@@ -112,8 +113,9 @@ export function InterruptFigure() {
 
   return (
     <Figure
+      title="Interrupted Motion"
       label="Two curves that change direction at the same moment. The ease-out rises, then reverses with a sharp corner. The spring rises, slows, and turns around in a smooth arc."
-      viewBox="0 0 480 196"
+      viewBox="0 22 480 174"
     >
       {turns.map(({ name, x, note, value }) => {
         const cx = x + WIDTH * INTERRUPT;

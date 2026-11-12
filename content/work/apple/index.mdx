@@ -1,0 +1,245 @@
+import { Install } from "@/components/install";
+import { GenieDebug } from "@/content/work/genie/demos";
+import {
+  AppLab,
+  Corners,
+  Crop,
+  Customise,
+  Edge,
+  Mesh,
+  Rows,
+  Springs,
+} from "./demos";
+
+I'd just rebuilt the macOS Genie minimise from the Dock's own code, so I went looking for the rest: the springs, the curves and the app open Apple ships, read out of iOS and macOS and checked against recordings, then ported to TypeScript for the web.
+
+## Where the Numbers Came From
+
+The Genie folder already had demos for some of these, built on values I'd guessed. For this one, every number had to come from one of three places, and anything else is labelled a guess where it appears.
+
+- **Apple's code.** I opened SpringBoard, SpringBoardHome and UIKitCore from the iOS 27.0 Simulator in Ghidra[^1] and read the functions that drive each animation.
+- **Apple's settings.** SpringBoard keeps its motion in settings objects, one per animation, with a response and damping ratio for each spring. I injected a library into the Simulator's SpringBoard that wrote every default out to a file.
+- **Recordings.** The same library sampled each layer's on-screen position, size and corner radius 120 times a second while the animation ran, and for SwiftUI I called its `Spring` type on macOS 27.0.1 and sampled the curves it returned.
+
+Each value went into a ledger with where it came from, and 58 tests compare the port against the recordings.
+
+## Springs
+
+Apple describes a spring by how long it takes (the response, in seconds) and how much it overshoots (the damping ratio, where 1 settles without overshooting). Since 2023 SwiftUI also takes a duration and a bounce, which is the same thing with the ratio flipped round: a bounce of 0.3 is a damping ratio of 0.7.[^2] Both turn into the mass, stiffness and damping a physics solver needs. I read the conversion in UIKitCore, and it's the same one SwiftUI's springs follow, matching all 12 I sampled to ten decimal places.
+
+```ts title="spring.ts"
+// bounce 0 is a damping ratio of 1, 0.3 is 0.7, and -0.3 is 1 / 0.7.
+const dampingRatio = bounce >= 0 ? 1 - bounce : 1 / (1 + bounce);
+
+const mass = 1;
+const stiffness = ((2 * Math.PI) / response) ** 2;
+const damping = (4 * Math.PI * dampingRatio) / response;
+```
+
+SwiftUI's named springs all have a response of 0.5 seconds and differ only in the damping ratio: 1 for `.smooth` and `.spring`, 0.85 for `.snappy` and 0.7 for `.bouncy`. The exception is `.interactiveSpring`, meant for following a finger, at 0.15 seconds and 0.85.
+
+<Springs />
+<sub>SwiftUI's three named springs from 0 to 1.2 seconds, drawn by the port, with a dot every 50 ms sampled from SwiftUI's own `Spring`. Smooth rises without overshooting, snappy overshoots by under 1% and bouncy by about 5%.</sub>
+
+My old app open demo used a damping ratio of 0.825 labelled "Apple default". That's the default of the older `spring(response:dampingFraction:)`, which is 0.55 s at 0.825, and not what `.spring` is now.
+
+Two things surprised me. Core Animation never overdamps: a `CASpringAnimation` of mass 3, stiffness 1000 and damping 500 has a damping ratio of 4.56 on paper, but it moves as a 0.344-second spring with a ratio of exactly 1, the response its mass and stiffness give and no slower. That spring is what `UISpringTimingParameters()` returns with no arguments, and it's the one sheets use. And UIKit's older `usingSpringWithDamping:` takes a duration rather than a response, so it solves for the stiffness that brings the spring within 0.075% of the end at that duration. A 0.5-second animation at 0.8 comes out at a stiffness of 323.59.[^3]
+
+## Curves
+
+Where Apple doesn't use a spring, it uses one of Core Animation's four timing curves, and they're the same cubic Béziers as CSS's keywords.[^4] I sampled each one from SwiftUI and QuartzCore to check.
+
+- `default` is (0.25, 0.1, 0.25, 1), which is CSS's `ease`.
+- `easeIn` is (0.42, 0, 1, 1), which is `ease-in`.
+- `easeOut` is (0, 0, 0.58, 1), which is `ease-out`.
+- `easeInEaseOut` is (0.42, 0, 0.58, 1), which is `ease-in-out`.
+
+`UIView.animate(withDuration:)` with no options uses `easeInEaseOut`, and so does SwiftUI's `.easeInOut`, for 0.35 seconds. The rest of this page is springs.
+
+## Opening an App
+
+SpringBoard doesn't grow the icon. It takes the full-screen app, scales it down to the icon's width and crops its height to the icon's, so the app is never squashed, only cropped. The scale, the crop and the centre all ride one spring, `genieFullScreenCenterRowZoomUpSettings`, at 0.24 seconds with a damping ratio of 1. Behind it, the home screen shrinks to 0.88 on a slower spring of 0.7 seconds at 0.88. Closing runs the card back on `iconZoomDownSettings`, 0.336 seconds at 1, and the home screen grows back on the same 0.7.
+
+Growing the icon would stretch whatever's inside it, and animating the width and height would lay the app out again on every frame. Scaling a full-size app and cropping it does neither, which is why I think SpringBoard does it that way.
+
+<Crop />
+<sub>Safari's card at the icon, a third and two thirds of the way, and at the end of its open. The dashed outline is the whole app at the card's scale, and the card shows 46%, 62%, 81% and then all of its height.</sub>
+
+That's only the card's frame, though, and my first port stopped there. Recorded from the Dock, Safari leaves its icon as a tapered shape, wide at the top and narrow at the bottom, and funnels back in when it closes. SpringBoard draws the frame through a mesh in `SBSwitcherGenieEffectView` (it calls this a genie too): a grid of 3 by 3 vertices, each on its own spring, rebuilt into a `CAMutableMeshTransform` every frame.
+
+The three rows of vertices get different springs, depending on where the icon is. SpringBoard turns the icon's height on the screen into a `genieAmount`, from −1 at the top to 1 at the bottom (scaled by 0.75 above the middle), and spreads the rows' responses either side of the card's spring (0.24 seconds opening, 0.336 closing) by half of it. Safari in the Dock is at 0.84, so opening it gives the top, middle and bottom rows 0.139, 0.282 and 0.341 seconds, and closing it gives them 0.478, 0.277 and 0.194.
+
+The row furthest from the icon is fastest on the way out and slowest on the way back, which is the stretch and the funnel. Settings, near the middle at −0.024, gets 0.243, 0.241 and 0.237, so its rows hardly pull apart. On an iPhone the sideways amount is always 0, so the bend is only ever vertical.
+
+<Rows />
+<sub>The springs Safari's top, middle and bottom rows ride from the Dock, drawn by the port. Opening, the top row lands first and stretches the card up out of the icon, and closing, the bottom row does and funnels it back in.</sub>
+
+Even with matching rows the mesh isn't the frame. The vertices start on a grid 0.4 of the window's size and are scaled out against the frame's own scale, and the two only agree at either end. Halfway through opening Settings, the card is up to 32 points inside the frame my first port drew, and from the Dock Safari's bottom corners are up to 73 points from it.
+
+<Mesh />
+<sub>Safari opening from the Dock at 30, 60, 100 and 160 ms, with SpringBoard's mesh drawn over the dashed frame my first port drew. On the way in the bottom corners trail the frame by up to 62 points, about 100 ms in.</sub>
+
+Core Animation doesn't join the vertices with straight lines either. I put a test mesh on the Simulator's screen with one edge's middle vertex pulled out by 0.15 of the width, and the edge it drew only reached 0.101 there. A cubic B-spline surface gives 0.1, with the edge vertices reflected so the outline still runs through the corners, and it predicts the drawn edge to within a pixel at every point I measured, so that's what the port uses. The demo draws the card as 60 tiles, each projected onto its piece of that surface, with the continuous corners `_setContinuousCornerRadius` gives the card.
+
+<Edge />
+<sub>The test mesh, with the right edge's middle vertex pulled out by 0.15 of the width. Straight lines would come to a point at 0.15, the Simulator drew the edge out to 0.101, and a cubic B-spline through the same vertices reaches 0.100.</sub>
+
+Against six recorded runs (Safari, Settings and Calendar, each opened and closed), the port's nine vertices are 0.03 points from SpringBoard's on average and 0.21 points on the worst frame.
+
+The corner radius has its own spring, and it was the hardest part to pin down. The two obvious ways to do it are to scale the icon's radius with the card, which ends far too round, or to interpolate between the icon's 16.64 points and the screen's 62. SpringBoard's `cornerRadiiForIndex:` does something else. It springs the radius in the layer's own unscaled space, first towards half the window's shorter side (201 points), until a timer sets `_hasResetCornerRadius`. Then the same spring is retargeted, to the screen's 62 points when opening, or when closing to 104.5, which is the icon's 16.64 over the card's starting scale and draws as exactly the icon's corners once the card lands. The timer fires 10 ms after the card starts moving on the way in, and 0.12 seconds on the way out.[^5]
+
+Interpolating looks close, but on a full-size iPhone the port puts it up to 16 points off SpringBoard 66 ms into an open. On a close it's 37 points off, because 0.1 seconds in SpringBoard's corners are still heading for 201 and come out about twice as round.
+
+<Corners />
+<sub>Safari's corner radius on the screen over the first 0.6 seconds of an open and a close, drawn by the port. Scaling the icon's 16.64 points ends at 104.5, and interpolating to 62 runs under SpringBoard's, which swells towards 201 on the close.</sub>
+
+On the recorded open the port's card frame is off by 0.041% of the move on average, and 0.18% on its worst frame. The close is off by 0.032% and the corner radius by 0.38 points.
+
+<Demo wide>
+  <AppLab />
+</Demo>
+<sub>Safari's open on the 402 × 874 point iPhone I recorded it on, scrubbed by time, and tapping another icon opens it. The orange dots are the port's vertices and the red rings are SpringBoard's from the nearest recorded frame.</sub>
+
+## Genie
+
+The macOS minimise has [its own post](/work/genie). In short, the Dock works out a mesh for every frame, with the window's sides bending along two cosines towards its slot and then sliding down between them, linearly over half a second. My port runs the Dock's own function and matches a recording to within 3 pixels.
+
+<Demo wide>
+  <GenieDebug />
+</Demo>
+<sub>Drag the window or the target to turn the funnel, tap either to minimise or restore, and switch off Fade and Blur, my own additions, to see what the Dock really does.</sub>
+
+## Using It
+
+I put everything on this page in one package, `@web-kits/springboard`: the springs, the curves, the app launch and the genie.
+
+<Install package="@web-kits/springboard" />
+
+It has three entry points:
+
+- `@web-kits/springboard` has `origin` and its two effects, the springs, presets, curves, continuous corners and screen transitions.
+- `/react` has `useOrigin`.
+- `/motion` has every preset as a Motion transition.
+
+The package is marked free of side effects, so a page that only imports the springs shouldn't bundle the meshes.
+
+### Springs
+
+Each spring is a response and a damping ratio, the pair Apple's code uses. `/motion` has every preset ready to hand to Motion,[^6] and `toLinear` samples one into a CSS `linear()` easing, which can play a spring back but can't carry its speed into a new target when it's interrupted.
+
+```tsx title="motion.tsx"
+import { springboard, toLinear } from "@web-kits/springboard";
+import { swiftui } from "@web-kits/springboard/motion";
+import { motion } from "motion/react";
+
+<motion.div layout transition={swiftui.snappy} />;
+
+// For CSS: a linear() easing and a duration in milliseconds.
+const { easing, duration } = toLinear(springboard.open);
+```
+
+`toMotion(spring, speed)` converts any other spring, and `speed` plays it faster or slower, like SwiftUI's `.speed()`.
+
+### Opening Out of a Button
+
+`origin` takes the element that opens, the element it opens out of and an effect, and starts closed and hidden:
+
+```ts title="note.ts"
+import { launch, origin } from "@web-kits/springboard";
+
+const note = origin(document.querySelector(".note"), {
+  from: document.querySelector(".new-note"),
+  effect: launch(),
+});
+
+button.addEventListener("click", () => note.toggle());
+```
+
+It also has `open()`, `close()`, `set()` for new options and `destroy()`. Calling `open()` while it's closing turns it round from wherever it is, and `open({ instant: true })` jumps straight there. In React, `useOrigin` does the same through a ref, and follows an `open` prop:
+
+```tsx title="note.tsx"
+import { launch } from "@web-kits/springboard";
+import { useOrigin } from "@web-kits/springboard/react";
+
+const button = useRef(null);
+const [open, setOpen] = useState(false);
+const note = useOrigin({ from: button, effect: launch(), open });
+
+<>
+  <button ref={button} onClick={() => setOpen(true)}>New Note</button>
+  <div ref={note} className="note">…</div>
+</>;
+```
+
+Leave out `open` on a Base UI popup, whether it's a Dialog's, a Popover's, a Menu's or a Select's, and the hook follows Base UI instead. Base UI keeps the popup mounted until the springs land.
+
+```tsx title="more.tsx"
+import { launch } from "@web-kits/springboard";
+import { useOrigin } from "@web-kits/springboard/react";
+
+const button = useRef(null);
+const popup = useOrigin({ from: button, effect: launch() });
+
+<Menu.Root>
+  <Menu.Trigger ref={button}>More</Menu.Trigger>
+  <Menu.Portal>
+    <Menu.Positioner>
+      <Menu.Popup ref={popup}>
+        <Menu.Item>Pin Note</Menu.Item>
+      </Menu.Popup>
+    </Menu.Positioner>
+  </Menu.Portal>
+</Menu.Root>;
+```
+
+### Minimising Into It
+
+`genie()` goes where `launch()` did and minimises the element into `from` the way the Dock does. How the mesh works is in [the genie post](/work/genie).
+
+```tsx title="notes.tsx"
+import { genie } from "@web-kits/springboard";
+import { useOrigin } from "@web-kits/springboard/react";
+
+const icon = useRef(null);
+const minimise = useOrigin({ from: icon, effect: genie() });
+
+<Dialog.Root>
+  <Dialog.Trigger ref={icon}>Notes</Dialog.Trigger>
+  <Dialog.Portal>
+    <Dialog.Popup ref={minimise}>…</Dialog.Popup>
+  </Dialog.Portal>
+</Dialog.Root>;
+```
+
+Launch hides `from` while it's open, like an icon under its app, and the genie leaves it showing, like a Dock tile. `hideTarget` overrides either.
+
+### Customising It
+
+The defaults are the values I measured, and the rest are options. This is every one that changes how the effects look, on one popup, with its code underneath.
+
+<Customise />
+<sub>Pick an effect and a component, change its options and tap the button. The top corner reads out each event as it fires: the start, the progress on every frame and the landing.</sub>
+
+Like an icon into its app, the launch fades a copy of the button into the popup over the first 0.15 seconds out, and back over the last fifth of the way in, which takes about as long. Both are my guesses at how long SpringBoard's crossfade takes, and Fade changes them. Speed and Debug are the `speed` and `debug` options, which slow an effect down like the Simulator's Slow Animations and draw its mesh over it, with the pieces in blue and the vertices in orange. Home shrinks the notes behind the popup to 0.88 as it opens, like the home screen behind an app, and the genie's Target moves the button to each side of the stage so the funnel turns to follow it.
+
+Three more aren't in the demo: `bounds` sets the element the copies are drawn in, which is the viewport unless you pass one, `open` starts the effect open with no animation, and launch's `springs` also takes `home` and `cornerReset`. An effect is a plain value, so to use the same one everywhere I export it:
+
+```ts title="effects.ts"
+import { launch, swiftui } from "@web-kits/springboard";
+
+export const zoom = launch({ springs: { open: swiftui.snappy } });
+```
+
+Underneath `launch()` is `createAppTransition`, which keeps every vertex's speed when it's interrupted and hands back the mesh, for drawing it some other way, like on a canvas. Most of this was measured in the Simulator rather than on a phone.
+
+[^1]: [Ghidra](https://github.com/NationalSecurityAgency/ghidra), National Security Agency.
+
+[^2]: [Animate with springs](https://developer.apple.com/videos/play/wwdc2023/10158/), WWDC 2023, and [`Spring`](https://developer.apple.com/documentation/swiftui/spring), Apple.
+
+[^3]: For a damping ratio below 1 it solves e^(−ζωT) = 0.00075 for ω. At exactly 1 it solves (1 + ωT)e^(−ωT) = 0.001 instead, so 0.5 seconds comes out at a stiffness of 341.02.
+
+[^4]: [`CAMediaTimingFunctionName`](https://developer.apple.com/documentation/quartzcore/camediatimingfunctionname), Apple, and [`<easing-function>`](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function), MDN.
+
+[^5]: The setting for the way in says 0.06 seconds, not 0.01. In the Simulator the card's first frame lands about 50 ms after the transition starts, which would account for the difference, but that's a guess.
+
+[^6]: [Motion](https://motion.dev/).

@@ -8,7 +8,7 @@ export const contentType = "image/png";
 
 const FRAME = 340;
 const ARM = 28;
-const MARK = "1.5px solid #cfceca";
+const MARK = "1.5px solid #c9c9c9";
 
 const BASE = 200;
 const HEIGHT = 70;
@@ -158,10 +158,10 @@ export default async function Image() {
             y2="0"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0" stopColor="#e9e8e6" />
-            <stop offset={edge - 0.03} stopColor="#e2e1de" />
-            <stop offset={edge + 0.03} stopColor="#d6d5d1" />
-            <stop offset="1" stopColor="#cfceca" />
+            <stop offset="0" stopColor="#e7e7e7" />
+            <stop offset={edge - 0.03} stopColor="#dfdfdf" />
+            <stop offset={edge + 0.03} stopColor="#d1d1d1" />
+            <stop offset="1" stopColor="#c9c9c9" />
           </linearGradient>
           <linearGradient
             id="dish"
@@ -171,8 +171,8 @@ export default async function Image() {
             y2={dishBottom}
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0" stopColor="#f1f0ef" />
-            <stop offset="1" stopColor="#f9f9f8" />
+            <stop offset="0" stopColor="#f0f0f0" />
+            <stop offset="1" stopColor="#fafafa" />
           </linearGradient>
         </defs>
         <polygon
@@ -193,7 +193,7 @@ export default async function Image() {
         />
         <polygon
           points={svgPoints(cap)}
-          fill="#fdfdfc"
+          fill="#ffffff"
           stroke="#ffffff"
           strokeOpacity={0.8}
           strokeWidth={1.5}

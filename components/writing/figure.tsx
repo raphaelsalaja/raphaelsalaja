@@ -1,41 +1,44 @@
 import type { ReactNode } from "react";
+import { Chart, type Series } from "@/components/chart";
 import styles from "./figure.module.css";
 
 export { styles as figure };
 
 export function Figure({
+  title,
+  legend,
   label,
   viewBox,
   labels,
   children,
 }: {
+  title: string;
+  legend?: Series[];
   label: string;
   viewBox: string;
   labels?: string[];
   children: ReactNode;
 }) {
   return (
-    <figure className={styles.figure} aria-label={label}>
-      <div className={styles.scroll}>
-        <div className={styles.canvas}>
-          <svg
-            className={styles.svg}
-            viewBox={viewBox}
-            fill="none"
-            aria-hidden="true"
-          >
-            {children}
-          </svg>
-          {labels && (
-            <div className={styles.labels} aria-hidden="true">
-              {labels.map((text) => (
-                <span key={text}>{text}</span>
-              ))}
-            </div>
-          )}
-        </div>
+    <Chart title={title} legend={legend} aria-label={label}>
+      <div className={styles.canvas}>
+        <svg
+          className={styles.svg}
+          viewBox={viewBox}
+          fill="none"
+          aria-hidden="true"
+        >
+          {children}
+        </svg>
+        {labels && (
+          <div className={styles.labels} aria-hidden="true">
+            {labels.map((text) => (
+              <span key={text}>{text}</span>
+            ))}
+          </div>
+        )}
       </div>
-    </figure>
+    </Chart>
   );
 }
 

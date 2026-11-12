@@ -1,11 +1,9 @@
 .caps {
   font-size: 9.5px;
   font-variant-numeric: tabular-nums;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   text-wrap: nowrap;
   fill: var(--text-tertiary);
-  stroke: var(--background-secondary);
+  stroke: var(--figure-surface);
   stroke-width: 6px;
   stroke-linejoin: round;
   paint-order: stroke fill;

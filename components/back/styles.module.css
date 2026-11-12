@@ -5,8 +5,12 @@
 .back {
   display: inline-flex;
   flex-direction: column;
+  gap: 4px;
   align-self: flex-start;
-  line-height: 20px;
+  /* Room for the focus ring, handed back so the text stays put. */
+  padding: 2px 6px;
+  margin: -2px -6px;
+  line-height: 24px;
 }
 
 .name {
@@ -15,6 +19,7 @@
 }
 
 .role {
+  line-height: 20px;
   color: var(--text-tertiary);
   transition: color var(--duration-quick) var(--ease-out-cubic);
 

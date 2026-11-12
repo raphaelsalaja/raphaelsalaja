@@ -4,6 +4,10 @@
   gap: 8px;
   align-self: stretch;
   padding: 0 16px 16px;
+
+  :global([data-showcase]) & {
+    padding: 0;
+  }
 }
 
 .control {
@@ -119,10 +123,5 @@
 
   &:active {
     transform: scale(0.98);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--text-primary);
-    outline-offset: 2px;
   }
 }

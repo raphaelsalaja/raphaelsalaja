@@ -23,9 +23,15 @@ importers:
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.3(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
+      '@web-kits/blur':
+        specifier: workspace:*
+        version: link:packages/blur
       '@web-kits/motion-blur':
         specifier: ^0.1.0
         version: 0.1.0(react@19.3.1)
+      '@web-kits/springboard':
+        specifier: workspace:*
+        version: link:packages/springboard
       calligraph:
         specifier: ^1.4.1
         version: 1.4.1(motion@14.7.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -94,7 +100,13 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
-  packages/motion-blur:
+  packages/blur:
+    dependencies:
+      react:
+        specifier: '>=19'
+        version: 19.3.1
+
+  packages/springboard:
     dependencies:
       react:
         specifier: '>=19'

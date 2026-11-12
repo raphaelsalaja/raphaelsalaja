@@ -1,0 +1,116 @@
+.chart {
+  --figure-accent: var(--blue);
+  --figure-line: var(--gray-9);
+  --figure-plate: color-mix(in oklab, var(--gray-1) 82%, transparent);
+  --figure-surface: var(--background-primary);
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-top: 32px;
+  counter-increment: figure;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.title {
+  font-size: 13px;
+  font-variation-settings: var(--font-weight-500);
+  color: var(--text-primary);
+
+  &::before {
+    margin-right: 8px;
+    color: var(--text-tertiary);
+    content: "Figure " counter(figure);
+  }
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-secondary);
+  }
+}
+
+.swatch {
+  flex: none;
+  overflow: visible;
+}
+
+.ink,
+.accent,
+.muted {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.ink {
+  stroke: var(--text-primary);
+}
+
+.accent {
+  stroke: var(--figure-accent);
+
+  .swatch[style] & {
+    stroke: currentColor;
+  }
+}
+
+.muted {
+  stroke: var(--gray-9);
+  stroke-dasharray: 4 3;
+}
+
+.fill {
+  fill: color-mix(in oklab, var(--figure-accent) 22%, transparent);
+  stroke: var(--figure-accent);
+  stroke-width: 1;
+
+  .swatch[style] & {
+    fill: color-mix(in oklab, currentColor 22%, transparent);
+    stroke: currentColor;
+  }
+}
+
+.dot {
+  fill: var(--text-primary);
+
+  .swatch[style] & {
+    fill: currentColor;
+  }
+}
+
+.panel {
+  min-width: 0;
+  /* A scroller clips everything outside it, so hairlines and shadows on the
+     content's edges need room inside it. */
+  padding: 24px 8px 20px;
+  margin-inline: -8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--border-secondary) transparent;
+  scrollbar-width: thin;
+}

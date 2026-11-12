@@ -3,7 +3,7 @@
   --title: var(--text-primary);
   --text: var(--text-tertiary);
   --hover: var(--background-tertiary);
-  --focus: var(--text-primary);
+  --focus-ink: var(--text-primary);
   --button: var(--background-tertiary);
   --button-hover: var(--gray-4);
   --button-text: var(--text-primary);
@@ -58,7 +58,7 @@
   --title: #fafafa;
   --text: #a3a3a3;
   --hover: rgb(255 255 255 / 6%);
-  --focus: #fafafa;
+  --focus-ink: #fafafa;
   --button: linear-gradient(180deg, #fff, #dededb);
   --button-hover: var(--button);
   --button-text: #0a0a0a;
@@ -171,11 +171,6 @@
 
   &:active {
     scale: 0.98;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
   }
 }
 

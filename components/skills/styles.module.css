@@ -104,13 +104,13 @@
 }
 
 .group {
-  [data-demo] + & {
+  [data-showcase] + & {
     margin-top: 72px;
   }
 }
 
 .name {
-  [data-demo] + & {
+  [data-showcase] + & {
     margin-top: 48px;
   }
 }

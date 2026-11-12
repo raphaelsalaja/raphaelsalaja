@@ -4,7 +4,11 @@ import { Segmented } from "@/components/writing/segmented";
 import styles from "./styles.module.css";
 
 export function Controls({ children }: { children: ReactNode }) {
-  return <div className={styles.controls}>{children}</div>;
+  return (
+    <div className={styles.controls} data-controls>
+      {children}
+    </div>
+  );
 }
 
 export function Control<T extends string>({

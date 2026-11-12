@@ -1,0 +1,527 @@
+{
+  "filterMethods": [
+    "dealloc",
+    "copyWithZone:",
+    "description",
+    "mutableCopyWithZone:",
+    "name",
+    "enabled",
+    "encodeWithCoder:",
+    "initWithCoder:",
+    "initWithName:",
+    "setEnabled:",
+    "setName:",
+    "type",
+    "isEnabled",
+    "setValue:forKey:",
+    "valueForKey:",
+    "CA_copyRenderValue",
+    "CAMLTypeForKey:",
+    "CAMLParser:setValue:forKey:",
+    "isAccessibility",
+    "cachesInputImage",
+    "encodeWithCAMLWriter:",
+    "initWithType:",
+    "setAccessibility:",
+    "setCachesInputImage:",
+    "setDefaults"
+  ],
+  "filterTypes": [
+    "alphaThreshold",
+    "alphaSmoothThreshold",
+    "multiplyColor",
+    "colorAdd",
+    "colorSubtract",
+    "colorMonochrome",
+    "colorMatrix",
+    "colorHueRotate",
+    "colorSaturate",
+    "colorBrightness",
+    "colorContrast",
+    "colorInvert",
+    "colorInvertDisplayAware",
+    "compressLuminance",
+    "opacityPair",
+    "meteor",
+    "srl",
+    "edrGain",
+    "edrGainMultiply",
+    "luminanceToAlpha",
+    "bias",
+    "distanceField",
+    "gaussianBlur",
+    "variableBlur",
+    "glassBackground",
+    "glassForeground",
+    "chromaticAberration",
+    "chromaticAberrationMap",
+    "displacementMap",
+    "luminanceMap",
+    "luminanceCurveMap",
+    "curves",
+    "averageColor",
+    "lanczosResize",
+    "pageCurl",
+    "sdrNormalize",
+    "vibrantDark",
+    "vibrantLight",
+    "vibrantColorMatrix",
+    "limitAveragePixelLuminance",
+    "lut",
+    "vibrantColorMatrixSourceOver"
+  ],
+  "windows": [
+    {
+      "layers": [
+        {
+          "depth": 0,
+          "frame": [0, 0, 402, 874],
+          "name": "UIWindow\/UIWindowLayer#UIWindow (com.raphaelsalaja.blur)",
+          "opacity": 1
+        },
+        {
+          "depth": 1,
+          "frame": [0, 0, 402, 874],
+          "name": "UITransitionView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 2,
+          "frame": [0, 0, 402, 874],
+          "name": "UIDropShadowView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 3,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__\/CALayer#_TtGC7SwiftUI14_UIHostingViewGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__ (_TtGC7SwiftUI19UIHostingControllerGVS_15ModifiedContentGVS_8LazyViewV4Blur7Harness_VS_12RootModifier__)",
+          "opacity": 1
+        },
+        {
+          "depth": 4,
+          "frame": [0, 0, 402, 874],
+          "name": "_TtGC7SwiftUI21UIKitPlatformViewHostGVS_P10$1ca679b2832PlatformViewRepresentableAdaptorV4Blur5Probe__\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 5,
+          "frame": [0, 0, 402, 874],
+          "name": "UIView\/CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 1],
+          "depth": 6,
+          "frame": [-9, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 6,
+          "frame": [51, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 1],
+          "depth": 6,
+          "frame": [111, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 6,
+          "frame": [171, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 1],
+          "depth": 6,
+          "frame": [231, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [1, 1],
+          "depth": 6,
+          "frame": [291, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "background": [0, 1],
+          "depth": 6,
+          "frame": [351, 0, 60, 2000],
+          "name": "CALayer",
+          "opacity": 1
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-00.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 70, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-01.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-02.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 166, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-03.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-04.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 262, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-05.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-06.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 358, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-07.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 1.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 0.5,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-08.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 0.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 454, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-09.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 0.5,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 1,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        },
+        {
+          "depth": 6,
+          "filters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-10.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 4,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "frame": [-9, 550, 420, 80],
+          "name": "CABackdropLayer",
+          "opacity": 1,
+          "presentationFilters": [
+            {
+              "class": "CAFilter",
+              "description": "variableBlur",
+              "enabled": true,
+              "inputMaskImage": {
+                "image": "mask-11.png"
+              },
+              "inputNormalizeEdges": true,
+              "inputRadius": 4,
+              "name": "variableBlur",
+              "type": "variableBlur"
+            }
+          ],
+          "props": {
+            "allowsFilteredLuma": false,
+            "allowsInPlaceFiltering": false,
+            "captureOnly": false,
+            "delegate": null,
+            "disableFilterCache": false,
+            "disablesOccludedBackdropBlurs": false,
+            "enabled": true,
+            "groupName": null,
+            "groupNamespace": "owningContext",
+            "ignoresScreenClip": false,
+            "inverseMeshed": false,
+            "lumaUpdateRate": 0.25,
+            "marginWidth": 0,
+            "mt_colorMatrixDrivenInoperativeOpacity": 1,
+            "mt_colorMatrixDrivenOpacity": 1,
+            "preallocatesScreenArea": false,
+            "reducesCaptureBitDepth": false,
+            "scale": 1,
+            "sourceSublayerDefinesBounds": false,
+            "tracksLuma": false,
+            "tracksLumaWhileHidden": false,
+            "updateRate": 0,
+            "usesGlobalGroupNamespace": false,
+            "zoom": 0
+          }
+        }
+      ],
+      "window": "UIWindow"
+    }
+  ]
+}

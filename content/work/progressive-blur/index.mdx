@@ -1,0 +1,112 @@
+import { Install } from "@/components/install";
+import { Compare, Curve, Edge } from "./demos";
+
+iOS 27 fades content into its bars with a soft edge: under the status bar, the navigation bar and over the tab bar. The common way to do it on the web is to stack layers of heavier and heavier blur, which looks like fog next to it. I opened the soft edge in the Simulator, read every layer it draws, fitted the numbers to screenshots and rebuilt it as a package.
+
+<Demo>
+  <Edge />
+</Demo>
+<sub>Scroll the list under the bar. Switch to Stacked or One Blur to see the two ways the web usually does it.</sub>
+
+## Three Layers
+
+```swift title="library.swift"
+ScrollView { albums }
+  .scrollEdgeEffectStyle(.soft, for: .top)
+```
+
+I built that screen in the iOS 27 Simulator[^1] and injected a library that writes out the layer tree, including the inputs of every private `CAFilter`. Each edge is three layers. A backdrop captures whatever is behind the scroll view. A Replay draws that capture back over the content at half opacity, so the content fades into the page. A Pocket, drawn after the Replay, blurs the faded result with `variableBlur`, the filter that reads its strength from a mask image.
+
+The blur is light: 2.88 points at its strongest, about a tenth of the 32 the stacked version above reaches. The rest is in four inputs I only found by archiving the filter: a second blur of 29.6 points laid over the first at 25% normally, 60% with lighten and 40% with darken.[^2] Lighten lifts the dark parts towards the wide blur and darken pulls the light parts down. The way I read it, that's why shapes keep their edges while their contrast melts away.
+
+## The Numbers
+
+| Part | Light | Dark |
+| --- | ---: | ---: |
+| Background underneath | 0.5 | 0.6 |
+| Sharp blur | 2.88 pt | 2.88 pt |
+| Wide blur | 29.6 pt | 29.6 pt |
+| Normal | 0.25 | 0 |
+| Lighten | 0.6 | 0.4 |
+| Darken | 0.4 | 0.6 |
+
+The background and the three blends are multiplied by one mask. The wide blur stays at 29.6 points, and the sharp one follows the mask on a curve of its own. The edge runs 40 points past the bottom of the bar, so it's 102 points with only the status bar and 156 under a navigation bar.
+
+<Curve />
+<sub>The mask holds at full strength for the first 34% of the edge. It then falls on an S-curve and reaches nothing at 97%.</sub>
+
+## How I Measured It
+
+The tree gives the inputs, but not what they mean in points. I filled the screen with 60-point black and white bars, because a blurred edge between two bars has a known shape, and fitted each row of the screenshot to a mix of two Gaussians. Then I hid one layer at a time and fitted again. With the Replay hidden, `variableBlur`'s fill radius of 16 came out as a standard deviation of 29.6 points. Fitting the same rows in linear light was worse on 43 of the 50 top rows, so iOS blends in sRGB values like the web does.
+
+My first version laid the background over the blur at the end. That would be fine if the background were one flat colour, but it fades with the mask, and the wide blur spreads that fade 30 points up and down the edge. Moving it underneath, where the tree has it, took my model from 0.0172 rms to 0.0096 against Apple's capture, on a scale of 0 to 1.
+
+The sharp blur was the other half. I'd scaled 3.24 points by the mask, but fitted row by row it's 2.88 at the top, 1.42 where the mask is at half and still half a point when the mask is almost gone. The same curve came out of light, dark and colour captures, and the run with the Replay hidden. My guess is that it comes from the Pocket drawing at half resolution. With that curve the model is within 0.003 to 0.006 of every capture.
+
+macOS draws its toolbar edge with the same filter, at a radius of 2 and a mask that only goes from 0.886 to 0.663, so it never fades out. apple.com doesn't use any of this: its hero is one `blur(20px)` under a 100-pixel mask, which is the One Blur option above.
+
+## On the Web
+
+The background goes first, as a plain layer under everything else. The sharp blur is four `backdrop-filter` layers, each blurring what the ones under it already blurred, with masks that hand over from one to the next. I started with three. The fourth took Safari from 0.0075 to 0.0064 rms, and Chrome from 0.0098 to 0.0089, and both still held 60 frames a second in the Simulator.
+
+The wide blur is where the browsers split. Safari applies `mix-blend-mode` to a `backdrop-filter` layer's output, so it gets three layers, one per blend mode, the way iOS does it. Chrome ignores the blend mode but takes an SVG filter as a `backdrop-filter`, so there the three blends happen inside one `feBlend` chain.[^3] Everything else gets the wide blur at one opacity, the average of the three.
+
+<Compare />
+<sub>The top 102 points of the edge over the bars, in the iOS 27 Simulator and then in Safari and Chrome. The status bar is part of Apple's capture.</sub>
+
+I scored each browser row by row against Apple's capture, in five cases: the bare edge, the edge under a navigation bar, dark mode, and the same columns in seven saturated colours, light and dark.
+
+| Case | Safari | Chrome |
+| --- | ---: | ---: |
+| Bars | 0.0064 | 0.0089 |
+| Under a navigation bar | 0.0074 | 0.0080 |
+| Dark | 0.0084 | 0.0056 |
+| Colour | 0.0041 | 0.0312 |
+| Colour, dark | 0.0043 | 0.0187 |
+
+Chrome's colour scores aren't the recipe. Chrome blurs in the display's colour space, which on this Mac is P3, while iOS and the Simulator's Safari blur in sRGB. Running my model in P3 values matched Chrome's colour capture to 0.0052, and a page can't change the space Chrome works in. The single-opacity fallback comes to 0.0162 on the bars, so my guess is Firefox gets reasonably close, though I haven't tested it.
+
+The first version, with the background on top and the straight 3.24-point blur, scored 0.0202 in Safari and 0.0186 in Chrome on the bars.
+
+In the Simulator's Safari, every version held 60 frames a second with the columns sliding under it, even with the edge covering the whole screen. The Simulator draws on the Mac's GPU, though, so that says little about a phone.
+
+## In Code
+
+<Install package="@web-kits/blur" />
+
+```tsx title="header.tsx"
+import { ProgressiveBlur } from "@web-kits/blur/react";
+
+export function Header() {
+  return (
+    <>
+      <ProgressiveBlur className="edge" side="top" />
+      <nav className="bar">…</nav>
+    </>
+  );
+}
+```
+
+The blur draws into an empty element placed over the content, here a fixed strip 40 pixels taller than the bar. It picks Safari's or Chrome's version on its own and reads the colour to fade into from the first background behind it.
+
+| Option | What it does |
+| --- | --- |
+| `side` | Where the blur is strongest: `"top"`, `"bottom"`, `"left"` or `"right"` |
+| `color` | The colour the edge fades into, the page's background by default |
+| `scheme` | Apple's light or dark weights, following the system by default |
+| `start`, `end` | Where the fall begins and ends, 0.34 and 0.97 by default |
+| `technique` | `"blend"`, `"filter"` or `"plain"`, to force one version |
+
+A `backdrop-filter` only sees as far back as the nearest element with opacity, a filter or a mask,[^4] so the strip has to sit beside the scrolling content, not inside a faded wrapper.
+
+## When to Use It
+
+I'd use it where content scrolls under something that stays, like a header, a toolbar or a floating tab bar. The hard edge, the macOS sidebar and Reduce Transparency aren't in the package yet.
+
+[^1]: [`scrollEdgeEffectStyle(_:for:)`](https://developer.apple.com/documentation/swiftui/view/scrolledgeeffectstyle(_:for:)), Apple.
+
+[^2]: Every value and its source is in `scripts/blur/ledger.md` in this site's source, with the guesses marked.
+
+[^3]: [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter) and [`mix-blend-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode), MDN.
+
+[^4]: [The backdrop root](https://drafts.fxtf.org/filter-effects-2/#BackdropRoot), Filter Effects Module Level 2.

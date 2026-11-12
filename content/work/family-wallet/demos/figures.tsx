@@ -1,4 +1,4 @@
-import base from "@/content/work/command-menu/demos/figures.module.css";
+import { marks as base, Chart } from "@/components/chart";
 
 const CARD_Y = 56;
 const CARD_H = 56;
@@ -195,11 +195,11 @@ export function StatesFigure() {
   const save = center(customize);
 
   return (
-    <figure
-      className={base.figure}
+    <Chart
+      title="Wallet States"
       aria-label="Four states of the wallet in a row: collapsed, expanded, customize and edit nickname. Tap opens it, customize shows the colour picker, edit focuses the name and done returns to customize. Save closes it back to collapsed."
     >
-      <svg className={base.svg} viewBox="0 0 560 180" aria-hidden="true">
+      <svg className={base.svg} viewBox="0 26 560 140" aria-hidden="true">
         {cards.map((card) => (
           <Wallet key={card.name} card={card} />
         ))}
@@ -245,6 +245,6 @@ export function StatesFigure() {
           save
         </text>
       </svg>
-    </figure>
+    </Chart>
   );
 }

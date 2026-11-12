@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Chart } from "@/components/chart";
 import { Figure, figure } from "@/components/writing/figure";
 import styles from "./styles.module.css";
 
@@ -79,7 +80,7 @@ const layers = [
   },
   {
     name: "Timing",
-    note: "180ms in, 120ms out",
+    note: "180 ms in, 120 ms out",
     detail: (p: ReturnType<typeof iso>) => (
       <path
         className={figure.line}
@@ -95,13 +96,13 @@ const layers = [
 
 export function LayersFigure() {
   return (
-    <figure
-      className={figure.figure}
+    <Chart
+      title="Interface Layers"
       aria-label="An interface drawn as four stacked layers. From above you only see the top one, radius and shadow. Pulled apart, it shows spacing, type and timing underneath."
     >
       <svg
         className={figure.svg}
-        viewBox="0 0 480 232"
+        viewBox="0 8 480 224"
         fill="none"
         aria-hidden="true"
       >
@@ -137,7 +138,7 @@ export function LayersFigure() {
           })
           .reverse()}
       </svg>
-    </figure>
+    </Chart>
   );
 }
 
@@ -164,9 +165,10 @@ const notes = [
 export function FramesFigure() {
   return (
     <Figure
+      title="Menu Opening Frames"
       label="Eight frames of a menu opening, about 117 milliseconds at 60 frames a second. It grows from the button that opened it, the shadow arrives on the fourth frame, and the content appears on the sixth."
-      viewBox="0 0 480 116"
-      labels={["0ms", "117ms"]}
+      viewBox="0 20 480 96"
+      labels={["0 ms", "117 ms"]}
     >
       {frames.map(({ x, scale, shadow, content }) => {
         const mx = x + MENU.dx;
