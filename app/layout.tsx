@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Back } from "@/components/back";
 import { Prompts } from "@/components/prompts";
 import { Sounds } from "@/components/sounds";
@@ -8,9 +9,9 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 import "@/styles/main.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  axes: ["opsz"],
+const allo = localFont({
+  src: "../assets/allo-variable.woff2",
+  weight: "100 900",
   display: "swap",
 });
 
@@ -53,7 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.className} ${mono.variable}`}
+      className={`${allo.className} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

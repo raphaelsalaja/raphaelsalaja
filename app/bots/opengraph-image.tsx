@@ -116,7 +116,7 @@ export default async function Image() {
         width: "100%",
         height: "100%",
         backgroundColor: "white",
-        fontFamily: "Inter",
+        fontFamily: "Allo",
         fontWeight: 600,
       }}
     >

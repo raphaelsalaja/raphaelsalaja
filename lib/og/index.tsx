@@ -5,10 +5,10 @@ import { ImageResponse } from "next/og";
 export const ogSize = { width: 1200, height: 630 };
 
 export async function ogFonts() {
-  const font = await readFile(join(process.cwd(), "assets/inter-semibold.ttf"));
+  const font = await readFile(join(process.cwd(), "assets/allo-semibold.otf"));
   return [
     {
-      name: "Inter",
+      name: "Allo",
       data: font,
       style: "normal" as const,
       weight: 600 as const,
@@ -28,7 +28,7 @@ export async function renderOgImage(title: string) {
         padding: 64,
         backgroundColor: "white",
         color: "#343433",
-        fontFamily: "Inter",
+        fontFamily: "Allo",
         fontSize: 64,
         fontWeight: 600,
         letterSpacing: -1.43,
