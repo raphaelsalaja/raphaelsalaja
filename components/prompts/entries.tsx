@@ -12,7 +12,6 @@ import { posts } from "@/data/library";
 import { SKILLS_INSTALL } from "@/data/skills";
 import { projects } from "@/data/work";
 import { SOCIALS } from "@/lib/site";
-import styles from "./styles.module.css";
 
 export type Action =
   | { label: string; href: string; icon?: ReactNode }
@@ -51,40 +50,7 @@ const REPOS: Record<string, string> = {
 const starrable = projects.filter((project) => project.title in REPOS);
 const pond = projects.find((project) => project.title === "Pond");
 
-function Sparkle() {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      width={12}
-      height={12}
-      aria-hidden="true"
-      className={styles.sparkle}
-    >
-      <path
-        d="M8 0C8.6 4.6 11.4 7.4 16 8 11.4 8.6 8.6 11.4 8 16 7.4 11.4 4.6 8.6 0 8 4.6 7.4 7.4 4.6 8 0Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 const ENTRIES: Entry[] = [
-  {
-    id: "cosign",
-    build: () => ({
-      shader: true,
-      title: "Cosign Awards 2026",
-      description:
-        "I've been nominated in Design. If you've enjoyed my work, a vote would mean a lot.",
-      actions: [
-        {
-          label: "Vote",
-          href: "https://cosign.co/awards/design",
-          icon: <Sparkle />,
-        },
-      ],
-    }),
-  },
   {
     id: "new-post",
     urgent: true,
